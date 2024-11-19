@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - interpolate/fitpack/sphere.f</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">interpolate/fitpack</a> - sphere.f<span style="font-size: 80%;"> (source / <a href="sphere.f.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">         13 :       recursive subroutine sphere(iopt,m,teta,phi,r,w,s,ntest,npest,</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">         13 :      *  eps,nt,tt,np,tp,c,fp,wrk1,lwrk1,wrk2,lwrk2,iwrk,kwrk,ier)</span></a>
+<a name="3"><span class="lineNum">       3 </span>            :       implicit none</a>
+<a name="4"><span class="lineNum">       4 </span>            : c  subroutine sphere determines a smooth bicubic spherical spline</a>
+<a name="5"><span class="lineNum">       5 </span>            : c  approximation s(teta,phi), 0 &lt;= teta &lt;= pi ; 0 &lt;= phi &lt;= 2*pi</a>
+<a name="6"><span class="lineNum">       6 </span>            : c  to a given set of data points (teta(i),phi(i),r(i)),i=1,2,...,m.</a>
+<a name="7"><span class="lineNum">       7 </span>            : c  such a spline has the following specific properties</a>
+<a name="8"><span class="lineNum">       8 </span>            : c</a>
+<a name="9"><span class="lineNum">       9 </span>            : c    (1) s(0,phi)  = constant   0 &lt;=phi&lt;= 2*pi.</a>
+<a name="10"><span class="lineNum">      10 </span>            : c</a>
+<a name="11"><span class="lineNum">      11 </span>            : c    (2) s(pi,phi) = constant   0 &lt;=phi&lt;= 2*pi</a>
+<a name="12"><span class="lineNum">      12 </span>            : c</a>
+<a name="13"><span class="lineNum">      13 </span>            : c         j             j</a>
+<a name="14"><span class="lineNum">      14 </span>            : c        d s(teta,0)   d s(teta,2*pi)</a>
+<a name="15"><span class="lineNum">      15 </span>            : c    (3) ----------- = ------------   0 &lt;=teta&lt;=pi, j=0,1,2</a>
+<a name="16"><span class="lineNum">      16 </span>            : c             j             j</a>
+<a name="17"><span class="lineNum">      17 </span>            : c        d phi         d phi</a>
+<a name="18"><span class="lineNum">      18 </span>            : c</a>
+<a name="19"><span class="lineNum">      19 </span>            : c        d s(0,phi)    d s(0,0)             d s(0,pi/2)</a>
+<a name="20"><span class="lineNum">      20 </span>            : c    (4) ----------  = -------- *cos(phi) + ----------- *sin(phi)</a>
+<a name="21"><span class="lineNum">      21 </span>            : c        d teta        d teta               d teta</a>
+<a name="22"><span class="lineNum">      22 </span>            : c</a>
+<a name="23"><span class="lineNum">      23 </span>            : c        d s(pi,phi)   d s(pi,0)            d s(pi,pi/2)</a>
+<a name="24"><span class="lineNum">      24 </span>            : c    (5) ----------- = ---------*cos(phi) + ------------*sin(phi)</a>
+<a name="25"><span class="lineNum">      25 </span>            : c        d teta        d teta               d teta</a>
+<a name="26"><span class="lineNum">      26 </span>            : c</a>
+<a name="27"><span class="lineNum">      27 </span>            : c  if iopt =-1 sphere calculates a weighted least-squares spherical</a>
+<a name="28"><span class="lineNum">      28 </span>            : c  spline according to a given set of knots in teta- and phi- direction.</a>
+<a name="29"><span class="lineNum">      29 </span>            : c  if iopt &gt;=0, the number of knots in each direction and their position</a>
+<a name="30"><span class="lineNum">      30 </span>            : c  tt(j),j=1,2,...,nt ; tp(j),j=1,2,...,np are chosen automatically by</a>
+<a name="31"><span class="lineNum">      31 </span>            : c  the routine. the smoothness of s(teta,phi) is then achieved by mini-</a>
+<a name="32"><span class="lineNum">      32 </span>            : c  malizing the discontinuity jumps of the derivatives of the spline</a>
+<a name="33"><span class="lineNum">      33 </span>            : c  at the knots. the amount of smoothness of s(teta,phi) is determined</a>
+<a name="34"><span class="lineNum">      34 </span>            : c  by the condition that fp = sum((w(i)*(r(i)-s(teta(i),phi(i))))**2)</a>
+<a name="35"><span class="lineNum">      35 </span>            : c  be &lt;= s, with s a given non-negative constant.</a>
+<a name="36"><span class="lineNum">      36 </span>            : c  the spherical spline is given in the standard b-spline representation</a>
+<a name="37"><span class="lineNum">      37 </span>            : c  of bicubic splines and can be evaluated by means of subroutine bispev</a>
+<a name="38"><span class="lineNum">      38 </span>            : c</a>
+<a name="39"><span class="lineNum">      39 </span>            : c calling sequence:</a>
+<a name="40"><span class="lineNum">      40 </span>            : c     call sphere(iopt,m,teta,phi,r,w,s,ntest,npest,eps,</a>
+<a name="41"><span class="lineNum">      41 </span>            : c    *  nt,tt,np,tp,c,fp,wrk1,lwrk1,wrk2,lwrk2,iwrk,kwrk,ier)</a>
+<a name="42"><span class="lineNum">      42 </span>            : c</a>
+<a name="43"><span class="lineNum">      43 </span>            : c parameters:</a>
+<a name="44"><span class="lineNum">      44 </span>            : c  iopt  : integer flag. on entry iopt must specify whether a weighted</a>
+<a name="45"><span class="lineNum">      45 </span>            : c          least-squares spherical spline (iopt=-1) or a smoothing</a>
+<a name="46"><span class="lineNum">      46 </span>            : c          spherical spline (iopt=0 or 1) must be determined.</a>
+<a name="47"><span class="lineNum">      47 </span>            : c          if iopt=0 the routine will start with an initial set of knots</a>
+<a name="48"><span class="lineNum">      48 </span>            : c          tt(i)=0,tt(i+4)=pi,i=1,...,4;tp(i)=0,tp(i+4)=2*pi,i=1,...,4.</a>
+<a name="49"><span class="lineNum">      49 </span>            : c          if iopt=1 the routine will continue with the set of knots</a>
+<a name="50"><span class="lineNum">      50 </span>            : c          found at the last call of the routine.</a>
+<a name="51"><span class="lineNum">      51 </span>            : c          attention: a call with iopt=1 must always be immediately pre-</a>
+<a name="52"><span class="lineNum">      52 </span>            : c                     ceded by another call with iopt=1 or iopt=0.</a>
+<a name="53"><span class="lineNum">      53 </span>            : c          unchanged on exit.</a>
+<a name="54"><span class="lineNum">      54 </span>            : c  m     : integer. on entry m must specify the number of data points.</a>
+<a name="55"><span class="lineNum">      55 </span>            : c          m &gt;= 2. unchanged on exit.</a>
+<a name="56"><span class="lineNum">      56 </span>            : c  teta  : real array of dimension at least (m).</a>
+<a name="57"><span class="lineNum">      57 </span>            : c  phi   : real array of dimension at least (m).</a>
+<a name="58"><span class="lineNum">      58 </span>            : c  r     : real array of dimension at least (m).</a>
+<a name="59"><span class="lineNum">      59 </span>            : c          before entry,teta(i),phi(i),r(i) must be set to the spherical</a>
+<a name="60"><span class="lineNum">      60 </span>            : c          co-ordinates of the i-th data point, for i=1,...,m.the order</a>
+<a name="61"><span class="lineNum">      61 </span>            : c          of the data points is immaterial. unchanged on exit.</a>
+<a name="62"><span class="lineNum">      62 </span>            : c  w     : real array of dimension at least (m). before entry, w(i) must</a>
+<a name="63"><span class="lineNum">      63 </span>            : c          be set to the i-th value in the set of weights. the w(i) must</a>
+<a name="64"><span class="lineNum">      64 </span>            : c          be strictly positive. unchanged on exit.</a>
+<a name="65"><span class="lineNum">      65 </span>            : c  s     : real. on entry (in case iopt&gt;=0) s must specify the smoothing</a>
+<a name="66"><span class="lineNum">      66 </span>            : c          factor. s &gt;=0. unchanged on exit.</a>
+<a name="67"><span class="lineNum">      67 </span>            : c          for advice on the choice of s see further comments</a>
+<a name="68"><span class="lineNum">      68 </span>            : c  ntest : integer. unchanged on exit.</a>
+<a name="69"><span class="lineNum">      69 </span>            : c  npest : integer. unchanged on exit.</a>
+<a name="70"><span class="lineNum">      70 </span>            : c          on entry, ntest and npest must specify an upper bound for the</a>
+<a name="71"><span class="lineNum">      71 </span>            : c          number of knots required in the teta- and phi-directions.</a>
+<a name="72"><span class="lineNum">      72 </span>            : c          these numbers will also determine the storage space needed by</a>
+<a name="73"><span class="lineNum">      73 </span>            : c          the routine. ntest &gt;= 8, npest &gt;= 8.</a>
+<a name="74"><span class="lineNum">      74 </span>            : c          in most practical situation ntest = npest = 8+sqrt(m/2) will</a>
+<a name="75"><span class="lineNum">      75 </span>            : c          be sufficient. see also further comments.</a>
+<a name="76"><span class="lineNum">      76 </span>            : c  eps   : real.</a>
+<a name="77"><span class="lineNum">      77 </span>            : c          on entry, eps must specify a threshold for determining the</a>
+<a name="78"><span class="lineNum">      78 </span>            : c          effective rank of an over-determined linear system of equat-</a>
+<a name="79"><span class="lineNum">      79 </span>            : c          ions. 0 &lt; eps &lt; 1.  if the number of decimal digits in the</a>
+<a name="80"><span class="lineNum">      80 </span>            : c          computer representation of a real number is q, then 10**(-q)</a>
+<a name="81"><span class="lineNum">      81 </span>            : c          is a suitable value for eps in most practical applications.</a>
+<a name="82"><span class="lineNum">      82 </span>            : c          unchanged on exit.</a>
+<a name="83"><span class="lineNum">      83 </span>            : c  nt    : integer.</a>
+<a name="84"><span class="lineNum">      84 </span>            : c          unless ier=10 (in case iopt &gt;=0), nt will contain the total</a>
+<a name="85"><span class="lineNum">      85 </span>            : c          number of knots with respect to the teta-variable, of the</a>
+<a name="86"><span class="lineNum">      86 </span>            : c          spline approximation returned. if the computation mode iopt=1</a>
+<a name="87"><span class="lineNum">      87 </span>            : c          is used, the value of nt should be left unchanged between</a>
+<a name="88"><span class="lineNum">      88 </span>            : c          subsequent calls.</a>
+<a name="89"><span class="lineNum">      89 </span>            : c          in case iopt=-1, the value of nt should be specified on entry</a>
+<a name="90"><span class="lineNum">      90 </span>            : c  tt    : real array of dimension at least ntest.</a>
+<a name="91"><span class="lineNum">      91 </span>            : c          on successful exit, this array will contain the knots of the</a>
+<a name="92"><span class="lineNum">      92 </span>            : c          spline with respect to the teta-variable, i.e. the position</a>
+<a name="93"><span class="lineNum">      93 </span>            : c          of the interior knots tt(5),...,tt(nt-4) as well as the</a>
+<a name="94"><span class="lineNum">      94 </span>            : c          position of the additional knots tt(1)=...=tt(4)=0 and</a>
+<a name="95"><span class="lineNum">      95 </span>            : c          tt(nt-3)=...=tt(nt)=pi needed for the b-spline representation</a>
+<a name="96"><span class="lineNum">      96 </span>            : c          if the computation mode iopt=1 is used, the values of tt(1),</a>
+<a name="97"><span class="lineNum">      97 </span>            : c          ...,tt(nt) should be left unchanged between subsequent calls.</a>
+<a name="98"><span class="lineNum">      98 </span>            : c          if the computation mode iopt=-1 is used, the values tt(5),</a>
+<a name="99"><span class="lineNum">      99 </span>            : c          ...tt(nt-4) must be supplied by the user, before entry.</a>
+<a name="100"><span class="lineNum">     100 </span>            : c          see also the restrictions (ier=10).</a>
+<a name="101"><span class="lineNum">     101 </span>            : c  np    : integer.</a>
+<a name="102"><span class="lineNum">     102 </span>            : c          unless ier=10 (in case iopt &gt;=0), np will contain the total</a>
+<a name="103"><span class="lineNum">     103 </span>            : c          number of knots with respect to the phi-variable, of the</a>
+<a name="104"><span class="lineNum">     104 </span>            : c          spline approximation returned. if the computation mode iopt=1</a>
+<a name="105"><span class="lineNum">     105 </span>            : c          is used, the value of np should be left unchanged between</a>
+<a name="106"><span class="lineNum">     106 </span>            : c          subsequent calls.</a>
+<a name="107"><span class="lineNum">     107 </span>            : c          in case iopt=-1, the value of np (&gt;=9) should be specified</a>
+<a name="108"><span class="lineNum">     108 </span>            : c          on entry.</a>
+<a name="109"><span class="lineNum">     109 </span>            : c  tp    : real array of dimension at least npest.</a>
+<a name="110"><span class="lineNum">     110 </span>            : c          on successful exit, this array will contain the knots of the</a>
+<a name="111"><span class="lineNum">     111 </span>            : c          spline with respect to the phi-variable, i.e. the position of</a>
+<a name="112"><span class="lineNum">     112 </span>            : c          the interior knots tp(5),...,tp(np-4) as well as the position</a>
+<a name="113"><span class="lineNum">     113 </span>            : c          of the additional knots tp(1),...,tp(4) and tp(np-3),...,</a>
+<a name="114"><span class="lineNum">     114 </span>            : c          tp(np) needed for the b-spline representation.</a>
+<a name="115"><span class="lineNum">     115 </span>            : c          if the computation mode iopt=1 is used, the values of tp(1),</a>
+<a name="116"><span class="lineNum">     116 </span>            : c          ...,tp(np) should be left unchanged between subsequent calls.</a>
+<a name="117"><span class="lineNum">     117 </span>            : c          if the computation mode iopt=-1 is used, the values tp(5),</a>
+<a name="118"><span class="lineNum">     118 </span>            : c          ...tp(np-4) must be supplied by the user, before entry.</a>
+<a name="119"><span class="lineNum">     119 </span>            : c          see also the restrictions (ier=10).</a>
+<a name="120"><span class="lineNum">     120 </span>            : c  c     : real array of dimension at least (ntest-4)*(npest-4).</a>
+<a name="121"><span class="lineNum">     121 </span>            : c          on successful exit, c contains the coefficients of the spline</a>
+<a name="122"><span class="lineNum">     122 </span>            : c          approximation s(teta,phi).</a>
+<a name="123"><span class="lineNum">     123 </span>            : c  fp    : real. unless ier=10, fp contains the weighted sum of</a>
+<a name="124"><span class="lineNum">     124 </span>            : c          squared residuals of the spline approximation returned.</a>
+<a name="125"><span class="lineNum">     125 </span>            : c  wrk1  : real array of dimension (lwrk1). used as workspace.</a>
+<a name="126"><span class="lineNum">     126 </span>            : c          if the computation mode iopt=1 is used the value of wrk1(1)</a>
+<a name="127"><span class="lineNum">     127 </span>            : c          should be left unchanged between subsequent calls.</a>
+<a name="128"><span class="lineNum">     128 </span>            : c          on exit wrk1(2),wrk1(3),...,wrk1(1+ncof) will contain the</a>
+<a name="129"><span class="lineNum">     129 </span>            : c          values d(i)/max(d(i)),i=1,...,ncof=6+(np-7)*(nt-8)</a>
+<a name="130"><span class="lineNum">     130 </span>            : c          with d(i) the i-th diagonal element of the reduced triangular</a>
+<a name="131"><span class="lineNum">     131 </span>            : c          matrix for calculating the b-spline coefficients. it includes</a>
+<a name="132"><span class="lineNum">     132 </span>            : c          those elements whose square is less than eps,which are treat-</a>
+<a name="133"><span class="lineNum">     133 </span>            : c          ed as 0 in the case of presumed rank deficiency (ier&lt;-2).</a>
+<a name="134"><span class="lineNum">     134 </span>            : c  lwrk1 : integer. on entry lwrk1 must specify the actual dimension of</a>
+<a name="135"><span class="lineNum">     135 </span>            : c          the array wrk1 as declared in the calling (sub)program.</a>
+<a name="136"><span class="lineNum">     136 </span>            : c          lwrk1 must not be too small. let</a>
+<a name="137"><span class="lineNum">     137 </span>            : c            u = ntest-7, v = npest-7, then</a>
+<a name="138"><span class="lineNum">     138 </span>            : c          lwrk1 &gt;= 185+52*v+10*u+14*u*v+8*(u-1)*v**2+8*m</a>
+<a name="139"><span class="lineNum">     139 </span>            : c  wrk2  : real array of dimension (lwrk2). used as workspace, but</a>
+<a name="140"><span class="lineNum">     140 </span>            : c          only in the case a rank deficient system is encountered.</a>
+<a name="141"><span class="lineNum">     141 </span>            : c  lwrk2 : integer. on entry lwrk2 must specify the actual dimension of</a>
+<a name="142"><span class="lineNum">     142 </span>            : c          the array wrk2 as declared in the calling (sub)program.</a>
+<a name="143"><span class="lineNum">     143 </span>            : c          lwrk2 &gt; 0 . a save upper bound  for lwrk2 = 48+21*v+7*u*v+</a>
+<a name="144"><span class="lineNum">     144 </span>            : c          4*(u-1)*v**2 where u,v are as above. if there are enough data</a>
+<a name="145"><span class="lineNum">     145 </span>            : c          points, scattered uniformly over the approximation domain</a>
+<a name="146"><span class="lineNum">     146 </span>            : c          and if the smoothing factor s is not too small, there is a</a>
+<a name="147"><span class="lineNum">     147 </span>            : c          good chance that this extra workspace is not needed. a lot</a>
+<a name="148"><span class="lineNum">     148 </span>            : c          of memory might therefore be saved by setting lwrk2=1.</a>
+<a name="149"><span class="lineNum">     149 </span>            : c          (see also ier &gt; 10)</a>
+<a name="150"><span class="lineNum">     150 </span>            : c  iwrk  : integer array of dimension (kwrk). used as workspace.</a>
+<a name="151"><span class="lineNum">     151 </span>            : c  kwrk  : integer. on entry kwrk must specify the actual dimension of</a>
+<a name="152"><span class="lineNum">     152 </span>            : c          the array iwrk as declared in the calling (sub)program.</a>
+<a name="153"><span class="lineNum">     153 </span>            : c          kwrk &gt;= m+(ntest-7)*(npest-7).</a>
+<a name="154"><span class="lineNum">     154 </span>            : c  ier   : integer. unless the routine detects an error, ier contains a</a>
+<a name="155"><span class="lineNum">     155 </span>            : c          non-positive value on exit, i.e.</a>
+<a name="156"><span class="lineNum">     156 </span>            : c   ier=0  : normal return. the spline returned has a residual sum of</a>
+<a name="157"><span class="lineNum">     157 </span>            : c            squares fp such that abs(fp-s)/s &lt;= tol with tol a relat-</a>
+<a name="158"><span class="lineNum">     158 </span>            : c            ive tolerance set to 0.001 by the program.</a>
+<a name="159"><span class="lineNum">     159 </span>            : c   ier=-1 : normal return. the spline returned is a spherical</a>
+<a name="160"><span class="lineNum">     160 </span>            : c            interpolating spline (fp=0).</a>
+<a name="161"><span class="lineNum">     161 </span>            : c   ier=-2 : normal return. the spline returned is the weighted least-</a>
+<a name="162"><span class="lineNum">     162 </span>            : c            squares constrained polynomial . in this extreme case</a>
+<a name="163"><span class="lineNum">     163 </span>            : c            fp gives the upper bound for the smoothing factor s.</a>
+<a name="164"><span class="lineNum">     164 </span>            : c   ier&lt;-2 : warning. the coefficients of the spline returned have been</a>
+<a name="165"><span class="lineNum">     165 </span>            : c            computed as the minimal norm least-squares solution of a</a>
+<a name="166"><span class="lineNum">     166 </span>            : c            (numerically) rank deficient system. (-ier) gives the rank.</a>
+<a name="167"><span class="lineNum">     167 </span>            : c            especially if the rank deficiency which can be computed as</a>
+<a name="168"><span class="lineNum">     168 </span>            : c            6+(nt-8)*(np-7)+ier, is large the results may be inaccurate</a>
+<a name="169"><span class="lineNum">     169 </span>            : c            they could also seriously depend on the value of eps.</a>
+<a name="170"><span class="lineNum">     170 </span>            : c   ier=1  : error. the required storage space exceeds the available</a>
+<a name="171"><span class="lineNum">     171 </span>            : c            storage space, as specified by the parameters ntest and</a>
+<a name="172"><span class="lineNum">     172 </span>            : c            npest.</a>
+<a name="173"><span class="lineNum">     173 </span>            : c            probably causes : ntest or npest too small. if these param-</a>
+<a name="174"><span class="lineNum">     174 </span>            : c            eters are already large, it may also indicate that s is</a>
+<a name="175"><span class="lineNum">     175 </span>            : c            too small</a>
+<a name="176"><span class="lineNum">     176 </span>            : c            the approximation returned is the weighted least-squares</a>
+<a name="177"><span class="lineNum">     177 </span>            : c            spherical spline according to the current set of knots.</a>
+<a name="178"><span class="lineNum">     178 </span>            : c            the parameter fp gives the corresponding weighted sum of</a>
+<a name="179"><span class="lineNum">     179 </span>            : c            squared residuals (fp&gt;s).</a>
+<a name="180"><span class="lineNum">     180 </span>            : c   ier=2  : error. a theoretically impossible result was found during</a>
+<a name="181"><span class="lineNum">     181 </span>            : c            the iteration process for finding a smoothing spline with</a>
+<a name="182"><span class="lineNum">     182 </span>            : c            fp = s. probably causes : s too small or badly chosen eps.</a>
+<a name="183"><span class="lineNum">     183 </span>            : c            there is an approximation returned but the corresponding</a>
+<a name="184"><span class="lineNum">     184 </span>            : c            weighted sum of squared residuals does not satisfy the</a>
+<a name="185"><span class="lineNum">     185 </span>            : c            condition abs(fp-s)/s &lt; tol.</a>
+<a name="186"><span class="lineNum">     186 </span>            : c   ier=3  : error. the maximal number of iterations maxit (set to 20</a>
+<a name="187"><span class="lineNum">     187 </span>            : c            by the program) allowed for finding a smoothing spline</a>
+<a name="188"><span class="lineNum">     188 </span>            : c            with fp=s has been reached. probably causes : s too small</a>
+<a name="189"><span class="lineNum">     189 </span>            : c            there is an approximation returned but the corresponding</a>
+<a name="190"><span class="lineNum">     190 </span>            : c            weighted sum of squared residuals does not satisfy the</a>
+<a name="191"><span class="lineNum">     191 </span>            : c            condition abs(fp-s)/s &lt; tol.</a>
+<a name="192"><span class="lineNum">     192 </span>            : c   ier=4  : error. no more knots can be added because the dimension</a>
+<a name="193"><span class="lineNum">     193 </span>            : c            of the spherical spline 6+(nt-8)*(np-7) already exceeds</a>
+<a name="194"><span class="lineNum">     194 </span>            : c            the number of data points m.</a>
+<a name="195"><span class="lineNum">     195 </span>            : c            probably causes : either s or m too small.</a>
+<a name="196"><span class="lineNum">     196 </span>            : c            the approximation returned is the weighted least-squares</a>
+<a name="197"><span class="lineNum">     197 </span>            : c            spherical spline according to the current set of knots.</a>
+<a name="198"><span class="lineNum">     198 </span>            : c            the parameter fp gives the corresponding weighted sum of</a>
+<a name="199"><span class="lineNum">     199 </span>            : c            squared residuals (fp&gt;s).</a>
+<a name="200"><span class="lineNum">     200 </span>            : c   ier=5  : error. no more knots can be added because the additional</a>
+<a name="201"><span class="lineNum">     201 </span>            : c            knot would (quasi) coincide with an old one.</a>
+<a name="202"><span class="lineNum">     202 </span>            : c            probably causes : s too small or too large a weight to an</a>
+<a name="203"><span class="lineNum">     203 </span>            : c            inaccurate data point.</a>
+<a name="204"><span class="lineNum">     204 </span>            : c            the approximation returned is the weighted least-squares</a>
+<a name="205"><span class="lineNum">     205 </span>            : c            spherical spline according to the current set of knots.</a>
+<a name="206"><span class="lineNum">     206 </span>            : c            the parameter fp gives the corresponding weighted sum of</a>
+<a name="207"><span class="lineNum">     207 </span>            : c            squared residuals (fp&gt;s).</a>
+<a name="208"><span class="lineNum">     208 </span>            : c   ier=10 : error. on entry, the input data are controlled on validity</a>
+<a name="209"><span class="lineNum">     209 </span>            : c            the following restrictions must be satisfied.</a>
+<a name="210"><span class="lineNum">     210 </span>            : c            -1&lt;=iopt&lt;=1,  m&gt;=2, ntest&gt;=8 ,npest &gt;=8, 0&lt;eps&lt;1,</a>
+<a name="211"><span class="lineNum">     211 </span>            : c            0&lt;=teta(i)&lt;=pi, 0&lt;=phi(i)&lt;=2*pi, w(i)&gt;0, i=1,...,m</a>
+<a name="212"><span class="lineNum">     212 </span>            : c            lwrk1 &gt;= 185+52*v+10*u+14*u*v+8*(u-1)*v**2+8*m</a>
+<a name="213"><span class="lineNum">     213 </span>            : c            kwrk &gt;= m+(ntest-7)*(npest-7)</a>
+<a name="214"><span class="lineNum">     214 </span>            : c            if iopt=-1: 8&lt;=nt&lt;=ntest , 9&lt;=np&lt;=npest</a>
+<a name="215"><span class="lineNum">     215 </span>            : c                        0&lt;tt(5)&lt;tt(6)&lt;...&lt;tt(nt-4)&lt;pi</a>
+<a name="216"><span class="lineNum">     216 </span>            : c                        0&lt;tp(5)&lt;tp(6)&lt;...&lt;tp(np-4)&lt;2*pi</a>
+<a name="217"><span class="lineNum">     217 </span>            : c            if iopt&gt;=0: s&gt;=0</a>
+<a name="218"><span class="lineNum">     218 </span>            : c            if one of these conditions is found to be violated,control</a>
+<a name="219"><span class="lineNum">     219 </span>            : c            is immediately repassed to the calling program. in that</a>
+<a name="220"><span class="lineNum">     220 </span>            : c            case there is no approximation returned.</a>
+<a name="221"><span class="lineNum">     221 </span>            : c   ier&gt;10 : error. lwrk2 is too small, i.e. there is not enough work-</a>
+<a name="222"><span class="lineNum">     222 </span>            : c            space for computing the minimal least-squares solution of</a>
+<a name="223"><span class="lineNum">     223 </span>            : c            a rank deficient system of linear equations. ier gives the</a>
+<a name="224"><span class="lineNum">     224 </span>            : c            requested value for lwrk2. there is no approximation re-</a>
+<a name="225"><span class="lineNum">     225 </span>            : c            turned but, having saved the information contained in nt,</a>
+<a name="226"><span class="lineNum">     226 </span>            : c            np,tt,tp,wrk1, and having adjusted the value of lwrk2 and</a>
+<a name="227"><span class="lineNum">     227 </span>            : c            the dimension of the array wrk2 accordingly, the user can</a>
+<a name="228"><span class="lineNum">     228 </span>            : c            continue at the point the program was left, by calling</a>
+<a name="229"><span class="lineNum">     229 </span>            : c            sphere with iopt=1.</a>
+<a name="230"><span class="lineNum">     230 </span>            : c</a>
+<a name="231"><span class="lineNum">     231 </span>            : c further comments:</a>
+<a name="232"><span class="lineNum">     232 </span>            : c  by means of the parameter s, the user can control the tradeoff</a>
+<a name="233"><span class="lineNum">     233 </span>            : c   between closeness of fit and smoothness of fit of the approximation.</a>
+<a name="234"><span class="lineNum">     234 </span>            : c   if s is too large, the spline will be too smooth and signal will be</a>
+<a name="235"><span class="lineNum">     235 </span>            : c   lost ; if s is too small the spline will pick up too much noise. in</a>
+<a name="236"><span class="lineNum">     236 </span>            : c   the extreme cases the program will return an interpolating spline if</a>
+<a name="237"><span class="lineNum">     237 </span>            : c   s=0 and the constrained weighted least-squares polynomial if s is</a>
+<a name="238"><span class="lineNum">     238 </span>            : c   very large. between these extremes, a properly chosen s will result</a>
+<a name="239"><span class="lineNum">     239 </span>            : c   in a good compromise between closeness of fit and smoothness of fit.</a>
+<a name="240"><span class="lineNum">     240 </span>            : c   to decide whether an approximation, corresponding to a certain s is</a>
+<a name="241"><span class="lineNum">     241 </span>            : c   satisfactory the user is highly recommended to inspect the fits</a>
+<a name="242"><span class="lineNum">     242 </span>            : c   graphically.</a>
+<a name="243"><span class="lineNum">     243 </span>            : c   recommended values for s depend on the weights w(i). if these are</a>
+<a name="244"><span class="lineNum">     244 </span>            : c   taken as 1/d(i) with d(i) an estimate of the standard deviation of</a>
+<a name="245"><span class="lineNum">     245 </span>            : c   r(i), a good s-value should be found in the range (m-sqrt(2*m),m+</a>
+<a name="246"><span class="lineNum">     246 </span>            : c   sqrt(2*m)). if nothing is known about the statistical error in r(i)</a>
+<a name="247"><span class="lineNum">     247 </span>            : c   each w(i) can be set equal to one and s determined by trial and</a>
+<a name="248"><span class="lineNum">     248 </span>            : c   error, taking account of the comments above. the best is then to</a>
+<a name="249"><span class="lineNum">     249 </span>            : c   start with a very large value of s ( to determine the least-squares</a>
+<a name="250"><span class="lineNum">     250 </span>            : c   polynomial and the corresponding upper bound fp0 for s) and then to</a>
+<a name="251"><span class="lineNum">     251 </span>            : c   progressively decrease the value of s ( say by a factor 10 in the</a>
+<a name="252"><span class="lineNum">     252 </span>            : c   beginning, i.e. s=fp0/10, fp0/100,...and more carefully as the</a>
+<a name="253"><span class="lineNum">     253 </span>            : c   approximation shows more detail) to obtain closer fits.</a>
+<a name="254"><span class="lineNum">     254 </span>            : c   to choose s very small is strongly discouraged. this considerably</a>
+<a name="255"><span class="lineNum">     255 </span>            : c   increases computation time and memory requirements. it may also</a>
+<a name="256"><span class="lineNum">     256 </span>            : c   cause rank-deficiency (ier&lt;-2) and endager numerical stability.</a>
+<a name="257"><span class="lineNum">     257 </span>            : c   to economize the search for a good s-value the program provides with</a>
+<a name="258"><span class="lineNum">     258 </span>            : c   different modes of computation. at the first call of the routine, or</a>
+<a name="259"><span class="lineNum">     259 </span>            : c   whenever he wants to restart with the initial set of knots the user</a>
+<a name="260"><span class="lineNum">     260 </span>            : c   must set iopt=0.</a>
+<a name="261"><span class="lineNum">     261 </span>            : c   if iopt=1 the program will continue with the set of knots found at</a>
+<a name="262"><span class="lineNum">     262 </span>            : c   the last call of the routine. this will save a lot of computation</a>
+<a name="263"><span class="lineNum">     263 </span>            : c   time if sphere is called repeatedly for different values of s.</a>
+<a name="264"><span class="lineNum">     264 </span>            : c   the number of knots of the spline returned and their location will</a>
+<a name="265"><span class="lineNum">     265 </span>            : c   depend on the value of s and on the complexity of the shape of the</a>
+<a name="266"><span class="lineNum">     266 </span>            : c   function underlying the data. if the computation mode iopt=1</a>
+<a name="267"><span class="lineNum">     267 </span>            : c   is used, the knots returned may also depend on the s-values at</a>
+<a name="268"><span class="lineNum">     268 </span>            : c   previous calls (if these were smaller). therefore, if after a number</a>
+<a name="269"><span class="lineNum">     269 </span>            : c   of trials with different s-values and iopt=1, the user can finally</a>
+<a name="270"><span class="lineNum">     270 </span>            : c   accept a fit as satisfactory, it may be worthwhile for him to call</a>
+<a name="271"><span class="lineNum">     271 </span>            : c   sphere once more with the selected value for s but now with iopt=0.</a>
+<a name="272"><span class="lineNum">     272 </span>            : c   indeed, sphere may then return an approximation of the same quality</a>
+<a name="273"><span class="lineNum">     273 </span>            : c   of fit but with fewer knots and therefore better if data reduction</a>
+<a name="274"><span class="lineNum">     274 </span>            : c   is also an important objective for the user.</a>
+<a name="275"><span class="lineNum">     275 </span>            : c   the number of knots may also depend on the upper bounds ntest and</a>
+<a name="276"><span class="lineNum">     276 </span>            : c   npest. indeed, if at a certain stage in sphere the number of knots</a>
+<a name="277"><span class="lineNum">     277 </span>            : c   in one direction (say nt) has reached the value of its upper bound</a>
+<a name="278"><span class="lineNum">     278 </span>            : c   (ntest), then from that moment on all subsequent knots are added</a>
+<a name="279"><span class="lineNum">     279 </span>            : c   in the other (phi) direction. this may indicate that the value of</a>
+<a name="280"><span class="lineNum">     280 </span>            : c   ntest is too small. on the other hand, it gives the user the option</a>
+<a name="281"><span class="lineNum">     281 </span>            : c   of limiting the number of knots the routine locates in any direction</a>
+<a name="282"><span class="lineNum">     282 </span>            : c   for example, by setting ntest=8 (the lowest allowable value for</a>
+<a name="283"><span class="lineNum">     283 </span>            : c   ntest), the user can indicate that he wants an approximation which</a>
+<a name="284"><span class="lineNum">     284 </span>            : c   is a cubic polynomial in the variable teta.</a>
+<a name="285"><span class="lineNum">     285 </span>            : c</a>
+<a name="286"><span class="lineNum">     286 </span>            : c  other subroutines required:</a>
+<a name="287"><span class="lineNum">     287 </span>            : c    fpback,fpbspl,fpsphe,fpdisc,fpgivs,fprank,fprati,fprota,fporde,</a>
+<a name="288"><span class="lineNum">     288 </span>            : c    fprpsp</a>
+<a name="289"><span class="lineNum">     289 </span>            : c</a>
+<a name="290"><span class="lineNum">     290 </span>            : c  references:</a>
+<a name="291"><span class="lineNum">     291 </span>            : c   dierckx p. : algorithms for smoothing data on the sphere with tensor</a>
+<a name="292"><span class="lineNum">     292 </span>            : c                product splines, computing 32 (1984) 319-342.</a>
+<a name="293"><span class="lineNum">     293 </span>            : c   dierckx p. : algorithms for smoothing data on the sphere with tensor</a>
+<a name="294"><span class="lineNum">     294 </span>            : c                product splines, report tw62, dept. computer science,</a>
+<a name="295"><span class="lineNum">     295 </span>            : c                k.u.leuven, 1983.</a>
+<a name="296"><span class="lineNum">     296 </span>            : c   dierckx p. : curve and surface fitting with splines, monographs on</a>
+<a name="297"><span class="lineNum">     297 </span>            : c                numerical analysis, oxford university press, 1993.</a>
+<a name="298"><span class="lineNum">     298 </span>            : c</a>
+<a name="299"><span class="lineNum">     299 </span>            : c  author:</a>
+<a name="300"><span class="lineNum">     300 </span>            : c    p.dierckx</a>
+<a name="301"><span class="lineNum">     301 </span>            : c    dept. computer science, k.u. leuven</a>
+<a name="302"><span class="lineNum">     302 </span>            : c    celestijnenlaan 200a, b-3001 heverlee, belgium.</a>
+<a name="303"><span class="lineNum">     303 </span>            : c    e-mail : Paul.Dierckx@cs.kuleuven.ac.be</a>
+<a name="304"><span class="lineNum">     304 </span>            : c</a>
+<a name="305"><span class="lineNum">     305 </span>            : c  creation date : july 1983</a>
+<a name="306"><span class="lineNum">     306 </span>            : c  latest update : march 1989</a>
+<a name="307"><span class="lineNum">     307 </span>            : c</a>
+<a name="308"><span class="lineNum">     308 </span>            : c  ..</a>
+<a name="309"><span class="lineNum">     309 </span>            : c  ..scalar arguments..</a>
+<a name="310"><span class="lineNum">     310 </span>            :       real*8 s,eps,fp</a>
+<a name="311"><span class="lineNum">     311 </span>            :       integer iopt,m,ntest,npest,nt,np,lwrk1,lwrk2,kwrk,ier</a>
+<a name="312"><span class="lineNum">     312 </span>            : c  ..array arguments..</a>
+<a name="313"><span class="lineNum">     313 </span>            :       real*8 teta(m),phi(m),r(m),w(m),tt(ntest),tp(npest),</a>
+<a name="314"><span class="lineNum">     314 </span>            :      * c((ntest-4)*(npest-4)),wrk1(lwrk1),wrk2(lwrk2)</a>
+<a name="315"><span class="lineNum">     315 </span>            :       integer iwrk(kwrk)</a>
+<a name="316"><span class="lineNum">     316 </span>            : c  ..local scalars..</a>
+<a name="317"><span class="lineNum">     317 </span>            :       real*8 tol,pi,pi2,one</a>
+<a name="318"><span class="lineNum">     318 </span>            :       integer i,ib1,ib3,ki,kn,kwest,la,lbt,lcc,lcs,lro,j,</a>
+<a name="319"><span class="lineNum">     319 </span>            :      * lbp,lco,lf,lff,lfp,lh,lq,lst,lsp,lwest,maxit,ncest,ncc,ntt,</a>
+<a name="320"><span class="lineNum">     320 </span>            :      * npp,nreg,nrint,ncof,nt4,np4</a>
+<a name="321"><span class="lineNum">     321 </span>            : c  ..function references..</a>
+<a name="322"><span class="lineNum">     322 </span>            :       real*8 atan</a>
+<a name="323"><span class="lineNum">     323 </span>            : c  ..subroutine references..</a>
+<a name="324"><span class="lineNum">     324 </span>            : c    fpsphe</a>
+<a name="325"><span class="lineNum">     325 </span>            : c  ..</a>
+<a name="326"><span class="lineNum">     326 </span>            : c  set constants</a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         13 :       one = 0.1e+01</span></a>
+<a name="328"><span class="lineNum">     328 </span>            : c  we set up the parameters tol and maxit.</a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         13 :       maxit = 20</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         13 :       tol = 0.1e-02</span></a>
+<a name="331"><span class="lineNum">     331 </span>            : c  before starting computations a data check is made. if the input data</a>
+<a name="332"><span class="lineNum">     332 </span>            : c  are invalid,control is immediately repassed to the calling program.</a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">         13 :       ier = 10</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">         13 :       if(eps.le.0. .or. eps.ge.1.) go to 80</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">         13 :       if(iopt.lt.(-1) .or. iopt.gt.1) go to 80</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         13 :       if(m.lt.2) go to 80</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         13 :       if(ntest.lt.8 .or. npest.lt.8) go to 80</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         13 :       nt4 = ntest-4</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         13 :       np4 = npest-4</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         13 :       ncest = nt4*np4</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         13 :       ntt = ntest-7</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         13 :       npp = npest-7</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         13 :       ncc = 6+npp*(ntt-1)</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         13 :       nrint = ntt+npp</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         13 :       nreg = ntt*npp</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         13 :       ncof = 6+3*npp</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         13 :       ib1 = 4*npp</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         13 :       ib3 = ib1+3</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         13 :       if(ncof.gt.ib1) ib1 = ncof</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         13 :       if(ncof.gt.ib3) ib3 = ncof</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">         13 :       lwest = 185+52*npp+10*ntt+14*ntt*npp+8*(m+(ntt-1)*npp**2)</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         13 :       kwest = m+nreg</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">         13 :       if(lwrk1.lt.lwest .or. kwrk.lt.kwest) go to 80</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         13 :       if(iopt.gt.0) go to 60</span></a>
+<a name="355"><span class="lineNum">     355 </span>            :       pi = atan(one)*4</a>
+<a name="356"><span class="lineNum">     356 </span>            :       pi2 = pi+pi</a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">      37887 :       do 20 i=1,m</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">      37874 :         if(w(i).le.0.) go to 80</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">      37874 :         if(teta(i).lt.0. .or. teta(i).gt.pi) go to 80</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">      37874 :         if(phi(i) .lt.0. .or. phi(i).gt.pi2) go to 80</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         13 :   20  continue</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         13 :       if(iopt.eq.0) go to 60</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          6 :       ntt = nt-8</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          6 :       if(ntt.lt.0 .or. nt.gt.ntest) go to 80</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          6 :       if(ntt.eq.0) go to 40</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          6 :       tt(4) = 0.</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         90 :       do 30 i=1,ntt</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         84 :          j = i+4</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         84 :          if(tt(j).le.tt(j-1) .or. tt(j).ge.pi) go to 80</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          6 :   30  continue</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          6 :   40  npp = np-8</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          6 :       if(npp.lt.1 .or. np.gt.npest) go to 80</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          6 :       tp(4) = 0.</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        114 :       do 50 i=1,npp</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        108 :          j = i+4</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        108 :          if(tp(j).le.tp(j-1) .or. tp(j).ge.pi2) go to 80</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          6 :   50  continue</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          7 :       go to 70</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          7 :   60  if(s.lt.0.) go to 80</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         13 :   70  ier = 0</span></a>
+<a name="381"><span class="lineNum">     381 </span>            : c  we partition the working space and determine the spline approximation</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         13 :       kn = 1</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         13 :       ki = kn+m</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         13 :       lq = 2</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         13 :       la = lq+ncc*ib3</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         13 :       lf = la+ncc*ib1</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         13 :       lff = lf+ncc</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         13 :       lfp = lff+ncest</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         13 :       lco = lfp+nrint</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         13 :       lh = lco+nrint</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         13 :       lbt = lh+ib3</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         13 :       lbp = lbt+5*ntest</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         13 :       lro = lbp+5*npest</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         13 :       lcc = lro+npest</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         13 :       lcs = lcc+npest</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         13 :       lst = lcs+npest</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         13 :       lsp = lst+m*4</span></a>
+<a name="398"><span class="lineNum">     398 </span>            :       call fpsphe(iopt,m,teta,phi,r,w,s,ntest,npest,eps,tol,maxit,</a>
+<a name="399"><span class="lineNum">     399 </span>            :      * ib1,ib3,ncest,ncc,nrint,nreg,nt,tt,np,tp,c,fp,wrk1(1),wrk1(lfp),</a>
+<a name="400"><span class="lineNum">     400 </span>            :      * wrk1(lco),wrk1(lf),wrk1(lff),wrk1(lro),wrk1(lcc),wrk1(lcs),</a>
+<a name="401"><span class="lineNum">     401 </span>            :      * wrk1(la),wrk1(lq),wrk1(lbt),wrk1(lbp),wrk1(lst),wrk1(lsp),</a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         13 :      * wrk1(lh),iwrk(ki),iwrk(kn),wrk2,lwrk2,ier)</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         13 :   80  return</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :       end</a>
+<a name="405"><span class="lineNum">     405 </span>            : </a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

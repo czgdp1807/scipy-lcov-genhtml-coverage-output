@@ -1,0 +1,944 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - sparse/sparsetools/bsr.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">sparse/sparsetools</a> - bsr.h<span style="font-size: 80%;"> (source / <a href="bsr.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">273</td>
+            <td class="headerCovTableEntry">289</td>
+            <td class="headerCovTableEntryHi">94.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">393</td>
+            <td class="headerCovTableEntry">1432</td>
+            <td class="headerCovTableEntryLo">27.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef __BSR_H__</a>
+<a name="2"><span class="lineNum">       2 </span>            : #define __BSR_H__</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : #include &lt;vector&gt;</a>
+<a name="5"><span class="lineNum">       5 </span>            : #include &lt;algorithm&gt;</a>
+<a name="6"><span class="lineNum">       6 </span>            : #include &lt;functional&gt;</a>
+<a name="7"><span class="lineNum">       7 </span>            : </a>
+<a name="8"><span class="lineNum">       8 </span>            : #include &quot;csr.h&quot;</a>
+<a name="9"><span class="lineNum">       9 </span>            : #include &quot;dense.h&quot;</a>
+<a name="10"><span class="lineNum">      10 </span>            : </a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">       1108 : static inline npy_intp diagonal_size(const npy_intp k,</span></a>
+<a name="12"><span class="lineNum">      12 </span>            :                                      const npy_intp rows,</a>
+<a name="13"><span class="lineNum">      13 </span>            :                                      const npy_intp cols)</a>
+<a name="14"><span class="lineNum">      14 </span>            : {</a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">       1108 :     return std::min(rows + std::min(k, (npy_intp)0),</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">       1388 :                     cols - std::max(k, (npy_intp)0));</span></a>
+<a name="17"><span class="lineNum">      17 </span>            : }</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : </a>
+<a name="20"><span class="lineNum">      20 </span>            : template &lt;class I, class T&gt;</a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">        584 : void bsr_diagonal(const I k,</span></a>
+<a name="22"><span class="lineNum">      22 </span>            :                   const I n_brow,</a>
+<a name="23"><span class="lineNum">      23 </span>            :                   const I n_bcol,</a>
+<a name="24"><span class="lineNum">      24 </span>            :                   const I R,</a>
+<a name="25"><span class="lineNum">      25 </span>            :                   const I C,</a>
+<a name="26"><span class="lineNum">      26 </span>            :                   const I Ap[],</a>
+<a name="27"><span class="lineNum">      27 </span>            :                   const I Aj[],</a>
+<a name="28"><span class="lineNum">      28 </span>            :                   const T Ax[],</a>
+<a name="29"><span class="lineNum">      29 </span>            :                         T Yx[])</a>
+<a name="30"><span class="lineNum">      30 </span>            : {</a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">        584 :     const npy_intp RC = R * C;</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">        584 :     const npy_intp D = diagonal_size(k, (npy_intp)n_brow * R,</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">        431 :                                         (npy_intp)n_bcol * C);</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        584 :     const npy_intp first_row = (k &gt;= 0) ? 0 : -k;</span></a>
+<a name="35"><span class="lineNum">      35 </span>            :     /* First and next-to-last brows of the diagonal. */</a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        584 :     const npy_intp first_brow = first_row / R;</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        584 :     const npy_intp last_brow = (first_row + D - 1) / R + 1;</span></a>
+<a name="38"><span class="lineNum">      38 </span>            : </a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       1825 :     for (npy_intp brow = first_brow; brow &lt; last_brow; ++brow) {</span></a>
+<a name="40"><span class="lineNum">      40 </span>            :         /* First and next-to-last bcols of the diagonal in this brow. */</a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">       1241 :         const npy_intp first_bcol = (brow * R + k) / C;</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">       1241 :         const npy_intp last_bcol = ((brow + 1) * R + k - 1) / C + 1;</span></a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">       3309 :         for (npy_intp jj = Ap[brow]; jj &lt; Ap[brow + 1]; ++jj) {</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       2068 :             const npy_intp bcol = Aj[jj];</span></a>
+<a name="46"><span class="lineNum">      46 </span>            : </a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       2068 :             if (first_bcol &lt;= bcol &amp;&amp; bcol &lt; last_bcol) {</span></a>
+<a name="48"><span class="lineNum">      48 </span>            :                 /*</a>
+<a name="49"><span class="lineNum">      49 </span>            :                  * Compute and extract diagonal of block corresponding to the</a>
+<a name="50"><span class="lineNum">      50 </span>            :                  * k-th overall diagonal and add it to output in right place.</a>
+<a name="51"><span class="lineNum">      51 </span>            :                  */</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        524 :                 const npy_intp block_k = brow * R + k - bcol * C;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        524 :                 const npy_intp block_D = diagonal_size(block_k, R, C);</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        524 :                 const npy_intp block_first_row = (block_k &gt;= 0) ? 0 : -block_k;</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        524 :                 const npy_intp Y_idx = brow * R + block_first_row - first_row;</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       1048 :                 const npy_intp Ax_idx = RC * jj +</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        524 :                                         ((block_k &gt;= 0) ? block_k :</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         78 :                                                           -C * block_k);</span></a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       1148 :                 for (npy_intp kk = 0; kk &lt; block_D; ++kk) {</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        624 :                     Yx[Y_idx + kk] += Ax[Ax_idx + kk * (C + 1)];</span></a>
+<a name="62"><span class="lineNum">      62 </span>            :                 }</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            :             }</a>
+<a name="65"><span class="lineNum">      65 </span>            :         }</a>
+<a name="66"><span class="lineNum">      66 </span>            :     }</a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        584 : }</span></a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            : /*</a>
+<a name="70"><span class="lineNum">      70 </span>            :  * Scale the rows of a BSR matrix *in place*</a>
+<a name="71"><span class="lineNum">      71 </span>            :  *</a>
+<a name="72"><span class="lineNum">      72 </span>            :  *   A[i,:] *= X[i]</a>
+<a name="73"><span class="lineNum">      73 </span>            :  *</a>
+<a name="74"><span class="lineNum">      74 </span>            :  */</a>
+<a name="75"><span class="lineNum">      75 </span>            : template &lt;class I, class T&gt;</a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          2 : void bsr_scale_rows(const I n_brow,</span></a>
+<a name="77"><span class="lineNum">      77 </span>            :                     const I n_bcol,</a>
+<a name="78"><span class="lineNum">      78 </span>            :                     const I R,</a>
+<a name="79"><span class="lineNum">      79 </span>            :                     const I C,</a>
+<a name="80"><span class="lineNum">      80 </span>            :                     const I Ap[],</a>
+<a name="81"><span class="lineNum">      81 </span>            :                     const I Aj[],</a>
+<a name="82"><span class="lineNum">      82 </span>            :                           T Ax[],</a>
+<a name="83"><span class="lineNum">      83 </span>            :                     const T Xx[])</a>
+<a name="84"><span class="lineNum">      84 </span>            : {</a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          2 :     const npy_intp RC = (npy_intp)R*C;</span></a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          8 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          6 :         const T * row_scales = Xx + (npy_intp)R*i;</span></a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         20 :         for(I jj = Ap[i]; jj &lt; Ap[i+1]; jj++){</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         14 :            T * block = Ax + RC*jj;</span></a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         42 :             for(I bi = 0; bi &lt; R; bi++){</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         56 :                 scal(C, row_scales[bi], block + (npy_intp)C*bi);</span></a>
+<a name="95"><span class="lineNum">      95 </span>            :             }</a>
+<a name="96"><span class="lineNum">      96 </span>            :         }</a>
+<a name="97"><span class="lineNum">      97 </span>            :     }</a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          2 : }</span></a>
+<a name="99"><span class="lineNum">      99 </span>            : </a>
+<a name="100"><span class="lineNum">     100 </span>            : /*</a>
+<a name="101"><span class="lineNum">     101 </span>            :  * Scale the columns of a BSR matrix *in place*</a>
+<a name="102"><span class="lineNum">     102 </span>            :  *</a>
+<a name="103"><span class="lineNum">     103 </span>            :  *   A[:,i] *= X[i]</a>
+<a name="104"><span class="lineNum">     104 </span>            :  *</a>
+<a name="105"><span class="lineNum">     105 </span>            :  */</a>
+<a name="106"><span class="lineNum">     106 </span>            : template &lt;class I, class T&gt;</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          2 : void bsr_scale_columns(const I n_brow,</span></a>
+<a name="108"><span class="lineNum">     108 </span>            :                        const I n_bcol,</a>
+<a name="109"><span class="lineNum">     109 </span>            :                        const I R,</a>
+<a name="110"><span class="lineNum">     110 </span>            :                        const I C,</a>
+<a name="111"><span class="lineNum">     111 </span>            :                        const I Ap[],</a>
+<a name="112"><span class="lineNum">     112 </span>            :                        const I Aj[],</a>
+<a name="113"><span class="lineNum">     113 </span>            :                              T Ax[],</a>
+<a name="114"><span class="lineNum">     114 </span>            :                        const T Xx[])</a>
+<a name="115"><span class="lineNum">     115 </span>            : {</a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          2 :     const I bnnz = Ap[n_brow];</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          2 :     const npy_intp RC  = (npy_intp)R*C;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         16 :     for(I i = 0; i &lt; bnnz; i++){</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         14 :         const T * scales = Xx + (npy_intp)C*Aj[i] ;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">         14 :         T * block = Ax + RC*i;</span></a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         42 :         for(I bi = 0; bi &lt; R; bi++){</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         98 :             for(I bj = 0; bj &lt; C; bj++){</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         70 :                 block[C*bi + bj] *= scales[bj];</span></a>
+<a name="125"><span class="lineNum">     125 </span>            :             }</a>
+<a name="126"><span class="lineNum">     126 </span>            :         }</a>
+<a name="127"><span class="lineNum">     127 </span>            : </a>
+<a name="128"><span class="lineNum">     128 </span>            :     }</a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          2 : }</span></a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span>            : </a>
+<a name="133"><span class="lineNum">     133 </span>            : /*</a>
+<a name="134"><span class="lineNum">     134 </span>            :  * Sort the column block indices of a BSR matrix inplace</a>
+<a name="135"><span class="lineNum">     135 </span>            :  *</a>
+<a name="136"><span class="lineNum">     136 </span>            :  * Input Arguments:</a>
+<a name="137"><span class="lineNum">     137 </span>            :  *   I  n_brow        - number of row blocks in A</a>
+<a name="138"><span class="lineNum">     138 </span>            :  *   I  n_bcol        - number of column blocks in A</a>
+<a name="139"><span class="lineNum">     139 </span>            :  *   I  R             - rows per block</a>
+<a name="140"><span class="lineNum">     140 </span>            :  *   I  C             - columns per block</a>
+<a name="141"><span class="lineNum">     141 </span>            :  *   I  Ap[n_brow+1]  - row pointer</a>
+<a name="142"><span class="lineNum">     142 </span>            :  *   I  Aj[nblk(A)]   - column indices</a>
+<a name="143"><span class="lineNum">     143 </span>            :  *   T  Ax[nnz(A)]    - nonzeros</a>
+<a name="144"><span class="lineNum">     144 </span>            :  *</a>
+<a name="145"><span class="lineNum">     145 </span>            :  */</a>
+<a name="146"><span class="lineNum">     146 </span>            : template &lt;class I, class T&gt;</a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        203 : void bsr_sort_indices(const I n_brow,</span></a>
+<a name="148"><span class="lineNum">     148 </span>            :                       const I n_bcol,</a>
+<a name="149"><span class="lineNum">     149 </span>            :                       const I R,</a>
+<a name="150"><span class="lineNum">     150 </span>            :                       const I C,</a>
+<a name="151"><span class="lineNum">     151 </span>            :                             I Ap[],</a>
+<a name="152"><span class="lineNum">     152 </span>            :                             I Aj[],</a>
+<a name="153"><span class="lineNum">     153 </span>            :                             T Ax[])</a>
+<a name="154"><span class="lineNum">     154 </span>            : {</a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        203 :     if( R == 1 &amp;&amp; C == 1 ){</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        203 :         csr_sort_indices(n_brow, Ap, Aj, Ax);</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">        203 :         return;</span></a>
+<a name="158"><span class="lineNum">     158 </span>            :     }</a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :     const I nblks = Ap[n_brow];</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :     const npy_intp RC    = (npy_intp)R*C;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :     const npy_intp nnz   = (npy_intp)RC*nblks;</span></a>
+<a name="164"><span class="lineNum">     164 </span>            : </a>
+<a name="165"><span class="lineNum">     165 </span>            :     //compute permutation of blocks using CSR</a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :     std::vector&lt;I&gt; perm(nblks);</span></a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     for(I i = 0; i &lt; nblks; i++)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :         perm[i] = i;</span></a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :     csr_sort_indices(n_brow, Ap, Aj, &amp;perm[0]);</span></a>
+<a name="172"><span class="lineNum">     172 </span>            : </a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :     std::vector&lt;T&gt; Ax_copy(nnz);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :     std::copy(Ax, Ax + nnz, Ax_copy.begin());</span></a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :     for(I i = 0; i &lt; nblks; i++){</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :         const T * input = &amp;Ax_copy[RC * perm[i]];</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :               T * output = Ax + RC*i;</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         std::copy(input, input + RC, output);</span></a>
+<a name="180"><span class="lineNum">     180 </span>            :     }</a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="182"><span class="lineNum">     182 </span>            : </a>
+<a name="183"><span class="lineNum">     183 </span>            : </a>
+<a name="184"><span class="lineNum">     184 </span>            : /*</a>
+<a name="185"><span class="lineNum">     185 </span>            :  * Compute transpose(A) BSR matrix A</a>
+<a name="186"><span class="lineNum">     186 </span>            :  *</a>
+<a name="187"><span class="lineNum">     187 </span>            :  * Input Arguments:</a>
+<a name="188"><span class="lineNum">     188 </span>            :  *   I  n_brow        - number of row blocks in A</a>
+<a name="189"><span class="lineNum">     189 </span>            :  *   I  n_bcol        - number of column blocks in A</a>
+<a name="190"><span class="lineNum">     190 </span>            :  *   I  R             - rows per block</a>
+<a name="191"><span class="lineNum">     191 </span>            :  *   I  C             - columns per block</a>
+<a name="192"><span class="lineNum">     192 </span>            :  *   I  Ap[n_brow+1]  - row pointer</a>
+<a name="193"><span class="lineNum">     193 </span>            :  *   I  Aj[nblk(A)]   - column indices</a>
+<a name="194"><span class="lineNum">     194 </span>            :  *   T  Ax[nnz(A)]    - nonzeros</a>
+<a name="195"><span class="lineNum">     195 </span>            :  *</a>
+<a name="196"><span class="lineNum">     196 </span>            :  * Output Arguments:</a>
+<a name="197"><span class="lineNum">     197 </span>            :  *   I  Bp[n_col+1]   - row pointer</a>
+<a name="198"><span class="lineNum">     198 </span>            :  *   I  Bj[nblk(A)]   - column indices</a>
+<a name="199"><span class="lineNum">     199 </span>            :  *   T  Bx[nnz(A)]    - nonzeros</a>
+<a name="200"><span class="lineNum">     200 </span>            :  *</a>
+<a name="201"><span class="lineNum">     201 </span>            :  * Note:</a>
+<a name="202"><span class="lineNum">     202 </span>            :  *   Output arrays Bp, Bj, Bx must be preallocated</a>
+<a name="203"><span class="lineNum">     203 </span>            :  *</a>
+<a name="204"><span class="lineNum">     204 </span>            :  * Note:</a>
+<a name="205"><span class="lineNum">     205 </span>            :  *   Input:  column indices *are not* assumed to be in sorted order</a>
+<a name="206"><span class="lineNum">     206 </span>            :  *   Output: row indices *will be* in sorted order</a>
+<a name="207"><span class="lineNum">     207 </span>            :  *</a>
+<a name="208"><span class="lineNum">     208 </span>            :  *   Complexity: Linear.  Specifically O(nnz(A) + max(n_row,n_col))</a>
+<a name="209"><span class="lineNum">     209 </span>            :  *</a>
+<a name="210"><span class="lineNum">     210 </span>            :  */</a>
+<a name="211"><span class="lineNum">     211 </span>            : template &lt;class I, class T&gt;</a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       5095 : void bsr_transpose(const I n_brow,</span></a>
+<a name="213"><span class="lineNum">     213 </span>            :                    const I n_bcol,</a>
+<a name="214"><span class="lineNum">     214 </span>            :                    const I R,</a>
+<a name="215"><span class="lineNum">     215 </span>            :                    const I C,</a>
+<a name="216"><span class="lineNum">     216 </span>            :                    const I Ap[],</a>
+<a name="217"><span class="lineNum">     217 </span>            :                    const I Aj[],</a>
+<a name="218"><span class="lineNum">     218 </span>            :                    const T Ax[],</a>
+<a name="219"><span class="lineNum">     219 </span>            :                          I Bp[],</a>
+<a name="220"><span class="lineNum">     220 </span>            :                          I Bj[],</a>
+<a name="221"><span class="lineNum">     221 </span>            :                          T Bx[])</a>
+<a name="222"><span class="lineNum">     222 </span>            : {</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       5095 :     const I nblks = Ap[n_brow];</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       5095 :     const npy_intp RC    = (npy_intp)R*C;</span></a>
+<a name="225"><span class="lineNum">     225 </span>            : </a>
+<a name="226"><span class="lineNum">     226 </span>            :     //compute permutation of blocks using transpose(CSR)</a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       5095 :     std::vector&lt;I&gt; perm_in (nblks);</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       5095 :     std::vector&lt;I&gt; perm_out(nblks);</span></a>
+<a name="229"><span class="lineNum">     229 </span>            : </a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">      34176 :     for(I i = 0; i &lt; nblks; i++)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">      29081 :         perm_in[i] = i;</span></a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       5095 :     csr_tocsc(n_brow, n_bcol, Ap, Aj, &amp;perm_in[0], Bp, Bj, &amp;perm_out[0]);</span></a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">      34176 :     for(I i = 0; i &lt; nblks; i++){</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">      29081 :         const T * Ax_blk = Ax + RC * perm_out[i];</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">      29081 :               T * Bx_blk = Bx + RC * i;</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">      65186 :         for(I r = 0; r &lt; R; r++){</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">      88978 :             for(I c = 0; c &lt; C; c++){</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">      52873 :                 Bx_blk[(npy_intp)c * R + r] = Ax_blk[(npy_intp)r * C + c];</span></a>
+<a name="241"><span class="lineNum">     241 </span>            :             }</a>
+<a name="242"><span class="lineNum">     242 </span>            :         }</a>
+<a name="243"><span class="lineNum">     243 </span>            :     }</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       5095 : }</span></a>
+<a name="245"><span class="lineNum">     245 </span>            : </a>
+<a name="246"><span class="lineNum">     246 </span>            : </a>
+<a name="247"><span class="lineNum">     247 </span>            : </a>
+<a name="248"><span class="lineNum">     248 </span>            : template &lt;class I, class T&gt;</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       3112 : void bsr_matmat(const I maxnnz,</span></a>
+<a name="250"><span class="lineNum">     250 </span>            :                 const I n_brow,  const I n_bcol,</a>
+<a name="251"><span class="lineNum">     251 </span>            :                 const I R,       const I C,       const I N,</a>
+<a name="252"><span class="lineNum">     252 </span>            :                 const I Ap[],    const I Aj[],    const T Ax[],</a>
+<a name="253"><span class="lineNum">     253 </span>            :                 const I Bp[],    const I Bj[],    const T Bx[],</a>
+<a name="254"><span class="lineNum">     254 </span>            :                       I Cp[],          I Cj[],          T Cx[])</a>
+<a name="255"><span class="lineNum">     255 </span>            : {</a>
+<a name="256"><span class="lineNum">     256 </span>            :     assert(R &gt; 0 &amp;&amp; C &gt; 0 &amp;&amp; N &gt; 0);</a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       3112 :     if( R == 1 &amp;&amp; N == 1 &amp;&amp; C == 1 ){</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :         // Use CSR for 1x1 blocksize</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       1384 :         csr_matmat(n_brow, n_bcol, Ap, Aj, Ax, Bp, Bj, Bx, Cp, Cj, Cx);</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       1384 :         return;</span></a>
+<a name="262"><span class="lineNum">     262 </span>            :     }</a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       1728 :     const npy_intp RC = (npy_intp)R*C;</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       1728 :     const npy_intp RN = (npy_intp)R*N;</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       1728 :     const npy_intp NC = (npy_intp)N*C;</span></a>
+<a name="267"><span class="lineNum">     267 </span>            : </a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       3456 :     std::fill( Cx, Cx + RC * maxnnz, 0 ); //clear output array</span></a>
+<a name="269"><span class="lineNum">     269 </span>            : </a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">       1728 :     std::vector&lt;I&gt;  next(n_bcol,-1);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">       1728 :     std::vector&lt;T*&gt; mats(n_bcol);</span></a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       1728 :     npy_intp nnz = 0;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">       1728 :     Cp[0] = 0;</span></a>
+<a name="275"><span class="lineNum">     275 </span>            : </a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       6426 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       4698 :         I head   = -2;</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       4698 :         I length =  0;</span></a>
+<a name="279"><span class="lineNum">     279 </span>            : </a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       4698 :         I jj_start = Ap[i];</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">       4698 :         I jj_end   = Ap[i+1];</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      14134 :         for(I jj = jj_start; jj &lt; jj_end; jj++){</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       9436 :             I j = Aj[jj];</span></a>
+<a name="284"><span class="lineNum">     284 </span>            : </a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">       9436 :             I kk_start = Bp[j];</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       9436 :             I kk_end   = Bp[j+1];</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">      22478 :             for(I kk = kk_start; kk &lt; kk_end; kk++){</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">      13042 :                 I k = Bj[kk];</span></a>
+<a name="289"><span class="lineNum">     289 </span>            : </a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      13042 :                 if(next[k] == -1){</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       6404 :                     next[k] = head;</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">       6404 :                     head = k;</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">       6404 :                     Cj[nnz] = k;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       6404 :                     mats[k] = Cx + RC*nnz;</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       6404 :                     nnz++;</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">       6404 :                     length++;</span></a>
+<a name="297"><span class="lineNum">     297 </span>            :                 }</a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      13042 :                 const T * A = Ax + jj*RN;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      13042 :                 const T * B = Bx + kk*NC;</span></a>
+<a name="301"><span class="lineNum">     301 </span>            : </a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      13042 :                 gemm(R, C, N, A, B, mats[k]);</span></a>
+<a name="303"><span class="lineNum">     303 </span>            :             }</a>
+<a name="304"><span class="lineNum">     304 </span>            :         }</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">      11102 :         for(I jj = 0; jj &lt; length; jj++){</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">       6404 :             I temp = head;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       6404 :             head = next[head];</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       6404 :             next[temp] = -1; //clear arrays</span></a>
+<a name="310"><span class="lineNum">     310 </span>            :         }</a>
+<a name="311"><span class="lineNum">     311 </span>            : </a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">       4698 :         Cp[i+1] = nnz;</span></a>
+<a name="313"><span class="lineNum">     313 </span>            :     }</a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       1728 : }</span></a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span>            : </a>
+<a name="317"><span class="lineNum">     317 </span>            : </a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span>            : template &lt;class I, class T&gt;</a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       8847 : bool is_nonzero_block(const T block[], const I blocksize){</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">      13617 :     for(I i = 0; i &lt; blocksize; i++){</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">      15795 :         if(block[i] != 0){</span></a>
+<a name="323"><span class="lineNum">     323 </span>            :             return true;</a>
+<a name="324"><span class="lineNum">     324 </span>            :         }</a>
+<a name="325"><span class="lineNum">     325 </span>            :     }</a>
+<a name="326"><span class="lineNum">     326 </span>            :     return false;</a>
+<a name="327"><span class="lineNum">     327 </span>            : }</a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span>            : </a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span>            : /*</a>
+<a name="332"><span class="lineNum">     332 </span>            :  * Compute C = A (binary_op) B for BSR matrices that are not</a>
+<a name="333"><span class="lineNum">     333 </span>            :  * necessarily canonical BSR format.  Specifically, this method</a>
+<a name="334"><span class="lineNum">     334 </span>            :  * works even when the input matrices have duplicate and/or</a>
+<a name="335"><span class="lineNum">     335 </span>            :  * unsorted column indices within a given row.</a>
+<a name="336"><span class="lineNum">     336 </span>            :  *</a>
+<a name="337"><span class="lineNum">     337 </span>            :  * Refer to bsr_binop_bsr() for additional information</a>
+<a name="338"><span class="lineNum">     338 </span>            :  *</a>
+<a name="339"><span class="lineNum">     339 </span>            :  * Note:</a>
+<a name="340"><span class="lineNum">     340 </span>            :  *   Output arrays Cp, Cj, and Cx must be preallocated</a>
+<a name="341"><span class="lineNum">     341 </span>            :  *   If nnz(C) is not known a priori, a conservative bound is:</a>
+<a name="342"><span class="lineNum">     342 </span>            :  *          nnz(C) &lt;= nnz(A) + nnz(B)</a>
+<a name="343"><span class="lineNum">     343 </span>            :  *</a>
+<a name="344"><span class="lineNum">     344 </span>            :  * Note:</a>
+<a name="345"><span class="lineNum">     345 </span>            :  *   Input:  A and B column indices are not assumed to be in sorted order</a>
+<a name="346"><span class="lineNum">     346 </span>            :  *   Output: C column indices are not generally in sorted order</a>
+<a name="347"><span class="lineNum">     347 </span>            :  *           C will not contain any duplicate entries or explicit zeros.</a>
+<a name="348"><span class="lineNum">     348 </span>            :  *</a>
+<a name="349"><span class="lineNum">     349 </span>            :  */</a>
+<a name="350"><span class="lineNum">     350 </span>            : template &lt;class I, class T, class T2, class bin_op&gt;</a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1344 : void bsr_binop_bsr_general(const I n_brow, const I n_bcol,</span></a>
+<a name="352"><span class="lineNum">     352 </span>            :                            const I R,      const I C,</a>
+<a name="353"><span class="lineNum">     353 </span>            :                            const I Ap[],   const I Aj[],   const T Ax[],</a>
+<a name="354"><span class="lineNum">     354 </span>            :                            const I Bp[],   const I Bj[],   const T Bx[],</a>
+<a name="355"><span class="lineNum">     355 </span>            :                                  I Cp[],         I Cj[],        T2 Cx[],</a>
+<a name="356"><span class="lineNum">     356 </span>            :                            const bin_op&amp; op)</a>
+<a name="357"><span class="lineNum">     357 </span>            : {</a>
+<a name="358"><span class="lineNum">     358 </span>            :     //Method that works for duplicate and/or unsorted indices</a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1344 :     const npy_intp RC = (npy_intp)R*C;</span></a>
+<a name="360"><span class="lineNum">     360 </span>            : </a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       1344 :     Cp[0] = 0;</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1344 :     I nnz = 0;</span></a>
+<a name="363"><span class="lineNum">     363 </span>            : </a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       1344 :     std::vector&lt;I&gt;  next(n_bcol,     -1);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       1344 :     std::vector&lt;T&gt; A_row(n_bcol * RC, 0);   // this approach can be problematic for large R</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       1344 :     std::vector&lt;T&gt; B_row(n_bcol * RC, 0);</span></a>
+<a name="367"><span class="lineNum">     367 </span>            : </a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">       4030 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       2686 :         I head   = -2;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       2686 :         I length =  0;</span></a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span>            :         //add a row of A to A_row</a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       8740 :         for(I jj = Ap[i]; jj &lt; Ap[i+1]; jj++){</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       6054 :             I j = Aj[jj];</span></a>
+<a name="375"><span class="lineNum">     375 </span>            : </a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">      30290 :             for(I n = 0; n &lt; RC; n++)</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">      24268 :                 A_row[RC*j + n] += Ax[RC*jj + n];</span></a>
+<a name="378"><span class="lineNum">     378 </span>            : </a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">       6054 :             if(next[j] == -1){</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">       4460 :                 next[j] = head;</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">       4460 :                 head = j;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">       4460 :                 length++;</span></a>
+<a name="383"><span class="lineNum">     383 </span>            :             }</a>
+<a name="384"><span class="lineNum">     384 </span>            :         }</a>
+<a name="385"><span class="lineNum">     385 </span>            : </a>
+<a name="386"><span class="lineNum">     386 </span>            :         //add a row of B to B_row</a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">       7780 :         for(I jj = Bp[i]; jj &lt; Bp[i+1]; jj++){</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       5094 :             I j = Bj[jj];</span></a>
+<a name="389"><span class="lineNum">     389 </span>            : </a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      25490 :             for(I n = 0; n &lt; RC; n++)</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      20428 :                 B_row[RC*j + n] += Bx[RC*jj + n];</span></a>
+<a name="392"><span class="lineNum">     392 </span>            : </a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       5094 :             if(next[j] == -1){</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       2252 :                 next[j] = head;</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       2252 :                 head = j;</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       2252 :                 length++;</span></a>
+<a name="397"><span class="lineNum">     397 </span>            :             }</a>
+<a name="398"><span class="lineNum">     398 </span>            :         }</a>
+<a name="399"><span class="lineNum">     399 </span>            : </a>
+<a name="400"><span class="lineNum">     400 </span>            : </a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       9398 :         for(I jj = 0; jj &lt; length; jj++){</span></a>
+<a name="402"><span class="lineNum">     402 </span>            :             // compute op(block_A, block_B)</a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">      33570 :             for(I n = 0; n &lt; RC; n++)</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">      26858 :                 Cx[RC * nnz + n] = op(A_row[RC*head + n], B_row[RC*head + n]);</span></a>
+<a name="405"><span class="lineNum">     405 </span>            : </a>
+<a name="406"><span class="lineNum">     406 </span>            :             // advance counter if block is nonzero</a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">      10114 :             if( is_nonzero_block(Cx + (RC * nnz), RC) )</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       6712 :                 Cj[nnz++] = head;</span></a>
+<a name="409"><span class="lineNum">     409 </span>            : </a>
+<a name="410"><span class="lineNum">     410 </span>            :             // clear block_A and block_B values</a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">      33570 :             for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">      26858 :                 A_row[RC*head + n] = 0;</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      26858 :                 B_row[RC*head + n] = 0;</span></a>
+<a name="414"><span class="lineNum">     414 </span>            :             }</a>
+<a name="415"><span class="lineNum">     415 </span>            : </a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       6712 :             I temp = head;</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       6712 :             head = next[head];</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       6712 :             next[temp] = -1;</span></a>
+<a name="419"><span class="lineNum">     419 </span>            :         }</a>
+<a name="420"><span class="lineNum">     420 </span>            : </a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       2686 :         Cp[i + 1] = nnz;</span></a>
+<a name="422"><span class="lineNum">     422 </span>            :     }</a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1344 : }</span></a>
+<a name="424"><span class="lineNum">     424 </span>            : </a>
+<a name="425"><span class="lineNum">     425 </span>            : </a>
+<a name="426"><span class="lineNum">     426 </span>            : /*</a>
+<a name="427"><span class="lineNum">     427 </span>            :  * Compute C = A (binary_op) B for BSR matrices that are in the</a>
+<a name="428"><span class="lineNum">     428 </span>            :  * canonical BSR format.  Specifically, this method requires that</a>
+<a name="429"><span class="lineNum">     429 </span>            :  * the rows of the input matrices are free of duplicate column indices</a>
+<a name="430"><span class="lineNum">     430 </span>            :  * and that the column indices are in sorted order.</a>
+<a name="431"><span class="lineNum">     431 </span>            :  *</a>
+<a name="432"><span class="lineNum">     432 </span>            :  * Refer to bsr_binop_bsr() for additional information</a>
+<a name="433"><span class="lineNum">     433 </span>            :  *</a>
+<a name="434"><span class="lineNum">     434 </span>            :  * Note:</a>
+<a name="435"><span class="lineNum">     435 </span>            :  *   Input:  A and B column indices are assumed to be in sorted order</a>
+<a name="436"><span class="lineNum">     436 </span>            :  *   Output: C column indices will be in sorted order</a>
+<a name="437"><span class="lineNum">     437 </span>            :  *           Cx will not contain any zero entries</a>
+<a name="438"><span class="lineNum">     438 </span>            :  *</a>
+<a name="439"><span class="lineNum">     439 </span>            :  */</a>
+<a name="440"><span class="lineNum">     440 </span>            : template &lt;class I, class T, class T2, class bin_op&gt;</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        617 : void bsr_binop_bsr_canonical(const I n_brow, const I n_bcol,</span></a>
+<a name="442"><span class="lineNum">     442 </span>            :                              const I R,      const I C,</a>
+<a name="443"><span class="lineNum">     443 </span>            :                              const I Ap[],   const I Aj[],   const T Ax[],</a>
+<a name="444"><span class="lineNum">     444 </span>            :                              const I Bp[],   const I Bj[],   const T Bx[],</a>
+<a name="445"><span class="lineNum">     445 </span>            :                                    I Cp[],         I Cj[],        T2 Cx[],</a>
+<a name="446"><span class="lineNum">     446 </span>            :                              const bin_op&amp; op)</a>
+<a name="447"><span class="lineNum">     447 </span>            : {</a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">        617 :     const npy_intp RC = (npy_intp)R*C;</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">        617 :     T2 * result = Cx;</span></a>
+<a name="450"><span class="lineNum">     450 </span>            : </a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">        617 :     Cp[0] = 0;</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">        617 :     I nnz = 0;</span></a>
+<a name="453"><span class="lineNum">     453 </span>            : </a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">       1836 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">       1219 :         I A_pos = Ap[i];</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       1219 :         I B_pos = Bp[i];</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">       1219 :         I A_end = Ap[i+1];</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       1219 :         I B_end = Bp[i+1];</span></a>
+<a name="459"><span class="lineNum">     459 </span>            : </a>
+<a name="460"><span class="lineNum">     460 </span>            :         //while not finished with either row</a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       3032 :         while(A_pos &lt; A_end &amp;&amp; B_pos &lt; B_end){</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       1813 :             I A_j = Aj[A_pos];</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       1813 :             I B_j = Bj[B_pos];</span></a>
+<a name="464"><span class="lineNum">     464 </span>            : </a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       1813 :             if(A_j == B_j){</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       3080 :                 for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       2471 :                     result[n] = op(Ax[RC*A_pos + n], Bx[RC*B_pos + n]);</span></a>
+<a name="468"><span class="lineNum">     468 </span>            :                 }</a>
+<a name="469"><span class="lineNum">     469 </span>            : </a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">        609 :                 if( is_nonzero_block(result,RC) ){</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        609 :                     Cj[nnz] = A_j;</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">        609 :                     result += RC;</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">        609 :                     nnz++;</span></a>
+<a name="474"><span class="lineNum">     474 </span>            :                 }</a>
+<a name="475"><span class="lineNum">     475 </span>            : </a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">        609 :                 A_pos++;</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">        609 :                 B_pos++;</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       1204 :             } else if (A_j &lt; B_j) {</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       3010 :                 for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       2408 :                     result[n] = op(Ax[RC*A_pos + n], 0);</span></a>
+<a name="481"><span class="lineNum">     481 </span>            :                 }</a>
+<a name="482"><span class="lineNum">     482 </span>            : </a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        602 :                 if(is_nonzero_block(result,RC)){</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        602 :                     Cj[nnz] = A_j;</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        602 :                     result += RC;</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        602 :                     nnz++;</span></a>
+<a name="487"><span class="lineNum">     487 </span>            :                 }</a>
+<a name="488"><span class="lineNum">     488 </span>            : </a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">        602 :                 A_pos++;</span></a>
+<a name="490"><span class="lineNum">     490 </span>            :             } else {</a>
+<a name="491"><span class="lineNum">     491 </span>            :                 //B_j &lt; A_j</a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       3010 :                 for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       2408 :                     result[n] = op(0, Bx[RC*B_pos + n]);</span></a>
+<a name="494"><span class="lineNum">     494 </span>            :                 }</a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">        602 :                 if(is_nonzero_block(result,RC)){</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">        602 :                     Cj[nnz] = B_j;</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">        602 :                     result += RC;</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        602 :                     nnz++;</span></a>
+<a name="499"><span class="lineNum">     499 </span>            :                 }</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        602 :                 B_pos++;</span></a>
+<a name="502"><span class="lineNum">     502 </span>            :             }</a>
+<a name="503"><span class="lineNum">     503 </span>            :         }</a>
+<a name="504"><span class="lineNum">     504 </span>            : </a>
+<a name="505"><span class="lineNum">     505 </span>            :         //tail</a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">       1821 :         while(A_pos &lt; A_end){</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       3010 :             for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       2408 :                 result[n] = op(Ax[RC*A_pos + n], 0);</span></a>
+<a name="509"><span class="lineNum">     509 </span>            :             }</a>
+<a name="510"><span class="lineNum">     510 </span>            : </a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">        602 :             if(is_nonzero_block(result, RC)){</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">        602 :                 Cj[nnz] = Aj[A_pos];</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">        602 :                 result += RC;</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">        602 :                 nnz++;</span></a>
+<a name="515"><span class="lineNum">     515 </span>            :             }</a>
+<a name="516"><span class="lineNum">     516 </span>            : </a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">        602 :             A_pos++;</span></a>
+<a name="518"><span class="lineNum">     518 </span>            :         }</a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">       1821 :         while(B_pos &lt; B_end){</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">       3010 :             for(I n = 0; n &lt; RC; n++){</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">       2408 :                 result[n] = op(0,Bx[RC*B_pos + n]);</span></a>
+<a name="522"><span class="lineNum">     522 </span>            :             }</a>
+<a name="523"><span class="lineNum">     523 </span>            : </a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        602 :             if(is_nonzero_block(result, RC)){</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        602 :                 Cj[nnz] = Bj[B_pos];</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        602 :                 result += RC;</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        602 :                 nnz++;</span></a>
+<a name="528"><span class="lineNum">     528 </span>            :             }</a>
+<a name="529"><span class="lineNum">     529 </span>            : </a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        602 :             B_pos++;</span></a>
+<a name="531"><span class="lineNum">     531 </span>            :         }</a>
+<a name="532"><span class="lineNum">     532 </span>            : </a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">       1219 :         Cp[i+1] = nnz;</span></a>
+<a name="534"><span class="lineNum">     534 </span>            :     }</a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">        617 : }</span></a>
+<a name="536"><span class="lineNum">     536 </span>            : </a>
+<a name="537"><span class="lineNum">     537 </span>            : </a>
+<a name="538"><span class="lineNum">     538 </span>            : /*</a>
+<a name="539"><span class="lineNum">     539 </span>            :  * Compute C = A (binary_op) B for CSR matrices A,B where the column</a>
+<a name="540"><span class="lineNum">     540 </span>            :  * indices with the rows of A and B are known to be sorted.</a>
+<a name="541"><span class="lineNum">     541 </span>            :  *</a>
+<a name="542"><span class="lineNum">     542 </span>            :  *   binary_op(x,y) - binary operator to apply elementwise</a>
+<a name="543"><span class="lineNum">     543 </span>            :  *</a>
+<a name="544"><span class="lineNum">     544 </span>            :  * Input Arguments:</a>
+<a name="545"><span class="lineNum">     545 </span>            :  *   I    n_row       - number of rows in A (and B)</a>
+<a name="546"><span class="lineNum">     546 </span>            :  *   I    n_col       - number of columns in A (and B)</a>
+<a name="547"><span class="lineNum">     547 </span>            :  *   I    Ap[n_row+1] - row pointer</a>
+<a name="548"><span class="lineNum">     548 </span>            :  *   I    Aj[nnz(A)]  - column indices</a>
+<a name="549"><span class="lineNum">     549 </span>            :  *   T    Ax[nnz(A)]  - nonzeros</a>
+<a name="550"><span class="lineNum">     550 </span>            :  *   I    Bp[n_row+1] - row pointer</a>
+<a name="551"><span class="lineNum">     551 </span>            :  *   I    Bj[nnz(B)]  - column indices</a>
+<a name="552"><span class="lineNum">     552 </span>            :  *   T    Bx[nnz(B)]  - nonzeros</a>
+<a name="553"><span class="lineNum">     553 </span>            :  * Output Arguments:</a>
+<a name="554"><span class="lineNum">     554 </span>            :  *   I    Cp[n_row+1] - row pointer</a>
+<a name="555"><span class="lineNum">     555 </span>            :  *   I    Cj[nnz(C)]  - column indices</a>
+<a name="556"><span class="lineNum">     556 </span>            :  *   T    Cx[nnz(C)]  - nonzeros</a>
+<a name="557"><span class="lineNum">     557 </span>            :  *</a>
+<a name="558"><span class="lineNum">     558 </span>            :  * Note:</a>
+<a name="559"><span class="lineNum">     559 </span>            :  *   Output arrays Cp, Cj, and Cx must be preallocated</a>
+<a name="560"><span class="lineNum">     560 </span>            :  *   If nnz(C) is not known a priori, a conservative bound is:</a>
+<a name="561"><span class="lineNum">     561 </span>            :  *          nnz(C) &lt;= nnz(A) + nnz(B)</a>
+<a name="562"><span class="lineNum">     562 </span>            :  *</a>
+<a name="563"><span class="lineNum">     563 </span>            :  * Note:</a>
+<a name="564"><span class="lineNum">     564 </span>            :  *   Input:  A and B column indices are not assumed to be in sorted order.</a>
+<a name="565"><span class="lineNum">     565 </span>            :  *   Output: C column indices will be in sorted if both A and B have sorted indices.</a>
+<a name="566"><span class="lineNum">     566 </span>            :  *           Cx will not contain any zero entries</a>
+<a name="567"><span class="lineNum">     567 </span>            :  *</a>
+<a name="568"><span class="lineNum">     568 </span>            :  */</a>
+<a name="569"><span class="lineNum">     569 </span>            : template &lt;class I, class T, class T2, class bin_op&gt;</a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">      18870 : void bsr_binop_bsr(const I n_brow, const I n_bcol,</span></a>
+<a name="571"><span class="lineNum">     571 </span>            :                    const I R,      const I C,</a>
+<a name="572"><span class="lineNum">     572 </span>            :                    const I Ap[],   const I Aj[],   const T Ax[],</a>
+<a name="573"><span class="lineNum">     573 </span>            :                    const I Bp[],   const I Bj[],   const T Bx[],</a>
+<a name="574"><span class="lineNum">     574 </span>            :                          I Cp[],         I Cj[],        T2 Cx[],</a>
+<a name="575"><span class="lineNum">     575 </span>            :                    const bin_op&amp; op)</a>
+<a name="576"><span class="lineNum">     576 </span>            : {</a>
+<a name="577"><span class="lineNum">     577 </span>            :     assert( R &gt; 0 &amp;&amp; C &gt; 0);</a>
+<a name="578"><span class="lineNum">     578 </span>            : </a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">      18870 :     if( R == 1 &amp;&amp; C == 1 ){</span></a>
+<a name="580"><span class="lineNum">     580 </span>            :         //use CSR for 1x1 blocksize</a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">      16909 :         csr_binop_csr(n_brow, n_bcol, Ap, Aj, Ax, Bp, Bj, Bx, Cp, Cj, Cx, op);</span></a>
+<a name="582"><span class="lineNum">     582 </span>            :     }</a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">       1961 :     else if ( csr_has_canonical_format(n_brow, Ap, Aj) &amp;&amp; csr_has_canonical_format(n_brow, Bp, Bj) ){</span></a>
+<a name="584"><span class="lineNum">     584 </span>            :         // prefer faster implementation</a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        617 :         bsr_binop_bsr_canonical(n_brow, n_bcol, R, C, Ap, Aj, Ax, Bp, Bj, Bx, Cp, Cj, Cx, op);</span></a>
+<a name="586"><span class="lineNum">     586 </span>            :     }</a>
+<a name="587"><span class="lineNum">     587 </span>            :     else {</a>
+<a name="588"><span class="lineNum">     588 </span>            :         // slower fallback method</a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">       1344 :         bsr_binop_bsr_general(n_brow, n_bcol, R, C, Ap, Aj, Ax, Bp, Bj, Bx, Cp, Cj, Cx, op);</span></a>
+<a name="590"><span class="lineNum">     590 </span>            :     }</a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">      18870 : }</span></a>
+<a name="592"><span class="lineNum">     592 </span>            : </a>
+<a name="593"><span class="lineNum">     593 </span>            : /* element-wise binary operations */</a>
+<a name="594"><span class="lineNum">     594 </span>            : template &lt;class I, class T, class T2&gt;</a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">       1224 : void bsr_ne_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="596"><span class="lineNum">     596 </span>            :                 const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="597"><span class="lineNum">     597 </span>            :                 const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="598"><span class="lineNum">     598 </span>            :                       I Cp[],       I Cj[],      T2 Cx[])</a>
+<a name="599"><span class="lineNum">     599 </span>            : {</a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">       1224 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::not_equal_to&lt;T&gt;());</span></a>
+<a name="601"><span class="lineNum">     601 </span>            : }</a>
+<a name="602"><span class="lineNum">     602 </span>            : </a>
+<a name="603"><span class="lineNum">     603 </span>            : template &lt;class I, class T, class T2&gt;</a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">       3366 : void bsr_lt_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="605"><span class="lineNum">     605 </span>            :                 const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="606"><span class="lineNum">     606 </span>            :                 const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="607"><span class="lineNum">     607 </span>            :                       I Cp[],       I Cj[],      T2 Cx[])</a>
+<a name="608"><span class="lineNum">     608 </span>            : {</a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">       3366 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::less&lt;T&gt;());</span></a>
+<a name="610"><span class="lineNum">     610 </span>            : }</a>
+<a name="611"><span class="lineNum">     611 </span>            : </a>
+<a name="612"><span class="lineNum">     612 </span>            : template &lt;class I, class T, class T2&gt;</a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">       3366 : void bsr_gt_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="614"><span class="lineNum">     614 </span>            :                 const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="615"><span class="lineNum">     615 </span>            :                 const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="616"><span class="lineNum">     616 </span>            :                       I Cp[],       I Cj[],      T2 Cx[])</a>
+<a name="617"><span class="lineNum">     617 </span>            : {</a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineCov">       3366 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::greater&lt;T&gt;());</span></a>
+<a name="619"><span class="lineNum">     619 </span>            : }</a>
+<a name="620"><span class="lineNum">     620 </span>            : </a>
+<a name="621"><span class="lineNum">     621 </span>            : template &lt;class I, class T, class T2&gt;</a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">        612 : void bsr_le_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="623"><span class="lineNum">     623 </span>            :                 const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="624"><span class="lineNum">     624 </span>            :                 const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="625"><span class="lineNum">     625 </span>            :                       I Cp[],       I Cj[],      T2 Cx[])</a>
+<a name="626"><span class="lineNum">     626 </span>            : {</a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        612 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::less_equal&lt;T&gt;());</span></a>
+<a name="628"><span class="lineNum">     628 </span>            : }</a>
+<a name="629"><span class="lineNum">     629 </span>            : </a>
+<a name="630"><span class="lineNum">     630 </span>            : template &lt;class I, class T, class T2&gt;</a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">        612 : void bsr_ge_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="632"><span class="lineNum">     632 </span>            :                 const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="633"><span class="lineNum">     633 </span>            :                 const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="634"><span class="lineNum">     634 </span>            :                       I Cp[],       I Cj[],      T2 Cx[])</a>
+<a name="635"><span class="lineNum">     635 </span>            : {</a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">        612 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::greater_equal&lt;T&gt;());</span></a>
+<a name="637"><span class="lineNum">     637 </span>            : }</a>
+<a name="638"><span class="lineNum">     638 </span>            : </a>
+<a name="639"><span class="lineNum">     639 </span>            : template &lt;class I, class T&gt;</a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">        158 : void bsr_elmul_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="641"><span class="lineNum">     641 </span>            :                    const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="642"><span class="lineNum">     642 </span>            :                    const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="643"><span class="lineNum">     643 </span>            :                          I Cp[],       I Cj[],       T Cx[])</a>
+<a name="644"><span class="lineNum">     644 </span>            : {</a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">        158 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::multiplies&lt;T&gt;());</span></a>
+<a name="646"><span class="lineNum">     646 </span>            : }</a>
+<a name="647"><span class="lineNum">     647 </span>            : </a>
+<a name="648"><span class="lineNum">     648 </span>            : template &lt;class I, class T&gt;</a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 : void bsr_eldiv_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="650"><span class="lineNum">     650 </span>            :                    const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="651"><span class="lineNum">     651 </span>            :                    const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="652"><span class="lineNum">     652 </span>            :                          I Cp[],       I Cj[],       T Cx[])</a>
+<a name="653"><span class="lineNum">     653 </span>            : {</a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::divides&lt;T&gt;());</span></a>
+<a name="655"><span class="lineNum">     655 </span>            : }</a>
+<a name="656"><span class="lineNum">     656 </span>            : </a>
+<a name="657"><span class="lineNum">     657 </span>            : </a>
+<a name="658"><span class="lineNum">     658 </span>            : template &lt;class I, class T&gt;</a>
+<a name="659"><span class="lineNum">     659 </span><span class="lineCov">       2980 : void bsr_plus_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="660"><span class="lineNum">     660 </span>            :                   const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="661"><span class="lineNum">     661 </span>            :                   const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="662"><span class="lineNum">     662 </span>            :                         I Cp[],       I Cj[],       T Cx[])</a>
+<a name="663"><span class="lineNum">     663 </span>            : {</a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineCov">       2980 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::plus&lt;T&gt;());</span></a>
+<a name="665"><span class="lineNum">     665 </span>            : }</a>
+<a name="666"><span class="lineNum">     666 </span>            : </a>
+<a name="667"><span class="lineNum">     667 </span>            : template &lt;class I, class T&gt;</a>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">       6228 : void bsr_minus_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="669"><span class="lineNum">     669 </span>            :                    const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="670"><span class="lineNum">     670 </span>            :                    const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="671"><span class="lineNum">     671 </span>            :                          I Cp[],       I Cj[],       T Cx[])</a>
+<a name="672"><span class="lineNum">     672 </span>            : {</a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">       6228 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,std::minus&lt;T&gt;());</span></a>
+<a name="674"><span class="lineNum">     674 </span>            : }</a>
+<a name="675"><span class="lineNum">     675 </span>            : </a>
+<a name="676"><span class="lineNum">     676 </span>            : </a>
+<a name="677"><span class="lineNum">     677 </span>            : template &lt;class I, class T&gt;</a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        162 : void bsr_maximum_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="679"><span class="lineNum">     679 </span>            :                      const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="680"><span class="lineNum">     680 </span>            :                      const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="681"><span class="lineNum">     681 </span>            :                            I Cp[],       I Cj[],       T Cx[])</a>
+<a name="682"><span class="lineNum">     682 </span>            : {</a>
+<a name="683"><span class="lineNum">     683 </span><span class="lineCov">        162 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,maximum&lt;T&gt;());</span></a>
+<a name="684"><span class="lineNum">     684 </span>            : }</a>
+<a name="685"><span class="lineNum">     685 </span>            : </a>
+<a name="686"><span class="lineNum">     686 </span>            : template &lt;class I, class T&gt;</a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">        162 : void bsr_minimum_bsr(const I n_row, const I n_col, const I R, const I C,</span></a>
+<a name="688"><span class="lineNum">     688 </span>            :                      const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="689"><span class="lineNum">     689 </span>            :                      const I Bp[], const I Bj[], const T Bx[],</a>
+<a name="690"><span class="lineNum">     690 </span>            :                            I Cp[],       I Cj[],       T Cx[])</a>
+<a name="691"><span class="lineNum">     691 </span>            : {</a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">        162 :     bsr_binop_bsr(n_row,n_col,R,C,Ap,Aj,Ax,Bp,Bj,Bx,Cp,Cj,Cx,minimum&lt;T&gt;());</span></a>
+<a name="693"><span class="lineNum">     693 </span>            : }</a>
+<a name="694"><span class="lineNum">     694 </span>            : </a>
+<a name="695"><span class="lineNum">     695 </span>            : </a>
+<a name="696"><span class="lineNum">     696 </span>            : /*</a>
+<a name="697"><span class="lineNum">     697 </span>            :  * Compute B = A for BSR matrix A, CSR matrix B</a>
+<a name="698"><span class="lineNum">     698 </span>            :  *</a>
+<a name="699"><span class="lineNum">     699 </span>            :  * Input Arguments:</a>
+<a name="700"><span class="lineNum">     700 </span>            :  *   I  n_brow          - number of block rows in A</a>
+<a name="701"><span class="lineNum">     701 </span>            :  *   I  n_bcol          - number of block columns in A</a>
+<a name="702"><span class="lineNum">     702 </span>            :  *   I  R               - row blocksize</a>
+<a name="703"><span class="lineNum">     703 </span>            :  *   I  C               - column blocksize</a>
+<a name="704"><span class="lineNum">     704 </span>            :  *   I  Ap[n_brow+1]    - block row pointer</a>
+<a name="705"><span class="lineNum">     705 </span>            :  *   I  Aj[nnz(A)]      - block column indices</a>
+<a name="706"><span class="lineNum">     706 </span>            :  *   T  Ax[nnz(A)]      - nonzero blocks</a>
+<a name="707"><span class="lineNum">     707 </span>            :  *</a>
+<a name="708"><span class="lineNum">     708 </span>            :  * Output Arguments:</a>
+<a name="709"><span class="lineNum">     709 </span>            :  *   I  Bp[n_brow*R + 1]- row pointer</a>
+<a name="710"><span class="lineNum">     710 </span>            :  *   I  Bj[nnz(B)]      - column indices</a>
+<a name="711"><span class="lineNum">     711 </span>            :  *   T  Bx[nnz(B)]      - nonzero values</a>
+<a name="712"><span class="lineNum">     712 </span>            :  *</a>
+<a name="713"><span class="lineNum">     713 </span>            :  * Note:</a>
+<a name="714"><span class="lineNum">     714 </span>            :  *   Complexity: Linear. Specifically O(nnz(A) + max(n_row,n_col))</a>
+<a name="715"><span class="lineNum">     715 </span>            :  *   Output arrays must be preallocated</a>
+<a name="716"><span class="lineNum">     716 </span>            :  *</a>
+<a name="717"><span class="lineNum">     717 </span>            :  * Note:</a>
+<a name="718"><span class="lineNum">     718 </span>            :  *   Input:  column indices *are not* assumed to be in sorted order or unique</a>
+<a name="719"><span class="lineNum">     719 </span>            :  *   Output: the block column (unsorted) orders, duplicates, </a>
+<a name="720"><span class="lineNum">     720 </span>            :  *           and explicit zeros are preserved</a>
+<a name="721"><span class="lineNum">     721 </span>            :  *</a>
+<a name="722"><span class="lineNum">     722 </span>            :  */</a>
+<a name="723"><span class="lineNum">     723 </span>            : template &lt;class I, class T&gt;</a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">      12359 : void bsr_tocsr(const I n_brow, const I n_bcol, const I R, const I C,</span></a>
+<a name="725"><span class="lineNum">     725 </span>            :                const I Ap[], const I Aj[], const T Ax[],</a>
+<a name="726"><span class="lineNum">     726 </span>            :                      I Bp[],       I Bj[],       T Bx[])</a>
+<a name="727"><span class="lineNum">     727 </span>            : {</a>
+<a name="728"><span class="lineNum">     728 </span>            :     // number of elements per block</a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">      12359 :     const I RC = R*C;</span></a>
+<a name="730"><span class="lineNum">     730 </span>            :     // nnz</a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">      12359 :     const I nnz = Ap[n_brow] * RC;</span></a>
+<a name="732"><span class="lineNum">     732 </span>            :     // last element in Bp is always nnz</a>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">      12359 :     Bp[n_brow * R] = nnz;</span></a>
+<a name="734"><span class="lineNum">     734 </span>            :     // loop for block row</a>
+<a name="735"><span class="lineNum">     735 </span><span class="lineCov">      54629 :     for(I brow = 0; brow &lt; n_brow; brow++){</span></a>
+<a name="736"><span class="lineNum">     736 </span>            :         // size of block rows</a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">      42270 :         const I brow_size = Ap[brow + 1] - Ap[brow];</span></a>
+<a name="738"><span class="lineNum">     738 </span>            :         // size of row in csr</a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">      42270 :         const I row_size = C * brow_size;</span></a>
+<a name="740"><span class="lineNum">     740 </span>            :         // loop of rows inside block</a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">      92754 :         for(I r = 0; r &lt; R; r++){</span></a>
+<a name="742"><span class="lineNum">     742 </span>            :             // csr row number</a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">      50484 :             const I row = R * brow + r;</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">      50484 :             Bp[row] = RC * Ap[brow] + r * row_size;</span></a>
+<a name="745"><span class="lineNum">     745 </span>            :             // loop for block column</a>
+<a name="746"><span class="lineNum">     746 </span>            :             // block index inside row as loop variable</a>
+<a name="747"><span class="lineNum">     747 </span><span class="lineCov">     139822 :             for (I bjj = 0; bjj &lt; brow_size; bjj++)</span></a>
+<a name="748"><span class="lineNum">     748 </span>            :             {</a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">      89338 :                 const I b_ind = Ap[brow] + bjj;</span></a>
+<a name="750"><span class="lineNum">     750 </span>            :                 // block column number</a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">      89338 :                 const I bcol = Aj[b_ind];</span></a>
+<a name="752"><span class="lineNum">     752 </span>            :                 // loop for columns inside block</a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">     211578 :                 for (I c = 0; c &lt; C; c++)</span></a>
+<a name="754"><span class="lineNum">     754 </span>            :                 {</a>
+<a name="755"><span class="lineNum">     755 </span>            :                     // bsr data index in Ax</a>
+<a name="756"><span class="lineNum">     756 </span>            :                     // Ax is in C order</a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">     122240 :                     const I b_data_ind = RC * b_ind + C * r + c;</span></a>
+<a name="758"><span class="lineNum">     758 </span>            :                     // csr column number</a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">     122240 :                     const I col = C * bcol + c;</span></a>
+<a name="760"><span class="lineNum">     760 </span>            :                     // csr data anc col index in Bj and Bx</a>
+<a name="761"><span class="lineNum">     761 </span>            :                     // start from Bp[row], offset by current bjj*C and c</a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">     122240 :                     const I data_ind = Bp[row] + bjj * C + c;</span></a>
+<a name="763"><span class="lineNum">     763 </span>            :                     // assign col and data to Bj and Bx</a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">     122240 :                     Bj[data_ind] = col;</span></a>
+<a name="765"><span class="lineNum">     765 </span><span class="lineCov">     122240 :                     Bx[data_ind] = Ax[b_data_ind];</span></a>
+<a name="766"><span class="lineNum">     766 </span>            :                 }</a>
+<a name="767"><span class="lineNum">     767 </span>            :             }</a>
+<a name="768"><span class="lineNum">     768 </span>            :         }</a>
+<a name="769"><span class="lineNum">     769 </span>            :     }</a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">      12359 : }</span></a>
+<a name="771"><span class="lineNum">     771 </span>            : </a>
+<a name="772"><span class="lineNum">     772 </span>            : </a>
+<a name="773"><span class="lineNum">     773 </span>            : template &lt;class I, class T&gt;</a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">      12708 : void bsr_matvec(const I n_brow,</span></a>
+<a name="775"><span class="lineNum">     775 </span>            :                 const I n_bcol,</a>
+<a name="776"><span class="lineNum">     776 </span>            :                 const I R,</a>
+<a name="777"><span class="lineNum">     777 </span>            :                 const I C,</a>
+<a name="778"><span class="lineNum">     778 </span>            :                 const I Ap[],</a>
+<a name="779"><span class="lineNum">     779 </span>            :                 const I Aj[],</a>
+<a name="780"><span class="lineNum">     780 </span>            :                 const T Ax[],</a>
+<a name="781"><span class="lineNum">     781 </span>            :                 const T Xx[],</a>
+<a name="782"><span class="lineNum">     782 </span>            :                       T Yx[])</a>
+<a name="783"><span class="lineNum">     783 </span>            : {</a>
+<a name="784"><span class="lineNum">     784 </span>            :     assert(R &gt; 0 &amp;&amp; C &gt; 0);</a>
+<a name="785"><span class="lineNum">     785 </span>            : </a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">      12708 :     if( R == 1 &amp;&amp; C == 1 ){</span></a>
+<a name="787"><span class="lineNum">     787 </span>            :         //use CSR for 1x1 blocksize</a>
+<a name="788"><span class="lineNum">     788 </span><span class="lineCov">       8343 :         csr_matvec(n_brow, n_bcol, Ap, Aj, Ax, Xx, Yx);</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">       8343 :         return;</span></a>
+<a name="790"><span class="lineNum">     790 </span>            :     }</a>
+<a name="791"><span class="lineNum">     791 </span>            : </a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       4365 :     const npy_intp RC = (npy_intp)R*C;</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       8739 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">       4374 :         T * y = Yx + (npy_intp)R * i;</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       9224 :         for(I jj = Ap[i]; jj &lt; Ap[i+1]; jj++){</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       4850 :             const I j = Aj[jj];</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">       4850 :             const T * A = Ax + RC * jj;</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">       4850 :             const T * x = Xx + (npy_intp)C * j;</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       4850 :             gemv(R, C, A, x, y); // y += A*x</span></a>
+<a name="800"><span class="lineNum">     800 </span>            :         }</a>
+<a name="801"><span class="lineNum">     801 </span>            :     }</a>
+<a name="802"><span class="lineNum">     802 </span>            : }</a>
+<a name="803"><span class="lineNum">     803 </span>            : </a>
+<a name="804"><span class="lineNum">     804 </span>            : </a>
+<a name="805"><span class="lineNum">     805 </span>            : /*</a>
+<a name="806"><span class="lineNum">     806 </span>            :  * Compute Y += A*X for BSR matrix A and dense block vectors X,Y</a>
+<a name="807"><span class="lineNum">     807 </span>            :  *</a>
+<a name="808"><span class="lineNum">     808 </span>            :  *</a>
+<a name="809"><span class="lineNum">     809 </span>            :  * Input Arguments:</a>
+<a name="810"><span class="lineNum">     810 </span>            :  *   I  n_brow              - number of row blocks in A</a>
+<a name="811"><span class="lineNum">     811 </span>            :  *   I  n_bcol              - number of column blocks in A</a>
+<a name="812"><span class="lineNum">     812 </span>            :  *   I  n_vecs              - number of column vectors in X and Y</a>
+<a name="813"><span class="lineNum">     813 </span>            :  *   I  R                   - rows per block</a>
+<a name="814"><span class="lineNum">     814 </span>            :  *   I  C                   - columns per block</a>
+<a name="815"><span class="lineNum">     815 </span>            :  *   I  Ap[n_brow+1]        - row pointer</a>
+<a name="816"><span class="lineNum">     816 </span>            :  *   I  Aj[nblks(A)]        - column indices</a>
+<a name="817"><span class="lineNum">     817 </span>            :  *   T  Ax[nnz(A)]          - nonzeros</a>
+<a name="818"><span class="lineNum">     818 </span>            :  *   T  Xx[C*n_bcol,n_vecs] - input vector</a>
+<a name="819"><span class="lineNum">     819 </span>            :  *</a>
+<a name="820"><span class="lineNum">     820 </span>            :  * Output Arguments:</a>
+<a name="821"><span class="lineNum">     821 </span>            :  *   T  Yx[R*n_brow,n_vecs] - output vector</a>
+<a name="822"><span class="lineNum">     822 </span>            :  *</a>
+<a name="823"><span class="lineNum">     823 </span>            :  */</a>
+<a name="824"><span class="lineNum">     824 </span>            : template &lt;class I, class T&gt;</a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">        142 : void bsr_matvecs(const I n_brow,</span></a>
+<a name="826"><span class="lineNum">     826 </span>            :                  const I n_bcol,</a>
+<a name="827"><span class="lineNum">     827 </span>            :                  const I n_vecs,</a>
+<a name="828"><span class="lineNum">     828 </span>            :                  const I R,</a>
+<a name="829"><span class="lineNum">     829 </span>            :                  const I C,</a>
+<a name="830"><span class="lineNum">     830 </span>            :                  const I Ap[],</a>
+<a name="831"><span class="lineNum">     831 </span>            :                  const I Aj[],</a>
+<a name="832"><span class="lineNum">     832 </span>            :                  const T Ax[],</a>
+<a name="833"><span class="lineNum">     833 </span>            :                  const T Xx[],</a>
+<a name="834"><span class="lineNum">     834 </span>            :                        T Yx[])</a>
+<a name="835"><span class="lineNum">     835 </span>            : {</a>
+<a name="836"><span class="lineNum">     836 </span>            :     assert(R &gt; 0 &amp;&amp; C &gt; 0);</a>
+<a name="837"><span class="lineNum">     837 </span>            : </a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineCov">        142 :     if( R == 1 &amp;&amp; C == 1 ){</span></a>
+<a name="839"><span class="lineNum">     839 </span>            :         //use CSR for 1x1 blocksize</a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">        133 :         csr_matvecs(n_brow, n_bcol, n_vecs, Ap, Aj, Ax, Xx, Yx);</span></a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">        133 :         return;</span></a>
+<a name="842"><span class="lineNum">     842 </span>            :     }</a>
+<a name="843"><span class="lineNum">     843 </span>            : </a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          9 :     const npy_intp A_bs = (npy_intp)R*C;      //Ax blocksize</span></a>
+<a name="845"><span class="lineNum">     845 </span><span class="lineCov">          9 :     const npy_intp Y_bs = (npy_intp)n_vecs*R; //Yx blocksize</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">          9 :     const npy_intp X_bs = (npy_intp)C*n_vecs; //Xx blocksize</span></a>
+<a name="847"><span class="lineNum">     847 </span>            : </a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">         27 :     for(I i = 0; i &lt; n_brow; i++){</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">         18 :         T * y = Yx + Y_bs * i;</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">         72 :         for(I jj = Ap[i]; jj &lt; Ap[i+1]; jj++){</span></a>
+<a name="851"><span class="lineNum">     851 </span><span class="lineCov">         54 :             const I j = Aj[jj];</span></a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">         54 :             const T * A = Ax + A_bs * jj;</span></a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">         54 :             const T * x = Xx + X_bs * j;</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         54 :             gemm(R, n_vecs, C, A, x, y); // y += A*x</span></a>
+<a name="855"><span class="lineNum">     855 </span>            :         }</a>
+<a name="856"><span class="lineNum">     856 </span>            :     }</a>
+<a name="857"><span class="lineNum">     857 </span>            : }</a>
+<a name="858"><span class="lineNum">     858 </span>            : </a>
+<a name="859"><span class="lineNum">     859 </span>            : </a>
+<a name="860"><span class="lineNum">     860 </span>            : #endif</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

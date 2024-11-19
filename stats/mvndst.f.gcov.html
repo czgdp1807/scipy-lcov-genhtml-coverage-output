@@ -1,0 +1,1289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - stats/mvndst.f</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">stats</a> - mvndst.f<span style="font-size: 80%;"> (source / <a href="mvndst.f.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">343</td>
+            <td class="headerCovTableEntry">433</td>
+            <td class="headerCovTableEntryMed">79.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : * Note: The test program has been removed and a utility routine mvnun has been</a>
+<a name="2"><span class="lineNum">       2 </span>            : * added.  RTK 2004-08-10</a>
+<a name="3"><span class="lineNum">       3 </span>            : *</a>
+<a name="4"><span class="lineNum">       4 </span>            : * Copyright 2000 by Alan Genz.</a>
+<a name="5"><span class="lineNum">       5 </span>            : * Copyright 2004-2005 by Enthought, Inc.</a>
+<a name="6"><span class="lineNum">       6 </span>            : *</a>
+<a name="7"><span class="lineNum">       7 </span>            : * The subroutine MVNUN is copyrighted by Enthought, Inc.</a>
+<a name="8"><span class="lineNum">       8 </span>            : * The rest of the file is copyrighted by Alan Genz and has kindly been offered</a>
+<a name="9"><span class="lineNum">       9 </span>            : * to the Scipy project under it's BSD-style license.</a>
+<a name="10"><span class="lineNum">      10 </span>            : *</a>
+<a name="11"><span class="lineNum">      11 </span>            : * This file contains a short test program and MVNDST, a subroutine</a>
+<a name="12"><span class="lineNum">      12 </span>            : * for computing multivariate normal distribution function values.</a>
+<a name="13"><span class="lineNum">      13 </span>            : * The file is self contained and should compile without errors on (77) </a>
+<a name="14"><span class="lineNum">      14 </span>            : * standard Fortran compilers. The test program demonstrates the use of</a>
+<a name="15"><span class="lineNum">      15 </span>            : * MVNDST for computing MVN distribution values for a five dimensional </a>
+<a name="16"><span class="lineNum">      16 </span>            : * example problem, with three different integration limit combinations.</a>
+<a name="17"><span class="lineNum">      17 </span>            : *</a>
+<a name="18"><span class="lineNum">      18 </span>            : *          Alan Genz</a>
+<a name="19"><span class="lineNum">      19 </span>            : *          Department of Mathematics</a>
+<a name="20"><span class="lineNum">      20 </span>            : *          Washington State University</a>
+<a name="21"><span class="lineNum">      21 </span>            : *          Pullman, WA 99164-3113</a>
+<a name="22"><span class="lineNum">      22 </span>            : *          Email : alangenz@wsu.edu</a>
+<a name="23"><span class="lineNum">      23 </span>            : *</a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">    1665604 :       SUBROUTINE mvnun(d, n, lower, upper, means, covar, maxpts, </span></a>
+<a name="25"><span class="lineNum">      25 </span>            :      &amp;                   abseps, releps, value, inform)</a>
+<a name="26"><span class="lineNum">      26 </span>            : *  Parameters</a>
+<a name="27"><span class="lineNum">      27 </span>            : *</a>
+<a name="28"><span class="lineNum">      28 </span>            : *   d       integer, dimensionality of the data</a>
+<a name="29"><span class="lineNum">      29 </span>            : *   n       integer, the number of data points</a>
+<a name="30"><span class="lineNum">      30 </span>            : *   lower   double(2), the lower integration limits</a>
+<a name="31"><span class="lineNum">      31 </span>            : *   upper   double(2), the upper integration limits</a>
+<a name="32"><span class="lineNum">      32 </span>            : *   means   double(n), the mean of each kernel</a>
+<a name="33"><span class="lineNum">      33 </span>            : *   covar   double(2,2), the covariance matrix</a>
+<a name="34"><span class="lineNum">      34 </span>            : *   maxpts  integer, the maximum number of points to evaluate at</a>
+<a name="35"><span class="lineNum">      35 </span>            : *   abseps  double, absolute error tolerance</a>
+<a name="36"><span class="lineNum">      36 </span>            : *   releps  double, relative error tolerance</a>
+<a name="37"><span class="lineNum">      37 </span>            : *   value   double intent(out), integral value</a>
+<a name="38"><span class="lineNum">      38 </span>            : *   inform  integer intent(out), </a>
+<a name="39"><span class="lineNum">      39 </span>            : *               if inform == 0: error &lt; eps</a>
+<a name="40"><span class="lineNum">      40 </span>            : *               elif inform == 1: error &gt; eps, all maxpts used</a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">       2324 :       integer n, d, infin(d), maxpts, inform, tmpinf</span></a>
+<a name="42"><span class="lineNum">      42 </span>            :       double precision lower(d), upper(d), releps, abseps,</a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       2324 :      &amp;                 error, value, stdev(d), rho(d*(d-1)/2), </span></a>
+<a name="44"><span class="lineNum">      44 </span>            :      &amp;                 covar(d,d),</a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       2324 :      &amp;                 nlower(d), nupper(d), means(d,n), tmpval,</span></a>
+<a name="46"><span class="lineNum">      46 </span>            :      &amp;                 inf</a>
+<a name="47"><span class="lineNum">      47 </span>            :       integer i, j</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       1162 :       inf = 0d0</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">       1162 :       inf = 1d0 / inf</span></a>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">       4536 :       do i=1,d</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       3374 :         stdev(i) = dsqrt(covar(i,i))</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       4536 :         if (upper(i).eq.inf.and.lower(i).eq.-inf) then</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :            infin(i) = -1</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       3374 :         else if (lower(i).eq.-inf) then</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       3235 :            infin(i) = 0</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        139 :         else if (upper(i).eq.inf) then</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :            infin(i) = 1</span></a>
+<a name="60"><span class="lineNum">      60 </span>            :         else</a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        139 :            infin(i) = 2</span></a>
+<a name="62"><span class="lineNum">      62 </span>            :         end if</a>
+<a name="63"><span class="lineNum">      63 </span>            :       end do</a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       4536 :       do i=1,d</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">       7874 :         do j=1,i-1</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       6712 :           rho(j+(i-2)*(i-1)/2) = covar(i,j)/stdev(i)/stdev(j)</span></a>
+<a name="67"><span class="lineNum">      67 </span>            :         end do</a>
+<a name="68"><span class="lineNum">      68 </span>            :       end do</a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       1162 :       value = 0d0</span></a>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       1162 :       inform = 0</span></a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       2324 :       do i=1,n</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       4536 :         do j=1,d</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       3374 :           nlower(j) = (lower(j) - means(j,i))/stdev(j)</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       4536 :           nupper(j) = (upper(j) - means(j,i))/stdev(j)</span></a>
+<a name="77"><span class="lineNum">      77 </span>            :         end do</a>
+<a name="78"><span class="lineNum">      78 </span>            :         call mvndst(d,nlower,nupper,infin,rho,maxpts,abseps,releps,</a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1162 :      &amp;              error,tmpval,tmpinf)</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1162 :         value = value + tmpval</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       2324 :         if (tmpinf .eq. 1) then</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :             inform = 1</span></a>
+<a name="83"><span class="lineNum">      83 </span>            :         end if</a>
+<a name="84"><span class="lineNum">      84 </span>            :       end do</a>
+<a name="85"><span class="lineNum">      85 </span>            : </a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       1162 :       value = value / n</span></a>
+<a name="87"><span class="lineNum">      87 </span>            :       </a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       1162 :       END </span></a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : </a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          4 :       SUBROUTINE mvnun_weighted(d, n, lower, upper, means, weights,</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          4 :      &amp;                          covar, maxpts, abseps, releps, </span></a>
+<a name="93"><span class="lineNum">      93 </span>            :      &amp;                           value, inform)</a>
+<a name="94"><span class="lineNum">      94 </span>            : *  Parameters</a>
+<a name="95"><span class="lineNum">      95 </span>            : *</a>
+<a name="96"><span class="lineNum">      96 </span>            : *   d       integer, dimensionality of the data</a>
+<a name="97"><span class="lineNum">      97 </span>            : *   n       integer, the number of data points</a>
+<a name="98"><span class="lineNum">      98 </span>            : *   lower   double(2), the lower integration limits</a>
+<a name="99"><span class="lineNum">      99 </span>            : *   upper   double(2), the upper integration limits</a>
+<a name="100"><span class="lineNum">     100 </span>            : *   means   double(n), the mean of each kernel</a>
+<a name="101"><span class="lineNum">     101 </span>            : *   weights double(n), the weight of each kernel</a>
+<a name="102"><span class="lineNum">     102 </span>            : *   covar   double(2,2), the covariance matrix</a>
+<a name="103"><span class="lineNum">     103 </span>            : *   maxpts  integer, the maximum number of points to evaluate at</a>
+<a name="104"><span class="lineNum">     104 </span>            : *   abseps  double, absolute error tolerance</a>
+<a name="105"><span class="lineNum">     105 </span>            : *   releps  double, relative error tolerance</a>
+<a name="106"><span class="lineNum">     106 </span>            : *   value   double intent(out), integral value</a>
+<a name="107"><span class="lineNum">     107 </span>            : *   inform  integer intent(out), </a>
+<a name="108"><span class="lineNum">     108 </span>            : *               if inform == 0: error &lt; eps</a>
+<a name="109"><span class="lineNum">     109 </span>            : *               elif inform == 1: error &gt; eps, all maxpts used</a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          8 :       integer n, d, infin(d), maxpts, inform, tmpinf</span></a>
+<a name="111"><span class="lineNum">     111 </span>            :       double precision lower(d), upper(d), releps, abseps,</a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          8 :      &amp;                 error, value, stdev(d), rho(d*(d-1)/2), </span></a>
+<a name="113"><span class="lineNum">     113 </span>            :      &amp;                 covar(d,d),</a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          8 :      &amp;                 nlower(d), nupper(d), means(d,n), tmpval,</span></a>
+<a name="115"><span class="lineNum">     115 </span>            :      &amp;                 inf, weights(n)</a>
+<a name="116"><span class="lineNum">     116 </span>            :       integer i, j</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          4 :       inf = 0d0</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          4 :       inf = 1d0 / inf</span></a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          8 :       do i=1,d</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          4 :         stdev(i) = dsqrt(covar(i,i))</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          8 :         if (upper(i).eq.inf.and.lower(i).eq.-inf) then</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :            infin(i) = -1</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          4 :         else if (lower(i).eq.-inf) then</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          2 :            infin(i) = 0</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          2 :         else if (upper(i).eq.inf) then</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          2 :            infin(i) = 1</span></a>
+<a name="129"><span class="lineNum">     129 </span>            :         else</a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :            infin(i) = 2</span></a>
+<a name="131"><span class="lineNum">     131 </span>            :         end if</a>
+<a name="132"><span class="lineNum">     132 </span>            :       end do</a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          8 :       do i=1,d</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          8 :         do j=1,i-1</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          4 :           rho(j+(i-2)*(i-1)/2) = covar(i,j)/stdev(i)/stdev(j)</span></a>
+<a name="136"><span class="lineNum">     136 </span>            :         end do</a>
+<a name="137"><span class="lineNum">     137 </span>            :       end do</a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          4 :       value = 0d0</span></a>
+<a name="139"><span class="lineNum">     139 </span>            : </a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          4 :       inform = 0</span></a>
+<a name="141"><span class="lineNum">     141 </span>            : </a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       2004 :       do i=1,n</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       4000 :         do j=1,d</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2000 :           nlower(j) = (lower(j) - means(j,i))/stdev(j)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4000 :           nupper(j) = (upper(j) - means(j,i))/stdev(j)</span></a>
+<a name="146"><span class="lineNum">     146 </span>            :         end do</a>
+<a name="147"><span class="lineNum">     147 </span>            :         call mvndst(d,nlower,nupper,infin,rho,maxpts,abseps,releps,</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       2000 :      &amp;              error,tmpval,tmpinf)</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       2000 :         value = value + tmpval * weights(i)</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       2004 :         if (tmpinf .eq. 1) then</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :             inform = 1</span></a>
+<a name="152"><span class="lineNum">     152 </span>            :         end if</a>
+<a name="153"><span class="lineNum">     153 </span>            :       end do</a>
+<a name="154"><span class="lineNum">     154 </span>            :       </a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          4 :       END </span></a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       3162 :       SUBROUTINE MVNDST( N, LOWER, UPPER, INFIN, CORREL, MAXPTS,</span></a>
+<a name="158"><span class="lineNum">     158 </span>            :      &amp;                   ABSEPS, RELEPS, ERROR, VALUE, INFORM )</a>
+<a name="159"><span class="lineNum">     159 </span>            : *</a>
+<a name="160"><span class="lineNum">     160 </span>            : *     A subroutine for computing multivariate normal probabilities.</a>
+<a name="161"><span class="lineNum">     161 </span>            : *     This subroutine uses an algorithm given in the paper</a>
+<a name="162"><span class="lineNum">     162 </span>            : *     &quot;Numerical Computation of Multivariate Normal Probabilities&quot;, in</a>
+<a name="163"><span class="lineNum">     163 </span>            : *     J. of Computational and Graphical Stat., 1(1992), pp. 141-149, by</a>
+<a name="164"><span class="lineNum">     164 </span>            : *          Alan Genz </a>
+<a name="165"><span class="lineNum">     165 </span>            : *          Department of Mathematics</a>
+<a name="166"><span class="lineNum">     166 </span>            : *          Washington State University </a>
+<a name="167"><span class="lineNum">     167 </span>            : *          Pullman, WA 99164-3113</a>
+<a name="168"><span class="lineNum">     168 </span>            : *          Email : AlanGenz@wsu.edu</a>
+<a name="169"><span class="lineNum">     169 </span>            : *</a>
+<a name="170"><span class="lineNum">     170 </span>            : *  Parameters</a>
+<a name="171"><span class="lineNum">     171 </span>            : *</a>
+<a name="172"><span class="lineNum">     172 </span>            : *     N      INTEGER, the number of variables.</a>
+<a name="173"><span class="lineNum">     173 </span>            : *     LOWER  REAL, array of lower integration limits.</a>
+<a name="174"><span class="lineNum">     174 </span>            : *     UPPER  REAL, array of upper integration limits.</a>
+<a name="175"><span class="lineNum">     175 </span>            : *     INFIN  INTEGER, array of integration limits flags:</a>
+<a name="176"><span class="lineNum">     176 </span>            : *            if INFIN(I) &lt; 0, Ith limits are (-infinity, infinity);</a>
+<a name="177"><span class="lineNum">     177 </span>            : *            if INFIN(I) = 0, Ith limits are (-infinity, UPPER(I)];</a>
+<a name="178"><span class="lineNum">     178 </span>            : *            if INFIN(I) = 1, Ith limits are [LOWER(I), infinity);</a>
+<a name="179"><span class="lineNum">     179 </span>            : *            if INFIN(I) = 2, Ith limits are [LOWER(I), UPPER(I)].</a>
+<a name="180"><span class="lineNum">     180 </span>            : *     CORREL REAL, array of correlation coefficients; the correlation</a>
+<a name="181"><span class="lineNum">     181 </span>            : *            coefficient in row I column J of the correlation matrix</a>
+<a name="182"><span class="lineNum">     182 </span>            : *            should be stored in CORREL( J + ((I-2)*(I-1))/2 ), for J &lt; I.</a>
+<a name="183"><span class="lineNum">     183 </span>            : *            THe correlation matrix must be positive semidefinite.</a>
+<a name="184"><span class="lineNum">     184 </span>            : *     MAXPTS INTEGER, maximum number of function values allowed. This </a>
+<a name="185"><span class="lineNum">     185 </span>            : *            parameter can be used to limit the time. A sensible </a>
+<a name="186"><span class="lineNum">     186 </span>            : *            strategy is to start with MAXPTS = 1000*N, and then</a>
+<a name="187"><span class="lineNum">     187 </span>            : *            increase MAXPTS if ERROR is too large.</a>
+<a name="188"><span class="lineNum">     188 </span>            : *     ABSEPS REAL absolute error tolerance.</a>
+<a name="189"><span class="lineNum">     189 </span>            : *     RELEPS REAL relative error tolerance.</a>
+<a name="190"><span class="lineNum">     190 </span>            : *     ERROR  REAL estimated absolute error, with 99% confidence level.</a>
+<a name="191"><span class="lineNum">     191 </span>            : *     VALUE  REAL estimated value for the integral</a>
+<a name="192"><span class="lineNum">     192 </span>            : *     INFORM INTEGER, termination status parameter:</a>
+<a name="193"><span class="lineNum">     193 </span>            : *            if INFORM = 0, normal completion with ERROR &lt; EPS;</a>
+<a name="194"><span class="lineNum">     194 </span>            : *            if INFORM = 1, completion with ERROR &gt; EPS and MAXPTS </a>
+<a name="195"><span class="lineNum">     195 </span>            : *                           function values used; increase MAXPTS to </a>
+<a name="196"><span class="lineNum">     196 </span>            : *                           decrease ERROR;</a>
+<a name="197"><span class="lineNum">     197 </span>            : *            if INFORM = 2, N &gt; 500 or N &lt; 1.</a>
+<a name="198"><span class="lineNum">     198 </span>            : *</a>
+<a name="199"><span class="lineNum">     199 </span>            :       EXTERNAL MVNDFN</a>
+<a name="200"><span class="lineNum">     200 </span>            :       INTEGER N, INFIN(*), MAXPTS, INFORM, INFIS, IVLS</a>
+<a name="201"><span class="lineNum">     201 </span>            :       DOUBLE PRECISION CORREL(*), LOWER(*), UPPER(*), RELEPS, ABSEPS,</a>
+<a name="202"><span class="lineNum">     202 </span>            :      &amp;                 ERROR, VALUE, E, D, MVNDNT, MVNDFN</a>
+<a name="203"><span class="lineNum">     203 </span>            :       COMMON /DKBLCK/IVLS</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       3162 :       IF ( N .GT. 500 .OR. N .LT. 1 ) THEN</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :          INFORM = 2</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :          VALUE = 0</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :          ERROR = 1</span></a>
+<a name="208"><span class="lineNum">     208 </span>            :       ELSE</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       3162 :          INFORM = MVNDNT(N, CORREL, LOWER, UPPER, INFIN, INFIS, D, E)</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       3162 :          IF ( N-INFIS .EQ. 0 ) THEN</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :             VALUE = 1</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :             ERROR = 0</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       3162 :          ELSE IF ( N-INFIS .EQ. 1 ) THEN</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       2110 :             VALUE = E - D</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       2110 :             ERROR = 2D-16</span></a>
+<a name="216"><span class="lineNum">     216 </span>            :          ELSE</a>
+<a name="217"><span class="lineNum">     217 </span>            : *</a>
+<a name="218"><span class="lineNum">     218 </span>            : *        Call the lattice rule integration subroutine</a>
+<a name="219"><span class="lineNum">     219 </span>            : *</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       1052 :             IVLS = 0</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :             CALL DKBVRC( N-INFIS-1, IVLS, MAXPTS, MVNDFN, </a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       1052 :      &amp;                   ABSEPS, RELEPS, ERROR, VALUE, INFORM )</span></a>
+<a name="223"><span class="lineNum">     223 </span>            :          ENDIF</a>
+<a name="224"><span class="lineNum">     224 </span>            :       ENDIF</a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       3162 :       END</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">    1661280 :       DOUBLE PRECISION FUNCTION MVNDFN( N, W )</span></a>
+<a name="227"><span class="lineNum">     227 </span>            : *     </a>
+<a name="228"><span class="lineNum">     228 </span>            : *     Integrand subroutine</a>
+<a name="229"><span class="lineNum">     229 </span>            : *</a>
+<a name="230"><span class="lineNum">     230 </span>            :       INTEGER N, INFIN(*), INFIS, NL</a>
+<a name="231"><span class="lineNum">     231 </span>            :       DOUBLE PRECISION W(*), LOWER(*), UPPER(*), CORREL(*), D, E</a>
+<a name="232"><span class="lineNum">     232 </span>            :       PARAMETER ( NL = 500 )</a>
+<a name="233"><span class="lineNum">     233 </span>            :       DOUBLE PRECISION COV(NL*(NL+1)/2), A(NL), B(NL), Y(NL)</a>
+<a name="234"><span class="lineNum">     234 </span>            :       INTEGER INFI(NL), I, J, IJ, IK, INFA, INFB</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       3162 :       DOUBLE PRECISION SUM, AI, BI, DI, EI, PHINVS, BVNMVN, MVNDNT</span></a>
+<a name="236"><span class="lineNum">     236 </span>            :       SAVE A, B, INFI, COV</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">    1661280 :       MVNDFN = 1</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">    1661280 :       INFA = 0</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">    1661280 :       INFB = 0</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">    1661280 :       IK = 1</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">    1661280 :       IJ = 0</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">    7354928 :       DO I = 1, N+1</span></a>
+<a name="243"><span class="lineNum">     243 </span>            :          SUM = 0</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">   12897424 :          DO J = 1, I-1</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">    7203776 :             IJ = IJ + 1</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">   12897424 :             IF ( J .LT. IK ) SUM = SUM + COV(IJ)*Y(J)</span></a>
+<a name="247"><span class="lineNum">     247 </span>            :          END DO</a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">    5693648 :          IF ( INFI(I) .NE. 0 ) THEN</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">    1172880 :             IF ( INFA .EQ. 1 ) THEN</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :                AI = MAX( AI, A(I) - SUM )</span></a>
+<a name="251"><span class="lineNum">     251 </span>            :             ELSE</a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">    1172880 :                AI = A(I) - SUM </span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">    1172880 :                INFA = 1</span></a>
+<a name="254"><span class="lineNum">     254 </span>            :             END IF</a>
+<a name="255"><span class="lineNum">     255 </span>            :          END IF</a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">    5693648 :          IF ( INFI(I) .NE. 1 ) THEN</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">    5693648 :             IF ( INFB .EQ. 1 ) THEN</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :                BI = MIN( BI, B(I) - SUM )</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :             ELSE</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">    5693648 :                BI = B(I) - SUM </span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">    5693648 :                INFB = 1</span></a>
+<a name="262"><span class="lineNum">     262 </span>            :             END IF</a>
+<a name="263"><span class="lineNum">     263 </span>            :          END IF</a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">    5693648 :          IJ = IJ + 1</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">    7354928 :          IF ( I .EQ. N+1 .OR. COV(IJ+IK+1) .GT. 0 ) THEN </span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">    5693648 :             CALL MVNLMS( AI, BI, 2*INFA+INFB-1, DI, EI )</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">    5693648 :             IF ( DI .GE. EI ) THEN</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       3162 :                MVNDFN = 0</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :                RETURN</a>
+<a name="270"><span class="lineNum">     270 </span>            :             ELSE</a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">    5693648 :                MVNDFN = MVNDFN*( EI - DI )</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">    5693648 :                IF ( I .LE. N ) Y(IK) = PHINVS( DI + W(IK)*( EI - DI ) )</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">    5693648 :                IK = IK + 1</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">    5693648 :                INFA = 0</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    5693648 :                INFB = 0</span></a>
+<a name="276"><span class="lineNum">     276 </span>            :             END IF</a>
+<a name="277"><span class="lineNum">     277 </span>            :          END IF</a>
+<a name="278"><span class="lineNum">     278 </span>            :       END DO</a>
+<a name="279"><span class="lineNum">     279 </span>            :       RETURN</a>
+<a name="280"><span class="lineNum">     280 </span>            : *</a>
+<a name="281"><span class="lineNum">     281 </span>            : *     Entry point for initialization.</a>
+<a name="282"><span class="lineNum">     282 </span>            : *</a>
+<a name="283"><span class="lineNum">     283 </span>            :       ENTRY MVNDNT( N, CORREL, LOWER, UPPER, INFIN, INFIS, D, E )</a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">       3162 :       MVNDNT = 0</span></a>
+<a name="285"><span class="lineNum">     285 </span>            : *</a>
+<a name="286"><span class="lineNum">     286 </span>            : *     Initialization and computation of covariance Cholesky factor.</a>
+<a name="287"><span class="lineNum">     287 </span>            : *</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3162 :       CALL COVSRT( N, LOWER,UPPER,CORREL,INFIN,Y, INFIS,A,B,COV,INFI )</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       3162 :       IF ( N - INFIS .EQ. 1 ) THEN</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       2034 :          CALL MVNLMS( A(1), B(1), INFI(1), D, E ) </span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       1128 :       ELSE IF ( N - INFIS .EQ. 2 ) THEN</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         76 :          IF ( ABS( COV(3) ) .GT. 0 ) THEN</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         76 :             D = SQRT( 1 + COV(2)**2 )</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         76 :             IF ( INFI(2) .NE. 0 ) A(2) = A(2)/D</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         76 :             IF ( INFI(2) .NE. 1 ) B(2) = B(2)/D</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         76 :             E = BVNMVN( A, B, INFI, COV(2)/D )</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         76 :             D = 0</span></a>
+<a name="298"><span class="lineNum">     298 </span>            :          ELSE</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :             IF ( INFI(1) .NE. 0 ) THEN</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :                IF ( INFI(2) .NE. 0 ) A(1) = MAX( A(1), A(2) )</span></a>
+<a name="301"><span class="lineNum">     301 </span>            :             ELSE</a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :                IF ( INFI(2) .NE. 0 ) A(1) = A(2) </span></a>
+<a name="303"><span class="lineNum">     303 </span>            :             END IF</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :             IF ( INFI(1) .NE. 1 ) THEN</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :                IF ( INFI(2) .NE. 1 ) B(1) = MIN( B(1), B(2) ) </span></a>
+<a name="306"><span class="lineNum">     306 </span>            :             ELSE</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :                IF ( INFI(2) .NE. 1 ) B(1) = B(2)</span></a>
+<a name="308"><span class="lineNum">     308 </span>            :             END IF</a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :             IF ( INFI(1) .NE. INFI(2) ) INFI(1) = 2</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :             CALL MVNLMS( A(1), B(1), INFI(1), D, E ) </span></a>
+<a name="311"><span class="lineNum">     311 </span>            :          END IF</a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         76 :          INFIS = INFIS + 1 </span></a>
+<a name="313"><span class="lineNum">     313 </span>            :       END IF</a>
+<a name="314"><span class="lineNum">     314 </span>            :       END</a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">    5704394 :       SUBROUTINE MVNLMS( A, B, INFIN, LOWER, UPPER )</span></a>
+<a name="316"><span class="lineNum">     316 </span>            :       DOUBLE PRECISION A, B, LOWER, UPPER, MVNPHI</a>
+<a name="317"><span class="lineNum">     317 </span>            :       INTEGER INFIN</a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">    5704394 :       LOWER = 0</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">    5704394 :       UPPER = 1</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">    5704394 :       IF ( INFIN .GE. 0 ) THEN</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">    5704394 :          IF ( INFIN .NE. 0 ) LOWER = MVNPHI(A)</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">    5704394 :          IF ( INFIN .NE. 1 ) UPPER = MVNPHI(B)</span></a>
+<a name="323"><span class="lineNum">     323 </span>            :       ENDIF</a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">    5704394 :       UPPER = MAX( UPPER, LOWER )</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">    5704394 :       END      </span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       3162 :       SUBROUTINE COVSRT( N, LOWER, UPPER, CORREL, INFIN, Y, </span></a>
+<a name="327"><span class="lineNum">     327 </span>            :      &amp;               INFIS,     A,     B,    COV,  INFI )</a>
+<a name="328"><span class="lineNum">     328 </span>            : *</a>
+<a name="329"><span class="lineNum">     329 </span>            : *     Subroutine to sort integration limits and determine Cholesky factor.</a>
+<a name="330"><span class="lineNum">     330 </span>            : *</a>
+<a name="331"><span class="lineNum">     331 </span>            :       INTEGER N, INFI(*), INFIN(*), INFIS</a>
+<a name="332"><span class="lineNum">     332 </span>            :       DOUBLE PRECISION </a>
+<a name="333"><span class="lineNum">     333 </span>            :      &amp;     A(*), B(*), COV(*), LOWER(*), UPPER(*), CORREL(*), Y(*)</a>
+<a name="334"><span class="lineNum">     334 </span>            :       INTEGER I, J, K, L, M, II, IJ, IL, JMIN</a>
+<a name="335"><span class="lineNum">     335 </span>            :       DOUBLE PRECISION SUMSQ, AJ, BJ, SUM, SQTWPI, EPS, D, E</a>
+<a name="336"><span class="lineNum">     336 </span>            :       DOUBLE PRECISION CVDIAG, AMIN, BMIN, DMIN, EMIN, YL, YU</a>
+<a name="337"><span class="lineNum">     337 </span>            :       PARAMETER ( SQTWPI = 2.506628274631001D0, EPS = 1D-10 )</a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       3162 :       IJ = 0</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">       3162 :       II = 0</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       3162 :       INFIS = 0</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">       8536 :       DO I = 1, N</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">       5374 :          A(I) = 0</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       5374 :          B(I) = 0</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       5374 :          INFI(I) = INFIN(I) </span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       5374 :          IF ( INFI(I) .LT. 0 ) THEN</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :             INFIS = INFIS + 1</span></a>
+<a name="347"><span class="lineNum">     347 </span>            :          ELSE </a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">       5374 :             IF ( INFI(I) .NE. 0 ) A(I) = LOWER(I)</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       5374 :             IF ( INFI(I) .NE. 1 ) B(I) = UPPER(I)</span></a>
+<a name="350"><span class="lineNum">     350 </span>            :          ENDIF</a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       8712 :          DO J = 1, I-1</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       3338 :             IJ = IJ + 1</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       3338 :             II = II + 1</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">       8712 :             COV(IJ) = CORREL(II)</span></a>
+<a name="355"><span class="lineNum">     355 </span>            :          END DO</a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       5374 :          IJ = IJ + 1</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">       8536 :          COV(IJ) = 1</span></a>
+<a name="358"><span class="lineNum">     358 </span>            :       END DO</a>
+<a name="359"><span class="lineNum">     359 </span>            : *</a>
+<a name="360"><span class="lineNum">     360 </span>            : *     First move any doubly infinite limits to innermost positions.</a>
+<a name="361"><span class="lineNum">     361 </span>            : *</a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       3162 :       IF ( INFIS .LT. N ) THEN</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       3162 :          DO I = N, N-INFIS+1, -1</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :             IF ( INFI(I) .GE. 0 ) THEN </span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :                DO J = 1,I-1</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :                   IF ( INFI(J) .LT. 0 ) THEN</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :                      CALL RCSWP( J, I, A, B, INFI, N, COV )</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :                      GO TO 10</span></a>
+<a name="369"><span class="lineNum">     369 </span>            :                   ENDIF</a>
+<a name="370"><span class="lineNum">     370 </span>            :                END DO</a>
+<a name="371"><span class="lineNum">     371 </span>            :             ENDIF</a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       3162 :  10      END DO</span></a>
+<a name="373"><span class="lineNum">     373 </span>            : *</a>
+<a name="374"><span class="lineNum">     374 </span>            : *     Sort remaining limits and determine Cholesky factor.</a>
+<a name="375"><span class="lineNum">     375 </span>            : *</a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       3162 :          II = 0</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       8536 :          DO I = 1, N-INFIS</span></a>
+<a name="378"><span class="lineNum">     378 </span>            : *</a>
+<a name="379"><span class="lineNum">     379 </span>            : *        Determine the integration limits for variable with minimum</a>
+<a name="380"><span class="lineNum">     380 </span>            : *        expected probability and interchange that variable with Ith.</a>
+<a name="381"><span class="lineNum">     381 </span>            : *</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">       5374 :             DMIN = 0</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">       5374 :             EMIN = 1</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">       5374 :             JMIN = I</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">       5374 :             CVDIAG = 0</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       5374 :             IJ = II</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      14086 :             DO J = I, N-INFIS</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       8712 :                IF ( COV(IJ+J) .GT. EPS ) THEN</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">       8712 :                   SUMSQ = SQRT( COV(IJ+J) )</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">       8712 :                   SUM = 0</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      13228 :                   DO K = 1, I-1</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">      13228 :                      SUM = SUM + COV(IJ+K)*Y(K)</span></a>
+<a name="393"><span class="lineNum">     393 </span>            :                   END DO</a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       8712 :                   AJ = ( A(J) - SUM )/SUMSQ</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       8712 :                   BJ = ( B(J) - SUM )/SUMSQ</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       8712 :                   CALL MVNLMS( AJ, BJ, INFI(J), D, E )</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       8712 :                   IF ( EMIN + D .GE. E + DMIN ) THEN</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       6804 :                      JMIN = J</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       6804 :                      AMIN = AJ</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       6804 :                      BMIN = BJ</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       6804 :                      DMIN = D</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       6804 :                      EMIN = E</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       6804 :                      CVDIAG = SUMSQ</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :                   ENDIF</a>
+<a name="405"><span class="lineNum">     405 </span>            :                ENDIF</a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">      14086 :                IJ = IJ + J </span></a>
+<a name="407"><span class="lineNum">     407 </span>            :             END DO</a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       5374 :             IF ( JMIN .GT. I ) CALL RCSWP( I, JMIN, A,B, INFI, N, COV )</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       5374 :             COV(II+I) = CVDIAG</span></a>
+<a name="410"><span class="lineNum">     410 </span>            : *</a>
+<a name="411"><span class="lineNum">     411 </span>            : *        Compute Ith column of Cholesky factor.</a>
+<a name="412"><span class="lineNum">     412 </span>            : *        Compute expected value for Ith integration variable and</a>
+<a name="413"><span class="lineNum">     413 </span>            : *         scale Ith covariance matrix row and limits.</a>
+<a name="414"><span class="lineNum">     414 </span>            : *</a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       8536 :             IF ( CVDIAG .GT. 0 ) THEN</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       5374 :                IL = II + I</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       8712 :                DO L = I+1, N-INFIS               </span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       3338 :                   COV(IL+I) = COV(IL+I)/CVDIAG</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       3338 :                   IJ = II + I</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">       7854 :                   DO J = I+1, L</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       4516 :                      COV(IL+J) = COV(IL+J) - COV(IL+I)*COV(IJ+I)</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       7854 :                      IJ = IJ + J</span></a>
+<a name="423"><span class="lineNum">     423 </span>            :                   END DO</a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       8712 :                   IL = IL + L</span></a>
+<a name="425"><span class="lineNum">     425 </span>            :                END DO</a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       5374 :                IF ( EMIN .GT. DMIN + EPS ) THEN</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       5321 :                   YL = 0</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       5321 :                   YU = 0</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       5321 :                   IF ( INFI(I) .NE. 0 ) YL = -EXP( -AMIN**2/2 )/SQTWPI</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       5321 :                   IF ( INFI(I) .NE. 1 ) YU = -EXP( -BMIN**2/2 )/SQTWPI</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       5321 :                   Y(I) = ( YU - YL )/( EMIN - DMIN )</span></a>
+<a name="432"><span class="lineNum">     432 </span>            :                ELSE</a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         53 :                   IF ( INFI(I) .EQ. 0 ) Y(I) = BMIN</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         53 :                   IF ( INFI(I) .EQ. 1 ) Y(I) = AMIN</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">         53 :                   IF ( INFI(I) .EQ. 2 ) Y(I) = ( AMIN + BMIN )/2</span></a>
+<a name="436"><span class="lineNum">     436 </span>            :                END IF</a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      14086 :                DO J = 1, I</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">       8712 :                   II = II + 1</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      14086 :                   COV(II) = COV(II)/CVDIAG</span></a>
+<a name="440"><span class="lineNum">     440 </span>            :                END DO</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">       5374 :                A(I) = A(I)/CVDIAG</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       5374 :                B(I) = B(I)/CVDIAG</span></a>
+<a name="443"><span class="lineNum">     443 </span>            :             ELSE</a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :                IL = II + I</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineNoCov">          0 :                DO L = I+1, N-INFIS                </span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :                   COV(IL+I) = 0</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :                   IL = IL + L</span></a>
+<a name="448"><span class="lineNum">     448 </span>            :                END DO</a>
+<a name="449"><span class="lineNum">     449 </span>            : *</a>
+<a name="450"><span class="lineNum">     450 </span>            : *        If the covariance matrix diagonal entry is zero, </a>
+<a name="451"><span class="lineNum">     451 </span>            : *         permute limits and/or rows, if necessary.</a>
+<a name="452"><span class="lineNum">     452 </span>            : *</a>
+<a name="453"><span class="lineNum">     453 </span>            : *</a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineNoCov">          0 :                DO J = I-1, 1, -1</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 :                   IF ( ABS( COV(II+J) ) .GT. EPS ) THEN</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 :                      A(I) = A(I)/COV(II+J)</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :                      B(I) = B(I)/COV(II+J)</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :                      IF ( COV(II+J) .LT. 0 ) THEN</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineNoCov">          0 :                         CALL DKSWAP( A(I), B(I) ) </span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :                         IF ( INFI(I) .NE. 2 ) INFI(I) = 1 - INFI(I)</span></a>
+<a name="461"><span class="lineNum">     461 </span>            :                      END IF</a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :                      DO L = 1, J</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :                         COV(II+L) = COV(II+L)/COV(II+J)</span></a>
+<a name="464"><span class="lineNum">     464 </span>            :                      END DO</a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :                      DO L = J+1, I-1 </span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :                         IF( COV((L-1)*L/2+J+1) .GT. 0 ) THEN</span></a>
+<a name="467"><span class="lineNum">     467 </span>            :                            IJ = II</a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :                            DO K = I-1, L, -1 </span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :                               DO M = 1, K</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :                                  CALL DKSWAP( COV(IJ-K+M), COV(IJ+M) )</span></a>
+<a name="471"><span class="lineNum">     471 </span>            :                               END DO</a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :                               CALL DKSWAP( A(K), A(K+1) ) </span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :                               CALL DKSWAP( B(K), B(K+1) ) </span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineNoCov">          0 :                               M = INFI(K)</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :                               INFI(K) = INFI(K+1)</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :                               INFI(K+1) = M</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :                               IJ = IJ - K </span></a>
+<a name="478"><span class="lineNum">     478 </span>            :                            END DO</a>
+<a name="479"><span class="lineNum">     479 </span>            :                            GO TO 20</a>
+<a name="480"><span class="lineNum">     480 </span>            :                         END IF</a>
+<a name="481"><span class="lineNum">     481 </span>            :                      END DO</a>
+<a name="482"><span class="lineNum">     482 </span>            :                      GO TO 20</a>
+<a name="483"><span class="lineNum">     483 </span>            :                   END IF</a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :                   COV(II+J) = 0</span></a>
+<a name="485"><span class="lineNum">     485 </span>            :                END DO</a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :  20            II = II + I</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineNoCov">          0 :                Y(I) = 0</span></a>
+<a name="488"><span class="lineNum">     488 </span>            :             END IF</a>
+<a name="489"><span class="lineNum">     489 </span>            :          END DO</a>
+<a name="490"><span class="lineNum">     490 </span>            :       ENDIF</a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       3162 :       END</span></a>
+<a name="492"><span class="lineNum">     492 </span>            : *</a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       5016 :       SUBROUTINE DKSWAP( X, Y )</span></a>
+<a name="494"><span class="lineNum">     494 </span>            :       DOUBLE PRECISION X, Y, T</a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       5016 :       T = X</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       5016 :       X = Y</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       5016 :       Y = T</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       5016 :       END</span></a>
+<a name="499"><span class="lineNum">     499 </span>            : *</a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       1249 :       SUBROUTINE RCSWP( P, Q, A, B, INFIN, N, C )</span></a>
+<a name="501"><span class="lineNum">     501 </span>            : *</a>
+<a name="502"><span class="lineNum">     502 </span>            : *     Swaps rows and columns P and Q in situ, with P &lt;= Q.</a>
+<a name="503"><span class="lineNum">     503 </span>            : *</a>
+<a name="504"><span class="lineNum">     504 </span>            :       DOUBLE PRECISION A(*), B(*), C(*)</a>
+<a name="505"><span class="lineNum">     505 </span>            :       INTEGER INFIN(*), P, Q, N, I, J, II, JJ</a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">       1249 :       CALL DKSWAP( A(P), A(Q) )</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       1249 :       CALL DKSWAP( B(P), B(Q) )</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       1249 :       J = INFIN(P)</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">       1249 :       INFIN(P) = INFIN(Q)</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       1249 :       INFIN(Q) = J</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">       1249 :       JJ = ( P*( P - 1 ) )/2</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">       1249 :       II = ( Q*( Q - 1 ) )/2</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">       1249 :       CALL DKSWAP( C(JJ+P), C(II+Q) )</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">       1787 :       DO J = 1, P-1</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">       1787 :          CALL DKSWAP( C(JJ+J), C(II+J) )</span></a>
+<a name="516"><span class="lineNum">     516 </span>            :       END DO</a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">       1249 :       JJ = JJ + P</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">       1558 :       DO I = P+1, Q-1</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">        309 :          CALL DKSWAP( C(JJ+P), C(II+I) )</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">       1558 :          JJ = JJ + I</span></a>
+<a name="521"><span class="lineNum">     521 </span>            :       END DO</a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">       1249 :       II = II + Q</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       1671 :       DO I = Q+1, N</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        422 :          CALL DKSWAP( C(II+P), C(II+Q) )</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">       1671 :          II = II + I</span></a>
+<a name="526"><span class="lineNum">     526 </span>            :       END DO</a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">       1249 :       END</span></a>
+<a name="528"><span class="lineNum">     528 </span>            : *</a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">       1052 :       SUBROUTINE DKBVRC( NDIM, MINVLS, MAXVLS, FUNCTN, ABSEPS, RELEPS,</span></a>
+<a name="530"><span class="lineNum">     530 </span>            :      &amp;                   ABSERR, FINEST, INFORM )</a>
+<a name="531"><span class="lineNum">     531 </span>            : *</a>
+<a name="532"><span class="lineNum">     532 </span>            : *  Automatic Multidimensional Integration Subroutine</a>
+<a name="533"><span class="lineNum">     533 </span>            : *               </a>
+<a name="534"><span class="lineNum">     534 </span>            : *         AUTHOR: Alan Genz</a>
+<a name="535"><span class="lineNum">     535 </span>            : *                 Department of Mathematics</a>
+<a name="536"><span class="lineNum">     536 </span>            : *                 Washington State University</a>
+<a name="537"><span class="lineNum">     537 </span>            : *                 Pulman, WA 99164-3113</a>
+<a name="538"><span class="lineNum">     538 </span>            : *                 Email: AlanGenz@wsu.edu</a>
+<a name="539"><span class="lineNum">     539 </span>            : *</a>
+<a name="540"><span class="lineNum">     540 </span>            : *         Last Change: 1/15/03</a>
+<a name="541"><span class="lineNum">     541 </span>            : *</a>
+<a name="542"><span class="lineNum">     542 </span>            : *  KRBVRC computes an approximation to the integral</a>
+<a name="543"><span class="lineNum">     543 </span>            : *</a>
+<a name="544"><span class="lineNum">     544 </span>            : *      1  1     1</a>
+<a name="545"><span class="lineNum">     545 </span>            : *     I  I ... I       F(X)  dx(NDIM)...dx(2)dx(1)</a>
+<a name="546"><span class="lineNum">     546 </span>            : *      0  0     0</a>
+<a name="547"><span class="lineNum">     547 </span>            : *</a>
+<a name="548"><span class="lineNum">     548 </span>            : *</a>
+<a name="549"><span class="lineNum">     549 </span>            : *  DKBVRC uses randomized Korobov rules for the first 100 variables. </a>
+<a name="550"><span class="lineNum">     550 </span>            : *  The primary references are</a>
+<a name="551"><span class="lineNum">     551 </span>            : *   &quot;Randomization of Number Theoretic Methods for Multiple Integration&quot;</a>
+<a name="552"><span class="lineNum">     552 </span>            : *    R. Cranley and T.N.L. Patterson, SIAM J Numer Anal, 13, pp. 904-14,</a>
+<a name="553"><span class="lineNum">     553 </span>            : *  and </a>
+<a name="554"><span class="lineNum">     554 </span>            : *   &quot;Optimal Parameters for Multidimensional Integration&quot;, </a>
+<a name="555"><span class="lineNum">     555 </span>            : *    P. Keast, SIAM J Numer Anal, 10, pp.831-838.</a>
+<a name="556"><span class="lineNum">     556 </span>            : *  If there are more than 100 variables, the remaining variables are</a>
+<a name="557"><span class="lineNum">     557 </span>            : *  integrated using the rules described in the reference</a>
+<a name="558"><span class="lineNum">     558 </span>            : *   &quot;On a Number-Theoretical Integration Method&quot;</a>
+<a name="559"><span class="lineNum">     559 </span>            : *   H. Niederreiter, Aequationes Mathematicae, 8(1972), pp. 304-11.</a>
+<a name="560"><span class="lineNum">     560 </span>            : *   </a>
+<a name="561"><span class="lineNum">     561 </span>            : ***************  Parameters ********************************************</a>
+<a name="562"><span class="lineNum">     562 </span>            : ****** Input parameters</a>
+<a name="563"><span class="lineNum">     563 </span>            : *  NDIM    Number of variables, must exceed 1, but not exceed 40</a>
+<a name="564"><span class="lineNum">     564 </span>            : *  MINVLS  Integer minimum number of function evaluations allowed.</a>
+<a name="565"><span class="lineNum">     565 </span>            : *          MINVLS must not exceed MAXVLS.  If MINVLS &lt; 0 then the</a>
+<a name="566"><span class="lineNum">     566 </span>            : *          routine assumes a previous call has been made with </a>
+<a name="567"><span class="lineNum">     567 </span>            : *          the same integrand and continues that calculation.</a>
+<a name="568"><span class="lineNum">     568 </span>            : *  MAXVLS  Integer maximum number of function evaluations allowed.</a>
+<a name="569"><span class="lineNum">     569 </span>            : *  FUNCTN  EXTERNALly declared user defined function to be integrated.</a>
+<a name="570"><span class="lineNum">     570 </span>            : *          It must have parameters (NDIM,Z), where Z is a real array</a>
+<a name="571"><span class="lineNum">     571 </span>            : *          of dimension NDIM.</a>
+<a name="572"><span class="lineNum">     572 </span>            : *                                     </a>
+<a name="573"><span class="lineNum">     573 </span>            : *  ABSEPS  Required absolute accuracy.</a>
+<a name="574"><span class="lineNum">     574 </span>            : *  RELEPS  Required relative accuracy.</a>
+<a name="575"><span class="lineNum">     575 </span>            : ****** Output parameters</a>
+<a name="576"><span class="lineNum">     576 </span>            : *  MINVLS  Actual number of function evaluations used.</a>
+<a name="577"><span class="lineNum">     577 </span>            : *  ABSERR  Estimated absolute accuracy of FINEST.</a>
+<a name="578"><span class="lineNum">     578 </span>            : *  FINEST  Estimated value of integral.</a>
+<a name="579"><span class="lineNum">     579 </span>            : *  INFORM  INFORM = 0 for normal exit, when </a>
+<a name="580"><span class="lineNum">     580 </span>            : *                     ABSERR &lt;= MAX(ABSEPS, RELEPS*ABS(FINEST))</a>
+<a name="581"><span class="lineNum">     581 </span>            : *                  and </a>
+<a name="582"><span class="lineNum">     582 </span>            : *                     INTVLS &lt;= MAXCLS.</a>
+<a name="583"><span class="lineNum">     583 </span>            : *          INFORM = 1 If MAXVLS was too small to obtain the required </a>
+<a name="584"><span class="lineNum">     584 </span>            : *          accuracy. In this case a value FINEST is returned with </a>
+<a name="585"><span class="lineNum">     585 </span>            : *          estimated absolute accuracy ABSERR.</a>
+<a name="586"><span class="lineNum">     586 </span>            : ************************************************************************</a>
+<a name="587"><span class="lineNum">     587 </span>            :       EXTERNAL FUNCTN</a>
+<a name="588"><span class="lineNum">     588 </span>            :       INTEGER NDIM, MINVLS, MAXVLS, INFORM, NP, PLIM, NLIM, KLIM, KLIMI,</a>
+<a name="589"><span class="lineNum">     589 </span>            :      &amp;        SAMPLS, I, INTVLS, MINSMP</a>
+<a name="590"><span class="lineNum">     590 </span>            :       PARAMETER ( PLIM = 28, NLIM = 1000, KLIM = 100, MINSMP = 8 )</a>
+<a name="591"><span class="lineNum">     591 </span>            :       INTEGER P(PLIM), C(PLIM,KLIM-1) </a>
+<a name="592"><span class="lineNum">     592 </span>            :       DOUBLE PRECISION FUNCTN, ABSEPS, RELEPS, FINEST, ABSERR, DIFINT, </a>
+<a name="593"><span class="lineNum">     593 </span>            :      &amp;                 FINVAL, VARSQR, VAREST, VARPRD, VALUE</a>
+<a name="594"><span class="lineNum">     594 </span>            :       DOUBLE PRECISION X(2*NLIM), VK(NLIM), ONE</a>
+<a name="595"><span class="lineNum">     595 </span>            :       PARAMETER ( ONE = 1 )</a>
+<a name="596"><span class="lineNum">     596 </span>            :       SAVE P, C, SAMPLS, NP, VAREST</a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">       1052 :       INFORM = 1</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">       1052 :       INTVLS = 0</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       1052 :       KLIMI = KLIM</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">       1052 :       IF ( MINVLS .GE. 0 ) THEN</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">       1052 :          FINEST = 0</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">       1052 :          VAREST = 0</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       1052 :          SAMPLS = MINSMP </span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">       1052 :          DO I = MIN( NDIM, 10), PLIM</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">       1052 :             NP = I</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">       1052 :             IF ( MINVLS .LT. 2*SAMPLS*P(I) ) GO TO 10</span></a>
+<a name="607"><span class="lineNum">     607 </span>            :          END DO</a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineNoCov">          0 :          SAMPLS = MAX( MINSMP, MINVLS/( 2*P(NP) ) )</span></a>
+<a name="609"><span class="lineNum">     609 </span>            :       ENDIF</a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">       1170 :  10   VK(1) = ONE/P(NP)</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineCov">       2443 :       DO I = 2, NDIM</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">       2443 :          IF ( I .LE. KLIM ) THEN</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">       1273 :             VK(I) = MOD( C(NP, MIN(NDIM-1,KLIM-1))*VK(I-1), ONE )</span></a>
+<a name="614"><span class="lineNum">     614 </span>            :          ELSE</a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineNoCov">          0 :             VK(I) = INT( P(NP)*2**(DBLE(I-KLIM)/(NDIM-KLIM+1)) ) </span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineNoCov">          0 :             VK(I) = MOD( VK(I)/P(NP), ONE ) </span></a>
+<a name="617"><span class="lineNum">     617 </span>            :          END IF</a>
+<a name="618"><span class="lineNum">     618 </span>            :       END DO</a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">       1170 :       FINVAL = 0</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">       1170 :       VARSQR = 0</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">      10530 :       DO I = 1, SAMPLS</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">       9360 :          CALL DKSMRC( NDIM, KLIMI, VALUE, P(NP), VK, FUNCTN, X )</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">       9360 :          DIFINT = ( VALUE - FINVAL )/I</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">       9360 :          FINVAL = FINVAL + DIFINT</span></a>
+<a name="625"><span class="lineNum">     625 </span><span class="lineCov">      10530 :          VARSQR = ( I - 2 )*VARSQR/I + DIFINT**2</span></a>
+<a name="626"><span class="lineNum">     626 </span>            :       END DO</a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">       1170 :       INTVLS = INTVLS + 2*SAMPLS*P(NP)</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">       1170 :       VARPRD = VAREST*VARSQR</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">       1170 :       FINEST = FINEST + ( FINVAL - FINEST )/( 1 + VARPRD )</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">       1170 :       IF ( VARSQR .GT. 0 ) VAREST = ( 1 + VARPRD )/VARSQR</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">       1170 :       ABSERR = 7*SQRT( VARSQR/( 1 + VARPRD ) )/2</span></a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">       1170 :       IF ( ABSERR .GT. MAX( ABSEPS, ABS(FINEST)*RELEPS ) ) THEN</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">        118 :          IF ( NP .LT. PLIM ) THEN</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">        118 :             NP = NP + 1</span></a>
+<a name="635"><span class="lineNum">     635 </span>            :          ELSE</a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineNoCov">          0 :             SAMPLS = MIN( 3*SAMPLS/2, ( MAXVLS - INTVLS )/( 2*P(NP) ) ) </span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineNoCov">          0 :             SAMPLS = MAX( MINSMP, SAMPLS )</span></a>
+<a name="638"><span class="lineNum">     638 </span>            :          ENDIF</a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineCov">        118 :          IF ( INTVLS + 2*SAMPLS*P(NP) .LE. MAXVLS ) GO TO 10</span></a>
+<a name="640"><span class="lineNum">     640 </span>            :       ELSE</a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">       1052 :          INFORM = 0</span></a>
+<a name="642"><span class="lineNum">     642 </span>            :       ENDIF</a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">       1052 :       MINVLS = INTVLS</span></a>
+<a name="644"><span class="lineNum">     644 </span>            : *</a>
+<a name="645"><span class="lineNum">     645 </span>            : *    Optimal Parameters for Lattice Rules</a>
+<a name="646"><span class="lineNum">     646 </span>            : *</a>
+<a name="647"><span class="lineNum">     647 </span>            :       DATA P( 1),(C( 1,I),I = 1,99)/     31, 12, 2*9, 13, 8*12, 3*3, 12,</a>
+<a name="648"><span class="lineNum">     648 </span>            :      &amp; 2*7, 9*12, 3*3, 12, 2*7, 9*12, 3*3, 12, 2*7, 9*12, 3*3, 12, 2*7,</a>
+<a name="649"><span class="lineNum">     649 </span>            :      &amp; 8*12, 7, 3*3, 3*7, 21*3/</a>
+<a name="650"><span class="lineNum">     650 </span>            :       DATA P( 2),(C( 2,I),I = 1,99)/    47, 13, 11, 17, 10, 6*15,</a>
+<a name="651"><span class="lineNum">     651 </span>            :      &amp; 22, 2*15, 3*6, 2*15, 9, 13, 3*2, 13, 2*11, 10, 9*15, 3*6, 2*15,</a>
+<a name="652"><span class="lineNum">     652 </span>            :      &amp; 9, 13, 3*2, 13, 2*11, 10, 9*15, 3*6, 2*15, 9, 13, 3*2, 13, 2*11,</a>
+<a name="653"><span class="lineNum">     653 </span>            :      &amp; 2*10, 8*15, 6, 2, 3, 2, 3, 12*2/</a>
+<a name="654"><span class="lineNum">     654 </span>            :       DATA P( 3),(C( 3,I),I = 1,99)/    73, 27, 28, 10, 2*11, 20,</a>
+<a name="655"><span class="lineNum">     655 </span>            :      &amp; 2*11, 28, 2*13, 28, 3*13, 16*14, 2*31, 3*5, 31, 13, 6*11, 7*13,</a>
+<a name="656"><span class="lineNum">     656 </span>            :      &amp; 16*14, 2*31, 3*5, 11, 13, 7*11, 2*13, 11, 13, 4*5, 14, 13, 8*5/</a>
+<a name="657"><span class="lineNum">     657 </span>            :       DATA P( 4),(C( 4,I),I = 1,99)/   113, 35, 2*27, 36, 22, 2*29,</a>
+<a name="658"><span class="lineNum">     658 </span>            :      &amp; 20, 45, 3*5, 16*21, 29, 10*17, 12*23, 21, 27, 3*3, 24, 2*27,</a>
+<a name="659"><span class="lineNum">     659 </span>            :      &amp; 17, 3*29, 17, 4*5, 16*21, 3*17, 6, 2*17, 6, 3, 2*6, 5*3/</a>
+<a name="660"><span class="lineNum">     660 </span>            :       DATA P( 5),(C( 5,I),I = 1,99)/   173, 64, 66, 2*28, 2*44, 55,</a>
+<a name="661"><span class="lineNum">     661 </span>            :      &amp; 67, 6*10, 2*38, 5*10, 12*49, 2*38, 31, 2*4, 31, 64, 3*4, 64,</a>
+<a name="662"><span class="lineNum">     662 </span>            :      &amp; 6*45, 19*66, 11, 9*66, 45, 11, 7, 3, 3*2, 27, 5, 2*3, 2*5, 7*2/</a>
+<a name="663"><span class="lineNum">     663 </span>            :       DATA P( 6),(C( 6,I),I = 1,99)/   263, 111, 42, 54, 118, 20,</a>
+<a name="664"><span class="lineNum">     664 </span>            :      &amp; 2*31, 72, 17, 94, 2*14, 11, 3*14, 94, 4*10, 7*14, 3*11, 7*8,</a>
+<a name="665"><span class="lineNum">     665 </span>            :      &amp; 5*18, 113, 2*62, 2*45, 17*113, 2*63, 53, 63, 15*67, 5*51, 12,</a>
+<a name="666"><span class="lineNum">     666 </span>            :      &amp; 51, 12, 51, 5, 2*3, 2*2, 5/</a>
+<a name="667"><span class="lineNum">     667 </span>            :       DATA P( 7),(C( 7,I),I = 1,99)/   397, 163, 154, 83, 43, 82,</a>
+<a name="668"><span class="lineNum">     668 </span>            :      &amp; 92, 150, 59, 2*76, 47, 2*11, 100, 131, 6*116, 9*138, 21*101,</a>
+<a name="669"><span class="lineNum">     669 </span>            :      &amp; 6*116, 5*100, 5*138, 19*101, 8*38, 5*3/</a>
+<a name="670"><span class="lineNum">     670 </span>            :       DATA P( 8),(C( 8,I),I = 1,99)/   593, 246, 189, 242, 102,</a>
+<a name="671"><span class="lineNum">     671 </span>            :      &amp; 2*250, 102, 250, 280, 118, 196, 118, 191, 215, 2*121,</a>
+<a name="672"><span class="lineNum">     672 </span>            :      &amp; 12*49, 34*171, 8*161, 17*14, 6*10, 103, 4*10, 5/</a>
+<a name="673"><span class="lineNum">     673 </span>            :       DATA P( 9),(C( 9,I),I = 1,99)/   907, 347, 402, 322, 418,</a>
+<a name="674"><span class="lineNum">     674 </span>            :      &amp; 215, 220, 3*339, 337, 218, 4*315, 4*167, 361, 201, 11*124,</a>
+<a name="675"><span class="lineNum">     675 </span>            :      &amp; 2*231, 14*90, 4*48, 23*90, 10*243, 9*283, 16, 283, 16, 2*283/</a>
+<a name="676"><span class="lineNum">     676 </span>            :       DATA P(10),(C(10,I),I = 1,99)/  1361, 505, 220, 601, 644,</a>
+<a name="677"><span class="lineNum">     677 </span>            :      &amp; 612, 160, 3*206, 422, 134, 518, 2*134, 518, 652, 382,</a>
+<a name="678"><span class="lineNum">     678 </span>            :      &amp; 206, 158, 441, 179, 441, 56, 2*559, 14*56, 2*101, 56,</a>
+<a name="679"><span class="lineNum">     679 </span>            :      &amp; 8*101, 7*193, 21*101, 17*122, 4*101/</a>
+<a name="680"><span class="lineNum">     680 </span>            :       DATA P(11),(C(11,I),I = 1,99)/  2053, 794, 325, 960, 528,</a>
+<a name="681"><span class="lineNum">     681 </span>            :      &amp; 2*247, 338, 366, 847, 2*753, 236, 2*334, 461, 711, 652,</a>
+<a name="682"><span class="lineNum">     682 </span>            :      &amp; 3*381, 652, 7*381, 226, 7*326, 126, 10*326, 2*195, 19*55,</a>
+<a name="683"><span class="lineNum">     683 </span>            :      &amp; 7*195, 11*132, 13*387/</a>
+<a name="684"><span class="lineNum">     684 </span>            :       DATA P(12),(C(12,I),I = 1,99)/  3079, 1189, 888, 259, 1082, 725,      </a>
+<a name="685"><span class="lineNum">     685 </span>            :      &amp; 811, 636, 965, 2*497, 2*1490, 392, 1291, 2*508, 2*1291, 508,</a>
+<a name="686"><span class="lineNum">     686 </span>            :      &amp; 1291, 2*508, 4*867, 934, 7*867, 9*1284, 4*563, 3*1010, 208,</a>
+<a name="687"><span class="lineNum">     687 </span>            :      &amp; 838, 3*563, 2*759, 564, 2*759, 4*801, 5*759, 8*563, 22*226/</a>
+<a name="688"><span class="lineNum">     688 </span>            :       DATA P(13),(C(13,I),I = 1,99)/  4621, 1763, 1018, 1500, 432,</a>
+<a name="689"><span class="lineNum">     689 </span>            :      &amp; 1332, 2203, 126, 2240, 1719, 1284, 878, 1983, 4*266,</a>
+<a name="690"><span class="lineNum">     690 </span>            :      &amp; 2*747, 2*127, 2074, 127, 2074, 1400, 10*1383, 1400, 7*1383,</a>
+<a name="691"><span class="lineNum">     691 </span>            :      &amp; 507, 4*1073, 5*1990, 9*507, 17*1073, 6*22, 1073, 6*452, 318,</a>
+<a name="692"><span class="lineNum">     692 </span>            :      &amp; 4*301, 2*86, 15/</a>
+<a name="693"><span class="lineNum">     693 </span>            :       DATA P(14),(C(14,I),I = 1,99)/  6947, 2872, 3233, 1534, 2941,</a>
+<a name="694"><span class="lineNum">     694 </span>            :      &amp; 2910, 393, 1796, 919, 446, 2*919, 1117, 7*103, 2311, 3117, 1101,</a>
+<a name="695"><span class="lineNum">     695 </span>            :      &amp; 2*3117, 5*1101, 8*2503, 7*429, 3*1702, 5*184, 34*105, 13*784/</a>
+<a name="696"><span class="lineNum">     696 </span>            :       DATA P(15),(C(15,I),I = 1,99)/ 10427, 4309, 3758, 4034, 1963,</a>
+<a name="697"><span class="lineNum">     697 </span>            :      &amp; 730, 642, 1502, 2246, 3834, 1511, 2*1102, 2*1522, 2*3427,</a>
+<a name="698"><span class="lineNum">     698 </span>            :      &amp; 3928, 2*915, 4*3818, 3*4782, 3818, 4782, 2*3818, 7*1327, 9*1387,</a>
+<a name="699"><span class="lineNum">     699 </span>            :      &amp; 13*2339, 18*3148, 3*1776, 3*3354, 925, 2*3354, 5*925, 8*2133/</a>
+<a name="700"><span class="lineNum">     700 </span>            :       DATA P(16),(C(16,I),I = 1,99)/ 15641, 6610, 6977, 1686, 3819,</a>
+<a name="701"><span class="lineNum">     701 </span>            :      &amp; 2314, 5647, 3953, 3614, 5115, 2*423, 5408, 7426, 2*423,</a>
+<a name="702"><span class="lineNum">     702 </span>            :      &amp; 487, 6227, 2660, 6227, 1221, 3811, 197, 4367, 351,</a>
+<a name="703"><span class="lineNum">     703 </span>            :      &amp; 1281, 1221, 3*351, 7245, 1984, 6*2999, 3995, 4*2063, 1644,</a>
+<a name="704"><span class="lineNum">     704 </span>            :      &amp; 2063, 2077, 3*2512, 4*2077, 19*754, 2*1097, 4*754, 248, 754,</a>
+<a name="705"><span class="lineNum">     705 </span>            :      &amp; 4*1097, 4*222, 754,11*1982/</a>
+<a name="706"><span class="lineNum">     706 </span>            :       DATA P(17),(C(17,I),I = 1,99)/ 23473, 9861, 3647, 4073, 2535,</a>
+<a name="707"><span class="lineNum">     707 </span>            :      &amp; 3430, 9865, 2830, 9328, 4320, 5913, 10365, 8272, 3706, 6186,</a>
+<a name="708"><span class="lineNum">     708 </span>            :      &amp; 3*7806, 8610, 2563, 2*11558, 9421, 1181, 9421, 3*1181, 9421,</a>
+<a name="709"><span class="lineNum">     709 </span>            :      &amp; 2*1181, 2*10574, 5*3534, 3*2898, 3450, 7*2141, 15*7055, 2831,</a>
+<a name="710"><span class="lineNum">     710 </span>            :      &amp; 24*8204, 3*4688, 8*2831/</a>
+<a name="711"><span class="lineNum">     711 </span>            :       DATA P(18),(C(18,I),I = 1,99)/ 35221, 10327, 7582, 7124, 8214,</a>
+<a name="712"><span class="lineNum">     712 </span>            :      &amp; 9600, 10271, 10193, 10800, 9086, 2365, 4409, 13812,</a>
+<a name="713"><span class="lineNum">     713 </span>            :      &amp; 5661, 2*9344, 10362, 2*9344, 8585, 11114, 3*13080, 6949,</a>
+<a name="714"><span class="lineNum">     714 </span>            :      &amp; 3*3436, 13213, 2*6130, 2*8159, 11595, 8159, 3436, 18*7096,</a>
+<a name="715"><span class="lineNum">     715 </span>            :      &amp; 4377, 7096, 5*4377, 2*5410, 32*4377, 2*440, 3*1199/</a>
+<a name="716"><span class="lineNum">     716 </span>            :       DATA P(19),(C(19,I),I = 1,99)/ 52837, 19540, 19926, 11582,</a>
+<a name="717"><span class="lineNum">     717 </span>            :      &amp; 11113, 24585, 8726, 17218, 419, 3*4918, 15701, 17710,</a>
+<a name="718"><span class="lineNum">     718 </span>            :      &amp; 2*4037, 15808, 11401, 19398, 2*25950, 4454, 24987, 11719,</a>
+<a name="719"><span class="lineNum">     719 </span>            :      &amp; 8697, 5*1452, 2*8697, 6436, 21475, 6436, 22913, 6434, 18497,</a>
+<a name="720"><span class="lineNum">     720 </span>            :      &amp; 4*11089, 2*3036, 4*14208, 8*12906, 4*7614, 6*5021, 24*10145,</a>
+<a name="721"><span class="lineNum">     721 </span>            :      &amp; 6*4544, 4*8394/    </a>
+<a name="722"><span class="lineNum">     722 </span>            :       DATA P(20),(C(20,I),I = 1,99)/ 79259, 34566, 9579, 12654,</a>
+<a name="723"><span class="lineNum">     723 </span>            :      &amp; 26856, 37873, 38806, 29501, 17271, 3663, 10763, 18955,</a>
+<a name="724"><span class="lineNum">     724 </span>            :      &amp; 1298, 26560, 2*17132, 2*4753, 8713, 18624, 13082, 6791,</a>
+<a name="725"><span class="lineNum">     725 </span>            :      &amp; 1122, 19363, 34695, 4*18770, 15628, 4*18770, 33766, 6*20837,</a>
+<a name="726"><span class="lineNum">     726 </span>            :      &amp; 5*6545, 14*12138, 5*30483, 19*12138, 9305, 13*11107, 2*9305/</a>
+<a name="727"><span class="lineNum">     727 </span>            :       DATA P(21),(C(21,I),I = 1,99)/118891, 31929, 49367, 10982, 3527,</a>
+<a name="728"><span class="lineNum">     728 </span>            :      &amp; 27066, 13226, 56010, 18911, 40574, 2*20767, 9686, 2*47603, </a>
+<a name="729"><span class="lineNum">     729 </span>            :      &amp; 2*11736, 41601, 12888, 32948, 30801, 44243, 2*53351, 16016, </a>
+<a name="730"><span class="lineNum">     730 </span>            :      &amp; 2*35086, 32581, 2*2464, 49554, 2*2464, 2*49554, 2464, 81, 27260, </a>
+<a name="731"><span class="lineNum">     731 </span>            :      &amp; 10681, 7*2185, 5*18086, 2*17631, 3*18086, 37335, 3*37774, </a>
+<a name="732"><span class="lineNum">     732 </span>            :      &amp; 13*26401, 12982, 6*40398, 3*3518, 9*37799, 4*4721, 4*7067/</a>
+<a name="733"><span class="lineNum">     733 </span>            :       DATA P(22),(C(22,I),I = 1,99)/178349, 40701, 69087, 77576, 64590, </a>
+<a name="734"><span class="lineNum">     734 </span>            :      &amp; 39397, 33179, 10858, 38935, 43129, 2*35468, 5279, 2*61518, 27945,</a>
+<a name="735"><span class="lineNum">     735 </span>            :      &amp; 2*70975, 2*86478, 2*20514, 2*73178, 2*43098, 4701,</a>
+<a name="736"><span class="lineNum">     736 </span>            :      &amp; 2*59979, 58556, 69916, 2*15170, 2*4832, 43064, 71685, 4832,</a>
+<a name="737"><span class="lineNum">     737 </span>            :      &amp; 3*15170, 3*27679, 2*60826, 2*6187, 5*4264, 45567, 4*32269,</a>
+<a name="738"><span class="lineNum">     738 </span>            :      &amp; 9*62060, 13*1803, 12*51108, 2*55315, 5*54140, 13134/</a>
+<a name="739"><span class="lineNum">     739 </span>            :       DATA P(23),(C(23,I),I = 1,99)/267523, 103650, 125480, 59978,</a>
+<a name="740"><span class="lineNum">     740 </span>            :      &amp; 46875, 77172, 83021, 126904, 14541, 56299, 43636, 11655,</a>
+<a name="741"><span class="lineNum">     741 </span>            :      &amp; 52680, 88549, 29804, 101894, 113675, 48040, 113675,</a>
+<a name="742"><span class="lineNum">     742 </span>            :      &amp; 34987, 48308, 97926, 5475, 49449, 6850, 2*62545, 9440,</a>
+<a name="743"><span class="lineNum">     743 </span>            :      &amp; 33242, 9440, 33242, 9440, 33242, 9440, 62850, 3*9440,</a>
+<a name="744"><span class="lineNum">     744 </span>            :      &amp; 3*90308, 9*47904, 7*41143, 5*36114, 24997, 14*65162, 7*47650,</a>
+<a name="745"><span class="lineNum">     745 </span>            :      &amp; 7*40586, 4*38725, 5*88329/</a>
+<a name="746"><span class="lineNum">     746 </span>            :       DATA P(24),(C(24,I),I = 1,99)/401287, 165843, 90647, 59925,</a>
+<a name="747"><span class="lineNum">     747 </span>            :      &amp; 189541, 67647, 74795, 68365, 167485, 143918, 74912,</a>
+<a name="748"><span class="lineNum">     748 </span>            :      &amp; 167289, 75517, 8148, 172106, 126159,3*35867, 121694,</a>
+<a name="749"><span class="lineNum">     749 </span>            :      &amp; 52171, 95354, 2*113969, 76304, 2*123709, 144615, 123709,</a>
+<a name="750"><span class="lineNum">     750 </span>            :      &amp; 2*64958, 32377, 2*193002, 25023, 40017, 141605, 2*189165,</a>
+<a name="751"><span class="lineNum">     751 </span>            :      &amp; 141605, 2*189165, 3*141605, 189165, 20*127047, 10*127785,</a>
+<a name="752"><span class="lineNum">     752 </span>            :      &amp; 6*80822, 16*131661, 7114, 131661/</a>
+<a name="753"><span class="lineNum">     753 </span>            :       DATA P(25),(C(25,I),I = 1,99)/601942, 130365, 236711, 110235,</a>
+<a name="754"><span class="lineNum">     754 </span>            :      &amp; 125699, 56483, 93735, 234469, 60549, 1291, 93937,</a>
+<a name="755"><span class="lineNum">     755 </span>            :      &amp; 245291, 196061, 258647, 162489, 176631, 204895, 73353,</a>
+<a name="756"><span class="lineNum">     756 </span>            :      &amp; 172319, 28881, 136787,2*122081, 275993, 64673, 3*211587,</a>
+<a name="757"><span class="lineNum">     757 </span>            :      &amp; 2*282859, 211587, 242821, 3*256865, 122203, 291915, 122203,</a>
+<a name="758"><span class="lineNum">     758 </span>            :      &amp; 2*291915, 122203, 2*25639, 291803, 245397, 284047,</a>
+<a name="759"><span class="lineNum">     759 </span>            :      &amp; 7*245397, 94241, 2*66575, 19*217673, 10*210249, 15*94453/</a>
+<a name="760"><span class="lineNum">     760 </span>            :       DATA P(26),(C(26,I),I = 1,99)/902933, 333459, 375354, 102417,            </a>
+<a name="761"><span class="lineNum">     761 </span>            :      &amp; 383544, 292630, 41147, 374614, 48032, 435453, 281493, 358168, </a>
+<a name="762"><span class="lineNum">     762 </span>            :      &amp; 114121, 346892, 238990, 317313, 164158, 35497, 2*70530, 434839,  </a>
+<a name="763"><span class="lineNum">     763 </span>            :      &amp; 3*24754, 393656, 2*118711, 148227, 271087, 355831, 91034, </a>
+<a name="764"><span class="lineNum">     764 </span>            :      &amp; 2*417029, 2*91034, 417029, 91034, 2*299843, 2*413548, 308300,  </a>
+<a name="765"><span class="lineNum">     765 </span>            :      &amp; 3*413548, 3*308300, 413548, 5*308300, 4*15311, 2*176255, 6*23613, </a>
+<a name="766"><span class="lineNum">     766 </span>            :      &amp; 172210, 4* 204328, 5*121626, 5*200187, 2*121551, 12*248492, </a>
+<a name="767"><span class="lineNum">     767 </span>            :      &amp; 5*13942/</a>
+<a name="768"><span class="lineNum">     768 </span>            :       DATA P(27), (C(27,I), I = 1,99)/ 1354471, 500884, 566009, 399251,</a>
+<a name="769"><span class="lineNum">     769 </span>            :      &amp; 652979, 355008, 430235, 328722, 670680, 2*405585, 424646, </a>
+<a name="770"><span class="lineNum">     770 </span>            :      &amp; 2*670180, 641587, 215580, 59048, 633320, 81010, 20789, 2*389250,  </a>
+<a name="771"><span class="lineNum">     771 </span>            :      &amp; 2*638764, 2*389250, 398094, 80846, 2*147776, 296177, 2*398094,  </a>
+<a name="772"><span class="lineNum">     772 </span>            :      &amp; 2*147776, 396313, 3*578233, 19482, 620706, 187095, 620706, </a>
+<a name="773"><span class="lineNum">     773 </span>            :      &amp; 187095, 126467, 12*241663, 321632, 2*23210, 3*394484, 3*78101, </a>
+<a name="774"><span class="lineNum">     774 </span>            :      &amp; 19*542095, 3*277743, 12*457259/</a>
+<a name="775"><span class="lineNum">     775 </span>            :       DATA P(28), (C(28,I), I = 1, 99)/ 2031713, 858339, 918142, 501970, </a>
+<a name="776"><span class="lineNum">     776 </span>            :      &amp; 234813, 460565, 31996, 753018, 256150, 199809, 993599, 245149,      </a>
+<a name="777"><span class="lineNum">     777 </span>            :      &amp; 794183, 121349, 150619, 376952, 2*809123, 804319, 67352, 969594, </a>
+<a name="778"><span class="lineNum">     778 </span>            :      &amp; 434796, 969594, 804319, 391368, 761041, 754049, 466264, 2*754049,</a>
+<a name="779"><span class="lineNum">     779 </span>            :      &amp; 466264, 2*754049, 282852, 429907, 390017, 276645, 994856, 250142, </a>
+<a name="780"><span class="lineNum">     780 </span>            :      &amp; 144595, 907454, 689648, 4*687580, 978368, 687580, 552742, 105195, </a>
+<a name="781"><span class="lineNum">     781 </span>            :      &amp; 942843, 768249, 4*307142, 7*880619, 11*117185, 11*60731,  </a>
+<a name="782"><span class="lineNum">     782 </span>            :      &amp; 4*178309, 8*74373, 3*214965/</a>
+<a name="783"><span class="lineNum">     783 </span>            : *</a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">       1052 :       END</span></a>
+<a name="785"><span class="lineNum">     785 </span>            : *</a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">       9360 :       SUBROUTINE DKSMRC( NDIM, KLIM, SUMKRO, PRIME, VK, FUNCTN, X )</span></a>
+<a name="787"><span class="lineNum">     787 </span>            :       EXTERNAL FUNCTN</a>
+<a name="788"><span class="lineNum">     788 </span>            :       INTEGER NDIM, NK, KLIM, PRIME, K, J, JP</a>
+<a name="789"><span class="lineNum">     789 </span>            :       DOUBLE PRECISION SUMKRO, VK(*), FUNCTN, X(*), ONE, XT, MVNUNI</a>
+<a name="790"><span class="lineNum">     790 </span>            :       PARAMETER ( ONE = 1 )</a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       9360 :       SUMKRO = 0</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       9360 :       NK = MIN( NDIM, KLIM )</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">      19544 :       DO J = 1, NK - 1</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">      10184 :          JP = J + MVNUNI()*( NK + 1 - J ) </span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">      10184 :          XT = VK(J)</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">      10184 :          VK(J) = VK(JP)</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">      19544 :          VK(JP) = XT</span></a>
+<a name="798"><span class="lineNum">     798 </span>            :       END DO</a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">      28904 :       DO J = 1, NDIM</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">      28904 :          X(NDIM+J) = MVNUNI()</span></a>
+<a name="801"><span class="lineNum">     801 </span>            :       END DO</a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">     840000 :       DO K = 1, PRIME</span></a>
+<a name="803"><span class="lineNum">     803 </span><span class="lineCov">    2846824 :          DO J = 1, NDIM</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">    2846824 :             X(J) = ABS( 2*MOD( K*VK(J) + X(NDIM+J), ONE ) - 1 )</span></a>
+<a name="805"><span class="lineNum">     805 </span>            :          END DO</a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">     830640 :          SUMKRO = SUMKRO + ( FUNCTN(NDIM,X) - SUMKRO )/( 2*K - 1 )</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">    2846824 :          DO J = 1, NDIM</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">    2846824 :             X(J) = 1 - X(J)</span></a>
+<a name="809"><span class="lineNum">     809 </span>            :          END DO</a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">     840000 :          SUMKRO = SUMKRO + ( FUNCTN(NDIM,X) - SUMKRO )/( 2*K )</span></a>
+<a name="811"><span class="lineNum">     811 </span>            :       END DO</a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">       9360 :       END</span></a>
+<a name="813"><span class="lineNum">     813 </span>            : *</a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">    6877834 :       DOUBLE PRECISION FUNCTION MVNPHI( Z )</span></a>
+<a name="815"><span class="lineNum">     815 </span>            : *     </a>
+<a name="816"><span class="lineNum">     816 </span>            : *     Normal distribution probabilities accurate to 1.e-15.</a>
+<a name="817"><span class="lineNum">     817 </span>            : *     Z = no. of standard deviations from the mean.</a>
+<a name="818"><span class="lineNum">     818 </span>            : *     </a>
+<a name="819"><span class="lineNum">     819 </span>            : *     Based upon algorithm 5666 for the error function, from:</a>
+<a name="820"><span class="lineNum">     820 </span>            : *     Hart, J.F. et al, 'Computer Approximations', Wiley 1968</a>
+<a name="821"><span class="lineNum">     821 </span>            : *     </a>
+<a name="822"><span class="lineNum">     822 </span>            : *     Programmer: Alan Miller</a>
+<a name="823"><span class="lineNum">     823 </span>            : *     </a>
+<a name="824"><span class="lineNum">     824 </span>            : *     Latest revision - 30 March 1986</a>
+<a name="825"><span class="lineNum">     825 </span>            : *     </a>
+<a name="826"><span class="lineNum">     826 </span>            :       DOUBLE PRECISION P0, P1, P2, P3, P4, P5, P6, </a>
+<a name="827"><span class="lineNum">     827 </span>            :      *     Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7,</a>
+<a name="828"><span class="lineNum">     828 </span>            :      *     Z, P, EXPNTL, CUTOFF, ROOTPI, ZABS</a>
+<a name="829"><span class="lineNum">     829 </span>            :       PARAMETER(</a>
+<a name="830"><span class="lineNum">     830 </span>            :      *     P0 = 220.20 68679 12376 1D0,</a>
+<a name="831"><span class="lineNum">     831 </span>            :      *     P1 = 221.21 35961 69931 1D0, </a>
+<a name="832"><span class="lineNum">     832 </span>            :      *     P2 = 112.07 92914 97870 9D0,</a>
+<a name="833"><span class="lineNum">     833 </span>            :      *     P3 = 33.912 86607 83830 0D0,</a>
+<a name="834"><span class="lineNum">     834 </span>            :      *     P4 = 6.3739 62203 53165 0D0,</a>
+<a name="835"><span class="lineNum">     835 </span>            :      *     P5 = .70038 30644 43688 1D0, </a>
+<a name="836"><span class="lineNum">     836 </span>            :      *     P6 = .035262 49659 98910 9D0 )</a>
+<a name="837"><span class="lineNum">     837 </span>            :       PARAMETER(</a>
+<a name="838"><span class="lineNum">     838 </span>            :      *     Q0 = 440.41 37358 24752 2D0,</a>
+<a name="839"><span class="lineNum">     839 </span>            :      *     Q1 = 793.82 65125 19948 4D0, </a>
+<a name="840"><span class="lineNum">     840 </span>            :      *     Q2 = 637.33 36333 78831 1D0,</a>
+<a name="841"><span class="lineNum">     841 </span>            :      *     Q3 = 296.56 42487 79673 7D0, </a>
+<a name="842"><span class="lineNum">     842 </span>            :      *     Q4 = 86.780 73220 29460 8D0,</a>
+<a name="843"><span class="lineNum">     843 </span>            :      *     Q5 = 16.064 17757 92069 5D0, </a>
+<a name="844"><span class="lineNum">     844 </span>            :      *     Q6 = 1.7556 67163 18264 2D0,</a>
+<a name="845"><span class="lineNum">     845 </span>            :      *     Q7 = .088388 34764 83184 4D0 )</a>
+<a name="846"><span class="lineNum">     846 </span>            :       PARAMETER( ROOTPI = 2.5066 28274 63100 1D0 )</a>
+<a name="847"><span class="lineNum">     847 </span>            :       PARAMETER( CUTOFF = 7.0710 67811 86547 5D0 )</a>
+<a name="848"><span class="lineNum">     848 </span>            : *     </a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">    6877834 :       ZABS = ABS(Z)</span></a>
+<a name="850"><span class="lineNum">     850 </span>            : *     </a>
+<a name="851"><span class="lineNum">     851 </span>            : *     |Z| &gt; 37</a>
+<a name="852"><span class="lineNum">     852 </span>            : *     </a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">    6877834 :       IF ( ZABS .GT. 37 ) THEN</span></a>
+<a name="854"><span class="lineNum">     854 </span>            :          P = 0</a>
+<a name="855"><span class="lineNum">     855 </span>            :       ELSE</a>
+<a name="856"><span class="lineNum">     856 </span>            : *     </a>
+<a name="857"><span class="lineNum">     857 </span>            : *     |Z| &lt;= 37</a>
+<a name="858"><span class="lineNum">     858 </span>            : *     </a>
+<a name="859"><span class="lineNum">     859 </span><span class="lineCov">    6621543 :          EXPNTL = EXP( -ZABS**2/2 )</span></a>
+<a name="860"><span class="lineNum">     860 </span>            : *     </a>
+<a name="861"><span class="lineNum">     861 </span>            : *     |Z| &lt; CUTOFF = 10/SQRT(2)</a>
+<a name="862"><span class="lineNum">     862 </span>            : *     </a>
+<a name="863"><span class="lineNum">     863 </span><span class="lineCov">    6621543 :          IF ( ZABS .LT. CUTOFF ) THEN</span></a>
+<a name="864"><span class="lineNum">     864 </span>            :             P = EXPNTL*( (((((P6*ZABS + P5)*ZABS + P4)*ZABS + P3)*ZABS</a>
+<a name="865"><span class="lineNum">     865 </span>            :      *           + P2)*ZABS + P1)*ZABS + P0)/(((((((Q7*ZABS + Q6)*ZABS</a>
+<a name="866"><span class="lineNum">     866 </span>            :      *           + Q5)*ZABS + Q4)*ZABS + Q3)*ZABS + Q2)*ZABS + Q1)*ZABS</a>
+<a name="867"><span class="lineNum">     867 </span><span class="lineCov">    5888742 :      *           + Q0 )</span></a>
+<a name="868"><span class="lineNum">     868 </span>            : *     </a>
+<a name="869"><span class="lineNum">     869 </span>            : *     |Z| &gt;= CUTOFF.</a>
+<a name="870"><span class="lineNum">     870 </span>            : *     </a>
+<a name="871"><span class="lineNum">     871 </span>            :          ELSE</a>
+<a name="872"><span class="lineNum">     872 </span>            :             P = EXPNTL/( ZABS + 1/( ZABS + 2/( ZABS + 3/( ZABS </a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">     732801 :      *                        + 4/( ZABS + 0.65D0 ) ) ) ) )/ROOTPI</span></a>
+<a name="874"><span class="lineNum">     874 </span>            :          END IF</a>
+<a name="875"><span class="lineNum">     875 </span>            :       END IF</a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">    6877834 :       IF ( Z .GT. 0 ) P = 1 - P</span></a>
+<a name="877"><span class="lineNum">     877 </span><span class="lineCov">    6877834 :       MVNPHI = P</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">    6877834 :       END</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">    4032368 :       DOUBLE PRECISION FUNCTION PHINVS(P)</span></a>
+<a name="880"><span class="lineNum">     880 </span>            : *</a>
+<a name="881"><span class="lineNum">     881 </span>            : *       ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3</a>
+<a name="882"><span class="lineNum">     882 </span>            : *</a>
+<a name="883"><span class="lineNum">     883 </span>            : *       Produces the normal deviate Z corresponding to a given lower</a>
+<a name="884"><span class="lineNum">     884 </span>            : *       tail area of P.</a>
+<a name="885"><span class="lineNum">     885 </span>            : *</a>
+<a name="886"><span class="lineNum">     886 </span>            : *       The hash sums below are the sums of the mantissas of the</a>
+<a name="887"><span class="lineNum">     887 </span>            : *       coefficients.   They are included for use in checking</a>
+<a name="888"><span class="lineNum">     888 </span>            : *       transcription.</a>
+<a name="889"><span class="lineNum">     889 </span>            : *</a>
+<a name="890"><span class="lineNum">     890 </span>            :       DOUBLE PRECISION SPLIT1, SPLIT2, CONST1, CONST2, </a>
+<a name="891"><span class="lineNum">     891 </span>            :      *     A0, A1, A2, A3, A4, A5, A6, A7, B1, B2, B3, B4, B5, B6, B7, </a>
+<a name="892"><span class="lineNum">     892 </span>            :      *     C0, C1, C2, C3, C4, C5, C6, C7, D1, D2, D3, D4, D5, D6, D7, </a>
+<a name="893"><span class="lineNum">     893 </span>            :      *     E0, E1, E2, E3, E4, E5, E6, E7, F1, F2, F3, F4, F5, F6, F7, </a>
+<a name="894"><span class="lineNum">     894 </span>            :      *     P, Q, R</a>
+<a name="895"><span class="lineNum">     895 </span>            :       PARAMETER ( SPLIT1 = 0.425, SPLIT2 = 5,</a>
+<a name="896"><span class="lineNum">     896 </span>            :      *            CONST1 = 0.180625D0, CONST2 = 1.6D0 )</a>
+<a name="897"><span class="lineNum">     897 </span>            : *     </a>
+<a name="898"><span class="lineNum">     898 </span>            : *     Coefficients for P close to 0.5</a>
+<a name="899"><span class="lineNum">     899 </span>            : *     </a>
+<a name="900"><span class="lineNum">     900 </span>            :       PARAMETER (</a>
+<a name="901"><span class="lineNum">     901 </span>            :      *     A0 = 3.38713 28727 96366 6080D0,</a>
+<a name="902"><span class="lineNum">     902 </span>            :      *     A1 = 1.33141 66789 17843 7745D+2,</a>
+<a name="903"><span class="lineNum">     903 </span>            :      *     A2 = 1.97159 09503 06551 4427D+3,</a>
+<a name="904"><span class="lineNum">     904 </span>            :      *     A3 = 1.37316 93765 50946 1125D+4,</a>
+<a name="905"><span class="lineNum">     905 </span>            :      *     A4 = 4.59219 53931 54987 1457D+4,</a>
+<a name="906"><span class="lineNum">     906 </span>            :      *     A5 = 6.72657 70927 00870 0853D+4,</a>
+<a name="907"><span class="lineNum">     907 </span>            :      *     A6 = 3.34305 75583 58812 8105D+4,</a>
+<a name="908"><span class="lineNum">     908 </span>            :      *     A7 = 2.50908 09287 30122 6727D+3,</a>
+<a name="909"><span class="lineNum">     909 </span>            :      *     B1 = 4.23133 30701 60091 1252D+1,</a>
+<a name="910"><span class="lineNum">     910 </span>            :      *     B2 = 6.87187 00749 20579 0830D+2,</a>
+<a name="911"><span class="lineNum">     911 </span>            :      *     B3 = 5.39419 60214 24751 1077D+3,</a>
+<a name="912"><span class="lineNum">     912 </span>            :      *     B4 = 2.12137 94301 58659 5867D+4,</a>
+<a name="913"><span class="lineNum">     913 </span>            :      *     B5 = 3.93078 95800 09271 0610D+4,</a>
+<a name="914"><span class="lineNum">     914 </span>            :      *     B6 = 2.87290 85735 72194 2674D+4,</a>
+<a name="915"><span class="lineNum">     915 </span>            :      *     B7 = 5.22649 52788 52854 5610D+3 )</a>
+<a name="916"><span class="lineNum">     916 </span>            : *     HASH SUM AB    55.88319 28806 14901 4439</a>
+<a name="917"><span class="lineNum">     917 </span>            : *     </a>
+<a name="918"><span class="lineNum">     918 </span>            : *     Coefficients for P not close to 0, 0.5 or 1.</a>
+<a name="919"><span class="lineNum">     919 </span>            : *     </a>
+<a name="920"><span class="lineNum">     920 </span>            :       PARAMETER (</a>
+<a name="921"><span class="lineNum">     921 </span>            :      *     C0 = 1.42343 71107 49683 57734D0,</a>
+<a name="922"><span class="lineNum">     922 </span>            :      *     C1 = 4.63033 78461 56545 29590D0,</a>
+<a name="923"><span class="lineNum">     923 </span>            :      *     C2 = 5.76949 72214 60691 40550D0,</a>
+<a name="924"><span class="lineNum">     924 </span>            :      *     C3 = 3.64784 83247 63204 60504D0,</a>
+<a name="925"><span class="lineNum">     925 </span>            :      *     C4 = 1.27045 82524 52368 38258D0,</a>
+<a name="926"><span class="lineNum">     926 </span>            :      *     C5 = 2.41780 72517 74506 11770D-1,</a>
+<a name="927"><span class="lineNum">     927 </span>            :      *     C6 = 2.27238 44989 26918 45833D-2,</a>
+<a name="928"><span class="lineNum">     928 </span>            :      *     C7 = 7.74545 01427 83414 07640D-4,</a>
+<a name="929"><span class="lineNum">     929 </span>            :      *     D1 = 2.05319 16266 37758 82187D0,</a>
+<a name="930"><span class="lineNum">     930 </span>            :      *     D2 = 1.67638 48301 83803 84940D0,</a>
+<a name="931"><span class="lineNum">     931 </span>            :      *     D3 = 6.89767 33498 51000 04550D-1,</a>
+<a name="932"><span class="lineNum">     932 </span>            :      *     D4 = 1.48103 97642 74800 74590D-1,</a>
+<a name="933"><span class="lineNum">     933 </span>            :      *     D5 = 1.51986 66563 61645 71966D-2,</a>
+<a name="934"><span class="lineNum">     934 </span>            :      *     D6 = 5.47593 80849 95344 94600D-4,</a>
+<a name="935"><span class="lineNum">     935 </span>            :      *     D7 = 1.05075 00716 44416 84324D-9 )</a>
+<a name="936"><span class="lineNum">     936 </span>            : *     HASH SUM CD    49.33206 50330 16102 89036</a>
+<a name="937"><span class="lineNum">     937 </span>            : *</a>
+<a name="938"><span class="lineNum">     938 </span>            : *       Coefficients for P near 0 or 1.</a>
+<a name="939"><span class="lineNum">     939 </span>            : *</a>
+<a name="940"><span class="lineNum">     940 </span>            :       PARAMETER (</a>
+<a name="941"><span class="lineNum">     941 </span>            :      *     E0 = 6.65790 46435 01103 77720D0,</a>
+<a name="942"><span class="lineNum">     942 </span>            :      *     E1 = 5.46378 49111 64114 36990D0,</a>
+<a name="943"><span class="lineNum">     943 </span>            :      *     E2 = 1.78482 65399 17291 33580D0,</a>
+<a name="944"><span class="lineNum">     944 </span>            :      *     E3 = 2.96560 57182 85048 91230D-1,</a>
+<a name="945"><span class="lineNum">     945 </span>            :      *     E4 = 2.65321 89526 57612 30930D-2,</a>
+<a name="946"><span class="lineNum">     946 </span>            :      *     E5 = 1.24266 09473 88078 43860D-3,</a>
+<a name="947"><span class="lineNum">     947 </span>            :      *     E6 = 2.71155 55687 43487 57815D-5,</a>
+<a name="948"><span class="lineNum">     948 </span>            :      *     E7 = 2.01033 43992 92288 13265D-7,</a>
+<a name="949"><span class="lineNum">     949 </span>            :      *     F1 = 5.99832 20655 58879 37690D-1,</a>
+<a name="950"><span class="lineNum">     950 </span>            :      *     F2 = 1.36929 88092 27358 05310D-1,</a>
+<a name="951"><span class="lineNum">     951 </span>            :      *     F3 = 1.48753 61290 85061 48525D-2,</a>
+<a name="952"><span class="lineNum">     952 </span>            :      *     F4 = 7.86869 13114 56132 59100D-4,</a>
+<a name="953"><span class="lineNum">     953 </span>            :      *     F5 = 1.84631 83175 10054 68180D-5,</a>
+<a name="954"><span class="lineNum">     954 </span>            :      *     F6 = 1.42151 17583 16445 88870D-7,</a>
+<a name="955"><span class="lineNum">     955 </span>            :      *     F7 = 2.04426 31033 89939 78564D-15 )</a>
+<a name="956"><span class="lineNum">     956 </span>            : *     HASH SUM EF    47.52583 31754 92896 71629</a>
+<a name="957"><span class="lineNum">     957 </span>            : *     </a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">    4032368 :       Q = ( 2*P - 1 )/2</span></a>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">    4032368 :       IF ( ABS(Q) .LE. SPLIT1 ) THEN</span></a>
+<a name="960"><span class="lineNum">     960 </span><span class="lineCov">    3034681 :          R = CONST1 - Q*Q</span></a>
+<a name="961"><span class="lineNum">     961 </span>            :          PHINVS = Q*( ( ( ((((A7*R + A6)*R + A5)*R + A4)*R + A3)</a>
+<a name="962"><span class="lineNum">     962 </span>            :      *                  *R + A2 )*R + A1 )*R + A0 )</a>
+<a name="963"><span class="lineNum">     963 </span>            :      *            /( ( ( ((((B7*R + B6)*R + B5)*R + B4)*R + B3)</a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">    3034681 :      *                  *R + B2 )*R + B1 )*R + 1 )</span></a>
+<a name="965"><span class="lineNum">     965 </span>            :       ELSE</a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">     997687 :          R = MIN( P, 1 - P )</span></a>
+<a name="967"><span class="lineNum">     967 </span><span class="lineCov">     997687 :          IF ( R .GT. 0 ) THEN</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">     997687 :             R = SQRT( -LOG(R) )</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">     997687 :             IF ( R .LE. SPLIT2 ) THEN</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">     997686 :                R = R - CONST2</span></a>
+<a name="971"><span class="lineNum">     971 </span>            :                PHINVS = ( ( ( ((((C7*R + C6)*R + C5)*R + C4)*R + C3)</a>
+<a name="972"><span class="lineNum">     972 </span>            :      *                      *R + C2 )*R + C1 )*R + C0 ) </a>
+<a name="973"><span class="lineNum">     973 </span>            :      *                /( ( ( ((((D7*R + D6)*R + D5)*R + D4)*R + D3)</a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">     997686 :      *                      *R + D2 )*R + D1 )*R + 1 )</span></a>
+<a name="975"><span class="lineNum">     975 </span>            :             ELSE</a>
+<a name="976"><span class="lineNum">     976 </span><span class="lineCov">          1 :                R = R - SPLIT2</span></a>
+<a name="977"><span class="lineNum">     977 </span>            :                PHINVS = ( ( ( ((((E7*R + E6)*R + E5)*R + E4)*R + E3)</a>
+<a name="978"><span class="lineNum">     978 </span>            :      *                      *R + E2 )*R + E1 )*R + E0 )</a>
+<a name="979"><span class="lineNum">     979 </span>            :      *                /( ( ( ((((F7*R + F6)*R + F5)*R + F4)*R + F3)</a>
+<a name="980"><span class="lineNum">     980 </span><span class="lineCov">          1 :      *                      *R + F2 )*R + F1 )*R + 1 )</span></a>
+<a name="981"><span class="lineNum">     981 </span>            :             END IF</a>
+<a name="982"><span class="lineNum">     982 </span>            :          ELSE</a>
+<a name="983"><span class="lineNum">     983 </span>            :             PHINVS = 9</a>
+<a name="984"><span class="lineNum">     984 </span>            :          END IF</a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">     997687 :          IF ( Q .LT. 0 ) PHINVS = - PHINVS</span></a>
+<a name="986"><span class="lineNum">     986 </span>            :       END IF</a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">    4032368 :       END</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">         76 :       DOUBLE PRECISION FUNCTION BVNMVN( LOWER, UPPER, INFIN, CORREL )</span></a>
+<a name="989"><span class="lineNum">     989 </span>            : *</a>
+<a name="990"><span class="lineNum">     990 </span>            : *     A function for computing bivariate normal probabilities.</a>
+<a name="991"><span class="lineNum">     991 </span>            : *</a>
+<a name="992"><span class="lineNum">     992 </span>            : *  Parameters</a>
+<a name="993"><span class="lineNum">     993 </span>            : *</a>
+<a name="994"><span class="lineNum">     994 </span>            : *     LOWER  REAL, array of lower integration limits.</a>
+<a name="995"><span class="lineNum">     995 </span>            : *     UPPER  REAL, array of upper integration limits.</a>
+<a name="996"><span class="lineNum">     996 </span>            : *     INFIN  INTEGER, array of integration limits flags:</a>
+<a name="997"><span class="lineNum">     997 </span>            : *            if INFIN(I) = 0, Ith limits are (-infinity, UPPER(I)];</a>
+<a name="998"><span class="lineNum">     998 </span>            : *            if INFIN(I) = 1, Ith limits are [LOWER(I), infinity);</a>
+<a name="999"><span class="lineNum">     999 </span>            : *            if INFIN(I) = 2, Ith limits are [LOWER(I), UPPER(I)].</a>
+<a name="1000"><span class="lineNum">    1000 </span>            : *     CORREL REAL, correlation coefficient.</a>
+<a name="1001"><span class="lineNum">    1001 </span>            : *</a>
+<a name="1002"><span class="lineNum">    1002 </span>            :       DOUBLE PRECISION LOWER(*), UPPER(*), CORREL, BVU</a>
+<a name="1003"><span class="lineNum">    1003 </span>            :       INTEGER INFIN(*)</a>
+<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">         76 :       IF ( INFIN(1) .EQ. 2  .AND. INFIN(2) .EQ. 2 ) THEN</span></a>
+<a name="1005"><span class="lineNum">    1005 </span>            :          BVNMVN =  BVU ( LOWER(1), LOWER(2), CORREL )</a>
+<a name="1006"><span class="lineNum">    1006 </span>            :      +           - BVU ( UPPER(1), LOWER(2), CORREL )</a>
+<a name="1007"><span class="lineNum">    1007 </span>            :      +           - BVU ( LOWER(1), UPPER(2), CORREL )</a>
+<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">         23 :      +           + BVU ( UPPER(1), UPPER(2), CORREL )</span></a>
+<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 2  .AND. INFIN(2) .EQ. 1 ) THEN</span></a>
+<a name="1010"><span class="lineNum">    1010 </span>            :          BVNMVN =  BVU ( LOWER(1), LOWER(2), CORREL )</a>
+<a name="1011"><span class="lineNum">    1011 </span><span class="lineNoCov">          0 :      +           - BVU ( UPPER(1), LOWER(2), CORREL )</span></a>
+<a name="1012"><span class="lineNum">    1012 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 1  .AND. INFIN(2) .EQ. 2 ) THEN</span></a>
+<a name="1013"><span class="lineNum">    1013 </span>            :          BVNMVN =  BVU ( LOWER(1), LOWER(2), CORREL )</a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineNoCov">          0 :      +           - BVU ( LOWER(1), UPPER(2), CORREL )</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 2  .AND. INFIN(2) .EQ. 0 ) THEN</span></a>
+<a name="1016"><span class="lineNum">    1016 </span>            :          BVNMVN =  BVU ( -UPPER(1), -UPPER(2), CORREL )</a>
+<a name="1017"><span class="lineNum">    1017 </span><span class="lineNoCov">          0 :      +           - BVU ( -LOWER(1), -UPPER(2), CORREL )</span></a>
+<a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 0  .AND. INFIN(2) .EQ. 2 ) THEN</span></a>
+<a name="1019"><span class="lineNum">    1019 </span>            :          BVNMVN =  BVU ( -UPPER(1), -UPPER(2), CORREL )</a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineNoCov">          0 :      +           - BVU ( -UPPER(1), -LOWER(2), CORREL )</span></a>
+<a name="1021"><span class="lineNum">    1021 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 1  .AND. INFIN(2) .EQ. 0 ) THEN</span></a>
+<a name="1022"><span class="lineNum">    1022 </span><span class="lineNoCov">          0 :          BVNMVN =  BVU ( LOWER(1), -UPPER(2), -CORREL )</span></a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 0  .AND. INFIN(2) .EQ. 1 ) THEN</span></a>
+<a name="1024"><span class="lineNum">    1024 </span><span class="lineNoCov">          0 :          BVNMVN =  BVU ( -UPPER(1), LOWER(2), -CORREL )</span></a>
+<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 1  .AND. INFIN(2) .EQ. 1 ) THEN</span></a>
+<a name="1026"><span class="lineNum">    1026 </span><span class="lineNoCov">          0 :          BVNMVN =  BVU ( LOWER(1), LOWER(2), CORREL )</span></a>
+<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">         53 :       ELSE IF ( INFIN(1) .EQ. 0  .AND. INFIN(2) .EQ. 0 ) THEN</span></a>
+<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">         53 :          BVNMVN =  BVU ( -UPPER(1), -UPPER(2), CORREL )</span></a>
+<a name="1029"><span class="lineNum">    1029 </span>            :       END IF</a>
+<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">         76 :       END </span></a>
+<a name="1031"><span class="lineNum">    1031 </span><span class="lineCov">        145 :       DOUBLE PRECISION FUNCTION BVU( SH, SK, R )</span></a>
+<a name="1032"><span class="lineNum">    1032 </span>            : *</a>
+<a name="1033"><span class="lineNum">    1033 </span>            : *     A function for computing bivariate normal probabilities.</a>
+<a name="1034"><span class="lineNum">    1034 </span>            : *</a>
+<a name="1035"><span class="lineNum">    1035 </span>            : *       Yihong Ge</a>
+<a name="1036"><span class="lineNum">    1036 </span>            : *       Department of Computer Science and Electrical Engineering</a>
+<a name="1037"><span class="lineNum">    1037 </span>            : *       Washington State University</a>
+<a name="1038"><span class="lineNum">    1038 </span>            : *       Pullman, WA 99164-2752</a>
+<a name="1039"><span class="lineNum">    1039 </span>            : *     and</a>
+<a name="1040"><span class="lineNum">    1040 </span>            : *       Alan Genz</a>
+<a name="1041"><span class="lineNum">    1041 </span>            : *       Department of Mathematics</a>
+<a name="1042"><span class="lineNum">    1042 </span>            : *       Washington State University</a>
+<a name="1043"><span class="lineNum">    1043 </span>            : *       Pullman, WA 99164-3113</a>
+<a name="1044"><span class="lineNum">    1044 </span>            : *       Email : alangenz@wsu.edu</a>
+<a name="1045"><span class="lineNum">    1045 </span>            : *</a>
+<a name="1046"><span class="lineNum">    1046 </span>            : * BVN - calculate the probability that X is larger than SH and Y is</a>
+<a name="1047"><span class="lineNum">    1047 </span>            : *       larger than SK.</a>
+<a name="1048"><span class="lineNum">    1048 </span>            : *</a>
+<a name="1049"><span class="lineNum">    1049 </span>            : * Parameters</a>
+<a name="1050"><span class="lineNum">    1050 </span>            : *</a>
+<a name="1051"><span class="lineNum">    1051 </span>            : *   SH  REAL, integration limit</a>
+<a name="1052"><span class="lineNum">    1052 </span>            : *   SK  REAL, integration limit</a>
+<a name="1053"><span class="lineNum">    1053 </span>            : *   R   REAL, correlation coefficient</a>
+<a name="1054"><span class="lineNum">    1054 </span>            : *   LG  INTEGER, number of Gauss Rule Points and Weights</a>
+<a name="1055"><span class="lineNum">    1055 </span>            : *</a>
+<a name="1056"><span class="lineNum">    1056 </span>            :       DOUBLE PRECISION BVN, SH, SK, R, ZERO, TWOPI </a>
+<a name="1057"><span class="lineNum">    1057 </span>            :       INTEGER I, LG, NG</a>
+<a name="1058"><span class="lineNum">    1058 </span>            :       PARAMETER ( ZERO = 0, TWOPI = 6.283185307179586D0 ) </a>
+<a name="1059"><span class="lineNum">    1059 </span>            :       DOUBLE PRECISION X(10,3), W(10,3), AS, A, B, C, D, RS, XS</a>
+<a name="1060"><span class="lineNum">    1060 </span>            :       DOUBLE PRECISION MVNPHI, SN, ASR, H, K, BS, HS, HK</a>
+<a name="1061"><span class="lineNum">    1061 </span>            :       SAVE X, W</a>
+<a name="1062"><span class="lineNum">    1062 </span>            : *     Gauss Legendre Points and Weights, N =  6</a>
+<a name="1063"><span class="lineNum">    1063 </span>            :       DATA ( W(I,1), X(I,1), I = 1,3) /</a>
+<a name="1064"><span class="lineNum">    1064 </span>            :      *  0.1713244923791705D+00,-0.9324695142031522D+00,</a>
+<a name="1065"><span class="lineNum">    1065 </span>            :      *  0.3607615730481384D+00,-0.6612093864662647D+00,</a>
+<a name="1066"><span class="lineNum">    1066 </span>            :      *  0.4679139345726904D+00,-0.2386191860831970D+00/</a>
+<a name="1067"><span class="lineNum">    1067 </span>            : *     Gauss Legendre Points and Weights, N = 12</a>
+<a name="1068"><span class="lineNum">    1068 </span>            :       DATA ( W(I,2), X(I,2), I = 1,6) /</a>
+<a name="1069"><span class="lineNum">    1069 </span>            :      *  0.4717533638651177D-01,-0.9815606342467191D+00,</a>
+<a name="1070"><span class="lineNum">    1070 </span>            :      *  0.1069393259953183D+00,-0.9041172563704750D+00,</a>
+<a name="1071"><span class="lineNum">    1071 </span>            :      *  0.1600783285433464D+00,-0.7699026741943050D+00,</a>
+<a name="1072"><span class="lineNum">    1072 </span>            :      *  0.2031674267230659D+00,-0.5873179542866171D+00,</a>
+<a name="1073"><span class="lineNum">    1073 </span>            :      *  0.2334925365383547D+00,-0.3678314989981802D+00,</a>
+<a name="1074"><span class="lineNum">    1074 </span>            :      *  0.2491470458134029D+00,-0.1252334085114692D+00/</a>
+<a name="1075"><span class="lineNum">    1075 </span>            : *     Gauss Legendre Points and Weights, N = 20</a>
+<a name="1076"><span class="lineNum">    1076 </span>            :       DATA ( W(I,3), X(I,3), I = 1,10) /</a>
+<a name="1077"><span class="lineNum">    1077 </span>            :      *  0.1761400713915212D-01,-0.9931285991850949D+00,</a>
+<a name="1078"><span class="lineNum">    1078 </span>            :      *  0.4060142980038694D-01,-0.9639719272779138D+00,</a>
+<a name="1079"><span class="lineNum">    1079 </span>            :      *  0.6267204833410906D-01,-0.9122344282513259D+00,</a>
+<a name="1080"><span class="lineNum">    1080 </span>            :      *  0.8327674157670475D-01,-0.8391169718222188D+00,</a>
+<a name="1081"><span class="lineNum">    1081 </span>            :      *  0.1019301198172404D+00,-0.7463319064601508D+00,</a>
+<a name="1082"><span class="lineNum">    1082 </span>            :      *  0.1181945319615184D+00,-0.6360536807265150D+00,</a>
+<a name="1083"><span class="lineNum">    1083 </span>            :      *  0.1316886384491766D+00,-0.5108670019508271D+00,</a>
+<a name="1084"><span class="lineNum">    1084 </span>            :      *  0.1420961093183821D+00,-0.3737060887154196D+00,</a>
+<a name="1085"><span class="lineNum">    1085 </span>            :      *  0.1491729864726037D+00,-0.2277858511416451D+00,</a>
+<a name="1086"><span class="lineNum">    1086 </span>            :      *  0.1527533871307259D+00,-0.7652652113349733D-01/</a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">        145 :       IF ( ABS(R) .LT. 0.3 ) THEN</span></a>
+<a name="1088"><span class="lineNum">    1088 </span>            :          NG = 1</a>
+<a name="1089"><span class="lineNum">    1089 </span>            :          LG = 3</a>
+<a name="1090"><span class="lineNum">    1090 </span><span class="lineCov">          5 :       ELSE IF ( ABS(R) .LT. 0.75 ) THEN</span></a>
+<a name="1091"><span class="lineNum">    1091 </span>            :          NG = 2</a>
+<a name="1092"><span class="lineNum">    1092 </span>            :          LG = 6</a>
+<a name="1093"><span class="lineNum">    1093 </span>            :       ELSE </a>
+<a name="1094"><span class="lineNum">    1094 </span><span class="lineCov">          5 :          NG = 3</span></a>
+<a name="1095"><span class="lineNum">    1095 </span><span class="lineCov">          5 :          LG = 10</span></a>
+<a name="1096"><span class="lineNum">    1096 </span>            :       ENDIF</a>
+<a name="1097"><span class="lineNum">    1097 </span><span class="lineCov">        145 :       H = SH</span></a>
+<a name="1098"><span class="lineNum">    1098 </span><span class="lineCov">        145 :       K = SK </span></a>
+<a name="1099"><span class="lineNum">    1099 </span><span class="lineCov">        145 :       HK = H*K</span></a>
+<a name="1100"><span class="lineNum">    1100 </span><span class="lineCov">        145 :       BVN = 0</span></a>
+<a name="1101"><span class="lineNum">    1101 </span><span class="lineCov">        145 :       IF ( ABS(R) .LT. 0.925 ) THEN</span></a>
+<a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">        145 :          HS = ( H*H + K*K )/2</span></a>
+<a name="1103"><span class="lineNum">    1103 </span><span class="lineCov">        145 :          ASR = ASIN(R)</span></a>
+<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">        615 :          DO I = 1, LG</span></a>
+<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">        470 :             SN = SIN(ASR*( X(I,NG)+1 )/2)</span></a>
+<a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">        470 :             BVN = BVN + W(I,NG)*EXP( ( SN*HK - HS )/( 1 - SN*SN ) )</span></a>
+<a name="1107"><span class="lineNum">    1107 </span><span class="lineCov">        470 :             SN = SIN(ASR*(-X(I,NG)+1 )/2)</span></a>
+<a name="1108"><span class="lineNum">    1108 </span><span class="lineCov">        615 :             BVN = BVN + W(I,NG)*EXP( ( SN*HK - HS )/( 1 - SN*SN ) )</span></a>
+<a name="1109"><span class="lineNum">    1109 </span>            :          END DO</a>
+<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">        145 :          BVN = BVN*ASR/(2*TWOPI) + MVNPHI(-H)*MVNPHI(-K) </span></a>
+<a name="1111"><span class="lineNum">    1111 </span>            :       ELSE</a>
+<a name="1112"><span class="lineNum">    1112 </span><span class="lineNoCov">          0 :          IF ( R .LT. 0 ) THEN</span></a>
+<a name="1113"><span class="lineNum">    1113 </span><span class="lineNoCov">          0 :             K = -K</span></a>
+<a name="1114"><span class="lineNum">    1114 </span><span class="lineNoCov">          0 :             HK = -HK</span></a>
+<a name="1115"><span class="lineNum">    1115 </span>            :          ENDIF</a>
+<a name="1116"><span class="lineNum">    1116 </span><span class="lineNoCov">          0 :          IF ( ABS(R) .LT. 1 ) THEN</span></a>
+<a name="1117"><span class="lineNum">    1117 </span><span class="lineNoCov">          0 :             AS = ( 1 - R )*( 1 + R )</span></a>
+<a name="1118"><span class="lineNum">    1118 </span><span class="lineNoCov">          0 :             A = SQRT(AS)</span></a>
+<a name="1119"><span class="lineNum">    1119 </span><span class="lineNoCov">          0 :             BS = ( H - K )**2</span></a>
+<a name="1120"><span class="lineNum">    1120 </span><span class="lineNoCov">          0 :             C = ( 4 - HK )/8 </span></a>
+<a name="1121"><span class="lineNum">    1121 </span><span class="lineNoCov">          0 :             D = ( 12 - HK )/16</span></a>
+<a name="1122"><span class="lineNum">    1122 </span>            :             BVN = A*EXP( -(BS/AS + HK)/2 )</a>
+<a name="1123"><span class="lineNum">    1123 </span><span class="lineNoCov">          0 :      +             *( 1 - C*(BS - AS)*(1 - D*BS/5)/3 + C*D*AS*AS/5 )</span></a>
+<a name="1124"><span class="lineNum">    1124 </span><span class="lineNoCov">          0 :             IF ( HK .GT. -160 ) THEN</span></a>
+<a name="1125"><span class="lineNum">    1125 </span><span class="lineNoCov">          0 :                B = SQRT(BS)</span></a>
+<a name="1126"><span class="lineNum">    1126 </span>            :                BVN = BVN - EXP(-HK/2)*SQRT(TWOPI)*MVNPHI(-B/A)*B</a>
+<a name="1127"><span class="lineNum">    1127 </span><span class="lineNoCov">          0 :      +                    *( 1 - C*BS*( 1 - D*BS/5 )/3 ) </span></a>
+<a name="1128"><span class="lineNum">    1128 </span>            :             ENDIF</a>
+<a name="1129"><span class="lineNum">    1129 </span><span class="lineNoCov">          0 :             A = A/2</span></a>
+<a name="1130"><span class="lineNum">    1130 </span><span class="lineNoCov">          0 :             DO I = 1, LG</span></a>
+<a name="1131"><span class="lineNum">    1131 </span><span class="lineNoCov">          0 :                XS = ( A*(X(I,NG)+1) )**2</span></a>
+<a name="1132"><span class="lineNum">    1132 </span><span class="lineNoCov">          0 :                RS = SQRT( 1 - XS )</span></a>
+<a name="1133"><span class="lineNum">    1133 </span>            :                BVN = BVN + A*W(I,NG)*</a>
+<a name="1134"><span class="lineNum">    1134 </span>            :      +              ( EXP( -BS/(2*XS) - HK/(1+RS) )/RS </a>
+<a name="1135"><span class="lineNum">    1135 </span><span class="lineNoCov">          0 :      +              - EXP( -(BS/XS+HK)/2 )*( 1 + C*XS*( 1 + D*XS ) ) )</span></a>
+<a name="1136"><span class="lineNum">    1136 </span><span class="lineNoCov">          0 :                XS = AS*(-X(I,NG)+1)**2/4</span></a>
+<a name="1137"><span class="lineNum">    1137 </span><span class="lineNoCov">          0 :                RS = SQRT( 1 - XS )</span></a>
+<a name="1138"><span class="lineNum">    1138 </span>            :                BVN = BVN + A*W(I,NG)*EXP( -(BS/XS + HK)/2 )</a>
+<a name="1139"><span class="lineNum">    1139 </span>            :      +                    *( EXP( -HK*(1-RS)/(2*(1+RS)) )/RS </a>
+<a name="1140"><span class="lineNum">    1140 </span><span class="lineNoCov">          0 :      +                       - ( 1 + C*XS*( 1 + D*XS ) ) )</span></a>
+<a name="1141"><span class="lineNum">    1141 </span>            :             END DO</a>
+<a name="1142"><span class="lineNum">    1142 </span><span class="lineNoCov">          0 :             BVN = -BVN/TWOPI</span></a>
+<a name="1143"><span class="lineNum">    1143 </span>            :          ENDIF</a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineNoCov">          0 :          IF ( R .GT. 0 ) BVN =  BVN + MVNPHI( -MAX( H, K ) )</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineNoCov">          0 :          IF ( R .LT. 0 ) BVN = -BVN + MAX( ZERO, MVNPHI(-H)-MVNPHI(-K) )</span></a>
+<a name="1146"><span class="lineNum">    1146 </span>            :       ENDIF</a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">        145 :       BVU = BVN</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">        145 :       END</span></a>
+<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">      29728 :       DOUBLE PRECISION FUNCTION MVNUNI()</span></a>
+<a name="1150"><span class="lineNum">    1150 </span>            : *</a>
+<a name="1151"><span class="lineNum">    1151 </span>            : *     Uniform (0,1) random number generator</a>
+<a name="1152"><span class="lineNum">    1152 </span>            : *</a>
+<a name="1153"><span class="lineNum">    1153 </span>            : *     Reference:</a>
+<a name="1154"><span class="lineNum">    1154 </span>            : *     L'Ecuyer, Pierre (1996), </a>
+<a name="1155"><span class="lineNum">    1155 </span>            : *     &quot;Combined Multiple Recursive Random Number Generators&quot;</a>
+<a name="1156"><span class="lineNum">    1156 </span>            : *     Operations Research 44, pp. 816-822.</a>
+<a name="1157"><span class="lineNum">    1157 </span>            : *</a>
+<a name="1158"><span class="lineNum">    1158 </span>            : *</a>
+<a name="1159"><span class="lineNum">    1159 </span>            :       INTEGER A12, A13, A21, A23, P12, P13, P21, P23</a>
+<a name="1160"><span class="lineNum">    1160 </span>            :       INTEGER Q12, Q13, Q21, Q23, R12, R13, R21, R23</a>
+<a name="1161"><span class="lineNum">    1161 </span>            :       INTEGER X10, X11, X12, X20, X21, X22, Z, M1, M2, H </a>
+<a name="1162"><span class="lineNum">    1162 </span>            :       DOUBLE PRECISION INVMP1</a>
+<a name="1163"><span class="lineNum">    1163 </span>            :       PARAMETER ( M1 = 2147483647, M2 = 2145483479 )</a>
+<a name="1164"><span class="lineNum">    1164 </span>            :       PARAMETER ( A12 =   63308, Q12 = 33921, R12 = 12979 )</a>
+<a name="1165"><span class="lineNum">    1165 </span>            :       PARAMETER ( A13 = -183326, Q13 = 11714, R13 =  2883 )</a>
+<a name="1166"><span class="lineNum">    1166 </span>            :       PARAMETER ( A21 =   86098, Q21 = 24919, R21 =  7417 )</a>
+<a name="1167"><span class="lineNum">    1167 </span>            :       PARAMETER ( A23 = -539608, Q23 =  3976, R23 =  2071 )</a>
+<a name="1168"><span class="lineNum">    1168 </span>            :       PARAMETER ( INVMP1 = 4.656612873077392578125D-10 ) </a>
+<a name="1169"><span class="lineNum">    1169 </span>            : *                 INVMP1 = 1/(M1+1)</a>
+<a name="1170"><span class="lineNum">    1170 </span>            :       SAVE X10, X11, X12, X20, X21, X22</a>
+<a name="1171"><span class="lineNum">    1171 </span>            :       DATA       X10,      X11,      X12,      X20,      X21,      X22</a>
+<a name="1172"><span class="lineNum">    1172 </span>            :      &amp;    / 15485857, 17329489, 36312197, 55911127, 75906931, 96210113 /</a>
+<a name="1173"><span class="lineNum">    1173 </span>            : *</a>
+<a name="1174"><span class="lineNum">    1174 </span>            : *     Component 1</a>
+<a name="1175"><span class="lineNum">    1175 </span>            : *</a>
+<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">      29728 :       H = X10/Q13</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">      29728 :       P13 = -A13*( X10 - H*Q13 ) - H*R13</span></a>
+<a name="1178"><span class="lineNum">    1178 </span><span class="lineCov">      29728 :       H = X11/Q12</span></a>
+<a name="1179"><span class="lineNum">    1179 </span><span class="lineCov">      29728 :       P12 =  A12*( X11 - H*Q12 ) - H*R12</span></a>
+<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">      29728 :       IF ( P13 .LT. 0 ) P13 = P13 + M1</span></a>
+<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">      29728 :       IF ( P12 .LT. 0 ) P12 = P12 + M1</span></a>
+<a name="1182"><span class="lineNum">    1182 </span><span class="lineCov">      29728 :       X10 = X11 </span></a>
+<a name="1183"><span class="lineNum">    1183 </span><span class="lineCov">      29728 :       X11 = X12</span></a>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">      29728 :       X12 = P12 - P13</span></a>
+<a name="1185"><span class="lineNum">    1185 </span><span class="lineCov">      29728 :       IF ( X12 .LT. 0 ) X12 = X12 + M1</span></a>
+<a name="1186"><span class="lineNum">    1186 </span>            : *</a>
+<a name="1187"><span class="lineNum">    1187 </span>            : *     Component 2</a>
+<a name="1188"><span class="lineNum">    1188 </span>            : *</a>
+<a name="1189"><span class="lineNum">    1189 </span><span class="lineCov">      29728 :       H = X20/Q23</span></a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">      29728 :       P23 = -A23*( X20 - H*Q23 ) - H*R23</span></a>
+<a name="1191"><span class="lineNum">    1191 </span><span class="lineCov">      29728 :       H = X22/Q21</span></a>
+<a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">      29728 :       P21 =  A21*( X22 - H*Q21 ) - H*R21</span></a>
+<a name="1193"><span class="lineNum">    1193 </span><span class="lineCov">      29728 :       IF ( P23 .LT. 0 ) P23 = P23 + M2</span></a>
+<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">      29728 :       IF ( P21 .LT. 0 ) P21 = P21 + M2</span></a>
+<a name="1195"><span class="lineNum">    1195 </span><span class="lineCov">      29728 :       X20 = X21 </span></a>
+<a name="1196"><span class="lineNum">    1196 </span><span class="lineCov">      29728 :       X21 = X22</span></a>
+<a name="1197"><span class="lineNum">    1197 </span><span class="lineCov">      29728 :       X22 = P21 - P23</span></a>
+<a name="1198"><span class="lineNum">    1198 </span><span class="lineCov">      29728 :       IF ( X22 .LT. 0 ) X22 = X22 + M2</span></a>
+<a name="1199"><span class="lineNum">    1199 </span>            : *</a>
+<a name="1200"><span class="lineNum">    1200 </span>            : *     Combination</a>
+<a name="1201"><span class="lineNum">    1201 </span>            : *</a>
+<a name="1202"><span class="lineNum">    1202 </span><span class="lineCov">      29728 :       Z = X12 - X22</span></a>
+<a name="1203"><span class="lineNum">    1203 </span><span class="lineCov">      29728 :       IF ( Z .LE. 0 ) Z = Z + M1</span></a>
+<a name="1204"><span class="lineNum">    1204 </span><span class="lineCov">      29728 :       MVNUNI = Z*INVMP1</span></a>
+<a name="1205"><span class="lineNum">    1205 </span><span class="lineCov">    1664442 :       END</span></a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - optimize/cobyla/trstlp.f</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">optimize/cobyla</a> - trstlp.f<span style="font-size: 80%;"> (source / <a href="trstlp.f.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">276</td>
+            <td class="headerCovTableEntry">319</td>
+            <td class="headerCovTableEntryMed">86.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : C------------------------------------------------------------------------------</a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">      37028 :       SUBROUTINE TRSTLP (N,M,A,B,RHO,DX,IFULL,IACT,Z,ZDOTA,VMULTC,</span></a>
+<a name="3"><span class="lineNum">       3 </span>            :      1  SDIRN,DXNEW,VMULTD,IPRINT)</a>
+<a name="4"><span class="lineNum">       4 </span>            :       IMPLICIT DOUBLE PRECISION (A-H,O-Z)</a>
+<a name="5"><span class="lineNum">       5 </span>            :       DOUBLE PRECISION TEMP</a>
+<a name="6"><span class="lineNum">       6 </span>            :       DIMENSION A(N,*),B(*),DX(*),IACT(*),Z(N,*),ZDOTA(*),</a>
+<a name="7"><span class="lineNum">       7 </span>            :      1  VMULTC(*),SDIRN(*),DXNEW(*),VMULTD(*)</a>
+<a name="8"><span class="lineNum">       8 </span>            : C</a>
+<a name="9"><span class="lineNum">       9 </span>            : C     This subroutine calculates an N-component vector DX by applying the</a>
+<a name="10"><span class="lineNum">      10 </span>            : C     following two stages. In the first stage, DX is set to the shortest</a>
+<a name="11"><span class="lineNum">      11 </span>            : C     vector that minimizes the greatest violation of the constraints</a>
+<a name="12"><span class="lineNum">      12 </span>            : C       A(1,K)*DX(1)+A(2,K)*DX(2)+...+A(N,K)*DX(N) .GE. B(K), K=2,3,...,M,</a>
+<a name="13"><span class="lineNum">      13 </span>            : C     subject to the Euclidean length of DX being at most RHO. If its length is</a>
+<a name="14"><span class="lineNum">      14 </span>            : C     strictly less than RHO, then we use the resultant freedom in DX to</a>
+<a name="15"><span class="lineNum">      15 </span>            : C     minimize the objective function</a>
+<a name="16"><span class="lineNum">      16 </span>            : C              -A(1,M+1)*DX(1)-A(2,M+1)*DX(2)-...-A(N,M+1)*DX(N)</a>
+<a name="17"><span class="lineNum">      17 </span>            : C     subject to no increase in any greatest constraint violation. This</a>
+<a name="18"><span class="lineNum">      18 </span>            : C     notation allows the gradient of the objective function to be regarded as</a>
+<a name="19"><span class="lineNum">      19 </span>            : C     the gradient of a constraint. Therefore the two stages are distinguished</a>
+<a name="20"><span class="lineNum">      20 </span>            : C     by MCON .EQ. M and MCON .GT. M respectively. It is possible that a</a>
+<a name="21"><span class="lineNum">      21 </span>            : C     degeneracy may prevent DX from attaining the target length RHO. Then the</a>
+<a name="22"><span class="lineNum">      22 </span>            : C     value IFULL=0 would be set, but usually IFULL=1 on return.</a>
+<a name="23"><span class="lineNum">      23 </span>            : C</a>
+<a name="24"><span class="lineNum">      24 </span>            : C     In general NACT is the number of constraints in the active set and</a>
+<a name="25"><span class="lineNum">      25 </span>            : C     IACT(1),...,IACT(NACT) are their indices, while the remainder of IACT</a>
+<a name="26"><span class="lineNum">      26 </span>            : C     contains a permutation of the remaining constraint indices. Further, Z is</a>
+<a name="27"><span class="lineNum">      27 </span>            : C     an orthogonal matrix whose first NACT columns can be regarded as the</a>
+<a name="28"><span class="lineNum">      28 </span>            : C     result of Gram-Schmidt applied to the active constraint gradients. For</a>
+<a name="29"><span class="lineNum">      29 </span>            : C     J=1,2,...,NACT, the number ZDOTA(J) is the scalar product of the J-th</a>
+<a name="30"><span class="lineNum">      30 </span>            : C     column of Z with the gradient of the J-th active constraint. DX is the</a>
+<a name="31"><span class="lineNum">      31 </span>            : C     current vector of variables and here the residuals of the active</a>
+<a name="32"><span class="lineNum">      32 </span>            : C     constraints should be zero. Further, the active constraints have</a>
+<a name="33"><span class="lineNum">      33 </span>            : C     nonnegative Lagrange multipliers that are held at the beginning of</a>
+<a name="34"><span class="lineNum">      34 </span>            : C     VMULTC. The remainder of this vector holds the residuals of the inactive</a>
+<a name="35"><span class="lineNum">      35 </span>            : C     constraints at DX, the ordering of the components of VMULTC being in</a>
+<a name="36"><span class="lineNum">      36 </span>            : C     agreement with the permutation of the indices of the constraints that is</a>
+<a name="37"><span class="lineNum">      37 </span>            : C     in IACT. All these residuals are nonnegative, which is achieved by the</a>
+<a name="38"><span class="lineNum">      38 </span>            : C     shift RESMAX that makes the least residual zero.</a>
+<a name="39"><span class="lineNum">      39 </span>            : C</a>
+<a name="40"><span class="lineNum">      40 </span>            : C     Initialize Z and some other variables. The value of RESMAX will be</a>
+<a name="41"><span class="lineNum">      41 </span>            : C     appropriate to DX=0, while ICON will be the index of a most violated</a>
+<a name="42"><span class="lineNum">      42 </span>            : C     constraint if RESMAX is positive. Usually during the first stage the</a>
+<a name="43"><span class="lineNum">      43 </span>            : C     vector SDIRN gives a search direction that reduces all the active</a>
+<a name="44"><span class="lineNum">      44 </span>            : C     constraint violations by one simultaneously.</a>
+<a name="45"><span class="lineNum">      45 </span>            : C</a>
+<a name="46"><span class="lineNum">      46 </span>            : </a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :          print *, ' '</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :          print *, 'BEFORE trstlp:'</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :          PRINT *, '  **DX = ', (DX(I),I=1,N)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :          PRINT *, '  **IACT = ', (IACT(I),I=1,M+1)</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :          PRINT *, 'M,N,RHO,IFULL =', M, N, RHO, IFULL</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :          PRINT *, '  **A = ', ((A(I,K),I=1,N),K=1,M+1)</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :          PRINT *, '  **B = ', (B(I),I=1,M)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :          PRINT *, '  **Z = ', ((Z(I,K),I=1,N),K=1,N)</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :          PRINT *, '  **ZDOTA = ', (ZDOTA(I),I=1,N)</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :          PRINT *, '  **VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :          PRINT *, '  **SDIRN = ', (SDIRN(I),I=1,N)</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :          PRINT *, '  **DXNEW = ', (DXNEW(I),I=1,N)</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :          PRINT *, '  **VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :          PRINT *, ' '</span></a>
+<a name="62"><span class="lineNum">      62 </span>            :       END IF</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">      37028 :       ICON=0</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">      37028 :       NACTX=0</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">      37028 :       RESOLD=0</span></a>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">      37028 :       IFULL=1</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">      37028 :       MCON=M</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">      37028 :       NACT=0</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      37028 :       RESMAX=0.0d0</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">     113145 :       DO 20 I=1,N</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">     244296 :       DO 10 J=1,N</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">     244296 :    10 Z(I,J)=0.0d0</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">      76117 :       Z(I,I)=1.0d0</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">     113145 :    20 DX(I)=0.0d0</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      37028 :       IF (M .GE. 1) THEN</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       3652 :           DO 30 K=1,M</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       2637 :           IF (B(K) .GT. RESMAX) THEN</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        810 :               RESMAX=B(K)</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        810 :               ICON=K</span></a>
+<a name="82"><span class="lineNum">      82 </span>            :           END IF</a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       1015 :    30     CONTINUE</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       3652 :           DO 40 K=1,M</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       2637 :           IACT(K)=K</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       3652 :    40     VMULTC(K)=RESMAX-B(K)</span></a>
+<a name="87"><span class="lineNum">      87 </span>            :       END IF</a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :          PRINT *, '  1. VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
+<a name="90"><span class="lineNum">      90 </span>            :       END IF</a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      37028 :       IF (RESMAX .EQ. 0.0d0) GOTO 480</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       3574 :       DO 50 I=1,N</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       3574 :    50 SDIRN(I)=0.0d0</span></a>
+<a name="94"><span class="lineNum">      94 </span>            : C</a>
+<a name="95"><span class="lineNum">      95 </span>            : C     End the current stage of the calculation if 3 consecutive iterations</a>
+<a name="96"><span class="lineNum">      96 </span>            : C     have either failed to reduce the best calculated value of the objective</a>
+<a name="97"><span class="lineNum">      97 </span>            : C     function or to increase the number of active constraints since the best</a>
+<a name="98"><span class="lineNum">      98 </span>            : C     value was calculated. This strategy prevents cycling, but there is a</a>
+<a name="99"><span class="lineNum">      99 </span>            : C     remote possibility that it will cause premature termination.</a>
+<a name="100"><span class="lineNum">     100 </span>            : C</a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">      37475 :    60 OPTOLD=0.0d0</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">      37475 :       ICOUNT=0</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">      38336 :    70 IF (MCON .EQ. M) THEN</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">        803 :           OPTNEW=RESMAX</span></a>
+<a name="105"><span class="lineNum">     105 </span>            :       ELSE</a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">      37533 :           OPTNEW=0.0d0</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">     114509 :           DO 80 I=1,N</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     114509 :    80     OPTNEW=OPTNEW-DX(I)*A(I,MCON)</span></a>
+<a name="109"><span class="lineNum">     109 </span>            :       END IF</a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      38336 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :          PRINT *, ' ICOUNT, OPTNEW, OPTOLD = ', ICOUNT, OPTNEW, OPTOLD</span></a>
+<a name="112"><span class="lineNum">     112 </span>            :       END IF</a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      38336 :       IF (ICOUNT .EQ. 0 .OR. OPTNEW .LT. OPTOLD) THEN</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      37899 :           OPTOLD=OPTNEW</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      37899 :           NACTX=NACT</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      37899 :           ICOUNT=3</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        437 :       ELSE IF (NACT .GT. NACTX) THEN</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        383 :           NACTX=NACT</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        383 :           ICOUNT=3</span></a>
+<a name="120"><span class="lineNum">     120 </span>            :       ELSE</a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         54 :           ICOUNT=ICOUNT-1</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         54 :           IF (ICOUNT .EQ. 0) GOTO 490</span></a>
+<a name="123"><span class="lineNum">     123 </span>            :       END IF</a>
+<a name="124"><span class="lineNum">     124 </span>            : C</a>
+<a name="125"><span class="lineNum">     125 </span>            : C     If ICON exceeds NACT, then we add the constraint with index IACT(ICON) to</a>
+<a name="126"><span class="lineNum">     126 </span>            : C     the active set. Apply Givens rotations so that the last N-NACT-1 columns</a>
+<a name="127"><span class="lineNum">     127 </span>            : C     of Z are orthogonal to the gradient of the new constraint, a scalar</a>
+<a name="128"><span class="lineNum">     128 </span>            : C     product being set to zero if its nonzero value could be due to computer</a>
+<a name="129"><span class="lineNum">     129 </span>            : C     rounding errors. The array DXNEW is used for working space.</a>
+<a name="130"><span class="lineNum">     130 </span>            : C</a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      38336 :       IF (ICON .LE. NACT) GOTO 260</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">      38286 :       KK=IACT(ICON)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     119185 :       DO 90 I=1,N</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     119185 :    90 DXNEW(I)=A(I,KK)</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      38286 :       TOT=0.0D0</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      38286 :       K=N</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     117475 :   100 IF (K .GT. NACT) THEN</span></a>
+<a name="138"><span class="lineNum">     138 </span>            :           SP=0.0d0</a>
+<a name="139"><span class="lineNum">     139 </span>            :           SPABS=0.0d0</a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     265177 :           DO 110 I=1,N</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">     185988 :           TEMP=Z(I,K)*DXNEW(I)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     185988 :           SP=SP+TEMP</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     265177 :   110     SPABS=SPABS+DABS(TEMP)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">      79189 :           ACCA=SPABS+0.1d0*DABS(SP)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      79189 :           ACCB=SPABS+0.2d0*DABS(SP)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      79189 :           IF ((SPABS .GE. ACCA) .OR. (ACCA .GE. ACCB)) SP=0.0D0</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      79189 :           IF (TOT .EQ. 0.0D0) THEN</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      38375 :               TOT=SP</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :           ELSE</a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      40814 :               KP=K+1</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      40814 :               TEMP=DSQRT(SP*SP+TOT*TOT)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">      40814 :               ALPHA=SP/TEMP</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">      40814 :               BETA=TOT/TEMP</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">      40814 :               TOT=TEMP</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     145609 :               DO 120 I=1,N</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     104795 :               TEMP=ALPHA*Z(I,K)+BETA*Z(I,KP)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     104795 :               Z(I,KP)=ALPHA*Z(I,KP)-BETA*Z(I,K)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     145609 :   120         Z(I,K)=TEMP</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :           END IF</a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      79189 :           K=K-1</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      79189 :           GOTO 100</span></a>
+<a name="162"><span class="lineNum">     162 </span>            :       END IF</a>
+<a name="163"><span class="lineNum">     163 </span>            : C</a>
+<a name="164"><span class="lineNum">     164 </span>            : C     Add the new constraint if this can be done without a deletion from the</a>
+<a name="165"><span class="lineNum">     165 </span>            : C     active set.</a>
+<a name="166"><span class="lineNum">     166 </span>            : C</a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      38286 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :          PRINT *, '*TOT, NACT, ICON = ', TOT, NACT, ICON</span></a>
+<a name="169"><span class="lineNum">     169 </span>            :       END IF</a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      38286 :       IF (TOT .NE. 0.0d0) THEN</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      38210 :           NACT=NACT+1</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      38210 :           ZDOTA(NACT)=TOT</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      38210 :           VMULTC(ICON)=VMULTC(NACT)</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">      38210 :           VMULTC(NACT)=0.0d0</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      38210 :           GOTO 210</span></a>
+<a name="176"><span class="lineNum">     176 </span>            :       END IF</a>
+<a name="177"><span class="lineNum">     177 </span>            : C</a>
+<a name="178"><span class="lineNum">     178 </span>            : C     The next instruction is reached if a deletion has to be made from the</a>
+<a name="179"><span class="lineNum">     179 </span>            : C     active set in order to make room for the new active constraint, because</a>
+<a name="180"><span class="lineNum">     180 </span>            : C     the new constraint gradient is a linear combination of the gradients of</a>
+<a name="181"><span class="lineNum">     181 </span>            : C     the old active constraints. Set the elements of VMULTD to the multipliers</a>
+<a name="182"><span class="lineNum">     182 </span>            : C     of the linear combination. Further, set IOUT to the index of the</a>
+<a name="183"><span class="lineNum">     183 </span>            : C     constraint to be deleted, but branch if no suitable index can be found.</a>
+<a name="184"><span class="lineNum">     184 </span>            : C</a>
+<a name="185"><span class="lineNum">     185 </span>            :       RATIO=-1.0d0</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :       K=NACT</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         78 :   130 ZDOTV=0.0d0</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         78 :       ZDVABS=0.0d0</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">        234 :       DO 140 I=1,N</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        156 :       TEMP=Z(I,K)*DXNEW(I)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        156 :       ZDOTV=ZDOTV+TEMP</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        234 :   140 ZDVABS=ZDVABS+DABS(TEMP)</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         78 :       ACCA=ZDVABS+0.1d0*DABS(ZDOTV)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         78 :       ACCB=ZDVABS+0.2d0*DABS(ZDOTV)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         78 :       IF (ZDVABS .LT. ACCA .AND. ACCA .LT. ACCB) THEN</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         47 :           TEMP=ZDOTV/ZDOTA(K)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         47 :           IF (TEMP .GT. 0.0d0 .AND. IACT(K) .LE. M) THEN</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 :               TEMPA=VMULTC(K)/TEMP</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :               IF (RATIO .LT. 0.0d0 .OR. TEMPA .LT. RATIO) THEN</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         47 :                   RATIO=TEMPA</span></a>
+<a name="201"><span class="lineNum">     201 </span>            :                   IOUT=K</a>
+<a name="202"><span class="lineNum">     202 </span>            :               END IF</a>
+<a name="203"><span class="lineNum">     203 </span>            :            END IF</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         47 :           IF (K .GE. 2) THEN</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :               KW=IACT(K)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          6 :               DO 150 I=1,N</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          6 :   150         DXNEW(I)=DXNEW(I)-TEMP*A(I,KW)</span></a>
+<a name="208"><span class="lineNum">     208 </span>            :           END IF</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         47 :           VMULTD(K)=TEMP</span></a>
+<a name="210"><span class="lineNum">     210 </span>            :       ELSE</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         31 :           VMULTD(K)=0.0d0</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :       END IF</a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         78 :       K=K-1</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         78 :       IF (K .GT. 0) GOTO 130</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         76 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :          PRINT *, '  1. VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
+<a name="217"><span class="lineNum">     217 </span>            :       END IF</a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         76 :       IF (RATIO .LT. 0.0d0) GOTO 490</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : C</a>
+<a name="220"><span class="lineNum">     220 </span>            : C     Revise the Lagrange multipliers and reorder the active constraints so</a>
+<a name="221"><span class="lineNum">     221 </span>            : C     that the one to be replaced is at the end of the list. Also calculate the</a>
+<a name="222"><span class="lineNum">     222 </span>            : C     new value of ZDOTA(NACT) and branch if it is not acceptable.</a>
+<a name="223"><span class="lineNum">     223 </span>            : C</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          3 :       DO 160 K=1,NACT</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          3 :   160 VMULTC(K)=DMAX1(0.0d0,VMULTC(K)-RATIO*VMULTD(K))</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          1 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :          PRINT *, '  2. VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
+<a name="228"><span class="lineNum">     228 </span>            :       END IF</a>
+<a name="229"><span class="lineNum">     229 </span>            :       IF (ICON .LT. NACT) THEN</a>
+<a name="230"><span class="lineNum">     230 </span>            :           ISAVE=IACT(ICON)</a>
+<a name="231"><span class="lineNum">     231 </span>            :           VSAVE=VMULTC(ICON)</a>
+<a name="232"><span class="lineNum">     232 </span>            :           K=ICON</a>
+<a name="233"><span class="lineNum">     233 </span>            :   170     KP=K+1</a>
+<a name="234"><span class="lineNum">     234 </span>            :           KW=IACT(KP)</a>
+<a name="235"><span class="lineNum">     235 </span>            :           SP=0.0d0</a>
+<a name="236"><span class="lineNum">     236 </span>            :           DO 180 I=1,N</a>
+<a name="237"><span class="lineNum">     237 </span>            :   180     SP=SP+Z(I,K)*A(I,KW)</a>
+<a name="238"><span class="lineNum">     238 </span>            :           TEMP=SQRT(SP*SP+ZDOTA(KP)**2)</a>
+<a name="239"><span class="lineNum">     239 </span>            :           ALPHA=ZDOTA(KP)/TEMP</a>
+<a name="240"><span class="lineNum">     240 </span>            :           BETA=SP/TEMP</a>
+<a name="241"><span class="lineNum">     241 </span>            :           ZDOTA(KP)=ALPHA*ZDOTA(K)</a>
+<a name="242"><span class="lineNum">     242 </span>            :           ZDOTA(K)=TEMP</a>
+<a name="243"><span class="lineNum">     243 </span>            :           DO 190 I=1,N</a>
+<a name="244"><span class="lineNum">     244 </span>            :           TEMP=ALPHA*Z(I,KP)+BETA*Z(I,K)</a>
+<a name="245"><span class="lineNum">     245 </span>            :           Z(I,KP)=ALPHA*Z(I,K)-BETA*Z(I,KP)</a>
+<a name="246"><span class="lineNum">     246 </span>            :   190     Z(I,K)=TEMP</a>
+<a name="247"><span class="lineNum">     247 </span>            :           IACT(K)=KW</a>
+<a name="248"><span class="lineNum">     248 </span>            :           VMULTC(K)=VMULTC(KP)</a>
+<a name="249"><span class="lineNum">     249 </span>            :           K=KP</a>
+<a name="250"><span class="lineNum">     250 </span>            :           IF (K .LT. NACT) GOTO 170</a>
+<a name="251"><span class="lineNum">     251 </span>            :           IACT(K)=ISAVE</a>
+<a name="252"><span class="lineNum">     252 </span>            :           VMULTC(K)=VSAVE</a>
+<a name="253"><span class="lineNum">     253 </span>            :       END IF</a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 :       TEMP=0.0d0</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          3 :       DO 200 I=1,N</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          3 :   200 TEMP=TEMP+Z(I,NACT)*A(I,KK)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          1 :       IF (TEMP .EQ. 0.0d0) GOTO 490</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          1 :       ZDOTA(NACT)=TEMP</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 :       VMULTC(ICON)=0.0d0</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          1 :       VMULTC(NACT)=RATIO</span></a>
+<a name="261"><span class="lineNum">     261 </span>            : C</a>
+<a name="262"><span class="lineNum">     262 </span>            : C     Update IACT and ensure that the objective function continues to be</a>
+<a name="263"><span class="lineNum">     263 </span>            : C     treated as the last active constraint when MCON&gt;M.</a>
+<a name="264"><span class="lineNum">     264 </span>            : C</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">      38211 :   210 IACT(ICON)=IACT(NACT)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      38211 :       IACT(NACT)=KK</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">      38211 :       IF (MCON .GT. M .AND. KK .NE. MCON) THEN</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        620 :           K=NACT-1</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        620 :           SP=0.0d0</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">       2738 :           DO 220 I=1,N</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">       2738 :   220     SP=SP+Z(I,K)*A(I,KK)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        620 :           TEMP=SQRT(SP*SP+ZDOTA(NACT)**2)</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        620 :           ALPHA=ZDOTA(NACT)/TEMP</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        620 :           BETA=SP/TEMP</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        620 :           ZDOTA(NACT)=ALPHA*ZDOTA(K)</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        620 :           ZDOTA(K)=TEMP</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       2738 :           DO 230 I=1,N</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       2118 :           TEMP=ALPHA*Z(I,NACT)+BETA*Z(I,K)</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       2118 :           Z(I,NACT)=ALPHA*Z(I,K)-BETA*Z(I,NACT)</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       2738 :   230     Z(I,K)=TEMP</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        620 :           IACT(NACT)=IACT(K)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        620 :           IACT(K)=KK</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        620 :           TEMP=VMULTC(K)</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">        620 :           VMULTC(K)=VMULTC(NACT)</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        620 :           VMULTC(NACT)=TEMP</span></a>
+<a name="286"><span class="lineNum">     286 </span>            :       END IF</a>
+<a name="287"><span class="lineNum">     287 </span>            : C</a>
+<a name="288"><span class="lineNum">     288 </span>            : C     If stage one is in progress, then set SDIRN to the direction of the next</a>
+<a name="289"><span class="lineNum">     289 </span>            : C     change to the current vector of variables.</a>
+<a name="290"><span class="lineNum">     290 </span>            : C</a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      38211 :       IF (MCON .GT. M) GOTO 320</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">        803 :       KK=IACT(NACT)</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">        803 :       TEMP=0.0d0</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       4884 :       DO 240 I=1,N</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       4884 :   240 TEMP=TEMP+SDIRN(I)*A(I,KK)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        803 :       TEMP=TEMP-1.0d0</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        803 :       TEMP=TEMP/ZDOTA(NACT)</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       4884 :       DO 250 I=1,N</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">       4884 :   250 SDIRN(I)=SDIRN(I)-TEMP*Z(I,NACT)</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">         50 :       GOTO 340</span></a>
+<a name="301"><span class="lineNum">     301 </span>            : C</a>
+<a name="302"><span class="lineNum">     302 </span>            : C     Delete the constraint that has the index IACT(ICON) from the active set.</a>
+<a name="303"><span class="lineNum">     303 </span>            : C</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         50 :   260 IF (ICON .LT. NACT) THEN</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         50 :           ISAVE=IACT(ICON)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         50 :           VSAVE=VMULTC(ICON)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         50 :           K=ICON</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         56 :   270     KP=K+1</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         56 :           KK=IACT(KP)</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         56 :           SP=0.0d0</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">        240 :           DO 280 I=1,N</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        240 :   280     SP=SP+Z(I,K)*A(I,KK)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         56 :           TEMP=SQRT(SP*SP+ZDOTA(KP)**2)</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         56 :           ALPHA=ZDOTA(KP)/TEMP</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         56 :           BETA=SP/TEMP</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         56 :           ZDOTA(KP)=ALPHA*ZDOTA(K)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         56 :           ZDOTA(K)=TEMP</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        240 :           DO 290 I=1,N</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">        184 :           TEMP=ALPHA*Z(I,KP)+BETA*Z(I,K)</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        184 :           Z(I,KP)=ALPHA*Z(I,K)-BETA*Z(I,KP)</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        240 :   290     Z(I,K)=TEMP</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         56 :           IACT(K)=KK</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         56 :           VMULTC(K)=VMULTC(KP)</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         56 :           K=KP</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         56 :           IF (K .LT. NACT) GOTO 270</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         50 :           IACT(K)=ISAVE</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         50 :           VMULTC(K)=VSAVE</span></a>
+<a name="328"><span class="lineNum">     328 </span>            :       END IF</a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         50 :       NACT=NACT-1</span></a>
+<a name="330"><span class="lineNum">     330 </span>            : C</a>
+<a name="331"><span class="lineNum">     331 </span>            : C     If stage one is in progress, then set SDIRN to the direction of the next</a>
+<a name="332"><span class="lineNum">     332 </span>            : C     change to the current vector of variables.</a>
+<a name="333"><span class="lineNum">     333 </span>            : C</a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">         50 :       IF (MCON .GT. M) GOTO 320</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :       TEMP=0.0d0</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :       DO 300 I=1,N</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :   300 TEMP=TEMP+SDIRN(I)*Z(I,NACT+1)</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :       DO 310 I=1,N</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :   310 SDIRN(I)=SDIRN(I)-TEMP*Z(I,NACT+1)</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">      37458 :       GO TO 340</span></a>
+<a name="341"><span class="lineNum">     341 </span>            : C</a>
+<a name="342"><span class="lineNum">     342 </span>            : C     Pick the next search direction of stage two.</a>
+<a name="343"><span class="lineNum">     343 </span>            : C</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">      37458 :   320 TEMP=1.0d0/ZDOTA(NACT)</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">     114284 :       DO 330 I=1,N</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">     114284 :   330 SDIRN(I)=TEMP*Z(I,NACT)</span></a>
+<a name="347"><span class="lineNum">     347 </span>            : C</a>
+<a name="348"><span class="lineNum">     348 </span>            : C     Calculate the step to the boundary of the trust region or take the step</a>
+<a name="349"><span class="lineNum">     349 </span>            : C     that reduces RESMAX to zero. The two statements below that include the</a>
+<a name="350"><span class="lineNum">     350 </span>            : C     factor 1.0E-6 prevent some harmless underflows that occurred in a test</a>
+<a name="351"><span class="lineNum">     351 </span>            : C     calculation. Further, we skip the step if it could be zero within a</a>
+<a name="352"><span class="lineNum">     352 </span>            : C     reasonable tolerance for computer rounding errors.</a>
+<a name="353"><span class="lineNum">     353 </span>            : C</a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">      38261 :   340 DD=RHO*RHO</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">      38261 :       SD=0.0d0</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">      38261 :       SS=0.0d0</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     119168 :       DO 350 I=1,N</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">      80907 :       IF (ABS(DX(I)) .GE. 1.0E-6*RHO) DD=DD-DX(I)**2</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">      80907 :       SD=SD+DX(I)*SDIRN(I)</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     119168 :   350 SS=SS+SDIRN(I)**2</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      38261 :       IF (DD .LE. 0.0d0) GOTO 490</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      38261 :       TEMP=SQRT(SS*DD)</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      38261 :       IF (ABS(SD) .GE. 1.0E-6*TEMP) TEMP=SQRT(SS*DD+SD*SD)</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">      38261 :       STPFUL=DD/(TEMP+SD)</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      38261 :       STEP=STPFUL</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      38261 :       IF (MCON .EQ. M) THEN</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        803 :           ACCA=STEP+0.1d0*RESMAX</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        803 :           ACCB=STEP+0.2d0*RESMAX</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        803 :           IF (STEP .GE. ACCA .OR. ACCA .GE. ACCB) GOTO 480</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        769 :           STEP=DMIN1(STEP,RESMAX)</span></a>
+<a name="371"><span class="lineNum">     371 </span>            :       END IF</a>
+<a name="372"><span class="lineNum">     372 </span>            : C</a>
+<a name="373"><span class="lineNum">     373 </span>            : C     Set DXNEW to the new variables if STEP is the steplength, and reduce</a>
+<a name="374"><span class="lineNum">     374 </span>            : C     RESMAX to the corresponding maximum residual if stage one is being done.</a>
+<a name="375"><span class="lineNum">     375 </span>            : C     Because DXNEW will be changed during the calculation of some Lagrange</a>
+<a name="376"><span class="lineNum">     376 </span>            : C     multipliers, it will be restored to the following value later.</a>
+<a name="377"><span class="lineNum">     377 </span>            :       call s360_380(DXNEW,DX,STEP,SDIRN,N,M,MCON,RESMAX,</a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">      38227 :      1 NACT,IACT,B,A,RESOLD)</span></a>
+<a name="379"><span class="lineNum">     379 </span>            : </a>
+<a name="380"><span class="lineNum">     380 </span>            : C</a>
+<a name="381"><span class="lineNum">     381 </span>            : C     Set VMULTD to the VMULTC vector that would occur if DX became DXNEW. A</a>
+<a name="382"><span class="lineNum">     382 </span>            : C     device is included to force VMULTD(K)=0.0 if deviations from this value</a>
+<a name="383"><span class="lineNum">     383 </span>            : C     can be attributed to computer rounding errors. First calculate the new</a>
+<a name="384"><span class="lineNum">     384 </span>            : C     Lagrange multipliers.</a>
+<a name="385"><span class="lineNum">     385 </span>            : C</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      38227 :       K=NACT</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      39906 :   390 ZDOTW=0.0d0</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">      39906 :       ZDWABS=0.0d0</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">     127515 :       DO 400 I=1,N</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      87609 :       TEMP=Z(I,K)*DXNEW(I)</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      87609 :       ZDOTW=ZDOTW+TEMP</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">     127515 :   400 ZDWABS=ZDWABS+ABS(TEMP)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">      39906 :       ACCA=ZDWABS+0.1d0*ABS(ZDOTW)</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">      39906 :       ACCB=ZDWABS+0.2d0*ABS(ZDOTW)</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      39906 :       IF (ZDWABS .GE. ACCA .OR. ACCA .GE. ACCB) ZDOTW=0.0d0</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">      39906 :       VMULTD(K)=ZDOTW/ZDOTA(K)</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      39906 :       IF (K .GE. 2) THEN</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       1679 :           KK=IACT(K)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       8567 :           DO 410 I=1,N</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       8567 :   410     DXNEW(I)=DXNEW(I)-VMULTD(K)*A(I,KK)</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       1679 :           K=K-1</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       1679 :           GOTO 390</span></a>
+<a name="403"><span class="lineNum">     403 </span>            :       END IF</a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">      38227 :       IF (MCON .GT. M) VMULTD(NACT)=DMAX1(0.0d0,VMULTD(NACT))</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN     </span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :          PRINT *, '  2. VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
+<a name="407"><span class="lineNum">     407 </span>            :       END IF</a>
+<a name="408"><span class="lineNum">     408 </span>            : C</a>
+<a name="409"><span class="lineNum">     409 </span>            : C     Complete VMULTC by finding the new constraint residuals.</a>
+<a name="410"><span class="lineNum">     410 </span>            : C</a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">     118948 :       DO 420 I=1,N</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     118948 :   420 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      38227 :       IF (MCON .GT. NACT) THEN</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">       1885 :           KL=NACT+1</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       6028 :           DO 440 K=KL,MCON</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       4143 :           KK=IACT(K)</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       4143 :           SUM=RESMAX-B(KK)</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       4143 :           SUMABS=RESMAX+DABS(B(KK))</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">      20847 :           DO 430 I=1,N</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">      16704 :           TEMP=A(I,KK)*DXNEW(I)</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">      16704 :           SUM=SUM+TEMP</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">      20847 :   430     SUMABS=SUMABS+DABS(TEMP)</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       4143 :           ACCA=SUMABS+0.1*DABS(SUM)</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       4143 :           ACCB=SUMABS+0.2*DABS(SUM)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       4143 :           IF (SUMABS .GE. ACCA .OR. ACCA .GE. ACCB) SUM=0.0</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       6028 :   440     VMULTD(K)=SUM</span></a>
+<a name="427"><span class="lineNum">     427 </span>            :       END IF</a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 :          PRINT *, '  3. VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
+<a name="430"><span class="lineNum">     430 </span>            :       END IF</a>
+<a name="431"><span class="lineNum">     431 </span>            : C</a>
+<a name="432"><span class="lineNum">     432 </span>            : C     Calculate the fraction of the step from DX to DXNEW that will be taken.</a>
+<a name="433"><span class="lineNum">     433 </span>            : C</a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">      38227 :       RATIO=1.0d0</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">      38227 :       ICON=0</span></a>
+<a name="436"><span class="lineNum">     436 </span>            : C     </a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      38227 :       EPS = 2.2E-16</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      82276 :       DO 450 K=1,MCON</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      44049 :       IF (VMULTD(K) .GT. -EPS .AND. VMULTD(K) .LT. EPS) VMULTD(K)=0.0D0</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      44049 :       IF (VMULTD(K) .LT. 0.0D0) THEN</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">       1059 :           TEMP=VMULTC(K)/(VMULTC(K)-VMULTD(K))</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       1059 :           IF (TEMP .LT. RATIO) THEN</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">        899 :               RATIO=TEMP</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">        899 :               ICON=K</span></a>
+<a name="445"><span class="lineNum">     445 </span>            :           END IF</a>
+<a name="446"><span class="lineNum">     446 </span>            :       END IF</a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      38227 :   450 CONTINUE</span></a>
+<a name="448"><span class="lineNum">     448 </span>            : C</a>
+<a name="449"><span class="lineNum">     449 </span>            : C     Update DX, VMULTC and RESMAX.</a>
+<a name="450"><span class="lineNum">     450 </span>            : C</a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">      38227 :       TEMP=1.0d0-RATIO</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">     118948 :       DO 460 I=1,N</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">     118948 :   460 DX(I)=TEMP*DX(I)+RATIO*DXNEW(I)</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">      82276 :       DO 470 K=1,MCON</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      82276 :   470 VMULTC(K)=DMAX1(0.0d0,TEMP*VMULTC(K)+RATIO*VMULTD(K))</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :          PRINT *, '  3. VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
+<a name="458"><span class="lineNum">     458 </span>            :       END IF</a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">      38227 :       IF (MCON .EQ. M) RESMAX=RESOLD+RATIO*(RESMAX-RESOLD)</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :          PRINT *, ' RESMAX, MCON, M, ICON = ', </span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :      1        RESMAX, MCON, M, ICON</span></a>
+<a name="463"><span class="lineNum">     463 </span>            :       END IF</a>
+<a name="464"><span class="lineNum">     464 </span>            : C</a>
+<a name="465"><span class="lineNum">     465 </span>            : C     If the full step is not acceptable then begin another iteration.</a>
+<a name="466"><span class="lineNum">     466 </span>            : C     Otherwise switch to stage two or end the calculation.</a>
+<a name="467"><span class="lineNum">     467 </span>            : C</a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">      38227 :       IF (ICON .GT. 0) GOTO 70</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">      37366 :       IF (STEP .EQ. STPFUL) GOTO 500</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">        421 :       IF (STEP .NE. STEP) THEN</span></a>
+<a name="471"><span class="lineNum">     471 </span>            : C        Nan encountered, propagate it (avoid infinite loop)</a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         16 :          DO 475 I=1,N</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         16 :   475       DX(I)=STEP</span></a>
+<a name="474"><span class="lineNum">     474 </span>            :          GOTO 500</a>
+<a name="475"><span class="lineNum">     475 </span>            :       END IF</a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">      36832 :   480 MCON=M+1</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">      36832 :       ICON=MCON</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">      36832 :       IACT(MCON)=MCON</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">      36832 :       VMULTC(MCON)=0.0d0</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">      36907 :       GOTO 60</span></a>
+<a name="481"><span class="lineNum">     481 </span>            : C</a>
+<a name="482"><span class="lineNum">     482 </span>            : C     We employ any freedom that may be available to reduce the objective</a>
+<a name="483"><span class="lineNum">     483 </span>            : C     function before returning a DX whose length is less than RHO.</a>
+<a name="484"><span class="lineNum">     484 </span>            : C</a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         75 :   490 IF (MCON .EQ. M) GOTO 480</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">      37020 :       IFULL=0</span></a>
+<a name="487"><span class="lineNum">     487 </span>            :   500 CONTINUE</a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :          print *, ' '</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineNoCov">          0 :          print *, 'AFTER trstlp:'</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineNoCov">          0 :          PRINT *, '  **DX = ', (DX(I),I=1,N)</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineNoCov">          0 :          PRINT *, '  **IACT = ', (IACT(I),I=1,M+1)</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :          PRINT *, 'M,N,RHO,IFULL =', M, N, RHO, IFULL</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :          PRINT *, '  **A = ', ((A(I,K),I=1,N),K=1,M+1)</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :          PRINT *, '  **B = ', (B(I),I=1,M)</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :          PRINT *, '  **Z = ', ((Z(I,K),I=1,N),K=1,N)</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :          PRINT *, '  **ZDOTA = ', (ZDOTA(I),I=1,N)</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :          PRINT *, '  **VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :          PRINT *, '  **SDIRN = ', (SDIRN(I),I=1,N)</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :          PRINT *, '  **DXNEW = ', (DXNEW(I),I=1,N)</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :          PRINT *, '  **VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :          PRINT *, ' '</span></a>
+<a name="503"><span class="lineNum">     503 </span>            :       END IF</a>
+<a name="504"><span class="lineNum">     504 </span>            : C  500 RETURN</a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      37028 :       END</span></a>
+<a name="506"><span class="lineNum">     506 </span>            : </a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">      38227 :       subroutine s360_380(DXNEW,DX,STEP,SDIRN,N,M,MCON,RESMAX,</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">      38227 :      1 NACT,IACT,B,A,RESOLD)</span></a>
+<a name="509"><span class="lineNum">     509 </span>            :       IMPLICIT DOUBLE PRECISION (A-H,O-Z)</a>
+<a name="510"><span class="lineNum">     510 </span>            :       DIMENSION A(N,*),B(*),DX(*),IACT(*), SDIRN(*),DXNEW(*)</a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">     118948 :       DO 360 I=1,N</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">     118948 :   360 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      38227 :       IF (MCON .EQ. M) THEN</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">        769 :           RESOLD=RESMAX</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">        769 :           RESMAX=0.0d0</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">       1710 :           DO 380 K=1,NACT</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">        941 :           KK=IACT(K)</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">        941 :           TEMP=B(KK)</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">       6046 :           DO 370 I=1,N</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">       6046 :   370     TEMP=TEMP-A(I,KK)*DXNEW(I)</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">        941 :           RESMAX=DMAX1(RESMAX,TEMP)</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        769 :   380     CONTINUE</span></a>
+<a name="523"><span class="lineNum">     523 </span>            :       END IF</a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">      38227 :       end</span></a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

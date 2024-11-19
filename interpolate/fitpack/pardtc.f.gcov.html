@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - interpolate/fitpack/pardtc.f</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">interpolate/fitpack</a> - pardtc.f<span style="font-size: 80%;"> (source / <a href="pardtc.f.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">         38 :       recursive subroutine pardtc(tx,nx,ty,ny,c,kx,ky,nux,nuy,</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">         38 :      *   newc,ier)</span></a>
+<a name="3"><span class="lineNum">       3 </span>            :       implicit none</a>
+<a name="4"><span class="lineNum">       4 </span>            : c  subroutine pardtc takes the knots and coefficients of a bivariate</a>
+<a name="5"><span class="lineNum">       5 </span>            : c  spline, and returns the coefficients for a new bivariate spline that</a>
+<a name="6"><span class="lineNum">       6 </span>            : c  evaluates the partial derivative (order nux, nuy) of the original</a>
+<a name="7"><span class="lineNum">       7 </span>            : c  spline.</a>
+<a name="8"><span class="lineNum">       8 </span>            : c</a>
+<a name="9"><span class="lineNum">       9 </span>            : c  calling sequence:</a>
+<a name="10"><span class="lineNum">      10 </span>            : c     call pardtc(tx,nx,ty,ny,c,kx,ky,nux,nuy,newc,ier)</a>
+<a name="11"><span class="lineNum">      11 </span>            : c</a>
+<a name="12"><span class="lineNum">      12 </span>            : c  input parameters:</a>
+<a name="13"><span class="lineNum">      13 </span>            : c   tx    : real array, length nx, which contains the position of the</a>
+<a name="14"><span class="lineNum">      14 </span>            : c           knots in the x-direction.</a>
+<a name="15"><span class="lineNum">      15 </span>            : c   nx    : integer, giving the total number of knots in the x-direction</a>
+<a name="16"><span class="lineNum">      16 </span>            : c           (hidden)</a>
+<a name="17"><span class="lineNum">      17 </span>            : c   ty    : real array, length ny, which contains the position of the</a>
+<a name="18"><span class="lineNum">      18 </span>            : c           knots in the y-direction.</a>
+<a name="19"><span class="lineNum">      19 </span>            : c   ny    : integer, giving the total number of knots in the y-direction</a>
+<a name="20"><span class="lineNum">      20 </span>            : c           (hidden)</a>
+<a name="21"><span class="lineNum">      21 </span>            : c   c     : real array, length (nx-kx-1)*(ny-ky-1), which contains the</a>
+<a name="22"><span class="lineNum">      22 </span>            : c           b-spline coefficients.</a>
+<a name="23"><span class="lineNum">      23 </span>            : c   kx,ky : integer values, giving the degrees of the spline.</a>
+<a name="24"><span class="lineNum">      24 </span>            : c   nux   : integer values, specifying the order of the partial</a>
+<a name="25"><span class="lineNum">      25 </span>            : c   nuy     derivative. 0&lt;=nux&lt;kx, 0&lt;=nuy&lt;ky.</a>
+<a name="26"><span class="lineNum">      26 </span>            : c</a>
+<a name="27"><span class="lineNum">      27 </span>            : c  output parameters:</a>
+<a name="28"><span class="lineNum">      28 </span>            : c   newc  : real array containing the coefficients of the derivative.</a>
+<a name="29"><span class="lineNum">      29 </span>            : c           the dimension is (nx-nux-kx-1)*(ny-nuy-ky-1).</a>
+<a name="30"><span class="lineNum">      30 </span>            : c   ier   : integer error flag</a>
+<a name="31"><span class="lineNum">      31 </span>            : c    ier=0 : normal return</a>
+<a name="32"><span class="lineNum">      32 </span>            : c    ier=10: invalid input data (see restrictions)</a>
+<a name="33"><span class="lineNum">      33 </span>            : c</a>
+<a name="34"><span class="lineNum">      34 </span>            : c  restrictions:</a>
+<a name="35"><span class="lineNum">      35 </span>            : c   0 &lt;= nux &lt; kx, 0 &lt;= nuy &lt; kyc</a>
+<a name="36"><span class="lineNum">      36 </span>            : c</a>
+<a name="37"><span class="lineNum">      37 </span>            : c  other subroutines required:</a>
+<a name="38"><span class="lineNum">      38 </span>            : c    none</a>
+<a name="39"><span class="lineNum">      39 </span>            : c</a>
+<a name="40"><span class="lineNum">      40 </span>            : c  references :</a>
+<a name="41"><span class="lineNum">      41 </span>            : c   de boor c  : on calculating with b-splines, j. approximation theory</a>
+<a name="42"><span class="lineNum">      42 </span>            : c                6 (1972) 50-62.</a>
+<a name="43"><span class="lineNum">      43 </span>            : c   dierckx p. : curve and surface fitting with splines, monographs on</a>
+<a name="44"><span class="lineNum">      44 </span>            : c                numerical analysis, oxford university press, 1993.</a>
+<a name="45"><span class="lineNum">      45 </span>            : c</a>
+<a name="46"><span class="lineNum">      46 </span>            : c  based on the subroutine &quot;parder&quot; by Paul Dierckx.</a>
+<a name="47"><span class="lineNum">      47 </span>            : c</a>
+<a name="48"><span class="lineNum">      48 </span>            : c  author :</a>
+<a name="49"><span class="lineNum">      49 </span>            : c    Cong Ma</a>
+<a name="50"><span class="lineNum">      50 </span>            : c    Department of Mathematics and Applied Mathematics, U. of Cape Town</a>
+<a name="51"><span class="lineNum">      51 </span>            : c    Cross Campus Road, Rondebosch 7700, Cape Town, South Africa.</a>
+<a name="52"><span class="lineNum">      52 </span>            : c    e-mail : cong.ma@uct.ac.za</a>
+<a name="53"><span class="lineNum">      53 </span>            : c</a>
+<a name="54"><span class="lineNum">      54 </span>            : c  latest update : may 2019</a>
+<a name="55"><span class="lineNum">      55 </span>            : c</a>
+<a name="56"><span class="lineNum">      56 </span>            : c  ..scalar arguments..</a>
+<a name="57"><span class="lineNum">      57 </span>            :       integer nx,ny,kx,ky,nux,nuy,ier, nc</a>
+<a name="58"><span class="lineNum">      58 </span>            : c  ..array arguments..</a>
+<a name="59"><span class="lineNum">      59 </span>            :       real*8 tx(nx),ty(ny),c((nx-kx-1)*(ny-ky-1)),</a>
+<a name="60"><span class="lineNum">      60 </span>            :      * newc((nx-kx-1)*(ny-ky-1))</a>
+<a name="61"><span class="lineNum">      61 </span>            : c  ..local scalars..</a>
+<a name="62"><span class="lineNum">      62 </span>            :       integer i,j,kx1,ky1,lx,ly,l1,l2,m,m0,m1,</a>
+<a name="63"><span class="lineNum">      63 </span>            :      * nkx1,nky1,nxx,nyy,newkx,newky</a>
+<a name="64"><span class="lineNum">      64 </span>            :       real*8 ak,fac</a>
+<a name="65"><span class="lineNum">      65 </span>            : c  ..</a>
+<a name="66"><span class="lineNum">      66 </span>            : c  before starting computations a data check is made. if the input data</a>
+<a name="67"><span class="lineNum">      67 </span>            : c  are invalid control is immediately repassed to the calling program.</a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         38 :       ier = 10</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         38 :       if(nux.lt.0 .or. nux.ge.kx) go to 400</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         38 :       if(nuy.lt.0 .or. nuy.ge.ky) go to 400</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         38 :       kx1 = kx+1</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         38 :       ky1 = ky+1</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         38 :       nkx1 = nx-kx1</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         38 :       nky1 = ny-ky1</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         38 :       nc = nkx1*nky1</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         38 :       ier = 0</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         38 :       nxx = nkx1</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         38 :       nyy = nky1</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         38 :       newkx = kx</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         38 :       newky = ky</span></a>
+<a name="81"><span class="lineNum">      81 </span>            : c  the partial derivative of order (nux,nuy) of a bivariate spline of</a>
+<a name="82"><span class="lineNum">      82 </span>            : c  degrees kx,ky is a bivariate spline of degrees kx-nux,ky-nuy.</a>
+<a name="83"><span class="lineNum">      83 </span>            : c  we calculate the b-spline coefficients of this spline</a>
+<a name="84"><span class="lineNum">      84 </span>            : c  that is to say newkx = kx - nux, newky = ky - nuy</a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       4984 :       do 70 i=1,nc</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       4946 :         newc(i) = c(i)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         38 :   70  continue</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         38 :       if(nux.eq.0) go to 200</span></a>
+<a name="89"><span class="lineNum">      89 </span>            :       lx = 1</a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         65 :       do 100 j=1,nux</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         37 :         ak = newkx</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         37 :         nxx = nxx-1</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         37 :         l1 = lx</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         37 :         m0 = 1</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        359 :         do 90 i=1,nxx</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        322 :           l1 = l1+1</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        322 :           l2 = l1+newkx</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        322 :           fac = tx(l2)-tx(l1)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        322 :           if(fac.le.0.) go to 90</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       5050 :           do 80 m=1,nyy</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       4728 :             m1 = m0+nyy</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       4728 :             newc(m0) = (newc(m1)-newc(m0))*ak/fac</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       4728 :             m0  = m0+1</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">        322 :   80      continue</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">         37 :   90    continue</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">         37 :         lx = lx+1</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         37 :         newkx = newkx-1</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         38 :  100  continue</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         38 :  200  if(nuy.eq.0) go to 400</span></a>
+<a name="110"><span class="lineNum">     110 </span>            : c orig: if(nuy.eq.0) go to 300</a>
+<a name="111"><span class="lineNum">     111 </span>            :       ly = 1</a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         65 :       do 230 j=1,nuy</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         37 :         ak = newky</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         37 :         nyy = nyy-1</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         37 :         l1 = ly</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        363 :         do 220 i=1,nyy</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        326 :           l1 = l1+1</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        326 :           l2 = l1+newky</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        326 :           fac = ty(l2)-ty(l1)</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        326 :           if(fac.le.0.) go to 220</span></a>
+<a name="121"><span class="lineNum">     121 </span>            :           m0 = i</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       4758 :           do 210 m=1,nxx</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       4432 :             m1 = m0+1</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       4432 :             newc(m0) = (newc(m1)-newc(m0))*ak/fac</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       4432 :             m0  = m0+nky1</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        326 :  210      continue</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         37 :  220    continue</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         37 :         ly = ly+1</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         37 :         newky = newky-1</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         28 :  230  continue</span></a>
+<a name="131"><span class="lineNum">     131 </span>            :       m0 = nyy</a>
+<a name="132"><span class="lineNum">     132 </span>            :       m1 = nky1</a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        248 :       do 250 m=2,nxx</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3156 :         do 240 i=1,nyy</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       2936 :           m0 = m0+1</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       2936 :           m1 = m1+1</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       2936 :           newc(m0) = newc(m1)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        220 :  240    continue</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        220 :         m1 = m1+nuy</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">         38 :  250  continue</span></a>
+<a name="141"><span class="lineNum">     141 </span>            : c300  iwx = 1+nxx*nyy</a>
+<a name="142"><span class="lineNum">     142 </span>            : c     iwy = iwx+mx*(kx1-nux)</a>
+<a name="143"><span class="lineNum">     143 </span>            : c</a>
+<a name="144"><span class="lineNum">     144 </span>            : c from parder.f:</a>
+<a name="145"><span class="lineNum">     145 </span>            : c     call fpbisp(tx(nux+1),nx-2*nux,ty(nuy+1),ny-2*nuy,newc,newkx,newky,</a>
+<a name="146"><span class="lineNum">     146 </span>            : c    * x,mx,y,my,z,newc(iwx),newc(iwy),iwrk(1),iwrk(mx+1))</a>
+<a name="147"><span class="lineNum">     147 </span>            : c</a>
+<a name="148"><span class="lineNum">     148 </span>            : c from bispev.f:</a>
+<a name="149"><span class="lineNum">     149 </span>            : c     call fpbisp(tx,       nx,      ty,       ny,      c,   kx,   ky,</a>
+<a name="150"><span class="lineNum">     150 </span>            : c    * x,mx,y,my,z,wrk(1),   wrk(iw),  iwrk(1),iwrk(mx+1))</a>
+<a name="151"><span class="lineNum">     151 </span>            : c</a>
+<a name="152"><span class="lineNum">     152 </span>            : c from fpbisp.f:</a>
+<a name="153"><span class="lineNum">     153 </span>            : c          fpbisp(tx,       nx,      ty,       ny,      c,   kx,   ky,</a>
+<a name="154"><span class="lineNum">     154 </span>            : c    * x,mx,y,my,z,wx,       wy,       lx,     ly)</a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         38 :  400  return</span></a>
+<a name="156"><span class="lineNum">     156 </span>            :       end</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

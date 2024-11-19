@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - interpolate/fitpack/fpregr.f</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">interpolate/fitpack</a> - fpregr.f<span style="font-size: 80%;"> (source / <a href="fpregr.f.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">93</td>
+            <td class="headerCovTableEntry">227</td>
+            <td class="headerCovTableEntryLo">41.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">         74 :       recursive subroutine fpregr(iopt,x,mx,y,my,z,mz,xb,xe,yb,ye,</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">         74 :      * kx,ky,s,nxest,nyest,tol,maxit,nc,nx,tx,ny,ty,c,fp,fp0,fpold,</span></a>
+<a name="3"><span class="lineNum">       3 </span><span class="lineCov">         74 :      * reducx,reducy,fpintx,fpinty,lastdi,nplusx,nplusy,nrx,nry,</span></a>
+<a name="4"><span class="lineNum">       4 </span><span class="lineCov">         74 :      * nrdatx,nrdaty,wrk,lwrk,ier)</span></a>
+<a name="5"><span class="lineNum">       5 </span>            :       implicit none</a>
+<a name="6"><span class="lineNum">       6 </span>            : c  ..</a>
+<a name="7"><span class="lineNum">       7 </span>            : c  ..scalar arguments..</a>
+<a name="8"><span class="lineNum">       8 </span>            :       real*8 xb,xe,yb,ye,s,tol,fp,fp0,fpold,reducx,reducy</a>
+<a name="9"><span class="lineNum">       9 </span>            :       integer iopt,mx,my,mz,kx,ky,nxest,nyest,maxit,nc,nx,ny,lastdi,</a>
+<a name="10"><span class="lineNum">      10 </span>            :      * nplusx,nplusy,lwrk,ier</a>
+<a name="11"><span class="lineNum">      11 </span>            : c  ..array arguments..</a>
+<a name="12"><span class="lineNum">      12 </span>            :       real*8 x(mx),y(my),z(mz),tx(nxest),ty(nyest),c(nc),fpintx(nxest),</a>
+<a name="13"><span class="lineNum">      13 </span>            :      * fpinty(nyest),wrk(lwrk)</a>
+<a name="14"><span class="lineNum">      14 </span>            :       integer nrdatx(nxest),nrdaty(nyest),nrx(mx),nry(my)</a>
+<a name="15"><span class="lineNum">      15 </span>            : c  ..local scalars</a>
+<a name="16"><span class="lineNum">      16 </span>            :       real*8 acc,fpms,f1,f2,f3,p,p1,p2,p3,rn,one,half,con1,con9,con4</a>
+<a name="17"><span class="lineNum">      17 </span>            :       integer i,ich1,ich3,ifbx,ifby,ifsx,ifsy,iter,j,kx1,kx2,ky1,ky2,</a>
+<a name="18"><span class="lineNum">      18 </span>            :      * k3,l,lax,lay,lbx,lby,lq,lri,lsx,lsy,mk1,mm,mpm,mynx,ncof,</a>
+<a name="19"><span class="lineNum">      19 </span>            :      * nk1x,nk1y,nmaxx,nmaxy,nminx,nminy,nplx,nply,npl1,nrintx,</a>
+<a name="20"><span class="lineNum">      20 </span>            :      * nrinty,nxe,nxk,nye</a>
+<a name="21"><span class="lineNum">      21 </span>            : c  ..function references..</a>
+<a name="22"><span class="lineNum">      22 </span>            :       real*8 abs,fprati</a>
+<a name="23"><span class="lineNum">      23 </span>            :       integer max0,min0</a>
+<a name="24"><span class="lineNum">      24 </span>            : c  ..subroutine references..</a>
+<a name="25"><span class="lineNum">      25 </span>            : c    fpgrre,fpknot</a>
+<a name="26"><span class="lineNum">      26 </span>            : c  ..</a>
+<a name="27"><span class="lineNum">      27 </span>            : c   set constants</a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">         74 :       one = 1</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">         74 :       half = 0.5e0</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         74 :       con1 = 0.1e0</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         74 :       con9 = 0.9e0</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">         74 :       con4 = 0.4e-01</span></a>
+<a name="33"><span class="lineNum">      33 </span>            : c  we partition the working space.</a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">         74 :       kx1 = kx+1</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         74 :       ky1 = ky+1</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">         74 :       kx2 = kx1+1</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">         74 :       ky2 = ky1+1</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         74 :       lsx = 1</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         74 :       lsy = lsx+mx*kx1</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         74 :       lri = lsy+my*ky1</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         74 :       mm = max0(nxest,my)</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         74 :       lq = lri+mm</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         74 :       mynx = nxest*my</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">         74 :       lax = lq+mynx</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">         74 :       nxk = nxest*kx2</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         74 :       lbx = lax+nxk</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         74 :       lay = lbx+nxk</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         74 :       lby = lay+nyest*ky2</span></a>
+<a name="49"><span class="lineNum">      49 </span>            : cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</a>
+<a name="50"><span class="lineNum">      50 </span>            : c part 1: determination of the number of knots and their position.     c</a>
+<a name="51"><span class="lineNum">      51 </span>            : c ****************************************************************     c</a>
+<a name="52"><span class="lineNum">      52 </span>            : c  given a set of knots we compute the least-squares spline sinf(x,y), c</a>
+<a name="53"><span class="lineNum">      53 </span>            : c  and the corresponding sum of squared residuals fp=f(p=inf).         c</a>
+<a name="54"><span class="lineNum">      54 </span>            : c  if iopt=-1  sinf(x,y) is the requested approximation.               c</a>
+<a name="55"><span class="lineNum">      55 </span>            : c  if iopt=0 or iopt=1 we check whether we can accept the knots:       c</a>
+<a name="56"><span class="lineNum">      56 </span>            : c    if fp &lt;=s we will continue with the current set of knots.         c</a>
+<a name="57"><span class="lineNum">      57 </span>            : c    if fp &gt; s we will increase the number of knots and compute the    c</a>
+<a name="58"><span class="lineNum">      58 </span>            : c       corresponding least-squares spline until finally fp&lt;=s.        c</a>
+<a name="59"><span class="lineNum">      59 </span>            : c    the initial choice of knots depends on the value of s and iopt.   c</a>
+<a name="60"><span class="lineNum">      60 </span>            : c    if s=0 we have spline interpolation; in that case the number of   c</a>
+<a name="61"><span class="lineNum">      61 </span>            : c    knots equals nmaxx = mx+kx+1  and  nmaxy = my+ky+1.               c</a>
+<a name="62"><span class="lineNum">      62 </span>            : c    if s&gt;0 and                                                        c</a>
+<a name="63"><span class="lineNum">      63 </span>            : c     *iopt=0 we first compute the least-squares polynomial of degree  c</a>
+<a name="64"><span class="lineNum">      64 </span>            : c      kx in x and ky in y; nx=nminx=2*kx+2 and ny=nymin=2*ky+2.       c</a>
+<a name="65"><span class="lineNum">      65 </span>            : c     *iopt=1 we start with the knots found at the last call of the    c</a>
+<a name="66"><span class="lineNum">      66 </span>            : c      routine, except for the case that s &gt; fp0; then we can compute  c</a>
+<a name="67"><span class="lineNum">      67 </span>            : c      the least-squares polynomial directly.                          c</a>
+<a name="68"><span class="lineNum">      68 </span>            : cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</a>
+<a name="69"><span class="lineNum">      69 </span>            : c  determine the number of knots for polynomial approximation.</a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         74 :       nminx = 2*kx1</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         74 :       nminy = 2*ky1</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         74 :       if(iopt.lt.0) go to 120</span></a>
+<a name="73"><span class="lineNum">      73 </span>            : c  acc denotes the absolute tolerance for the root of f(p)=s.</a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         74 :       acc = tol*s</span></a>
+<a name="75"><span class="lineNum">      75 </span>            : c  find nmaxx and nmaxy which denote the number of knots in x- and y-</a>
+<a name="76"><span class="lineNum">      76 </span>            : c  direction in case of spline interpolation.</a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         74 :       nmaxx = mx+kx1</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         74 :       nmaxy = my+ky1</span></a>
+<a name="79"><span class="lineNum">      79 </span>            : c  find nxe and nye which denote the maximum number of knots</a>
+<a name="80"><span class="lineNum">      80 </span>            : c  allowed in each direction</a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         74 :       nxe = min0(nmaxx,nxest)</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         74 :       nye = min0(nmaxy,nyest)</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         74 :       if(s.gt.0.) go to 100</span></a>
+<a name="84"><span class="lineNum">      84 </span>            : c  if s = 0, s(x,y) is an interpolating spline.</a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         74 :       nx = nmaxx</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">         74 :       ny = nmaxy</span></a>
+<a name="87"><span class="lineNum">      87 </span>            : c  test whether the required storage space exceeds the available one.</a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         74 :       if(ny.gt.nyest .or. nx.gt.nxest) go to 420</span></a>
+<a name="89"><span class="lineNum">      89 </span>            : c  find the position of the interior knots in case of interpolation.</a>
+<a name="90"><span class="lineNum">      90 </span>            : c  the knots in the x-direction.</a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         74 :       mk1 = mx-kx1</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         74 :       if(mk1.eq.0) go to 60</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         74 :       k3 = kx/2</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         74 :       i = kx1+1</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         74 :       j = k3+2</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         74 :       if(k3*2.eq.kx) go to 40</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        435 :       do 30 l=1,mk1</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        361 :         tx(i) = x(j)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        361 :         i = i+1</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        361 :         j = j+1</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">         74 :   30  continue</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :       go to 60</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :   40  do 50 l=1,mk1</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :         tx(i) = (x(j)+x(j-1))*half</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :         i = i+1</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :         j = j+1</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :   50  continue</span></a>
+<a name="108"><span class="lineNum">     108 </span>            : c  the knots in the y-direction.</a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         74 :   60  mk1 = my-ky1</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">         74 :       if(mk1.eq.0) go to 120</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         74 :       k3 = ky/2</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         74 :       i = ky1+1</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         74 :       j = k3+2</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         74 :       if(k3*2.eq.ky) go to 80</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        929 :       do 70 l=1,mk1</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        855 :         ty(i) = y(j)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        855 :         i = i+1</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        855 :         j = j+1</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         74 :   70  continue</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :       go to 120</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :   80  do 90 l=1,mk1</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :         ty(i) = (y(j)+y(j-1))*half</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :         i = i+1</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :         j = j+1</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :   90  continue</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :       go to 120</span></a>
+<a name="127"><span class="lineNum">     127 </span>            : c  if s &gt; 0 our initial choice of knots depends on the value of iopt.</a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :  100  if(iopt.eq.0) go to 115</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :       if(fp0.le.s) go to 115</span></a>
+<a name="130"><span class="lineNum">     130 </span>            : c  if iopt=1 and fp0 &gt; s we start computing the least- squares spline</a>
+<a name="131"><span class="lineNum">     131 </span>            : c  according to the set of knots found at the last call of the routine.</a>
+<a name="132"><span class="lineNum">     132 </span>            : c  we determine the number of grid coordinates x(i) inside each knot</a>
+<a name="133"><span class="lineNum">     133 </span>            : c  interval (tx(l),tx(l+1)).</a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :       l = kx2</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :       j = 1</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :       nrdatx(1) = 0</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :       mpm = mx-1</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :       do 105 i=2,mpm</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :         nrdatx(j) = nrdatx(j)+1</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :         if(x(i).lt.tx(l)) go to 105</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :         nrdatx(j) = nrdatx(j)-1</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :         l = l+1</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :         j = j+1</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :         nrdatx(j) = 0</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :  105  continue</span></a>
+<a name="146"><span class="lineNum">     146 </span>            : c  we determine the number of grid coordinates y(i) inside each knot</a>
+<a name="147"><span class="lineNum">     147 </span>            : c  interval (ty(l),ty(l+1)).</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :       l = ky2</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :       j = 1</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :       nrdaty(1) = 0</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :       mpm = my-1</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :       do 110 i=2,mpm</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         nrdaty(j) = nrdaty(j)+1</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :         if(y(i).lt.ty(l)) go to 110</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :         nrdaty(j) = nrdaty(j)-1</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :         l = l+1</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :         j = j+1</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :         nrdaty(j) = 0</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :  110  continue</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :       go to 120</span></a>
+<a name="161"><span class="lineNum">     161 </span>            : c  if iopt=0 or iopt=1 and s&gt;=fp0, we start computing the least-squares</a>
+<a name="162"><span class="lineNum">     162 </span>            : c  polynomial of degree kx in x and ky in y (which is a spline without</a>
+<a name="163"><span class="lineNum">     163 </span>            : c  interior knots).</a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :  115  nx = nminx</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :       ny = nminy</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :       nrdatx(1) = mx-2</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :       nrdaty(1) = my-2</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :       lastdi = 0</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :       nplusx = 0</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :       nplusy = 0</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :       fp0 = 0.</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :       fpold = 0.</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :       reducx = 0.</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :       reducy = 0.</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         74 :  120  mpm = mx+my</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         74 :       ifsx = 0</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         74 :       ifsy = 0</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         74 :       ifbx = 0</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">         74 :       ifby = 0</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         74 :       p = -one</span></a>
+<a name="181"><span class="lineNum">     181 </span>            : c  main loop for the different sets of knots.mpm=mx+my is a save upper</a>
+<a name="182"><span class="lineNum">     182 </span>            : c  bound for the number of trials.</a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         74 :       do 250 iter=1,mpm</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">         74 :         if(nx.eq.nminx .and. ny.eq.nminy) ier = -2</span></a>
+<a name="185"><span class="lineNum">     185 </span>            : c  find nrintx (nrinty) which is the number of knot intervals in the</a>
+<a name="186"><span class="lineNum">     186 </span>            : c  x-direction (y-direction).</a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         74 :         nrintx = nx-nminx+1</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         74 :         nrinty = ny-nminy+1</span></a>
+<a name="189"><span class="lineNum">     189 </span>            : c  find ncof, the number of b-spline coefficients for the current set</a>
+<a name="190"><span class="lineNum">     190 </span>            : c  of knots.</a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         74 :         nk1x = nx-kx1</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         74 :         nk1y = ny-ky1</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         74 :         ncof = nk1x*nk1y</span></a>
+<a name="194"><span class="lineNum">     194 </span>            : c  find the position of the additional knots which are needed for the</a>
+<a name="195"><span class="lineNum">     195 </span>            : c  b-spline representation of s(x,y).</a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         74 :         i = nx</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        264 :         do 130 j=1,kx1</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        190 :           tx(j) = xb</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        190 :           tx(i) = xe</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        190 :           i = i-1</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">         74 :  130    continue</span></a>
+<a name="202"><span class="lineNum">     202 </span>            :         i = ny</a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        264 :         do 140 j=1,ky1</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">        190 :           ty(j) = yb</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        190 :           ty(i) = ye</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        190 :           i = i-1</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         74 :  140    continue</span></a>
+<a name="208"><span class="lineNum">     208 </span>            : c  find the least-squares spline sinf(x,y) and calculate for each knot</a>
+<a name="209"><span class="lineNum">     209 </span>            : c  interval tx(j+kx)&lt;=x&lt;=tx(j+kx+1) (ty(j+ky)&lt;=y&lt;=ty(j+ky+1)) the sum</a>
+<a name="210"><span class="lineNum">     210 </span>            : c  of squared residuals fpintx(j),j=1,2,...,nx-2*kx-1 (fpinty(j),j=1,2,</a>
+<a name="211"><span class="lineNum">     211 </span>            : c  ...,ny-2*ky-1) for the data points having their absciss (ordinate)-</a>
+<a name="212"><span class="lineNum">     212 </span>            : c  value belonging to that interval.</a>
+<a name="213"><span class="lineNum">     213 </span>            : c  fp gives the total sum of squared residuals.</a>
+<a name="214"><span class="lineNum">     214 </span>            :         call fpgrre(ifsx,ifsy,ifbx,ifby,x,mx,y,my,z,mz,kx,ky,tx,nx,ty,</a>
+<a name="215"><span class="lineNum">     215 </span>            :      *  ny,p,c,nc,fp,fpintx,fpinty,mm,mynx,kx1,kx2,ky1,ky2,wrk(lsx),</a>
+<a name="216"><span class="lineNum">     216 </span>            :      *  wrk(lsy),wrk(lri),wrk(lq),wrk(lax),wrk(lay),wrk(lbx),wrk(lby),</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         74 :      *  nrx,nry)</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         74 :         if(ier.eq.(-2)) fp0 = fp</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : c  test whether the least-squares spline is an acceptable solution.</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         74 :         if(iopt.lt.0) go to 440</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         74 :         fpms = fp-s</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         74 :         if(abs(fpms) .lt. acc) go to 440</span></a>
+<a name="223"><span class="lineNum">     223 </span>            : c  if f(p=inf) &lt; s, we accept the choice of knots.</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         74 :         if(fpms.lt.0.) go to 300</span></a>
+<a name="225"><span class="lineNum">     225 </span>            : c  if nx=nmaxx and ny=nmaxy, sinf(x,y) is an interpolating spline.</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         74 :         if(nx.eq.nmaxx .and. ny.eq.nmaxy) go to 430</span></a>
+<a name="227"><span class="lineNum">     227 </span>            : c  increase the number of knots.</a>
+<a name="228"><span class="lineNum">     228 </span>            : c  if nx=nxe and ny=nye we cannot further increase the number of knots</a>
+<a name="229"><span class="lineNum">     229 </span>            : c  because of the storage capacity limitation.</a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :         if(nx.eq.nxe .and. ny.eq.nye) go to 420</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :         ier = 0</span></a>
+<a name="232"><span class="lineNum">     232 </span>            : c  adjust the parameter reducx or reducy according to the direction</a>
+<a name="233"><span class="lineNum">     233 </span>            : c  in which the last added knots were located.</a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :         if (lastdi.lt.0) go to 150</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :         if (lastdi.eq.0) go to 170</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :         go to 160</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :  150    reducx = fpold-fp</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :         go to 170</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :  160    reducy = fpold-fp</span></a>
+<a name="240"><span class="lineNum">     240 </span>            : c  store the sum of squared residuals for the current set of knots.</a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :  170    fpold = fp</span></a>
+<a name="242"><span class="lineNum">     242 </span>            : c  find nplx, the number of knots we should add in the x-direction.</a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :         nplx = 1</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :         if(nx.eq.nminx) go to 180</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :         npl1 = nplusx*2</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :         rn = nplusx</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :         if(reducx.gt.acc) npl1 = rn*fpms/reducx</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :         nplx = min0(nplusx*2,max0(npl1,nplusx/2,1))</span></a>
+<a name="249"><span class="lineNum">     249 </span>            : c  find nply, the number of knots we should add in the y-direction.</a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :  180    nply = 1</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :         if(ny.eq.nminy) go to 190</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         npl1 = nplusy*2</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :         rn = nplusy</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :         if(reducy.gt.acc) npl1 = rn*fpms/reducy</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         nply = min0(nplusy*2,max0(npl1,nplusy/2,1))</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :  190    if (nplx.lt.nply) go to 210</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :         if (nplx.eq.nply) go to 200</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :         go to 230</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :  200    if(lastdi.lt.0) go to 230</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :  210    if(nx.eq.nxe) go to 230</span></a>
+<a name="261"><span class="lineNum">     261 </span>            : c  addition in the x-direction.</a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :         lastdi = -1</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :         nplusx = nplx</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :         ifsx = 0</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :         do 220 l=1,nplusx</span></a>
+<a name="266"><span class="lineNum">     266 </span>            : c  add a new knot in the x-direction</a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :           call fpknot(x,mx,tx,nx,fpintx,nrdatx,nrintx,nxest,1)</span></a>
+<a name="268"><span class="lineNum">     268 </span>            : c  test whether we cannot further increase the number of knots in the</a>
+<a name="269"><span class="lineNum">     269 </span>            : c  x-direction.</a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :           if(nx.eq.nxe) go to 250</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :  220    continue</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :         go to 250</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :  230    if(ny.eq.nye) go to 210</span></a>
+<a name="274"><span class="lineNum">     274 </span>            : c  addition in the y-direction.</a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :         lastdi = 1</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :         nplusy = nply</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :         ifsy = 0</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :         do 240 l=1,nplusy</span></a>
+<a name="279"><span class="lineNum">     279 </span>            : c  add a new knot in the y-direction.</a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :           call fpknot(y,my,ty,ny,fpinty,nrdaty,nrinty,nyest,1)</span></a>
+<a name="281"><span class="lineNum">     281 </span>            : c  test whether we cannot further increase the number of knots in the</a>
+<a name="282"><span class="lineNum">     282 </span>            : c  y-direction.</a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :           if(ny.eq.nye) go to 250</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :  240    continue</span></a>
+<a name="285"><span class="lineNum">     285 </span>            : c  restart the computations with the new set of knots.</a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :  250  continue</span></a>
+<a name="287"><span class="lineNum">     287 </span>            : c  test whether the least-squares polynomial is a solution of our</a>
+<a name="288"><span class="lineNum">     288 </span>            : c  approximation problem.</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :  300  if(ier.eq.(-2)) go to 440</span></a>
+<a name="290"><span class="lineNum">     290 </span>            : cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</a>
+<a name="291"><span class="lineNum">     291 </span>            : c part 2: determination of the smoothing spline sp(x,y)                c</a>
+<a name="292"><span class="lineNum">     292 </span>            : c *****************************************************                c</a>
+<a name="293"><span class="lineNum">     293 </span>            : c  we have determined the number of knots and their position. we now   c</a>
+<a name="294"><span class="lineNum">     294 </span>            : c  compute the b-spline coefficients of the smoothing spline sp(x,y).  c</a>
+<a name="295"><span class="lineNum">     295 </span>            : c  this smoothing spline varies with the parameter p in such a way thatc</a>
+<a name="296"><span class="lineNum">     296 </span>            : c    f(p) = sumi=1,mx(sumj=1,my((z(i,j)-sp(x(i),y(j)))**2)             c</a>
+<a name="297"><span class="lineNum">     297 </span>            : c  is a continuous, strictly decreasing function of p. moreover the    c</a>
+<a name="298"><span class="lineNum">     298 </span>            : c  least-squares polynomial corresponds to p=0 and the least-squares   c</a>
+<a name="299"><span class="lineNum">     299 </span>            : c  spline to p=infinity. iteratively we then have to determine the     c</a>
+<a name="300"><span class="lineNum">     300 </span>            : c  positive value of p such that f(p)=s. the process which is proposed c</a>
+<a name="301"><span class="lineNum">     301 </span>            : c  here makes use of rational interpolation. f(p) is approximated by a c</a>
+<a name="302"><span class="lineNum">     302 </span>            : c  rational function r(p)=(u*p+v)/(p+w); three values of p (p1,p2,p3)  c</a>
+<a name="303"><span class="lineNum">     303 </span>            : c  with corresponding values of f(p) (f1=f(p1)-s,f2=f(p2)-s,f3=f(p3)-s)c</a>
+<a name="304"><span class="lineNum">     304 </span>            : c  are used to calculate the new value of p such that r(p)=s.          c</a>
+<a name="305"><span class="lineNum">     305 </span>            : c  convergence is guaranteed by taking f1 &gt; 0 and f3 &lt; 0.              c</a>
+<a name="306"><span class="lineNum">     306 </span>            : cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</a>
+<a name="307"><span class="lineNum">     307 </span>            : c  initial value for p.</a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :       p1 = 0.</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :       f1 = fp0-s</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :       p3 = -one</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :       f3 = fpms</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :       p = one</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :       ich1 = 0</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :       ich3 = 0</span></a>
+<a name="315"><span class="lineNum">     315 </span>            : c  iteration process to find the root of f(p)=s.</a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :       do 350 iter = 1,maxit</span></a>
+<a name="317"><span class="lineNum">     317 </span>            : c  find the smoothing spline sp(x,y) and the corresponding sum of</a>
+<a name="318"><span class="lineNum">     318 </span>            : c  squared residuals fp.</a>
+<a name="319"><span class="lineNum">     319 </span>            :         call fpgrre(ifsx,ifsy,ifbx,ifby,x,mx,y,my,z,mz,kx,ky,tx,nx,ty,</a>
+<a name="320"><span class="lineNum">     320 </span>            :      *  ny,p,c,nc,fp,fpintx,fpinty,mm,mynx,kx1,kx2,ky1,ky2,wrk(lsx),</a>
+<a name="321"><span class="lineNum">     321 </span>            :      *  wrk(lsy),wrk(lri),wrk(lq),wrk(lax),wrk(lay),wrk(lbx),wrk(lby),</a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :      *  nrx,nry)</span></a>
+<a name="323"><span class="lineNum">     323 </span>            : c  test whether the approximation sp(x,y) is an acceptable solution.</a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :         fpms = fp-s</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :         if(abs(fpms).lt.acc) go to 440</span></a>
+<a name="326"><span class="lineNum">     326 </span>            : c  test whether the maximum allowable number of iterations has been</a>
+<a name="327"><span class="lineNum">     327 </span>            : c  reached.</a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :         if(iter.eq.maxit) go to 400</span></a>
+<a name="329"><span class="lineNum">     329 </span>            : c  carry out one more step of the iteration process.</a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :         p2 = p</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         f2 = fpms</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :         if(ich3.ne.0) go to 320</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         if((f2-f3).gt.acc) go to 310</span></a>
+<a name="334"><span class="lineNum">     334 </span>            : c  our initial choice of p is too large.</a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :         p3 = p2</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :         f3 = f2</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         p = p*con4</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         if(p.le.p1) p = p1*con9 + p2*con1</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         go to 350</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :  310    if(f2.lt.0.) ich3 = 1</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :  320    if(ich1.ne.0) go to 340</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :         if((f1-f2).gt.acc) go to 330</span></a>
+<a name="343"><span class="lineNum">     343 </span>            : c  our initial choice of p is too small</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :         p1 = p2</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         f1 = f2</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :         p = p/con4</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         if(p3.lt.0.) go to 350</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :         if(p.ge.p3) p = p2*con1 + p3*con9</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :         go to 350</span></a>
+<a name="350"><span class="lineNum">     350 </span>            : c  test whether the iteration process proceeds as theoretically</a>
+<a name="351"><span class="lineNum">     351 </span>            : c  expected.</a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :  330    if(f2.gt.0.) ich1 = 1</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :  340    if(f2.ge.f1 .or. f2.le.f3) go to 410</span></a>
+<a name="354"><span class="lineNum">     354 </span>            : c  find the new value of p.</a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :         p = fprati(p1,f1,p2,f2,p3,f3)</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :  350  continue</span></a>
+<a name="357"><span class="lineNum">     357 </span>            : c  error codes and messages.</a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :  400  ier = 3</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :       go to 440</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :  410  ier = 2</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :       go to 440</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :  420  ier = 1</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         74 :       go to 440</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         74 :  430  ier = -1</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         74 :       fp = 0.</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         74 :  440  return</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :       end</a>
+<a name="368"><span class="lineNum">     368 </span>            : </a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
