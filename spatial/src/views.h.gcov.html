@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - spatial/src/views.h</title>
+  <title>LCOV - lcov.info - spatial/src/views.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">6</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -74,10 +74,10 @@
 <a name="4"><span class="lineNum">       4 </span>            : #include &lt;array&gt;</a>
 <a name="5"><span class="lineNum">       5 </span>            : #include &lt;cstdint&gt;</a>
 <a name="6"><span class="lineNum">       6 </span>            : </a>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">       2587 : struct ArrayDescriptor {</span></a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">       7135 :     ArrayDescriptor(intptr_t ndim):</span></a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">       7135 :         ndim(ndim), shape(ndim, 1), strides(ndim, 0) {</span></a>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">       7135 :     }</span></a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">       2527 : struct ArrayDescriptor {</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">       6985 :     ArrayDescriptor(intptr_t ndim):</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">       6985 :         ndim(ndim), shape(ndim, 1), strides(ndim, 0) {</span></a>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">       6985 :     }</span></a>
 <a name="11"><span class="lineNum">      11 </span>            : </a>
 <a name="12"><span class="lineNum">      12 </span>            :     intptr_t ndim;</a>
 <a name="13"><span class="lineNum">      13 </span>            :     intptr_t element_size;</a>
@@ -90,8 +90,8 @@
 <a name="20"><span class="lineNum">      20 </span>            :     std::array&lt;intptr_t, 2&gt; strides;</a>
 <a name="21"><span class="lineNum">      21 </span>            :     T* data;</a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">    2973684 :     T&amp; operator()(intptr_t i, intptr_t j) {</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">     318912 :         return data[i * strides[0] + j * strides[1]];</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">    2938176 :     T&amp; operator()(intptr_t i, intptr_t j) {</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">     317100 :         return data[i * strides[0] + j * strides[1]];</span></a>
 <a name="25"><span class="lineNum">      25 </span>            :     }</a>
 <a name="26"><span class="lineNum">      26 </span>            : };</a>
 </pre>

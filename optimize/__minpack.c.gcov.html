@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - optimize/__minpack.c</title>
+  <title>LCOV - lcov.info - optimize/__minpack.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">922</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -2944,11 +2944,11 @@
 <a name="2874"><span class="lineNum">    2874 </span>            :                 //sum for small components</a>
 <a name="2875"><span class="lineNum">    2875 </span><span class="lineCov">     110300 :                 if (xabs &gt; x3max)</span></a>
 <a name="2876"><span class="lineNum">    2876 </span>            :                 {</a>
-<a name="2877"><span class="lineNum">    2877 </span><span class="lineCov">        432 :                     s3 = 1.0 + s3*pow(x3max / xabs, 2.0);</span></a>
-<a name="2878"><span class="lineNum">    2878 </span><span class="lineCov">        432 :                     x3max = xabs;</span></a>
+<a name="2877"><span class="lineNum">    2877 </span><span class="lineCov">        437 :                     s3 = 1.0 + s3*pow(x3max / xabs, 2.0);</span></a>
+<a name="2878"><span class="lineNum">    2878 </span><span class="lineCov">        437 :                     x3max = xabs;</span></a>
 <a name="2879"><span class="lineNum">    2879 </span>            :                 } else {</a>
 <a name="2880"><span class="lineNum">    2880 </span>            :                     // 40</a>
-<a name="2881"><span class="lineNum">    2881 </span><span class="lineCov">     109868 :                     if (xabs != 0.0)</span></a>
+<a name="2881"><span class="lineNum">    2881 </span><span class="lineCov">     109863 :                     if (xabs != 0.0)</span></a>
 <a name="2882"><span class="lineNum">    2882 </span>            :                     {</a>
 <a name="2883"><span class="lineNum">    2883 </span><span class="lineCov">        296 :                         s3 += pow(xabs / x3max, 2.0);</span></a>
 <a name="2884"><span class="lineNum">    2884 </span>            :                     }</a>

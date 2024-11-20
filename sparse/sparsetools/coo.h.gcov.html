@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/sparsetools/coo.h</title>
+  <title>LCOV - lcov.info - sparse/sparsetools/coo.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">59</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">95</td>
@@ -101,7 +101,7 @@
 <a name="31"><span class="lineNum">      31 </span>            :  * </a>
 <a name="32"><span class="lineNum">      32 </span>            :  */</a>
 <a name="33"><span class="lineNum">      33 </span>            : template &lt;class I, class T&gt;</a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">     136606 : void coo_tocsr(const I n_row,</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">     136673 : void coo_tocsr(const I n_row,</span></a>
 <a name="35"><span class="lineNum">      35 </span>            :                const I n_col,</a>
 <a name="36"><span class="lineNum">      36 </span>            :                const I nnz,</a>
 <a name="37"><span class="lineNum">      37 </span>            :                const I Ai[],</a>
@@ -112,39 +112,39 @@
 <a name="42"><span class="lineNum">      42 </span>            :                      T Bx[])</a>
 <a name="43"><span class="lineNum">      43 </span>            : {</a>
 <a name="44"><span class="lineNum">      44 </span>            :     //compute number of non-zero entries per row of A </a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">     136606 :     std::fill(Bp, Bp + n_row, 0);</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">     136673 :     std::fill(Bp, Bp + n_row, 0);</span></a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">    5719447 :     for (I n = 0; n &lt; nnz; n++){            </span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">    5582841 :         Bp[Ai[n]]++;</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">    6798989 :     for (I n = 0; n &lt; nnz; n++){            </span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">    6662316 :         Bp[Ai[n]]++;</span></a>
 <a name="49"><span class="lineNum">      49 </span>            :     }</a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
 <a name="51"><span class="lineNum">      51 </span>            :     //cumsum the nnz per row to get Bp[]</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">   25136122 :     for(I i = 0, cumsum = 0; i &lt; n_row; i++){     </span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">   24999516 :         I temp = Bp[i];</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">   24999516 :         Bp[i] = cumsum;</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">   24999516 :         cumsum += temp;</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">   25157971 :     for(I i = 0, cumsum = 0; i &lt; n_row; i++){     </span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">   25021298 :         I temp = Bp[i];</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">   25021298 :         Bp[i] = cumsum;</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">   25021298 :         cumsum += temp;</span></a>
 <a name="56"><span class="lineNum">      56 </span>            :     }</a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">     136606 :     Bp[n_row] = nnz; </span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">     136673 :     Bp[n_row] = nnz; </span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
 <a name="59"><span class="lineNum">      59 </span>            :     //write Aj,Ax into Bj,Bx</a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">    5719447 :     for(I n = 0; n &lt; nnz; n++){</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">    5582841 :         I row  = Ai[n];</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">    5582841 :         I dest = Bp[row];</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">    6798989 :     for(I n = 0; n &lt; nnz; n++){</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">    6662316 :         I row  = Ai[n];</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">    6662316 :         I dest = Bp[row];</span></a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">    5582841 :         Bj[dest] = Aj[n];</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">    5582841 :         Bx[dest] = Ax[n];</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">    6662316 :         Bj[dest] = Aj[n];</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">    6662316 :         Bx[dest] = Ax[n];</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">    5582841 :         Bp[row]++;</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">    6662316 :         Bp[row]++;</span></a>
 <a name="68"><span class="lineNum">      68 </span>            :     }</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">   25272728 :     for(I i = 0, last = 0; i &lt;= n_row; i++){</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">   25136122 :         I temp = Bp[i];</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">   25136122 :         Bp[i]  = last;</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">   25136122 :         last   = temp;</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">   25294644 :     for(I i = 0, last = 0; i &lt;= n_row; i++){</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">   25157971 :         I temp = Bp[i];</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">   25157971 :         Bp[i]  = last;</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">   25157971 :         last   = temp;</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :     }</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
 <a name="76"><span class="lineNum">      76 </span>            :     //now Bp,Bj,Bx form a CSR representation (with possible duplicates)</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">     136606 : }</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">     136673 : }</span></a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
 <a name="79"><span class="lineNum">      79 </span>            : /*</a>
 <a name="80"><span class="lineNum">      80 </span>            :  * Compute B += A for COO matrix A, dense matrix B</a>
@@ -160,7 +160,7 @@
 <a name="90"><span class="lineNum">      90 </span>            :  *</a>
 <a name="91"><span class="lineNum">      91 </span>            :  */</a>
 <a name="92"><span class="lineNum">      92 </span>            : template &lt;class I, class T&gt;</a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">     149525 : void coo_todense(const I n_row,</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">     149560 : void coo_todense(const I n_row,</span></a>
 <a name="94"><span class="lineNum">      94 </span>            :                  const I n_col,</a>
 <a name="95"><span class="lineNum">      95 </span>            :                  const npy_int64 nnz,</a>
 <a name="96"><span class="lineNum">      96 </span>            :                  const I Ai[],</a>
@@ -169,17 +169,17 @@
 <a name="99"><span class="lineNum">      99 </span>            :                        T Bx[],</a>
 <a name="100"><span class="lineNum">     100 </span>            :                  const int fortran)</a>
 <a name="101"><span class="lineNum">     101 </span>            : {</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     149525 :     if (!fortran) {</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1347456 :         for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">    1317730 :             Bx[ (npy_intp)n_col * Ai[n] + Aj[n] ] += Ax[n];</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     149560 :     if (!fortran) {</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1503922 :         for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">    1474046 :             Bx[ (npy_intp)n_col * Ai[n] + Aj[n] ] += Ax[n];</span></a>
 <a name="105"><span class="lineNum">     105 </span>            :         }</a>
 <a name="106"><span class="lineNum">     106 </span>            :     }</a>
 <a name="107"><span class="lineNum">     107 </span>            :     else {</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">      92333 :         for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      62781 :             Bx[ (npy_intp)n_row * Aj[n] + Ai[n] ] += Ax[n];</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">      92235 :         for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      62798 :             Bx[ (npy_intp)n_row * Aj[n] + Ai[n] ] += Ax[n];</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :         }</a>
 <a name="111"><span class="lineNum">     111 </span>            :     }</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     149525 : }</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     149560 : }</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            : /*</a>
@@ -193,7 +193,7 @@
 <a name="123"><span class="lineNum">     123 </span>            :  *</a>
 <a name="124"><span class="lineNum">     124 </span>            :  */</a>
 <a name="125"><span class="lineNum">     125 </span>            : template &lt;class I, class T&gt;</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       7460 : void coo_todense_nd(const I strides[],</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      10840 : void coo_todense_nd(const I strides[],</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :                     const npy_int64 nnz,</a>
 <a name="128"><span class="lineNum">     128 </span>            :                     const npy_int64 num_dims,</a>
 <a name="129"><span class="lineNum">     129 </span>            :                     const I Aijk[],</a>
@@ -202,7 +202,7 @@
 <a name="132"><span class="lineNum">     132 </span>            :                     const int fortran)</a>
 <a name="133"><span class="lineNum">     133 </span>            : {</a>
 <a name="134"><span class="lineNum">     134 </span>            : </a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       7460 :     if (!fortran) {</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      10840 :     if (!fortran) {</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">     178886 :         for(npy_int64 n = 0; n &lt; nnz; n++) {</span></a>
 <a name="137"><span class="lineNum">     137 </span><span class="lineCov">     178819 :             npy_intp index = 0;</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">    1590580 :             for(npy_int64 d = num_dims - 1; d &gt;= 0; d--) {</span></a>
@@ -212,15 +212,15 @@
 <a name="142"><span class="lineNum">     142 </span>            :         }</a>
 <a name="143"><span class="lineNum">     143 </span>            :     }</a>
 <a name="144"><span class="lineNum">     144 </span>            :     else {</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      33987 :         for(npy_int64 n = 0; n &lt; nnz; n++) {</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">     111455 :         for(npy_int64 n = 0; n &lt; nnz; n++) {</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :             npy_intp index = 0;</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      53192 :             for(npy_int64 d = 0; d &lt; num_dims; d++) {</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      26598 :                 index += Aijk[d * nnz + n] * strides[d];</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">     201368 :             for(npy_int64 d = 0; d &lt; num_dims; d++) {</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">     100686 :                 index += Aijk[d * nnz + n] * strides[d];</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :             }</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      26598 :             Bx[index] += Ax[n];</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">     100686 :             Bx[index] += Ax[n];</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         }</a>
 <a name="152"><span class="lineNum">     152 </span>            :     }</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">       7460 : }</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">      10840 : }</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
 <a name="156"><span class="lineNum">     156 </span>            : /*</a>
@@ -244,17 +244,17 @@
 <a name="174"><span class="lineNum">     174 </span>            :  * </a>
 <a name="175"><span class="lineNum">     175 </span>            :  */</a>
 <a name="176"><span class="lineNum">     176 </span>            : template &lt;class I, class T&gt;</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">      17047 : void coo_matvec(const npy_int64 nnz,</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">      15887 : void coo_matvec(const npy_int64 nnz,</span></a>
 <a name="178"><span class="lineNum">     178 </span>            :                 const I Ai[],</a>
 <a name="179"><span class="lineNum">     179 </span>            :                 const I Aj[],</a>
 <a name="180"><span class="lineNum">     180 </span>            :                 const T Ax[],</a>
 <a name="181"><span class="lineNum">     181 </span>            :                 const T Xx[],</a>
 <a name="182"><span class="lineNum">     182 </span>            :                       T Yx[])</a>
 <a name="183"><span class="lineNum">     183 </span>            : {</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">    4227980 :     for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    4210933 :         Yx[Ai[n]] += Ax[n] * Xx[Aj[n]];</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">    4166472 :     for(npy_int64 n = 0; n &lt; nnz; n++){</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    4150585 :         Yx[Ai[n]] += Ax[n] * Xx[Aj[n]];</span></a>
 <a name="186"><span class="lineNum">     186 </span>            :     }</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      17047 : }</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      15887 : }</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
 <a name="190"><span class="lineNum">     190 </span>            : /*</a>
@@ -308,7 +308,7 @@
 <a name="238"><span class="lineNum">     238 </span>            :  * </a>
 <a name="239"><span class="lineNum">     239 </span>            :  */</a>
 <a name="240"><span class="lineNum">     240 </span>            : template &lt;class I, class T&gt;</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       2688 : void coo_matmat_dense(const npy_int64 nnz,</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       2436 : void coo_matmat_dense(const npy_int64 nnz,</span></a>
 <a name="242"><span class="lineNum">     242 </span>            :                 const npy_int64 n_col_B,</a>
 <a name="243"><span class="lineNum">     243 </span>            :                 const I Ai[],</a>
 <a name="244"><span class="lineNum">     244 </span>            :                 const I Aj[],</a>
@@ -316,17 +316,17 @@
 <a name="246"><span class="lineNum">     246 </span>            :                 const T Bx[],</a>
 <a name="247"><span class="lineNum">     247 </span>            :                       T Yx[])</a>
 <a name="248"><span class="lineNum">     248 </span>            : {</a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">      50307 :     for (npy_int64 n = 0; n &lt; nnz; n++) {</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">      47619 :         const T x = Ax[n];</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">      66903 :         if (x != 0) {</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">      46946 :             const npy_int64 dst_offset = Ai[n] * n_col_B;</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      46946 :             const npy_int64 src_offset = Aj[n] * n_col_B;</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">     197057 :             for (npy_int64 i = 0; i &lt; n_col_B; i++) {</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">     150111 :                 Yx[dst_offset + i] += x * Bx[src_offset + i];</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">      37147 :     for (npy_int64 n = 0; n &lt; nnz; n++) {</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">      34711 :         const T x = Ax[n];</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">      41395 :         if (x != 0) {</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">      34038 :             const npy_int64 dst_offset = Ai[n] * n_col_B;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      34038 :             const npy_int64 src_offset = Aj[n] * n_col_B;</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">     120225 :             for (npy_int64 i = 0; i &lt; n_col_B; i++) {</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">      86187 :                 Yx[dst_offset + i] += x * Bx[src_offset + i];</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :             }</a>
 <a name="257"><span class="lineNum">     257 </span>            :         }</a>
 <a name="258"><span class="lineNum">     258 </span>            :     }</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       2688 : }</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       2436 : }</span></a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
 <a name="261"><span class="lineNum">     261 </span>            : #endif</a>
 </pre>

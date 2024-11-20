@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/memory.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/memory.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">28</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -173,25 +173,25 @@
 <a name="103"><span class="lineNum">     103 </span>            : /*! \brief Set up pointers for integer working arrays.</a>
 <a name="104"><span class="lineNum">     104 </span>            :  */</a>
 <a name="105"><span class="lineNum">     105 </span>            : void</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       4395 : SetIWork(int m, int n, int panel_size, int *iworkptr, int **segrep,</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       4401 : SetIWork(int m, int n, int panel_size, int *iworkptr, int **segrep,</span></a>
 <a name="107"><span class="lineNum">     107 </span>            :          int **parent, int_t **xplore, int **repfnz, int **panel_lsub,</a>
 <a name="108"><span class="lineNum">     108 </span>            :          int_t **xprune, int **marker)</a>
 <a name="109"><span class="lineNum">     109 </span>            : {</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       4395 :     *segrep = iworkptr;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       4395 :     *parent = iworkptr + m;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       4401 :     *segrep = iworkptr;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       4401 :     *parent = iworkptr + m;</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :     //    *xplore = *parent + m;</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       4395 :     *repfnz = *parent + m;</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       4395 :     *panel_lsub = *repfnz + panel_size * m;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       4401 :     *repfnz = *parent + m;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       4401 :     *panel_lsub = *repfnz + panel_size * m;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :     //    *xprune = *panel_lsub + panel_size * m;</a>
 <a name="116"><span class="lineNum">     116 </span>            :     // *marker = *xprune + n;</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       4395 :     *marker = *panel_lsub + panel_size * m;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       4401 :     *marker = *panel_lsub + panel_size * m;</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :     </a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       4395 :     ifill (*repfnz, m * panel_size, EMPTY);</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       4395 :     ifill (*panel_lsub, m * panel_size, EMPTY);</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       4401 :     ifill (*repfnz, m * panel_size, EMPTY);</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       4401 :     ifill (*panel_lsub, m * panel_size, EMPTY);</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :     </a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       4395 :     *xplore = intMalloc(m); /* can be 64 bit */</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       4395 :     *xprune = intMalloc(n);</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       4395 : }</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       4401 :     *xplore = intMalloc(m); /* can be 64 bit */</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       4401 :     *xprune = intMalloc(n);</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       4401 : }</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
 <a name="127"><span class="lineNum">     127 </span>            : void</a>
@@ -214,36 +214,36 @@
 <a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :     for (; d_ptr &gt;= dest; --s_ptr, --d_ptr ) *d_ptr = *s_ptr;</span></a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      13901 : int *int32Malloc(int n)</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      13919 : int *int32Malloc(int n)</span></a>
 <a name="148"><span class="lineNum">     148 </span>            : {</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">      13901 :     int *buf;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      13901 :     buf = (int *) SUPERLU_MALLOC((size_t) n * sizeof(int));</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      13901 :     if ( !buf ) {</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">      13919 :     int *buf;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      13919 :     buf = (int *) SUPERLU_MALLOC((size_t) n * sizeof(int));</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      13919 :     if ( !buf ) {</span></a>
 <a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :         ABORT(&quot;SUPERLU_MALLOC fails for buf in int32Malloc()&quot;);</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :     }</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">      13901 :     return (buf);</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">      13919 :     return (buf);</span></a>
 <a name="155"><span class="lineNum">     155 </span>            : }</a>
 <a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      57425 : int_t *intMalloc(int_t n)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      57503 : int_t *intMalloc(int_t n)</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : {</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">      57425 :     int_t *buf;</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      57425 :     buf = (int_t *) SUPERLU_MALLOC((size_t) n * sizeof(int_t));</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      57425 :     if ( !buf ) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">      57503 :     int_t *buf;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      57503 :     buf = (int_t *) SUPERLU_MALLOC((size_t) n * sizeof(int_t));</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      57503 :     if ( !buf ) {</span></a>
 <a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :         ABORT(&quot;SUPERLU_MALLOC fails for buf in intMalloc()&quot;);</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :     }</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      57425 :     return (buf);</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      57503 :     return (buf);</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : }</a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      40405 : int *int32Calloc(int n)</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      40475 : int *int32Calloc(int n)</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : {</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">      40405 :     int *buf;</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      40405 :     register int i;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      40405 :     buf = (int *) SUPERLU_MALLOC(n * sizeof(int));</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      40405 :     if ( !buf ) {</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">      40475 :     int *buf;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      40475 :     register int i;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      40475 :     buf = (int *) SUPERLU_MALLOC(n * sizeof(int));</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      40475 :     if ( !buf ) {</span></a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :         ABORT(&quot;SUPERLU_MALLOC fails for buf in intCalloc()&quot;);</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     }</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">   10688110 :     for (i = 0; i &lt; n; ++i) buf[i] = 0;</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      40405 :     return (buf);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">   10711934 :     for (i = 0; i &lt; n; ++i) buf[i] = 0;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      40475 :     return (buf);</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : }</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 : int_t *intCalloc(int_t n)</span></a>

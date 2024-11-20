@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/Quansight/scipy/build/scipy/linalg/_linalg_pythran.cpython-312-x86_64-linux-gnu.so.p/_linalg_pythran.cpp</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/Quansight/scipy/build/scipy/linalg/_linalg_pythran.cpython-312-x86_64-linux-gnu.so.p/_linalg_pythran.cpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">57</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -75,18 +75,18 @@
 <a name="5"><span class="lineNum">       5 </span>            : #ifdef _OPENMP</a>
 <a name="6"><span class="lineNum">       6 </span>            : #include &lt;omp.h&gt;</a>
 <a name="7"><span class="lineNum">       7 </span>            : #endif</a>
-<a name="8"><span class="lineNum">       8 </span>            : #include &lt;pythonic/include/types/numpy_texpr.hpp&gt;</a>
-<a name="9"><span class="lineNum">       9 </span>            : #include &lt;pythonic/include/types/int.hpp&gt;</a>
-<a name="10"><span class="lineNum">      10 </span>            : #include &lt;pythonic/include/types/float64.hpp&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : #include &lt;pythonic/include/types/ndarray.hpp&gt;</a>
+<a name="9"><span class="lineNum">       9 </span>            : #include &lt;pythonic/include/types/float64.hpp&gt;</a>
+<a name="10"><span class="lineNum">      10 </span>            : #include &lt;pythonic/include/types/numpy_texpr.hpp&gt;</a>
 <a name="11"><span class="lineNum">      11 </span>            : #include &lt;pythonic/include/types/complex64.hpp&gt;</a>
-<a name="12"><span class="lineNum">      12 </span>            : #include &lt;pythonic/include/types/complex128.hpp&gt;</a>
-<a name="13"><span class="lineNum">      13 </span>            : #include &lt;pythonic/include/types/ndarray.hpp&gt;</a>
+<a name="12"><span class="lineNum">      12 </span>            : #include &lt;pythonic/include/types/int.hpp&gt;</a>
+<a name="13"><span class="lineNum">      13 </span>            : #include &lt;pythonic/include/types/complex128.hpp&gt;</a>
 <a name="14"><span class="lineNum">      14 </span>            : #include &lt;pythonic/include/types/float32.hpp&gt;</a>
-<a name="15"><span class="lineNum">      15 </span>            : #include &lt;pythonic/types/int.hpp&gt;</a>
-<a name="16"><span class="lineNum">      16 </span>            : #include &lt;pythonic/types/complex64.hpp&gt;</a>
-<a name="17"><span class="lineNum">      17 </span>            : #include &lt;pythonic/types/numpy_texpr.hpp&gt;</a>
-<a name="18"><span class="lineNum">      18 </span>            : #include &lt;pythonic/types/ndarray.hpp&gt;</a>
-<a name="19"><span class="lineNum">      19 </span>            : #include &lt;pythonic/types/complex128.hpp&gt;</a>
+<a name="15"><span class="lineNum">      15 </span>            : #include &lt;pythonic/types/complex128.hpp&gt;</a>
+<a name="16"><span class="lineNum">      16 </span>            : #include &lt;pythonic/types/numpy_texpr.hpp&gt;</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &lt;pythonic/types/complex64.hpp&gt;</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &lt;pythonic/types/int.hpp&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &lt;pythonic/types/ndarray.hpp&gt;</a>
 <a name="20"><span class="lineNum">      20 </span>            : #include &lt;pythonic/types/float32.hpp&gt;</a>
 <a name="21"><span class="lineNum">      21 </span>            : #include &lt;pythonic/types/float64.hpp&gt;</a>
 <a name="22"><span class="lineNum">      22 </span>            : #include &lt;pythonic/include/builtins/abs.hpp&gt;</a>
@@ -213,7 +213,7 @@
 <a name="143"><span class="lineNum">     143 </span>            :     }  ;</a>
 <a name="144"><span class="lineNum">     144 </span>            :     template &lt;typename argument_type0 , typename argument_type1 , typename argument_type2 , typename argument_type3 &gt;</a>
 <a name="145"><span class="lineNum">     145 </span>            :     inline</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         27 :     typename _funm_loops::type&lt;argument_type0, argument_type1, argument_type2, argument_type3&gt;::result_type _funm_loops::operator()(argument_type0 F, argument_type1 T, argument_type2 n, argument_type3 minden) const</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         54 :     typename _funm_loops::type&lt;argument_type0, argument_type1, argument_type2, argument_type3&gt;::result_type _funm_loops::operator()(argument_type0 F, argument_type1 T, argument_type2 n, argument_type3 minden) const</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :     {</a>
 <a name="148"><span class="lineNum">     148 </span>            :       typedef typename std::remove_cv&lt;typename std::remove_reference&lt;argument_type3&gt;::type&gt;::type __type0;</a>
 <a name="149"><span class="lineNum">     149 </span>            :       typedef __type0 __type1;</a>
@@ -284,46 +284,46 @@
 <a name="214"><span class="lineNum">     214 </span>            :       typedef typename pythonic::lazy&lt;__type109&gt;::type __type110;</a>
 <a name="215"><span class="lineNum">     215 </span>            :       typedef typename __combined&lt;__type106,__type110&gt;::type __type111;</a>
 <a name="216"><span class="lineNum">     216 </span>            :       typedef typename pythonic::lazy&lt;__type111&gt;::type __type112;</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         27 :       __type46 minden_ = minden;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         54 :       __type46 minden_ = minden;</span></a>
 <a name="218"><span class="lineNum">     218 </span>            :       {</a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         27 :         long  __target140305216459024 = n;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         77 :         for (long  p=1L; p &lt; __target140305216459024; p += 1L)</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         54 :         long  __target139879484723344 = n;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">        154 :         for (long  p=1L; p &lt; __target139879484723344; p += 1L)</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :         {</a>
 <a name="222"><span class="lineNum">     222 </span>            :           {</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         50 :             long  __target140305216456400 = pythonic::operator_::add(pythonic::operator_::sub(n, p), 1L);</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        142 :             for (long  i=1L; i &lt; __target140305216456400; i += 1L)</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        100 :             long  __target139879484720976 = pythonic::operator_::add(pythonic::operator_::sub(n, p), 1L);</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        284 :             for (long  i=1L; i &lt; __target139879484720976; i += 1L)</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :             {</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         92 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::add(i, p))&gt;::type j = pythonic::operator_::add(i, p);</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         92 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::mul(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))], pythonic::operator_::sub(pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))])))&gt;::type s = pythonic::operator_::mul(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))], pythonic::operator_::sub(pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]));</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">         92 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::sub(pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(T)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(F)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))), pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(F)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(T)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L))))))&gt;::type val = pythonic::operator_::sub(pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(T)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(F)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))), pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(F)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(T)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))));</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">         92 :               __type112 s_ = pythonic::operator_::add(s, val);</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">         92 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::sub(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]))&gt;::type den = pythonic::operator_::sub(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]);</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         95 :               if (pythonic::operator_::ne(den, 0.0))</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        184 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::add(i, p))&gt;::type j = pythonic::operator_::add(i, p);</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">        184 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::mul(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))], pythonic::operator_::sub(pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))])))&gt;::type s = pythonic::operator_::mul(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))], pythonic::operator_::sub(pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(F)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]));</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        184 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::sub(pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(T)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(F)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))), pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(F)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(T)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L))))))&gt;::type val = pythonic::operator_::sub(pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(T)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(F)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))), pythonic::builtins::functor::sum{}(pythonic::operator_::mul(pythonic::types::as_const(F)(pythonic::operator_::sub(i, 1L),pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L))), pythonic::types::as_const(T)(pythonic::types::contiguous_slice(i,pythonic::operator_::sub(j, 1L)),pythonic::operator_::sub(j, 1L)))));</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        184 :               __type112 s_ = pythonic::operator_::add(s, val);</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        184 :               typename pythonic::assignable_noescape&lt;decltype(pythonic::operator_::sub(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]))&gt;::type den = pythonic::operator_::sub(pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(j, 1L), pythonic::operator_::sub(j, 1L))], pythonic::types::as_const(T)[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(i, 1L))]);</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        190 :               if (pythonic::operator_::ne(den, 0.0))</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :               {</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">         82 :                 s_ = pythonic::operator_::div(s_, den);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        164 :                 s_ = pythonic::operator_::div(s_, den);</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :               }</a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">         92 :               F[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))] = s_;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         92 :               minden_ = pythonic::builtins::functor::min{}(minden_, pythonic::builtins::functor::abs{}(den));</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">        184 :               F[pythonic::types::make_tuple(pythonic::operator_::sub(i, 1L), pythonic::operator_::sub(j, 1L))] = s_;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        184 :               minden_ = pythonic::builtins::functor::min{}(minden_, pythonic::builtins::functor::abs{}(den));</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :             }</a>
 <a name="238"><span class="lineNum">     238 </span>            :           }</a>
 <a name="239"><span class="lineNum">     239 </span>            :         }</a>
 <a name="240"><span class="lineNum">     240 </span>            :       }</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         27 :       return pythonic::types::make_tuple(F, minden_);</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         54 :       return pythonic::types::make_tuple(F, minden_);</span></a>
 <a name="242"><span class="lineNum">     242 </span>            :     }</a>
 <a name="243"><span class="lineNum">     243 </span>            :   }</a>
 <a name="244"><span class="lineNum">     244 </span>            : }</a>
 <a name="245"><span class="lineNum">     245 </span>            : #include &lt;pythonic/python/exception_handler.hpp&gt;</a>
 <a name="246"><span class="lineNum">     246 </span>            : #ifdef ENABLE_PYTHON_MODULE</a>
 <a name="247"><span class="lineNum">     247 </span>            : inline</a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">         10 : typename __pythran__linalg_pythran::_funm_loops::type&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, long, double&gt;::result_type _funm_loops0(pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; F, pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; T, long&amp;&amp; n, double&amp;&amp; minden) </span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">         20 : typename __pythran__linalg_pythran::_funm_loops::type&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, long, double&gt;::result_type _funm_loops0(pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; F, pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; T, long&amp;&amp; n, double&amp;&amp; minden) </span></a>
 <a name="249"><span class="lineNum">     249 </span>            : {</a>
 <a name="250"><span class="lineNum">     250 </span>            :   </a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         10 :                             PyThreadState *_save = PyEval_SaveThread();</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         10 :                             try {</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         30 :                                 auto res = __pythran__linalg_pythran::_funm_loops()(F, T, n, minden);</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         10 :                                 PyEval_RestoreThread(_save);</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         10 :                                 return res;</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         10 :                             }</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         20 :                             PyThreadState *_save = PyEval_SaveThread();</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         20 :                             try {</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         60 :                                 auto res = __pythran__linalg_pythran::_funm_loops()(F, T, n, minden);</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         20 :                                 PyEval_RestoreThread(_save);</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         20 :                                 return res;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         20 :                             }</span></a>
 <a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :                             catch(...) {</span></a>
 <a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :                                 PyEval_RestoreThread(_save);</span></a>
 <a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :                                 throw;</span></a>
@@ -331,15 +331,15 @@
 <a name="261"><span class="lineNum">     261 </span>            :                             ;</a>
 <a name="262"><span class="lineNum">     262 </span>            : }</a>
 <a name="263"><span class="lineNum">     263 </span>            : inline</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         17 : typename __pythran__linalg_pythran::_funm_loops::type&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;, long, double&gt;::result_type _funm_loops1(pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; F, pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&amp;&amp; T, long&amp;&amp; n, double&amp;&amp; minden) </span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         34 : typename __pythran__linalg_pythran::_funm_loops::type&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;, pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;, long, double&gt;::result_type _funm_loops1(pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&amp;&amp; F, pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&amp;&amp; T, long&amp;&amp; n, double&amp;&amp; minden) </span></a>
 <a name="265"><span class="lineNum">     265 </span>            : {</a>
 <a name="266"><span class="lineNum">     266 </span>            :   </a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         17 :                             PyThreadState *_save = PyEval_SaveThread();</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         17 :                             try {</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         51 :                                 auto res = __pythran__linalg_pythran::_funm_loops()(F, T, n, minden);</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         17 :                                 PyEval_RestoreThread(_save);</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         17 :                                 return res;</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         17 :                             }</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         34 :                             PyThreadState *_save = PyEval_SaveThread();</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         34 :                             try {</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        102 :                                 auto res = __pythran__linalg_pythran::_funm_loops()(F, T, n, minden);</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         34 :                                 PyEval_RestoreThread(_save);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         34 :                                 return res;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         34 :                             }</span></a>
 <a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :                             catch(...) {</span></a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                                 PyEval_RestoreThread(_save);</span></a>
 <a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :                                 throw;</span></a>
@@ -572,32 +572,32 @@
 <a name="502"><span class="lineNum">     502 </span>            : }</a>
 <a name="503"><span class="lineNum">     503 </span>            : </a>
 <a name="504"><span class="lineNum">     504 </span>            : static PyObject *</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         27 : __pythran_wrap__funm_loops0(PyObject *self, PyObject *args, PyObject *kw)</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         54 : __pythran_wrap__funm_loops0(PyObject *self, PyObject *args, PyObject *kw)</span></a>
 <a name="506"><span class="lineNum">     506 </span>            : {</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">         27 :     PyObject* args_obj[4+1];</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">         54 :     PyObject* args_obj[4+1];</span></a>
 <a name="508"><span class="lineNum">     508 </span>            :     </a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         27 :     char const* keywords[] = {&quot;F&quot;, &quot;T&quot;, &quot;n&quot;, &quot;minden&quot;,  nullptr};</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         27 :     if(! PyArg_ParseTupleAndKeywords(args, kw, &quot;OOOO&quot;,</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         54 :     char const* keywords[] = {&quot;F&quot;, &quot;T&quot;, &quot;n&quot;, &quot;minden&quot;,  nullptr};</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         54 :     if(! PyArg_ParseTupleAndKeywords(args, kw, &quot;OOOO&quot;,</span></a>
 <a name="511"><span class="lineNum">     511 </span>            :                                      (char**)keywords , &amp;args_obj[0], &amp;args_obj[1], &amp;args_obj[2], &amp;args_obj[3]))</a>
 <a name="512"><span class="lineNum">     512 </span>            :         return nullptr;</a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         27 :     if(is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]) &amp;&amp; is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[1]) &amp;&amp; is_convertible&lt;long&gt;(args_obj[2]) &amp;&amp; is_convertible&lt;double&gt;(args_obj[3]))</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">         20 :         return to_python(_funm_loops0(from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]), from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[1]), from_python&lt;long&gt;(args_obj[2]), from_python&lt;double&gt;(args_obj[3])));</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         54 :     if(is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]) &amp;&amp; is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[1]) &amp;&amp; is_convertible&lt;long&gt;(args_obj[2]) &amp;&amp; is_convertible&lt;double&gt;(args_obj[3]))</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">         40 :         return to_python(_funm_loops0(from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]), from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[1]), from_python&lt;long&gt;(args_obj[2]), from_python&lt;double&gt;(args_obj[3])));</span></a>
 <a name="515"><span class="lineNum">     515 </span>            :     else {</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         17 :         return nullptr;</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         34 :         return nullptr;</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :     }</a>
 <a name="518"><span class="lineNum">     518 </span>            : }</a>
 <a name="519"><span class="lineNum">     519 </span>            : </a>
 <a name="520"><span class="lineNum">     520 </span>            : static PyObject *</a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         17 : __pythran_wrap__funm_loops1(PyObject *self, PyObject *args, PyObject *kw)</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         34 : __pythran_wrap__funm_loops1(PyObject *self, PyObject *args, PyObject *kw)</span></a>
 <a name="522"><span class="lineNum">     522 </span>            : {</a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         17 :     PyObject* args_obj[4+1];</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         34 :     PyObject* args_obj[4+1];</span></a>
 <a name="524"><span class="lineNum">     524 </span>            :     </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         17 :     char const* keywords[] = {&quot;F&quot;, &quot;T&quot;, &quot;n&quot;, &quot;minden&quot;,  nullptr};</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">         17 :     if(! PyArg_ParseTupleAndKeywords(args, kw, &quot;OOOO&quot;,</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         34 :     char const* keywords[] = {&quot;F&quot;, &quot;T&quot;, &quot;n&quot;, &quot;minden&quot;,  nullptr};</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">         34 :     if(! PyArg_ParseTupleAndKeywords(args, kw, &quot;OOOO&quot;,</span></a>
 <a name="527"><span class="lineNum">     527 </span>            :                                      (char**)keywords , &amp;args_obj[0], &amp;args_obj[1], &amp;args_obj[2], &amp;args_obj[3]))</a>
 <a name="528"><span class="lineNum">     528 </span>            :         return nullptr;</a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         17 :     if(is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]) &amp;&amp; is_convertible&lt;pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&gt;(args_obj[1]) &amp;&amp; is_convertible&lt;long&gt;(args_obj[2]) &amp;&amp; is_convertible&lt;double&gt;(args_obj[3]))</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         34 :         return to_python(_funm_loops1(from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]), from_python&lt;pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&gt;(args_obj[1]), from_python&lt;long&gt;(args_obj[2]), from_python&lt;double&gt;(args_obj[3])));</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         34 :     if(is_convertible&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]) &amp;&amp; is_convertible&lt;pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&gt;(args_obj[1]) &amp;&amp; is_convertible&lt;long&gt;(args_obj[2]) &amp;&amp; is_convertible&lt;double&gt;(args_obj[3]))</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         68 :         return to_python(_funm_loops1(from_python&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;(args_obj[0]), from_python&lt;pythonic::types::numpy_texpr&lt;pythonic::types::ndarray&lt;std::complex&lt;double&gt;,pythonic::types::pshape&lt;long,long&gt;&gt;&gt;&gt;(args_obj[1]), from_python&lt;long&gt;(args_obj[2]), from_python&lt;double&gt;(args_obj[3])));</span></a>
 <a name="531"><span class="lineNum">     531 </span>            :     else {</a>
 <a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :         return nullptr;</span></a>
 <a name="533"><span class="lineNum">     533 </span>            :     }</a>
@@ -828,17 +828,17 @@
 <a name="758"><span class="lineNum">     758 </span>            : }</a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
 <a name="760"><span class="lineNum">     760 </span>            :             static PyObject *</a>
-<a name="761"><span class="lineNum">     761 </span><span class="lineCov">         27 :             __pythran_wrapall__funm_loops(PyObject *self, PyObject *args, PyObject *kw)</span></a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineCov">         54 :             __pythran_wrapall__funm_loops(PyObject *self, PyObject *args, PyObject *kw)</span></a>
 <a name="762"><span class="lineNum">     762 </span>            :             {</a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">         27 :                 return pythonic::handle_python_exception([self, args, kw]()</span></a>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">         54 :                 return pythonic::handle_python_exception([self, args, kw]()</span></a>
 <a name="764"><span class="lineNum">     764 </span>            :                 -&gt; PyObject* {</a>
 <a name="765"><span class="lineNum">     765 </span>            : </a>
-<a name="766"><span class="lineNum">     766 </span><span class="lineCov">         27 : if(PyObject* obj = __pythran_wrap__funm_loops0(self, args, kw))</span></a>
+<a name="766"><span class="lineNum">     766 </span><span class="lineCov">         54 : if(PyObject* obj = __pythran_wrap__funm_loops0(self, args, kw))</span></a>
 <a name="767"><span class="lineNum">     767 </span>            :     return obj;</a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineCov">         17 : PyErr_Clear();</span></a>
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">         34 : PyErr_Clear();</span></a>
 <a name="769"><span class="lineNum">     769 </span>            : </a>
 <a name="770"><span class="lineNum">     770 </span>            : </a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">         17 : if(PyObject* obj = __pythran_wrap__funm_loops1(self, args, kw))</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">         34 : if(PyObject* obj = __pythran_wrap__funm_loops1(self, args, kw))</span></a>
 <a name="772"><span class="lineNum">     772 </span>            :     return obj;</a>
 <a name="773"><span class="lineNum">     773 </span><span class="lineNoCov">          0 : PyErr_Clear();</span></a>
 <a name="774"><span class="lineNum">     774 </span>            : </a>
@@ -914,7 +914,7 @@
 <a name="844"><span class="lineNum">     844 </span>            : </a>
 <a name="845"><span class="lineNum">     845 </span><span class="lineNoCov">          0 :                 return pythonic::python::raise_invalid_argument(</span></a>
 <a name="846"><span class="lineNum">     846 </span><span class="lineNoCov">          0 :                                &quot;_funm_loops&quot;, &quot;\n&quot;&quot;    - _funm_loops(complex128[:,:], complex128[:,:], int, float64)\n&quot;&quot;    - _funm_loops(complex64[:,:], complex64[:,:], int, float32)\n&quot;&quot;    - _funm_loops(float64[:,:], float64[:,:], int, float64)\n&quot;&quot;    - _funm_loops(float32[:,:], float32[:,:], int, float32)&quot;, args, kw);</span></a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">         27 :                 });</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">         54 :                 });</span></a>
 <a name="848"><span class="lineNum">     848 </span>            :             }</a>
 <a name="849"><span class="lineNum">     849 </span>            : </a>
 <a name="850"><span class="lineNum">     850 </span>            : </a>
@@ -956,30 +956,30 @@
 <a name="886"><span class="lineNum">     886 </span>            : #endif</a>
 <a name="887"><span class="lineNum">     887 </span>            : ;</a>
 <a name="888"><span class="lineNum">     888 </span>            : PyMODINIT_FUNC</a>
-<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          1 : PYTHRAN_MODULE_INIT(_linalg_pythran)(void) {</span></a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          1 :     import_array();</span></a>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          3 : PYTHRAN_MODULE_INIT(_linalg_pythran)(void) {</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          3 :     import_array();</span></a>
 <a name="891"><span class="lineNum">     891 </span>            : </a>
 <a name="892"><span class="lineNum">     892 </span>            :     #if PY_MAJOR_VERSION &gt;= 3</a>
-<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          1 :     PyObject* theModule = PyModule_Create(&amp;moduledef);</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          3 :     PyObject* theModule = PyModule_Create(&amp;moduledef);</span></a>
 <a name="894"><span class="lineNum">     894 </span>            :     #else</a>
 <a name="895"><span class="lineNum">     895 </span>            :     PyObject* theModule = Py_InitModule3(&quot;_linalg_pythran&quot;,</a>
 <a name="896"><span class="lineNum">     896 </span>            :                                          Methods,</a>
 <a name="897"><span class="lineNum">     897 </span>            :                                          &quot;&quot;</a>
 <a name="898"><span class="lineNum">     898 </span>            :     );</a>
 <a name="899"><span class="lineNum">     899 </span>            :     #endif</a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          1 :     if(! theModule)</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          3 :     if(! theModule)</span></a>
 <a name="901"><span class="lineNum">     901 </span>            :         PYTHRAN_RETURN;</a>
-<a name="902"><span class="lineNum">     902 </span><span class="lineCov">          1 :     PyObject * theDoc = Py_BuildValue(&quot;(ss)&quot;,</span></a>
+<a name="902"><span class="lineNum">     902 </span><span class="lineCov">          3 :     PyObject * theDoc = Py_BuildValue(&quot;(ss)&quot;,</span></a>
 <a name="903"><span class="lineNum">     903 </span>            :                                       &quot;0.16.1&quot;,</a>
 <a name="904"><span class="lineNum">     904 </span>            :                                       &quot;369499fd4c0591f09cc76cd0c278256fc2d58485d80e861fdd029cdfbee45807&quot;);</a>
-<a name="905"><span class="lineNum">     905 </span><span class="lineCov">          1 :     if(! theDoc)</span></a>
+<a name="905"><span class="lineNum">     905 </span><span class="lineCov">          3 :     if(! theDoc)</span></a>
 <a name="906"><span class="lineNum">     906 </span>            :         PYTHRAN_RETURN;</a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">          1 :     PyModule_AddObject(theModule,</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">          3 :     PyModule_AddObject(theModule,</span></a>
 <a name="908"><span class="lineNum">     908 </span>            :                        &quot;__pythran__&quot;,</a>
 <a name="909"><span class="lineNum">     909 </span>            :                        theDoc);</a>
 <a name="910"><span class="lineNum">     910 </span>            : </a>
 <a name="911"><span class="lineNum">     911 </span>            : </a>
-<a name="912"><span class="lineNum">     912 </span><span class="lineCov">          1 :     PYTHRAN_RETURN;</span></a>
+<a name="912"><span class="lineNum">     912 </span><span class="lineCov">          3 :     PYTHRAN_RETURN;</span></a>
 <a name="913"><span class="lineNum">     913 </span>            : }</a>
 <a name="914"><span class="lineNum">     914 </span>            : </a>
 <a name="915"><span class="lineNum">     915 </span>            : #endif</a>

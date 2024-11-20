@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/Quansight/scipy/build/scipy/sparse/sparsetools/csc_impl.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/Quansight/scipy/build/scipy/sparse/sparsetools/csc_impl.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">945</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">33</td>
@@ -72,11 +72,11 @@
 <a name="2"><span class="lineNum">       2 </span>            :  * Do not edit manually or check into VCS.</a>
 <a name="3"><span class="lineNum">       3 </span>            :  */</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">     165894 : static int get_thunk_case(int I_typenum, int T_typenum)</span></a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">     156997 : static int get_thunk_case(int I_typenum, int T_typenum)</span></a>
 <a name="6"><span class="lineNum">       6 </span>            : {</a>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">     165894 :         if (0) {}</span></a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">     165894 :         else if (I_typenum == NPY_INT32) {</span></a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">     151526 :             if (T_typenum == -1) { return 0; }</span></a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">     156997 :         if (0) {}</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">     156997 :         else if (I_typenum == NPY_INT32) {</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">      90301 :             if (T_typenum == -1) { return 0; }</span></a>
 <a name="10"><span class="lineNum">      10 </span>            :             else if (T_typenum == NPY_BOOL) { return 1; }</a>
 <a name="11"><span class="lineNum">      11 </span>            :             else if (T_typenum == NPY_BYTE) { return 2; }</a>
 <a name="12"><span class="lineNum">      12 </span>            :             else if (T_typenum == NPY_UBYTE) { return 3; }</a>
@@ -95,8 +95,8 @@
 <a name="25"><span class="lineNum">      25 </span>            :             else if (T_typenum == NPY_CDOUBLE) { return 16; }</a>
 <a name="26"><span class="lineNum">      26 </span>            :             else if (T_typenum == NPY_CLONGDOUBLE) { return 17; }</a>
 <a name="27"><span class="lineNum">      27 </span>            :         }</a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">      14368 :         else if (I_typenum == NPY_INT64) {</span></a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      14368 :             if (T_typenum == -1) { return 18; }</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">      66696 :         else if (I_typenum == NPY_INT64) {</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      66696 :             if (T_typenum == -1) { return 18; }</span></a>
 <a name="30"><span class="lineNum">      30 </span>            :             else if (T_typenum == NPY_BOOL) { return 19; }</a>
 <a name="31"><span class="lineNum">      31 </span>            :             else if (T_typenum == NPY_BYTE) { return 20; }</a>
 <a name="32"><span class="lineNum">      32 </span>            :             else if (T_typenum == NPY_UBYTE) { return 21; }</a>
@@ -229,10 +229,10 @@
 <a name="159"><span class="lineNum">     159 </span>            :     }</a>
 <a name="160"><span class="lineNum">     160 </span>            : }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      35667 : static PY_LONG_LONG csc_tocsr_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      32917 : static PY_LONG_LONG csc_tocsr_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      35667 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      35667 :     switch (j) {</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      32917 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      32917 :     switch (j) {</span></a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">        601 :         case 1:</span></a>
 <a name="167"><span class="lineNum">     167 </span><span class="lineCov">        601 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_bool_wrapper*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_bool_wrapper*)a[7]);</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">        601 :             return 0;</span></a>
@@ -248,15 +248,15 @@
 <a name="178"><span class="lineNum">     178 </span><span class="lineCov">        582 :         case 5:</span></a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">        582 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_ushort*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_ushort*)a[7]);</span></a>
 <a name="180"><span class="lineNum">     180 </span><span class="lineCov">        582 :             return 0;</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        703 :         case 6:</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        703 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_int*)a[7]);</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        703 :             return 0;</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        709 :         case 6:</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        709 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_int*)a[7]);</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        709 :             return 0;</span></a>
 <a name="184"><span class="lineNum">     184 </span><span class="lineCov">        596 :         case 7:</span></a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineCov">        596 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_uint*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_uint*)a[7]);</span></a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineCov">        596 :             return 0;</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      11114 :         case 8:</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">      11114 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_long*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_long*)a[7]);</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      11114 :             return 0;</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      11244 :         case 8:</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">      11244 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_long*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_long*)a[7]);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      11244 :             return 0;</span></a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">       1175 :         case 9:</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1175 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_ulong*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_ulong*)a[7]);</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">       1175 :             return 0;</span></a>
@@ -269,18 +269,18 @@
 <a name="199"><span class="lineNum">     199 </span><span class="lineCov">        690 :         case 12:</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineCov">        690 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_float*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_float*)a[7]);</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineCov">        690 :             return 0;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       8604 :         case 13:</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       8604 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_double*)a[7]);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       8604 :             return 0;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       5692 :         case 13:</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       5692 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_double*)a[7]);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       5692 :             return 0;</span></a>
 <a name="205"><span class="lineNum">     205 </span><span class="lineCov">        639 :         case 14:</span></a>
 <a name="206"><span class="lineNum">     206 </span><span class="lineCov">        639 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_longdouble*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_longdouble*)a[7]);</span></a>
 <a name="207"><span class="lineNum">     207 </span><span class="lineCov">        639 :             return 0;</span></a>
 <a name="208"><span class="lineNum">     208 </span><span class="lineCov">        683 :         case 15:</span></a>
 <a name="209"><span class="lineNum">     209 </span><span class="lineCov">        683 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cfloat_wrapper*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_cfloat_wrapper*)a[7]);</span></a>
 <a name="210"><span class="lineNum">     210 </span><span class="lineCov">        683 :             return 0;</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        876 :         case 16:</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        876 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        876 :             return 0;</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        861 :         case 16:</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        861 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        861 :             return 0;</span></a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">        637 :         case 17:</span></a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineCov">        637 :             (void)csc_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_clongdouble_wrapper*)a[4], (npy_int32*)a[5], (npy_int32*)a[6], (npy_clongdouble_wrapper*)a[7]);</span></a>
 <a name="216"><span class="lineNum">     216 </span><span class="lineCov">        637 :             return 0;</span></a>
@@ -299,15 +299,15 @@
 <a name="229"><span class="lineNum">     229 </span><span class="lineCov">        145 :         case 23:</span></a>
 <a name="230"><span class="lineNum">     230 </span><span class="lineCov">        145 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_ushort*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_ushort*)a[7]);</span></a>
 <a name="231"><span class="lineNum">     231 </span><span class="lineCov">        145 :             return 0;</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        142 :         case 24:</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        142 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_int*)a[7]);</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        142 :             return 0;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        144 :         case 24:</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        144 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_int*)a[7]);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        144 :             return 0;</span></a>
 <a name="235"><span class="lineNum">     235 </span><span class="lineCov">        131 :         case 25:</span></a>
 <a name="236"><span class="lineNum">     236 </span><span class="lineCov">        131 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_uint*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_uint*)a[7]);</span></a>
 <a name="237"><span class="lineNum">     237 </span><span class="lineCov">        131 :             return 0;</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       2664 :         case 26:</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       2664 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_long*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_long*)a[7]);</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       2664 :             return 0;</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       2690 :         case 26:</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       2690 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_long*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_long*)a[7]);</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       2690 :             return 0;</span></a>
 <a name="241"><span class="lineNum">     241 </span><span class="lineCov">        279 :         case 27:</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineCov">        279 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_ulong*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_ulong*)a[7]);</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineCov">        279 :             return 0;</span></a>
@@ -320,9 +320,9 @@
 <a name="250"><span class="lineNum">     250 </span><span class="lineCov">        160 :         case 30:</span></a>
 <a name="251"><span class="lineNum">     251 </span><span class="lineCov">        160 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_float*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_float*)a[7]);</span></a>
 <a name="252"><span class="lineNum">     252 </span><span class="lineCov">        160 :             return 0;</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">        997 :         case 31:</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">        997 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_double*)a[7]);</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">        997 :             return 0;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">       1010 :         case 31:</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       1010 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_double*)a[7]);</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">       1010 :             return 0;</span></a>
 <a name="256"><span class="lineNum">     256 </span><span class="lineCov">        148 :         case 32:</span></a>
 <a name="257"><span class="lineNum">     257 </span><span class="lineCov">        148 :             (void)csc_tocsr(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_longdouble*)a[4], (npy_int64*)a[5], (npy_int64*)a[6], (npy_longdouble*)a[7]);</span></a>
 <a name="258"><span class="lineNum">     258 </span><span class="lineCov">        148 :             return 0;</span></a>
@@ -340,23 +340,23 @@
 <a name="270"><span class="lineNum">     270 </span>            :     }</a>
 <a name="271"><span class="lineNum">     271 </span>            : }</a>
 <a name="272"><span class="lineNum">     272 </span>            : </a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       4513 : static PY_LONG_LONG csc_matmat_maxnnz_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       4633 : static PY_LONG_LONG csc_matmat_maxnnz_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="274"><span class="lineNum">     274 </span>            : {</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       4513 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       4513 :     switch (j) {</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       3968 :         case 0:</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       3968 :             return csc_matmat_maxnnz(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5]);</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        545 :         case 18:</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">        545 :             return csc_matmat_maxnnz(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_int64*)a[5]);</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       4633 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       4633 :     switch (j) {</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       4041 :         case 0:</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       4041 :             return csc_matmat_maxnnz(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5]);</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        592 :         case 18:</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">        592 :             return csc_matmat_maxnnz(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_int64*)a[5]);</span></a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     default:</span></a>
 <a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         throw std::runtime_error(&quot;internal error: invalid argument typenums&quot;);</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :     }</a>
 <a name="284"><span class="lineNum">     284 </span>            : }</a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       4304 : static PY_LONG_LONG csc_matmat_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       4424 : static PY_LONG_LONG csc_matmat_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="287"><span class="lineNum">     287 </span>            : {</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       4304 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       4304 :     switch (j) {</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       4424 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       4424 :     switch (j) {</span></a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineCov">          8 :         case 1:</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineCov">          8 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_bool_wrapper*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_bool_wrapper*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_bool_wrapper*)a[10]);</span></a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">          8 :             return 0;</span></a>
@@ -393,18 +393,18 @@
 <a name="323"><span class="lineNum">     323 </span><span class="lineCov">         91 :         case 12:</span></a>
 <a name="324"><span class="lineNum">     324 </span><span class="lineCov">         91 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_float*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_float*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_float*)a[10]);</span></a>
 <a name="325"><span class="lineNum">     325 </span><span class="lineCov">         91 :             return 0;</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       1940 :         case 13:</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       1940 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_double*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_double*)a[10]);</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">       1940 :             return 0;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       2015 :         case 13:</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       2015 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_double*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_double*)a[10]);</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">       2015 :             return 0;</span></a>
 <a name="329"><span class="lineNum">     329 </span><span class="lineCov">        200 :         case 14:</span></a>
 <a name="330"><span class="lineNum">     330 </span><span class="lineCov">        200 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_longdouble*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_longdouble*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_longdouble*)a[10]);</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineCov">        200 :             return 0;</span></a>
 <a name="332"><span class="lineNum">     332 </span><span class="lineCov">        105 :         case 15:</span></a>
 <a name="333"><span class="lineNum">     333 </span><span class="lineCov">        105 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cfloat_wrapper*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_cfloat_wrapper*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_cfloat_wrapper*)a[10]);</span></a>
 <a name="334"><span class="lineNum">     334 </span><span class="lineCov">        105 :             return 0;</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        366 :         case 16:</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        366 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_cdouble_wrapper*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_cdouble_wrapper*)a[10]);</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">        366 :             return 0;</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        364 :         case 16:</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        364 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_cdouble_wrapper*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_cdouble_wrapper*)a[10]);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">        364 :             return 0;</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineCov">        278 :         case 17:</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineCov">        278 :             (void)csc_matmat(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_clongdouble_wrapper*)a[4], (const npy_int32*)a[5], (const npy_int32*)a[6], (const npy_clongdouble_wrapper*)a[7], (npy_int32*)a[8], (npy_int32*)a[9], (npy_clongdouble_wrapper*)a[10]);</span></a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineCov">        278 :             return 0;</span></a>
@@ -444,18 +444,18 @@
 <a name="374"><span class="lineNum">     374 </span><span class="lineCov">         15 :         case 30:</span></a>
 <a name="375"><span class="lineNum">     375 </span><span class="lineCov">         15 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_float*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_float*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_float*)a[10]);</span></a>
 <a name="376"><span class="lineNum">     376 </span><span class="lineCov">         15 :             return 0;</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        151 :         case 31:</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        151 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_double*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_double*)a[10]);</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">        151 :             return 0;</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        196 :         case 31:</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        196 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_double*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_double*)a[10]);</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">        196 :             return 0;</span></a>
 <a name="380"><span class="lineNum">     380 </span><span class="lineCov">         43 :         case 32:</span></a>
 <a name="381"><span class="lineNum">     381 </span><span class="lineCov">         43 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_longdouble*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_longdouble*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_longdouble*)a[10]);</span></a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineCov">         43 :             return 0;</span></a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineCov">         20 :         case 33:</span></a>
 <a name="384"><span class="lineNum">     384 </span><span class="lineCov">         20 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cfloat_wrapper*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_cfloat_wrapper*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_cfloat_wrapper*)a[10]);</span></a>
 <a name="385"><span class="lineNum">     385 </span><span class="lineCov">         20 :             return 0;</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         66 :         case 34:</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         66 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_cdouble_wrapper*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_cdouble_wrapper*)a[10]);</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         66 :             return 0;</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         68 :         case 34:</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         68 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_cdouble_wrapper*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_cdouble_wrapper*)a[10]);</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         68 :             return 0;</span></a>
 <a name="389"><span class="lineNum">     389 </span><span class="lineCov">         55 :         case 35:</span></a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">         55 :             (void)csc_matmat(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_clongdouble_wrapper*)a[4], (const npy_int64*)a[5], (const npy_int64*)a[6], (const npy_clongdouble_wrapper*)a[7], (npy_int64*)a[8], (npy_int64*)a[9], (npy_clongdouble_wrapper*)a[10]);</span></a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineCov">         55 :             return 0;</span></a>
@@ -464,10 +464,10 @@
 <a name="394"><span class="lineNum">     394 </span>            :     }</a>
 <a name="395"><span class="lineNum">     395 </span>            : }</a>
 <a name="396"><span class="lineNum">     396 </span>            : </a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      95335 : static PY_LONG_LONG csc_matvec_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      88328 : static PY_LONG_LONG csc_matvec_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="398"><span class="lineNum">     398 </span>            : {</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">      95335 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">      95335 :     switch (j) {</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">      88328 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">      88328 :     switch (j) {</span></a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         case 1:</span></a>
 <a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_bool_wrapper*)a[4], (const npy_bool_wrapper*)a[5], (npy_bool_wrapper*)a[6]);</span></a>
 <a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :             return 0;</span></a>
@@ -489,9 +489,9 @@
 <a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :         case 7:</span></a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_uint*)a[4], (const npy_uint*)a[5], (npy_uint*)a[6]);</span></a>
 <a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       3645 :         case 8:</span></a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       3645 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_long*)a[4], (const npy_long*)a[5], (npy_long*)a[6]);</span></a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       3645 :             return 0;</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       3657 :         case 8:</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       3657 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_long*)a[4], (const npy_long*)a[5], (npy_long*)a[6]);</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       3657 :             return 0;</span></a>
 <a name="425"><span class="lineNum">     425 </span><span class="lineCov">       2497 :         case 9:</span></a>
 <a name="426"><span class="lineNum">     426 </span><span class="lineCov">       2497 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_ulong*)a[4], (const npy_ulong*)a[5], (npy_ulong*)a[6]);</span></a>
 <a name="427"><span class="lineNum">     427 </span><span class="lineCov">       2497 :             return 0;</span></a>
@@ -501,21 +501,21 @@
 <a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 :         case 11:</span></a>
 <a name="432"><span class="lineNum">     432 </span><span class="lineNoCov">          0 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_ulonglong*)a[4], (const npy_ulonglong*)a[5], (npy_ulonglong*)a[6]);</span></a>
 <a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       7814 :         case 12:</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       7814 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_float*)a[4], (const npy_float*)a[5], (npy_float*)a[6]);</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       7814 :             return 0;</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      55290 :         case 13:</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      55290 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (const npy_double*)a[5], (npy_double*)a[6]);</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      55290 :             return 0;</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        731 :         case 12:</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">        731 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_float*)a[4], (const npy_float*)a[5], (npy_float*)a[6]);</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">        731 :             return 0;</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      29315 :         case 13:</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      29315 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_double*)a[4], (const npy_double*)a[5], (npy_double*)a[6]);</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      29315 :             return 0;</span></a>
 <a name="440"><span class="lineNum">     440 </span><span class="lineCov">        675 :         case 14:</span></a>
 <a name="441"><span class="lineNum">     441 </span><span class="lineCov">        675 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_longdouble*)a[4], (const npy_longdouble*)a[5], (npy_longdouble*)a[6]);</span></a>
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">        675 :             return 0;</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineCov">        658 :         case 15:</span></a>
 <a name="444"><span class="lineNum">     444 </span><span class="lineCov">        658 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cfloat_wrapper*)a[4], (const npy_cfloat_wrapper*)a[5], (npy_cfloat_wrapper*)a[6]);</span></a>
 <a name="445"><span class="lineNum">     445 </span><span class="lineCov">        658 :             return 0;</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">      21587 :         case 16:</span></a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      21587 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_cdouble_wrapper*)a[5], (npy_cdouble_wrapper*)a[6]);</span></a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">      21587 :             return 0;</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">        872 :         case 16:</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        872 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_cdouble_wrapper*)a[5], (npy_cdouble_wrapper*)a[6]);</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">        872 :             return 0;</span></a>
 <a name="449"><span class="lineNum">     449 </span><span class="lineCov">        678 :         case 17:</span></a>
 <a name="450"><span class="lineNum">     450 </span><span class="lineCov">        678 :             (void)csc_matvec(*(const npy_int32*)a[0], *(const npy_int32*)a[1], (const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_clongdouble_wrapper*)a[4], (const npy_clongdouble_wrapper*)a[5], (npy_clongdouble_wrapper*)a[6]);</span></a>
 <a name="451"><span class="lineNum">     451 </span><span class="lineCov">        678 :             return 0;</span></a>
@@ -540,9 +540,9 @@
 <a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :         case 25:</span></a>
 <a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_uint*)a[4], (const npy_uint*)a[5], (npy_uint*)a[6]);</span></a>
 <a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">        720 :         case 26:</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">        720 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_long*)a[4], (const npy_long*)a[5], (npy_long*)a[6]);</span></a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        720 :             return 0;</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">        724 :         case 26:</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">        724 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_long*)a[4], (const npy_long*)a[5], (npy_long*)a[6]);</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        724 :             return 0;</span></a>
 <a name="476"><span class="lineNum">     476 </span><span class="lineCov">        563 :         case 27:</span></a>
 <a name="477"><span class="lineNum">     477 </span><span class="lineCov">        563 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_ulong*)a[4], (const npy_ulong*)a[5], (npy_ulong*)a[6]);</span></a>
 <a name="478"><span class="lineNum">     478 </span><span class="lineCov">        563 :             return 0;</span></a>
@@ -552,21 +552,21 @@
 <a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :         case 29:</span></a>
 <a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_ulonglong*)a[4], (const npy_ulonglong*)a[5], (npy_ulonglong*)a[6]);</span></a>
 <a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        150 :         case 30:</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        150 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_float*)a[4], (const npy_float*)a[5], (npy_float*)a[6]);</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">        150 :             return 0;</span></a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">        454 :         case 31:</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">        454 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (const npy_double*)a[5], (npy_double*)a[6]);</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        454 :             return 0;</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">       4497 :         case 30:</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">       4497 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_float*)a[4], (const npy_float*)a[5], (npy_float*)a[6]);</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">       4497 :             return 0;</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">      22540 :         case 31:</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">      22540 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_double*)a[4], (const npy_double*)a[5], (npy_double*)a[6]);</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">      22540 :             return 0;</span></a>
 <a name="491"><span class="lineNum">     491 </span><span class="lineCov">        142 :         case 32:</span></a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">        142 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_longdouble*)a[4], (const npy_longdouble*)a[5], (npy_longdouble*)a[6]);</span></a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineCov">        142 :             return 0;</span></a>
 <a name="494"><span class="lineNum">     494 </span><span class="lineCov">        169 :         case 33:</span></a>
 <a name="495"><span class="lineNum">     495 </span><span class="lineCov">        169 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cfloat_wrapper*)a[4], (const npy_cfloat_wrapper*)a[5], (npy_cfloat_wrapper*)a[6]);</span></a>
 <a name="496"><span class="lineNum">     496 </span><span class="lineCov">        169 :             return 0;</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">        154 :         case 34:</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        154 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_cdouble_wrapper*)a[5], (npy_cdouble_wrapper*)a[6]);</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">        154 :             return 0;</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">      20471 :         case 34:</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">      20471 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_cdouble_wrapper*)a[4], (const npy_cdouble_wrapper*)a[5], (npy_cdouble_wrapper*)a[6]);</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">      20471 :             return 0;</span></a>
 <a name="500"><span class="lineNum">     500 </span><span class="lineCov">        139 :         case 35:</span></a>
 <a name="501"><span class="lineNum">     501 </span><span class="lineCov">        139 :             (void)csc_matvec(*(const npy_int64*)a[0], *(const npy_int64*)a[1], (const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_clongdouble_wrapper*)a[4], (const npy_clongdouble_wrapper*)a[5], (npy_clongdouble_wrapper*)a[6]);</span></a>
 <a name="502"><span class="lineNum">     502 </span><span class="lineCov">        139 :             return 0;</span></a>
@@ -575,10 +575,10 @@
 <a name="505"><span class="lineNum">     505 </span>            :     }</a>
 <a name="506"><span class="lineNum">     506 </span>            : }</a>
 <a name="507"><span class="lineNum">     507 </span>            : </a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       5648 : static PY_LONG_LONG csc_matvecs_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       6268 : static PY_LONG_LONG csc_matvecs_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="509"><span class="lineNum">     509 </span>            : {</a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       5648 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">       5648 :     switch (j) {</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       6268 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">       6268 :     switch (j) {</span></a>
 <a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :         case 1:</span></a>
 <a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_bool_wrapper*)a[5], (const npy_bool_wrapper*)a[6], (npy_bool_wrapper*)a[7]);</span></a>
 <a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :             return 0;</span></a>
@@ -612,21 +612,21 @@
 <a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :         case 11:</span></a>
 <a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_ulonglong*)a[5], (const npy_ulonglong*)a[6], (npy_ulonglong*)a[7]);</span></a>
 <a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         32 :         case 12:</span></a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         32 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_float*)a[5], (const npy_float*)a[6], (npy_float*)a[7]);</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         32 :             return 0;</span></a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">       3416 :         case 13:</span></a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">       3416 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_double*)a[5], (const npy_double*)a[6], (npy_double*)a[7]);</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">       3416 :             return 0;</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         25 :         case 12:</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         25 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_float*)a[5], (const npy_float*)a[6], (npy_float*)a[7]);</span></a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         25 :             return 0;</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">        511 :         case 13:</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">        511 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_double*)a[5], (const npy_double*)a[6], (npy_double*)a[7]);</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">        511 :             return 0;</span></a>
 <a name="551"><span class="lineNum">     551 </span><span class="lineCov">         32 :         case 14:</span></a>
 <a name="552"><span class="lineNum">     552 </span><span class="lineCov">         32 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_longdouble*)a[5], (const npy_longdouble*)a[6], (npy_longdouble*)a[7]);</span></a>
 <a name="553"><span class="lineNum">     553 </span><span class="lineCov">         32 :             return 0;</span></a>
 <a name="554"><span class="lineNum">     554 </span><span class="lineCov">         22 :         case 15:</span></a>
 <a name="555"><span class="lineNum">     555 </span><span class="lineCov">         22 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_cfloat_wrapper*)a[5], (const npy_cfloat_wrapper*)a[6], (npy_cfloat_wrapper*)a[7]);</span></a>
 <a name="556"><span class="lineNum">     556 </span><span class="lineCov">         22 :             return 0;</span></a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">       1993 :         case 16:</span></a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">       1993 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_cdouble_wrapper*)a[5], (const npy_cdouble_wrapper*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       1993 :             return 0;</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">         86 :         case 16:</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">         86 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_cdouble_wrapper*)a[5], (const npy_cdouble_wrapper*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">         86 :             return 0;</span></a>
 <a name="560"><span class="lineNum">     560 </span><span class="lineCov">         32 :         case 17:</span></a>
 <a name="561"><span class="lineNum">     561 </span><span class="lineCov">         32 :             (void)csc_matvecs(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], (const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_clongdouble_wrapper*)a[5], (const npy_clongdouble_wrapper*)a[6], (npy_clongdouble_wrapper*)a[7]);</span></a>
 <a name="562"><span class="lineNum">     562 </span><span class="lineCov">         32 :             return 0;</span></a>
@@ -663,21 +663,21 @@
 <a name="593"><span class="lineNum">     593 </span><span class="lineNoCov">          0 :         case 29:</span></a>
 <a name="594"><span class="lineNum">     594 </span><span class="lineNoCov">          0 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_ulonglong*)a[5], (const npy_ulonglong*)a[6], (npy_ulonglong*)a[7]);</span></a>
 <a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             return 0;</span></a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">          6 :         case 30:</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">          6 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_float*)a[5], (const npy_float*)a[6], (npy_float*)a[7]);</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">          6 :             return 0;</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">         51 :         case 31:</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         51 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_double*)a[5], (const npy_double*)a[6], (npy_double*)a[7]);</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         51 :             return 0;</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">         13 :         case 30:</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">         13 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_float*)a[5], (const npy_float*)a[6], (npy_float*)a[7]);</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         13 :             return 0;</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       4011 :         case 31:</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">       4011 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_double*)a[5], (const npy_double*)a[6], (npy_double*)a[7]);</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">       4011 :             return 0;</span></a>
 <a name="602"><span class="lineNum">     602 </span><span class="lineNoCov">          0 :         case 32:</span></a>
 <a name="603"><span class="lineNum">     603 </span><span class="lineNoCov">          0 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_longdouble*)a[5], (const npy_longdouble*)a[6], (npy_longdouble*)a[7]);</span></a>
 <a name="604"><span class="lineNum">     604 </span><span class="lineNoCov">          0 :             return 0;</span></a>
 <a name="605"><span class="lineNum">     605 </span><span class="lineCov">          6 :         case 33:</span></a>
 <a name="606"><span class="lineNum">     606 </span><span class="lineCov">          6 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_cfloat_wrapper*)a[5], (const npy_cfloat_wrapper*)a[6], (npy_cfloat_wrapper*)a[7]);</span></a>
 <a name="607"><span class="lineNum">     607 </span><span class="lineCov">          6 :             return 0;</span></a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineCov">          6 :         case 34:</span></a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">          6 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_cdouble_wrapper*)a[5], (const npy_cdouble_wrapper*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineCov">          6 :             return 0;</span></a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineCov">       1478 :         case 34:</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">       1478 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_cdouble_wrapper*)a[5], (const npy_cdouble_wrapper*)a[6], (npy_cdouble_wrapper*)a[7]);</span></a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">       1478 :             return 0;</span></a>
 <a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 :         case 35:</span></a>
 <a name="612"><span class="lineNum">     612 </span><span class="lineNoCov">          0 :             (void)csc_matvecs(*(const npy_int64*)a[0], *(const npy_int64*)a[1], *(const npy_int64*)a[2], (const npy_int64*)a[3], (const npy_int64*)a[4], (const npy_clongdouble_wrapper*)a[5], (const npy_clongdouble_wrapper*)a[6], (npy_clongdouble_wrapper*)a[7]);</span></a>
 <a name="613"><span class="lineNum">     613 </span><span class="lineNoCov">          0 :             return 0;</span></a>
@@ -1914,33 +1914,33 @@
 <a name="1844"><span class="lineNum">    1844 </span>            : }</a>
 <a name="1845"><span class="lineNum">    1845 </span>            : </a>
 <a name="1846"><span class="lineNum">    1846 </span>            : PyObject *</a>
-<a name="1847"><span class="lineNum">    1847 </span><span class="lineCov">      35667 : csc_tocsr_method(PyObject *self, PyObject *args)</span></a>
+<a name="1847"><span class="lineNum">    1847 </span><span class="lineCov">      32917 : csc_tocsr_method(PyObject *self, PyObject *args)</span></a>
 <a name="1848"><span class="lineNum">    1848 </span>            : {</a>
-<a name="1849"><span class="lineNum">    1849 </span><span class="lineCov">      35667 :     return call_thunk('v', &quot;iiIIT*I*I*T&quot;, csc_tocsr_thunk, args);</span></a>
+<a name="1849"><span class="lineNum">    1849 </span><span class="lineCov">      32917 :     return call_thunk('v', &quot;iiIIT*I*I*T&quot;, csc_tocsr_thunk, args);</span></a>
 <a name="1850"><span class="lineNum">    1850 </span>            : }</a>
 <a name="1851"><span class="lineNum">    1851 </span>            : </a>
 <a name="1852"><span class="lineNum">    1852 </span>            : PyObject *</a>
-<a name="1853"><span class="lineNum">    1853 </span><span class="lineCov">       4513 : csc_matmat_maxnnz_method(PyObject *self, PyObject *args)</span></a>
+<a name="1853"><span class="lineNum">    1853 </span><span class="lineCov">       4633 : csc_matmat_maxnnz_method(PyObject *self, PyObject *args)</span></a>
 <a name="1854"><span class="lineNum">    1854 </span>            : {</a>
-<a name="1855"><span class="lineNum">    1855 </span><span class="lineCov">       4513 :     return call_thunk('l', &quot;iiIIII&quot;, csc_matmat_maxnnz_thunk, args);</span></a>
+<a name="1855"><span class="lineNum">    1855 </span><span class="lineCov">       4633 :     return call_thunk('l', &quot;iiIIII&quot;, csc_matmat_maxnnz_thunk, args);</span></a>
 <a name="1856"><span class="lineNum">    1856 </span>            : }</a>
 <a name="1857"><span class="lineNum">    1857 </span>            : </a>
 <a name="1858"><span class="lineNum">    1858 </span>            : PyObject *</a>
-<a name="1859"><span class="lineNum">    1859 </span><span class="lineCov">       4304 : csc_matmat_method(PyObject *self, PyObject *args)</span></a>
+<a name="1859"><span class="lineNum">    1859 </span><span class="lineCov">       4424 : csc_matmat_method(PyObject *self, PyObject *args)</span></a>
 <a name="1860"><span class="lineNum">    1860 </span>            : {</a>
-<a name="1861"><span class="lineNum">    1861 </span><span class="lineCov">       4304 :     return call_thunk('v', &quot;iiIITIIT*I*I*T&quot;, csc_matmat_thunk, args);</span></a>
+<a name="1861"><span class="lineNum">    1861 </span><span class="lineCov">       4424 :     return call_thunk('v', &quot;iiIITIIT*I*I*T&quot;, csc_matmat_thunk, args);</span></a>
 <a name="1862"><span class="lineNum">    1862 </span>            : }</a>
 <a name="1863"><span class="lineNum">    1863 </span>            : </a>
 <a name="1864"><span class="lineNum">    1864 </span>            : PyObject *</a>
-<a name="1865"><span class="lineNum">    1865 </span><span class="lineCov">      95335 : csc_matvec_method(PyObject *self, PyObject *args)</span></a>
+<a name="1865"><span class="lineNum">    1865 </span><span class="lineCov">      88328 : csc_matvec_method(PyObject *self, PyObject *args)</span></a>
 <a name="1866"><span class="lineNum">    1866 </span>            : {</a>
-<a name="1867"><span class="lineNum">    1867 </span><span class="lineCov">      95335 :     return call_thunk('v', &quot;iiIITT*T&quot;, csc_matvec_thunk, args);</span></a>
+<a name="1867"><span class="lineNum">    1867 </span><span class="lineCov">      88328 :     return call_thunk('v', &quot;iiIITT*T&quot;, csc_matvec_thunk, args);</span></a>
 <a name="1868"><span class="lineNum">    1868 </span>            : }</a>
 <a name="1869"><span class="lineNum">    1869 </span>            : </a>
 <a name="1870"><span class="lineNum">    1870 </span>            : PyObject *</a>
-<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">       5648 : csc_matvecs_method(PyObject *self, PyObject *args)</span></a>
+<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">       6268 : csc_matvecs_method(PyObject *self, PyObject *args)</span></a>
 <a name="1872"><span class="lineNum">    1872 </span>            : {</a>
-<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">       5648 :     return call_thunk('v', &quot;iiiIITT*T&quot;, csc_matvecs_thunk, args);</span></a>
+<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">       6268 :     return call_thunk('v', &quot;iiiIITT*T&quot;, csc_matvecs_thunk, args);</span></a>
 <a name="1874"><span class="lineNum">    1874 </span>            : }</a>
 <a name="1875"><span class="lineNum">    1875 </span>            : </a>
 <a name="1876"><span class="lineNum">    1876 </span>            : PyObject *</a>

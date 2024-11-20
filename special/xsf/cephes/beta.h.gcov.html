@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/beta.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/beta.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">104</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -123,206 +123,208 @@
 <a name="53"><span class="lineNum">      53 </span>            : #include &quot;../config.h&quot;</a>
 <a name="54"><span class="lineNum">      54 </span>            : #include &quot;const.h&quot;</a>
 <a name="55"><span class="lineNum">      55 </span>            : #include &quot;gamma.h&quot;</a>
-<a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span>            : namespace xsf {</a>
-<a name="58"><span class="lineNum">      58 </span>            : namespace cephes {</a>
-<a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span>            :     XSF_HOST_DEVICE double beta(double, double);</a>
-<a name="61"><span class="lineNum">      61 </span>            :     XSF_HOST_DEVICE double lbeta(double, double);</a>
-<a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span>            :     namespace detail {</a>
-<a name="64"><span class="lineNum">      64 </span>            :         constexpr double beta_ASYMP_FACTOR = 1e6;</a>
-<a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span>            :         /*</a>
-<a name="67"><span class="lineNum">      67 </span>            :          * Asymptotic expansion for  ln(|B(a, b)|) for a &gt; ASYMP_FACTOR*max(|b|, 1).</a>
-<a name="68"><span class="lineNum">      68 </span>            :          */</a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       4137 :         XSF_HOST_DEVICE inline double lbeta_asymp(double a, double b, int *sgn) {</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       4137 :             double r = lgam_sgn(b, sgn);</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       4137 :             r -= b * std::log(a);</span></a>
-<a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       4137 :             r += b * (1 - b) / (2 * a);</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       4137 :             r += b * (1 - b) * (1 - 2 * b) / (12 * a * a);</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       4137 :             r += -b * b * (1 - b) * (1 - b) / (12 * a * a * a);</span></a>
-<a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">       4137 :             return r;</span></a>
-<a name="78"><span class="lineNum">      78 </span>            :         }</a>
-<a name="79"><span class="lineNum">      79 </span>            : </a>
-<a name="80"><span class="lineNum">      80 </span>            :         /*</a>
-<a name="81"><span class="lineNum">      81 </span>            :          * Special case for a negative integer argument</a>
-<a name="82"><span class="lineNum">      82 </span>            :          */</a>
-<a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">      66238 :         XSF_HOST_DEVICE inline double beta_negint(int a, double b) {</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      66238 :             int sgn;</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      66238 :             if (b == static_cast&lt;int&gt;(b) &amp;&amp; 1 - a - b &gt; 0) {</span></a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        309 :                 sgn = (static_cast&lt;int&gt;(b) % 2 == 0) ? 1 : -1;</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        309 :                 return sgn * xsf::cephes::beta(1 - a - b, b);</span></a>
-<a name="89"><span class="lineNum">      89 </span>            :             } else {</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">      65929 :                 set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      65929 :                 return std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="92"><span class="lineNum">      92 </span>            :             }</a>
-<a name="93"><span class="lineNum">      93 </span>            :         }</a>
-<a name="94"><span class="lineNum">      94 </span>            : </a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       2825 :         XSF_HOST_DEVICE inline double lbeta_negint(int a, double b) {</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">       2825 :             double r;</span></a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">       2825 :             if (b == static_cast&lt;int&gt;(b) &amp;&amp; 1 - a - b &gt; 0) {</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        309 :                 r = xsf::cephes::lbeta(1 - a - b, b);</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        309 :                 return r;</span></a>
-<a name="100"><span class="lineNum">     100 </span>            :             } else {</a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       2516 :                 set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       2516 :                 return std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="103"><span class="lineNum">     103 </span>            :             }</a>
-<a name="104"><span class="lineNum">     104 </span>            :         }</a>
-<a name="105"><span class="lineNum">     105 </span>            :     } // namespace detail</a>
-<a name="106"><span class="lineNum">     106 </span>            : </a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">     459382 :     XSF_HOST_DEVICE inline double beta(double a, double b) {</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     459382 :         double y;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">     459382 :         int sign = 1;</span></a>
-<a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">     459382 :         if (a &lt;= 0.0) {</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      80603 :             if (a == std::floor(a)) {</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      65388 :                 if (a == static_cast&lt;int&gt;(a)) {</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      65388 :                     return detail::beta_negint(static_cast&lt;int&gt;(a), b);</span></a>
-<a name="115"><span class="lineNum">     115 </span>            :                 } else {</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :                     goto overflow;</span></a>
-<a name="117"><span class="lineNum">     117 </span>            :                 }</a>
-<a name="118"><span class="lineNum">     118 </span>            :             }</a>
-<a name="119"><span class="lineNum">     119 </span>            :         }</a>
-<a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">     393994 :         if (b &lt;= 0.0) {</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1938 :             if (b == std::floor(b)) {</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        850 :                 if (b == static_cast&lt;int&gt;(b)) {</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        850 :                     return detail::beta_negint(static_cast&lt;int&gt;(b), a);</span></a>
-<a name="125"><span class="lineNum">     125 </span>            :                 } else {</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :                     goto overflow;</span></a>
-<a name="127"><span class="lineNum">     127 </span>            :                 }</a>
-<a name="128"><span class="lineNum">     128 </span>            :             }</a>
-<a name="129"><span class="lineNum">     129 </span>            :         }</a>
-<a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">     393144 :         if (std::abs(a) &lt; std::abs(b)) {</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     181944 :             y = a;</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     181944 :             a = b;</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     181944 :             b = y;</span></a>
-<a name="135"><span class="lineNum">     135 </span>            :         }</a>
-<a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     393144 :         if (std::abs(a) &gt; detail::beta_ASYMP_FACTOR * std::abs(b) &amp;&amp; a &gt; detail::beta_ASYMP_FACTOR) {</span></a>
-<a name="138"><span class="lineNum">     138 </span>            :             /* Avoid loss of precision in lgam(a + b) - lgam(a) */</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        383 :             y = detail::lbeta_asymp(a, b, &amp;sign);</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        383 :             return sign * std::exp(y);</span></a>
-<a name="141"><span class="lineNum">     141 </span>            :         }</a>
-<a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     392761 :         y = a + b;</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">     392761 :         if (std::abs(y) &gt; detail::MAXGAM || std::abs(a) &gt; detail::MAXGAM || std::abs(b) &gt; detail::MAXGAM) {</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">     132193 :             int sgngam;</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">     132193 :             y = detail::lgam_sgn(y, &amp;sgngam);</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">     132193 :             sign *= sgngam; /* keep track of the sign */</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">     132193 :             y = detail::lgam_sgn(b, &amp;sgngam) - y;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">     132193 :             sign *= sgngam;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">     132193 :             y = detail::lgam_sgn(a, &amp;sgngam) + y;</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">     132193 :             sign *= sgngam;</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">     132193 :             if (y &gt; detail::MAXLOG) {</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          3 :                 goto overflow;</span></a>
-<a name="154"><span class="lineNum">     154 </span>            :             }</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     132190 :             return (sign * std::exp(y));</span></a>
-<a name="156"><span class="lineNum">     156 </span>            :         }</a>
-<a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     260568 :         y = Gamma(y);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     260568 :         a = Gamma(a);</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">     260568 :         b = Gamma(b);</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">     260568 :         if (y == 0.0)</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :             goto overflow;</span></a>
-<a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">     260568 :         if (std::abs(std::abs(a) - std::abs(y)) &gt; std::abs(std::abs(b) - std::abs(y))) {</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      13352 :             y = b / y;</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">      13352 :             y *= a;</span></a>
-<a name="167"><span class="lineNum">     167 </span>            :         } else {</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     247216 :             y = a / y;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">     247216 :             y *= b;</span></a>
-<a name="170"><span class="lineNum">     170 </span>            :         }</a>
-<a name="171"><span class="lineNum">     171 </span>            : </a>
-<a name="172"><span class="lineNum">     172 </span>            :         return (y);</a>
+<a name="56"><span class="lineNum">      56 </span>            : #include &quot;rgamma.h&quot;</a>
+<a name="57"><span class="lineNum">      57 </span>            : </a>
+<a name="58"><span class="lineNum">      58 </span>            : namespace xsf {</a>
+<a name="59"><span class="lineNum">      59 </span>            : namespace cephes {</a>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<a name="61"><span class="lineNum">      61 </span>            :     XSF_HOST_DEVICE double beta(double, double);</a>
+<a name="62"><span class="lineNum">      62 </span>            :     XSF_HOST_DEVICE double lbeta(double, double);</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            :     namespace detail {</a>
+<a name="65"><span class="lineNum">      65 </span>            :         constexpr double beta_ASYMP_FACTOR = 1e6;</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            :         /*</a>
+<a name="68"><span class="lineNum">      68 </span>            :          * Asymptotic expansion for  ln(|B(a, b)|) for a &gt; ASYMP_FACTOR*max(|b|, 1).</a>
+<a name="69"><span class="lineNum">      69 </span>            :          */</a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       4137 :         XSF_HOST_DEVICE inline double lbeta_asymp(double a, double b, int *sgn) {</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       4137 :             double r = lgam_sgn(b, sgn);</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">       4137 :             r -= b * std::log(a);</span></a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       4137 :             r += b * (1 - b) / (2 * a);</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       4137 :             r += b * (1 - b) * (1 - 2 * b) / (12 * a * a);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       4137 :             r += -b * b * (1 - b) * (1 - b) / (12 * a * a * a);</span></a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       4137 :             return r;</span></a>
+<a name="79"><span class="lineNum">      79 </span>            :         }</a>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span>            :         /*</a>
+<a name="82"><span class="lineNum">      82 </span>            :          * Special case for a negative integer argument</a>
+<a name="83"><span class="lineNum">      83 </span>            :          */</a>
+<a name="84"><span class="lineNum">      84 </span>            : </a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      69178 :         XSF_HOST_DEVICE inline double beta_negint(int a, double b) {</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      69178 :             int sgn;</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">      69178 :             if (b == static_cast&lt;int&gt;(b) &amp;&amp; 1 - a - b &gt; 0) {</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        309 :                 sgn = (static_cast&lt;int&gt;(b) % 2 == 0) ? 1 : -1;</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        309 :                 return sgn * xsf::cephes::beta(1 - a - b, b);</span></a>
+<a name="90"><span class="lineNum">      90 </span>            :             } else {</a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      68869 :                 set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">      68869 :                 return std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="93"><span class="lineNum">      93 </span>            :             }</a>
+<a name="94"><span class="lineNum">      94 </span>            :         }</a>
+<a name="95"><span class="lineNum">      95 </span>            : </a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">       2825 :         XSF_HOST_DEVICE inline double lbeta_negint(int a, double b) {</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">       2825 :             double r;</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">       2825 :             if (b == static_cast&lt;int&gt;(b) &amp;&amp; 1 - a - b &gt; 0) {</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        309 :                 r = xsf::cephes::lbeta(1 - a - b, b);</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        309 :                 return r;</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :             } else {</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       2516 :                 set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       2516 :                 return std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="104"><span class="lineNum">     104 </span>            :             }</a>
+<a name="105"><span class="lineNum">     105 </span>            :         }</a>
+<a name="106"><span class="lineNum">     106 </span>            :     } // namespace detail</a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     442586 :     XSF_HOST_DEVICE inline double beta(double a, double b) {</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">     442586 :         double y;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">     442586 :         int sign = 1;</span></a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     442586 :         if (a &lt;= 0.0) {</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      83543 :             if (a == std::floor(a)) {</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      68328 :                 if (a == static_cast&lt;int&gt;(a)) {</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      68328 :                     return detail::beta_negint(static_cast&lt;int&gt;(a), b);</span></a>
+<a name="116"><span class="lineNum">     116 </span>            :                 } else {</a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :                     goto overflow;</span></a>
+<a name="118"><span class="lineNum">     118 </span>            :                 }</a>
+<a name="119"><span class="lineNum">     119 </span>            :             }</a>
+<a name="120"><span class="lineNum">     120 </span>            :         }</a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">     374258 :         if (b &lt;= 0.0) {</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       2110 :             if (b == std::floor(b)) {</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        850 :                 if (b == static_cast&lt;int&gt;(b)) {</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        850 :                     return detail::beta_negint(static_cast&lt;int&gt;(b), a);</span></a>
+<a name="126"><span class="lineNum">     126 </span>            :                 } else {</a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :                     goto overflow;</span></a>
+<a name="128"><span class="lineNum">     128 </span>            :                 }</a>
+<a name="129"><span class="lineNum">     129 </span>            :             }</a>
+<a name="130"><span class="lineNum">     130 </span>            :         }</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     373408 :         if (std::abs(a) &lt; std::abs(b)) {</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     163748 :             y = a;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     163748 :             a = b;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">     163748 :             b = y;</span></a>
+<a name="136"><span class="lineNum">     136 </span>            :         }</a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">     373408 :         if (std::abs(a) &gt; detail::beta_ASYMP_FACTOR * std::abs(b) &amp;&amp; a &gt; detail::beta_ASYMP_FACTOR) {</span></a>
+<a name="139"><span class="lineNum">     139 </span>            :             /* Avoid loss of precision in lgam(a + b) - lgam(a) */</a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        383 :             y = detail::lbeta_asymp(a, b, &amp;sign);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        383 :             return sign * std::exp(y);</span></a>
+<a name="142"><span class="lineNum">     142 </span>            :         }</a>
+<a name="143"><span class="lineNum">     143 </span>            : </a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">     373025 :         y = a + b;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">     373025 :         if (std::abs(y) &gt; detail::MAXGAM || std::abs(a) &gt; detail::MAXGAM || std::abs(b) &gt; detail::MAXGAM) {</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">     132206 :             int sgngam;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">     132206 :             y = detail::lgam_sgn(y, &amp;sgngam);</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">     132206 :             sign *= sgngam; /* keep track of the sign */</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">     132206 :             y = detail::lgam_sgn(b, &amp;sgngam) - y;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">     132206 :             sign *= sgngam;</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">     132206 :             y = detail::lgam_sgn(a, &amp;sgngam) + y;</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">     132206 :             sign *= sgngam;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">     132206 :             if (y &gt; detail::MAXLOG) {</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :                 goto overflow;</span></a>
+<a name="155"><span class="lineNum">     155 </span>            :             }</a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     132203 :             return (sign * std::exp(y));</span></a>
+<a name="157"><span class="lineNum">     157 </span>            :         }</a>
+<a name="158"><span class="lineNum">     158 </span>            : </a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     240819 :         y = rgamma(y);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">     240819 :         a = Gamma(a);</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">     240819 :         b = Gamma(b);</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">     240819 :         if (std::isinf(y)) {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :             goto overflow;</span></a>
+<a name="164"><span class="lineNum">     164 </span>            :         }</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">     240819 :         if (std::abs(std::abs(a*y) - 1.0) &gt; std::abs(std::abs(b*y) - 1.0)) {</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      13404 :             y = b * y;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      13404 :             y *= a;</span></a>
+<a name="169"><span class="lineNum">     169 </span>            :         } else {</a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">     227415 :             y = a * y;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">     227415 :             y *= b;</span></a>
+<a name="172"><span class="lineNum">     172 </span>            :         }</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          3 :     overflow:</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :         set_error(&quot;beta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :         return (sign * std::numeric_limits&lt;double&gt;::infinity());</span></a>
-<a name="177"><span class="lineNum">     177 </span>            :     }</a>
-<a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span>            :     /* Natural log of |beta|. */</a>
+<a name="174"><span class="lineNum">     174 </span>            :         return (y);</a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :     overflow:</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          3 :         set_error(&quot;beta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :         return (sign * std::numeric_limits&lt;double&gt;::infinity());</span></a>
+<a name="179"><span class="lineNum">     179 </span>            :     }</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">    1821890 :     XSF_HOST_DEVICE inline double lbeta(double a, double b) {</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">    1821890 :         double y;</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">    1821890 :         int sign;</span></a>
-<a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    1821890 :         sign = 1;</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :     /* Natural log of |beta|. */</a>
+<a name="182"><span class="lineNum">     182 </span>            : </a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">    2082271 :     XSF_HOST_DEVICE inline double lbeta(double a, double b) {</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">    2082271 :         double y;</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    2082271 :         int sign;</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">    1821890 :         if (a &lt;= 0.0) {</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       1551 :             if (a == std::floor(a)) {</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">        783 :                 if (a == static_cast&lt;int&gt;(a)) {</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        783 :                     return detail::lbeta_negint(static_cast&lt;int&gt;(a), b);</span></a>
-<a name="191"><span class="lineNum">     191 </span>            :                 } else {</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :                     goto over;</span></a>
-<a name="193"><span class="lineNum">     193 </span>            :                 }</a>
-<a name="194"><span class="lineNum">     194 </span>            :             }</a>
-<a name="195"><span class="lineNum">     195 </span>            :         }</a>
-<a name="196"><span class="lineNum">     196 </span>            : </a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">    1821107 :         if (b &lt;= 0.0) {</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       2640 :             if (b == std::floor(b)) {</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       2042 :                 if (b == static_cast&lt;int&gt;(b)) {</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       2042 :                     return detail::lbeta_negint(static_cast&lt;int&gt;(b), a);</span></a>
-<a name="201"><span class="lineNum">     201 </span>            :                 } else {</a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :                     goto over;</span></a>
-<a name="203"><span class="lineNum">     203 </span>            :                 }</a>
-<a name="204"><span class="lineNum">     204 </span>            :             }</a>
-<a name="205"><span class="lineNum">     205 </span>            :         }</a>
-<a name="206"><span class="lineNum">     206 </span>            : </a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    1819065 :         if (std::abs(a) &lt; std::abs(b)) {</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">    1366434 :             y = a;</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">    1366434 :             a = b;</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    1366434 :             b = y;</span></a>
-<a name="211"><span class="lineNum">     211 </span>            :         }</a>
-<a name="212"><span class="lineNum">     212 </span>            : </a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">    1819065 :         if (std::abs(a) &gt; detail::beta_ASYMP_FACTOR * std::abs(b) &amp;&amp; a &gt; detail::beta_ASYMP_FACTOR) {</span></a>
-<a name="214"><span class="lineNum">     214 </span>            :             /* Avoid loss of precision in lgam(a + b) - lgam(a) */</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       3754 :             y = detail::lbeta_asymp(a, b, &amp;sign);</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       3754 :             return y;</span></a>
-<a name="217"><span class="lineNum">     217 </span>            :         }</a>
-<a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    1815311 :         y = a + b;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    1815311 :         if (std::abs(y) &gt; detail::MAXGAM || std::abs(a) &gt; detail::MAXGAM || std::abs(b) &gt; detail::MAXGAM) {</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">     116848 :             int sgngam;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">     116848 :             y = detail::lgam_sgn(y, &amp;sgngam);</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">     116848 :             sign *= sgngam; /* keep track of the sign */</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">     116848 :             y = detail::lgam_sgn(b, &amp;sgngam) - y;</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">     116848 :             sign *= sgngam;</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">     116848 :             y = detail::lgam_sgn(a, &amp;sgngam) + y;</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">     116848 :             sign *= sgngam;</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">     116848 :             return (y);</span></a>
-<a name="229"><span class="lineNum">     229 </span>            :         }</a>
-<a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">    1698463 :         y = Gamma(y);</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">    1698463 :         a = Gamma(a);</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">    1698463 :         b = Gamma(b);</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">    1698463 :         if (y == 0.0) {</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :         over:</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :             set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :             return (sign * std::numeric_limits&lt;double&gt;::infinity());</span></a>
-<a name="238"><span class="lineNum">     238 </span>            :         }</a>
-<a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">    1698463 :         if (std::abs(std::abs(a) - std::abs(y)) &gt; std::abs(std::abs(b) - std::abs(y))) {</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">      42586 :             y = b / y;</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">      42586 :             y *= a;</span></a>
-<a name="243"><span class="lineNum">     243 </span>            :         } else {</a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">    1655877 :             y = a / y;</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">    1655877 :             y *= b;</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :         }</a>
-<a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">    1698463 :         if (y &lt; 0) {</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        291 :             y = -y;</span></a>
-<a name="250"><span class="lineNum">     250 </span>            :         }</a>
-<a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">    1698463 :         return (std::log(y));</span></a>
-<a name="253"><span class="lineNum">     253 </span>            :     }</a>
-<a name="254"><span class="lineNum">     254 </span>            : } // namespace cephes</a>
-<a name="255"><span class="lineNum">     255 </span>            : } // namespace xsf</a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">    2082271 :         sign = 1;</span></a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">    2082271 :         if (a &lt;= 0.0) {</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       1551 :             if (a == std::floor(a)) {</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        783 :                 if (a == static_cast&lt;int&gt;(a)) {</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        783 :                     return detail::lbeta_negint(static_cast&lt;int&gt;(a), b);</span></a>
+<a name="193"><span class="lineNum">     193 </span>            :                 } else {</a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                     goto over;</span></a>
+<a name="195"><span class="lineNum">     195 </span>            :                 }</a>
+<a name="196"><span class="lineNum">     196 </span>            :             }</a>
+<a name="197"><span class="lineNum">     197 </span>            :         }</a>
+<a name="198"><span class="lineNum">     198 </span>            : </a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">    2081488 :         if (b &lt;= 0.0) {</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       2640 :             if (b == std::floor(b)) {</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       2042 :                 if (b == static_cast&lt;int&gt;(b)) {</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       2042 :                     return detail::lbeta_negint(static_cast&lt;int&gt;(b), a);</span></a>
+<a name="203"><span class="lineNum">     203 </span>            :                 } else {</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                     goto over;</span></a>
+<a name="205"><span class="lineNum">     205 </span>            :                 }</a>
+<a name="206"><span class="lineNum">     206 </span>            :             }</a>
+<a name="207"><span class="lineNum">     207 </span>            :         }</a>
+<a name="208"><span class="lineNum">     208 </span>            : </a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">    2079446 :         if (std::abs(a) &lt; std::abs(b)) {</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    1629143 :             y = a;</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    1629143 :             a = b;</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">    1629143 :             b = y;</span></a>
+<a name="213"><span class="lineNum">     213 </span>            :         }</a>
+<a name="214"><span class="lineNum">     214 </span>            : </a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">    2079446 :         if (std::abs(a) &gt; detail::beta_ASYMP_FACTOR * std::abs(b) &amp;&amp; a &gt; detail::beta_ASYMP_FACTOR) {</span></a>
+<a name="216"><span class="lineNum">     216 </span>            :             /* Avoid loss of precision in lgam(a + b) - lgam(a) */</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       3754 :             y = detail::lbeta_asymp(a, b, &amp;sign);</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       3754 :             return y;</span></a>
+<a name="219"><span class="lineNum">     219 </span>            :         }</a>
+<a name="220"><span class="lineNum">     220 </span>            : </a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">    2075692 :         y = a + b;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    2075692 :         if (std::abs(y) &gt; detail::MAXGAM || std::abs(a) &gt; detail::MAXGAM || std::abs(b) &gt; detail::MAXGAM) {</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">      95348 :             int sgngam;</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">      95348 :             y = detail::lgam_sgn(y, &amp;sgngam);</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">      95348 :             sign *= sgngam; /* keep track of the sign */</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">      95348 :             y = detail::lgam_sgn(b, &amp;sgngam) - y;</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">      95348 :             sign *= sgngam;</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">      95348 :             y = detail::lgam_sgn(a, &amp;sgngam) + y;</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">      95348 :             sign *= sgngam;</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">      95348 :             return (y);</span></a>
+<a name="231"><span class="lineNum">     231 </span>            :         }</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">    1980344 :         y = rgamma(y);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">    1980344 :         a = Gamma(a);</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">    1980344 :         b = Gamma(b);</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">    1980344 :         if (std::isinf(y)) {</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         over:</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :             set_error(&quot;lbeta&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             return (sign * std::numeric_limits&lt;double&gt;::infinity());</span></a>
+<a name="240"><span class="lineNum">     240 </span>            :         }</a>
+<a name="241"><span class="lineNum">     241 </span>            : </a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">    1980344 :         if (std::abs(std::abs(a*y) - 1.0) &gt; std::abs(std::abs(b*y) - 1.0)) {</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">      42596 :             y = b * y;</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">      42596 :             y *= a;</span></a>
+<a name="245"><span class="lineNum">     245 </span>            :         } else {</a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">    1937748 :             y = a * y;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">    1937748 :             y *= b;</span></a>
+<a name="248"><span class="lineNum">     248 </span>            :         }</a>
+<a name="249"><span class="lineNum">     249 </span>            : </a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">    1980344 :         if (y &lt; 0) {</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">        291 :             y = -y;</span></a>
+<a name="252"><span class="lineNum">     252 </span>            :         }</a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">    1980344 :         return (std::log(y));</span></a>
+<a name="255"><span class="lineNum">     255 </span>            :     }</a>
+<a name="256"><span class="lineNum">     256 </span>            : } // namespace cephes</a>
+<a name="257"><span class="lineNum">     257 </span>            : } // namespace xsf</a>
 </pre>
       </td>
     </tr>

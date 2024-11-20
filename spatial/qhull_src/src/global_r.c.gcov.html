@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - spatial/qhull_src/src/global_r.c</title>
+  <title>LCOV - lcov.info - spatial/qhull_src/src/global_r.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">505</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">16</td>
@@ -2226,8 +2226,8 @@
 <a name="2156"><span class="lineNum">    2156 </span>            :   notes:</a>
 <a name="2157"><span class="lineNum">    2157 </span>            :     NOerrors -- qh_lib_check can not call qh_errexit()</a>
 <a name="2158"><span class="lineNum">    2158 </span>            : */</a>
-<a name="2159"><span class="lineNum">    2159 </span><span class="lineCov">          1 : void qh_lib_check(int qhullLibraryType, int qhTsize, int vertexTsize, int ridgeTsize, int facetTsize, int setTsize, int qhmemTsize) {</span></a>
-<a name="2160"><span class="lineNum">    2160 </span><span class="lineCov">          1 :     int last_errcode= qh_ERRnone;</span></a>
+<a name="2159"><span class="lineNum">    2159 </span><span class="lineCov">          3 : void qh_lib_check(int qhullLibraryType, int qhTsize, int vertexTsize, int ridgeTsize, int facetTsize, int setTsize, int qhmemTsize) {</span></a>
+<a name="2160"><span class="lineNum">    2160 </span><span class="lineCov">          3 :     int last_errcode= qh_ERRnone;</span></a>
 <a name="2161"><span class="lineNum">    2161 </span>            : </a>
 <a name="2162"><span class="lineNum">    2162 </span>            : #if defined(_MSC_VER) &amp;&amp; defined(_DEBUG) &amp;&amp; defined(QHULL_CRTDBG)  /* user_r.h */</a>
 <a name="2163"><span class="lineNum">    2163 </span>            :     /*_CrtSetBreakAlloc(744);*/  /* Break at memalloc {744}, or 'watch' _crtBreakAlloc */</a>
@@ -2240,46 +2240,46 @@
 <a name="2170"><span class="lineNum">    2170 </span>            :     _CrtSetReportFile( _CRT_ASSERT, _CRTDBG_FILE_STDERR );</a>
 <a name="2171"><span class="lineNum">    2171 </span>            : #endif</a>
 <a name="2172"><span class="lineNum">    2172 </span>            : </a>
-<a name="2173"><span class="lineNum">    2173 </span><span class="lineCov">          1 :     if (qhullLibraryType==QHULL_NON_REENTRANT) { /* 0 */</span></a>
+<a name="2173"><span class="lineNum">    2173 </span><span class="lineCov">          3 :     if (qhullLibraryType==QHULL_NON_REENTRANT) { /* 0 */</span></a>
 <a name="2174"><span class="lineNum">    2174 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6257, &quot;qh_lib_check: Incorrect qhull library called.  Caller uses non-reentrant Qhull with a static qhT.  Qhull library is reentrant.\n&quot;);</span></a>
 <a name="2175"><span class="lineNum">    2175 </span><span class="lineNoCov">          0 :       last_errcode= 6257;</span></a>
-<a name="2176"><span class="lineNum">    2176 </span><span class="lineCov">          1 :     }else if (qhullLibraryType==QHULL_QH_POINTER) { /* 1 */</span></a>
+<a name="2176"><span class="lineNum">    2176 </span><span class="lineCov">          3 :     }else if (qhullLibraryType==QHULL_QH_POINTER) { /* 1 */</span></a>
 <a name="2177"><span class="lineNum">    2177 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6258, &quot;qh_lib_check: Incorrect qhull library called.  Caller uses non-reentrant Qhull with a dynamic qhT via qh_QHpointer.  Qhull library is reentrant.\n&quot;);</span></a>
 <a name="2178"><span class="lineNum">    2178 </span><span class="lineNoCov">          0 :       last_errcode= 6258;</span></a>
-<a name="2179"><span class="lineNum">    2179 </span><span class="lineCov">          1 :     }else if (qhullLibraryType != QHULL_REENTRANT) { /* 2 */</span></a>
+<a name="2179"><span class="lineNum">    2179 </span><span class="lineCov">          3 :     }else if (qhullLibraryType != QHULL_REENTRANT) { /* 2 */</span></a>
 <a name="2180"><span class="lineNum">    2180 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6262, &quot;qh_lib_check: Expecting qhullLibraryType QHULL_NON_REENTRANT(0), QHULL_QH_POINTER(1), or QHULL_REENTRANT(2).  Got %d\n&quot;, qhullLibraryType);</span></a>
 <a name="2181"><span class="lineNum">    2181 </span><span class="lineNoCov">          0 :       last_errcode= 6262;</span></a>
 <a name="2182"><span class="lineNum">    2182 </span>            :     }</a>
-<a name="2183"><span class="lineNum">    2183 </span><span class="lineCov">          1 :     if (qhTsize != (int)sizeof(qhT)) {</span></a>
+<a name="2183"><span class="lineNum">    2183 </span><span class="lineCov">          3 :     if (qhTsize != (int)sizeof(qhT)) {</span></a>
 <a name="2184"><span class="lineNum">    2184 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6249, &quot;qh_lib_check: Incorrect qhull library called.  Size of qhT for caller is %d, but for qhull library is %d.\n&quot;, qhTsize, (int)sizeof(qhT));</span></a>
 <a name="2185"><span class="lineNum">    2185 </span><span class="lineNoCov">          0 :       last_errcode= 6249;</span></a>
 <a name="2186"><span class="lineNum">    2186 </span>            :     }</a>
-<a name="2187"><span class="lineNum">    2187 </span><span class="lineCov">          1 :     if (vertexTsize != (int)sizeof(vertexT)) {</span></a>
+<a name="2187"><span class="lineNum">    2187 </span><span class="lineCov">          3 :     if (vertexTsize != (int)sizeof(vertexT)) {</span></a>
 <a name="2188"><span class="lineNum">    2188 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6250, &quot;qh_lib_check: Incorrect qhull library called.  Size of vertexT for caller is %d, but for qhull library is %d.\n&quot;, vertexTsize, (int)sizeof(vertexT));</span></a>
 <a name="2189"><span class="lineNum">    2189 </span><span class="lineNoCov">          0 :       last_errcode= 6250;</span></a>
 <a name="2190"><span class="lineNum">    2190 </span>            :     }</a>
-<a name="2191"><span class="lineNum">    2191 </span><span class="lineCov">          1 :     if (ridgeTsize != (int)sizeof(ridgeT)) {</span></a>
+<a name="2191"><span class="lineNum">    2191 </span><span class="lineCov">          3 :     if (ridgeTsize != (int)sizeof(ridgeT)) {</span></a>
 <a name="2192"><span class="lineNum">    2192 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6251, &quot;qh_lib_check: Incorrect qhull library called.  Size of ridgeT for caller is %d, but for qhull library is %d.\n&quot;, ridgeTsize, (int)sizeof(ridgeT));</span></a>
 <a name="2193"><span class="lineNum">    2193 </span><span class="lineNoCov">          0 :       last_errcode= 6251;</span></a>
 <a name="2194"><span class="lineNum">    2194 </span>            :     }</a>
-<a name="2195"><span class="lineNum">    2195 </span><span class="lineCov">          1 :     if (facetTsize != (int)sizeof(facetT)) {</span></a>
+<a name="2195"><span class="lineNum">    2195 </span><span class="lineCov">          3 :     if (facetTsize != (int)sizeof(facetT)) {</span></a>
 <a name="2196"><span class="lineNum">    2196 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6252, &quot;qh_lib_check: Incorrect qhull library called.  Size of facetT for caller is %d, but for qhull library is %d.\n&quot;, facetTsize, (int)sizeof(facetT));</span></a>
 <a name="2197"><span class="lineNum">    2197 </span><span class="lineNoCov">          0 :       last_errcode= 6252;</span></a>
 <a name="2198"><span class="lineNum">    2198 </span>            :     }</a>
-<a name="2199"><span class="lineNum">    2199 </span><span class="lineCov">          1 :     if (setTsize &amp;&amp; setTsize != (int)sizeof(setT)) {</span></a>
+<a name="2199"><span class="lineNum">    2199 </span><span class="lineCov">          3 :     if (setTsize &amp;&amp; setTsize != (int)sizeof(setT)) {</span></a>
 <a name="2200"><span class="lineNum">    2200 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6253, &quot;qh_lib_check: Incorrect qhull library called.  Size of setT for caller is %d, but for qhull library is %d.\n&quot;, setTsize, (int)sizeof(setT));</span></a>
 <a name="2201"><span class="lineNum">    2201 </span><span class="lineNoCov">          0 :       last_errcode= 6253;</span></a>
 <a name="2202"><span class="lineNum">    2202 </span>            :     }</a>
-<a name="2203"><span class="lineNum">    2203 </span><span class="lineCov">          1 :     if (qhmemTsize &amp;&amp; qhmemTsize != sizeof(qhmemT)) {</span></a>
+<a name="2203"><span class="lineNum">    2203 </span><span class="lineCov">          3 :     if (qhmemTsize &amp;&amp; qhmemTsize != sizeof(qhmemT)) {</span></a>
 <a name="2204"><span class="lineNum">    2204 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6254, &quot;qh_lib_check: Incorrect qhull library called.  Size of qhmemT for caller is %d, but for qhull library is %d.\n&quot;, qhmemTsize, sizeof(qhmemT));</span></a>
 <a name="2205"><span class="lineNum">    2205 </span><span class="lineNoCov">          0 :       last_errcode= 6254;</span></a>
 <a name="2206"><span class="lineNum">    2206 </span>            :     }</a>
-<a name="2207"><span class="lineNum">    2207 </span><span class="lineCov">          1 :     if (last_errcode) {</span></a>
+<a name="2207"><span class="lineNum">    2207 </span><span class="lineCov">          3 :     if (last_errcode) {</span></a>
 <a name="2208"><span class="lineNum">    2208 </span><span class="lineNoCov">          0 :       qh_fprintf_stderr(6259, &quot;qhull internal error (qh_lib_check): Cannot continue due to QH%d.  '%s' is not reentrant (e.g., qhull.so) or out-of-date.  Exit with %d\n&quot;, </span></a>
 <a name="2209"><span class="lineNum">    2209 </span>            :             last_errcode, qh_version2, last_errcode - 6200);</a>
 <a name="2210"><span class="lineNum">    2210 </span><span class="lineNoCov">          0 :       qh_exit(last_errcode - 6200);  /* can not use qh_errexit(), must be less than 255 */</span></a>
 <a name="2211"><span class="lineNum">    2211 </span>            :     }</a>
-<a name="2212"><span class="lineNum">    2212 </span><span class="lineCov">          1 : } /* lib_check */</span></a>
+<a name="2212"><span class="lineNum">    2212 </span><span class="lineCov">          3 : } /* lib_check */</span></a>
 <a name="2213"><span class="lineNum">    2213 </span>            : </a>
 <a name="2214"><span class="lineNum">    2214 </span>            : /*-&lt;a                             href=&quot;qh-globa_r.htm#TOC&quot;</a>
 <a name="2215"><span class="lineNum">    2215 </span>            :   &gt;-------------------------------&lt;/a&gt;&lt;a name=&quot;option&quot;&gt;-&lt;/a&gt;</a>
@@ -2311,9 +2311,9 @@
 <a name="2241"><span class="lineNum">    2241 </span><span class="lineCov">      11422 :   remainder= (int)(sizeof(qh-&gt;qhull_options) - strlen(qh-&gt;qhull_options)) - 1;    /* WARN64 */</span></a>
 <a name="2242"><span class="lineNum">    2242 </span><span class="lineCov">      11422 :   maximize_(remainder, 0);</span></a>
 <a name="2243"><span class="lineNum">    2243 </span><span class="lineCov">      11422 :   if (qh-&gt;qhull_optionlen &gt;= qh_OPTIONline &amp;&amp; remainder &gt; 0) {</span></a>
-<a name="2244"><span class="lineNum">    2244 </span><span class="lineCov">       2592 :     strncat(qh-&gt;qhull_options, &quot;\n&quot;, (unsigned int)remainder);</span></a>
-<a name="2245"><span class="lineNum">    2245 </span><span class="lineCov">       2592 :     --remainder;</span></a>
-<a name="2246"><span class="lineNum">    2246 </span><span class="lineCov">       2592 :     qh-&gt;qhull_optionlen= buflen;</span></a>
+<a name="2244"><span class="lineNum">    2244 </span><span class="lineCov">       2610 :     strncat(qh-&gt;qhull_options, &quot;\n&quot;, (unsigned int)remainder);</span></a>
+<a name="2245"><span class="lineNum">    2245 </span><span class="lineCov">       2610 :     --remainder;</span></a>
+<a name="2246"><span class="lineNum">    2246 </span><span class="lineCov">       2610 :     qh-&gt;qhull_optionlen= buflen;</span></a>
 <a name="2247"><span class="lineNum">    2247 </span>            :   }</a>
 <a name="2248"><span class="lineNum">    2248 </span><span class="lineCov">      11422 :   if (buflen &gt; remainder) {</span></a>
 <a name="2249"><span class="lineNum">    2249 </span><span class="lineNoCov">          0 :     trace1((qh, qh-&gt;ferr, 1058, &quot;qh_option: option would overflow qh.qhull_options. Truncated '%s'\n&quot;, buf));</span></a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/special_functions/detail/bessel_jy.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/special_functions/detail/bessel_jy.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">160</td>
-            <td class="headerCovTableEntry">269</td>
-            <td class="headerCovTableEntryLo">59.5 %</td>
+            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">267</td>
+            <td class="headerCovTableEntryLo">60.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -81,590 +81,592 @@
 <a name="11"><span class="lineNum">      11 </span>            : #endif</a>
 <a name="12"><span class="lineNum">      12 </span>            : </a>
 <a name="13"><span class="lineNum">      13 </span>            : #include &lt;boost/math/tools/config.hpp&gt;</a>
-<a name="14"><span class="lineNum">      14 </span>            : #include &lt;boost/math/special_functions/gamma.hpp&gt;</a>
-<a name="15"><span class="lineNum">      15 </span>            : #include &lt;boost/math/special_functions/sign.hpp&gt;</a>
-<a name="16"><span class="lineNum">      16 </span>            : #include &lt;boost/math/special_functions/hypot.hpp&gt;</a>
-<a name="17"><span class="lineNum">      17 </span>            : #include &lt;boost/math/special_functions/sin_pi.hpp&gt;</a>
-<a name="18"><span class="lineNum">      18 </span>            : #include &lt;boost/math/special_functions/cos_pi.hpp&gt;</a>
-<a name="19"><span class="lineNum">      19 </span>            : #include &lt;boost/math/special_functions/detail/bessel_jy_asym.hpp&gt;</a>
-<a name="20"><span class="lineNum">      20 </span>            : #include &lt;boost/math/special_functions/detail/bessel_jy_series.hpp&gt;</a>
-<a name="21"><span class="lineNum">      21 </span>            : #include &lt;boost/math/constants/constants.hpp&gt;</a>
-<a name="22"><span class="lineNum">      22 </span>            : #include &lt;boost/math/policies/error_handling.hpp&gt;</a>
-<a name="23"><span class="lineNum">      23 </span>            : #include &lt;complex&gt;</a>
-<a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span>            : // Bessel functions of the first and second kind of fractional order</a>
+<a name="14"><span class="lineNum">      14 </span>            : #include &lt;boost/math/tools/numeric_limits.hpp&gt;</a>
+<a name="15"><span class="lineNum">      15 </span>            : #include &lt;boost/math/tools/type_traits.hpp&gt;</a>
+<a name="16"><span class="lineNum">      16 </span>            : #include &lt;boost/math/special_functions/gamma.hpp&gt;</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &lt;boost/math/special_functions/sign.hpp&gt;</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &lt;boost/math/special_functions/hypot.hpp&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &lt;boost/math/special_functions/sin_pi.hpp&gt;</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &lt;boost/math/special_functions/cos_pi.hpp&gt;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #include &lt;boost/math/special_functions/round.hpp&gt;</a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &lt;boost/math/special_functions/detail/bessel_jy_asym.hpp&gt;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &lt;boost/math/special_functions/detail/bessel_jy_series.hpp&gt;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &lt;boost/math/constants/constants.hpp&gt;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;boost/math/policies/error_handling.hpp&gt;</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
-<a name="27"><span class="lineNum">      27 </span>            : namespace boost { namespace math {</a>
+<a name="27"><span class="lineNum">      27 </span>            : // Bessel functions of the first and second kind of fractional order</a>
 <a name="28"><span class="lineNum">      28 </span>            : </a>
-<a name="29"><span class="lineNum">      29 </span>            :    namespace detail {</a>
+<a name="29"><span class="lineNum">      29 </span>            : namespace boost { namespace math {</a>
 <a name="30"><span class="lineNum">      30 </span>            : </a>
-<a name="31"><span class="lineNum">      31 </span>            :       //</a>
-<a name="32"><span class="lineNum">      32 </span>            :       // Simultaneous calculation of A&amp;S 9.2.9 and 9.2.10</a>
-<a name="33"><span class="lineNum">      33 </span>            :       // for use in A&amp;S 9.2.5 and 9.2.6.</a>
-<a name="34"><span class="lineNum">      34 </span>            :       // This series is quick to evaluate, but divergent unless</a>
-<a name="35"><span class="lineNum">      35 </span>            :       // x is very large, in fact it's pretty hard to figure out</a>
-<a name="36"><span class="lineNum">      36 </span>            :       // with any degree of precision when this series actually</a>
-<a name="37"><span class="lineNum">      37 </span>            :       // *will* converge!!  Consequently, we may just have to</a>
-<a name="38"><span class="lineNum">      38 </span>            :       // try it and see...</a>
-<a name="39"><span class="lineNum">      39 </span>            :       //</a>
-<a name="40"><span class="lineNum">      40 </span>            :       template &lt;class T, class Policy&gt;</a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         28 :       bool hankel_PQ(T v, T x, T* p, T* q, const Policy&amp; )</span></a>
-<a name="42"><span class="lineNum">      42 </span>            :       {</a>
-<a name="43"><span class="lineNum">      43 </span>            :          BOOST_MATH_STD_USING</a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">         28 :             T tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">         28 :          *p = 1;</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         28 :          *q = 0;</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         28 :          T k = 1;</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         28 :          T z8 = 8 * x;</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         28 :          T sq = 1;</span></a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         28 :          T mu = 4 * v * v;</span></a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         28 :          T term = 1;</span></a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         28 :          bool ok = true;</span></a>
-<a name="53"><span class="lineNum">      53 </span>            :          do</a>
-<a name="54"><span class="lineNum">      54 </span>            :          {</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        104 :             term *= (mu - sq * sq) / (k * z8);</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        104 :             *q += term;</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        104 :             k += 1;</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        104 :             sq += 2;</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        104 :             T mult = (sq * sq - mu) / (k * z8);</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        104 :             ok = fabs(mult) &lt; 0.5f;</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        104 :             term *= mult;</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        104 :             *p += term;</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        104 :             k += 1;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        104 :             sq += 2;</span></a>
-<a name="65"><span class="lineNum">      65 </span>            :          }</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        104 :          while((fabs(term) &gt; tolerance * *p) &amp;&amp; ok);</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         28 :          return ok;</span></a>
-<a name="68"><span class="lineNum">      68 </span>            :       }</a>
-<a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span>            :       // Calculate Y(v, x) and Y(v+1, x) by Temme's method, see</a>
-<a name="71"><span class="lineNum">      71 </span>            :       // Temme, Journal of Computational Physics, vol 21, 343 (1976)</a>
-<a name="72"><span class="lineNum">      72 </span>            :       template &lt;typename T, typename Policy&gt;</a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :       int temme_jy(T v, T x, T* Y, T* Y1, const Policy&amp; pol)</span></a>
-<a name="74"><span class="lineNum">      74 </span>            :       {</a>
-<a name="75"><span class="lineNum">      75 </span>            :          T g, h, p, q, f, coef, sum, sum1, tolerance;</a>
-<a name="76"><span class="lineNum">      76 </span>            :          T a, d, e, sigma;</a>
-<a name="77"><span class="lineNum">      77 </span>            :          unsigned long k;</a>
-<a name="78"><span class="lineNum">      78 </span>            : </a>
-<a name="79"><span class="lineNum">      79 </span>            :          BOOST_MATH_STD_USING</a>
-<a name="80"><span class="lineNum">      80 </span>            :             using namespace boost::math::tools;</a>
-<a name="81"><span class="lineNum">      81 </span>            :          using namespace boost::math::constants;</a>
-<a name="82"><span class="lineNum">      82 </span>            : </a>
-<a name="83"><span class="lineNum">      83 </span>            :          BOOST_MATH_ASSERT(fabs(v) &lt;= 0.5f);  // precondition for using this routine</a>
+<a name="31"><span class="lineNum">      31 </span>            :    namespace detail {</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            :       //</a>
+<a name="34"><span class="lineNum">      34 </span>            :       // Simultaneous calculation of A&amp;S 9.2.9 and 9.2.10</a>
+<a name="35"><span class="lineNum">      35 </span>            :       // for use in A&amp;S 9.2.5 and 9.2.6.</a>
+<a name="36"><span class="lineNum">      36 </span>            :       // This series is quick to evaluate, but divergent unless</a>
+<a name="37"><span class="lineNum">      37 </span>            :       // x is very large, in fact it's pretty hard to figure out</a>
+<a name="38"><span class="lineNum">      38 </span>            :       // with any degree of precision when this series actually</a>
+<a name="39"><span class="lineNum">      39 </span>            :       // *will* converge!!  Consequently, we may just have to</a>
+<a name="40"><span class="lineNum">      40 </span>            :       // try it and see...</a>
+<a name="41"><span class="lineNum">      41 </span>            :       //</a>
+<a name="42"><span class="lineNum">      42 </span>            :       template &lt;class T, class Policy&gt;</a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         28 :       BOOST_MATH_GPU_ENABLED bool hankel_PQ(T v, T x, T* p, T* q, const Policy&amp; )</span></a>
+<a name="44"><span class="lineNum">      44 </span>            :       {</a>
+<a name="45"><span class="lineNum">      45 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         28 :             T tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         28 :          *p = 1;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         28 :          *q = 0;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         28 :          T k = 1;</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         28 :          T z8 = 8 * x;</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         28 :          T sq = 1;</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         28 :          T mu = 4 * v * v;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         28 :          T term = 1;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         28 :          bool ok = true;</span></a>
+<a name="55"><span class="lineNum">      55 </span>            :          do</a>
+<a name="56"><span class="lineNum">      56 </span>            :          {</a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        104 :             term *= (mu - sq * sq) / (k * z8);</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        104 :             *q += term;</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        104 :             k += 1;</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        104 :             sq += 2;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        104 :             T mult = (sq * sq - mu) / (k * z8);</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        104 :             ok = fabs(mult) &lt; 0.5f;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        104 :             term *= mult;</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        104 :             *p += term;</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        104 :             k += 1;</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        104 :             sq += 2;</span></a>
+<a name="67"><span class="lineNum">      67 </span>            :          }</a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        104 :          while((fabs(term) &gt; tolerance * *p) &amp;&amp; ok);</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         28 :          return ok;</span></a>
+<a name="70"><span class="lineNum">      70 </span>            :       }</a>
+<a name="71"><span class="lineNum">      71 </span>            : </a>
+<a name="72"><span class="lineNum">      72 </span>            :       // Calculate Y(v, x) and Y(v+1, x) by Temme's method, see</a>
+<a name="73"><span class="lineNum">      73 </span>            :       // Temme, Journal of Computational Physics, vol 21, 343 (1976)</a>
+<a name="74"><span class="lineNum">      74 </span>            :       template &lt;typename T, typename Policy&gt;</a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 :       BOOST_MATH_GPU_ENABLED int temme_jy(T v, T x, T* Y, T* Y1, const Policy&amp; pol)</span></a>
+<a name="76"><span class="lineNum">      76 </span>            :       {</a>
+<a name="77"><span class="lineNum">      77 </span>            :          T g, h, p, q, f, coef, sum, sum1, tolerance;</a>
+<a name="78"><span class="lineNum">      78 </span>            :          T a, d, e, sigma;</a>
+<a name="79"><span class="lineNum">      79 </span>            :          unsigned long k;</a>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="82"><span class="lineNum">      82 </span>            :             using namespace boost::math::tools;</a>
+<a name="83"><span class="lineNum">      83 </span>            :          using namespace boost::math::constants;</a>
 <a name="84"><span class="lineNum">      84 </span>            : </a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :          T gp = boost::math::tgamma1pm1(v, pol);</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :          T gm = boost::math::tgamma1pm1(-v, pol);</span></a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :          T spv = boost::math::sin_pi(v, pol);</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :          T spv2 = boost::math::sin_pi(v/2, pol);</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :          T xp = pow(x/2, v);</span></a>
-<a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 :          a = log(x / 2);</span></a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :          sigma = -a * v;</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :          d = abs(sigma) &lt; tools::epsilon&lt;T&gt;() ?</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :             T(1) : sinh(sigma) / sigma;</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :          e = abs(v) &lt; tools::epsilon&lt;T&gt;() ? T(v*pi&lt;T&gt;()*pi&lt;T&gt;() / 2)</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :             : T(2 * spv2 * spv2 / v);</span></a>
-<a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :          T g1 = (v == 0) ? T(-euler&lt;T&gt;()) : T((gp - gm) / ((1 + gp) * (1 + gm) * 2 * v));</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :          T g2 = (2 + gp + gm) / ((1 + gp) * (1 + gm) * 2);</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :          T vspv = (fabs(v) &lt; tools::epsilon&lt;T&gt;()) ? T(1/constants::pi&lt;T&gt;()) : T(v / spv);</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :          f = (g1 * cosh(sigma) - g2 * a * d) * 2 * vspv;</span></a>
-<a name="102"><span class="lineNum">     102 </span>            : </a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :          p = vspv / (xp * (1 + gm));</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :          q = vspv * xp / (1 + gp);</span></a>
-<a name="105"><span class="lineNum">     105 </span>            : </a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :          g = f + e * q;</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :          h = p;</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :          coef = 1;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :          sum = coef * g;</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :          sum1 = coef * h;</span></a>
-<a name="111"><span class="lineNum">     111 </span>            : </a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :          T v2 = v * v;</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :          T coef_mult = -x * x / 4;</span></a>
-<a name="114"><span class="lineNum">     114 </span>            : </a>
-<a name="115"><span class="lineNum">     115 </span>            :          // series summation</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :          tolerance = policies::get_epsilon&lt;T, Policy&gt;();</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :          for (k = 1; k &lt; policies::get_max_series_iterations&lt;Policy&gt;(); k++)</span></a>
-<a name="118"><span class="lineNum">     118 </span>            :          {</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :             f = (k * f + p + q) / (k*k - v2);</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :             p /= k - v;</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :             q /= k + v;</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :             g = f + e * q;</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :             h = p - k * g;</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :             coef *= coef_mult / k;</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :             sum += coef * g;</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :             sum1 += coef * h;</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :             if (abs(coef * g) &lt; abs(sum) * tolerance)</span></a>
-<a name="128"><span class="lineNum">     128 </span>            :             {</a>
-<a name="129"><span class="lineNum">     129 </span>            :                break;</a>
-<a name="130"><span class="lineNum">     130 </span>            :             }</a>
-<a name="131"><span class="lineNum">     131 </span>            :          }</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in temme_jy&quot;, k, pol);</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :          *Y = -sum;</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :          *Y1 = -2 * sum1 / x;</span></a>
-<a name="135"><span class="lineNum">     135 </span>            : </a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :          return 0;</span></a>
-<a name="137"><span class="lineNum">     137 </span>            :       }</a>
-<a name="138"><span class="lineNum">     138 </span>            : </a>
-<a name="139"><span class="lineNum">     139 </span>            :       // Evaluate continued fraction fv = J_(v+1) / J_v, see</a>
-<a name="140"><span class="lineNum">     140 </span>            :       // Abramowitz and Stegun, Handbook of Mathematical Functions, 1972, 9.1.73</a>
-<a name="141"><span class="lineNum">     141 </span>            :       template &lt;typename T, typename Policy&gt;</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         28 :       int CF1_jy(T v, T x, T* fv, int* sign, const Policy&amp; pol)</span></a>
-<a name="143"><span class="lineNum">     143 </span>            :       {</a>
-<a name="144"><span class="lineNum">     144 </span>            :          T C, D, f, a, b, delta, tiny, tolerance;</a>
-<a name="145"><span class="lineNum">     145 </span>            :          unsigned long k;</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         28 :          int s = 1;</span></a>
-<a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="85"><span class="lineNum">      85 </span>            :          BOOST_MATH_ASSERT(fabs(v) &lt;= 0.5f);  // precondition for using this routine</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :          T gp = boost::math::tgamma1pm1(v, pol);</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :          T gm = boost::math::tgamma1pm1(-v, pol);</span></a>
+<a name="89"><span class="lineNum">      89 </span>            :          T spv = boost::math::sin_pi(v, pol);</a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :          T spv2 = boost::math::sin_pi(v/2, pol);</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 :          T xp = pow(x/2, v);</span></a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :          a = log(x / 2);</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :          sigma = -a * v;</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :          d = abs(sigma) &lt; tools::epsilon&lt;T&gt;() ?</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :             T(1) : sinh(sigma) / sigma;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :          e = abs(v) &lt; tools::epsilon&lt;T&gt;() ? T(v*pi&lt;T&gt;()*pi&lt;T&gt;() / 2)</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :             : T(2 * spv2 * spv2 / v);</span></a>
+<a name="99"><span class="lineNum">      99 </span>            : </a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :          T g1 = (v == 0) ? T(-euler&lt;T&gt;()) : T((gp - gm) / ((1 + gp) * (1 + gm) * 2 * v));</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :          T g2 = (2 + gp + gm) / ((1 + gp) * (1 + gm) * 2);</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :          T vspv = (fabs(v) &lt; tools::epsilon&lt;T&gt;()) ? T(1/constants::pi&lt;T&gt;()) : T(v / spv);</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :          f = (g1 * cosh(sigma) - g2 * a * d) * 2 * vspv;</span></a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :          p = vspv / (xp * (1 + gm));</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :          q = vspv * xp / (1 + gp);</span></a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :          g = f + e * q;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :          h = p;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :          coef = 1;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :          sum = coef * g;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :          sum1 = coef * h;</span></a>
+<a name="113"><span class="lineNum">     113 </span>            : </a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :          T v2 = v * v;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :          T coef_mult = -x * x / 4;</span></a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span>            :          // series summation</a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :          tolerance = policies::get_epsilon&lt;T, Policy&gt;();</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :          for (k = 1; k &lt; policies::get_max_series_iterations&lt;Policy&gt;(); k++)</span></a>
+<a name="120"><span class="lineNum">     120 </span>            :          {</a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :             f = (k * f + p + q) / (k*k - v2);</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :             p /= k - v;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :             q /= k + v;</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :             g = f + e * q;</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :             h = p - k * g;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :             coef *= coef_mult / k;</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :             sum += coef * g;</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :             sum1 += coef * h;</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :             if (abs(coef * g) &lt; abs(sum) * tolerance)</span></a>
+<a name="130"><span class="lineNum">     130 </span>            :             {</a>
+<a name="131"><span class="lineNum">     131 </span>            :                break;</a>
+<a name="132"><span class="lineNum">     132 </span>            :             }</a>
+<a name="133"><span class="lineNum">     133 </span>            :          }</a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in temme_jy&quot;, k, pol);</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :          *Y = -sum;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :          *Y1 = -2 * sum1 / x;</span></a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :          return 0;</span></a>
+<a name="139"><span class="lineNum">     139 </span>            :       }</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :       // Evaluate continued fraction fv = J_(v+1) / J_v, see</a>
+<a name="142"><span class="lineNum">     142 </span>            :       // Abramowitz and Stegun, Handbook of Mathematical Functions, 1972, 9.1.73</a>
+<a name="143"><span class="lineNum">     143 </span>            :       template &lt;typename T, typename Policy&gt;</a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         28 :       BOOST_MATH_GPU_ENABLED int CF1_jy(T v, T x, T* fv, int* sign, const Policy&amp; pol)</span></a>
+<a name="145"><span class="lineNum">     145 </span>            :       {</a>
+<a name="146"><span class="lineNum">     146 </span>            :          T C, D, f, a, b, delta, tiny, tolerance;</a>
+<a name="147"><span class="lineNum">     147 </span>            :          unsigned long k;</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         28 :          int s = 1;</span></a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span>            :             // |x| &lt;= |v|, CF1_jy converges rapidly</a>
-<a name="151"><span class="lineNum">     151 </span>            :             // |x| &gt; |v|, CF1_jy needs O(|x|) iterations to converge</a>
-<a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span>            :             // modified Lentz's method, see</a>
-<a name="154"><span class="lineNum">     154 </span>            :             // Lentz, Applied Optics, vol 15, 668 (1976)</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         28 :             tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         28 :          tiny = sqrt(tools::min_value&lt;T&gt;());</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         28 :          C = f = tiny;                           // b0 = 0, replace with tiny</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         28 :          D = 0;</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        734 :          for (k = 1; k &lt; policies::get_max_series_iterations&lt;Policy&gt;() * 100; k++)</span></a>
-<a name="160"><span class="lineNum">     160 </span>            :          {</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        734 :             a = -1;</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">        734 :             b = 2 * (v + k) / x;</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">        734 :             C = b + a / C;</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        734 :             D = b + a * D;</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        734 :             if (C == 0) { C = tiny; }</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        734 :             if (D == 0) { D = tiny; }</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        734 :             D = 1 / D;</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        734 :             delta = C * D;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        734 :             f *= delta;</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        734 :             if (D &lt; 0) { s = -s; }</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        734 :             if (abs(delta - 1) &lt; tolerance)</span></a>
-<a name="172"><span class="lineNum">     172 </span>            :             { break; }</a>
-<a name="173"><span class="lineNum">     173 </span>            :          }</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         28 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in CF1_jy&quot;, k / 100, pol);</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         28 :          *fv = -f;</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         28 :          *sign = s;                              // sign of denominator</span></a>
-<a name="177"><span class="lineNum">     177 </span>            : </a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         28 :          return 0;</span></a>
-<a name="179"><span class="lineNum">     179 </span>            :       }</a>
-<a name="180"><span class="lineNum">     180 </span>            :       //</a>
-<a name="181"><span class="lineNum">     181 </span>            :       // This algorithm was originally written by Xiaogang Zhang</a>
-<a name="182"><span class="lineNum">     182 </span>            :       // using std::complex to perform the complex arithmetic.</a>
-<a name="183"><span class="lineNum">     183 </span>            :       // However, that turns out to 10x or more slower than using</a>
-<a name="184"><span class="lineNum">     184 </span>            :       // all real-valued arithmetic, so it's been rewritten using</a>
-<a name="185"><span class="lineNum">     185 </span>            :       // real values only.</a>
-<a name="186"><span class="lineNum">     186 </span>            :       //</a>
-<a name="187"><span class="lineNum">     187 </span>            :       template &lt;typename T, typename Policy&gt;</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         28 :       int CF2_jy(T v, T x, T* p, T* q, const Policy&amp; pol)</span></a>
-<a name="189"><span class="lineNum">     189 </span>            :       {</a>
-<a name="190"><span class="lineNum">     190 </span>            :          BOOST_MATH_STD_USING</a>
-<a name="191"><span class="lineNum">     191 </span>            : </a>
-<a name="192"><span class="lineNum">     192 </span>            :             T Cr, Ci, Dr, Di, fr, fi, a, br, bi, delta_r, delta_i, temp;</a>
-<a name="193"><span class="lineNum">     193 </span>            :          T tiny;</a>
-<a name="194"><span class="lineNum">     194 </span>            :          unsigned long k;</a>
-<a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span>            :          // |x| &gt;= |v|, CF2_jy converges rapidly</a>
-<a name="197"><span class="lineNum">     197 </span>            :          // |x| -&gt; 0, CF2_jy fails to converge</a>
-<a name="198"><span class="lineNum">     198 </span>            :          BOOST_MATH_ASSERT(fabs(x) &gt; 1);</a>
-<a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span>            :          // modified Lentz's method, complex numbers involved, see</a>
-<a name="201"><span class="lineNum">     201 </span>            :          // Lentz, Applied Optics, vol 15, 668 (1976)</a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         28 :          T tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">         28 :          tiny = sqrt(tools::min_value&lt;T&gt;());</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         28 :          Cr = fr = -0.5f / x;</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         28 :          Ci = fi = 1;</span></a>
-<a name="206"><span class="lineNum">     206 </span>            :          //Dr = Di = 0;</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         28 :          T v2 = v * v;</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">         28 :          a = (0.25f - v2) / x; // Note complex this one time only!</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         28 :          br = 2 * x;</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         28 :          bi = 2;</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         28 :          temp = Cr * Cr + 1;</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         28 :          Ci = bi + a * Cr / temp;</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         28 :          Cr = br + a / temp;</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         28 :          Dr = br;</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         28 :          Di = bi;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         28 :          if (fabs(Cr) + fabs(Ci) &lt; tiny) { Cr = tiny; }</span></a>
-<a name="217"><span class="lineNum">     217 </span>            :          if (fabs(Dr) + fabs(Di) &lt; tiny) { Dr = tiny; }</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         28 :          temp = Dr * Dr + Di * Di;</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         28 :          Dr = Dr / temp;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         28 :          Di = -Di / temp;</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         28 :          delta_r = Cr * Dr - Ci * Di;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         28 :          delta_i = Ci * Dr + Cr * Di;</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         28 :          temp = fr;</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         28 :          fr = temp * delta_r - fi * delta_i;</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">         28 :          fi = temp * delta_i + fi * delta_r;</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        179 :          for (k = 2; k &lt; policies::get_max_series_iterations&lt;Policy&gt;(); k++)</span></a>
-<a name="227"><span class="lineNum">     227 </span>            :          {</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        179 :             a = k - 0.5f;</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        179 :             a *= a;</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        179 :             a -= v2;</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        179 :             bi += 2;</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        179 :             temp = Cr * Cr + Ci * Ci;</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        179 :             Cr = br + a * Cr / temp;</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        179 :             Ci = bi - a * Ci / temp;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">        179 :             Dr = br + a * Dr;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        179 :             Di = bi + a * Di;</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        179 :             if (fabs(Cr) + fabs(Ci) &lt; tiny) { Cr = tiny; }</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">        179 :             if (fabs(Dr) + fabs(Di) &lt; tiny) { Dr = tiny; }</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        179 :             temp = Dr * Dr + Di * Di;</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        179 :             Dr = Dr / temp;</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        179 :             Di = -Di / temp;</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        179 :             delta_r = Cr * Dr - Ci * Di;</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        179 :             delta_i = Ci * Dr + Cr * Di;</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        179 :             temp = fr;</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        179 :             fr = temp * delta_r - fi * delta_i;</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        179 :             fi = temp * delta_i + fi * delta_r;</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        179 :             if (fabs(delta_r - 1) + fabs(delta_i) &lt; tolerance)</span></a>
-<a name="248"><span class="lineNum">     248 </span>            :                break;</a>
-<a name="249"><span class="lineNum">     249 </span>            :          }</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         28 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in CF2_jy&quot;, k, pol);</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         28 :          *p = fr;</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         28 :          *q = fi;</span></a>
-<a name="253"><span class="lineNum">     253 </span>            : </a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         28 :          return 0;</span></a>
-<a name="255"><span class="lineNum">     255 </span>            :       }</a>
-<a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span>            :       static const int need_j = 1;</a>
-<a name="258"><span class="lineNum">     258 </span>            :       static const int need_y = 2;</a>
-<a name="259"><span class="lineNum">     259 </span>            : </a>
-<a name="260"><span class="lineNum">     260 </span>            :       // Compute J(v, x) and Y(v, x) simultaneously by Steed's method, see</a>
-<a name="261"><span class="lineNum">     261 </span>            :       // Barnett et al, Computer Physics Communications, vol 8, 377 (1974)</a>
-<a name="262"><span class="lineNum">     262 </span>            :       template &lt;typename T, typename Policy&gt;</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         28 :       int bessel_jy(T v, T x, T* J, T* Y, int kind, const Policy&amp; pol)</span></a>
-<a name="264"><span class="lineNum">     264 </span>            :       {</a>
-<a name="265"><span class="lineNum">     265 </span>            :          BOOST_MATH_ASSERT(x &gt;= 0);</a>
-<a name="266"><span class="lineNum">     266 </span>            : </a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         28 :          T u, Jv, Ju, Yv, Yv1, Yu, Yu1(0), fv, fu;</span></a>
-<a name="268"><span class="lineNum">     268 </span>            :          T W, p, q, gamma, current, prev, next;</a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         28 :          bool reflect = false;</span></a>
-<a name="270"><span class="lineNum">     270 </span>            :          unsigned n, k;</a>
-<a name="271"><span class="lineNum">     271 </span>            :          int s;</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         28 :          int org_kind = kind;</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         28 :          T cp = 0;</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         28 :          T sp = 0;</span></a>
-<a name="275"><span class="lineNum">     275 </span>            : </a>
-<a name="276"><span class="lineNum">     276 </span>            :          static const char* function = &quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%)&quot;;</a>
+<a name="150"><span class="lineNum">     150 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="151"><span class="lineNum">     151 </span>            : </a>
+<a name="152"><span class="lineNum">     152 </span>            :             // |x| &lt;= |v|, CF1_jy converges rapidly</a>
+<a name="153"><span class="lineNum">     153 </span>            :             // |x| &gt; |v|, CF1_jy needs O(|x|) iterations to converge</a>
+<a name="154"><span class="lineNum">     154 </span>            : </a>
+<a name="155"><span class="lineNum">     155 </span>            :             // modified Lentz's method, see</a>
+<a name="156"><span class="lineNum">     156 </span>            :             // Lentz, Applied Optics, vol 15, 668 (1976)</a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         28 :             tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         28 :          tiny = sqrt(tools::min_value&lt;T&gt;());</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         28 :          C = f = tiny;                           // b0 = 0, replace with tiny</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         28 :          D = 0;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        734 :          for (k = 1; k &lt; policies::get_max_series_iterations&lt;Policy&gt;() * 100; k++)</span></a>
+<a name="162"><span class="lineNum">     162 </span>            :          {</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">        734 :             a = -1;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        734 :             b = 2 * (v + k) / x;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        734 :             C = b + a / C;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        734 :             D = b + a * D;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        734 :             if (C == 0) { C = tiny; }</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        734 :             if (D == 0) { D = tiny; }</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        734 :             D = 1 / D;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        734 :             delta = C * D;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        734 :             f *= delta;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        734 :             if (D &lt; 0) { s = -s; }</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        734 :             if (abs(delta - 1) &lt; tolerance)</span></a>
+<a name="174"><span class="lineNum">     174 </span>            :             { break; }</a>
+<a name="175"><span class="lineNum">     175 </span>            :          }</a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         28 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in CF1_jy&quot;, k / 100, pol);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         28 :          *fv = -f;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         28 :          *sign = s;                              // sign of denominator</span></a>
+<a name="179"><span class="lineNum">     179 </span>            : </a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         28 :          return 0;</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :       }</a>
+<a name="182"><span class="lineNum">     182 </span>            :       //</a>
+<a name="183"><span class="lineNum">     183 </span>            :       // This algorithm was originally written by Xiaogang Zhang</a>
+<a name="184"><span class="lineNum">     184 </span>            :       // using std::complex to perform the complex arithmetic.</a>
+<a name="185"><span class="lineNum">     185 </span>            :       // However, that turns out to 10x or more slower than using</a>
+<a name="186"><span class="lineNum">     186 </span>            :       // all real-valued arithmetic, so it's been rewritten using</a>
+<a name="187"><span class="lineNum">     187 </span>            :       // real values only.</a>
+<a name="188"><span class="lineNum">     188 </span>            :       //</a>
+<a name="189"><span class="lineNum">     189 </span>            :       template &lt;typename T, typename Policy&gt;</a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         28 :       BOOST_MATH_GPU_ENABLED int CF2_jy(T v, T x, T* p, T* q, const Policy&amp; pol)</span></a>
+<a name="191"><span class="lineNum">     191 </span>            :       {</a>
+<a name="192"><span class="lineNum">     192 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="193"><span class="lineNum">     193 </span>            : </a>
+<a name="194"><span class="lineNum">     194 </span>            :             T Cr, Ci, Dr, Di, fr, fi, a, br, bi, delta_r, delta_i, temp;</a>
+<a name="195"><span class="lineNum">     195 </span>            :          T tiny;</a>
+<a name="196"><span class="lineNum">     196 </span>            :          unsigned long k;</a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span>            :          // |x| &gt;= |v|, CF2_jy converges rapidly</a>
+<a name="199"><span class="lineNum">     199 </span>            :          // |x| -&gt; 0, CF2_jy fails to converge</a>
+<a name="200"><span class="lineNum">     200 </span>            :          BOOST_MATH_ASSERT(fabs(x) &gt; 1);</a>
+<a name="201"><span class="lineNum">     201 </span>            : </a>
+<a name="202"><span class="lineNum">     202 </span>            :          // modified Lentz's method, complex numbers involved, see</a>
+<a name="203"><span class="lineNum">     203 </span>            :          // Lentz, Applied Optics, vol 15, 668 (1976)</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         28 :          T tolerance = 2 * policies::get_epsilon&lt;T, Policy&gt;();</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         28 :          tiny = sqrt(tools::min_value&lt;T&gt;());</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         28 :          Cr = fr = -0.5f / x;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         28 :          Ci = fi = 1;</span></a>
+<a name="208"><span class="lineNum">     208 </span>            :          //Dr = Di = 0;</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         28 :          T v2 = v * v;</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         28 :          a = (0.25f - v2) / x; // Note complex this one time only!</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         28 :          br = 2 * x;</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         28 :          bi = 2;</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         28 :          temp = Cr * Cr + 1;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         28 :          Ci = bi + a * Cr / temp;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         28 :          Cr = br + a / temp;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         28 :          Dr = br;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         28 :          Di = bi;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         28 :          if (fabs(Cr) + fabs(Ci) &lt; tiny) { Cr = tiny; }</span></a>
+<a name="219"><span class="lineNum">     219 </span>            :          if (fabs(Dr) + fabs(Di) &lt; tiny) { Dr = tiny; }</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         28 :          temp = Dr * Dr + Di * Di;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         28 :          Dr = Dr / temp;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         28 :          Di = -Di / temp;</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         28 :          delta_r = Cr * Dr - Ci * Di;</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">         28 :          delta_i = Ci * Dr + Cr * Di;</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">         28 :          temp = fr;</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         28 :          fr = temp * delta_r - fi * delta_i;</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         28 :          fi = temp * delta_i + fi * delta_r;</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        179 :          for (k = 2; k &lt; policies::get_max_series_iterations&lt;Policy&gt;(); k++)</span></a>
+<a name="229"><span class="lineNum">     229 </span>            :          {</a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        179 :             a = k - 0.5f;</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        179 :             a *= a;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        179 :             a -= v2;</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        179 :             bi += 2;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        179 :             temp = Cr * Cr + Ci * Ci;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">        179 :             Cr = br + a * Cr / temp;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        179 :             Ci = bi - a * Ci / temp;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        179 :             Dr = br + a * Dr;</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">        179 :             Di = bi + a * Di;</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        179 :             if (fabs(Cr) + fabs(Ci) &lt; tiny) { Cr = tiny; }</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        179 :             if (fabs(Dr) + fabs(Di) &lt; tiny) { Dr = tiny; }</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        179 :             temp = Dr * Dr + Di * Di;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        179 :             Dr = Dr / temp;</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        179 :             Di = -Di / temp;</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        179 :             delta_r = Cr * Dr - Ci * Di;</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        179 :             delta_i = Ci * Dr + Cr * Di;</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        179 :             temp = fr;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        179 :             fr = temp * delta_r - fi * delta_i;</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        179 :             fi = temp * delta_i + fi * delta_r;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        179 :             if (fabs(delta_r - 1) + fabs(delta_i) &lt; tolerance)</span></a>
+<a name="250"><span class="lineNum">     250 </span>            :                break;</a>
+<a name="251"><span class="lineNum">     251 </span>            :          }</a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         28 :          policies::check_series_iterations&lt;T&gt;(&quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%) in CF2_jy&quot;, k, pol);</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         28 :          *p = fr;</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         28 :          *q = fi;</span></a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         28 :          return 0;</span></a>
+<a name="257"><span class="lineNum">     257 </span>            :       }</a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span>            :       BOOST_MATH_STATIC const int need_j = 1;</a>
+<a name="260"><span class="lineNum">     260 </span>            :       BOOST_MATH_STATIC const int need_y = 2;</a>
+<a name="261"><span class="lineNum">     261 </span>            : </a>
+<a name="262"><span class="lineNum">     262 </span>            :       // Compute J(v, x) and Y(v, x) simultaneously by Steed's method, see</a>
+<a name="263"><span class="lineNum">     263 </span>            :       // Barnett et al, Computer Physics Communications, vol 8, 377 (1974)</a>
+<a name="264"><span class="lineNum">     264 </span>            :       template &lt;typename T, typename Policy&gt;</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         28 :       BOOST_MATH_GPU_ENABLED int bessel_jy(T v, T x, T* J, T* Y, int kind, const Policy&amp; pol)</span></a>
+<a name="266"><span class="lineNum">     266 </span>            :       {</a>
+<a name="267"><span class="lineNum">     267 </span>            :          BOOST_MATH_ASSERT(x &gt;= 0);</a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         28 :          T u, Jv, Ju, Yv, Yv1, Yu, Yu1(0), fv, fu;</span></a>
+<a name="270"><span class="lineNum">     270 </span>            :          T W, p, q, gamma, current, prev, next;</a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         28 :          bool reflect = false;</span></a>
+<a name="272"><span class="lineNum">     272 </span>            :          unsigned n, k;</a>
+<a name="273"><span class="lineNum">     273 </span>            :          int s;</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         28 :          int org_kind = kind;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         28 :          T cp = 0;</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">         28 :          T sp = 0;</span></a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
-<a name="278"><span class="lineNum">     278 </span>            :          BOOST_MATH_STD_USING</a>
-<a name="279"><span class="lineNum">     279 </span>            :             using namespace boost::math::tools;</a>
-<a name="280"><span class="lineNum">     280 </span>            :          using namespace boost::math::constants;</a>
-<a name="281"><span class="lineNum">     281 </span>            : </a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         28 :          if (v &lt; 0)</span></a>
-<a name="283"><span class="lineNum">     283 </span>            :          {</a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         27 :             reflect = true;</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">         27 :             v = -v;                             // v is non-negative from here</span></a>
-<a name="286"><span class="lineNum">     286 </span>            :          }</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         28 :          if (v &gt; static_cast&lt;T&gt;((std::numeric_limits&lt;int&gt;::max)()))</span></a>
-<a name="288"><span class="lineNum">     288 </span>            :          {</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :             *J = *Y = policies::raise_evaluation_error&lt;T&gt;(function, &quot;Order of Bessel function is too large to evaluate: got %1%&quot;, v, pol);</span></a>
-<a name="290"><span class="lineNum">     290 </span>            :             return 1;  // LCOV_EXCL_LINE previous line will throw.</a>
-<a name="291"><span class="lineNum">     291 </span>            :          }</a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         28 :          n = iround(v, pol);</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         28 :          u = v - n;                              // -1/2 &lt;= u &lt; 1/2</span></a>
-<a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         28 :          if(reflect)</span></a>
-<a name="296"><span class="lineNum">     296 </span>            :          {</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         27 :             T z = (u + n % 2);</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         27 :             cp = boost::math::cos_pi(z, pol);</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         27 :             sp = boost::math::sin_pi(z, pol);</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">         27 :             if(u != 0)</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         28 :                kind = need_j|need_y;               // need both for reflection formula</span></a>
-<a name="302"><span class="lineNum">     302 </span>            :          }</a>
-<a name="303"><span class="lineNum">     303 </span>            : </a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         28 :          if(x == 0)</span></a>
-<a name="305"><span class="lineNum">     305 </span>            :          {</a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :             if (v == 0)</span></a>
-<a name="307"><span class="lineNum">     307 </span>            :                *J = 1; // LCOV_EXCL_LINE multiprecision case only</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :             else if ((u == 0) || !reflect)</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                *J = 0;</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :             else if(kind &amp; need_j)</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :                *J = policies::raise_domain_error&lt;T&gt;(function, &quot;Value of Bessel J_v(x) is complex-infinity at %1%&quot;, x, pol); // complex infinity</span></a>
-<a name="312"><span class="lineNum">     312 </span>            :             else</a>
-<a name="313"><span class="lineNum">     313 </span>            :                *J = std::numeric_limits&lt;T&gt;::quiet_NaN();  // LCOV_EXCL_LINE, we should never get here, any value will do, not using J.</a>
-<a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :             if((kind &amp; need_y) == 0)</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :                *Y = std::numeric_limits&lt;T&gt;::quiet_NaN();  // any value will do, not using Y.</span></a>
-<a name="317"><span class="lineNum">     317 </span>            :             else</a>
-<a name="318"><span class="lineNum">     318 </span>            :             {</a>
-<a name="319"><span class="lineNum">     319 </span>            :                // We shoud never get here:</a>
-<a name="320"><span class="lineNum">     320 </span>            :                BOOST_MATH_ASSERT(x != 0); // LCOV_EXCL_LINE</a>
-<a name="321"><span class="lineNum">     321 </span>            :             }</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :             return 1;</span></a>
-<a name="323"><span class="lineNum">     323 </span>            :          }</a>
-<a name="324"><span class="lineNum">     324 </span>            : </a>
-<a name="325"><span class="lineNum">     325 </span>            :          // x is positive until reflection</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         28 :          W = T(2) / (x * pi&lt;T&gt;());               // Wronskian</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         28 :          T Yv_scale = 1;</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         28 :          if(((kind &amp; need_y) == 0) &amp;&amp; ((x &lt; 1) || (v &gt; x * x / 4) || (x &lt; 5)))</span></a>
-<a name="329"><span class="lineNum">     329 </span>            :          {</a>
-<a name="330"><span class="lineNum">     330 </span>            :             //</a>
-<a name="331"><span class="lineNum">     331 </span>            :             // This series will actually converge rapidly for all small</a>
-<a name="332"><span class="lineNum">     332 </span>            :             // x - say up to x &lt; 20 - but the first few terms are large</a>
-<a name="333"><span class="lineNum">     333 </span>            :             // and divergent which leads to large errors :-(</a>
-<a name="334"><span class="lineNum">     334 </span>            :             //</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :             Jv = bessel_j_small_z_series(v, x, pol);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :             Yv = std::numeric_limits&lt;T&gt;::quiet_NaN();</span></a>
-<a name="337"><span class="lineNum">     337 </span>            :          }</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         28 :          else if((x &lt; 1) &amp;&amp; (u != 0) &amp;&amp; (log(policies::get_epsilon&lt;T, Policy&gt;() / 2) &gt; v * log((x/2) * (x/2) / v)))</span></a>
-<a name="339"><span class="lineNum">     339 </span>            :          {</a>
-<a name="340"><span class="lineNum">     340 </span>            :             // Evaluate using series representations.</a>
-<a name="341"><span class="lineNum">     341 </span>            :             // This is particularly important for x &lt;&lt; v as in this</a>
-<a name="342"><span class="lineNum">     342 </span>            :             // area temme_jy may be slow to converge, if it converges at all.</a>
-<a name="343"><span class="lineNum">     343 </span>            :             // Requires x is not an integer.</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :                Jv = bessel_j_small_z_series(v, x, pol);</span></a>
-<a name="346"><span class="lineNum">     346 </span>            :             else</a>
-<a name="347"><span class="lineNum">     347 </span>            :                Jv = std::numeric_limits&lt;T&gt;::quiet_NaN();</a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :             if((org_kind&amp;need_y &amp;&amp; (!reflect || (cp != 0)))</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :                || (org_kind &amp; need_j &amp;&amp; (reflect &amp;&amp; (sp != 0))))</span></a>
-<a name="350"><span class="lineNum">     350 </span>            :             {</a>
-<a name="351"><span class="lineNum">     351 </span>            :                // Only calculate if we need it, and if the reflection formula will actually use it:</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :                Yv = bessel_y_small_z_series(v, x, &amp;Yv_scale, pol);</span></a>
-<a name="353"><span class="lineNum">     353 </span>            :             }</a>
-<a name="354"><span class="lineNum">     354 </span>            :             else</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :                Yv = std::numeric_limits&lt;T&gt;::quiet_NaN();</span></a>
-<a name="356"><span class="lineNum">     356 </span>            :          }</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         28 :          else if((u == 0) &amp;&amp; (x &lt; policies::get_epsilon&lt;T, Policy&gt;()))</span></a>
-<a name="358"><span class="lineNum">     358 </span>            :          {</a>
-<a name="359"><span class="lineNum">     359 </span>            :             // Truncated series evaluation for small x and v an integer,</a>
-<a name="360"><span class="lineNum">     360 </span>            :             // much quicker in this area than temme_jy below.</a>
-<a name="361"><span class="lineNum">     361 </span>            :             // This code is only used in the multiprecision case, otherwise</a>
-<a name="362"><span class="lineNum">     362 </span>            :             // we go via bessel_jn.  LCOV_EXCL_START</a>
-<a name="363"><span class="lineNum">     363 </span>            :             if(kind&amp;need_j)</a>
-<a name="364"><span class="lineNum">     364 </span>            :                Jv = bessel_j_small_z_series(v, x, pol);</a>
-<a name="365"><span class="lineNum">     365 </span>            :             else</a>
-<a name="366"><span class="lineNum">     366 </span>            :                Jv = std::numeric_limits&lt;T&gt;::quiet_NaN();</a>
-<a name="367"><span class="lineNum">     367 </span>            :             if((org_kind&amp;need_y &amp;&amp; (!reflect || (cp != 0)))</a>
-<a name="368"><span class="lineNum">     368 </span>            :                || (org_kind &amp; need_j &amp;&amp; (reflect &amp;&amp; (sp != 0))))</a>
-<a name="369"><span class="lineNum">     369 </span>            :             {</a>
-<a name="370"><span class="lineNum">     370 </span>            :                // Only calculate if we need it, and if the reflection formula will actually use it:</a>
-<a name="371"><span class="lineNum">     371 </span>            :                Yv = bessel_yn_small_z(n, x, &amp;Yv_scale, pol);</a>
-<a name="372"><span class="lineNum">     372 </span>            :             }</a>
-<a name="373"><span class="lineNum">     373 </span>            :             else</a>
-<a name="374"><span class="lineNum">     374 </span>            :                Yv = std::numeric_limits&lt;T&gt;::quiet_NaN();</a>
-<a name="375"><span class="lineNum">     375 </span>            :             // LCOV_EXCL_STOP</a>
-<a name="376"><span class="lineNum">     376 </span>            :          }</a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         28 :          else if(asymptotic_bessel_large_x_limit(v, x))</span></a>
-<a name="378"><span class="lineNum">     378 </span>            :          {</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :             if(kind&amp;need_y)</span></a>
-<a name="380"><span class="lineNum">     380 </span>            :             {</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :                Yv = asymptotic_bessel_y_large_x_2(v, x, pol);</span></a>
-<a name="382"><span class="lineNum">     382 </span>            :             }</a>
-<a name="383"><span class="lineNum">     383 </span>            :             else</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 :                Yv = std::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
-<a name="386"><span class="lineNum">     386 </span>            :             {</a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :                Jv = asymptotic_bessel_j_large_x_2(v, x, pol);</span></a>
-<a name="388"><span class="lineNum">     388 </span>            :             }</a>
-<a name="389"><span class="lineNum">     389 </span>            :             else</a>
-<a name="390"><span class="lineNum">     390 </span>            :                Jv = std::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</a>
-<a name="391"><span class="lineNum">     391 </span>            :          }</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         28 :          else if((x &gt; 8) &amp;&amp; hankel_PQ(v, x, &amp;p, &amp;q, pol))</span></a>
-<a name="393"><span class="lineNum">     393 </span>            :          {</a>
-<a name="394"><span class="lineNum">     394 </span>            :             //</a>
-<a name="395"><span class="lineNum">     395 </span>            :             // Hankel approximation: note that this method works best when x</a>
-<a name="396"><span class="lineNum">     396 </span>            :             // is large, but in that case we end up calculating sines and cosines</a>
-<a name="397"><span class="lineNum">     397 </span>            :             // of large values, with horrendous resulting accuracy.  It is fast though</a>
-<a name="398"><span class="lineNum">     398 </span>            :             // when it works....</a>
-<a name="399"><span class="lineNum">     399 </span>            :             //</a>
-<a name="400"><span class="lineNum">     400 </span>            :             // Normally we calculate sin/cos(chi) where:</a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">         28 :          constexpr auto function = &quot;boost::math::bessel_jy&lt;%1%&gt;(%1%,%1%)&quot;;</span></a>
+<a name="279"><span class="lineNum">     279 </span>            : </a>
+<a name="280"><span class="lineNum">     280 </span>            :          BOOST_MATH_STD_USING</a>
+<a name="281"><span class="lineNum">     281 </span>            :             using namespace boost::math::tools;</a>
+<a name="282"><span class="lineNum">     282 </span>            :          using namespace boost::math::constants;</a>
+<a name="283"><span class="lineNum">     283 </span>            : </a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         28 :          if (v &lt; 0)</span></a>
+<a name="285"><span class="lineNum">     285 </span>            :          {</a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         27 :             reflect = true;</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         27 :             v = -v;                             // v is non-negative from here</span></a>
+<a name="288"><span class="lineNum">     288 </span>            :          }</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         28 :          if (v &gt; static_cast&lt;T&gt;((boost::math::numeric_limits&lt;int&gt;::max)()))</span></a>
+<a name="290"><span class="lineNum">     290 </span>            :          {</a>
+<a name="291"><span class="lineNum">     291 </span>            :             *J = *Y = policies::raise_evaluation_error&lt;T&gt;(function, &quot;Order of Bessel function is too large to evaluate: got %1%&quot;, v, pol);</a>
+<a name="292"><span class="lineNum">     292 </span>            :             return 1;  // LCOV_EXCL_LINE previous line will throw.</a>
+<a name="293"><span class="lineNum">     293 </span>            :          }</a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         28 :          n = iround(v, pol);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         28 :          u = v - n;                              // -1/2 &lt;= u &lt; 1/2</span></a>
+<a name="296"><span class="lineNum">     296 </span>            : </a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         28 :          if(reflect)</span></a>
+<a name="298"><span class="lineNum">     298 </span>            :          {</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         27 :             T z = (u + n % 2);</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">         27 :             cp = boost::math::cos_pi(z, pol);</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         27 :             sp = boost::math::sin_pi(z, pol);</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         27 :             if(u != 0)</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         28 :                kind = need_j|need_y;               // need both for reflection formula</span></a>
+<a name="304"><span class="lineNum">     304 </span>            :          }</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         28 :          if(x == 0)</span></a>
+<a name="307"><span class="lineNum">     307 </span>            :          {</a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :             if (v == 0)</span></a>
+<a name="309"><span class="lineNum">     309 </span>            :                *J = 1; // LCOV_EXCL_LINE multiprecision case only</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :             else if ((u == 0) || !reflect)</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :                *J = 0;</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :             else if(kind &amp; need_j)</span></a>
+<a name="313"><span class="lineNum">     313 </span>            :                *J = policies::raise_domain_error&lt;T&gt;(function, &quot;Value of Bessel J_v(x) is complex-infinity at %1%&quot;, x, pol); // complex infinity</a>
+<a name="314"><span class="lineNum">     314 </span>            :             else</a>
+<a name="315"><span class="lineNum">     315 </span>            :                *J = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();  // LCOV_EXCL_LINE, we should never get here, any value will do, not using J.</a>
+<a name="316"><span class="lineNum">     316 </span>            : </a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :             if((kind &amp; need_y) == 0)</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :                *Y = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();  // any value will do, not using Y.</span></a>
+<a name="319"><span class="lineNum">     319 </span>            :             else</a>
+<a name="320"><span class="lineNum">     320 </span>            :             {</a>
+<a name="321"><span class="lineNum">     321 </span>            :                // We shoud never get here:</a>
+<a name="322"><span class="lineNum">     322 </span>            :                BOOST_MATH_ASSERT(x != 0); // LCOV_EXCL_LINE</a>
+<a name="323"><span class="lineNum">     323 </span>            :             }</a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :             return 1;</span></a>
+<a name="325"><span class="lineNum">     325 </span>            :          }</a>
+<a name="326"><span class="lineNum">     326 </span>            : </a>
+<a name="327"><span class="lineNum">     327 </span>            :          // x is positive until reflection</a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         28 :          W = T(2) / (x * pi&lt;T&gt;());               // Wronskian</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         28 :          T Yv_scale = 1;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         28 :          if(((kind &amp; need_y) == 0) &amp;&amp; ((x &lt; 1) || (v &gt; x * x / 4) || (x &lt; 5)))</span></a>
+<a name="331"><span class="lineNum">     331 </span>            :          {</a>
+<a name="332"><span class="lineNum">     332 </span>            :             //</a>
+<a name="333"><span class="lineNum">     333 </span>            :             // This series will actually converge rapidly for all small</a>
+<a name="334"><span class="lineNum">     334 </span>            :             // x - say up to x &lt; 20 - but the first few terms are large</a>
+<a name="335"><span class="lineNum">     335 </span>            :             // and divergent which leads to large errors :-(</a>
+<a name="336"><span class="lineNum">     336 </span>            :             //</a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :             Jv = bessel_j_small_z_series(v, x, pol);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :             Yv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();</span></a>
+<a name="339"><span class="lineNum">     339 </span>            :          }</a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         28 :          else if((x &lt; 1) &amp;&amp; (u != 0) &amp;&amp; (log(policies::get_epsilon&lt;T, Policy&gt;() / 2) &gt; v * log((x/2) * (x/2) / v)))</span></a>
+<a name="341"><span class="lineNum">     341 </span>            :          {</a>
+<a name="342"><span class="lineNum">     342 </span>            :             // Evaluate using series representations.</a>
+<a name="343"><span class="lineNum">     343 </span>            :             // This is particularly important for x &lt;&lt; v as in this</a>
+<a name="344"><span class="lineNum">     344 </span>            :             // area temme_jy may be slow to converge, if it converges at all.</a>
+<a name="345"><span class="lineNum">     345 </span>            :             // Requires x is not an integer.</a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :                Jv = bessel_j_small_z_series(v, x, pol);</span></a>
+<a name="348"><span class="lineNum">     348 </span>            :             else</a>
+<a name="349"><span class="lineNum">     349 </span>            :                Jv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();</a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :             if((org_kind&amp;need_y &amp;&amp; (!reflect || (cp != 0)))</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :                || (org_kind &amp; need_j &amp;&amp; (reflect &amp;&amp; (sp != 0))))</span></a>
+<a name="352"><span class="lineNum">     352 </span>            :             {</a>
+<a name="353"><span class="lineNum">     353 </span>            :                // Only calculate if we need it, and if the reflection formula will actually use it:</a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :                Yv = bessel_y_small_z_series(v, x, &amp;Yv_scale, pol);</span></a>
+<a name="355"><span class="lineNum">     355 </span>            :             }</a>
+<a name="356"><span class="lineNum">     356 </span>            :             else</a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :                Yv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();</span></a>
+<a name="358"><span class="lineNum">     358 </span>            :          }</a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">         28 :          else if((u == 0) &amp;&amp; (x &lt; policies::get_epsilon&lt;T, Policy&gt;()))</span></a>
+<a name="360"><span class="lineNum">     360 </span>            :          {</a>
+<a name="361"><span class="lineNum">     361 </span>            :             // Truncated series evaluation for small x and v an integer,</a>
+<a name="362"><span class="lineNum">     362 </span>            :             // much quicker in this area than temme_jy below.</a>
+<a name="363"><span class="lineNum">     363 </span>            :             // This code is only used in the multiprecision case, otherwise</a>
+<a name="364"><span class="lineNum">     364 </span>            :             // we go via bessel_jn.  LCOV_EXCL_START</a>
+<a name="365"><span class="lineNum">     365 </span>            :             if(kind&amp;need_j)</a>
+<a name="366"><span class="lineNum">     366 </span>            :                Jv = bessel_j_small_z_series(v, x, pol);</a>
+<a name="367"><span class="lineNum">     367 </span>            :             else</a>
+<a name="368"><span class="lineNum">     368 </span>            :                Jv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();</a>
+<a name="369"><span class="lineNum">     369 </span>            :             if((org_kind&amp;need_y &amp;&amp; (!reflect || (cp != 0)))</a>
+<a name="370"><span class="lineNum">     370 </span>            :                || (org_kind &amp; need_j &amp;&amp; (reflect &amp;&amp; (sp != 0))))</a>
+<a name="371"><span class="lineNum">     371 </span>            :             {</a>
+<a name="372"><span class="lineNum">     372 </span>            :                // Only calculate if we need it, and if the reflection formula will actually use it:</a>
+<a name="373"><span class="lineNum">     373 </span>            :                Yv = bessel_yn_small_z(n, x, &amp;Yv_scale, pol);</a>
+<a name="374"><span class="lineNum">     374 </span>            :             }</a>
+<a name="375"><span class="lineNum">     375 </span>            :             else</a>
+<a name="376"><span class="lineNum">     376 </span>            :                Yv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN();</a>
+<a name="377"><span class="lineNum">     377 </span>            :             // LCOV_EXCL_STOP</a>
+<a name="378"><span class="lineNum">     378 </span>            :          }</a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         28 :          else if(asymptotic_bessel_large_x_limit(v, x))</span></a>
+<a name="380"><span class="lineNum">     380 </span>            :          {</a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :             if(kind&amp;need_y)</span></a>
+<a name="382"><span class="lineNum">     382 </span>            :             {</a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :                Yv = asymptotic_bessel_y_large_x_2(v, x, pol);</span></a>
+<a name="384"><span class="lineNum">     384 </span>            :             }</a>
+<a name="385"><span class="lineNum">     385 </span>            :             else</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :                Yv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
+<a name="388"><span class="lineNum">     388 </span>            :             {</a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 :                Jv = asymptotic_bessel_j_large_x_2(v, x, pol);</span></a>
+<a name="390"><span class="lineNum">     390 </span>            :             }</a>
+<a name="391"><span class="lineNum">     391 </span>            :             else</a>
+<a name="392"><span class="lineNum">     392 </span>            :                Jv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</a>
+<a name="393"><span class="lineNum">     393 </span>            :          }</a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         28 :          else if((x &gt; 8) &amp;&amp; hankel_PQ(v, x, &amp;p, &amp;q, pol))</span></a>
+<a name="395"><span class="lineNum">     395 </span>            :          {</a>
+<a name="396"><span class="lineNum">     396 </span>            :             //</a>
+<a name="397"><span class="lineNum">     397 </span>            :             // Hankel approximation: note that this method works best when x</a>
+<a name="398"><span class="lineNum">     398 </span>            :             // is large, but in that case we end up calculating sines and cosines</a>
+<a name="399"><span class="lineNum">     399 </span>            :             // of large values, with horrendous resulting accuracy.  It is fast though</a>
+<a name="400"><span class="lineNum">     400 </span>            :             // when it works....</a>
 <a name="401"><span class="lineNum">     401 </span>            :             //</a>
-<a name="402"><span class="lineNum">     402 </span>            :             // chi = x - fmod(T(v / 2 + 0.25f), T(2)) * boost::math::constants::pi&lt;T&gt;();</a>
+<a name="402"><span class="lineNum">     402 </span>            :             // Normally we calculate sin/cos(chi) where:</a>
 <a name="403"><span class="lineNum">     403 </span>            :             //</a>
-<a name="404"><span class="lineNum">     404 </span>            :             // But this introduces large errors, so use sin/cos addition formulae to</a>
-<a name="405"><span class="lineNum">     405 </span>            :             // improve accuracy:</a>
-<a name="406"><span class="lineNum">     406 </span>            :             //</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :             T mod_v = fmod(T(v / 2 + 0.25f), T(2));</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :             T sx = sin(x);</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :             T cx = cos(x);</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :             T sv = boost::math::sin_pi(mod_v, pol);</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :             T cv = boost::math::cos_pi(mod_v, pol);</span></a>
-<a name="412"><span class="lineNum">     412 </span>            : </a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :             T sc = sx * cv - sv * cx; // == sin(chi);</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :             T cc = cx * cv + sx * sv; // == cos(chi);</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :             T chi = boost::math::constants::root_two&lt;T&gt;() / (boost::math::constants::root_pi&lt;T&gt;() * sqrt(x)); //sqrt(2 / (boost::math::constants::pi&lt;T&gt;() * x));</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 :             Yv = chi * (p * sc + q * cc);</span></a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :             Jv = chi * (p * cc - q * sc);</span></a>
-<a name="418"><span class="lineNum">     418 </span>            :          }</a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">         28 :          else if (x &lt;= 2)                           // x in (0, 2]</span></a>
-<a name="420"><span class="lineNum">     420 </span>            :          {</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :             if(temme_jy(u, x, &amp;Yu, &amp;Yu1, pol))             // Temme series</span></a>
-<a name="422"><span class="lineNum">     422 </span>            :             {</a>
-<a name="423"><span class="lineNum">     423 </span>            :                // domain error, this should really have already been handled.</a>
-<a name="424"><span class="lineNum">     424 </span>            :                *J = *Y = Yu; // LCOV_EXCL_LINE</a>
-<a name="425"><span class="lineNum">     425 </span>            :                return 1;     // LCOV_EXCL_LINE</a>
-<a name="426"><span class="lineNum">     426 </span>            :             }</a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 :             prev = Yu;</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineNoCov">          0 :             current = Yu1;</span></a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 :             T scale = 1;</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineNoCov">          0 :             policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 :             for (k = 1; k &lt;= n; k++)            // forward recurrence for Y</span></a>
-<a name="432"><span class="lineNum">     432 </span>            :             {</a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :                T fact = 2 * (u + k) / x;</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineNoCov">          0 :                if((tools::max_value&lt;T&gt;() - fabs(prev)) / fact &lt; fabs(current))</span></a>
-<a name="435"><span class="lineNum">     435 </span>            :                {</a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineNoCov">          0 :                   scale /= current;</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :                   prev /= current;</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineNoCov">          0 :                   current = 1;</span></a>
-<a name="439"><span class="lineNum">     439 </span>            :                }</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :                next = fact * current - prev;</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :                prev = current;</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineNoCov">          0 :                current = next;</span></a>
-<a name="443"><span class="lineNum">     443 </span>            :             }</a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :             Yv = prev;</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineNoCov">          0 :             Yv1 = current;</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
-<a name="447"><span class="lineNum">     447 </span>            :             {</a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 :                CF1_jy(v, x, &amp;fv, &amp;s, pol);                 // continued fraction CF1_jy</span></a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineNoCov">          0 :                Jv = scale * W / (Yv * fv - Yv1);           // Wronskian relation</span></a>
-<a name="450"><span class="lineNum">     450 </span>            :             }</a>
-<a name="451"><span class="lineNum">     451 </span>            :             else</a>
-<a name="452"><span class="lineNum">     452 </span>            :                Jv = std::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineNoCov">          0 :             Yv_scale = scale;</span></a>
-<a name="454"><span class="lineNum">     454 </span>            :          }</a>
-<a name="455"><span class="lineNum">     455 </span>            :          else                                    // x in (2, \infty)</a>
-<a name="456"><span class="lineNum">     456 </span>            :          {</a>
-<a name="457"><span class="lineNum">     457 </span>            :             // Get Y(u, x):</a>
-<a name="458"><span class="lineNum">     458 </span>            : </a>
-<a name="459"><span class="lineNum">     459 </span>            :             T ratio;</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         28 :             CF1_jy(v, x, &amp;fv, &amp;s, pol);</span></a>
-<a name="461"><span class="lineNum">     461 </span>            :             // tiny initial value to prevent overflow</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         28 :             T init = sqrt(tools::min_value&lt;T&gt;());</span></a>
-<a name="463"><span class="lineNum">     463 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(init);</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         28 :             prev = fv * s * init;</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">         28 :             current = s * init;</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         28 :             if(v &lt; max_factorial&lt;T&gt;::value)</span></a>
-<a name="467"><span class="lineNum">     467 </span>            :             {</a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">         28 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">        395 :                for (k = n; k &gt; 0; k--)             // backward recurrence for J</span></a>
-<a name="470"><span class="lineNum">     470 </span>            :                {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        367 :                   next = 2 * (u + k) * current / x - prev;</span></a>
-<a name="472"><span class="lineNum">     472 </span>            :                   //</a>
-<a name="473"><span class="lineNum">     473 </span>            :                   // We can't allow next to completely cancel out or the subsequent logic breaks.</a>
-<a name="474"><span class="lineNum">     474 </span>            :                   // Pretend that one bit did not cancel:</a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        367 :                   if (next == 0)</span></a>
-<a name="476"><span class="lineNum">     476 </span>            :                   {</a>
-<a name="477"><span class="lineNum">     477 </span>            :                      next = prev * tools::epsilon&lt;T&gt;() / 2;  // LCOV_EXCL_LINE requires specific hardware and rounding to trigger, does get tested on msvc</a>
-<a name="478"><span class="lineNum">     478 </span>            :                   }</a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        367 :                   prev = current;</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">        367 :                   current = next;</span></a>
-<a name="481"><span class="lineNum">     481 </span>            :                }</a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         28 :                ratio = (s * init) / current;     // scaling ratio</span></a>
-<a name="483"><span class="lineNum">     483 </span>            :                // can also call CF1_jy() to get fu, not much difference in precision</a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         28 :                fu = prev / current;</span></a>
-<a name="485"><span class="lineNum">     485 </span>            :             }</a>
-<a name="486"><span class="lineNum">     486 </span>            :             else</a>
-<a name="487"><span class="lineNum">     487 </span>            :             {</a>
-<a name="488"><span class="lineNum">     488 </span>            :                //</a>
-<a name="489"><span class="lineNum">     489 </span>            :                // When v is large we may get overflow in this calculation</a>
-<a name="490"><span class="lineNum">     490 </span>            :                // leading to NaN's and other nasty surprises:</a>
-<a name="491"><span class="lineNum">     491 </span>            :                //</a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineNoCov">          0 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :                bool over = false;</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :                for (k = n; k &gt; 0; k--)             // backward recurrence for J</span></a>
-<a name="495"><span class="lineNum">     495 </span>            :                {</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :                   T t = 2 * (u + k) / x;</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :                   if((t &gt; 1) &amp;&amp; (tools::max_value&lt;T&gt;() / t &lt; current))</span></a>
-<a name="498"><span class="lineNum">     498 </span>            :                   {</a>
-<a name="499"><span class="lineNum">     499 </span>            :                      over = true;</a>
-<a name="500"><span class="lineNum">     500 </span>            :                      break;</a>
-<a name="501"><span class="lineNum">     501 </span>            :                   }</a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :                   next = t * current - prev;</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 :                   prev = current;</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :                   current = next;</span></a>
-<a name="505"><span class="lineNum">     505 </span>            :                }</a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                if(!over)</span></a>
-<a name="507"><span class="lineNum">     507 </span>            :                {</a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                   ratio = (s * init) / current;     // scaling ratio</span></a>
-<a name="509"><span class="lineNum">     509 </span>            :                   // can also call CF1_jy() to get fu, not much difference in precision</a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :                   fu = prev / current;</span></a>
-<a name="511"><span class="lineNum">     511 </span>            :                }</a>
-<a name="512"><span class="lineNum">     512 </span>            :                else</a>
-<a name="513"><span class="lineNum">     513 </span>            :                {</a>
-<a name="514"><span class="lineNum">     514 </span>            :                   ratio = 0;</a>
-<a name="515"><span class="lineNum">     515 </span>            :                   fu = 1;</a>
-<a name="516"><span class="lineNum">     516 </span>            :                }</a>
-<a name="517"><span class="lineNum">     517 </span>            :             }</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         28 :             CF2_jy(u, x, &amp;p, &amp;q, pol);                  // continued fraction CF2_jy</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         28 :             T t = u / x - fu;                   // t = J'/J</span></a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         28 :             gamma = (p - t) / q;</span></a>
-<a name="521"><span class="lineNum">     521 </span>            :             //</a>
-<a name="522"><span class="lineNum">     522 </span>            :             // We can't allow gamma to cancel out to zero completely as it messes up</a>
-<a name="523"><span class="lineNum">     523 </span>            :             // the subsequent logic.  So pretend that one bit didn't cancel out</a>
-<a name="524"><span class="lineNum">     524 </span>            :             // and set to a suitably small value.  The only test case we've been able to</a>
-<a name="525"><span class="lineNum">     525 </span>            :             // find for this, is when v = 8.5 and x = 4*PI.</a>
-<a name="526"><span class="lineNum">     526 </span>            :             //</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">         28 :             if(gamma == 0)</span></a>
-<a name="528"><span class="lineNum">     528 </span>            :             {</a>
-<a name="529"><span class="lineNum">     529 </span>            :                gamma = u * tools::epsilon&lt;T&gt;() / x;  // LCOV_EXCL_LINE requires specific hardware and rounding to trigger, does get tested on msvc</a>
-<a name="530"><span class="lineNum">     530 </span>            :             }</a>
-<a name="531"><span class="lineNum">     531 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(current);</a>
-<a name="532"><span class="lineNum">     532 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(W);</a>
-<a name="533"><span class="lineNum">     533 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(q);</a>
-<a name="534"><span class="lineNum">     534 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(gamma);</a>
-<a name="535"><span class="lineNum">     535 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(p);</a>
-<a name="536"><span class="lineNum">     536 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(t);</a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">         28 :             Ju = sign(current) * sqrt(W / (q + gamma * (p - t)));</span></a>
-<a name="538"><span class="lineNum">     538 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(Ju);</a>
-<a name="539"><span class="lineNum">     539 </span>            : </a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">         28 :             Jv = Ju * ratio;                    // normalization</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :             // chi = x - fmod(T(v / 2 + 0.25f), T(2)) * boost::math::constants::pi&lt;T&gt;();</a>
+<a name="405"><span class="lineNum">     405 </span>            :             //</a>
+<a name="406"><span class="lineNum">     406 </span>            :             // But this introduces large errors, so use sin/cos addition formulae to</a>
+<a name="407"><span class="lineNum">     407 </span>            :             // improve accuracy:</a>
+<a name="408"><span class="lineNum">     408 </span>            :             //</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :             T mod_v = fmod(T(v / 2 + 0.25f), T(2));</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :             T sx = sin(x);</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :             T cx = cos(x);</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :             T sv = boost::math::sin_pi(mod_v, pol);</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :             T cv = boost::math::cos_pi(mod_v, pol);</span></a>
+<a name="414"><span class="lineNum">     414 </span>            : </a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :             T sc = sx * cv - sv * cx; // == sin(chi);</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 :             T cc = cx * cv + sx * sv; // == cos(chi);</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :             T chi = boost::math::constants::root_two&lt;T&gt;() / (boost::math::constants::root_pi&lt;T&gt;() * sqrt(x)); //sqrt(2 / (boost::math::constants::pi&lt;T&gt;() * x));</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 :             Yv = chi * (p * sc + q * cc);</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :             Jv = chi * (p * cc - q * sc);</span></a>
+<a name="420"><span class="lineNum">     420 </span>            :          }</a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">         28 :          else if (x &lt;= 2)                           // x in (0, 2]</span></a>
+<a name="422"><span class="lineNum">     422 </span>            :          {</a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 :             if(temme_jy(u, x, &amp;Yu, &amp;Yu1, pol))             // Temme series</span></a>
+<a name="424"><span class="lineNum">     424 </span>            :             {</a>
+<a name="425"><span class="lineNum">     425 </span>            :                // domain error, this should really have already been handled.</a>
+<a name="426"><span class="lineNum">     426 </span>            :                *J = *Y = Yu; // LCOV_EXCL_LINE</a>
+<a name="427"><span class="lineNum">     427 </span>            :                return 1;     // LCOV_EXCL_LINE</a>
+<a name="428"><span class="lineNum">     428 </span>            :             }</a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 :             prev = Yu;</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineNoCov">          0 :             current = Yu1;</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 :             T scale = 1;</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineNoCov">          0 :             policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :             for (k = 1; k &lt;= n; k++)            // forward recurrence for Y</span></a>
+<a name="434"><span class="lineNum">     434 </span>            :             {</a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineNoCov">          0 :                T fact = 2 * (u + k) / x;</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineNoCov">          0 :                if((tools::max_value&lt;T&gt;() - fabs(prev)) / fact &lt; fabs(current))</span></a>
+<a name="437"><span class="lineNum">     437 </span>            :                {</a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineNoCov">          0 :                   scale /= current;</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineNoCov">          0 :                   prev /= current;</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :                   current = 1;</span></a>
+<a name="441"><span class="lineNum">     441 </span>            :                }</a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineNoCov">          0 :                next = fact * current - prev;</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :                prev = current;</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :                current = next;</span></a>
+<a name="445"><span class="lineNum">     445 </span>            :             }</a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :             Yv = prev;</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :             Yv1 = current;</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 :             if(kind&amp;need_j)</span></a>
+<a name="449"><span class="lineNum">     449 </span>            :             {</a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineNoCov">          0 :                CF1_jy(v, x, &amp;fv, &amp;s, pol);                 // continued fraction CF1_jy</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineNoCov">          0 :                Jv = scale * W / (Yv * fv - Yv1);           // Wronskian relation</span></a>
+<a name="452"><span class="lineNum">     452 </span>            :             }</a>
+<a name="453"><span class="lineNum">     453 </span>            :             else</a>
+<a name="454"><span class="lineNum">     454 </span>            :                Jv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 :             Yv_scale = scale;</span></a>
+<a name="456"><span class="lineNum">     456 </span>            :          }</a>
+<a name="457"><span class="lineNum">     457 </span>            :          else                                    // x in (2, \infty)</a>
+<a name="458"><span class="lineNum">     458 </span>            :          {</a>
+<a name="459"><span class="lineNum">     459 </span>            :             // Get Y(u, x):</a>
+<a name="460"><span class="lineNum">     460 </span>            : </a>
+<a name="461"><span class="lineNum">     461 </span>            :             T ratio;</a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         28 :             CF1_jy(v, x, &amp;fv, &amp;s, pol);</span></a>
+<a name="463"><span class="lineNum">     463 </span>            :             // tiny initial value to prevent overflow</a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         28 :             T init = sqrt(tools::min_value&lt;T&gt;());</span></a>
+<a name="465"><span class="lineNum">     465 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(init);</a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         28 :             prev = fv * s * init;</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         28 :             current = s * init;</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">         28 :             if(v &lt; max_factorial&lt;T&gt;::value)</span></a>
+<a name="469"><span class="lineNum">     469 </span>            :             {</a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         28 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        395 :                for (k = n; k &gt; 0; k--)             // backward recurrence for J</span></a>
+<a name="472"><span class="lineNum">     472 </span>            :                {</a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">        367 :                   next = 2 * (u + k) * current / x - prev;</span></a>
+<a name="474"><span class="lineNum">     474 </span>            :                   //</a>
+<a name="475"><span class="lineNum">     475 </span>            :                   // We can't allow next to completely cancel out or the subsequent logic breaks.</a>
+<a name="476"><span class="lineNum">     476 </span>            :                   // Pretend that one bit did not cancel:</a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">        367 :                   if (next == 0)</span></a>
+<a name="478"><span class="lineNum">     478 </span>            :                   {</a>
+<a name="479"><span class="lineNum">     479 </span>            :                      next = prev * tools::epsilon&lt;T&gt;() / 2;  // LCOV_EXCL_LINE requires specific hardware and rounding to trigger, does get tested on msvc</a>
+<a name="480"><span class="lineNum">     480 </span>            :                   }</a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        367 :                   prev = current;</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        367 :                   current = next;</span></a>
+<a name="483"><span class="lineNum">     483 </span>            :                }</a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         28 :                ratio = (s * init) / current;     // scaling ratio</span></a>
+<a name="485"><span class="lineNum">     485 </span>            :                // can also call CF1_jy() to get fu, not much difference in precision</a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">         28 :                fu = prev / current;</span></a>
+<a name="487"><span class="lineNum">     487 </span>            :             }</a>
+<a name="488"><span class="lineNum">     488 </span>            :             else</a>
+<a name="489"><span class="lineNum">     489 </span>            :             {</a>
+<a name="490"><span class="lineNum">     490 </span>            :                //</a>
+<a name="491"><span class="lineNum">     491 </span>            :                // When v is large we may get overflow in this calculation</a>
+<a name="492"><span class="lineNum">     492 </span>            :                // leading to NaN's and other nasty surprises:</a>
+<a name="493"><span class="lineNum">     493 </span>            :                //</a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :                bool over = false;</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :                for (k = n; k &gt; 0; k--)             // backward recurrence for J</span></a>
+<a name="497"><span class="lineNum">     497 </span>            :                {</a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :                   T t = 2 * (u + k) / x;</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :                   if((t &gt; 1) &amp;&amp; (tools::max_value&lt;T&gt;() / t &lt; current))</span></a>
+<a name="500"><span class="lineNum">     500 </span>            :                   {</a>
+<a name="501"><span class="lineNum">     501 </span>            :                      over = true;</a>
+<a name="502"><span class="lineNum">     502 </span>            :                      break;</a>
+<a name="503"><span class="lineNum">     503 </span>            :                   }</a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :                   next = t * current - prev;</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :                   prev = current;</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                   current = next;</span></a>
+<a name="507"><span class="lineNum">     507 </span>            :                }</a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                if(!over)</span></a>
+<a name="509"><span class="lineNum">     509 </span>            :                {</a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :                   ratio = (s * init) / current;     // scaling ratio</span></a>
+<a name="511"><span class="lineNum">     511 </span>            :                   // can also call CF1_jy() to get fu, not much difference in precision</a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :                   fu = prev / current;</span></a>
+<a name="513"><span class="lineNum">     513 </span>            :                }</a>
+<a name="514"><span class="lineNum">     514 </span>            :                else</a>
+<a name="515"><span class="lineNum">     515 </span>            :                {</a>
+<a name="516"><span class="lineNum">     516 </span>            :                   ratio = 0;</a>
+<a name="517"><span class="lineNum">     517 </span>            :                   fu = 1;</a>
+<a name="518"><span class="lineNum">     518 </span>            :                }</a>
+<a name="519"><span class="lineNum">     519 </span>            :             }</a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         28 :             CF2_jy(u, x, &amp;p, &amp;q, pol);                  // continued fraction CF2_jy</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         28 :             T t = u / x - fu;                   // t = J'/J</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">         28 :             gamma = (p - t) / q;</span></a>
+<a name="523"><span class="lineNum">     523 </span>            :             //</a>
+<a name="524"><span class="lineNum">     524 </span>            :             // We can't allow gamma to cancel out to zero completely as it messes up</a>
+<a name="525"><span class="lineNum">     525 </span>            :             // the subsequent logic.  So pretend that one bit didn't cancel out</a>
+<a name="526"><span class="lineNum">     526 </span>            :             // and set to a suitably small value.  The only test case we've been able to</a>
+<a name="527"><span class="lineNum">     527 </span>            :             // find for this, is when v = 8.5 and x = 4*PI.</a>
+<a name="528"><span class="lineNum">     528 </span>            :             //</a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         28 :             if(gamma == 0)</span></a>
+<a name="530"><span class="lineNum">     530 </span>            :             {</a>
+<a name="531"><span class="lineNum">     531 </span>            :                gamma = u * tools::epsilon&lt;T&gt;() / x;  // LCOV_EXCL_LINE requires specific hardware and rounding to trigger, does get tested on msvc</a>
+<a name="532"><span class="lineNum">     532 </span>            :             }</a>
+<a name="533"><span class="lineNum">     533 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(current);</a>
+<a name="534"><span class="lineNum">     534 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(W);</a>
+<a name="535"><span class="lineNum">     535 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(q);</a>
+<a name="536"><span class="lineNum">     536 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(gamma);</a>
+<a name="537"><span class="lineNum">     537 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(p);</a>
+<a name="538"><span class="lineNum">     538 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(t);</a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         28 :             Ju = sign(current) * sqrt(W / (q + gamma * (p - t)));</span></a>
+<a name="540"><span class="lineNum">     540 </span>            :             BOOST_MATH_INSTRUMENT_VARIABLE(Ju);</a>
 <a name="541"><span class="lineNum">     541 </span>            : </a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         28 :             Yu = gamma * Ju;</span></a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">         28 :             Yu1 = Yu * (u/x - p - q/gamma);</span></a>
-<a name="544"><span class="lineNum">     544 </span>            : </a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         28 :             if(kind&amp;need_y)</span></a>
-<a name="546"><span class="lineNum">     546 </span>            :             {</a>
-<a name="547"><span class="lineNum">     547 </span>            :                // compute Y:</a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">         27 :                prev = Yu;</span></a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">         27 :                current = Yu1;</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">         27 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">        393 :                for (k = 1; k &lt;= n; k++)            // forward recurrence for Y</span></a>
-<a name="552"><span class="lineNum">     552 </span>            :                {</a>
-<a name="553"><span class="lineNum">     553 </span><span class="lineCov">        366 :                   T fact = 2 * (u + k) / x;</span></a>
-<a name="554"><span class="lineNum">     554 </span><span class="lineCov">        366 :                   if((tools::max_value&lt;T&gt;() - fabs(prev)) / fact &lt; fabs(current))</span></a>
-<a name="555"><span class="lineNum">     555 </span>            :                   {</a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :                      prev /= current;</span></a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :                      Yv_scale /= current;</span></a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :                      current = 1;</span></a>
-<a name="559"><span class="lineNum">     559 </span>            :                   }</a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">        366 :                   next = fact * current - prev;</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        366 :                   prev = current;</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">        366 :                   current = next;</span></a>
-<a name="563"><span class="lineNum">     563 </span>            :                }</a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">         27 :                Yv = prev;</span></a>
-<a name="565"><span class="lineNum">     565 </span>            :             }</a>
-<a name="566"><span class="lineNum">     566 </span>            :             else</a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">          1 :                Yv = std::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</span></a>
-<a name="568"><span class="lineNum">     568 </span>            :          }</a>
-<a name="569"><span class="lineNum">     569 </span>            : </a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">         28 :          if (reflect)</span></a>
-<a name="571"><span class="lineNum">     571 </span>            :          {</a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">         27 :             if((sp != 0) &amp;&amp; (tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(sp * Yv)))</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 :                *J = org_kind &amp; need_j ? T(-sign(sp) * sign(Yv) * (Yv_scale != 0 ? sign(Yv_scale) : 1) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
-<a name="574"><span class="lineNum">     574 </span>            :             else</a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         27 :                *J = cp * Jv - (sp == 0 ? T(0) : T((sp * Yv) / Yv_scale));     // reflection formula</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">         27 :             if((cp != 0) &amp;&amp; (tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(cp * Yv)))</span></a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :                *Y = org_kind &amp; need_y ? T(-sign(cp) * sign(Yv) * (Yv_scale != 0 ? sign(Yv_scale) : 1) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
-<a name="578"><span class="lineNum">     578 </span>            :             else</a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">         27 :                *Y = (sp != 0 ? sp * Jv : T(0)) + (cp == 0 ? T(0) : T((cp * Yv) / Yv_scale));</span></a>
-<a name="580"><span class="lineNum">     580 </span>            :          }</a>
-<a name="581"><span class="lineNum">     581 </span>            :          else</a>
-<a name="582"><span class="lineNum">     582 </span>            :          {</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          1 :             *J = Jv;</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">          1 :             if(tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(Yv))</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :                *Y = org_kind &amp; need_y ? T(sign(Yv) * sign(Yv_scale) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
-<a name="586"><span class="lineNum">     586 </span>            :             else</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">          1 :                *Y = Yv / Yv_scale;</span></a>
-<a name="588"><span class="lineNum">     588 </span>            :          }</a>
-<a name="589"><span class="lineNum">     589 </span>            : </a>
-<a name="590"><span class="lineNum">     590 </span>            :          return 0;</a>
-<a name="591"><span class="lineNum">     591 </span>            :       }</a>
-<a name="592"><span class="lineNum">     592 </span>            : </a>
-<a name="593"><span class="lineNum">     593 </span>            :    } // namespace detail</a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         28 :             Jv = Ju * ratio;                    // normalization</span></a>
+<a name="543"><span class="lineNum">     543 </span>            : </a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">         28 :             Yu = gamma * Ju;</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         28 :             Yu1 = Yu * (u/x - p - q/gamma);</span></a>
+<a name="546"><span class="lineNum">     546 </span>            : </a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         28 :             if(kind&amp;need_y)</span></a>
+<a name="548"><span class="lineNum">     548 </span>            :             {</a>
+<a name="549"><span class="lineNum">     549 </span>            :                // compute Y:</a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">         27 :                prev = Yu;</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">         27 :                current = Yu1;</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">         27 :                policies::check_series_iterations&lt;T&gt;(function, n, pol);</span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">        393 :                for (k = 1; k &lt;= n; k++)            // forward recurrence for Y</span></a>
+<a name="554"><span class="lineNum">     554 </span>            :                {</a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">        366 :                   T fact = 2 * (u + k) / x;</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineCov">        366 :                   if((tools::max_value&lt;T&gt;() - fabs(prev)) / fact &lt; fabs(current))</span></a>
+<a name="557"><span class="lineNum">     557 </span>            :                   {</a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :                      prev /= current;</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :                      Yv_scale /= current;</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :                      current = 1;</span></a>
+<a name="561"><span class="lineNum">     561 </span>            :                   }</a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">        366 :                   next = fact * current - prev;</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        366 :                   prev = current;</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">        366 :                   current = next;</span></a>
+<a name="565"><span class="lineNum">     565 </span>            :                }</a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         27 :                Yv = prev;</span></a>
+<a name="567"><span class="lineNum">     567 </span>            :             }</a>
+<a name="568"><span class="lineNum">     568 </span>            :             else</a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">          1 :                Yv = boost::math::numeric_limits&lt;T&gt;::quiet_NaN(); // any value will do, we're not using it.</span></a>
+<a name="570"><span class="lineNum">     570 </span>            :          }</a>
+<a name="571"><span class="lineNum">     571 </span>            : </a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">         28 :          if (reflect)</span></a>
+<a name="573"><span class="lineNum">     573 </span>            :          {</a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         27 :             if((sp != 0) &amp;&amp; (tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(sp * Yv)))</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineNoCov">          0 :                *J = org_kind &amp; need_j ? T(-sign(sp) * sign(Yv) * (Yv_scale != 0 ? sign(Yv_scale) : 1) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
+<a name="576"><span class="lineNum">     576 </span>            :             else</a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         27 :                *J = cp * Jv - (sp == 0 ? T(0) : T((sp * Yv) / Yv_scale));     // reflection formula</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">         27 :             if((cp != 0) &amp;&amp; (tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(cp * Yv)))</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineNoCov">          0 :                *Y = org_kind &amp; need_y ? T(-sign(cp) * sign(Yv) * (Yv_scale != 0 ? sign(Yv_scale) : 1) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
+<a name="580"><span class="lineNum">     580 </span>            :             else</a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">         27 :                *Y = (sp != 0 ? sp * Jv : T(0)) + (cp == 0 ? T(0) : T((cp * Yv) / Yv_scale));</span></a>
+<a name="582"><span class="lineNum">     582 </span>            :          }</a>
+<a name="583"><span class="lineNum">     583 </span>            :          else</a>
+<a name="584"><span class="lineNum">     584 </span>            :          {</a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">          1 :             *J = Jv;</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">          1 :             if(tools::max_value&lt;T&gt;() * fabs(Yv_scale) &lt; fabs(Yv))</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :                *Y = org_kind &amp; need_y ? T(sign(Yv) * sign(Yv_scale) * policies::raise_overflow_error&lt;T&gt;(function, nullptr, pol)) : T(0);</span></a>
+<a name="588"><span class="lineNum">     588 </span>            :             else</a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">          1 :                *Y = Yv / Yv_scale;</span></a>
+<a name="590"><span class="lineNum">     590 </span>            :          }</a>
+<a name="591"><span class="lineNum">     591 </span>            : </a>
+<a name="592"><span class="lineNum">     592 </span>            :          return 0;</a>
+<a name="593"><span class="lineNum">     593 </span>            :       }</a>
 <a name="594"><span class="lineNum">     594 </span>            : </a>
-<a name="595"><span class="lineNum">     595 </span>            : }} // namespaces</a>
+<a name="595"><span class="lineNum">     595 </span>            :    } // namespace detail</a>
 <a name="596"><span class="lineNum">     596 </span>            : </a>
-<a name="597"><span class="lineNum">     597 </span>            : #endif // BOOST_MATH_BESSEL_JY_HPP</a>
+<a name="597"><span class="lineNum">     597 </span>            : }} // namespaces</a>
+<a name="598"><span class="lineNum">     598 </span>            : </a>
+<a name="599"><span class="lineNum">     599 </span>            : #endif // BOOST_MATH_BESSEL_JY_HPP</a>
 </pre>
       </td>
     </tr>

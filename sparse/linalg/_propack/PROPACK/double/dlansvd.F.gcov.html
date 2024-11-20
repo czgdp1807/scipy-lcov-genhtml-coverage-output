@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/double/dlansvd.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/double/dlansvd.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">69</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -68,8 +68,8 @@
       <td>
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
-<a name="1"><span class="lineNum">       1 </span><span class="lineCov">         96 :       subroutine dlansvd(jobu,jobv,m,n,k,kmax,aprod,U,ldu,Sigma,bnd,</span></a>
-<a name="2"><span class="lineNum">       2 </span><span class="lineCov">         96 :      c     V,ldv,tolin,work,lwork,iwork,liwork,doption,ioption,info,</span></a>
+<a name="1"><span class="lineNum">       1 </span><span class="lineCov">         93 :       subroutine dlansvd(jobu,jobv,m,n,k,kmax,aprod,U,ldu,Sigma,bnd,</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">         93 :      c     V,ldv,tolin,work,lwork,iwork,liwork,doption,ioption,info,</span></a>
 <a name="3"><span class="lineNum">       3 </span>            :      c     dparm,iparm)</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
 <a name="5"><span class="lineNum">       5 </span>            : </a>
@@ -203,79 +203,79 @@
 <a name="133"><span class="lineNum">     133 </span>            : c     %---------------------------------%</a>
 <a name="134"><span class="lineNum">     134 </span>            : c     | Set machine dependent constants |</a>
 <a name="135"><span class="lineNum">     135 </span>            : c     %---------------------------------%</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         96 :       eps = dlamch('e')</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         96 :       eps34 = eps**(3.0/4.0)</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         96 :       epsn = dble(max(m,n))*eps/2.0</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         96 :       epsn2 = sqrt(dble(max(m,n)))*eps/2.0</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">         96 :       sfmin = dlamch('s')</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         93 :       eps = dlamch('e')</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         93 :       eps34 = eps**(3.0/4.0)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         93 :       epsn = dble(max(m,n))*eps/2.0</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         93 :       epsn2 = sqrt(dble(max(m,n)))*eps/2.0</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">         93 :       sfmin = dlamch('s')</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :       </a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span>            : c     %--------------------------------%</a>
 <a name="144"><span class="lineNum">     144 </span>            : c     | Guard against absurd arguments |</a>
 <a name="145"><span class="lineNum">     145 </span>            : c     %--------------------------------%</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         96 :       lanmax = min(n+1,m+1,kmax)</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         96 :       tol = min(one,max(16.0*eps,tolin))</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         96 :       anorm = zero</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         93 :       lanmax = min(n+1,m+1,kmax)</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         93 :       tol = min(one,max(16.0*eps,tolin))</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         93 :       anorm = zero</span></a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
 <a name="150"><span class="lineNum">     150 </span>            : c     %------------------------------%</a>
 <a name="151"><span class="lineNum">     151 </span>            : c     | Set pointers into work array |</a>
 <a name="152"><span class="lineNum">     152 </span>            : c     %------------------------------%</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         96 :       ibnd = 1</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         96 :       ib = ibnd + lanmax+1</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         96 :       ib1 = ib + 2*lanmax</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         96 :       ip = ib1 + 2*lanmax</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         96 :       iq = ip + (lanmax+1)**2</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         96 :       iwrk = iq + lanmax**2</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         96 :       lwrk = lwork-iwrk+1</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         96 :       call dzero(7*lanmax + 2 + 2*lanmax**2,work,1)</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         93 :       ibnd = 1</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         93 :       ib = ibnd + lanmax+1</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         93 :       ib1 = ib + 2*lanmax</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         93 :       ip = ib1 + 2*lanmax</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         93 :       iq = ip + (lanmax+1)**2</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         93 :       iwrk = iq + lanmax**2</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         93 :       lwrk = lwork-iwrk+1</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         93 :       call dzero(7*lanmax + 2 + 2*lanmax**2,work,1)</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            : c     %---------------------------------------------------------------%</a>
 <a name="163"><span class="lineNum">     163 </span>            : c     | Set up random starting vector if none is provided by the user |</a>
 <a name="164"><span class="lineNum">     164 </span>            : c     %---------------------------------------------------------------%</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         96 :       rnorm = pdnrm2(m,U(1,1),1)</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         96 :       if (rnorm.eq.zero) then</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         93 :       rnorm = pdnrm2(m,U(1,1),1)</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         93 :       if (rnorm.eq.zero) then</span></a>
 <a name="167"><span class="lineNum">     167 </span>            :          call dgetu0('n',m,n,0,1,U,rnorm,U,ldu,aprod,</a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :      c        dparm,iparm, ierr,ioption(1),anorm,work(iwrk))     </span></a>
 <a name="169"><span class="lineNum">     169 </span>            :       endif</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         96 :       nsing = k</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         96 :       info = 0</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         96 :       neig = 0</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         96 :       jold = 0</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         96 :       j = min(k+max(8,k)+1,lanmax)</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         93 :       nsing = k</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         93 :       info = 0</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         93 :       neig = 0</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         93 :       jold = 0</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         93 :       j = min(k+max(8,k)+1,lanmax)</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :        </a>
 <a name="177"><span class="lineNum">     177 </span>            : c     %------------------------------%</a>
 <a name="178"><span class="lineNum">     178 </span>            : c     | Iterate until convergence... |</a>
 <a name="179"><span class="lineNum">     179 </span>            : c     %------------------------------%</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        127 :       do while (neig.lt.k)</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        118 :       do while (neig.lt.k)</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : c     %---------------------------------------------------%</a>
 <a name="183"><span class="lineNum">     183 </span>            : c     | Compute bidiagonalization A*V_{j} = U_{j+1}*B_{j} |</a>
 <a name="184"><span class="lineNum">     184 </span>            : c     %---------------------------------------------------%</a>
 <a name="185"><span class="lineNum">     185 </span>            :          call dlanbpro(m, n, jold, j, aprod, U, ldu, V, ldv,</a>
 <a name="186"><span class="lineNum">     186 </span>            :      c        work(ib),lanmax,rnorm,doption(1),ioption(1),</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">        117 :      c        work(iwrk), iwork, dparm, iparm, ierr)</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        117 :          jold = j</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">        108 :      c        work(iwrk), iwork, dparm, iparm, ierr)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        108 :          jold = j</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
 <a name="190"><span class="lineNum">     190 </span>            : c     %---------------------------------------------%</a>
 <a name="191"><span class="lineNum">     191 </span>            : c     | Compute and analyze SVD(B) and error bounds |</a>
 <a name="192"><span class="lineNum">     192 </span>            : c     %---------------------------------------------%</a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">        117 :          call dcopy(2*lanmax, work(ib),1,work(ib1),1)</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        117 :          call dzero(j+1,work(ibnd),1)</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">        108 :          call dcopy(2*lanmax, work(ib),1,work(ib1),1)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        108 :          call dzero(j+1,work(ibnd),1)</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :          </a>
 <a name="196"><span class="lineNum">     196 </span>            :          call dbdqr((j.eq.min(m,n)),'N',j,work(ib1),work(ib1+lanmax),</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        117 :      c        work(ibnd+j-1),work(ibnd+j),work(ip),lanmax+1)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        108 :      c        work(ibnd+j-1),work(ibnd+j),work(ip),lanmax+1)</span></a>
 <a name="198"><span class="lineNum">     198 </span>            :          call dbdsqr('u',j,0,1,0,work(ib1),work(ib1+lanmax),work,1,</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        117 :      c        work(ibnd),1,work,1,work(iwrk),lapinfo)</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        117 :          nbsvd = nbsvd + 1</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        108 :      c        work(ibnd),1,work,1,work(iwrk),lapinfo)</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        108 :          nbsvd = nbsvd + 1</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        117 :          if (j.gt.5) then</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">         69 :             anorm = work(ib1)</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        108 :          if (j.gt.5) then</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">         59 :             anorm = work(ib1)</span></a>
 <a name="204"><span class="lineNum">     204 </span>            :          else</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         48 :             anorm = max(anorm,work(ib1))</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         49 :             anorm = max(anorm,work(ib1))</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :          endif</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       1454 :          do i=1,j</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       1454 :             work(ibnd+i-1) = abs(rnorm*work(ibnd+i-1))</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       1181 :          do i=1,j</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       1181 :             work(ibnd+i-1) = abs(rnorm*work(ibnd+i-1))</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :          enddo</a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
 <a name="211"><span class="lineNum">     211 </span>            : c     %---------------------------------------------%</a>
@@ -283,23 +283,23 @@
 <a name="213"><span class="lineNum">     213 </span>            : c     %---------------------------------------------%</a>
 <a name="214"><span class="lineNum">     214 </span>            : c         if (lsame(jobu,'n') .and. lsame(jobv,'n')) then</a>
 <a name="215"><span class="lineNum">     215 </span>            :             call drefinebounds(min(m,n),j,work(ib1),work(ibnd),</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        117 :      c           epsn*anorm,eps34)</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        108 :      c           epsn*anorm,eps34)</span></a>
 <a name="217"><span class="lineNum">     217 </span>            : c         endif</a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
 <a name="219"><span class="lineNum">     219 </span>            : c     %----------------------------------------------------%</a>
 <a name="220"><span class="lineNum">     220 </span>            : c     | Determine the number of converged singular values  |</a>
 <a name="221"><span class="lineNum">     221 </span>            : c     %----------------------------------------------------%</a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        449 :          do i=1,min(j,k)</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        449 :             bnd(i) = work(ibnd+i-1)</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        399 :          do i=1,min(j,k)</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        399 :             bnd(i) = work(ibnd+i-1)</span></a>
 <a name="224"><span class="lineNum">     224 </span>            : c            write(*,*) 'sigma,bnd = ',work(ib1+i),bnd(i)</a>
 <a name="225"><span class="lineNum">     225 </span>            :          enddo</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        117 :          i = 0</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">        117 :          neig = 0</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        406 :          do while(i.lt.min(j,k))</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        406 :             if (work(ibnd+i).le.tol*work(ib1+i)) then</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        267 :                neig = neig + 1</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        267 :                sigma(neig) = work(ib1+i)</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        267 :                i = i+1</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        108 :          i = 0</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">        108 :          neig = 0</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        370 :          do while(i.lt.min(j,k))</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        370 :             if (work(ibnd+i).le.tol*work(ib1+i)) then</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        246 :                neig = neig + 1</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        246 :                sigma(neig) = work(ib1+i)</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        246 :                i = i+1</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :             else</a>
 <a name="234"><span class="lineNum">     234 </span>            :                i = k</a>
 <a name="235"><span class="lineNum">     235 </span>            :             endif</a>
@@ -309,16 +309,16 @@
 <a name="239"><span class="lineNum">     239 </span>            : c     | Test if an invariant subspace has been found or |</a>
 <a name="240"><span class="lineNum">     240 </span>            : c     | if the workspace has been exhausted.             |</a>
 <a name="241"><span class="lineNum">     241 </span>            : c     %--------------------------------------------------%</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        117 :          if (ierr.lt.0) then</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">         39 :             if (j.lt.k) then</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        108 :          if (ierr.lt.0) then</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">         50 :             if (j.lt.k) then</span></a>
 <a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :                write(*,*) 'WARNING: Invariant subspace found.',</span></a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :      c              ' Dimension = ',j</span></a>
 <a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :                info = j</span></a>
 <a name="247"><span class="lineNum">     247 </span>            :             endif</a>
 <a name="248"><span class="lineNum">     248 </span>            :             goto 50               </a>
 <a name="249"><span class="lineNum">     249 </span>            :          endif</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         78 :          if (j.ge.lanmax) then</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         47 :             if (neig.lt.k) then</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         58 :          if (j.ge.lanmax) then</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         33 :             if (neig.lt.k) then</span></a>
 <a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :                write(*,*) 'WARNING: Maximum dimension of Krylov',</span></a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :      c              ' subspace exceeded prior to convergence.',</span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineCov">          2 :      c              ' Try increasing KMAX.'</span></a>
@@ -335,30 +335,30 @@
 <a name="265"><span class="lineNum">     265 </span>            : c     | converged Ritz value.                              |</a>
 <a name="266"><span class="lineNum">     266 </span>            : c     | Else increase the dimension by 50%.                |</a>
 <a name="267"><span class="lineNum">     267 </span>            : c     %----------------------------------------------------%</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         31 :          if (neig.gt.1) then</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         18 :             dj = min(j/2,((k-neig)*(j-6))/(2*neig+1))</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         18 :             dj = min(100,max(2,dj))</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         25 :          if (neig.gt.1) then</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         16 :             dj = min(j/2,((k-neig)*(j-6))/(2*neig+1))</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         16 :             dj = min(100,max(2,dj))</span></a>
 <a name="271"><span class="lineNum">     271 </span>            :          else</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         13 :             dj = j/2</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         13 :             dj = min(100,max(10,dj))</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          9 :             dj = j/2</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          9 :             dj = min(100,max(10,dj))</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :         endif</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         41 :          j = min(j + dj,lanmax)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         35 :          j = min(j + dj,lanmax)</span></a>
 <a name="276"><span class="lineNum">     276 </span>            :       enddo</a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">         96 :  50   if ((neig.ge.k .or. info.gt.0)  .and. </span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">         93 :  50   if ((neig.ge.k .or. info.gt.0)  .and. </span></a>
 <a name="279"><span class="lineNum">     279 </span>            :      c     (lsame(jobu,'y') .or. lsame(jobv,'y'))) then</a>
 <a name="280"><span class="lineNum">     280 </span>            : c     %-----------------------------------------%</a>
 <a name="281"><span class="lineNum">     281 </span>            : c     | Calculate singular vectors if requested %</a>
 <a name="282"><span class="lineNum">     282 </span>            : c     %-----------------------------------------%</a>
 <a name="283"><span class="lineNum">     283 </span>            : c         print *,'computing vectors: neig = ',neig,' jold = ',jold</a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         92 :          lwrk = lwrk + lanmax**2 + (lanmax+1)**2</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         89 :          lwrk = lwrk + lanmax**2 + (lanmax+1)**2</span></a>
 <a name="285"><span class="lineNum">     285 </span>            :          call dritzvec('L',jobu,jobv,m,n,neig,jold,work(ib),</a>
 <a name="286"><span class="lineNum">     286 </span>            :      c        work(ib+lanmax),work(ib1),U,ldu,V,ldv,work(ip),</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         92 :      c        lwrk,iwork)</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         89 :      c        lwrk,iwork)</span></a>
 <a name="288"><span class="lineNum">     288 </span>            :       endif</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         96 :       k = neig</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         96 :       nlandim = j</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         96 :       end</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         93 :       k = neig</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         93 :       nlandim = j</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         93 :       end</span></a>
 </pre>
       </td>
     </tr>

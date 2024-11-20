@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_numeric.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_numeric.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">11</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -201,15 +201,15 @@
 <a name="131"><span class="lineNum">     131 </span>            :   template&lt;typename _InputIterator, typename _Tp&gt;</a>
 <a name="132"><span class="lineNum">     132 </span>            :     _GLIBCXX20_CONSTEXPR</a>
 <a name="133"><span class="lineNum">     133 </span>            :     inline _Tp</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        184 :     accumulate(_InputIterator __first, _InputIterator __last, _Tp __init)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        368 :     accumulate(_InputIterator __first, _InputIterator __last, _Tp __init)</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :     {</a>
 <a name="136"><span class="lineNum">     136 </span>            :       // concept requirements</a>
 <a name="137"><span class="lineNum">     137 </span>            :       __glibcxx_function_requires(_InputIteratorConcept&lt;_InputIterator&gt;)</a>
 <a name="138"><span class="lineNum">     138 </span>            :       __glibcxx_requires_valid_range(__first, __last);</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        330 :       for (; __first != __last; ++__first)</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        146 :         __init = _GLIBCXX_MOVE_IF_20(__init) + *__first;</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        184 :       return __init;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        660 :       for (; __first != __last; ++__first)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        292 :         __init = _GLIBCXX_MOVE_IF_20(__init) + *__first;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        368 :       return __init;</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :     }</a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
 <a name="145"><span class="lineNum">     145 </span>            :   /**</a>
@@ -228,15 +228,15 @@
 <a name="158"><span class="lineNum">     158 </span>            :   template&lt;typename _InputIterator, typename _Tp, typename _BinaryOperation&gt;</a>
 <a name="159"><span class="lineNum">     159 </span>            :     _GLIBCXX20_CONSTEXPR</a>
 <a name="160"><span class="lineNum">     160 </span>            :     inline _Tp</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1843 :     accumulate(_InputIterator __first, _InputIterator __last, _Tp __init,</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1857 :     accumulate(_InputIterator __first, _InputIterator __last, _Tp __init,</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :                _BinaryOperation __binary_op)</a>
 <a name="163"><span class="lineNum">     163 </span>            :     {</a>
 <a name="164"><span class="lineNum">     164 </span>            :       // concept requirements</a>
 <a name="165"><span class="lineNum">     165 </span>            :       __glibcxx_function_requires(_InputIteratorConcept&lt;_InputIterator&gt;)</a>
 <a name="166"><span class="lineNum">     166 </span>            :       __glibcxx_requires_valid_range(__first, __last);</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       3686 :       for (; __first != __last; ++__first)</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1843 :         __init = __binary_op(_GLIBCXX_MOVE_IF_20(__init), *__first);</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       3714 :       for (; __first != __last; ++__first)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1857 :         __init = __binary_op(_GLIBCXX_MOVE_IF_20(__init), *__first);</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :       return __init;</a>
 <a name="171"><span class="lineNum">     171 </span>            :     }</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>

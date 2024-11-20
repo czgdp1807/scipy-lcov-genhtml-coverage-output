@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/complex16/dgemm_ovwr.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/complex16/dgemm_ovwr.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">13</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -107,9 +107,9 @@
 <a name="37"><span class="lineNum">      37 </span>            :       call dgemm(transa,'N',m,n-i+1,k,alpha,A,lda,</a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">         53 :      c           B(1,i),ldb,0D0,dwork,m)</span></a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">         53 :       if (beta.eq.0D0) then</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">        656 :          do j=0,n-i</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">      32940 :             do l=1,m</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">      32887 :                B(l,i+j)  = dwork(j*m+l)</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">        657 :          do j=0,n-i</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">      32967 :             do l=1,m</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">      32914 :                B(l,i+j)  = dwork(j*m+l)</span></a>
 <a name="43"><span class="lineNum">      43 </span>            :             enddo</a>
 <a name="44"><span class="lineNum">      44 </span>            :          enddo</a>
 <a name="45"><span class="lineNum">      45 </span>            :       else</a>

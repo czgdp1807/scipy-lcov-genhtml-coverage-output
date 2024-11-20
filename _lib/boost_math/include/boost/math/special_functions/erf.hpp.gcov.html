@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/special_functions/erf.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/special_functions/erf.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">103</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -272,24 +272,24 @@
 <a name="202"><span class="lineNum">     202 </span>            : }</a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
 <a name="204"><span class="lineNum">     204 </span>            : template &lt;class T, class Policy&gt;</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">      10670 : BOOST_MATH_GPU_ENABLED T erf_imp(T z, bool invert, const Policy&amp; pol, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">      12649 : BOOST_MATH_GPU_ENABLED T erf_imp(T z, bool invert, const Policy&amp; pol, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
 <a name="206"><span class="lineNum">     206 </span>            : {</a>
 <a name="207"><span class="lineNum">     207 </span>            :    BOOST_MATH_STD_USING</a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
 <a name="209"><span class="lineNum">     209 </span>            :    BOOST_MATH_INSTRUMENT_CODE(&quot;53-bit precision erf_imp called&quot;);</a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">      10670 :    if ((boost::math::isnan)(z))</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">      12649 :    if ((boost::math::isnan)(z))</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :       return policies::raise_domain_error(&quot;boost::math::erf&lt;%1%&gt;(%1%)&quot;, &quot;Expected a finite argument but got %1%&quot;, z, pol);</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      10670 :    int prefix_multiplier = 1;</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">      10670 :    int prefix_adder = 0;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      12649 :    int prefix_multiplier = 1;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">      12649 :    int prefix_adder = 0;</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      10670 :    if(z &lt; 0)</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      12649 :    if(z &lt; 0)</span></a>
 <a name="218"><span class="lineNum">     218 </span>            :    {</a>
 <a name="219"><span class="lineNum">     219 </span>            :       // Recursion is logically simpler here, but confuses static analyzers that need to be</a>
 <a name="220"><span class="lineNum">     220 </span>            :       // able to calculate the maximimum program stack size at compile time (ie CUDA).</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       2026 :       z = -z;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       2026 :       if(!invert)</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4072 :       z = -z;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4072 :       if(!invert)</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :       {</a>
 <a name="224"><span class="lineNum">     224 </span>            :          prefix_multiplier = -1;</a>
 <a name="225"><span class="lineNum">     225 </span>            :          // return -erf_imp(T(-z), invert, pol, t);</a>
@@ -301,8 +301,8 @@
 <a name="231"><span class="lineNum">     231 </span>            :       }</a>
 <a name="232"><span class="lineNum">     232 </span>            :       else</a>
 <a name="233"><span class="lineNum">     233 </span>            :       {</a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       2026 :          invert = false;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       2026 :          prefix_adder = 1;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       4072 :          invert = false;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4072 :          prefix_adder = 1;</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :          // return 1 + erf_imp(T(-z), false, pol, t);</a>
 <a name="237"><span class="lineNum">     237 </span>            :       }</a>
 <a name="238"><span class="lineNum">     238 </span>            :    }</a>
@@ -314,14 +314,14 @@
 <a name="244"><span class="lineNum">     244 </span>            :    // which implementation to use,</a>
 <a name="245"><span class="lineNum">     245 </span>            :    // try to put most likely options first:</a>
 <a name="246"><span class="lineNum">     246 </span>            :    //</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">      10670 :    if(z &lt; T(0.5))</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">      12649 :    if(z &lt; T(0.5))</span></a>
 <a name="248"><span class="lineNum">     248 </span>            :    {</a>
 <a name="249"><span class="lineNum">     249 </span>            :       //</a>
 <a name="250"><span class="lineNum">     250 </span>            :       // We're going to calculate erf:</a>
 <a name="251"><span class="lineNum">     251 </span>            :       //</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       3212 :       if(z &lt; T(1e-10))</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       3877 :       if(z &lt; T(1e-10))</span></a>
 <a name="253"><span class="lineNum">     253 </span>            :       {</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         59 :          if(z == 0)</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">        109 :          if(z == 0)</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :          {</a>
 <a name="256"><span class="lineNum">     256 </span>            :             result = T(0);</a>
 <a name="257"><span class="lineNum">     257 </span>            :          }</a>
@@ -354,17 +354,17 @@
 <a name="284"><span class="lineNum">     284 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 53, 0.000370900071787748000569),</a>
 <a name="285"><span class="lineNum">     285 </span>            :          };</a>
 <a name="286"><span class="lineNum">     286 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       3153 :          T zz = z * z;</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3153 :          result = z * (Y + tools::evaluate_polynomial(P, zz) / tools::evaluate_polynomial(Q, zz));</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       3768 :          T zz = z * z;</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3768 :          result = z * (Y + tools::evaluate_polynomial(P, zz) / tools::evaluate_polynomial(Q, zz));</span></a>
 <a name="289"><span class="lineNum">     289 </span>            :       }</a>
 <a name="290"><span class="lineNum">     290 </span>            :    }</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       7458 :    else if(invert ? (z &lt; 28) : (z &lt; 5.93f))</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       8772 :    else if(invert ? (z &lt; 28) : (z &lt; 5.93f))</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :    {</a>
 <a name="293"><span class="lineNum">     293 </span>            :       //</a>
 <a name="294"><span class="lineNum">     294 </span>            :       // We'll be calculating erfc:</a>
 <a name="295"><span class="lineNum">     295 </span>            :       //</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">       7446 :       invert = !invert;</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">       7446 :       if(z &lt; 1.5f)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">       8760 :       invert = !invert;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">       8760 :       if(z &lt; 1.5f)</span></a>
 <a name="298"><span class="lineNum">     298 </span>            :       {</a>
 <a name="299"><span class="lineNum">     299 </span>            :          // Maximum Deviation Found:                     3.702e-17</a>
 <a name="300"><span class="lineNum">     300 </span>            :          // Expected Error Term:                         3.702e-17</a>
@@ -394,12 +394,12 @@
 <a name="324"><span class="lineNum">     324 </span>            :          BOOST_MATH_INSTRUMENT_VARIABLE(P[0]);</a>
 <a name="325"><span class="lineNum">     325 </span>            :          BOOST_MATH_INSTRUMENT_VARIABLE(Q[0]);</a>
 <a name="326"><span class="lineNum">     326 </span>            :          BOOST_MATH_INSTRUMENT_VARIABLE(z);</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       2399 :          result = Y + tools::evaluate_polynomial(P, T(z - T(0.5))) / tools::evaluate_polynomial(Q, T(z - T(0.5)));</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       2282 :          result = Y + tools::evaluate_polynomial(P, T(z - T(0.5))) / tools::evaluate_polynomial(Q, T(z - T(0.5)));</span></a>
 <a name="328"><span class="lineNum">     328 </span>            :          BOOST_MATH_INSTRUMENT_VARIABLE(result);</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       2399 :          result *= exp(-z * z) / z;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       2282 :          result *= exp(-z * z) / z;</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :          BOOST_MATH_INSTRUMENT_VARIABLE(result);</a>
 <a name="331"><span class="lineNum">     331 </span>            :       }</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       5047 :       else if(z &lt; 2.5f)</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       6478 :       else if(z &lt; 2.5f)</span></a>
 <a name="333"><span class="lineNum">     333 </span>            :       {</a>
 <a name="334"><span class="lineNum">     334 </span>            :          // Max Error found at double precision =        6.599585e-18</a>
 <a name="335"><span class="lineNum">     335 </span>            :          // Maximum Deviation Found:                     3.909e-18</a>
@@ -424,17 +424,17 @@
 <a name="354"><span class="lineNum">     354 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 53, 0.00410369723978904575884),</a>
 <a name="355"><span class="lineNum">     355 </span>            :          };</a>
 <a name="356"><span class="lineNum">     356 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">        917 :          result = Y + tools::evaluate_polynomial(P, T(z - T(1.5))) / tools::evaluate_polynomial(Q, z - T(1.5));</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">       2023 :          result = Y + tools::evaluate_polynomial(P, T(z - T(1.5))) / tools::evaluate_polynomial(Q, z - T(1.5));</span></a>
 <a name="358"><span class="lineNum">     358 </span>            :          T hi, lo;</a>
 <a name="359"><span class="lineNum">     359 </span>            :          int expon;</a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">        917 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        917 :          hi = ldexp(hi, expon - 26);</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">        917 :          lo = z - hi;</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        917 :          T sq = z * z;</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        917 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        917 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       2023 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       2023 :          hi = ldexp(hi, expon - 26);</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       2023 :          lo = z - hi;</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       2023 :          T sq = z * z;</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       2023 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       2023 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="366"><span class="lineNum">     366 </span>            :       }</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4130 :       else if(z &lt; 4.5f)</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4455 :       else if(z &lt; 4.5f)</span></a>
 <a name="368"><span class="lineNum">     368 </span>            :       {</a>
 <a name="369"><span class="lineNum">     369 </span>            :          // Maximum Deviation Found:                     1.512e-17</a>
 <a name="370"><span class="lineNum">     370 </span>            :          // Expected Error Term:                         1.512e-17</a>
@@ -459,15 +459,15 @@
 <a name="389"><span class="lineNum">     389 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 53, 0.000479411269521714493907),</a>
 <a name="390"><span class="lineNum">     390 </span>            :          };</a>
 <a name="391"><span class="lineNum">     391 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       2551 :          result = Y + tools::evaluate_polynomial(P, T(z - T(3.5))) / tools::evaluate_polynomial(Q, z - T(3.5));</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       2630 :          result = Y + tools::evaluate_polynomial(P, T(z - T(3.5))) / tools::evaluate_polynomial(Q, z - T(3.5));</span></a>
 <a name="393"><span class="lineNum">     393 </span>            :          T hi, lo;</a>
 <a name="394"><span class="lineNum">     394 </span>            :          int expon;</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       2551 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       2551 :          hi = ldexp(hi, expon - 26);</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       2551 :          lo = z - hi;</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       2551 :          T sq = z * z;</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       2551 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       2551 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       2630 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       2630 :          hi = ldexp(hi, expon - 26);</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       2630 :          lo = z - hi;</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       2630 :          T sq = z * z;</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       2630 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       2630 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="401"><span class="lineNum">     401 </span>            :       }</a>
 <a name="402"><span class="lineNum">     402 </span>            :       else</a>
 <a name="403"><span class="lineNum">     403 </span>            :       {</a>
@@ -496,15 +496,15 @@
 <a name="426"><span class="lineNum">     426 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 53, 5.48409182238641741584),</a>
 <a name="427"><span class="lineNum">     427 </span>            :          };</a>
 <a name="428"><span class="lineNum">     428 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       1579 :          result = Y + tools::evaluate_polynomial(P, T(1 / z)) / tools::evaluate_polynomial(Q, T(1 / z));</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       1825 :          result = Y + tools::evaluate_polynomial(P, T(1 / z)) / tools::evaluate_polynomial(Q, T(1 / z));</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :          T hi, lo;</a>
 <a name="431"><span class="lineNum">     431 </span>            :          int expon;</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       1579 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       1579 :          hi = ldexp(hi, expon - 26);</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       1579 :          lo = z - hi;</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       1579 :          T sq = z * z;</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       1579 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">       1579 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       1825 :          hi = floor(ldexp(frexp(z, &amp;expon), 26));</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       1825 :          hi = ldexp(hi, expon - 26);</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       1825 :          lo = z - hi;</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       1825 :          T sq = z * z;</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       1825 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">       1825 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="438"><span class="lineNum">     438 </span>            :       }</a>
 <a name="439"><span class="lineNum">     439 </span>            :    }</a>
 <a name="440"><span class="lineNum">     440 </span>            :    else</a>
@@ -516,27 +516,27 @@
 <a name="446"><span class="lineNum">     446 </span><span class="lineCov">         12 :       invert = !invert;</span></a>
 <a name="447"><span class="lineNum">     447 </span>            :    }</a>
 <a name="448"><span class="lineNum">     448 </span>            : </a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">      10670 :    if(invert)</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">      12649 :    if(invert)</span></a>
 <a name="450"><span class="lineNum">     450 </span>            :    {</a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">       2621 :       prefix_adder += prefix_multiplier * 1;</span></a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">       2621 :       prefix_multiplier = -prefix_multiplier;</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">       3692 :       prefix_adder += prefix_multiplier * 1;</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">       3692 :       prefix_multiplier = -prefix_multiplier;</span></a>
 <a name="453"><span class="lineNum">     453 </span>            :    }</a>
 <a name="454"><span class="lineNum">     454 </span>            : </a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      10670 :    return prefix_adder + prefix_multiplier * result;</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      12649 :    return prefix_adder + prefix_multiplier * result;</span></a>
 <a name="456"><span class="lineNum">     456 </span>            : } // template &lt;class T, class Lanczos&gt;T erf_imp(T z, bool invert, const Lanczos&amp; l, const std::integral_constant&lt;int, 53&gt;&amp; t)</a>
 <a name="457"><span class="lineNum">     457 </span>            : </a>
 <a name="458"><span class="lineNum">     458 </span>            : </a>
 <a name="459"><span class="lineNum">     459 </span>            : template &lt;class T, class Policy&gt;</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">       6418 : T erf_imp(T z, bool invert, const Policy&amp; pol, const std::integral_constant&lt;int, 64&gt;&amp; t)</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">       7422 : T erf_imp(T z, bool invert, const Policy&amp; pol, const std::integral_constant&lt;int, 64&gt;&amp; t)</span></a>
 <a name="461"><span class="lineNum">     461 </span>            : {</a>
 <a name="462"><span class="lineNum">     462 </span>            :    BOOST_MATH_STD_USING</a>
 <a name="463"><span class="lineNum">     463 </span>            : </a>
 <a name="464"><span class="lineNum">     464 </span>            :    BOOST_MATH_INSTRUMENT_CODE(&quot;64-bit precision erf_imp called&quot;);</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       6418 :    if ((boost::math::isnan)(z))</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       7422 :    if ((boost::math::isnan)(z))</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :       return policies::raise_domain_error(&quot;boost::math::erf&lt;%1%&gt;(%1%)&quot;, &quot;Expected a finite argument but got %1%&quot;, z, pol);</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       6418 :    if(z &lt; 0)</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       7422 :    if(z &lt; 0)</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :    {</a>
 <a name="471"><span class="lineNum">     471 </span><span class="lineCov">          7 :       if(!invert)</span></a>
 <a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :          return -erf_imp(T(-z), invert, pol, t);</span></a>
@@ -553,16 +553,16 @@
 <a name="483"><span class="lineNum">     483 </span>            :    // implementation to use, try to put most likely options</a>
 <a name="484"><span class="lineNum">     484 </span>            :    // first:</a>
 <a name="485"><span class="lineNum">     485 </span>            :    //</a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">       6411 :    if(z &lt; 0.5)</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">       7415 :    if(z &lt; 0.5)</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :    {</a>
 <a name="488"><span class="lineNum">     488 </span>            :       //</a>
 <a name="489"><span class="lineNum">     489 </span>            :       // We're going to calculate erf:</a>
 <a name="490"><span class="lineNum">     490 </span>            :       //</a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       1274 :       if(z == 0)</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       1876 :       if(z == 0)</span></a>
 <a name="492"><span class="lineNum">     492 </span>            :       {</a>
 <a name="493"><span class="lineNum">     493 </span>            :          result = 0;</a>
 <a name="494"><span class="lineNum">     494 </span>            :       }</a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1155 :       else if(z &lt; 1e-10)</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1655 :       else if(z &lt; 1e-10)</span></a>
 <a name="496"><span class="lineNum">     496 </span>            :       {</a>
 <a name="497"><span class="lineNum">     497 </span>            :          static const T c = BOOST_MATH_BIG_CONSTANT(T, 64, 0.003379167095512573896158903121545171688); // LCOV_EXCL_LINE</a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :          result = z * 1.125 + z * c;</span></a>
@@ -592,16 +592,16 @@
 <a name="522"><span class="lineNum">     522 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 64, 0.189532519105655496778e-4),</a>
 <a name="523"><span class="lineNum">     523 </span>            :          };</a>
 <a name="524"><span class="lineNum">     524 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">       1155 :          result = z * (Y + tools::evaluate_polynomial(P, T(z * z)) / tools::evaluate_polynomial(Q, T(z * z)));</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">       1655 :          result = z * (Y + tools::evaluate_polynomial(P, T(z * z)) / tools::evaluate_polynomial(Q, T(z * z)));</span></a>
 <a name="526"><span class="lineNum">     526 </span>            :       }</a>
 <a name="527"><span class="lineNum">     527 </span>            :    }</a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">       5137 :    else if(invert ? (z &lt; 110) : (z &lt; 6.6f))</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">       5539 :    else if(invert ? (z &lt; 110) : (z &lt; 6.6f))</span></a>
 <a name="529"><span class="lineNum">     529 </span>            :    {</a>
 <a name="530"><span class="lineNum">     530 </span>            :       //</a>
 <a name="531"><span class="lineNum">     531 </span>            :       // We'll be calculating erfc:</a>
 <a name="532"><span class="lineNum">     532 </span>            :       //</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">       5131 :       invert = !invert;</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       5131 :       if(z &lt; 1.5)</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">       5533 :       invert = !invert;</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       5533 :       if(z &lt; 1.5)</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :       {</a>
 <a name="536"><span class="lineNum">     536 </span>            :          // Max Error found at long double precision =   3.239590e-20</a>
 <a name="537"><span class="lineNum">     537 </span>            :          // Maximum Deviation Found:                     2.241e-20</a>
@@ -639,7 +639,7 @@
 <a name="569"><span class="lineNum">     569 </span><span class="lineCov">       1291 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
 <a name="570"><span class="lineNum">     570 </span><span class="lineCov">       1291 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="571"><span class="lineNum">     571 </span>            :       }</a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       3840 :       else if(z &lt; 2.5)</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       4242 :       else if(z &lt; 2.5)</span></a>
 <a name="573"><span class="lineNum">     573 </span>            :       {</a>
 <a name="574"><span class="lineNum">     574 </span>            :          // Max Error found at long double precision =   3.686211e-21</a>
 <a name="575"><span class="lineNum">     575 </span>            :          // Maximum Deviation Found:                     1.495e-21</a>
@@ -666,17 +666,17 @@
 <a name="596"><span class="lineNum">     596 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 64, 0.000897871370778031611439),</a>
 <a name="597"><span class="lineNum">     597 </span>            :          };</a>
 <a name="598"><span class="lineNum">     598 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">        447 :          result = Y + tools::evaluate_polynomial(P, T(z - 1.5f)) / tools::evaluate_polynomial(Q, T(z - 1.5f));</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">        847 :          result = Y + tools::evaluate_polynomial(P, T(z - 1.5f)) / tools::evaluate_polynomial(Q, T(z - 1.5f));</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :          T hi, lo;</a>
 <a name="601"><span class="lineNum">     601 </span>            :          int expon;</a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        447 :          hi = floor(ldexp(frexp(z, &amp;expon), 32));</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        447 :          hi = ldexp(hi, expon - 32);</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        447 :          lo = z - hi;</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        447 :          T sq = z * z;</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        447 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        447 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        847 :          hi = floor(ldexp(frexp(z, &amp;expon), 32));</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        847 :          hi = ldexp(hi, expon - 32);</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        847 :          lo = z - hi;</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        847 :          T sq = z * z;</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        847 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        847 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="608"><span class="lineNum">     608 </span>            :       }</a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">       3393 :       else if(z &lt; 4.5)</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">       3395 :       else if(z &lt; 4.5)</span></a>
 <a name="610"><span class="lineNum">     610 </span>            :       {</a>
 <a name="611"><span class="lineNum">     611 </span>            :          // Maximum Deviation Found:                     1.107e-20</a>
 <a name="612"><span class="lineNum">     612 </span>            :          // Expected Error Term:                         -1.106e-20</a>
@@ -744,15 +744,15 @@
 <a name="674"><span class="lineNum">     674 </span>            :             BOOST_MATH_BIG_CONSTANT(T, 64, 30.8365511891224291717),</a>
 <a name="675"><span class="lineNum">     675 </span>            :          };</a>
 <a name="676"><span class="lineNum">     676 </span>            :          // LCOV_EXCL_STOP</a>
-<a name="677"><span class="lineNum">     677 </span><span class="lineCov">       1630 :          result = Y + tools::evaluate_polynomial(P, T(1 / z)) / tools::evaluate_polynomial(Q, T(1 / z));</span></a>
+<a name="677"><span class="lineNum">     677 </span><span class="lineCov">       1632 :          result = Y + tools::evaluate_polynomial(P, T(1 / z)) / tools::evaluate_polynomial(Q, T(1 / z));</span></a>
 <a name="678"><span class="lineNum">     678 </span>            :          T hi, lo;</a>
 <a name="679"><span class="lineNum">     679 </span>            :          int expon;</a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">       1630 :          hi = floor(ldexp(frexp(z, &amp;expon), 32));</span></a>
-<a name="681"><span class="lineNum">     681 </span><span class="lineCov">       1630 :          hi = ldexp(hi, expon - 32);</span></a>
-<a name="682"><span class="lineNum">     682 </span><span class="lineCov">       1630 :          lo = z - hi;</span></a>
-<a name="683"><span class="lineNum">     683 </span><span class="lineCov">       1630 :          T sq = z * z;</span></a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">       1630 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
-<a name="685"><span class="lineNum">     685 </span><span class="lineCov">       1630 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">       1632 :          hi = floor(ldexp(frexp(z, &amp;expon), 32));</span></a>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">       1632 :          hi = ldexp(hi, expon - 32);</span></a>
+<a name="682"><span class="lineNum">     682 </span><span class="lineCov">       1632 :          lo = z - hi;</span></a>
+<a name="683"><span class="lineNum">     683 </span><span class="lineCov">       1632 :          T sq = z * z;</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">       1632 :          T err_sqr = ((hi * hi - sq) + 2 * hi * lo) + lo * lo;</span></a>
+<a name="685"><span class="lineNum">     685 </span><span class="lineCov">       1632 :          result *= exp(-sq) * exp(-err_sqr) / z;</span></a>
 <a name="686"><span class="lineNum">     686 </span>            :       }</a>
 <a name="687"><span class="lineNum">     687 </span>            :    }</a>
 <a name="688"><span class="lineNum">     688 </span>            :    else</a>
@@ -764,9 +764,9 @@
 <a name="694"><span class="lineNum">     694 </span><span class="lineCov">          6 :       invert = !invert;</span></a>
 <a name="695"><span class="lineNum">     695 </span>            :    }</a>
 <a name="696"><span class="lineNum">     696 </span>            : </a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       6411 :    if(invert)</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       7415 :    if(invert)</span></a>
 <a name="698"><span class="lineNum">     698 </span>            :    {</a>
-<a name="699"><span class="lineNum">     699 </span><span class="lineCov">        953 :       result = 1 - result;</span></a>
+<a name="699"><span class="lineNum">     699 </span><span class="lineCov">       1357 :       result = 1 - result;</span></a>
 <a name="700"><span class="lineNum">     700 </span>            :    }</a>
 <a name="701"><span class="lineNum">     701 </span>            : </a>
 <a name="702"><span class="lineNum">     702 </span>            :    return result;</a>
@@ -1266,7 +1266,7 @@
 <a name="1196"><span class="lineNum">    1196 </span>            : } // namespace detail</a>
 <a name="1197"><span class="lineNum">    1197 </span>            : </a>
 <a name="1198"><span class="lineNum">    1198 </span>            : template &lt;class T, class Policy&gt;</a>
-<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">       1622 : BOOST_MATH_GPU_ENABLED inline typename tools::promote_args&lt;T&gt;::type erf(T z, const Policy&amp; /* pol */)</span></a>
+<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">       1826 : BOOST_MATH_GPU_ENABLED inline typename tools::promote_args&lt;T&gt;::type erf(T z, const Policy&amp; /* pol */)</span></a>
 <a name="1200"><span class="lineNum">    1200 </span>            : {</a>
 <a name="1201"><span class="lineNum">    1201 </span>            :    typedef typename tools::promote_args&lt;T&gt;::type result_type;</a>
 <a name="1202"><span class="lineNum">    1202 </span>            :    typedef typename policies::evaluation&lt;result_type, Policy&gt;::type value_type;</a>
@@ -1291,15 +1291,15 @@
 <a name="1221"><span class="lineNum">    1221 </span>            : </a>
 <a name="1222"><span class="lineNum">    1222 </span>            :    BOOST_MATH_INSTRUMENT_CODE(&quot;tag_type = &quot; &lt;&lt; typeid(tag_type).name());</a>
 <a name="1223"><span class="lineNum">    1223 </span>            : </a>
-<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">       1622 :    return policies::checked_narrowing_cast&lt;result_type, forwarding_policy&gt;(detail::erf_imp(</span></a>
+<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">       1826 :    return policies::checked_narrowing_cast&lt;result_type, forwarding_policy&gt;(detail::erf_imp(</span></a>
 <a name="1225"><span class="lineNum">    1225 </span>            :       static_cast&lt;value_type&gt;(z),</a>
 <a name="1226"><span class="lineNum">    1226 </span>            :       false,</a>
-<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">       1622 :       forwarding_policy(),</span></a>
-<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">       1622 :       tag_type()), &quot;boost::math::erf&lt;%1%&gt;(%1%, %1%)&quot;);</span></a>
+<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">       1826 :       forwarding_policy(),</span></a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">       1826 :       tag_type()), &quot;boost::math::erf&lt;%1%&gt;(%1%, %1%)&quot;);</span></a>
 <a name="1229"><span class="lineNum">    1229 </span>            : }</a>
 <a name="1230"><span class="lineNum">    1230 </span>            : </a>
 <a name="1231"><span class="lineNum">    1231 </span>            : template &lt;class T, class Policy&gt;</a>
-<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">      15459 : BOOST_MATH_GPU_ENABLED inline typename tools::promote_args&lt;T&gt;::type erfc(T z, const Policy&amp; /* pol */)</span></a>
+<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">      18238 : BOOST_MATH_GPU_ENABLED inline typename tools::promote_args&lt;T&gt;::type erfc(T z, const Policy&amp; /* pol */)</span></a>
 <a name="1233"><span class="lineNum">    1233 </span>            : {</a>
 <a name="1234"><span class="lineNum">    1234 </span>            :    typedef typename tools::promote_args&lt;T&gt;::type result_type;</a>
 <a name="1235"><span class="lineNum">    1235 </span>            :    typedef typename policies::evaluation&lt;result_type, Policy&gt;::type value_type;</a>
@@ -1324,11 +1324,11 @@
 <a name="1254"><span class="lineNum">    1254 </span>            : </a>
 <a name="1255"><span class="lineNum">    1255 </span>            :    BOOST_MATH_INSTRUMENT_CODE(&quot;tag_type = &quot; &lt;&lt; typeid(tag_type).name());</a>
 <a name="1256"><span class="lineNum">    1256 </span>            : </a>
-<a name="1257"><span class="lineNum">    1257 </span><span class="lineCov">      15459 :    return policies::checked_narrowing_cast&lt;result_type, forwarding_policy&gt;(detail::erf_imp(</span></a>
+<a name="1257"><span class="lineNum">    1257 </span><span class="lineCov">      18238 :    return policies::checked_narrowing_cast&lt;result_type, forwarding_policy&gt;(detail::erf_imp(</span></a>
 <a name="1258"><span class="lineNum">    1258 </span>            :       static_cast&lt;value_type&gt;(z),</a>
 <a name="1259"><span class="lineNum">    1259 </span>            :       true,</a>
-<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">      15459 :       forwarding_policy(),</span></a>
-<a name="1261"><span class="lineNum">    1261 </span><span class="lineCov">      15459 :       tag_type()), &quot;boost::math::erfc&lt;%1%&gt;(%1%, %1%)&quot;);</span></a>
+<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">      18238 :       forwarding_policy(),</span></a>
+<a name="1261"><span class="lineNum">    1261 </span><span class="lineCov">      18238 :       tag_type()), &quot;boost::math::erfc&lt;%1%&gt;(%1%, %1%)&quot;);</span></a>
 <a name="1262"><span class="lineNum">    1262 </span>            : }</a>
 <a name="1263"><span class="lineNum">    1263 </span>            : </a>
 <a name="1264"><span class="lineNum">    1264 </span>            : template &lt;class T&gt;</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/future</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/future</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">107</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">231</td>
@@ -296,7 +296,7 @@
 <a name="226"><span class="lineNum">     226 </span>            : </a>
 <a name="227"><span class="lineNum">     227 </span>            :       struct _Deleter</a>
 <a name="228"><span class="lineNum">     228 </span>            :       {</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1400 :         void operator()(_Result_base* __fr) const { __fr-&gt;_M_destroy(); }</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1410 :         void operator()(_Result_base* __fr) const { __fr-&gt;_M_destroy(); }</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :       };</a>
 <a name="231"><span class="lineNum">     231 </span>            : </a>
 <a name="232"><span class="lineNum">     232 </span>            :     protected:</a>
@@ -319,17 +319,17 @@
 <a name="249"><span class="lineNum">     249 </span>            :       public:</a>
 <a name="250"><span class="lineNum">     250 </span>            :         typedef _Res result_type;</a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       1400 :         _Result() noexcept : _M_initialized() { }</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       1410 :         _Result() noexcept : _M_initialized() { }</span></a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       1400 :         ~_Result()</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       1410 :         ~_Result()</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :         {</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">        700 :           if (_M_initialized)</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        698 :             _M_value().~_Res();</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       2098 :         }</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">        705 :           if (_M_initialized)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        703 :             _M_value().~_Res();</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       2113 :         }</span></a>
 <a name="259"><span class="lineNum">     259 </span>            : </a>
 <a name="260"><span class="lineNum">     260 </span>            :         // Return lvalue, future will add const or rvalue-reference</a>
 <a name="261"><span class="lineNum">     261 </span>            :         _Res&amp;</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        698 :         _M_value() noexcept { return *_M_storage._M_ptr(); }</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        703 :         _M_value() noexcept { return *_M_storage._M_ptr(); }</span></a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
 <a name="264"><span class="lineNum">     264 </span>            :         void</a>
 <a name="265"><span class="lineNum">     265 </span>            :         _M_set(const _Res&amp; __res)</a>
@@ -339,14 +339,14 @@
 <a name="269"><span class="lineNum">     269 </span>            :         }</a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            :         void</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        698 :         _M_set(_Res&amp;&amp; __res)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        703 :         _M_set(_Res&amp;&amp; __res)</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         {</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        698 :           ::new (_M_storage._M_addr()) _Res(std::move(__res));</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        698 :           _M_initialized = true;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        703 :           ::new (_M_storage._M_addr()) _Res(std::move(__res));</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        703 :           _M_initialized = true;</span></a>
 <a name="276"><span class="lineNum">     276 </span>            :         }</a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
 <a name="278"><span class="lineNum">     278 </span>            :       private:</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        700 :         void _M_destroy() { delete this; }</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        705 :         void _M_destroy() { delete this; }</span></a>
 <a name="280"><span class="lineNum">     280 </span>            :     };</a>
 <a name="281"><span class="lineNum">     281 </span>            : </a>
 <a name="282"><span class="lineNum">     282 </span>            :     /// A result object that uses an allocator.</a>
@@ -384,9 +384,9 @@
 <a name="314"><span class="lineNum">     314 </span>            :     // Keep it simple for std::allocator.</a>
 <a name="315"><span class="lineNum">     315 </span>            :     template&lt;typename _Res, typename _Tp&gt;</a>
 <a name="316"><span class="lineNum">     316 </span>            :       static _Ptr&lt;_Result&lt;_Res&gt;&gt;</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1400 :       _S_allocate_result(const std::allocator&lt;_Tp&gt;&amp; __a)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1410 :       _S_allocate_result(const std::allocator&lt;_Tp&gt;&amp; __a)</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :       {</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       1400 :         return _Ptr&lt;_Result&lt;_Res&gt;&gt;(new _Result&lt;_Res&gt;);</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       1410 :         return _Ptr&lt;_Result&lt;_Res&gt;&gt;(new _Result&lt;_Res&gt;);</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :       }</a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
 <a name="322"><span class="lineNum">     322 </span>            :     // Base class for various types of shared state created by an</a>
@@ -407,21 +407,21 @@
 <a name="337"><span class="lineNum">     337 </span>            :       once_flag                 _M_once;</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
 <a name="339"><span class="lineNum">     339 </span>            :     public:</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       1400 :       _State_baseV2() noexcept : _M_result(), _M_status(_Status::__not_ready)</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       1410 :       _State_baseV2() noexcept : _M_result(), _M_status(_Status::__not_ready)</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :         { }</a>
 <a name="342"><span class="lineNum">     342 </span>            :       _State_baseV2(const _State_baseV2&amp;) = delete;</a>
 <a name="343"><span class="lineNum">     343 </span>            :       _State_baseV2&amp; operator=(const _State_baseV2&amp;) = delete;</a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :       virtual ~_State_baseV2() = default;</span></a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
 <a name="346"><span class="lineNum">     346 </span>            :       _Result_base&amp;</a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        700 :       wait()</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        705 :       wait()</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :       {</a>
 <a name="349"><span class="lineNum">     349 </span>            :         // Run any deferred function or join any asynchronous thread:</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        700 :         _M_complete_async();</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        705 :         _M_complete_async();</span></a>
 <a name="351"><span class="lineNum">     351 </span>            :         // Acquire MO makes sure this synchronizes with the thread that made</a>
 <a name="352"><span class="lineNum">     352 </span>            :         // the future ready.</a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        700 :         _M_status._M_load_when_equal(_Status::__ready, memory_order_acquire);</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">        700 :         return *_M_result;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        705 :         _M_status._M_load_when_equal(_Status::__ready, memory_order_acquire);</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">        705 :         return *_M_result;</span></a>
 <a name="355"><span class="lineNum">     355 </span>            :       }</a>
 <a name="356"><span class="lineNum">     356 </span>            : </a>
 <a name="357"><span class="lineNum">     357 </span>            :       template&lt;typename _Rep, typename _Period&gt;</a>
@@ -490,20 +490,20 @@
 <a name="420"><span class="lineNum">     420 </span>            :       // Provide a result to the shared state and make it ready.</a>
 <a name="421"><span class="lineNum">     421 </span>            :       // Calls at most once: _M_result = __res();</a>
 <a name="422"><span class="lineNum">     422 </span>            :       void</a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1400 :       _M_set_result(function&lt;_Ptr_type()&gt; __res, bool __ignore_failure = false)</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1410 :       _M_set_result(function&lt;_Ptr_type()&gt; __res, bool __ignore_failure = false)</span></a>
 <a name="424"><span class="lineNum">     424 </span>            :       {</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1400 :         bool __did_set = false;</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1410 :         bool __did_set = false;</span></a>
 <a name="426"><span class="lineNum">     426 </span>            :         // all calls to this function are serialized,</a>
 <a name="427"><span class="lineNum">     427 </span>            :         // side-effects of invoking __res only happen once</a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       2800 :         call_once(_M_once, &amp;_State_baseV2::_M_do_set, this,</span></a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       1400 :                   std::__addressof(__res), std::__addressof(__did_set));</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       1400 :         if (__did_set)</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       2820 :         call_once(_M_once, &amp;_State_baseV2::_M_do_set, this,</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       1410 :                   std::__addressof(__res), std::__addressof(__did_set));</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       1410 :         if (__did_set)</span></a>
 <a name="431"><span class="lineNum">     431 </span>            :           // Use release MO to synchronize with observers of the ready state.</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       1400 :           _M_status._M_store_notify_all(_Status::__ready,</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       1410 :           _M_status._M_store_notify_all(_Status::__ready,</span></a>
 <a name="433"><span class="lineNum">     433 </span>            :                                         memory_order_release);</a>
 <a name="434"><span class="lineNum">     434 </span><span class="lineNoCov">          0 :         else if (!__ignore_failure)</span></a>
 <a name="435"><span class="lineNum">     435 </span><span class="lineNoCov">          0 :           __throw_future_error(int(future_errc::promise_already_satisfied));</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       1400 :       }</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       1410 :       }</span></a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>
 <a name="438"><span class="lineNum">     438 </span>            :       // Provide a result to the shared state but delay making it ready</a>
 <a name="439"><span class="lineNum">     439 </span>            :       // until the calling thread exits.</a>
@@ -527,9 +527,9 @@
 <a name="457"><span class="lineNum">     457 </span>            : </a>
 <a name="458"><span class="lineNum">     458 </span>            :       // Abandon this shared state.</a>
 <a name="459"><span class="lineNum">     459 </span>            :       void</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        678 :       _M_break_promise(_Ptr_type __res)</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        689 :       _M_break_promise(_Ptr_type __res)</span></a>
 <a name="461"><span class="lineNum">     461 </span>            :       {</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        678 :         if (static_cast&lt;bool&gt;(__res))</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        689 :         if (static_cast&lt;bool&gt;(__res))</span></a>
 <a name="463"><span class="lineNum">     463 </span>            :           {</a>
 <a name="464"><span class="lineNum">     464 </span><span class="lineNoCov">          0 :             __res-&gt;_M_error =</span></a>
 <a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :               make_exception_ptr(future_error(future_errc::broken_promise));</span></a>
@@ -542,15 +542,15 @@
 <a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :             _M_status._M_store_notify_all(_Status::__ready,</span></a>
 <a name="473"><span class="lineNum">     473 </span>            :                                           memory_order_release);</a>
 <a name="474"><span class="lineNum">     474 </span>            :           }</a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        678 :       }</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        689 :       }</span></a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
 <a name="477"><span class="lineNum">     477 </span>            :       // Called when this object is first passed to a future.</a>
 <a name="478"><span class="lineNum">     478 </span>            :       void</a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        700 :       _M_set_retrieved_flag()</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        705 :       _M_set_retrieved_flag()</span></a>
 <a name="480"><span class="lineNum">     480 </span>            :       {</a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        700 :         if (_M_retrieved.test_and_set())</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        705 :         if (_M_retrieved.test_and_set())</span></a>
 <a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :           __throw_future_error(int(future_errc::future_already_retrieved));</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        700 :       }</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        705 :       }</span></a>
 <a name="484"><span class="lineNum">     484 </span>            : </a>
 <a name="485"><span class="lineNum">     485 </span>            :       template&lt;typename _Res, typename _Arg&gt;</a>
 <a name="486"><span class="lineNum">     486 </span>            :         struct _Setter;</a>
@@ -645,27 +645,27 @@
 <a name="575"><span class="lineNum">     575 </span>            : </a>
 <a name="576"><span class="lineNum">     576 </span>            :       template&lt;typename _Tp&gt;</a>
 <a name="577"><span class="lineNum">     577 </span>            :         static void</a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       2800 :         _S_check(const shared_ptr&lt;_Tp&gt;&amp; __p)</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       2820 :         _S_check(const shared_ptr&lt;_Tp&gt;&amp; __p)</span></a>
 <a name="579"><span class="lineNum">     579 </span>            :         {</a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       2800 :           if (!static_cast&lt;bool&gt;(__p))</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       2820 :           if (!static_cast&lt;bool&gt;(__p))</span></a>
 <a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :             __throw_future_error((int)future_errc::no_state);</span></a>
 <a name="582"><span class="lineNum">     582 </span>            :         }</a>
 <a name="583"><span class="lineNum">     583 </span>            : </a>
 <a name="584"><span class="lineNum">     584 </span>            :     private:</a>
 <a name="585"><span class="lineNum">     585 </span>            :       // The function invoked with std::call_once(_M_once, ...).</a>
 <a name="586"><span class="lineNum">     586 </span>            :       void</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       1400 :       _M_do_set(function&lt;_Ptr_type()&gt;* __f, bool* __did_set)</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       1410 :       _M_do_set(function&lt;_Ptr_type()&gt;* __f, bool* __did_set)</span></a>
 <a name="588"><span class="lineNum">     588 </span>            :       {</a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">       1400 :         _Ptr_type __res = (*__f)();</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">       1410 :         _Ptr_type __res = (*__f)();</span></a>
 <a name="590"><span class="lineNum">     590 </span>            :         // Notify the caller that we did try to set; if we do not throw an</a>
 <a name="591"><span class="lineNum">     591 </span>            :         // exception, the caller will be aware that it did set (e.g., see</a>
 <a name="592"><span class="lineNum">     592 </span>            :         // _M_set_result).</a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       1400 :         *__did_set = true;</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       1400 :         _M_result.swap(__res); // nothrow</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">       1400 :       }</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       1410 :         *__did_set = true;</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       1410 :         _M_result.swap(__res); // nothrow</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">       1410 :       }</span></a>
 <a name="596"><span class="lineNum">     596 </span>            : </a>
 <a name="597"><span class="lineNum">     597 </span>            :       // Wait for completion of async function.</a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        700 :       virtual void _M_complete_async() { }</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        705 :       virtual void _M_complete_async() { }</span></a>
 <a name="599"><span class="lineNum">     599 </span>            : </a>
 <a name="600"><span class="lineNum">     600 </span>            :       // Return true if state corresponds to a deferred function.</a>
 <a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :       virtual bool _M_is_deferred_future() const { return false; }</span></a>
@@ -734,12 +734,12 @@
 <a name="664"><span class="lineNum">     664 </span>            : </a>
 <a name="665"><span class="lineNum">     665 </span>            :   /// Explicit specialization for void.</a>
 <a name="666"><span class="lineNum">     666 </span>            :   template&lt;&gt;</a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">        700 :     struct __future_base::_Result&lt;void&gt; : __future_base::_Result_base</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">        705 :     struct __future_base::_Result&lt;void&gt; : __future_base::_Result_base</span></a>
 <a name="668"><span class="lineNum">     668 </span>            :     {</a>
 <a name="669"><span class="lineNum">     669 </span>            :       typedef void result_type;</a>
 <a name="670"><span class="lineNum">     670 </span>            : </a>
 <a name="671"><span class="lineNum">     671 </span>            :     private:</a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">        700 :       void _M_destroy() { delete this; }</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">        705 :       void _M_destroy() { delete this; }</span></a>
 <a name="673"><span class="lineNum">     673 </span>            :     };</a>
 <a name="674"><span class="lineNum">     674 </span>            : </a>
 <a name="675"><span class="lineNum">     675 </span>            :   /// @endcond</a>
@@ -762,7 +762,7 @@
 <a name="692"><span class="lineNum">     692 </span>            : </a>
 <a name="693"><span class="lineNum">     693 </span>            :   /// Common implementation for future and shared_future.</a>
 <a name="694"><span class="lineNum">     694 </span>            :   template&lt;typename _Res&gt;</a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       2800 :     class __basic_future : public __future_base</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       2820 :     class __basic_future : public __future_base</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :     {</a>
 <a name="697"><span class="lineNum">     697 </span>            :     protected:</a>
 <a name="698"><span class="lineNum">     698 </span>            :       typedef shared_ptr&lt;_State_base&gt;             __state_type;</a>
@@ -805,13 +805,13 @@
 <a name="735"><span class="lineNum">     735 </span>            :     protected:</a>
 <a name="736"><span class="lineNum">     736 </span>            :       /// Wait for the state to be ready and rethrow any stored exception</a>
 <a name="737"><span class="lineNum">     737 </span>            :       __result_type</a>
-<a name="738"><span class="lineNum">     738 </span><span class="lineCov">        700 :       _M_get_result() const</span></a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineCov">        705 :       _M_get_result() const</span></a>
 <a name="739"><span class="lineNum">     739 </span>            :       {</a>
-<a name="740"><span class="lineNum">     740 </span><span class="lineCov">        700 :         _State_base::_S_check(_M_state);</span></a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">        700 :         _Result_base&amp; __res = _M_state-&gt;wait();</span></a>
-<a name="742"><span class="lineNum">     742 </span><span class="lineCov">        700 :         if (!(__res._M_error == nullptr))</span></a>
+<a name="740"><span class="lineNum">     740 </span><span class="lineCov">        705 :         _State_base::_S_check(_M_state);</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">        705 :         _Result_base&amp; __res = _M_state-&gt;wait();</span></a>
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">        705 :         if (!(__res._M_error == nullptr))</span></a>
 <a name="743"><span class="lineNum">     743 </span><span class="lineCov">          2 :           rethrow_exception(__res._M_error);</span></a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">        698 :         return static_cast&lt;__result_type&gt;(__res);</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">        703 :         return static_cast&lt;__result_type&gt;(__res);</span></a>
 <a name="745"><span class="lineNum">     745 </span>            :       }</a>
 <a name="746"><span class="lineNum">     746 </span>            : </a>
 <a name="747"><span class="lineNum">     747 </span>            :       void _M_swap(__basic_future&amp; __that) noexcept</a>
@@ -821,11 +821,11 @@
 <a name="751"><span class="lineNum">     751 </span>            : </a>
 <a name="752"><span class="lineNum">     752 </span>            :       // Construction of a future by promise::get_future()</a>
 <a name="753"><span class="lineNum">     753 </span>            :       explicit</a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">        700 :       __basic_future(const __state_type&amp; __state) : _M_state(__state)</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">        705 :       __basic_future(const __state_type&amp; __state) : _M_state(__state)</span></a>
 <a name="755"><span class="lineNum">     755 </span>            :       {</a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        700 :         _State_base::_S_check(_M_state);</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        700 :         _M_state-&gt;_M_set_retrieved_flag();</span></a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">        700 :       }</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        705 :         _State_base::_S_check(_M_state);</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        705 :         _M_state-&gt;_M_set_retrieved_flag();</span></a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">        705 :       }</span></a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
 <a name="760"><span class="lineNum">     760 </span>            :       // Copy construction from a shared_future</a>
 <a name="761"><span class="lineNum">     761 </span>            :       explicit</a>
@@ -843,8 +843,8 @@
 <a name="773"><span class="lineNum">     773 </span>            : </a>
 <a name="774"><span class="lineNum">     774 </span>            :       struct _Reset</a>
 <a name="775"><span class="lineNum">     775 </span>            :       {</a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">        700 :         explicit _Reset(__basic_future&amp; __fut) noexcept : _M_fut(__fut) { }</span></a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">        540 :         ~_Reset() { _M_fut._M_state.reset(); }</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">        705 :         explicit _Reset(__basic_future&amp; __fut) noexcept : _M_fut(__fut) { }</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">        544 :         ~_Reset() { _M_fut._M_state.reset(); }</span></a>
 <a name="778"><span class="lineNum">     778 </span>            :         __basic_future&amp; _M_fut;</a>
 <a name="779"><span class="lineNum">     779 </span>            :       };</a>
 <a name="780"><span class="lineNum">     780 </span>            :     };</a>
@@ -852,7 +852,7 @@
 <a name="782"><span class="lineNum">     782 </span>            : </a>
 <a name="783"><span class="lineNum">     783 </span>            :   /// Primary template for future.</a>
 <a name="784"><span class="lineNum">     784 </span>            :   template&lt;typename _Res&gt;</a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       1400 :     class future : public __basic_future&lt;_Res&gt;</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       1410 :     class future : public __basic_future&lt;_Res&gt;</span></a>
 <a name="786"><span class="lineNum">     786 </span>            :     {</a>
 <a name="787"><span class="lineNum">     787 </span>            :       // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
 <a name="788"><span class="lineNum">     788 </span>            :       // 3458. Is shared_future intended to work with arrays or function types?</a>
@@ -871,13 +871,13 @@
 <a name="801"><span class="lineNum">     801 </span>            :       typedef typename _Base_type::__state_type __state_type;</a>
 <a name="802"><span class="lineNum">     802 </span>            : </a>
 <a name="803"><span class="lineNum">     803 </span>            :       explicit</a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">        700 :       future(const __state_type&amp; __state) : _Base_type(__state) { }</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">        705 :       future(const __state_type&amp; __state) : _Base_type(__state) { }</span></a>
 <a name="805"><span class="lineNum">     805 </span>            : </a>
 <a name="806"><span class="lineNum">     806 </span>            :     public:</a>
 <a name="807"><span class="lineNum">     807 </span>            :       constexpr future() noexcept : _Base_type() { }</a>
 <a name="808"><span class="lineNum">     808 </span>            : </a>
 <a name="809"><span class="lineNum">     809 </span>            :       /// Move constructor</a>
-<a name="810"><span class="lineNum">     810 </span><span class="lineCov">        700 :       future(future&amp;&amp; __uf) noexcept : _Base_type(std::move(__uf)) { }</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">        705 :       future(future&amp;&amp; __uf) noexcept : _Base_type(std::move(__uf)) { }</span></a>
 <a name="811"><span class="lineNum">     811 </span>            : </a>
 <a name="812"><span class="lineNum">     812 </span>            :       // Disable copying</a>
 <a name="813"><span class="lineNum">     813 </span>            :       future(const future&amp;) = delete;</a>
@@ -891,11 +891,11 @@
 <a name="821"><span class="lineNum">     821 </span>            : </a>
 <a name="822"><span class="lineNum">     822 </span>            :       /// Retrieving the value</a>
 <a name="823"><span class="lineNum">     823 </span>            :       _Res</a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">        700 :       get()</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">        705 :       get()</span></a>
 <a name="825"><span class="lineNum">     825 </span>            :       {</a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">        700 :         typename _Base_type::_Reset __reset(*this);</span></a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        700 :         return std::move(this-&gt;_M_get_result()._M_value());</span></a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">        698 :       }</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">        705 :         typename _Base_type::_Reset __reset(*this);</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        705 :         return std::move(this-&gt;_M_get_result()._M_value());</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">        703 :       }</span></a>
 <a name="829"><span class="lineNum">     829 </span>            : </a>
 <a name="830"><span class="lineNum">     830 </span>            :       shared_future&lt;_Res&gt; share() noexcept;</a>
 <a name="831"><span class="lineNum">     831 </span>            :     };</a>
@@ -1125,9 +1125,9 @@
 <a name="1055"><span class="lineNum">    1055 </span>            :     { }</a>
 <a name="1056"><span class="lineNum">    1056 </span>            : </a>
 <a name="1057"><span class="lineNum">    1057 </span>            :   template&lt;typename _Res&gt;</a>
-<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">        700 :     inline __basic_future&lt;_Res&gt;::</span></a>
+<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">        705 :     inline __basic_future&lt;_Res&gt;::</span></a>
 <a name="1059"><span class="lineNum">    1059 </span>            :     __basic_future(future&lt;_Res&gt;&amp;&amp; __uf) noexcept</a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">        700 :     : _M_state(std::move(__uf._M_state))</span></a>
+<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">        705 :     : _M_state(std::move(__uf._M_state))</span></a>
 <a name="1061"><span class="lineNum">    1061 </span>            :     { }</a>
 <a name="1062"><span class="lineNum">    1062 </span>            : </a>
 <a name="1063"><span class="lineNum">    1063 </span>            :   // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
@@ -1472,11 +1472,11 @@
 <a name="1402"><span class="lineNum">    1402 </span>            :     struct __future_base::_Task_setter</a>
 <a name="1403"><span class="lineNum">    1403 </span>            :     {</a>
 <a name="1404"><span class="lineNum">    1404 </span>            :       // Invoke the function and provide the result to the caller.</a>
-<a name="1405"><span class="lineNum">    1405 </span><span class="lineCov">        700 :       _Ptr_type operator()() const</span></a>
+<a name="1405"><span class="lineNum">    1405 </span><span class="lineCov">        705 :       _Ptr_type operator()() const</span></a>
 <a name="1406"><span class="lineNum">    1406 </span>            :       {</a>
 <a name="1407"><span class="lineNum">    1407 </span>            :         __try</a>
 <a name="1408"><span class="lineNum">    1408 </span>            :           {</a>
-<a name="1409"><span class="lineNum">    1409 </span><span class="lineCov">        860 :             (*_M_result)-&gt;_M_set((*_M_fn)());</span></a>
+<a name="1409"><span class="lineNum">    1409 </span><span class="lineCov">        866 :             (*_M_result)-&gt;_M_set((*_M_fn)());</span></a>
 <a name="1410"><span class="lineNum">    1410 </span>            :           }</a>
 <a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">          2 :         __catch(const __cxxabiv1::__forced_unwind&amp;)</span></a>
 <a name="1412"><span class="lineNum">    1412 </span>            :           {</a>
@@ -1486,7 +1486,7 @@
 <a name="1416"><span class="lineNum">    1416 </span>            :           {</a>
 <a name="1417"><span class="lineNum">    1417 </span><span class="lineCov">          2 :             (*_M_result)-&gt;_M_error = current_exception();</span></a>
 <a name="1418"><span class="lineNum">    1418 </span>            :           }</a>
-<a name="1419"><span class="lineNum">    1419 </span><span class="lineCov">        700 :         return std::move(*_M_result);</span></a>
+<a name="1419"><span class="lineNum">    1419 </span><span class="lineCov">        705 :         return std::move(*_M_result);</span></a>
 <a name="1420"><span class="lineNum">    1420 </span>            :       }</a>
 <a name="1421"><span class="lineNum">    1421 </span>            :       _Ptr_type*        _M_result;</a>
 <a name="1422"><span class="lineNum">    1422 </span>            :       _Fn*              _M_fn;</a>
@@ -1495,11 +1495,11 @@
 <a name="1425"><span class="lineNum">    1425 </span>            :   template&lt;typename _Ptr_type, typename _Fn&gt;</a>
 <a name="1426"><span class="lineNum">    1426 </span>            :     struct __future_base::_Task_setter&lt;_Ptr_type, _Fn, void&gt;</a>
 <a name="1427"><span class="lineNum">    1427 </span>            :     {</a>
-<a name="1428"><span class="lineNum">    1428 </span><span class="lineCov">        700 :       _Ptr_type operator()() const</span></a>
+<a name="1428"><span class="lineNum">    1428 </span><span class="lineCov">        705 :       _Ptr_type operator()() const</span></a>
 <a name="1429"><span class="lineNum">    1429 </span>            :       {</a>
 <a name="1430"><span class="lineNum">    1430 </span>            :         __try</a>
 <a name="1431"><span class="lineNum">    1431 </span>            :           {</a>
-<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">       1400 :             (*_M_fn)();</span></a>
+<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">       1410 :             (*_M_fn)();</span></a>
 <a name="1433"><span class="lineNum">    1433 </span>            :           }</a>
 <a name="1434"><span class="lineNum">    1434 </span><span class="lineNoCov">          0 :         __catch(const __cxxabiv1::__forced_unwind&amp;)</span></a>
 <a name="1435"><span class="lineNum">    1435 </span>            :           {</a>
@@ -1509,7 +1509,7 @@
 <a name="1439"><span class="lineNum">    1439 </span>            :           {</a>
 <a name="1440"><span class="lineNum">    1440 </span><span class="lineNoCov">          0 :             (*_M_result)-&gt;_M_error = current_exception();</span></a>
 <a name="1441"><span class="lineNum">    1441 </span>            :           }</a>
-<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">        700 :         return std::move(*_M_result);</span></a>
+<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">        705 :         return std::move(*_M_result);</span></a>
 <a name="1443"><span class="lineNum">    1443 </span>            :       }</a>
 <a name="1444"><span class="lineNum">    1444 </span>            :       _Ptr_type*        _M_result;</a>
 <a name="1445"><span class="lineNum">    1445 </span>            :       _Fn*              _M_fn;</a>
@@ -1523,9 +1523,9 @@
 <a name="1453"><span class="lineNum">    1453 </span>            :       typedef _Res _Res_type;</a>
 <a name="1454"><span class="lineNum">    1454 </span>            : </a>
 <a name="1455"><span class="lineNum">    1455 </span>            :       template&lt;typename _Alloc&gt;</a>
-<a name="1456"><span class="lineNum">    1456 </span><span class="lineCov">       1400 :         _Task_state_base(const _Alloc&amp; __a)</span></a>
-<a name="1457"><span class="lineNum">    1457 </span><span class="lineCov">       1400 :         : _M_result(_S_allocate_result&lt;_Res&gt;(__a))</span></a>
-<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">       1400 :         { }</span></a>
+<a name="1456"><span class="lineNum">    1456 </span><span class="lineCov">       1410 :         _Task_state_base(const _Alloc&amp; __a)</span></a>
+<a name="1457"><span class="lineNum">    1457 </span><span class="lineCov">       1410 :         : _M_result(_S_allocate_result&lt;_Res&gt;(__a))</span></a>
+<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">       1410 :         { }</span></a>
 <a name="1459"><span class="lineNum">    1459 </span>            : </a>
 <a name="1460"><span class="lineNum">    1460 </span>            :       // Invoke the stored task and make the state ready.</a>
 <a name="1461"><span class="lineNum">    1461 </span>            :       virtual void</a>
@@ -1544,25 +1544,25 @@
 <a name="1474"><span class="lineNum">    1474 </span>            : </a>
 <a name="1475"><span class="lineNum">    1475 </span>            :   // Holds a packaged_task's stored task.</a>
 <a name="1476"><span class="lineNum">    1476 </span>            :   template&lt;typename _Fn, typename _Alloc, typename _Res, typename... _Args&gt;</a>
-<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">        320 :     struct __future_base::_Task_state&lt;_Fn, _Alloc, _Res(_Args...)&gt; final</span></a>
+<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">        322 :     struct __future_base::_Task_state&lt;_Fn, _Alloc, _Res(_Args...)&gt; final</span></a>
 <a name="1478"><span class="lineNum">    1478 </span>            :     : __future_base::_Task_state_base&lt;_Res(_Args...)&gt;</a>
 <a name="1479"><span class="lineNum">    1479 </span>            :     {</a>
 <a name="1480"><span class="lineNum">    1480 </span>            :       template&lt;typename _Fn2&gt;</a>
-<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">       1400 :         _Task_state(_Fn2&amp;&amp; __fn, const _Alloc&amp; __a)</span></a>
+<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">       1410 :         _Task_state(_Fn2&amp;&amp; __fn, const _Alloc&amp; __a)</span></a>
 <a name="1482"><span class="lineNum">    1482 </span>            :         : _Task_state_base&lt;_Res(_Args...)&gt;(__a),</a>
-<a name="1483"><span class="lineNum">    1483 </span><span class="lineCov">       1400 :           _M_impl(std::forward&lt;_Fn2&gt;(__fn), __a)</span></a>
-<a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">       1130 :         { }</span></a>
+<a name="1483"><span class="lineNum">    1483 </span><span class="lineCov">       1410 :           _M_impl(std::forward&lt;_Fn2&gt;(__fn), __a)</span></a>
+<a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">       1138 :         { }</span></a>
 <a name="1485"><span class="lineNum">    1485 </span>            : </a>
 <a name="1486"><span class="lineNum">    1486 </span>            :     private:</a>
 <a name="1487"><span class="lineNum">    1487 </span>            :       virtual void</a>
-<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">       1400 :       _M_run(_Args&amp;&amp;... __args)</span></a>
+<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">       1410 :       _M_run(_Args&amp;&amp;... __args)</span></a>
 <a name="1489"><span class="lineNum">    1489 </span>            :       {</a>
-<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">       2800 :         auto __boundfn = [&amp;] () -&gt; _Res {</span></a>
-<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">       2100 :             return std::__invoke_r&lt;_Res&gt;(_M_impl._M_fn,</span></a>
-<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">       1398 :                                          std::forward&lt;_Args&gt;(__args)...);</span></a>
+<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">       2820 :         auto __boundfn = [&amp;] () -&gt; _Res {</span></a>
+<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">       2115 :             return std::__invoke_r&lt;_Res&gt;(_M_impl._M_fn,</span></a>
+<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">       1408 :                                          std::forward&lt;_Args&gt;(__args)...);</span></a>
 <a name="1493"><span class="lineNum">    1493 </span>            :         };</a>
-<a name="1494"><span class="lineNum">    1494 </span><span class="lineCov">       1400 :         this-&gt;_M_set_result(_S_task_setter(this-&gt;_M_result, __boundfn));</span></a>
-<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">       1400 :       }</span></a>
+<a name="1494"><span class="lineNum">    1494 </span><span class="lineCov">       1410 :         this-&gt;_M_set_result(_S_task_setter(this-&gt;_M_result, __boundfn));</span></a>
+<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">       1410 :       }</span></a>
 <a name="1496"><span class="lineNum">    1496 </span>            : </a>
 <a name="1497"><span class="lineNum">    1497 </span>            :       virtual void</a>
 <a name="1498"><span class="lineNum">    1498 </span><span class="lineNoCov">          0 :       _M_run_delayed(_Args&amp;&amp;... __args, weak_ptr&lt;_State_base&gt; __self)</span></a>
@@ -1578,11 +1578,11 @@
 <a name="1508"><span class="lineNum">    1508 </span>            :       virtual shared_ptr&lt;_Task_state_base&lt;_Res(_Args...)&gt;&gt;</a>
 <a name="1509"><span class="lineNum">    1509 </span>            :       _M_reset();</a>
 <a name="1510"><span class="lineNum">    1510 </span>            : </a>
-<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">        160 :       struct _Impl : _Alloc</span></a>
+<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">        161 :       struct _Impl : _Alloc</span></a>
 <a name="1512"><span class="lineNum">    1512 </span>            :       {</a>
 <a name="1513"><span class="lineNum">    1513 </span>            :         template&lt;typename _Fn2&gt;</a>
-<a name="1514"><span class="lineNum">    1514 </span><span class="lineCov">        454 :           _Impl(_Fn2&amp;&amp; __fn, const _Alloc&amp; __a)</span></a>
-<a name="1515"><span class="lineNum">    1515 </span><span class="lineCov">        454 :           : _Alloc(__a), _M_fn(std::forward&lt;_Fn2&gt;(__fn)) { }</span></a>
+<a name="1514"><span class="lineNum">    1514 </span><span class="lineCov">        457 :           _Impl(_Fn2&amp;&amp; __fn, const _Alloc&amp; __a)</span></a>
+<a name="1515"><span class="lineNum">    1515 </span><span class="lineCov">        457 :           : _Alloc(__a), _M_fn(std::forward&lt;_Fn2&gt;(__fn)) { }</span></a>
 <a name="1516"><span class="lineNum">    1516 </span>            :         _Fn _M_fn;</a>
 <a name="1517"><span class="lineNum">    1517 </span>            :       } _M_impl;</a>
 <a name="1518"><span class="lineNum">    1518 </span>            :     };</a>
@@ -1590,11 +1590,11 @@
 <a name="1520"><span class="lineNum">    1520 </span>            :   template&lt;typename _Signature, typename _Fn,</a>
 <a name="1521"><span class="lineNum">    1521 </span>            :            typename _Alloc = std::allocator&lt;int&gt;&gt;</a>
 <a name="1522"><span class="lineNum">    1522 </span>            :     static shared_ptr&lt;__future_base::_Task_state_base&lt;_Signature&gt;&gt;</a>
-<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">       1400 :     __create_task_state(_Fn&amp;&amp; __fn, const _Alloc&amp; __a = _Alloc())</span></a>
+<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">       1410 :     __create_task_state(_Fn&amp;&amp; __fn, const _Alloc&amp; __a = _Alloc())</span></a>
 <a name="1524"><span class="lineNum">    1524 </span>            :     {</a>
 <a name="1525"><span class="lineNum">    1525 </span>            :       typedef typename decay&lt;_Fn&gt;::type _Fn2;</a>
 <a name="1526"><span class="lineNum">    1526 </span>            :       typedef __future_base::_Task_state&lt;_Fn2, _Alloc, _Signature&gt; _State;</a>
-<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">       1400 :       return std::allocate_shared&lt;_State&gt;(__a, std::forward&lt;_Fn&gt;(__fn), __a);</span></a>
+<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">       1410 :       return std::allocate_shared&lt;_State&gt;(__a, std::forward&lt;_Fn&gt;(__fn), __a);</span></a>
 <a name="1528"><span class="lineNum">    1528 </span>            :     }</a>
 <a name="1529"><span class="lineNum">    1529 </span>            : </a>
 <a name="1530"><span class="lineNum">    1530 </span>            :   template&lt;typename _Fn, typename _Alloc, typename _Res, typename... _Args&gt;</a>
@@ -1625,10 +1625,10 @@
 <a name="1555"><span class="lineNum">    1555 </span>            : </a>
 <a name="1556"><span class="lineNum">    1556 </span>            :       template&lt;typename _Fn, typename = __not_same&lt;_Fn&gt;&gt;</a>
 <a name="1557"><span class="lineNum">    1557 </span>            :         explicit</a>
-<a name="1558"><span class="lineNum">    1558 </span><span class="lineCov">       1400 :         packaged_task(_Fn&amp;&amp; __fn)</span></a>
-<a name="1559"><span class="lineNum">    1559 </span><span class="lineCov">       1400 :         : _M_state(</span></a>
+<a name="1558"><span class="lineNum">    1558 </span><span class="lineCov">       1410 :         packaged_task(_Fn&amp;&amp; __fn)</span></a>
+<a name="1559"><span class="lineNum">    1559 </span><span class="lineCov">       1410 :         : _M_state(</span></a>
 <a name="1560"><span class="lineNum">    1560 </span>            :             __create_task_state&lt;_Res(_ArgTypes...)&gt;(std::forward&lt;_Fn&gt;(__fn)))</a>
-<a name="1561"><span class="lineNum">    1561 </span><span class="lineCov">        700 :         { }</span></a>
+<a name="1561"><span class="lineNum">    1561 </span><span class="lineCov">        705 :         { }</span></a>
 <a name="1562"><span class="lineNum">    1562 </span>            : </a>
 <a name="1563"><span class="lineNum">    1563 </span>            : #if __cplusplus &lt; 201703L</a>
 <a name="1564"><span class="lineNum">    1564 </span>            :       // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
@@ -1657,19 +1657,19 @@
 <a name="1587"><span class="lineNum">    1587 </span>            :         { this-&gt;swap(__other); }</a>
 <a name="1588"><span class="lineNum">    1588 </span>            : #endif</a>
 <a name="1589"><span class="lineNum">    1589 </span>            : </a>
-<a name="1590"><span class="lineNum">    1590 </span><span class="lineCov">       2100 :       ~packaged_task()</span></a>
+<a name="1590"><span class="lineNum">    1590 </span><span class="lineCov">       2115 :       ~packaged_task()</span></a>
 <a name="1591"><span class="lineNum">    1591 </span>            :       {</a>
-<a name="1592"><span class="lineNum">    1592 </span><span class="lineCov">       2100 :         if (static_cast&lt;bool&gt;(_M_state) &amp;&amp; !_M_state.unique())</span></a>
-<a name="1593"><span class="lineNum">    1593 </span><span class="lineCov">        678 :           _M_state-&gt;_M_break_promise(std::move(_M_state-&gt;_M_result));</span></a>
-<a name="1594"><span class="lineNum">    1594 </span><span class="lineCov">       2100 :       }</span></a>
+<a name="1592"><span class="lineNum">    1592 </span><span class="lineCov">       2115 :         if (static_cast&lt;bool&gt;(_M_state) &amp;&amp; !_M_state.unique())</span></a>
+<a name="1593"><span class="lineNum">    1593 </span><span class="lineCov">        689 :           _M_state-&gt;_M_break_promise(std::move(_M_state-&gt;_M_result));</span></a>
+<a name="1594"><span class="lineNum">    1594 </span><span class="lineCov">       2115 :       }</span></a>
 <a name="1595"><span class="lineNum">    1595 </span>            : </a>
 <a name="1596"><span class="lineNum">    1596 </span>            :       // No copy</a>
 <a name="1597"><span class="lineNum">    1597 </span>            :       packaged_task(const packaged_task&amp;) = delete;</a>
 <a name="1598"><span class="lineNum">    1598 </span>            :       packaged_task&amp; operator=(const packaged_task&amp;) = delete;</a>
 <a name="1599"><span class="lineNum">    1599 </span>            : </a>
 <a name="1600"><span class="lineNum">    1600 </span>            :       // Move support</a>
-<a name="1601"><span class="lineNum">    1601 </span><span class="lineCov">        700 :       packaged_task(packaged_task&amp;&amp; __other) noexcept</span></a>
-<a name="1602"><span class="lineNum">    1602 </span><span class="lineCov">        700 :       { this-&gt;swap(__other); }</span></a>
+<a name="1601"><span class="lineNum">    1601 </span><span class="lineCov">        705 :       packaged_task(packaged_task&amp;&amp; __other) noexcept</span></a>
+<a name="1602"><span class="lineNum">    1602 </span><span class="lineCov">        705 :       { this-&gt;swap(__other); }</span></a>
 <a name="1603"><span class="lineNum">    1603 </span>            : </a>
 <a name="1604"><span class="lineNum">    1604 </span>            :       packaged_task&amp; operator=(packaged_task&amp;&amp; __other) noexcept</a>
 <a name="1605"><span class="lineNum">    1605 </span>            :       {</a>
@@ -1678,8 +1678,8 @@
 <a name="1608"><span class="lineNum">    1608 </span>            :       }</a>
 <a name="1609"><span class="lineNum">    1609 </span>            : </a>
 <a name="1610"><span class="lineNum">    1610 </span>            :       void</a>
-<a name="1611"><span class="lineNum">    1611 </span><span class="lineCov">        700 :       swap(packaged_task&amp; __other) noexcept</span></a>
-<a name="1612"><span class="lineNum">    1612 </span><span class="lineCov">        700 :       { _M_state.swap(__other._M_state); }</span></a>
+<a name="1611"><span class="lineNum">    1611 </span><span class="lineCov">        705 :       swap(packaged_task&amp; __other) noexcept</span></a>
+<a name="1612"><span class="lineNum">    1612 </span><span class="lineCov">        705 :       { _M_state.swap(__other._M_state); }</span></a>
 <a name="1613"><span class="lineNum">    1613 </span>            : </a>
 <a name="1614"><span class="lineNum">    1614 </span>            :       bool</a>
 <a name="1615"><span class="lineNum">    1615 </span>            :       valid() const noexcept</a>
@@ -1687,16 +1687,16 @@
 <a name="1617"><span class="lineNum">    1617 </span>            : </a>
 <a name="1618"><span class="lineNum">    1618 </span>            :       // Result retrieval</a>
 <a name="1619"><span class="lineNum">    1619 </span>            :       future&lt;_Res&gt;</a>
-<a name="1620"><span class="lineNum">    1620 </span><span class="lineCov">        700 :       get_future()</span></a>
-<a name="1621"><span class="lineNum">    1621 </span><span class="lineCov">       2100 :       { return future&lt;_Res&gt;(_M_state); }</span></a>
+<a name="1620"><span class="lineNum">    1620 </span><span class="lineCov">        705 :       get_future()</span></a>
+<a name="1621"><span class="lineNum">    1621 </span><span class="lineCov">       2115 :       { return future&lt;_Res&gt;(_M_state); }</span></a>
 <a name="1622"><span class="lineNum">    1622 </span>            : </a>
 <a name="1623"><span class="lineNum">    1623 </span>            :       // Execution</a>
 <a name="1624"><span class="lineNum">    1624 </span>            :       void</a>
-<a name="1625"><span class="lineNum">    1625 </span><span class="lineCov">       1400 :       operator()(_ArgTypes... __args)</span></a>
+<a name="1625"><span class="lineNum">    1625 </span><span class="lineCov">       1410 :       operator()(_ArgTypes... __args)</span></a>
 <a name="1626"><span class="lineNum">    1626 </span>            :       {</a>
-<a name="1627"><span class="lineNum">    1627 </span><span class="lineCov">       1400 :         __future_base::_State_base::_S_check(_M_state);</span></a>
-<a name="1628"><span class="lineNum">    1628 </span><span class="lineCov">       1400 :         _M_state-&gt;_M_run(std::forward&lt;_ArgTypes&gt;(__args)...);</span></a>
-<a name="1629"><span class="lineNum">    1629 </span><span class="lineCov">       1400 :       }</span></a>
+<a name="1627"><span class="lineNum">    1627 </span><span class="lineCov">       1410 :         __future_base::_State_base::_S_check(_M_state);</span></a>
+<a name="1628"><span class="lineNum">    1628 </span><span class="lineCov">       1410 :         _M_state-&gt;_M_run(std::forward&lt;_ArgTypes&gt;(__args)...);</span></a>
+<a name="1629"><span class="lineNum">    1629 </span><span class="lineCov">       1410 :       }</span></a>
 <a name="1630"><span class="lineNum">    1630 </span>            : </a>
 <a name="1631"><span class="lineNum">    1631 </span>            :       void</a>
 <a name="1632"><span class="lineNum">    1632 </span>            :       make_ready_at_thread_exit(_ArgTypes... __args)</a>

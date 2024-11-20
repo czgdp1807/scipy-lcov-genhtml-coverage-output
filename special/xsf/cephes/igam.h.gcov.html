@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/igam.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/igam.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">155</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -207,90 +207,90 @@
 <a name="137"><span class="lineNum">     137 </span>            :          * corrected from (15) and (16) in [2] by replacing exp(x - a) with</a>
 <a name="138"><span class="lineNum">     138 </span>            :          * exp(a - x).</a>
 <a name="139"><span class="lineNum">     139 </span>            :          */</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">   16869423 :         XSF_HOST_DEVICE inline double igam_fac(double a, double x) {</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">   16869423 :             double ax, fac, res, num;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">   16722338 :         XSF_HOST_DEVICE inline double igam_fac(double a, double x) {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">   16722338 :             double ax, fac, res, num;</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   16869423 :             if (std::abs(a - x) &gt; 0.4 * std::abs(a)) {</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">    8996163 :                 ax = a * std::log(x) - x - xsf::cephes::lgam(a);</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">    8996163 :                 if (ax &lt; -MAXLOG) {</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   16722338 :             if (std::abs(a - x) &gt; 0.4 * std::abs(a)) {</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">    8786302 :                 ax = a * std::log(x) - x - xsf::cephes::lgam(a);</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">    8786302 :                 if (ax &lt; -MAXLOG) {</span></a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineCov">       4515 :                     set_error(&quot;igam&quot;, SF_ERROR_UNDERFLOW, NULL);</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">       4515 :                     return 0.0;</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :                 }</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    8991648 :                 return std::exp(ax);</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    8781787 :                 return std::exp(ax);</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :             }</a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    7873260 :             fac = a + xsf::cephes::lanczos_g - 0.5;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    7873260 :             res = std::sqrt(fac / std::exp(1)) / xsf::cephes::lanczos_sum_expg_scaled(a);</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    7936036 :             fac = a + xsf::cephes::lanczos_g - 0.5;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    7936036 :             res = std::sqrt(fac / std::exp(1)) / xsf::cephes::lanczos_sum_expg_scaled(a);</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    7873260 :             if ((a &lt; 200) &amp;&amp; (x &lt; 200)) {</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">    7716698 :                 res *= std::exp(a - x) * std::pow(x / fac, a);</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    7936036 :             if ((a &lt; 200) &amp;&amp; (x &lt; 200)) {</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">    7779444 :                 res *= std::exp(a - x) * std::pow(x / fac, a);</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :             } else {</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     156562 :                 num = x - a - xsf::cephes::lanczos_g + 0.5;</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     156562 :                 res *= std::exp(a * xsf::cephes::log1pmx(num / fac) + x * (0.5 - xsf::cephes::lanczos_g) / fac);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     156592 :                 num = x - a - xsf::cephes::lanczos_g + 0.5;</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     156592 :                 res *= std::exp(a * xsf::cephes::log1pmx(num / fac) + x * (0.5 - xsf::cephes::lanczos_g) / fac);</span></a>
 <a name="160"><span class="lineNum">     160 </span>            :             }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            :             return res;</a>
 <a name="163"><span class="lineNum">     163 </span>            :         }</a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
 <a name="165"><span class="lineNum">     165 </span>            :         /* Compute igamc using DLMF 8.9.2. */</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">    2903218 :         XSF_HOST_DEVICE inline double igamc_continued_fraction(double a, double x) {</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">    2903218 :             int i;</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">    2903218 :             double ans, ax, c, yc, r, t, y, z;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">    2903218 :             double pk, pkm1, pkm2, qk, qkm1, qkm2;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">    2907196 :         XSF_HOST_DEVICE inline double igamc_continued_fraction(double a, double x) {</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">    2907196 :             int i;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">    2907196 :             double ans, ax, c, yc, r, t, y, z;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">    2907196 :             double pk, pkm1, pkm2, qk, qkm1, qkm2;</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">    2903218 :             ax = igam_fac(a, x);</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">    2903218 :             if (ax == 0.0) {</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">    2907196 :             ax = igam_fac(a, x);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">    2907196 :             if (ax == 0.0) {</span></a>
 <a name="173"><span class="lineNum">     173 </span>            :                 return 0.0;</a>
 <a name="174"><span class="lineNum">     174 </span>            :             }</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span>            :             /* continued fraction */</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">    2898518 :             y = 1.0 - a;</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">    2898518 :             z = x + y + 1.0;</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">    2898518 :             c = 0.0;</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">    2898518 :             pkm2 = 1.0;</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">    2898518 :             qkm2 = x;</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">    2898518 :             pkm1 = x + 1.0;</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">    2898518 :             qkm1 = z * x;</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">    2898518 :             ans = pkm1 / qkm1;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">    2902496 :             y = 1.0 - a;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">    2902496 :             z = x + y + 1.0;</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">    2902496 :             c = 0.0;</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">    2902496 :             pkm2 = 1.0;</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">    2902496 :             qkm2 = x;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">    2902496 :             pkm1 = x + 1.0;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">    2902496 :             qkm1 = z * x;</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">    2902496 :             ans = pkm1 / qkm1;</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">   71724368 :             for (i = 0; i &lt; igam_MAXITER; i++) {</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">   71724368 :                 c += 1.0;</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">   71724368 :                 y += 1.0;</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">   71724368 :                 z += 2.0;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">   71724368 :                 yc = y * c;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">   71724368 :                 pk = pkm1 * z - pkm2 * yc;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">   71724368 :                 qk = qkm1 * z - qkm2 * yc;</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">   71724368 :                 if (qk != 0) {</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">   71724368 :                     r = pk / qk;</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">   71724368 :                     t = std::abs((ans - r) / r);</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">   71724368 :                     ans = r;</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">   73975198 :             for (i = 0; i &lt; igam_MAXITER; i++) {</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">   73975198 :                 c += 1.0;</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">   73975198 :                 y += 1.0;</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">   73975198 :                 z += 2.0;</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">   73975198 :                 yc = y * c;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">   73975198 :                 pk = pkm1 * z - pkm2 * yc;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">   73975198 :                 qk = qkm1 * z - qkm2 * yc;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">   73975198 :                 if (qk != 0) {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">   73975198 :                     r = pk / qk;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">   73975198 :                     t = std::abs((ans - r) / r);</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">   73975198 :                     ans = r;</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :                 } else</a>
 <a name="198"><span class="lineNum">     198 </span>            :                     t = 1.0;</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">   71724368 :                 pkm2 = pkm1;</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">   71724368 :                 pkm1 = pk;</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">   71724368 :                 qkm2 = qkm1;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">   71724368 :                 qkm1 = qk;</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">   71724368 :                 if (std::abs(pk) &gt; igam_big) {</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    5212544 :                     pkm2 *= igam_biginv;</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">    5212544 :                     pkm1 *= igam_biginv;</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">    5212544 :                     qkm2 *= igam_biginv;</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    5212544 :                     qkm1 *= igam_biginv;</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">   73975198 :                 pkm2 = pkm1;</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">   73975198 :                 pkm1 = pk;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">   73975198 :                 qkm2 = qkm1;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">   73975198 :                 qkm1 = qk;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">   73975198 :                 if (std::abs(pk) &gt; igam_big) {</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    5414435 :                     pkm2 *= igam_biginv;</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">    5414435 :                     pkm1 *= igam_biginv;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">    5414435 :                     qkm2 *= igam_biginv;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    5414435 :                     qkm1 *= igam_biginv;</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :                 }</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">   71724368 :                 if (t &lt;= MACHEP) {</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">   73975198 :                 if (t &lt;= MACHEP) {</span></a>
 <a name="210"><span class="lineNum">     210 </span>            :                     break;</a>
 <a name="211"><span class="lineNum">     211 </span>            :                 }</a>
 <a name="212"><span class="lineNum">     212 </span>            :             }</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">    2898518 :             return (ans * ax);</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">    2902496 :             return (ans * ax);</span></a>
 <a name="215"><span class="lineNum">     215 </span>            :         }</a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            :         /* Compute igam using DLMF 8.11.4. */</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    5514177 :         XSF_HOST_DEVICE inline double igam_series(double a, double x) {</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    5514177 :             int i;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    5514177 :             double ans, ax, c, r;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    5295200 :         XSF_HOST_DEVICE inline double igam_series(double a, double x) {</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    5295200 :             int i;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    5295200 :             double ans, ax, c, r;</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    5514177 :             ax = igam_fac(a, x);</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">    5514177 :             if (ax == 0.0) {</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    5295200 :             ax = igam_fac(a, x);</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">    5295200 :             if (ax == 0.0) {</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :                 return 0.0;</a>
 <a name="225"><span class="lineNum">     225 </span>            :             }</a>
 <a name="226"><span class="lineNum">     226 </span>            : </a>
@@ -299,190 +299,190 @@
 <a name="229"><span class="lineNum">     229 </span>            :             c = 1.0;</a>
 <a name="230"><span class="lineNum">     230 </span>            :             ans = 1.0;</a>
 <a name="231"><span class="lineNum">     231 </span>            : </a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">   91542400 :             for (i = 0; i &lt; igam_MAXITER; i++) {</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">   91541912 :                 r += 1.0;</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">   91541912 :                 c *= x / r;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">   91541912 :                 ans += c;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">   91541912 :                 if (c &lt;= MACHEP * ans) {</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">   89575639 :             for (i = 0; i &lt; igam_MAXITER; i++) {</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">   89575151 :                 r += 1.0;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">   89575151 :                 c *= x / r;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">   89575151 :                 ans += c;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">   89575151 :                 if (c &lt;= MACHEP * ans) {</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :                     break;</a>
 <a name="238"><span class="lineNum">     238 </span>            :                 }</a>
 <a name="239"><span class="lineNum">     239 </span>            :             }</a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">    5511971 :             return (ans * ax / a);</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">    5292994 :             return (ans * ax / a);</span></a>
 <a name="242"><span class="lineNum">     242 </span>            :         }</a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
 <a name="244"><span class="lineNum">     244 </span>            :         /* Compute igamc using DLMF 8.7.3. This is related to the series in</a>
 <a name="245"><span class="lineNum">     245 </span>            :          * igam_series but extra care is taken to avoid cancellation.</a>
 <a name="246"><span class="lineNum">     246 </span>            :          */</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">      96927 :         XSF_HOST_DEVICE inline double igamc_series(double a, double x) {</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">      96927 :             int n;</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">      96927 :             double fac = 1;</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">      96927 :             double sum = 0;</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">      96927 :             double term, logx;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">     103305 :         XSF_HOST_DEVICE inline double igamc_series(double a, double x) {</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     103305 :             int n;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">     103305 :             double fac = 1;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     103305 :             double sum = 0;</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">     103305 :             double term, logx;</span></a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">    2064003 :             for (n = 1; n &lt; igam_MAXITER; n++) {</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">    2063762 :                 fac *= -x / n;</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">    2063762 :                 term = fac / (a + n);</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">    2063762 :                 sum += term;</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">    2063762 :                 if (std::abs(term) &lt;= MACHEP * std::abs(sum)) {</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">    2291785 :             for (n = 1; n &lt; igam_MAXITER; n++) {</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">    2291486 :                 fac *= -x / n;</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">    2291486 :                 term = fac / (a + n);</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">    2291486 :                 sum += term;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">    2291486 :                 if (std::abs(term) &lt;= MACHEP * std::abs(sum)) {</span></a>
 <a name="258"><span class="lineNum">     258 </span>            :                     break;</a>
 <a name="259"><span class="lineNum">     259 </span>            :                 }</a>
 <a name="260"><span class="lineNum">     260 </span>            :             }</a>
 <a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      96927 :             logx = std::log(x);</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">      96927 :             term = -xsf::cephes::expm1(a * logx - xsf::cephes::lgam1p(a));</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">      96927 :             return term - std::exp(a * logx - xsf::cephes::lgam(a)) * sum;</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">     103305 :             logx = std::log(x);</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">     103305 :             term = -xsf::cephes::expm1(a * logx - xsf::cephes::lgam1p(a));</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">     103305 :             return term - std::exp(a * logx - xsf::cephes::lgam(a)) * sum;</span></a>
 <a name="265"><span class="lineNum">     265 </span>            :         }</a>
 <a name="266"><span class="lineNum">     266 </span>            : </a>
 <a name="267"><span class="lineNum">     267 </span>            :         /* Compute igam/igamc using DLMF 8.12.3/8.12.4. */</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">    1166912 :         XSF_HOST_DEVICE inline double asymptotic_series(double a, double x, int func) {</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">    1166912 :             int k, n, sgn;</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    1166912 :             int maxpow = 0;</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">    1166912 :             double lambda = x / a;</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">    1166912 :             double sigma = (x - a) / a;</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">    1166912 :             double eta, res, ck, ckterm, term, absterm;</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">    1166912 :             double absoldterm = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    1166912 :             double etapow[detail::igam_asymp_coeff_N] = {1};</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">    1166912 :             double sum = 0;</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">    1166912 :             double afac = 1;</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">    1167176 :         XSF_HOST_DEVICE inline double asymptotic_series(double a, double x, int func) {</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">    1167176 :             int k, n, sgn;</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    1167176 :             int maxpow = 0;</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">    1167176 :             double lambda = x / a;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">    1167176 :             double sigma = (x - a) / a;</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">    1167176 :             double eta, res, ck, ckterm, term, absterm;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">    1167176 :             double absoldterm = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    1167176 :             double etapow[detail::igam_asymp_coeff_N] = {1};</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">    1167176 :             double sum = 0;</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">    1167176 :             double afac = 1;</span></a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    1166912 :             if (func == detail::IGAM) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    1167176 :             if (func == detail::IGAM) {</span></a>
 <a name="280"><span class="lineNum">     280 </span>            :                 sgn = -1;</a>
 <a name="281"><span class="lineNum">     281 </span>            :             } else {</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      90933 :                 sgn = 1;</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      90951 :                 sgn = 1;</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :             }</a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">    1166912 :             if (lambda &gt; 1) {</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">     551987 :                 eta = std::sqrt(-2 * xsf::cephes::log1pmx(sigma));</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">     614925 :             } else if (lambda &lt; 1) {</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">     613622 :                 eta = -std::sqrt(-2 * xsf::cephes::log1pmx(sigma));</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">    1167176 :             if (lambda &gt; 1) {</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">     551999 :                 eta = std::sqrt(-2 * xsf::cephes::log1pmx(sigma));</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">     615177 :             } else if (lambda &lt; 1) {</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">     613874 :                 eta = -std::sqrt(-2 * xsf::cephes::log1pmx(sigma));</span></a>
 <a name="289"><span class="lineNum">     289 </span>            :             } else {</a>
 <a name="290"><span class="lineNum">     290 </span>            :                 eta = 0;</a>
 <a name="291"><span class="lineNum">     291 </span>            :             }</a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">    1166912 :             res = 0.5 * xsf::cephes::erfc(sgn * eta * std::sqrt(a / 2));</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">    1167176 :             res = 0.5 * xsf::cephes::erfc(sgn * eta * std::sqrt(a / 2));</span></a>
 <a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">   10832060 :             for (k = 0; k &lt; igam_asymp_coeff_K; k++) {</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">   10832060 :                 ck = igam_asymp_coeff_d[k][0];</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">  114731577 :                 for (n = 1; n &lt; igam_asymp_coeff_N; n++) {</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">  114731577 :                     if (n &gt; maxpow) {</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">   13459523 :                         etapow[n] = eta * etapow[n - 1];</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">   13459523 :                         maxpow += 1;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">   10834698 :             for (k = 0; k &lt; igam_asymp_coeff_K; k++) {</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">   10834698 :                 ck = igam_asymp_coeff_d[k][0];</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">  114750739 :                 for (n = 1; n &lt; igam_asymp_coeff_N; n++) {</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">  114750739 :                     if (n &gt; maxpow) {</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">   13461603 :                         etapow[n] = eta * etapow[n - 1];</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">   13461603 :                         maxpow += 1;</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :                     }</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">  114731577 :                     ckterm = igam_asymp_coeff_d[k][n] * etapow[n];</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">  114731577 :                     ck += ckterm;</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">  114731577 :                     if (std::abs(ckterm) &lt; MACHEP * std::abs(ck)) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">  114750739 :                     ckterm = igam_asymp_coeff_d[k][n] * etapow[n];</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">  114750739 :                     ck += ckterm;</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">  114750739 :                     if (std::abs(ckterm) &lt; MACHEP * std::abs(ck)) {</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :                         break;</a>
 <a name="305"><span class="lineNum">     305 </span>            :                     }</a>
 <a name="306"><span class="lineNum">     306 </span>            :                 }</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">   10832060 :                 term = ck * afac;</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">   10832060 :                 absterm = std::abs(term);</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">   10832060 :                 if (absterm &gt; absoldterm) {</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">   10834698 :                 term = ck * afac;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">   10834698 :                 absterm = std::abs(term);</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">   10834698 :                 if (absterm &gt; absoldterm) {</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :                     break;</a>
 <a name="311"><span class="lineNum">     311 </span>            :                 }</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">   10832060 :                 sum += term;</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">   10832060 :                 if (absterm &lt; MACHEP * std::abs(sum)) {</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">   10834698 :                 sum += term;</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">   10834698 :                 if (absterm &lt; MACHEP * std::abs(sum)) {</span></a>
 <a name="314"><span class="lineNum">     314 </span>            :                     break;</a>
 <a name="315"><span class="lineNum">     315 </span>            :                 }</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">    9665148 :                 absoldterm = absterm;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">    9665148 :                 afac /= a;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">    9667522 :                 absoldterm = absterm;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">    9667522 :                 afac /= a;</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :             }</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">    1166912 :             res += sgn * std::exp(-0.5 * a * eta * eta) * sum / std::sqrt(2 * M_PI * a);</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">    1167176 :             res += sgn * std::exp(-0.5 * a * eta * eta) * sum / std::sqrt(2 * M_PI * a);</span></a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">    1166912 :             return res;</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">    1167176 :             return res;</span></a>
 <a name="322"><span class="lineNum">     322 </span>            :         }</a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
 <a name="324"><span class="lineNum">     324 </span>            :     } // namespace detail</a>
 <a name="325"><span class="lineNum">     325 </span>            : </a>
 <a name="326"><span class="lineNum">     326 </span>            :     XSF_HOST_DEVICE inline double igamc(double a, double x);</a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">    8736292 :     XSF_HOST_DEVICE inline double igam(double a, double x) {</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">    8736292 :         double absxma_a;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">    8456358 :     XSF_HOST_DEVICE inline double igam(double a, double x) {</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">    8456358 :         double absxma_a;</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : </a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">    8736292 :         if (x &lt; 0 || a &lt; 0) {</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">        974 :             set_error(&quot;gammainc&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        974 :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">    8735318 :         } else if (a == 0) {</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">    8456358 :         if (x &lt; 0 || a &lt; 0) {</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">        992 :             set_error(&quot;gammainc&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        992 :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">    8455366 :         } else if (a == 0) {</span></a>
 <a name="335"><span class="lineNum">     335 </span><span class="lineCov">          9 :             if (x &gt; 0) {</span></a>
 <a name="336"><span class="lineNum">     336 </span>            :                 return 1;</a>
 <a name="337"><span class="lineNum">     337 </span>            :             } else {</a>
 <a name="338"><span class="lineNum">     338 </span>            :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="339"><span class="lineNum">     339 </span>            :             }</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">    8735309 :         } else if (x == 0) {</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">    8455357 :         } else if (x == 0) {</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :             /* Zero integration limit */</a>
 <a name="342"><span class="lineNum">     342 </span>            :             return 0;</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">    8735251 :         } else if (std::isinf(a)) {</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">    8455299 :         } else if (std::isinf(a)) {</span></a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">          8 :             if (std::isinf(x)) {</span></a>
 <a name="345"><span class="lineNum">     345 </span>            :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="346"><span class="lineNum">     346 </span>            :             }</a>
 <a name="347"><span class="lineNum">     347 </span>            :             return 0;</a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">    8735243 :         } else if (std::isinf(x)) {</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">    8455291 :         } else if (std::isinf(x)) {</span></a>
 <a name="349"><span class="lineNum">     349 </span>            :             return 1;</a>
 <a name="350"><span class="lineNum">     350 </span>            :         }</a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
 <a name="352"><span class="lineNum">     352 </span>            :         /* Asymptotic regime where a ~ x; see [2]. */</a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">    8735237 :         absxma_a = std::abs(x - a) / a;</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">    8735237 :         if ((a &gt; detail::igam_SMALL) &amp;&amp; (a &lt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_SMALLRATIO)) {</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     936322 :             return detail::asymptotic_series(a, x, detail::IGAM);</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     161787 :         } else if ((a &gt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_LARGERATIO / std::sqrt(a))) {</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     139657 :             return detail::asymptotic_series(a, x, detail::IGAM);</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">    8455285 :         absxma_a = std::abs(x - a) / a;</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">    8455285 :         if ((a &gt; detail::igam_SMALL) &amp;&amp; (a &lt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_SMALLRATIO)) {</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     936548 :             return detail::asymptotic_series(a, x, detail::IGAM);</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     161819 :         } else if ((a &gt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_LARGERATIO / std::sqrt(a))) {</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     139677 :             return detail::asymptotic_series(a, x, detail::IGAM);</span></a>
 <a name="358"><span class="lineNum">     358 </span>            :         }</a>
 <a name="359"><span class="lineNum">     359 </span>            : </a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">    7659258 :         if ((x &gt; 1.0) &amp;&amp; (x &gt; a)) {</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">    2196603 :             return (1.0 - igamc(a, x));</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">    7379060 :         if ((x &gt; 1.0) &amp;&amp; (x &gt; a)) {</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">    2175837 :             return (1.0 - igamc(a, x));</span></a>
 <a name="362"><span class="lineNum">     362 </span>            :         }</a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">    5462655 :         return detail::igam_series(a, x);</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">    5203223 :         return detail::igam_series(a, x);</span></a>
 <a name="365"><span class="lineNum">     365 </span>            :     }</a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">    3143590 :     XSF_HOST_DEVICE double igamc(double a, double x) {</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">    3143590 :         double absxma_a;</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">    3194469 :     XSF_HOST_DEVICE double igamc(double a, double x) {</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">    3194469 :         double absxma_a;</span></a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">    3143590 :         if (x &lt; 0 || a &lt; 0) {</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        881 :             set_error(&quot;gammaincc&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">        881 :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">    3142709 :         } else if (a == 0) {</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">    3194469 :         if (x &lt; 0 || a &lt; 0) {</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        863 :             set_error(&quot;gammaincc&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">        863 :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">    3193606 :         } else if (a == 0) {</span></a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineCov">          3 :             if (x &gt; 0) {</span></a>
 <a name="375"><span class="lineNum">     375 </span>            :                 return 0;</a>
 <a name="376"><span class="lineNum">     376 </span>            :             } else {</a>
 <a name="377"><span class="lineNum">     377 </span>            :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="378"><span class="lineNum">     378 </span>            :             }</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">    3142706 :         } else if (x == 0) {</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">    3193603 :         } else if (x == 0) {</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :             return 1;</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">    3142606 :         } else if (std::isinf(a)) {</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">    3193435 :         } else if (std::isinf(a)) {</span></a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineCov">          4 :             if (std::isinf(x)) {</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="384"><span class="lineNum">     384 </span>            :             }</a>
 <a name="385"><span class="lineNum">     385 </span>            :             return 1;</a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">    3142602 :         } else if (std::isinf(x)) {</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">    3193431 :         } else if (std::isinf(x)) {</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :             return 0;</a>
 <a name="388"><span class="lineNum">     388 </span>            :         }</a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
 <a name="390"><span class="lineNum">     390 </span>            :         /* Asymptotic regime where a ~ x; see [2]. */</a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">    3142600 :         absxma_a = std::abs(x - a) / a;</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">    3142600 :         if ((a &gt; detail::igam_SMALL) &amp;&amp; (a &lt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_SMALLRATIO)) {</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">      72503 :             return detail::asymptotic_series(a, x, detail::IGAMC);</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">      59962 :         } else if ((a &gt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_LARGERATIO / std::sqrt(a))) {</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      18430 :             return detail::asymptotic_series(a, x, detail::IGAMC);</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">    3193429 :         absxma_a = std::abs(x - a) / a;</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">    3193429 :         if ((a &gt; detail::igam_SMALL) &amp;&amp; (a &lt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_SMALLRATIO)) {</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">      72517 :             return detail::asymptotic_series(a, x, detail::IGAMC);</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">      59954 :         } else if ((a &gt; detail::igam_LARGE) &amp;&amp; (absxma_a &lt; detail::igam_LARGERATIO / std::sqrt(a))) {</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      18434 :             return detail::asymptotic_series(a, x, detail::IGAMC);</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :         }</a>
 <a name="397"><span class="lineNum">     397 </span>            : </a>
 <a name="398"><span class="lineNum">     398 </span>            :         /* Everywhere else; see [2]. */</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">    3051667 :         if (x &gt; 1.1) {</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">    2911346 :             if (x &lt; a) {</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       8128 :                 return 1.0 - detail::igam_series(a, x);</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">    3102478 :         if (x &gt; 1.1) {</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">    2917555 :             if (x &lt; a) {</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">      10359 :                 return 1.0 - detail::igam_series(a, x);</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :             } else {</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">    2903218 :                 return detail::igamc_continued_fraction(a, x);</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">    2907196 :                 return detail::igamc_continued_fraction(a, x);</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :             }</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     140321 :         } else if (x &lt;= 0.5) {</span></a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">      50285 :             if (-0.4 / std::log(x) &lt; a) {</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">      30905 :                 return 1.0 - detail::igam_series(a, x);</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     184923 :         } else if (x &lt;= 0.5) {</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">      75511 :             if (-0.4 / std::log(x) &lt; a) {</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">      56094 :                 return 1.0 - detail::igam_series(a, x);</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :             } else {</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">      19380 :                 return detail::igamc_series(a, x);</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">      19417 :                 return detail::igamc_series(a, x);</span></a>
 <a name="410"><span class="lineNum">     410 </span>            :             }</a>
 <a name="411"><span class="lineNum">     411 </span>            :         } else {</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">      90036 :             if (x * 1.1 &lt; a) {</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      12489 :                 return 1.0 - detail::igam_series(a, x);</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     109412 :             if (x * 1.1 &lt; a) {</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      25524 :                 return 1.0 - detail::igam_series(a, x);</span></a>
 <a name="414"><span class="lineNum">     414 </span>            :             } else {</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">      77547 :                 return detail::igamc_series(a, x);</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">      83888 :                 return detail::igamc_series(a, x);</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :             }</a>
 <a name="417"><span class="lineNum">     417 </span>            :         }</a>
 <a name="418"><span class="lineNum">     418 </span>            :     }</a>

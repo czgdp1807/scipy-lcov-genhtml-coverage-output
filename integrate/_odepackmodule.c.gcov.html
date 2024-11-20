@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - integrate/_odepackmodule.c</title>
+  <title>LCOV - lcov.info - integrate/_odepackmodule.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">326</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -895,26 +895,26 @@
 <a name="825"><span class="lineNum">     825 </span>            : };</a>
 <a name="826"><span class="lineNum">     826 </span>            : </a>
 <a name="827"><span class="lineNum">     827 </span>            : PyMODINIT_FUNC</a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">          1 : PyInit__odepack(void)</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">          3 : PyInit__odepack(void)</span></a>
 <a name="829"><span class="lineNum">     829 </span>            : {</a>
-<a name="830"><span class="lineNum">     830 </span><span class="lineCov">          1 :     PyObject *module, *mdict;</span></a>
+<a name="830"><span class="lineNum">     830 </span><span class="lineCov">          3 :     PyObject *module, *mdict;</span></a>
 <a name="831"><span class="lineNum">     831 </span>            : </a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          1 :     import_array();</span></a>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          3 :     import_array();</span></a>
 <a name="833"><span class="lineNum">     833 </span>            : </a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">          1 :     module = PyModule_Create(&amp;moduledef);</span></a>
-<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          1 :     if (module == NULL) {</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">          3 :     module = PyModule_Create(&amp;moduledef);</span></a>
+<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          3 :     if (module == NULL) {</span></a>
 <a name="836"><span class="lineNum">     836 </span>            :         return NULL;</a>
 <a name="837"><span class="lineNum">     837 </span>            :     }</a>
 <a name="838"><span class="lineNum">     838 </span>            : </a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">          1 :     mdict = PyModule_GetDict(module);</span></a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          1 :     if (mdict == NULL) {</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">          3 :     mdict = PyModule_GetDict(module);</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          3 :     if (mdict == NULL) {</span></a>
 <a name="841"><span class="lineNum">     841 </span>            :         return NULL;</a>
 <a name="842"><span class="lineNum">     842 </span>            :     }</a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineCov">          1 :     odepack_error = PyErr_NewException(&quot;_odepack.error&quot;, NULL, NULL);</span></a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          1 :     if (odepack_error == NULL) {</span></a>
+<a name="843"><span class="lineNum">     843 </span><span class="lineCov">          3 :     odepack_error = PyErr_NewException(&quot;_odepack.error&quot;, NULL, NULL);</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          3 :     if (odepack_error == NULL) {</span></a>
 <a name="845"><span class="lineNum">     845 </span>            :         return NULL;</a>
 <a name="846"><span class="lineNum">     846 </span>            :     }</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          1 :     if (PyDict_SetItemString(mdict, &quot;error&quot;, odepack_error)) {</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          3 :     if (PyDict_SetItemString(mdict, &quot;error&quot;, odepack_error)) {</span></a>
 <a name="848"><span class="lineNum">     848 </span>            :         return NULL;</a>
 <a name="849"><span class="lineNum">     849 </span>            :     }</a>
 <a name="850"><span class="lineNum">     850 </span>            : </a>

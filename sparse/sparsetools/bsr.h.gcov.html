@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/sparsetools/bsr.h</title>
+  <title>LCOV - lcov.info - sparse/sparsetools/bsr.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">273</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">393</td>
@@ -791,53 +791,53 @@
 <a name="721"><span class="lineNum">     721 </span>            :  *</a>
 <a name="722"><span class="lineNum">     722 </span>            :  */</a>
 <a name="723"><span class="lineNum">     723 </span>            : template &lt;class I, class T&gt;</a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineCov">      12359 : void bsr_tocsr(const I n_brow, const I n_bcol, const I R, const I C,</span></a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">      12363 : void bsr_tocsr(const I n_brow, const I n_bcol, const I R, const I C,</span></a>
 <a name="725"><span class="lineNum">     725 </span>            :                const I Ap[], const I Aj[], const T Ax[],</a>
 <a name="726"><span class="lineNum">     726 </span>            :                      I Bp[],       I Bj[],       T Bx[])</a>
 <a name="727"><span class="lineNum">     727 </span>            : {</a>
 <a name="728"><span class="lineNum">     728 </span>            :     // number of elements per block</a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">      12359 :     const I RC = R*C;</span></a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">      12363 :     const I RC = R*C;</span></a>
 <a name="730"><span class="lineNum">     730 </span>            :     // nnz</a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">      12359 :     const I nnz = Ap[n_brow] * RC;</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">      12363 :     const I nnz = Ap[n_brow] * RC;</span></a>
 <a name="732"><span class="lineNum">     732 </span>            :     // last element in Bp is always nnz</a>
-<a name="733"><span class="lineNum">     733 </span><span class="lineCov">      12359 :     Bp[n_brow * R] = nnz;</span></a>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">      12363 :     Bp[n_brow * R] = nnz;</span></a>
 <a name="734"><span class="lineNum">     734 </span>            :     // loop for block row</a>
-<a name="735"><span class="lineNum">     735 </span><span class="lineCov">      54629 :     for(I brow = 0; brow &lt; n_brow; brow++){</span></a>
+<a name="735"><span class="lineNum">     735 </span><span class="lineCov">      54653 :     for(I brow = 0; brow &lt; n_brow; brow++){</span></a>
 <a name="736"><span class="lineNum">     736 </span>            :         // size of block rows</a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">      42270 :         const I brow_size = Ap[brow + 1] - Ap[brow];</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">      42290 :         const I brow_size = Ap[brow + 1] - Ap[brow];</span></a>
 <a name="738"><span class="lineNum">     738 </span>            :         // size of row in csr</a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">      42270 :         const I row_size = C * brow_size;</span></a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">      42290 :         const I row_size = C * brow_size;</span></a>
 <a name="740"><span class="lineNum">     740 </span>            :         // loop of rows inside block</a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">      92754 :         for(I r = 0; r &lt; R; r++){</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">      92794 :         for(I r = 0; r &lt; R; r++){</span></a>
 <a name="742"><span class="lineNum">     742 </span>            :             // csr row number</a>
-<a name="743"><span class="lineNum">     743 </span><span class="lineCov">      50484 :             const I row = R * brow + r;</span></a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">      50484 :             Bp[row] = RC * Ap[brow] + r * row_size;</span></a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">      50504 :             const I row = R * brow + r;</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">      50504 :             Bp[row] = RC * Ap[brow] + r * row_size;</span></a>
 <a name="745"><span class="lineNum">     745 </span>            :             // loop for block column</a>
 <a name="746"><span class="lineNum">     746 </span>            :             // block index inside row as loop variable</a>
-<a name="747"><span class="lineNum">     747 </span><span class="lineCov">     139822 :             for (I bjj = 0; bjj &lt; brow_size; bjj++)</span></a>
+<a name="747"><span class="lineNum">     747 </span><span class="lineCov">     140038 :             for (I bjj = 0; bjj &lt; brow_size; bjj++)</span></a>
 <a name="748"><span class="lineNum">     748 </span>            :             {</a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">      89338 :                 const I b_ind = Ap[brow] + bjj;</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">      89534 :                 const I b_ind = Ap[brow] + bjj;</span></a>
 <a name="750"><span class="lineNum">     750 </span>            :                 // block column number</a>
-<a name="751"><span class="lineNum">     751 </span><span class="lineCov">      89338 :                 const I bcol = Aj[b_ind];</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">      89534 :                 const I bcol = Aj[b_ind];</span></a>
 <a name="752"><span class="lineNum">     752 </span>            :                 // loop for columns inside block</a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">     211578 :                 for (I c = 0; c &lt; C; c++)</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">     211970 :                 for (I c = 0; c &lt; C; c++)</span></a>
 <a name="754"><span class="lineNum">     754 </span>            :                 {</a>
 <a name="755"><span class="lineNum">     755 </span>            :                     // bsr data index in Ax</a>
 <a name="756"><span class="lineNum">     756 </span>            :                     // Ax is in C order</a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">     122240 :                     const I b_data_ind = RC * b_ind + C * r + c;</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">     122436 :                     const I b_data_ind = RC * b_ind + C * r + c;</span></a>
 <a name="758"><span class="lineNum">     758 </span>            :                     // csr column number</a>
-<a name="759"><span class="lineNum">     759 </span><span class="lineCov">     122240 :                     const I col = C * bcol + c;</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">     122436 :                     const I col = C * bcol + c;</span></a>
 <a name="760"><span class="lineNum">     760 </span>            :                     // csr data anc col index in Bj and Bx</a>
 <a name="761"><span class="lineNum">     761 </span>            :                     // start from Bp[row], offset by current bjj*C and c</a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">     122240 :                     const I data_ind = Bp[row] + bjj * C + c;</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">     122436 :                     const I data_ind = Bp[row] + bjj * C + c;</span></a>
 <a name="763"><span class="lineNum">     763 </span>            :                     // assign col and data to Bj and Bx</a>
-<a name="764"><span class="lineNum">     764 </span><span class="lineCov">     122240 :                     Bj[data_ind] = col;</span></a>
-<a name="765"><span class="lineNum">     765 </span><span class="lineCov">     122240 :                     Bx[data_ind] = Ax[b_data_ind];</span></a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">     122436 :                     Bj[data_ind] = col;</span></a>
+<a name="765"><span class="lineNum">     765 </span><span class="lineCov">     122436 :                     Bx[data_ind] = Ax[b_data_ind];</span></a>
 <a name="766"><span class="lineNum">     766 </span>            :                 }</a>
 <a name="767"><span class="lineNum">     767 </span>            :             }</a>
 <a name="768"><span class="lineNum">     768 </span>            :         }</a>
 <a name="769"><span class="lineNum">     769 </span>            :     }</a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">      12359 : }</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">      12363 : }</span></a>
 <a name="771"><span class="lineNum">     771 </span>            : </a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span>            : template &lt;class I, class T&gt;</a>

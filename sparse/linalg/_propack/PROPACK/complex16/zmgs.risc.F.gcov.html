@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/complex16/zmgs.risc.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/complex16/zmgs.risc.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">21</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -78,7 +78,7 @@
 <a name="8"><span class="lineNum">       8 </span>            : c Probably because it exposes possibility of using fused multiply-add</a>
 <a name="9"><span class="lineNum">       9 </span>            : c instructions in the inner loop(?).</a>
 <a name="10"><span class="lineNum">      10 </span>            : </a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">       1174 :       subroutine zmgs(n,k,V,ldv,vnew,index)</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">       1177 :       subroutine zmgs(n,k,V,ldv,vnew,index)</span></a>
 <a name="12"><span class="lineNum">      12 </span>            : c     </a>
 <a name="13"><span class="lineNum">      13 </span>            : c     Modified Gram-Schmidt orthogonalization:</a>
 <a name="14"><span class="lineNum">      14 </span>            : c     Orthogalizes vnew against the k vectors in V by the</a>
@@ -118,38 +118,38 @@
 <a name="48"><span class="lineNum">      48 </span>            : #endif</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : c     Check for quick return</a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       1174 :       if ((k.le.0).or.(n.le.0)) return</span></a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">       1174 :       iblck = 1</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       1174 :       p = index(iblck)</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       1174 :       q = index(iblck+1)</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       2350 :       do while(p.le.k .and.p .gt.0 .and. p.le.q)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       1177 :       if ((k.le.0).or.(n.le.0)) return</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">       1177 :       iblck = 1</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       1177 :       p = index(iblck)</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       1177 :       q = index(iblck+1)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       2358 :       do while(p.le.k .and.p .gt.0 .and. p.le.q)</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : c     Select the next block of columns from V</a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       1176 :          ndot = ndot + (q-p+1)</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1176 :          coef = dcmplx(zero,zero)</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       1181 :          ndot = ndot + (q-p+1)</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1181 :          coef = dcmplx(zero,zero)</span></a>
 <a name="59"><span class="lineNum">      59 </span>            : CDIR$ LOOP COUNT(10000)</a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">      27499 :          do j=1,n</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      27499 :             coef = coef + dconjg(V(j,p))*vnew(j)</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">      28284 :          do j=1,n</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      28284 :             coef = coef + dconjg(V(j,p))*vnew(j)</span></a>
 <a name="62"><span class="lineNum">      62 </span>            :          enddo         </a>
 <a name="63"><span class="lineNum">      63 </span>            : c   interleaved (software pipelined) loops improve performance</a>
 <a name="64"><span class="lineNum">      64 </span>            : c   of inner loop on machines with fused multiply-add.</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">      15406 :          do i=p+1,q</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">      15080 :          do i=p+1,q</span></a>
 <a name="66"><span class="lineNum">      66 </span>            :             newcoef = dcmplx(zero,zero)</a>
 <a name="67"><span class="lineNum">      67 </span>            : CDIR$ IVDEP</a>
 <a name="68"><span class="lineNum">      68 </span>            : CDIR$ LOOP COUNT(10000)</a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">    1128368 :             do j=1,n</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">    1114138 :                vn0 = vnew(j) - coef*V(j,i-1)</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">    1114138 :                newcoef = newcoef + dconjg(V(j,i))*vn0 </span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">    1128368 :                vnew(j) = vn0</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">    1111978 :             do j=1,n</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">    1098079 :                vn0 = vnew(j) - coef*V(j,i-1)</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">    1098079 :                newcoef = newcoef + dconjg(V(j,i))*vn0 </span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">    1111978 :                vnew(j) = vn0</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :             enddo</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">      15406 :             coef = newcoef</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">      15080 :             coef = newcoef</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :          enddo</a>
 <a name="76"><span class="lineNum">      76 </span>            : CDIR$ LOOP COUNT(10000)</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      27499 :          do j=1,n</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">      27499 :             vnew(j) = vnew(j) - coef*V(j,q)</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      28284 :          do j=1,n</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">      28284 :             vnew(j) = vnew(j) - coef*V(j,q)</span></a>
 <a name="79"><span class="lineNum">      79 </span>            :          enddo</a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1176 :          iblck = iblck + 2</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1176 :          p = index(iblck)</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1176 :          q = index(iblck+1)</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1181 :          iblck = iblck + 2</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1181 :          p = index(iblck)</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1181 :          q = index(iblck+1)</span></a>
 <a name="83"><span class="lineNum">      83 </span>            :       enddo</a>
 <a name="84"><span class="lineNum">      84 </span>            :       end</a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>

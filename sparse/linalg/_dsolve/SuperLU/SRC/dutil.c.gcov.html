@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/dutil.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/dutil.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">66</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -106,25 +106,25 @@
 <a name="36"><span class="lineNum">      36 </span>            : #include &quot;slu_ddefs.h&quot;</a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
 <a name="38"><span class="lineNum">      38 </span>            : void</a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       8055 : dCreate_CompCol_Matrix(SuperMatrix *A, int m, int n, int_t nnz, </span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       8067 : dCreate_CompCol_Matrix(SuperMatrix *A, int m, int n, int_t nnz, </span></a>
 <a name="40"><span class="lineNum">      40 </span>            :                        double *nzval, int_t *rowind, int_t *colptr,</a>
 <a name="41"><span class="lineNum">      41 </span>            :                        Stype_t stype, Dtype_t dtype, Mtype_t mtype)</a>
 <a name="42"><span class="lineNum">      42 </span>            : {</a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       8055 :     NCformat *Astore;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       8067 :     NCformat *Astore;</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       8055 :     A-&gt;Stype = stype;</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       8055 :     A-&gt;Dtype = dtype;</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       8055 :     A-&gt;Mtype = mtype;</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       8055 :     A-&gt;nrow = m;</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       8055 :     A-&gt;ncol = n;</span></a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">       8055 :     A-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(NCformat) );</span></a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       8055 :     if ( !(A-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for A-&gt;Store&quot;);</span></a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">       8055 :     Astore = A-&gt;Store;</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       8055 :     Astore-&gt;nnz = nnz;</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       8055 :     Astore-&gt;nzval = nzval;</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       8055 :     Astore-&gt;rowind = rowind;</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       8055 :     Astore-&gt;colptr = colptr;</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       8055 : }</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       8067 :     A-&gt;Stype = stype;</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       8067 :     A-&gt;Dtype = dtype;</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       8067 :     A-&gt;Mtype = mtype;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       8067 :     A-&gt;nrow = m;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       8067 :     A-&gt;ncol = n;</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">       8067 :     A-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(NCformat) );</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       8067 :     if ( !(A-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for A-&gt;Store&quot;);</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">       8067 :     Astore = A-&gt;Store;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       8067 :     Astore-&gt;nnz = nnz;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       8067 :     Astore-&gt;nzval = nzval;</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       8067 :     Astore-&gt;rowind = rowind;</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       8067 :     Astore-&gt;colptr = colptr;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       8067 : }</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
 <a name="59"><span class="lineNum">      59 </span>            : void</a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">        675 : dCreate_CompRow_Matrix(SuperMatrix *A, int m, int n, int_t nnz, </span></a>
@@ -170,22 +170,22 @@
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span>            : </a>
 <a name="102"><span class="lineNum">     102 </span>            : void</a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">      30260 : dCreate_Dense_Matrix(SuperMatrix *X, int m, int n, double *x, int ldx,</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">      30318 : dCreate_Dense_Matrix(SuperMatrix *X, int m, int n, double *x, int ldx,</span></a>
 <a name="104"><span class="lineNum">     104 </span>            :                     Stype_t stype, Dtype_t dtype, Mtype_t mtype)</a>
 <a name="105"><span class="lineNum">     105 </span>            : {</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">      30260 :     DNformat    *Xstore;</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">      30318 :     DNformat    *Xstore;</span></a>
 <a name="107"><span class="lineNum">     107 </span>            :     </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">      30260 :     X-&gt;Stype = stype;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      30260 :     X-&gt;Dtype = dtype;</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      30260 :     X-&gt;Mtype = mtype;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      30260 :     X-&gt;nrow = m;</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      30260 :     X-&gt;ncol = n;</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      30260 :     X-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(DNformat) );</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      30260 :     if ( !(X-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for X-&gt;Store&quot;);</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      30260 :     Xstore = (DNformat *) X-&gt;Store;</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      30260 :     Xstore-&gt;lda = ldx;</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      30260 :     Xstore-&gt;nzval = (double *) x;</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">      30260 : }</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">      30318 :     X-&gt;Stype = stype;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      30318 :     X-&gt;Dtype = dtype;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      30318 :     X-&gt;Mtype = mtype;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      30318 :     X-&gt;nrow = m;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      30318 :     X-&gt;ncol = n;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      30318 :     X-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(DNformat) );</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      30318 :     if ( !(X-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for X-&gt;Store&quot;);</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      30318 :     Xstore = (DNformat *) X-&gt;Store;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      30318 :     Xstore-&gt;lda = ldx;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      30318 :     Xstore-&gt;nzval = (double *) x;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">      30318 : }</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            : void</a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 : dCopy_Dense_Matrix(int M, int N, double *X, int ldx,</span></a>
@@ -201,31 +201,31 @@
 <a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="132"><span class="lineNum">     132 </span>            : </a>
 <a name="133"><span class="lineNum">     133 </span>            : void</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       4031 : dCreate_SuperNode_Matrix(SuperMatrix *L, int m, int n, int_t nnz, </span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       4037 : dCreate_SuperNode_Matrix(SuperMatrix *L, int m, int n, int_t nnz, </span></a>
 <a name="135"><span class="lineNum">     135 </span>            :                         double *nzval, int_t *nzval_colptr, int_t *rowind,</a>
 <a name="136"><span class="lineNum">     136 </span>            :                         int_t *rowind_colptr, int *col_to_sup, int *sup_to_col,</a>
 <a name="137"><span class="lineNum">     137 </span>            :                         Stype_t stype, Dtype_t dtype, Mtype_t mtype)</a>
 <a name="138"><span class="lineNum">     138 </span>            : {</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       4031 :     SCformat *Lstore;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       4037 :     SCformat *Lstore;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       4031 :     L-&gt;Stype = stype;</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       4031 :     L-&gt;Dtype = dtype;</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       4031 :     L-&gt;Mtype = mtype;</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       4031 :     L-&gt;nrow = m;</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4031 :     L-&gt;ncol = n;</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       4031 :     L-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(SCformat) );</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       4031 :     if ( !(L-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for L-&gt;Store&quot;);</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       4031 :     Lstore = L-&gt;Store;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       4031 :     Lstore-&gt;nnz = nnz;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       4031 :     Lstore-&gt;nsuper = col_to_sup[n];</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       4031 :     Lstore-&gt;nzval = nzval;</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       4031 :     Lstore-&gt;nzval_colptr = nzval_colptr;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">       4031 :     Lstore-&gt;rowind = rowind;</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       4031 :     Lstore-&gt;rowind_colptr = rowind_colptr;</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       4031 :     Lstore-&gt;col_to_sup = col_to_sup;</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       4031 :     Lstore-&gt;sup_to_col = sup_to_col;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       4037 :     L-&gt;Stype = stype;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       4037 :     L-&gt;Dtype = dtype;</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       4037 :     L-&gt;Mtype = mtype;</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       4037 :     L-&gt;nrow = m;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4037 :     L-&gt;ncol = n;</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       4037 :     L-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(SCformat) );</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       4037 :     if ( !(L-&gt;Store) ) ABORT(&quot;SUPERLU_MALLOC fails for L-&gt;Store&quot;);</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       4037 :     Lstore = L-&gt;Store;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       4037 :     Lstore-&gt;nnz = nnz;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       4037 :     Lstore-&gt;nsuper = col_to_sup[n];</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       4037 :     Lstore-&gt;nzval = nzval;</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       4037 :     Lstore-&gt;nzval_colptr = nzval_colptr;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">       4037 :     Lstore-&gt;rowind = rowind;</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       4037 :     Lstore-&gt;rowind_colptr = rowind_colptr;</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       4037 :     Lstore-&gt;col_to_sup = col_to_sup;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       4037 :     Lstore-&gt;sup_to_col = sup_to_col;</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       4031 : }</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       4037 : }</span></a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
 <a name="161"><span class="lineNum">     161 </span>            : /*! \brief Convert a row compressed storage into a column compressed storage.</a>
@@ -460,11 +460,11 @@
 <a name="390"><span class="lineNum">     390 </span>            : /*! \brief Fills a double precision array with a given value.</a>
 <a name="391"><span class="lineNum">     391 </span>            :  */</a>
 <a name="392"><span class="lineNum">     392 </span>            : void </a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       8048 : dfill(double *a, int alen, double dval)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       8060 : dfill(double *a, int alen, double dval)</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : {</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       8048 :     register int i;</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">   35643728 :     for (i = 0; i &lt; alen; i++) a[i] = dval;</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       8048 : }</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       8060 :     register int i;</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">   35701700 :     for (i = 0; i &lt; alen; i++) a[i] = dval;</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       8060 : }</span></a>
 <a name="398"><span class="lineNum">     398 </span>            : </a>
 <a name="399"><span class="lineNum">     399 </span>            : </a>
 <a name="400"><span class="lineNum">     400 </span>            : </a>

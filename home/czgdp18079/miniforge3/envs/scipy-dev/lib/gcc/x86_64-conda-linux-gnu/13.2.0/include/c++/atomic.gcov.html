@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/atomic</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/atomic</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">10</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -923,7 +923,7 @@
 <a name="853"><span class="lineNum">     853 </span>            :       atomic&amp; operator=(const atomic&amp;) = delete;</a>
 <a name="854"><span class="lineNum">     854 </span>            :       atomic&amp; operator=(const atomic&amp;) volatile = delete;</a>
 <a name="855"><span class="lineNum">     855 </span>            : </a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">       1400 :       constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">       1410 :       constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }</span></a>
 <a name="857"><span class="lineNum">     857 </span>            : </a>
 <a name="858"><span class="lineNum">     858 </span>            :       using __base_type::operator __integral_type;</a>
 <a name="859"><span class="lineNum">     859 </span>            :       using __base_type::operator=;</a>
@@ -1559,10 +1559,10 @@
 <a name="1489"><span class="lineNum">    1489 </span>            : </a>
 <a name="1490"><span class="lineNum">    1490 </span>            :   template&lt;typename _ITp&gt;</a>
 <a name="1491"><span class="lineNum">    1491 </span>            :     inline _ITp</a>
-<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">   54754633 :     atomic_fetch_add_explicit(atomic&lt;_ITp&gt;* __a,</span></a>
+<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">   54738464 :     atomic_fetch_add_explicit(atomic&lt;_ITp&gt;* __a,</span></a>
 <a name="1493"><span class="lineNum">    1493 </span>            :                               __atomic_diff_t&lt;_ITp&gt; __i,</a>
 <a name="1494"><span class="lineNum">    1494 </span>            :                               memory_order __m) noexcept</a>
-<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">   54754633 :     { return __a-&gt;fetch_add(__i, __m); }</span></a>
+<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">   54738464 :     { return __a-&gt;fetch_add(__i, __m); }</span></a>
 <a name="1496"><span class="lineNum">    1496 </span>            : </a>
 <a name="1497"><span class="lineNum">    1497 </span>            :   template&lt;typename _ITp&gt;</a>
 <a name="1498"><span class="lineNum">    1498 </span>            :     inline _ITp</a>
@@ -1573,10 +1573,10 @@
 <a name="1503"><span class="lineNum">    1503 </span>            : </a>
 <a name="1504"><span class="lineNum">    1504 </span>            :   template&lt;typename _ITp&gt;</a>
 <a name="1505"><span class="lineNum">    1505 </span>            :     inline _ITp</a>
-<a name="1506"><span class="lineNum">    1506 </span><span class="lineCov">   54754633 :     atomic_fetch_sub_explicit(atomic&lt;_ITp&gt;* __a,</span></a>
+<a name="1506"><span class="lineNum">    1506 </span><span class="lineCov">   54738464 :     atomic_fetch_sub_explicit(atomic&lt;_ITp&gt;* __a,</span></a>
 <a name="1507"><span class="lineNum">    1507 </span>            :                               __atomic_diff_t&lt;_ITp&gt; __i,</a>
 <a name="1508"><span class="lineNum">    1508 </span>            :                               memory_order __m) noexcept</a>
-<a name="1509"><span class="lineNum">    1509 </span><span class="lineCov">   54754633 :     { return __a-&gt;fetch_sub(__i, __m); }</span></a>
+<a name="1509"><span class="lineNum">    1509 </span><span class="lineCov">   54738464 :     { return __a-&gt;fetch_sub(__i, __m); }</span></a>
 <a name="1510"><span class="lineNum">    1510 </span>            : </a>
 <a name="1511"><span class="lineNum">    1511 </span>            :   template&lt;typename _ITp&gt;</a>
 <a name="1512"><span class="lineNum">    1512 </span>            :     inline _ITp</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/gamma.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/gamma.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">126</td>
-            <td class="headerCovTableEntry">130</td>
-            <td class="headerCovTableEntryHi">96.9 %</td>
+            <td class="headerCovTableEntry">133</td>
+            <td class="headerCovTableEntry">136</td>
+            <td class="headerCovTableEntryHi">97.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -193,257 +193,279 @@
 <a name="123"><span class="lineNum">     123 </span>            :         /* Gamma function computed by Stirling's formula.</a>
 <a name="124"><span class="lineNum">     124 </span>            :          * The polynomial STIR is valid for 33 &lt;= x &lt;= 172.</a>
 <a name="125"><span class="lineNum">     125 </span>            :          */</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">    1287241 :         XSF_HOST_DEVICE inline double stirf(double x) {</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">    1287241 :             double y, w, v;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">    1274599 :         XSF_HOST_DEVICE inline double stirf(double x) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">    1274599 :             double y, w, v;</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">    1287241 :             if (x &gt;= MAXGAM) {</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">    1274599 :             if (x &gt;= MAXGAM) {</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :                 return (std::numeric_limits&lt;double&gt;::infinity());</a>
 <a name="131"><span class="lineNum">     131 </span>            :             }</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">    1287241 :             w = 1.0 / x;</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">    1287241 :             w = 1.0 + w * xsf::cephes::polevl(w, gamma_STIR, 4);</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">    1287241 :             y = std::exp(x);</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">    1287241 :             if (x &gt; MAXSTIR) { /* Avoid overflow in pow() */</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      22078 :                 v = std::pow(x, 0.5 * x - 0.25);</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">      22078 :                 y = v * (v / y);</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">    1274599 :             w = 1.0 / x;</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">    1274599 :             w = 1.0 + w * xsf::cephes::polevl(w, gamma_STIR, 4);</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">    1274599 :             y = std::exp(x);</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">    1274599 :             if (x &gt; MAXSTIR) { /* Avoid overflow in pow() */</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      21744 :                 v = std::pow(x, 0.5 * x - 0.25);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">      21744 :                 y = v * (v / y);</span></a>
 <a name="138"><span class="lineNum">     138 </span>            :             } else {</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">    1265163 :                 y = std::pow(x, x - 0.5) / y;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">    1252855 :                 y = std::pow(x, x - 0.5) / y;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :             }</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">    1287241 :             y = SQRTPI * y * w;</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">    1287241 :             return (y);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">    1274599 :             y = SQRTPI * y * w;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">    1274599 :             return (y);</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :         }</a>
 <a name="144"><span class="lineNum">     144 </span>            :     } // namespace detail</a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    6530929 :     XSF_HOST_DEVICE inline double Gamma(double x) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    6530929 :         double p, q, z;</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">    6530929 :         int i;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    6530929 :         int sgngam = 1;</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    7076162 :     XSF_HOST_DEVICE inline double Gamma(double x) {</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    7076162 :         double p, q, z;</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">    7076162 :         int i;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    7076162 :         int sgngam = 1;</span></a>
 <a name="150"><span class="lineNum">     150 </span>            : </a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    6530929 :         if (!std::isfinite(x)) {</span></a>
-<a name="152"><span class="lineNum">     152 </span>            :             return x;</a>
-<a name="153"><span class="lineNum">     153 </span>            :         }</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    6530262 :         q = std::abs(x);</span></a>
-<a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">    6530262 :         if (q &gt; 33.0) {</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">    1287241 :             if (x &lt; 0.0) {</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       3321 :                 p = std::floor(q);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       3321 :                 if (p == q) {</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :                 gamnan:</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        733 :                     set_error(&quot;Gamma&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">        733 :                     return (std::numeric_limits&lt;double&gt;::infinity());</span></a>
-<a name="163"><span class="lineNum">     163 </span>            :                 }</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       3321 :                 i = p;</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       3321 :                 if ((i &amp; 1) == 0) {</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1808 :                     sgngam = -1;</span></a>
-<a name="167"><span class="lineNum">     167 </span>            :                 }</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       3321 :                 z = q - p;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       3321 :                 if (z &gt; 0.5) {</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        619 :                     p += 1.0;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        619 :                     z = q - p;</span></a>
-<a name="172"><span class="lineNum">     172 </span>            :                 }</a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       3321 :                 z = q * sinpi(z);</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       3321 :                 if (z == 0.0) {</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :                     return (sgngam * std::numeric_limits&lt;double&gt;::infinity());</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    7076162 :         if (!std::isfinite(x)) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        501 :             if (x &gt; 0) {</span></a>
+<a name="153"><span class="lineNum">     153 </span>            :                 // gamma(+inf) = +inf</a>
+<a name="154"><span class="lineNum">     154 </span>            :                 return x;</a>
+<a name="155"><span class="lineNum">     155 </span>            :             }</a>
+<a name="156"><span class="lineNum">     156 </span>            :             // gamma(NaN) and gamma(-inf) both should equal NaN.</a>
+<a name="157"><span class="lineNum">     157 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="158"><span class="lineNum">     158 </span>            :         }</a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">    7075661 :         if (x == 0) {</span></a>
+<a name="161"><span class="lineNum">     161 </span>            :             /* For pole at zero, value depends on sign of zero.</a>
+<a name="162"><span class="lineNum">     162 </span>            :              * +inf when approaching from right, -inf when approaching</a>
+<a name="163"><span class="lineNum">     163 </span>            :              * from left. */</a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        148 :             return std::copysign(std::numeric_limits&lt;double&gt;::infinity(), x);</span></a>
+<a name="165"><span class="lineNum">     165 </span>            :         }</a>
+<a name="166"><span class="lineNum">     166 </span>            : </a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">    7075513 :         q = std::abs(x);</span></a>
+<a name="168"><span class="lineNum">     168 </span>            : </a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">    7075513 :         if (q &gt; 33.0) {</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">    1274629 :             if (x &lt; 0.0) {</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       3351 :                 p = std::floor(q);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       3351 :                 if (p == q) {</span></a>
+<a name="173"><span class="lineNum">     173 </span>            :                     // x is a negative integer. This is a pole.</a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         30 :                     set_error(&quot;Gamma&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         30 :                     return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :                 }</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       3321 :                 z = std::abs(z);</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       3321 :                 z = M_PI / (z * detail::stirf(q));</span></a>
-<a name="179"><span class="lineNum">     179 </span>            :             } else {</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">    1283920 :                 z = detail::stirf(x);</span></a>
-<a name="181"><span class="lineNum">     181 </span>            :             }</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">    1287241 :             return (sgngam * z);</span></a>
-<a name="183"><span class="lineNum">     183 </span>            :         }</a>
-<a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span>            :         z = 1.0;</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">   32970281 :         while (x &gt;= 3.0) {</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">   27727260 :             x -= 1.0;</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">   27727260 :             z *= x;</span></a>
-<a name="189"><span class="lineNum">     189 </span>            :         }</a>
-<a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">    5349146 :         while (x &lt; 0.0) {</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     107115 :             if (x &gt; -1.E-9) {</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">        990 :                 goto small;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       3321 :                 i = p;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       3321 :                 if ((i &amp; 1) == 0) {</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1808 :                     sgngam = -1;</span></a>
+<a name="180"><span class="lineNum">     180 </span>            :                 }</a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       3321 :                 z = q - p;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       3321 :                 if (z &gt; 0.5) {</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        619 :                     p += 1.0;</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        619 :                     z = q - p;</span></a>
+<a name="185"><span class="lineNum">     185 </span>            :                 }</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       3321 :                 z = q * sinpi(z);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       3321 :                 if (z == 0.0) {</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :                     return (sgngam * std::numeric_limits&lt;double&gt;::infinity());</span></a>
+<a name="189"><span class="lineNum">     189 </span>            :                 }</a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       3321 :                 z = std::abs(z);</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       3321 :                 z = M_PI / (z * detail::stirf(q));</span></a>
+<a name="192"><span class="lineNum">     192 </span>            :             } else {</a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    1271278 :                 z = detail::stirf(x);</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :             }</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">     106125 :             z /= x;</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">     106125 :             x += 1.0;</span></a>
-<a name="197"><span class="lineNum">     197 </span>            :         }</a>
-<a name="198"><span class="lineNum">     198 </span>            : </a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">    8983431 :         while (x &lt; 2.0) {</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">    3742646 :             if (x &lt; 1.e-9) {</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       1246 :                 goto small;</span></a>
-<a name="202"><span class="lineNum">     202 </span>            :             }</a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">    3741400 :             z /= x;</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    3741400 :             x += 1.0;</span></a>
-<a name="205"><span class="lineNum">     205 </span>            :         }</a>
-<a name="206"><span class="lineNum">     206 </span>            : </a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    5240785 :         if (x == 2.0) {</span></a>
-<a name="208"><span class="lineNum">     208 </span>            :             return (z);</a>
-<a name="209"><span class="lineNum">     209 </span>            :         }</a>
-<a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    3592166 :         x -= 2.0;</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">   28737328 :         p = polevl(x, detail::gamma_P, 6);</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">    3592166 :         q = polevl(x, detail::gamma_Q, 7);</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">    3592166 :         return (z * p / q);</span></a>
-<a name="215"><span class="lineNum">     215 </span>            : </a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       2236 :     small:</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       2236 :         if (x == 0.0) {</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        733 :             goto gamnan;</span></a>
-<a name="219"><span class="lineNum">     219 </span>            :         } else</a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       1503 :             return (z / ((1.0 + 0.5772156649015329 * x) * x));</span></a>
-<a name="221"><span class="lineNum">     221 </span>            :     }</a>
-<a name="222"><span class="lineNum">     222 </span>            : </a>
-<a name="223"><span class="lineNum">     223 </span>            :     namespace detail {</a>
-<a name="224"><span class="lineNum">     224 </span>            :         /* A[]: Stirling's formula expansion of log Gamma</a>
-<a name="225"><span class="lineNum">     225 </span>            :          * B[], C[]: log Gamma function between 2 and 3</a>
-<a name="226"><span class="lineNum">     226 </span>            :          */</a>
-<a name="227"><span class="lineNum">     227 </span>            :         constexpr double gamma_A[] = {8.11614167470508450300E-4, -5.95061904284301438324E-4, 7.93650340457716943945E-4,</a>
-<a name="228"><span class="lineNum">     228 </span>            :                                       -2.77777777730099687205E-3, 8.33333333333331927722E-2};</a>
-<a name="229"><span class="lineNum">     229 </span>            : </a>
-<a name="230"><span class="lineNum">     230 </span>            :         constexpr double gamma_B[] = {-1.37825152569120859100E3, -3.88016315134637840924E4, -3.31612992738871184744E5,</a>
-<a name="231"><span class="lineNum">     231 </span>            :                                       -1.16237097492762307383E6, -1.72173700820839662146E6, -8.53555664245765465627E5};</a>
-<a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span>            :         constexpr double gamma_C[] = {</a>
-<a name="234"><span class="lineNum">     234 </span>            :             /* 1.00000000000000000000E0, */</a>
-<a name="235"><span class="lineNum">     235 </span>            :             -3.51815701436523470549E2, -1.70642106651881159223E4, -2.20528590553854454839E5,</a>
-<a name="236"><span class="lineNum">     236 </span>            :             -1.13933444367982507207E6, -2.53252307177582951285E6, -2.01889141433532773231E6};</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">    1274599 :             return (sgngam * z);</span></a>
+<a name="196"><span class="lineNum">     196 </span>            :         }</a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span>            :         z = 1.0;</a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">   38677544 :         while (x &gt;= 3.0) {</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">   32876660 :             x -= 1.0;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">   32876660 :             z *= x;</span></a>
+<a name="202"><span class="lineNum">     202 </span>            :         }</a>
+<a name="203"><span class="lineNum">     203 </span>            : </a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    5922446 :         while (x &lt; 0.0) {</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">     122552 :             if (x &gt; -1.E-9) {</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        990 :                 goto small;</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :             }</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">     121562 :             z /= x;</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">     121562 :             x += 1.0;</span></a>
+<a name="210"><span class="lineNum">     210 </span>            :         }</a>
+<a name="211"><span class="lineNum">     211 </span>            : </a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">    9308461 :         while (x &lt; 2.0) {</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">    3509150 :             if (x &lt; 1.e-9) {</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        583 :                 goto small;</span></a>
+<a name="215"><span class="lineNum">     215 </span>            :             }</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">    3508567 :             z /= x;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">    3508567 :             x += 1.0;</span></a>
+<a name="218"><span class="lineNum">     218 </span>            :         }</a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    5799311 :         if (x == 2.0) {</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :             return (z);</a>
+<a name="222"><span class="lineNum">     222 </span>            :         }</a>
+<a name="223"><span class="lineNum">     223 </span>            : </a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">    3861102 :         x -= 2.0;</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">   30888816 :         p = polevl(x, detail::gamma_P, 6);</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">    3861102 :         q = polevl(x, detail::gamma_Q, 7);</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">    3861102 :         return (z * p / q);</span></a>
+<a name="228"><span class="lineNum">     228 </span>            : </a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1573 :     small:</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       1573 :         if (x == 0.0) {</span></a>
+<a name="231"><span class="lineNum">     231 </span>            :             /* For this to have happened, x must have started as a negative integer. */</a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         88 :             set_error(&quot;Gamma&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">         88 :             return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :         } else</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1485 :             return (z / ((1.0 + 0.5772156649015329 * x) * x));</span></a>
+<a name="236"><span class="lineNum">     236 </span>            :     }</a>
 <a name="237"><span class="lineNum">     237 </span>            : </a>
-<a name="238"><span class="lineNum">     238 </span>            :         /* log( sqrt( 2*pi ) ) */</a>
-<a name="239"><span class="lineNum">     239 </span>            :         constexpr double LS2PI = 0.91893853320467274178;</a>
-<a name="240"><span class="lineNum">     240 </span>            : </a>
-<a name="241"><span class="lineNum">     241 </span>            :         constexpr double MAXLGM = 2.556348e305;</a>
-<a name="242"><span class="lineNum">     242 </span>            : </a>
-<a name="243"><span class="lineNum">     243 </span>            :         /* Disable optimizations for this function on 32 bit systems when compiling with GCC.</a>
-<a name="244"><span class="lineNum">     244 </span>            :          * We've found that enabling optimizations can result in degraded precision</a>
-<a name="245"><span class="lineNum">     245 </span>            :          * for this asymptotic approximation in that case. */</a>
-<a name="246"><span class="lineNum">     246 </span>            : #if defined(__GNUC__) &amp;&amp; defined(__i386__)</a>
-<a name="247"><span class="lineNum">     247 </span>            : #pragma GCC push_options</a>
-<a name="248"><span class="lineNum">     248 </span>            : #pragma GCC optimize(&quot;00&quot;)</a>
-<a name="249"><span class="lineNum">     249 </span>            : #endif</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     402526 :         XSF_HOST_DEVICE inline double lgam_large_x(double x) {</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">     402526 :             double q = (x - 0.5) * std::log(x) - x + LS2PI;</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">     402526 :             if (x &gt; 1.0e8) {</span></a>
-<a name="253"><span class="lineNum">     253 </span>            :                 return (q);</a>
-<a name="254"><span class="lineNum">     254 </span>            :             }</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">     402427 :             double p = 1.0 / (x * x);</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     402427 :             p = ((7.9365079365079365079365e-4 * p - 2.7777777777777777777778e-3) * p + 0.0833333333333333333333) / x;</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">     402427 :             return q + p;</span></a>
-<a name="258"><span class="lineNum">     258 </span>            :         }</a>
-<a name="259"><span class="lineNum">     259 </span>            : #if defined(__GNUC__) &amp;&amp; defined(__i386__)</a>
-<a name="260"><span class="lineNum">     260 </span>            : #pragma GCC pop_options</a>
-<a name="261"><span class="lineNum">     261 </span>            : #endif</a>
-<a name="262"><span class="lineNum">     262 </span>            : </a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">   23969540 :         XSF_HOST_DEVICE inline double lgam_sgn(double x, int *sign) {</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">   23969540 :             double p, q, u, w, z;</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">   23969540 :             int i;</span></a>
-<a name="266"><span class="lineNum">     266 </span>            : </a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">   23969540 :             *sign = 1;</span></a>
-<a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">   23969540 :             if (!std::isfinite(x)) {</span></a>
-<a name="270"><span class="lineNum">     270 </span>            :                 return x;</a>
-<a name="271"><span class="lineNum">     271 </span>            :             }</a>
-<a name="272"><span class="lineNum">     272 </span>            : </a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">   23969519 :             if (x &lt; -34.0) {</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">       3783 :                 q = -x;</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       3783 :                 w = lgam_sgn(q, sign);</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       3783 :                 p = std::floor(q);</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       3783 :                 if (p == q) {</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :                 lgsing:</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        227 :                     set_error(&quot;lgam&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">        227 :                     return (std::numeric_limits&lt;double&gt;::infinity());</span></a>
-<a name="281"><span class="lineNum">     281 </span>            :                 }</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       3783 :                 i = p;</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       3783 :                 if ((i &amp; 1) == 0) {</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">       1726 :                     *sign = -1;</span></a>
-<a name="285"><span class="lineNum">     285 </span>            :                 } else {</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       2057 :                     *sign = 1;</span></a>
-<a name="287"><span class="lineNum">     287 </span>            :                 }</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3783 :                 z = q - p;</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       3783 :                 if (z &gt; 0.5) {</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       1228 :                     p += 1.0;</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       1228 :                     z = p - q;</span></a>
-<a name="292"><span class="lineNum">     292 </span>            :                 }</a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">       3783 :                 z = q * sinpi(z);</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       3783 :                 if (z == 0.0) {</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :                     goto lgsing;</span></a>
+<a name="238"><span class="lineNum">     238 </span>            :     namespace detail {</a>
+<a name="239"><span class="lineNum">     239 </span>            :         /* A[]: Stirling's formula expansion of log Gamma</a>
+<a name="240"><span class="lineNum">     240 </span>            :          * B[], C[]: log Gamma function between 2 and 3</a>
+<a name="241"><span class="lineNum">     241 </span>            :          */</a>
+<a name="242"><span class="lineNum">     242 </span>            :         constexpr double gamma_A[] = {8.11614167470508450300E-4, -5.95061904284301438324E-4, 7.93650340457716943945E-4,</a>
+<a name="243"><span class="lineNum">     243 </span>            :                                       -2.77777777730099687205E-3, 8.33333333333331927722E-2};</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            :         constexpr double gamma_B[] = {-1.37825152569120859100E3, -3.88016315134637840924E4, -3.31612992738871184744E5,</a>
+<a name="246"><span class="lineNum">     246 </span>            :                                       -1.16237097492762307383E6, -1.72173700820839662146E6, -8.53555664245765465627E5};</a>
+<a name="247"><span class="lineNum">     247 </span>            : </a>
+<a name="248"><span class="lineNum">     248 </span>            :         constexpr double gamma_C[] = {</a>
+<a name="249"><span class="lineNum">     249 </span>            :             /* 1.00000000000000000000E0, */</a>
+<a name="250"><span class="lineNum">     250 </span>            :             -3.51815701436523470549E2, -1.70642106651881159223E4, -2.20528590553854454839E5,</a>
+<a name="251"><span class="lineNum">     251 </span>            :             -1.13933444367982507207E6, -2.53252307177582951285E6, -2.01889141433532773231E6};</a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span>            :         /* log( sqrt( 2*pi ) ) */</a>
+<a name="254"><span class="lineNum">     254 </span>            :         constexpr double LS2PI = 0.91893853320467274178;</a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span>            :         constexpr double MAXLGM = 2.556348e305;</a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span>            :         /* Disable optimizations for this function on 32 bit systems when compiling with GCC.</a>
+<a name="259"><span class="lineNum">     259 </span>            :          * We've found that enabling optimizations can result in degraded precision</a>
+<a name="260"><span class="lineNum">     260 </span>            :          * for this asymptotic approximation in that case. */</a>
+<a name="261"><span class="lineNum">     261 </span>            : #if defined(__GNUC__) &amp;&amp; defined(__i386__)</a>
+<a name="262"><span class="lineNum">     262 </span>            : #pragma GCC push_options</a>
+<a name="263"><span class="lineNum">     263 </span>            : #pragma GCC optimize(&quot;00&quot;)</a>
+<a name="264"><span class="lineNum">     264 </span>            : #endif</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">     366099 :         XSF_HOST_DEVICE inline double lgam_large_x(double x) {</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">     366099 :             double q = (x - 0.5) * std::log(x) - x + LS2PI;</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">     366099 :             if (x &gt; 1.0e8) {</span></a>
+<a name="268"><span class="lineNum">     268 </span>            :                 return (q);</a>
+<a name="269"><span class="lineNum">     269 </span>            :             }</a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">     366000 :             double p = 1.0 / (x * x);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">     366000 :             p = ((7.9365079365079365079365e-4 * p - 2.7777777777777777777778e-3) * p + 0.0833333333333333333333) / x;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     366000 :             return q + p;</span></a>
+<a name="273"><span class="lineNum">     273 </span>            :         }</a>
+<a name="274"><span class="lineNum">     274 </span>            : #if defined(__GNUC__) &amp;&amp; defined(__i386__)</a>
+<a name="275"><span class="lineNum">     275 </span>            : #pragma GCC pop_options</a>
+<a name="276"><span class="lineNum">     276 </span>            : #endif</a>
+<a name="277"><span class="lineNum">     277 </span>            : </a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">   23467381 :         XSF_HOST_DEVICE inline double lgam_sgn(double x, int *sign) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">   23467381 :             double p, q, u, w, z;</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">   23467381 :             int i;</span></a>
+<a name="281"><span class="lineNum">     281 </span>            : </a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">   23467381 :             *sign = 1;</span></a>
+<a name="283"><span class="lineNum">     283 </span>            : </a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">   23467381 :             if (!std::isfinite(x)) {</span></a>
+<a name="285"><span class="lineNum">     285 </span>            :                 return x;</a>
+<a name="286"><span class="lineNum">     286 </span>            :             }</a>
+<a name="287"><span class="lineNum">     287 </span>            : </a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">   23467360 :             if (x &lt; -34.0) {</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       3783 :                 q = -x;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       3783 :                 w = lgam_sgn(q, sign);</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">       3783 :                 p = std::floor(q);</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">       3783 :                 if (p == q) {</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :                 lgsing:</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        221 :                     set_error(&quot;lgam&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        221 :                     return (std::numeric_limits&lt;double&gt;::infinity());</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :                 }</a>
-<a name="297"><span class="lineNum">     297 </span>            :                 /*     z = log(M_PI) - log( z ) - w; */</a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       3783 :                 z = LOGPI - std::log(z) - w;</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">       3783 :                 return (z);</span></a>
-<a name="300"><span class="lineNum">     300 </span>            :             }</a>
-<a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">   23965736 :             if (x &lt; 13.0) {</span></a>
-<a name="303"><span class="lineNum">     303 </span>            :                 z = 1.0;</a>
-<a name="304"><span class="lineNum">     304 </span>            :                 p = 0.0;</a>
-<a name="305"><span class="lineNum">     305 </span>            :                 u = x;</a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">   55068021 :                 while (u &gt;= 3.0) {</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">   33354349 :                     p -= 1.0;</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">   33354349 :                     u = x + p;</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">   33354349 :                     z *= u;</span></a>
-<a name="310"><span class="lineNum">     310 </span>            :                 }</a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">   34214981 :                 while (u &lt; 2.0) {</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">   12501536 :                     if (u == 0.0) {</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        227 :                         goto lgsing;</span></a>
-<a name="314"><span class="lineNum">     314 </span>            :                     }</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">   12501309 :                     z /= u;</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">   12501309 :                     p += 1.0;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">   12501309 :                     u = x + p;</span></a>
-<a name="318"><span class="lineNum">     318 </span>            :                 }</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">   21713445 :                 if (z &lt; 0.0) {</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        262 :                     *sign = -1;</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        262 :                     z = -z;</span></a>
-<a name="322"><span class="lineNum">     322 </span>            :                 } else {</a>
-<a name="323"><span class="lineNum">     323 </span>            :                     *sign = 1;</a>
-<a name="324"><span class="lineNum">     324 </span>            :                 }</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">   21713445 :                 if (u == 2.0) {</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">   13048453 :                     return (std::log(z));</span></a>
-<a name="327"><span class="lineNum">     327 </span>            :                 }</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">    8664992 :                 p -= 2.0;</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">    8664992 :                 x = x + p;</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">   17329984 :                 p = x * polevl(x, gamma_B, 5) / p1evl(x, gamma_C, 6);</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">    8664992 :                 return (std::log(z) + p);</span></a>
-<a name="332"><span class="lineNum">     332 </span>            :             }</a>
-<a name="333"><span class="lineNum">     333 </span>            : </a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">    2252064 :             if (x &gt; MAXLGM) {</span></a>
-<a name="335"><span class="lineNum">     335 </span>            :                 return (*sign * std::numeric_limits&lt;double&gt;::infinity());</a>
-<a name="336"><span class="lineNum">     336 </span>            :             }</a>
-<a name="337"><span class="lineNum">     337 </span>            : </a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">    2252064 :             if (x &gt;= 1000.0) {</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">     402526 :                 return lgam_large_x(x);</span></a>
-<a name="340"><span class="lineNum">     340 </span>            :             }</a>
-<a name="341"><span class="lineNum">     341 </span>            : </a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">    1849538 :             q = (x - 0.5) * std::log(x) - x + LS2PI;</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">    1849538 :             p = 1.0 / (x * x);</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">    3699076 :             return q + polevl(p, gamma_A, 4) / x;</span></a>
-<a name="345"><span class="lineNum">     345 </span>            :         }</a>
-<a name="346"><span class="lineNum">     346 </span>            :     } // namespace detail</a>
-<a name="347"><span class="lineNum">     347 </span>            : </a>
-<a name="348"><span class="lineNum">     348 </span>            :     /* Logarithm of Gamma function */</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">   23214461 :     XSF_HOST_DEVICE inline double lgam(double x) {</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">   23214461 :         int sign;</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">   23090444 :         return detail::lgam_sgn(x, &amp;sign);</span></a>
-<a name="352"><span class="lineNum">     352 </span>            :     }</a>
-<a name="353"><span class="lineNum">     353 </span>            : </a>
-<a name="354"><span class="lineNum">     354 </span>            :     /* Sign of the Gamma function */</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     235735 :     XSF_HOST_DEVICE inline double gammasgn(double x) {</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     235735 :         double fx;</span></a>
-<a name="357"><span class="lineNum">     357 </span>            : </a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">     235735 :         if (std::isnan(x)) {</span></a>
-<a name="359"><span class="lineNum">     359 </span>            :             return x;</a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">       3783 :                 i = p;</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       3783 :                 if ((i &amp; 1) == 0) {</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">       1726 :                     *sign = -1;</span></a>
+<a name="300"><span class="lineNum">     300 </span>            :                 } else {</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">       2057 :                     *sign = 1;</span></a>
+<a name="302"><span class="lineNum">     302 </span>            :                 }</a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">       3783 :                 z = q - p;</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">       3783 :                 if (z &gt; 0.5) {</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">       1228 :                     p += 1.0;</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">       1228 :                     z = p - q;</span></a>
+<a name="307"><span class="lineNum">     307 </span>            :                 }</a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       3783 :                 z = q * sinpi(z);</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       3783 :                 if (z == 0.0) {</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :                     goto lgsing;</span></a>
+<a name="311"><span class="lineNum">     311 </span>            :                 }</a>
+<a name="312"><span class="lineNum">     312 </span>            :                 /*     z = log(M_PI) - log( z ) - w; */</a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">       3783 :                 z = LOGPI - std::log(z) - w;</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       3783 :                 return (z);</span></a>
+<a name="315"><span class="lineNum">     315 </span>            :             }</a>
+<a name="316"><span class="lineNum">     316 </span>            : </a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">   23463577 :             if (x &lt; 13.0) {</span></a>
+<a name="318"><span class="lineNum">     318 </span>            :                 z = 1.0;</a>
+<a name="319"><span class="lineNum">     319 </span>            :                 p = 0.0;</a>
+<a name="320"><span class="lineNum">     320 </span>            :                 u = x;</a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">   54726747 :                 while (u &gt;= 3.0) {</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">   33454240 :                     p -= 1.0;</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">   33454240 :                     u = x + p;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">   33454240 :                     z *= u;</span></a>
+<a name="325"><span class="lineNum">     325 </span>            :                 }</a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">   33506163 :                 while (u &lt; 2.0) {</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">   12233877 :                     if (u == 0.0) {</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        221 :                         goto lgsing;</span></a>
+<a name="329"><span class="lineNum">     329 </span>            :                     }</a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">   12233656 :                     z /= u;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">   12233656 :                     p += 1.0;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">   12233656 :                     u = x + p;</span></a>
+<a name="333"><span class="lineNum">     333 </span>            :                 }</a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">   21272286 :                 if (z &lt; 0.0) {</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        268 :                     *sign = -1;</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        268 :                     z = -z;</span></a>
+<a name="337"><span class="lineNum">     337 </span>            :                 } else {</a>
+<a name="338"><span class="lineNum">     338 </span>            :                     *sign = 1;</a>
+<a name="339"><span class="lineNum">     339 </span>            :                 }</a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">   21272286 :                 if (u == 2.0) {</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">   12818779 :                     return (std::log(z));</span></a>
+<a name="342"><span class="lineNum">     342 </span>            :                 }</a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">    8453507 :                 p -= 2.0;</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">    8453507 :                 x = x + p;</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">   16907014 :                 p = x * polevl(x, gamma_B, 5) / p1evl(x, gamma_C, 6);</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">    8453507 :                 return (std::log(z) + p);</span></a>
+<a name="347"><span class="lineNum">     347 </span>            :             }</a>
+<a name="348"><span class="lineNum">     348 </span>            : </a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">    2191070 :             if (x &gt; MAXLGM) {</span></a>
+<a name="350"><span class="lineNum">     350 </span>            :                 return (*sign * std::numeric_limits&lt;double&gt;::infinity());</a>
+<a name="351"><span class="lineNum">     351 </span>            :             }</a>
+<a name="352"><span class="lineNum">     352 </span>            : </a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">    2191070 :             if (x &gt;= 1000.0) {</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">     366099 :                 return lgam_large_x(x);</span></a>
+<a name="355"><span class="lineNum">     355 </span>            :             }</a>
+<a name="356"><span class="lineNum">     356 </span>            : </a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">    1824971 :             q = (x - 0.5) * std::log(x) - x + LS2PI;</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">    1824971 :             p = 1.0 / (x * x);</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">    3649942 :             return q + polevl(p, gamma_A, 4) / x;</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :         }</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">     235730 :         if (x &gt; 0) {</span></a>
-<a name="362"><span class="lineNum">     362 </span>            :             return 1.0;</a>
-<a name="363"><span class="lineNum">     363 </span>            :         } else {</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        108 :             fx = std::floor(x);</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        108 :             if (x - fx == 0.0) {</span></a>
-<a name="366"><span class="lineNum">     366 </span>            :                 return 0.0;</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        103 :             } else if (static_cast&lt;int&gt;(fx) % 2) {</span></a>
-<a name="368"><span class="lineNum">     368 </span>            :                 return -1.0;</a>
-<a name="369"><span class="lineNum">     369 </span>            :             } else {</a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         44 :                 return 1.0;</span></a>
-<a name="371"><span class="lineNum">     371 </span>            :             }</a>
-<a name="372"><span class="lineNum">     372 </span>            :         }</a>
-<a name="373"><span class="lineNum">     373 </span>            :     }</a>
-<a name="374"><span class="lineNum">     374 </span>            : </a>
-<a name="375"><span class="lineNum">     375 </span>            : } // namespace cephes</a>
-<a name="376"><span class="lineNum">     376 </span>            : } // namespace xsf</a>
+<a name="361"><span class="lineNum">     361 </span>            :     } // namespace detail</a>
+<a name="362"><span class="lineNum">     362 </span>            : </a>
+<a name="363"><span class="lineNum">     363 </span>            :     /* Logarithm of Gamma function */</a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">   22776763 :     XSF_HOST_DEVICE inline double lgam(double x) {</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">   22776763 :         int sign;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">   22655509 :         return detail::lgam_sgn(x, &amp;sign);</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :     }</a>
+<a name="368"><span class="lineNum">     368 </span>            : </a>
+<a name="369"><span class="lineNum">     369 </span>            :     /* Sign of the Gamma function */</a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">     235761 :     XSF_HOST_DEVICE inline double gammasgn(double x) {</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">     235761 :         double fx;</span></a>
+<a name="372"><span class="lineNum">     372 </span>            : </a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">     235761 :         if (std::isnan(x)) {</span></a>
+<a name="374"><span class="lineNum">     374 </span>            :             return x;</a>
+<a name="375"><span class="lineNum">     375 </span>            :         }</a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">     235756 :         if (x &gt; 0) {</span></a>
+<a name="377"><span class="lineNum">     377 </span>            :             return 1.0;</a>
+<a name="378"><span class="lineNum">     378 </span>            :         }</a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">        111 :         if (x == 0) {</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          2 :             return std::copysign(1.0, x);</span></a>
+<a name="381"><span class="lineNum">     381 </span>            :         }</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        109 :         if (std::isinf(x)) {</span></a>
+<a name="383"><span class="lineNum">     383 </span>            :             // x &gt; 0 case handled, so x must be negative infinity.</a>
+<a name="384"><span class="lineNum">     384 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="385"><span class="lineNum">     385 </span>            :         }</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        108 :         fx = std::floor(x);</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">        108 :         if (x - fx == 0.0) {</span></a>
+<a name="388"><span class="lineNum">     388 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="389"><span class="lineNum">     389 </span>            :         }</a>
+<a name="390"><span class="lineNum">     390 </span>            :         // sign of gamma for x in (-n, -n+1) for positive integer n is (-1)^n.</a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">        103 :         if (static_cast&lt;int&gt;(fx) % 2) {</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         59 :             return -1.0;</span></a>
+<a name="393"><span class="lineNum">     393 </span>            :         }</a>
+<a name="394"><span class="lineNum">     394 </span>            :         return 1.0;</a>
+<a name="395"><span class="lineNum">     395 </span>            :     }</a>
+<a name="396"><span class="lineNum">     396 </span>            : </a>
+<a name="397"><span class="lineNum">     397 </span>            : } // namespace cephes</a>
+<a name="398"><span class="lineNum">     398 </span>            : } // namespace xsf</a>
 </pre>
       </td>
     </tr>

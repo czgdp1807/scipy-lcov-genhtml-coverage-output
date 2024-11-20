@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/k1.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/k1.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">23</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -209,24 +209,24 @@
 <a name="139"><span class="lineNum">     139 </span><span class="lineCov">          6 :         return (std::exp(-x) * chbevl(8.0 / x - 2.0, detail::k1_B, 25) / std::sqrt(x));</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :     }</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     252295 :     XSF_HOST_DEVICE double k1e(double x) {</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     252295 :         double y;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     266215 :     XSF_HOST_DEVICE double k1e(double x) {</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     266215 :         double y;</span></a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">     252295 :         if (x == 0.0) {</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">     266215 :         if (x == 0.0) {</span></a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :             set_error(&quot;k1e&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :             return std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">     252295 :         } else if (x &lt; 0.0) {</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">     266215 :         } else if (x &lt; 0.0) {</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">          4 :             set_error(&quot;k1e&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineCov">          4 :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         }</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">     252291 :         if (x &lt;= 2.0) {</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">     166532 :             y = x * x - 2.0;</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     166532 :             y = std::log(0.5 * x) * i1(x) + chbevl(y, detail::k1_A, 11) / x;</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     166532 :             return (y * exp(x));</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">     266211 :         if (x &lt;= 2.0) {</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">     170942 :             y = x * x - 2.0;</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     170942 :             y = std::log(0.5 * x) * i1(x) + chbevl(y, detail::k1_A, 11) / x;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     170942 :             return (y * exp(x));</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :         }</a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     171518 :         return (chbevl(8.0 / x - 2.0, detail::k1_B, 25) / std::sqrt(x));</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     190538 :         return (chbevl(8.0 / x - 2.0, detail::k1_B, 25) / std::sqrt(x));</span></a>
 <a name="160"><span class="lineNum">     160 </span>            :     }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            : } // namespace cephes</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/pdtr.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/pdtr.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">24</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -223,18 +223,18 @@
 <a name="153"><span class="lineNum">     153 </span><span class="lineCov">         43 :         return (igam(v, m));</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :     }</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       1808 :     XSF_HOST_DEVICE inline double pdtr(double k, double m) {</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       1808 :         double v;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       1645 :     XSF_HOST_DEVICE inline double pdtr(double k, double m) {</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       1645 :         double v;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1808 :         if (k &lt; 0 || m &lt; 0) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1645 :         if (k &lt; 0 || m &lt; 0) {</span></a>
 <a name="160"><span class="lineNum">     160 </span><span class="lineCov">         49 :             set_error(&quot;pdtr&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineCov">         49 :             return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :         }</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1759 :         if (m == 0.0) {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1596 :         if (m == 0.0) {</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :             return 1.0;</a>
 <a name="165"><span class="lineNum">     165 </span>            :         }</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1751 :         v = std::floor(k) + 1;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       1751 :         return (igamc(v, m));</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1588 :         v = std::floor(k) + 1;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       1588 :         return (igamc(v, m));</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :     }</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">         67 :     XSF_HOST_DEVICE inline double pdtri(int k, double y) {</span></a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/x86_64-conda-linux-gnu/bits/gthr-default.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/x86_64-conda-linux-gnu/bits/gthr-default.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -315,11 +315,11 @@
 <a name="245"><span class="lineNum">     245 </span>            : #endif</a>
 <a name="246"><span class="lineNum">     246 </span>            : </a>
 <a name="247"><span class="lineNum">     247 </span>            : static inline int</a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     628395 : __gthread_active_p (void)</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     634750 : __gthread_active_p (void)</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : {</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     628395 :   static void *const __gthread_active_ptr</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     634750 :   static void *const __gthread_active_ptr</span></a>
 <a name="251"><span class="lineNum">     251 </span>            :     = __extension__ (void *) &amp;GTHR_ACTIVE_PROXY;</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">     308644 :   return __gthread_active_ptr != 0;</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">     308868 :   return __gthread_active_ptr != 0;</span></a>
 <a name="253"><span class="lineNum">     253 </span>            : }</a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
 <a name="255"><span class="lineNum">     255 </span>            : #endif /* FreeBSD or Solaris */</a>
@@ -764,10 +764,10 @@
 <a name="694"><span class="lineNum">     694 </span>            : }</a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
 <a name="696"><span class="lineNum">     696 </span>            : static inline int</a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       1552 : __gthread_once (__gthread_once_t *__once, void (*__func) (void))</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       1563 : __gthread_once (__gthread_once_t *__once, void (*__func) (void))</span></a>
 <a name="698"><span class="lineNum">     698 </span>            : {</a>
-<a name="699"><span class="lineNum">     699 </span><span class="lineCov">       1552 :   if (__gthread_active_p ())</span></a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       1552 :     return __gthrw_(pthread_once) (__once, __func);</span></a>
+<a name="699"><span class="lineNum">     699 </span><span class="lineCov">       1563 :   if (__gthread_active_p ())</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       1563 :     return __gthrw_(pthread_once) (__once, __func);</span></a>
 <a name="701"><span class="lineNum">     701 </span>            :   else</a>
 <a name="702"><span class="lineNum">     702 </span>            :     return -1;</a>
 <a name="703"><span class="lineNum">     703 </span>            : }</a>
@@ -813,10 +813,10 @@
 <a name="743"><span class="lineNum">     743 </span>            : }</a>
 <a name="744"><span class="lineNum">     744 </span>            : </a>
 <a name="745"><span class="lineNum">     745 </span>            : static inline int</a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineCov">     159135 : __gthread_mutex_lock (__gthread_mutex_t *__mutex)</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineCov">     162195 : __gthread_mutex_lock (__gthread_mutex_t *__mutex)</span></a>
 <a name="747"><span class="lineNum">     747 </span>            : {</a>
-<a name="748"><span class="lineNum">     748 </span><span class="lineCov">     159135 :   if (__gthread_active_p ())</span></a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">     159135 :     return __gthrw_(pthread_mutex_lock) (__mutex);</span></a>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">     162195 :   if (__gthread_active_p ())</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">     162195 :     return __gthrw_(pthread_mutex_lock) (__mutex);</span></a>
 <a name="750"><span class="lineNum">     750 </span>            :   else</a>
 <a name="751"><span class="lineNum">     751 </span>            :     return 0;</a>
 <a name="752"><span class="lineNum">     752 </span>            : }</a>
@@ -843,10 +843,10 @@
 <a name="773"><span class="lineNum">     773 </span>            : #endif</a>
 <a name="774"><span class="lineNum">     774 </span>            : </a>
 <a name="775"><span class="lineNum">     775 </span>            : static inline int</a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">     159136 : __gthread_mutex_unlock (__gthread_mutex_t *__mutex)</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">     162196 : __gthread_mutex_unlock (__gthread_mutex_t *__mutex)</span></a>
 <a name="777"><span class="lineNum">     777 </span>            : {</a>
-<a name="778"><span class="lineNum">     778 </span><span class="lineCov">     159136 :   if (__gthread_active_p ())</span></a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">     159136 :     return __gthrw_(pthread_mutex_unlock) (__mutex);</span></a>
+<a name="778"><span class="lineNum">     778 </span><span class="lineCov">     162196 :   if (__gthread_active_p ())</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">     162196 :     return __gthrw_(pthread_mutex_unlock) (__mutex);</span></a>
 <a name="780"><span class="lineNum">     780 </span>            :   else</a>
 <a name="781"><span class="lineNum">     781 </span>            :     return 0;</a>
 <a name="782"><span class="lineNum">     782 </span>            : }</a>

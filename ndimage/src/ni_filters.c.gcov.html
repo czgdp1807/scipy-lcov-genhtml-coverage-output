@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - ndimage/src/ni_filters.c</title>
+  <title>LCOV - lcov.info - ndimage/src/ni_filters.c</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">439</td>
+            <td class="headerCovTableEntry">438</td>
             <td class="headerCovTableEntry">540</td>
-            <td class="headerCovTableEntryMed">81.3 %</td>
+            <td class="headerCovTableEntryMed">81.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -300,9 +300,9 @@
 <a name="230"><span class="lineNum">     230 </span><span class="lineCov">       3952 :     size = PyArray_SIZE(input);</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :     /* iterator over the elements: */</a>
 <a name="232"><span class="lineNum">     232 </span><span class="lineCov">       3952 :     oo = offsets;</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">    2357228 :     for(jj = 0; jj &lt; size; jj++) {</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">    2353276 :         double tmp = 0.0;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">    2353276 :         switch (PyArray_TYPE(input)) {</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">    2357525 :     for(jj = 0; jj &lt; size; jj++) {</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">    2353573 :         double tmp = 0.0;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">    2353573 :         switch (PyArray_TYPE(input)) {</span></a>
 <a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :             CASE_CORRELATE_POINT(NPY_BOOL, npy_bool,</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :                                  pi, ww, oo, filter_size, cvalue, tmp,</a>
 <a name="238"><span class="lineNum">     238 </span>            :                                  border_flag_value);</a>
@@ -339,14 +339,14 @@
 <a name="269"><span class="lineNum">     269 </span><span class="lineCov">    2499780 :             CASE_CORRELATE_POINT(NPY_FLOAT, npy_float,</span></a>
 <a name="270"><span class="lineNum">     270 </span>            :                                  pi, ww, oo, filter_size, cvalue, tmp,</a>
 <a name="271"><span class="lineNum">     271 </span>            :                                  border_flag_value);</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">  129539336 :             CASE_CORRELATE_POINT(NPY_DOUBLE, npy_double,</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">  129539633 :             CASE_CORRELATE_POINT(NPY_DOUBLE, npy_double,</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :                                  pi, ww, oo, filter_size, cvalue, tmp,</a>
 <a name="274"><span class="lineNum">     274 </span>            :                                  border_flag_value);</a>
 <a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :             default:</span></a>
 <a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :                 err = 1;</span></a>
 <a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 goto exit;</span></a>
 <a name="278"><span class="lineNum">     278 </span>            :         }</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    2353276 :         switch (PyArray_TYPE(output)) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    2353573 :         switch (PyArray_TYPE(output)) {</span></a>
 <a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :             CASE_FILTER_OUT_SAFE(NPY_BOOL, npy_bool, po, tmp);</span></a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineCov">        252 :             CASE_FILTER_OUT_SAFE(NPY_UBYTE, npy_ubyte, po, tmp);</span></a>
 <a name="282"><span class="lineNum">     282 </span><span class="lineCov">        252 :             CASE_FILTER_OUT_SAFE(NPY_USHORT, npy_ushort, po, tmp);</span></a>
@@ -359,12 +359,12 @@
 <a name="289"><span class="lineNum">     289 </span><span class="lineCov">        472 :             CASE_FILTER_OUT(NPY_LONG, npy_long, po, tmp);</span></a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :             CASE_FILTER_OUT(NPY_LONGLONG, npy_longlong, po, tmp);</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineCov">     175068 :             CASE_FILTER_OUT(NPY_FLOAT, npy_float, po, tmp);</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">    2175972 :             CASE_FILTER_OUT(NPY_DOUBLE, npy_double, po, tmp);</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">    2176269 :             CASE_FILTER_OUT(NPY_DOUBLE, npy_double, po, tmp);</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :             default:</span></a>
 <a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :                 err = 1;</span></a>
 <a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :                 goto exit;</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         }</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">    2397750 :         NI_FILTER_NEXT2(fi, ii, io, oo, pi, po);</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">    2398047 :         NI_FILTER_NEXT2(fi, ii, io, oo, pi, po);</span></a>
 <a name="298"><span class="lineNum">     298 </span>            :     }</a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineCov">       3952 : exit:</span></a>
 <a name="300"><span class="lineNum">     300 </span><span class="lineCov">       3952 :     NPY_END_THREADS;</span></a>
@@ -507,13 +507,13 @@
 <a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :             goto exit;</span></a>
 <a name="438"><span class="lineNum">     438 </span>            :         }</a>
 <a name="439"><span class="lineNum">     439 </span>            :         /* iterate over the lines in the buffers: */</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      35365 :         for(kk = 0; kk &lt; lines; kk++) {</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      35513 :         for(kk = 0; kk &lt; lines; kk++) {</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :             /* get lines: */</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">      34787 :             double *iline = NI_GET_LINE(iline_buffer, kk);</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">      34787 :             double *oline = NI_GET_LINE(oline_buffer, kk);</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">      34933 :             double *iline = NI_GET_LINE(iline_buffer, kk);</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">      34933 :             double *oline = NI_GET_LINE(oline_buffer, kk);</span></a>
 <a name="444"><span class="lineNum">     444 </span>            : </a>
 <a name="445"><span class="lineNum">     445 </span>            :             /* This check could be moved out to the Python wrapper */</a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">      34787 :             if (filter_size == 1) {</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">      34933 :             if (filter_size == 1) {</span></a>
 <a name="447"><span class="lineNum">     447 </span><span class="lineCov">          2 :                 memcpy(oline, iline, sizeof(double) * length);</span></a>
 <a name="448"><span class="lineNum">     448 </span>            :             }</a>
 <a name="449"><span class="lineNum">     449 </span>            :             else {</a>
@@ -521,39 +521,39 @@
 <a name="451"><span class="lineNum">     451 </span>            :                  * Original code by Richard Harter, adapted from:</a>
 <a name="452"><span class="lineNum">     452 </span>            :                  * http://www.richardhartersworld.com/cri/2001/slidingmin.html</a>
 <a name="453"><span class="lineNum">     453 </span>            :                  */</a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">      34785 :                 minpair = ring;</span></a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      34785 :                 minpair-&gt;value = *iline++;</span></a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">      34785 :                 minpair-&gt;death = filter_size;</span></a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">      34785 :                 last = ring;</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">      34931 :                 minpair = ring;</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      34931 :                 minpair-&gt;value = *iline++;</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">      34931 :                 minpair-&gt;death = filter_size;</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">      34931 :                 last = ring;</span></a>
 <a name="458"><span class="lineNum">     458 </span>            : </a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">    6587453 :                 for (ll = 1; ll &lt; filter_size + length - 1; ll++) {</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">    6552668 :                     double val = *iline++;</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">    6552668 :                     if (minpair-&gt;death == ll) {</span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">    2169073 :                         INCREASE_RING_PTR(minpair)</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">    6427279 :                 for (ll = 1; ll &lt; filter_size + length - 1; ll++) {</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">    6392348 :                     double val = *iline++;</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">    6392348 :                     if (minpair-&gt;death == ll) {</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">    2115363 :                         INCREASE_RING_PTR(minpair)</span></a>
 <a name="463"><span class="lineNum">     463 </span>            :                     }</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">    6552668 :                     if ((minimum &amp;&amp; val &lt;= minpair-&gt;value) ||</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">    3203886 :                         (!minimum &amp;&amp; val &gt;= minpair-&gt;value)) {</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">    2240829 :                         minpair-&gt;value = val;</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">    2240829 :                         minpair-&gt;death = ll + filter_size;</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">    2240829 :                         last = minpair;</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">    6392348 :                     if ((minimum &amp;&amp; val &lt;= minpair-&gt;value) ||</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">    3137754 :                         (!minimum &amp;&amp; val &gt;= minpair-&gt;value)) {</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">    2188226 :                         minpair-&gt;value = val;</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">    2188226 :                         minpair-&gt;death = ll + filter_size;</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">    2188226 :                         last = minpair;</span></a>
 <a name="469"><span class="lineNum">     469 </span>            :                     }</a>
 <a name="470"><span class="lineNum">     470 </span>            :                     else {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">    5385570 :                         while ((minimum &amp;&amp; last-&gt;value &gt;= val) ||</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">    2587320 :                                (!minimum &amp;&amp; last-&gt;value &lt;= val)) {</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">    1073731 :                             DECREASE_RING_PTR(last)</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">    5251322 :                         while ((minimum &amp;&amp; last-&gt;value &gt;= val) ||</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">    2531775 :                                (!minimum &amp;&amp; last-&gt;value &lt;= val)) {</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">    1047200 :                             DECREASE_RING_PTR(last)</span></a>
 <a name="474"><span class="lineNum">     474 </span>            :                         }</a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">    4311839 :                         INCREASE_RING_PTR(last)</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">    4311839 :                         last-&gt;value = val;</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">    4311839 :                         last-&gt;death = ll + filter_size;</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">    4204122 :                         INCREASE_RING_PTR(last)</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">    4204122 :                         last-&gt;value = val;</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">    4204122 :                         last-&gt;death = ll + filter_size;</span></a>
 <a name="478"><span class="lineNum">     478 </span>            :                     }</a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">    6552668 :                     if (ll &gt;= filter_size - 1) {</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">    6521425 :                         *oline++ = minpair-&gt;value;</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">    6392348 :                     if (ll &gt;= filter_size - 1) {</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">    6360425 :                         *oline++ = minpair-&gt;value;</span></a>
 <a name="481"><span class="lineNum">     481 </span>            :                     }</a>
 <a name="482"><span class="lineNum">     482 </span>            :                 }</a>
 <a name="483"><span class="lineNum">     483 </span>            :             }</a>
 <a name="484"><span class="lineNum">     484 </span>            :         }</a>
 <a name="485"><span class="lineNum">     485 </span>            :         /* copy lines from buffer to array: */</a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        578 :         if (!NI_LineBufferToArray(&amp;oline_buffer)) {</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        580 :         if (!NI_LineBufferToArray(&amp;oline_buffer)) {</span></a>
 <a name="487"><span class="lineNum">     487 </span><span class="lineNoCov">          0 :             goto exit;</span></a>
 <a name="488"><span class="lineNum">     488 </span>            :         }</a>
 <a name="489"><span class="lineNum">     489 </span><span class="lineCov">        580 :     } while(more);</span></a>
@@ -742,39 +742,39 @@
 <a name="672"><span class="lineNum">     672 </span><span class="lineCov">        140 :     return PyErr_Occurred() ? 0 : 1;</span></a>
 <a name="673"><span class="lineNum">     673 </span>            : }</a>
 <a name="674"><span class="lineNum">     674 </span>            : </a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">    2153865 : static double NI_Select(double *buffer, npy_intp min,</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">    2152080 : static double NI_Select(double *buffer, npy_intp min,</span></a>
 <a name="676"><span class="lineNum">     676 </span>            :                         npy_intp max, npy_intp rank)</a>
 <a name="677"><span class="lineNum">     677 </span>            : {</a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">    8970131 :     npy_intp ii, jj;</span></a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">    8970131 :     double x, t;</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">    9141647 :     npy_intp ii, jj;</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">    9141647 :     double x, t;</span></a>
 <a name="680"><span class="lineNum">     680 </span>            : </a>
-<a name="681"><span class="lineNum">     681 </span><span class="lineCov">    8970131 :     if (min == max)</span></a>
-<a name="682"><span class="lineNum">     682 </span><span class="lineCov">    2153865 :         return buffer[min];</span></a>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">    9141647 :     if (min == max)</span></a>
+<a name="682"><span class="lineNum">     682 </span><span class="lineCov">    2152080 :         return buffer[min];</span></a>
 <a name="683"><span class="lineNum">     683 </span>            : </a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">    6816266 :     x = buffer[min];</span></a>
-<a name="685"><span class="lineNum">     685 </span><span class="lineCov">    6816266 :     ii = min - 1;</span></a>
-<a name="686"><span class="lineNum">     686 </span><span class="lineCov">    6816266 :     jj = max + 1;</span></a>
-<a name="687"><span class="lineNum">     687 </span><span class="lineCov">   37892266 :     for(;;) {</span></a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">   30696884 :         do</span></a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">   30696884 :             jj--;</span></a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">   30696884 :         while(buffer[jj] &gt; x);</span></a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">   21665089 :         do</span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">   21665089 :             ii++;</span></a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">   21665089 :         while(buffer[ii] &lt; x);</span></a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">   14011648 :         if (ii &lt; jj) {</span></a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">    7195382 :             t = buffer[ii];</span></a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">    7195382 :             buffer[ii] = buffer[jj];</span></a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">    7195382 :             buffer[jj] = t;</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">    6989567 :     x = buffer[min];</span></a>
+<a name="685"><span class="lineNum">     685 </span><span class="lineCov">    6989567 :     ii = min - 1;</span></a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">    6989567 :     jj = max + 1;</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">   38792000 :     for(;;) {</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">   31398477 :         do</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">   31398477 :             jj--;</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">   31398477 :         while(buffer[jj] &gt; x);</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">   22000848 :         do</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">   22000848 :             ii++;</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">   22000848 :         while(buffer[ii] &lt; x);</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">   14383090 :         if (ii &lt; jj) {</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">    7393523 :             t = buffer[ii];</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">    7393523 :             buffer[ii] = buffer[jj];</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">    7393523 :             buffer[jj] = t;</span></a>
 <a name="698"><span class="lineNum">     698 </span>            :         } else {</a>
 <a name="699"><span class="lineNum">     699 </span>            :             break;</a>
 <a name="700"><span class="lineNum">     700 </span>            :         }</a>
 <a name="701"><span class="lineNum">     701 </span>            :     }</a>
 <a name="702"><span class="lineNum">     702 </span>            : </a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">    6816266 :     ii = jj - min + 1;</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">    6816266 :     if (rank &lt; ii)</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">    6989567 :     ii = jj - min + 1;</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">    6989567 :     if (rank &lt; ii)</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :         return NI_Select(buffer, min, jj, rank);</a>
 <a name="706"><span class="lineNum">     706 </span>            :     else</a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">    3791126 :         return NI_Select(buffer, jj + 1, max, rank - ii);</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">    3883760 :         return NI_Select(buffer, jj + 1, max, rank - ii);</span></a>
 <a name="708"><span class="lineNum">     708 </span>            : }</a>
 <a name="709"><span class="lineNum">     709 </span>            : </a>
 <a name="710"><span class="lineNum">     710 </span>            : #define CASE_RANK_POINT(_TYPE, _type, _pi, _offsets, _filter_size, \</a>
@@ -851,10 +851,10 @@
 <a name="781"><span class="lineNum">     781 </span><span class="lineCov">        384 :     po = (void *)PyArray_DATA(output);</span></a>
 <a name="782"><span class="lineNum">     782 </span><span class="lineCov">        384 :     size = PyArray_SIZE(input);</span></a>
 <a name="783"><span class="lineNum">     783 </span>            :     /* iterator over the elements: */</a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">       1104 :     oo = offsets;</span></a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">    2153974 :     for(jj = 0; jj &lt; size; jj++) {</span></a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineCov">    2153590 :         double tmp = 0.0;</span></a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">    2153590 :         switch (PyArray_TYPE(input)) {</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineNoCov">          0 :     oo = offsets;</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">    2152177 :     for(jj = 0; jj &lt; size; jj++) {</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">    2151793 :         double tmp = 0.0;</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">    2151793 :         switch (PyArray_TYPE(input)) {</span></a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineNoCov">          0 :             CASE_RANK_POINT(NPY_BOOL, npy_bool,</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :                             pi, oo, filter_size, cvalue, rank, buffer, tmp,</a>
 <a name="790"><span class="lineNum">     790 </span>            :                             border_flag_value);</a>
@@ -891,14 +891,14 @@
 <a name="821"><span class="lineNum">     821 </span><span class="lineCov">     665152 :             CASE_RANK_POINT(NPY_FLOAT, npy_float,</span></a>
 <a name="822"><span class="lineNum">     822 </span>            :                             pi, oo, filter_size, cvalue, rank, buffer, tmp,</a>
 <a name="823"><span class="lineNum">     823 </span>            :                             border_flag_value);</a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">   20345864 :             CASE_RANK_POINT(NPY_DOUBLE, npy_double,</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">   20339666 :             CASE_RANK_POINT(NPY_DOUBLE, npy_double,</span></a>
 <a name="825"><span class="lineNum">     825 </span>            :                             pi, oo, filter_size, cvalue, rank, buffer, tmp,</a>
 <a name="826"><span class="lineNum">     826 </span>            :                             border_flag_value);</a>
 <a name="827"><span class="lineNum">     827 </span><span class="lineNoCov">          0 :             default:</span></a>
 <a name="828"><span class="lineNum">     828 </span><span class="lineNoCov">          0 :                 err = 1;</span></a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineNoCov">          0 :                 goto exit;</span></a>
 <a name="830"><span class="lineNum">     830 </span>            :         }</a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">    2152870 :         switch (PyArray_TYPE(output)) {</span></a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">    2152341 :         switch (PyArray_TYPE(output)) {</span></a>
 <a name="832"><span class="lineNum">     832 </span><span class="lineNoCov">          0 :             CASE_FILTER_OUT_SAFE(NPY_BOOL, npy_bool, po, tmp);</span></a>
 <a name="833"><span class="lineNum">     833 </span><span class="lineCov">        205 :             CASE_FILTER_OUT_SAFE(NPY_UBYTE, npy_ubyte, po, tmp);</span></a>
 <a name="834"><span class="lineNum">     834 </span><span class="lineCov">        305 :             CASE_FILTER_OUT_SAFE(NPY_USHORT, npy_ushort, po, tmp);</span></a>
@@ -911,12 +911,12 @@
 <a name="841"><span class="lineNum">     841 </span><span class="lineCov">        660 :             CASE_FILTER_OUT(NPY_LONG, npy_long, po, tmp);</span></a>
 <a name="842"><span class="lineNum">     842 </span><span class="lineNoCov">          0 :             CASE_FILTER_OUT(NPY_LONGLONG, npy_longlong, po, tmp);</span></a>
 <a name="843"><span class="lineNum">     843 </span><span class="lineCov">      41695 :             CASE_FILTER_OUT(NPY_FLOAT, npy_float, po, tmp);</span></a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">    2108480 :             CASE_FILTER_OUT(NPY_DOUBLE, npy_double, po, tmp);</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">    2107951 :             CASE_FILTER_OUT(NPY_DOUBLE, npy_double, po, tmp);</span></a>
 <a name="845"><span class="lineNum">     845 </span><span class="lineNoCov">          0 :             default:</span></a>
 <a name="846"><span class="lineNum">     846 </span><span class="lineNoCov">          0 :                 err = 1;</span></a>
 <a name="847"><span class="lineNum">     847 </span><span class="lineNoCov">          0 :                 goto exit;</span></a>
 <a name="848"><span class="lineNum">     848 </span>            :         }</a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">    2172160 :         NI_FILTER_NEXT2(fi, ii, io, oo, pi, po);</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">    2171631 :         NI_FILTER_NEXT2(fi, ii, io, oo, pi, po);</span></a>
 <a name="850"><span class="lineNum">     850 </span>            :     }</a>
 <a name="851"><span class="lineNum">     851 </span><span class="lineCov">        384 : exit:</span></a>
 <a name="852"><span class="lineNum">     852 </span><span class="lineCov">        384 :     NPY_END_THREADS;</span></a>

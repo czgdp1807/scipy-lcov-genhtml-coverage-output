@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/forward_list.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/forward_list.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">32</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -123,7 +123,7 @@
 <a name="53"><span class="lineNum">      53 </span>            :    */</a>
 <a name="54"><span class="lineNum">      54 </span>            :   struct _Fwd_list_node_base</a>
 <a name="55"><span class="lineNum">      55 </span>            :   {</a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">          9 :     _Fwd_list_node_base() = default;</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         19 :     _Fwd_list_node_base() = default;</span></a>
 <a name="57"><span class="lineNum">      57 </span>            :     _Fwd_list_node_base(_Fwd_list_node_base&amp;&amp; __x) noexcept</a>
 <a name="58"><span class="lineNum">      58 </span>            :       : _M_next(__x._M_next)</a>
 <a name="59"><span class="lineNum">      59 </span>            :     { __x._M_next = nullptr; }</a>
@@ -183,12 +183,12 @@
 <a name="113"><span class="lineNum">     113 </span>            :     struct _Fwd_list_node</a>
 <a name="114"><span class="lineNum">     114 </span>            :     : public _Fwd_list_node_base</a>
 <a name="115"><span class="lineNum">     115 </span>            :     {</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          5 :       _Fwd_list_node() = default;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         10 :       _Fwd_list_node() = default;</span></a>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
 <a name="118"><span class="lineNum">     118 </span>            :       __gnu_cxx::__aligned_buffer&lt;_Tp&gt; _M_storage;</a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            :       _Tp*</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 :       _M_valptr() noexcept</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         12 :       _M_valptr() noexcept</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :       { return _M_storage._M_ptr(); }</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span>            :       const _Tp*</a>
@@ -297,7 +297,7 @@
 <a name="227"><span class="lineNum">     227 </span>            :       : _M_node() { }</a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
 <a name="229"><span class="lineNum">     229 </span>            :       explicit</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          5 :       _Fwd_list_const_iterator(const _Fwd_list_node_base* __n)  noexcept</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">         10 :       _Fwd_list_const_iterator(const _Fwd_list_node_base* __n)  noexcept</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :       : _M_node(__n) { }</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
 <a name="233"><span class="lineNum">     233 </span>            :       _Fwd_list_const_iterator(const iterator&amp; __iter) noexcept</a>
@@ -373,9 +373,9 @@
 <a name="303"><span class="lineNum">     303 </span>            :       {</a>
 <a name="304"><span class="lineNum">     304 </span>            :         _Fwd_list_node_base _M_head;</a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          4 :         _Fwd_list_impl()</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          9 :         _Fwd_list_impl()</span></a>
 <a name="307"><span class="lineNum">     307 </span>            :           noexcept(is_nothrow_default_constructible&lt;_Node_alloc_type&gt;::value)</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          4 :         : _Node_alloc_type(), _M_head()</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          9 :         : _Node_alloc_type(), _M_head()</span></a>
 <a name="309"><span class="lineNum">     309 </span>            :         { }</a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
 <a name="311"><span class="lineNum">     311 </span>            :         _Fwd_list_impl(_Fwd_list_impl&amp;&amp;) = default;</a>
@@ -397,14 +397,14 @@
 <a name="327"><span class="lineNum">     327 </span>            :       typedef _Fwd_list_node&lt;_Tp&gt;         _Node;</a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
 <a name="329"><span class="lineNum">     329 </span>            :       _Node_alloc_type&amp;</a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          5 :       _M_get_Node_allocator() noexcept</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         10 :       _M_get_Node_allocator() noexcept</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :       { return this-&gt;_M_impl; }</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
 <a name="333"><span class="lineNum">     333 </span>            :       const _Node_alloc_type&amp;</a>
 <a name="334"><span class="lineNum">     334 </span>            :       _M_get_Node_allocator() const noexcept</a>
 <a name="335"><span class="lineNum">     335 </span>            :       { return this-&gt;_M_impl; }</a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          4 :       _Fwd_list_base() = default;</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          9 :       _Fwd_list_base() = default;</span></a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
 <a name="339"><span class="lineNum">     339 </span>            :       _Fwd_list_base(_Node_alloc_type&amp;&amp; __a)</a>
 <a name="340"><span class="lineNum">     340 </span>            :       : _M_impl(std::move(__a)) { }</a>
@@ -425,21 +425,21 @@
 <a name="355"><span class="lineNum">     355 </span>            : </a>
 <a name="356"><span class="lineNum">     356 </span>            :     protected:</a>
 <a name="357"><span class="lineNum">     357 </span>            :       _Node*</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          5 :       _M_get_node()</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         10 :       _M_get_node()</span></a>
 <a name="359"><span class="lineNum">     359 </span>            :       {</a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">         10 :         auto __ptr = _Node_alloc_traits::allocate(_M_get_Node_allocator(), 1);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">         20 :         auto __ptr = _Node_alloc_traits::allocate(_M_get_Node_allocator(), 1);</span></a>
 <a name="361"><span class="lineNum">     361 </span>            :         return std::__to_address(__ptr);</a>
 <a name="362"><span class="lineNum">     362 </span>            :       }</a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
 <a name="364"><span class="lineNum">     364 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="365"><span class="lineNum">     365 </span>            :         _Node*</a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          5 :         _M_create_node(_Args&amp;&amp;... __args)</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         10 :         _M_create_node(_Args&amp;&amp;... __args)</span></a>
 <a name="367"><span class="lineNum">     367 </span>            :         {</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          5 :           _Node* __node = this-&gt;_M_get_node();</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         10 :           _Node* __node = this-&gt;_M_get_node();</span></a>
 <a name="369"><span class="lineNum">     369 </span>            :           __try</a>
 <a name="370"><span class="lineNum">     370 </span>            :             {</a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          5 :               ::new ((void*)__node) _Node;</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          5 :               _Node_alloc_traits::construct(_M_get_Node_allocator(),</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         10 :               ::new ((void*)__node) _Node;</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         10 :               _Node_alloc_traits::construct(_M_get_Node_allocator(),</span></a>
 <a name="373"><span class="lineNum">     373 </span>            :                                             __node-&gt;_M_valptr(),</a>
 <a name="374"><span class="lineNum">     374 </span>            :                                             std::forward&lt;_Args&gt;(__args)...);</a>
 <a name="375"><span class="lineNum">     375 </span>            :             }</a>
@@ -448,7 +448,7 @@
 <a name="378"><span class="lineNum">     378 </span>            :               this-&gt;_M_put_node(__node);</a>
 <a name="379"><span class="lineNum">     379 </span>            :               __throw_exception_again;</a>
 <a name="380"><span class="lineNum">     380 </span>            :             }</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          5 :           return __node;</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">         10 :           return __node;</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :         }</a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
 <a name="384"><span class="lineNum">     384 </span>            :       template&lt;typename... _Args&gt;</a>
@@ -536,7 +536,7 @@
 <a name="466"><span class="lineNum">     466 </span>            :       /**</a>
 <a name="467"><span class="lineNum">     467 </span>            :        *  @brief  Creates a %forward_list with no elements.</a>
 <a name="468"><span class="lineNum">     468 </span>            :        */</a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          4 :       forward_list() = default;</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          9 :       forward_list() = default;</span></a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
 <a name="471"><span class="lineNum">     471 </span>            :       /**</a>
 <a name="472"><span class="lineNum">     472 </span>            :        *  @brief  Creates a %forward_list with no elements.</a>
@@ -851,8 +851,8 @@
 <a name="781"><span class="lineNum">     781 </span>            :        */</a>
 <a name="782"><span class="lineNum">     782 </span>            :       [[__nodiscard__]]</a>
 <a name="783"><span class="lineNum">     783 </span>            :       const_iterator</a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">          5 :       cbefore_begin() const noexcept</span></a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          5 :       { return const_iterator(&amp;this-&gt;_M_impl._M_head); }</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         10 :       cbefore_begin() const noexcept</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">         10 :       { return const_iterator(&amp;this-&gt;_M_impl._M_head); }</span></a>
 <a name="786"><span class="lineNum">     786 </span>            : </a>
 <a name="787"><span class="lineNum">     787 </span>            :       /**</a>
 <a name="788"><span class="lineNum">     788 </span>            :        *  Returns a read-only (constant) iterator that points one past</a>
@@ -889,10 +889,10 @@
 <a name="819"><span class="lineNum">     819 </span>            :        */</a>
 <a name="820"><span class="lineNum">     820 </span>            :       [[__nodiscard__]]</a>
 <a name="821"><span class="lineNum">     821 </span>            :       reference</a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          6 :       front()</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">         12 :       front()</span></a>
 <a name="823"><span class="lineNum">     823 </span>            :       {</a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">          6 :         _Node* __front = static_cast&lt;_Node*&gt;(this-&gt;_M_impl._M_head._M_next);</span></a>
-<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          6 :         return *__front-&gt;_M_valptr();</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">         12 :         _Node* __front = static_cast&lt;_Node*&gt;(this-&gt;_M_impl._M_head._M_next);</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">         12 :         return *__front-&gt;_M_valptr();</span></a>
 <a name="826"><span class="lineNum">     826 </span>            :       }</a>
 <a name="827"><span class="lineNum">     827 </span>            : </a>
 <a name="828"><span class="lineNum">     828 </span>            :       /**</a>
@@ -926,12 +926,12 @@
 <a name="856"><span class="lineNum">     856 </span>            : #else</a>
 <a name="857"><span class="lineNum">     857 </span>            :         void</a>
 <a name="858"><span class="lineNum">     858 </span>            : #endif</a>
-<a name="859"><span class="lineNum">     859 </span><span class="lineCov">          3 :         emplace_front(_Args&amp;&amp;... __args)</span></a>
+<a name="859"><span class="lineNum">     859 </span><span class="lineCov">          6 :         emplace_front(_Args&amp;&amp;... __args)</span></a>
 <a name="860"><span class="lineNum">     860 </span>            :         {</a>
-<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          3 :           this-&gt;_M_insert_after(cbefore_begin(),</span></a>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          6 :           this-&gt;_M_insert_after(cbefore_begin(),</span></a>
 <a name="862"><span class="lineNum">     862 </span>            :                                 std::forward&lt;_Args&gt;(__args)...);</a>
 <a name="863"><span class="lineNum">     863 </span>            : #if __cplusplus &gt; 201402L</a>
-<a name="864"><span class="lineNum">     864 </span><span class="lineCov">          3 :           return front();</span></a>
+<a name="864"><span class="lineNum">     864 </span><span class="lineCov">          6 :           return front();</span></a>
 <a name="865"><span class="lineNum">     865 </span>            : #endif</a>
 <a name="866"><span class="lineNum">     866 </span>            :         }</a>
 <a name="867"><span class="lineNum">     867 </span>            : </a>
@@ -953,8 +953,8 @@
 <a name="883"><span class="lineNum">     883 </span>            :        *</a>
 <a name="884"><span class="lineNum">     884 </span>            :        */</a>
 <a name="885"><span class="lineNum">     885 </span>            :       void</a>
-<a name="886"><span class="lineNum">     886 </span><span class="lineCov">          2 :       push_front(_Tp&amp;&amp; __val)</span></a>
-<a name="887"><span class="lineNum">     887 </span><span class="lineCov">          2 :       { this-&gt;_M_insert_after(cbefore_begin(), std::move(__val)); }</span></a>
+<a name="886"><span class="lineNum">     886 </span><span class="lineCov">          4 :       push_front(_Tp&amp;&amp; __val)</span></a>
+<a name="887"><span class="lineNum">     887 </span><span class="lineCov">          4 :       { this-&gt;_M_insert_after(cbefore_begin(), std::move(__val)); }</span></a>
 <a name="888"><span class="lineNum">     888 </span>            : </a>
 <a name="889"><span class="lineNum">     889 </span>            :       /**</a>
 <a name="890"><span class="lineNum">     890 </span>            :        *  @brief  Removes first element.</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/ostream</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/ostream</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntryLo">30.8 %</td>
+            <td class="headerCovTableEntryLo">46.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -235,8 +235,8 @@
 <a name="165"><span class="lineNum">     165 </span>            :        *  @c num_get facet) to perform numeric formatting.</a>
 <a name="166"><span class="lineNum">     166 </span>            :       */</a>
 <a name="167"><span class="lineNum">     167 </span>            :       __ostream_type&amp;</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        459 :       operator&lt;&lt;(long __n)</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        459 :       { return _M_insert(__n); }</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        462 :       operator&lt;&lt;(long __n)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        462 :       { return _M_insert(__n); }</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span>            :       __ostream_type&amp;</a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :       operator&lt;&lt;(unsigned long __n)</span></a>
@@ -293,11 +293,11 @@
 <a name="223"><span class="lineNum">     223 </span><span class="lineCov">         24 :       { return _M_insert(__f); }</span></a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
 <a name="225"><span class="lineNum">     225 </span>            :       __ostream_type&amp;</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :       operator&lt;&lt;(float __f)</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          1 :       operator&lt;&lt;(float __f)</span></a>
 <a name="227"><span class="lineNum">     227 </span>            :       {</a>
 <a name="228"><span class="lineNum">     228 </span>            :         // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
 <a name="229"><span class="lineNum">     229 </span>            :         // 117. basic_ostream uses nonexistent num_put member functions.</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :         return _M_insert(static_cast&lt;double&gt;(__f));</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :         return _M_insert(static_cast&lt;double&gt;(__f));</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :       }</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
 <a name="233"><span class="lineNum">     233 </span>            :       __ostream_type&amp;</a>

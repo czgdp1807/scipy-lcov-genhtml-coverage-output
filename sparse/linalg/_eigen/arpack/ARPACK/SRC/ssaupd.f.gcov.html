@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/ssaupd.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/ssaupd.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">60</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -475,9 +475,9 @@
 <a name="405"><span class="lineNum">     405 </span>            : c</a>
 <a name="406"><span class="lineNum">     406 </span>            : c-----------------------------------------------------------------------</a>
 <a name="407"><span class="lineNum">     407 </span>            : c</a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       9344 :       subroutine ssaupd</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       9344 :      &amp;   ( ido, bmat, n, which, nev, tol, resid, ncv, v, ldv, iparam,</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       9344 :      &amp;     ipntr, workd, workl, lworkl, info )</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       6610 :       subroutine ssaupd</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       6610 :      &amp;   ( ido, bmat, n, which, nev, tol, resid, ncv, v, ldv, iparam,</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       6610 :      &amp;     ipntr, workd, workl, lworkl, info )</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : c</a>
 <a name="412"><span class="lineNum">     412 </span>            : c     %----------------------------------------------------%</a>
 <a name="413"><span class="lineNum">     413 </span>            : c     | Include files for debugging and timing information |</a>
@@ -540,7 +540,7 @@
 <a name="470"><span class="lineNum">     470 </span>            : c     | Executable Statements |</a>
 <a name="471"><span class="lineNum">     471 </span>            : c     %-----------------------%</a>
 <a name="472"><span class="lineNum">     472 </span>            : c</a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       9344 :       if (ido .eq. 0) then</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       6610 :       if (ido .eq. 0) then</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : c</a>
 <a name="475"><span class="lineNum">     475 </span>            : c        %-------------------------------%</a>
 <a name="476"><span class="lineNum">     476 </span>            : c        | Initialize timing statistics  |</a>
@@ -673,15 +673,15 @@
 <a name="603"><span class="lineNum">     603 </span>            :      &amp;   ( ido, bmat, n, which, nev0, np, tol, resid, mode, iupd,</a>
 <a name="604"><span class="lineNum">     604 </span>            :      &amp;     ishift, mxiter, v, ldv, workl(ih), ldh, workl(ritz),</a>
 <a name="605"><span class="lineNum">     605 </span>            :      &amp;     workl(bounds), workl(iq), ldq, workl(iw), ipntr, workd,</a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">       9344 :      &amp;     info )</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">       6610 :      &amp;     info )</span></a>
 <a name="607"><span class="lineNum">     607 </span>            : c</a>
 <a name="608"><span class="lineNum">     608 </span>            : c     %--------------------------------------------------%</a>
 <a name="609"><span class="lineNum">     609 </span>            : c     | ido .ne. 99 implies use of reverse communication |</a>
 <a name="610"><span class="lineNum">     610 </span>            : c     | to compute operations involving OP or shifts.    |</a>
 <a name="611"><span class="lineNum">     611 </span>            : c     %--------------------------------------------------%</a>
 <a name="612"><span class="lineNum">     612 </span>            : c</a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">       9344 :       if (ido .eq. 3) iparam(8) = np</span></a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">       9344 :       if (ido .ne. 99) go to 9000</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">       6610 :       if (ido .eq. 3) iparam(8) = np</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">       6610 :       if (ido .ne. 99) go to 9000</span></a>
 <a name="615"><span class="lineNum">     615 </span>            : c</a>
 <a name="616"><span class="lineNum">     616 </span><span class="lineCov">        138 :       iparam(3) = mxiter</span></a>
 <a name="617"><span class="lineNum">     617 </span><span class="lineCov">        138 :       iparam(5) = np</span></a>
@@ -751,7 +751,7 @@
 <a name="681"><span class="lineNum">     681 </span>            : c</a>
 <a name="682"><span class="lineNum">     682 </span>            :  9000 continue</a>
 <a name="683"><span class="lineNum">     683 </span>            : c</a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">       9344 :       return</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">       6610 :       return</span></a>
 <a name="685"><span class="lineNum">     685 </span>            : c</a>
 <a name="686"><span class="lineNum">     686 </span>            : c     %---------------%</a>
 <a name="687"><span class="lineNum">     687 </span>            : c     | End of ssaupd |</a>

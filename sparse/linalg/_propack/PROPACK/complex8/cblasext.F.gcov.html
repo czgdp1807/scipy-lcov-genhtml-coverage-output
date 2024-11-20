@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/complex8/cblasext.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/complex8/cblasext.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">30</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -300,15 +300,15 @@
 <a name="230"><span class="lineNum">     230 </span>            : </a>
 <a name="231"><span class="lineNum">     231 </span>            : #else</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        174 :       real function pscnrm2(n, x, incx)</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        162 :       real function pscnrm2(n, x, incx)</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :       implicit none</a>
 <a name="235"><span class="lineNum">     235 </span>            :       integer n, incx</a>
 <a name="236"><span class="lineNum">     236 </span>            :       complex x(*)</a>
 <a name="237"><span class="lineNum">     237 </span>            :       real scnrm2</a>
 <a name="238"><span class="lineNum">     238 </span>            :       external scnrm2</a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        174 :       pscnrm2 = scnrm2(n, x, incx)</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        174 :       end</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        162 :       pscnrm2 = scnrm2(n, x, incx)</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        162 :       end</span></a>
 <a name="242"><span class="lineNum">     242 </span>            : c</a>
 <a name="243"><span class="lineNum">     243 </span>            : c****************************************************************************</a>
 <a name="244"><span class="lineNum">     244 </span>            : c</a>
@@ -326,14 +326,14 @@
 <a name="256"><span class="lineNum">     256 </span>            : c****************************************************************************</a>
 <a name="257"><span class="lineNum">     257 </span>            : c</a>
 <a name="258"><span class="lineNum">     258 </span>            : </a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         62 :       subroutine pcsscal(n, alpha, x , incx)</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         58 :       subroutine pcsscal(n, alpha, x , incx)</span></a>
 <a name="260"><span class="lineNum">     260 </span>            :       implicit none</a>
 <a name="261"><span class="lineNum">     261 </span>            :       integer n, incx</a>
 <a name="262"><span class="lineNum">     262 </span>            :       real alpha</a>
 <a name="263"><span class="lineNum">     263 </span>            :       complex x(*)</a>
 <a name="264"><span class="lineNum">     264 </span>            : </a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         62 :       call csscal(n, alpha, x , incx)</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">         62 :       end</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         58 :       call csscal(n, alpha, x , incx)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">         58 :       end</span></a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
 <a name="268"><span class="lineNum">     268 </span>            : c</a>
 <a name="269"><span class="lineNum">     269 </span>            : c****************************************************************************</a>
@@ -350,13 +350,13 @@
 <a name="280"><span class="lineNum">     280 </span>            : c****************************************************************************</a>
 <a name="281"><span class="lineNum">     281 </span>            : c</a>
 <a name="282"><span class="lineNum">     282 </span>            : </a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         20 :       subroutine pcaxpy(n, alpha, x , incx, y, incy)</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         16 :       subroutine pcaxpy(n, alpha, x , incx, y, incy)</span></a>
 <a name="284"><span class="lineNum">     284 </span>            :       implicit none</a>
 <a name="285"><span class="lineNum">     285 </span>            :       integer n, incx, incy</a>
 <a name="286"><span class="lineNum">     286 </span>            :       complex alpha,x(*),y(*)</a>
 <a name="287"><span class="lineNum">     287 </span>            : </a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         20 :       call caxpy(n, alpha, x , incx, y, incy)</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         20 :       end</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         16 :       call caxpy(n, alpha, x , incx, y, incy)</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         16 :       end</span></a>
 <a name="290"><span class="lineNum">     290 </span>            : </a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineCov">         56 :       subroutine pcsaxpy(n, alpha, x , incx, y, incy)</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :       implicit none</a>
@@ -385,7 +385,7 @@
 <a name="315"><span class="lineNum">     315 </span>            : c****************************************************************************</a>
 <a name="316"><span class="lineNum">     316 </span>            : c</a>
 <a name="317"><span class="lineNum">     317 </span>            : </a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         20 :       complex function pcdotc(n, zx , incx, zy, incy)</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         16 :       complex function pcdotc(n, zx , incx, zy, incy)</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :       implicit none</a>
 <a name="320"><span class="lineNum">     320 </span>            : c     forms the dot product of a vector.</a>
 <a name="321"><span class="lineNum">     321 </span>            : c     jack dongarra, 3/11/78.</a>
@@ -395,8 +395,8 @@
 <a name="325"><span class="lineNum">     325 </span>            :       integer incx,incy,ix,iy,n</a>
 <a name="326"><span class="lineNum">     326 </span>            :       complex ccdotc</a>
 <a name="327"><span class="lineNum">     327 </span>            :       external ccdotc</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         20 :       pcdotc = ccdotc(n, zx, incx, zy, incy)</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         20 :       end</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         16 :       pcdotc = ccdotc(n, zx, incx, zy, incy)</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         16 :       end</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : </a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :       complex function pcdotu(n, x , incx, y, incy)</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :       implicit none</a>
@@ -425,8 +425,8 @@
 <a name="355"><span class="lineNum">     355 </span>            : #ifdef _OPENMP</a>
 <a name="356"><span class="lineNum">     356 </span>            : c$OMP PARALLEL DO</a>
 <a name="357"><span class="lineNum">     357 </span>            : #endif</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         94 :             do i=1,n</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">         94 :                x(i) = (0.0,0.0)</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         98 :             do i=1,n</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">         98 :                x(i) = (0.0,0.0)</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :             enddo</a>
 <a name="361"><span class="lineNum">     361 </span>            :          else</a>
 <a name="362"><span class="lineNum">     362 </span>            : #ifdef _OPENMP</a>

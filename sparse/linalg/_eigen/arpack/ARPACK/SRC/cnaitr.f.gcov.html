@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/cnaitr.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/cnaitr.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">145</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -718,8 +718,8 @@
 <a name="648"><span class="lineNum">     648 </span>            : c</a>
 <a name="649"><span class="lineNum">     649 </span><span class="lineCov">        880 :          if ( rnorm .gt. 0.717*wnorm ) go to 100</span></a>
 <a name="650"><span class="lineNum">     650 </span>            : c</a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineCov">        831 :          iter  = 0</span></a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineCov">        831 :          nrorth = nrorth + 1</span></a>
+<a name="651"><span class="lineNum">     651 </span><span class="lineCov">        829 :          iter  = 0</span></a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">        829 :          nrorth = nrorth + 1</span></a>
 <a name="653"><span class="lineNum">     653 </span>            : c</a>
 <a name="654"><span class="lineNum">     654 </span>            : c        %---------------------------------------------------%</a>
 <a name="655"><span class="lineNum">     655 </span>            : c        | Enter the Iterative refinement phase. If further  |</a>
@@ -730,7 +730,7 @@
 <a name="660"><span class="lineNum">     660 </span>            : c</a>
 <a name="661"><span class="lineNum">     661 </span>            :    80    continue</a>
 <a name="662"><span class="lineNum">     662 </span>            : c</a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        977 :          if (msglvl .gt. 2) then</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        975 :          if (msglvl .gt. 2) then</span></a>
 <a name="664"><span class="lineNum">     664 </span><span class="lineNoCov">          0 :             rtemp(1) = wnorm</span></a>
 <a name="665"><span class="lineNum">     665 </span><span class="lineNoCov">          0 :             rtemp(2) = rnorm</span></a>
 <a name="666"><span class="lineNum">     666 </span>            :             call svout (logfil, 2, rtemp, ndigit,</a>
@@ -745,7 +745,7 @@
 <a name="675"><span class="lineNum">     675 </span>            : c        %----------------------------------------------------%</a>
 <a name="676"><span class="lineNum">     676 </span>            : c</a>
 <a name="677"><span class="lineNum">     677 </span>            :          call cgemv ('C', n, j, one, v, ldv, workd(ipj), 1,</a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        977 :      &amp;               zero, workd(irj), 1)</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        975 :      &amp;               zero, workd(irj), 1)</span></a>
 <a name="679"><span class="lineNum">     679 </span>            : c</a>
 <a name="680"><span class="lineNum">     680 </span>            : c        %---------------------------------------------%</a>
 <a name="681"><span class="lineNum">     681 </span>            : c        | Compute the correction to the residual:     |</a>
@@ -755,12 +755,12 @@
 <a name="685"><span class="lineNum">     685 </span>            : c        %---------------------------------------------%</a>
 <a name="686"><span class="lineNum">     686 </span>            : c</a>
 <a name="687"><span class="lineNum">     687 </span>            :          call cgemv ('N', n, j, -one, v, ldv, workd(irj), 1,</a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">        977 :      &amp;               one, resid, 1)</span></a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">        977 :          call caxpy (j, one, workd(irj), 1, h(1,j), 1)</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">        975 :      &amp;               one, resid, 1)</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">        975 :          call caxpy (j, one, workd(irj), 1, h(1,j), 1)</span></a>
 <a name="690"><span class="lineNum">     690 </span>            : c</a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">        977 :          orth2 = .true.</span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">        977 :          call arscnd (t2)</span></a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">        977 :          if (bmat .eq. 'G') then</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">        975 :          orth2 = .true.</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">        975 :          call arscnd (t2)</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">        975 :          if (bmat .eq. 'G') then</span></a>
 <a name="694"><span class="lineNum">     694 </span><span class="lineCov">        557 :             nbx = nbx + 1</span></a>
 <a name="695"><span class="lineNum">     695 </span><span class="lineCov">        557 :             call ccopy (n, resid, 1, workd(irj), 1)</span></a>
 <a name="696"><span class="lineNum">     696 </span><span class="lineCov">        557 :             ipntr(1) = irj</span></a>
@@ -773,8 +773,8 @@
 <a name="703"><span class="lineNum">     703 </span>            : c           %-----------------------------------%</a>
 <a name="704"><span class="lineNum">     704 </span>            : c</a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineCov">        557 :             go to 9000</span></a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">        420 :          else if (bmat .eq. 'I') then</span></a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">        420 :             call ccopy (n, resid, 1, workd(ipj), 1)</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">        418 :          else if (bmat .eq. 'I') then</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">        418 :             call ccopy (n, resid, 1, workd(ipj), 1)</span></a>
 <a name="708"><span class="lineNum">     708 </span>            :          end if</a>
 <a name="709"><span class="lineNum">     709 </span>            :    90    continue</a>
 <a name="710"><span class="lineNum">     710 </span>            : c</a>
@@ -782,7 +782,7 @@
 <a name="712"><span class="lineNum">     712 </span>            : c        | Back from reverse communication if ORTH2 = .true. |</a>
 <a name="713"><span class="lineNum">     713 </span>            : c        %---------------------------------------------------%</a>
 <a name="714"><span class="lineNum">     714 </span>            : c</a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">        977 :          if (bmat .eq. 'G') then</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">        975 :          if (bmat .eq. 'G') then</span></a>
 <a name="716"><span class="lineNum">     716 </span><span class="lineCov">        557 :             call arscnd (t3)</span></a>
 <a name="717"><span class="lineNum">     717 </span><span class="lineCov">        557 :             tmvbx = tmvbx + (t3 - t2)</span></a>
 <a name="718"><span class="lineNum">     718 </span>            :          end if</a>
@@ -791,14 +791,14 @@
 <a name="721"><span class="lineNum">     721 </span>            : c        | Compute the B-norm of the corrected residual r_{j}. |</a>
 <a name="722"><span class="lineNum">     722 </span>            : c        %-----------------------------------------------------%</a>
 <a name="723"><span class="lineNum">     723 </span>            : c</a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineCov">        977 :          if (bmat .eq. 'G') then</span></a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">        975 :          if (bmat .eq. 'G') then</span></a>
 <a name="725"><span class="lineNum">     725 </span><span class="lineCov">        557 :              cnorm  = ccdotc (n, resid, 1, workd(ipj), 1)</span></a>
 <a name="726"><span class="lineNum">     726 </span><span class="lineCov">        557 :              rnorm1 = sqrt( slapy2(real(cnorm),aimag(cnorm)) )</span></a>
-<a name="727"><span class="lineNum">     727 </span><span class="lineCov">        420 :          else if (bmat .eq. 'I') then</span></a>
-<a name="728"><span class="lineNum">     728 </span><span class="lineCov">        420 :              rnorm1 = scnrm2(n, resid, 1)</span></a>
+<a name="727"><span class="lineNum">     727 </span><span class="lineCov">        418 :          else if (bmat .eq. 'I') then</span></a>
+<a name="728"><span class="lineNum">     728 </span><span class="lineCov">        418 :              rnorm1 = scnrm2(n, resid, 1)</span></a>
 <a name="729"><span class="lineNum">     729 </span>            :          end if</a>
 <a name="730"><span class="lineNum">     730 </span>            : c</a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">        977 :          if (msglvl .gt. 0 .and. iter .gt. 0 ) then</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">        975 :          if (msglvl .gt. 0 .and. iter .gt. 0 ) then</span></a>
 <a name="732"><span class="lineNum">     732 </span>            :             call ivout (logfil, 1, [j], ndigit,</a>
 <a name="733"><span class="lineNum">     733 </span><span class="lineNoCov">          0 :      &amp;           '_naitr: Iterative refinement for Arnoldi residual')</span></a>
 <a name="734"><span class="lineNum">     734 </span><span class="lineNoCov">          0 :             if (msglvl .gt. 2) then</span></a>
@@ -814,7 +814,7 @@
 <a name="744"><span class="lineNum">     744 </span>            : c        | step of re-orthogonalization.           |</a>
 <a name="745"><span class="lineNum">     745 </span>            : c        %-----------------------------------------%</a>
 <a name="746"><span class="lineNum">     746 </span>            : c</a>
-<a name="747"><span class="lineNum">     747 </span><span class="lineCov">        977 :          if ( rnorm1 .gt. 0.717*rnorm ) then</span></a>
+<a name="747"><span class="lineNum">     747 </span><span class="lineCov">        975 :          if ( rnorm1 .gt. 0.717*rnorm ) then</span></a>
 <a name="748"><span class="lineNum">     748 </span>            : c</a>
 <a name="749"><span class="lineNum">     749 </span>            : c           %---------------------------------------%</a>
 <a name="750"><span class="lineNum">     750 </span>            : c           | No need for further refinement.       |</a>
@@ -826,7 +826,7 @@
 <a name="756"><span class="lineNum">     756 </span>            : c           | angle of less than arcCOS(0.717)      |</a>
 <a name="757"><span class="lineNum">     757 </span>            : c           %---------------------------------------%</a>
 <a name="758"><span class="lineNum">     758 </span>            : c</a>
-<a name="759"><span class="lineNum">     759 </span><span class="lineCov">        685 :             rnorm = rnorm1</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">        683 :             rnorm = rnorm1</span></a>
 <a name="760"><span class="lineNum">     760 </span>            : c</a>
 <a name="761"><span class="lineNum">     761 </span>            :          else</a>
 <a name="762"><span class="lineNum">     762 </span>            : c</a>

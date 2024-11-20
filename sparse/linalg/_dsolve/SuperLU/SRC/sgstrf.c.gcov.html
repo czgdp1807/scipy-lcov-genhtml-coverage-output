@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/sgstrf.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/sgstrf.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">119</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -393,8 +393,8 @@
 <a name="323"><span class="lineNum">     323 </span><span class="lineCov">        731 :                 xusub[icol+1] = nextu;</span></a>
 <a name="324"><span class="lineNum">     324 </span>            :                 </a>
 <a name="325"><span class="lineNum">     325 </span>            :                 /* Scatter into SPA dense[*] */</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       4304 :                 for (k = xa_begin[icol]; k &lt; xa_end[icol]; k++)</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       3573 :                     dense[asub[k]] = a[k];</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       5264 :                 for (k = xa_begin[icol]; k &lt; xa_end[icol]; k++)</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       4533 :                     dense[asub[k]] = a[k];</span></a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
 <a name="329"><span class="lineNum">     329 </span>            :                 /* Numeric update within the snode */</a>
 <a name="330"><span class="lineNum">     330 </span><span class="lineCov">        731 :                 ssnode_bmod(icol, jsupno, fsupc, dense, tempv, Glu, stat);</span></a>

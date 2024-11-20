@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/sparsetools/sparsetools.cxx</title>
+  <title>LCOV - lcov.info - sparse/sparsetools/sparsetools.cxx</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">187</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -162,33 +162,33 @@
 <a name="92"><span class="lineNum">      92 </span>            :  *</a>
 <a name="93"><span class="lineNum">      93 </span>            :  */</a>
 <a name="94"><span class="lineNum">      94 </span>            : PyObject *</a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">    1310559 : call_thunk(char ret_spec, const char *spec, thunk_t *thunk, PyObject *args)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">    1299479 : call_thunk(char ret_spec, const char *spec, thunk_t *thunk, PyObject *args)</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : {</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">    1310559 :     void *arg_list[MAX_ARGS];</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">    1310559 :     PyObject *arg_arrays[MAX_ARGS];</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">    1310559 :     int is_output[MAX_ARGS];</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">    1310559 :     PyObject *return_value = NULL;</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">    1310559 :     int I_typenum = NPY_INT32;</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">    1310559 :     int T_typenum = -1;</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1310559 :     int VW_count = 0;</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">    1310559 :     int I_in_arglist = 0;</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">    1310559 :     int T_in_arglist = 0;</span></a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">    1310559 :     int next_is_output = 0;</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">    1310559 :     int j, k, arg_j;</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">    1310559 :     const char *p;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    1310559 :     PY_LONG_LONG ret;</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    1310559 :     Py_ssize_t max_array_size = 0;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">    1310559 :     NPY_BEGIN_THREADS_DEF;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">    1299479 :     void *arg_list[MAX_ARGS];</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">    1299479 :     PyObject *arg_arrays[MAX_ARGS];</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">    1299479 :     int is_output[MAX_ARGS];</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">    1299479 :     PyObject *return_value = NULL;</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">    1299479 :     int I_typenum = NPY_INT32;</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">    1299479 :     int T_typenum = -1;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1299479 :     int VW_count = 0;</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">    1299479 :     int I_in_arglist = 0;</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">    1299479 :     int T_in_arglist = 0;</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">    1299479 :     int next_is_output = 0;</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">    1299479 :     int j, k, arg_j;</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">    1299479 :     const char *p;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    1299479 :     PY_LONG_LONG ret;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    1299479 :     Py_ssize_t max_array_size = 0;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">    1299479 :     NPY_BEGIN_THREADS_DEF;</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">    1310559 :     if (!PyTuple_Check(args)) {</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">    1299479 :     if (!PyTuple_Check(args)) {</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;args is not a tuple&quot;);</span></a>
 <a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="116"><span class="lineNum">     116 </span>            :     }</a>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">   22279503 :     for (j = 0; j &lt; MAX_ARGS; ++j) {</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">   20968944 :         arg_list[j] = NULL;</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">   20968944 :         arg_arrays[j] = NULL;</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">   20968944 :         is_output[j] = 0;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">   22091143 :     for (j = 0; j &lt; MAX_ARGS; ++j) {</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">   20791664 :         arg_list[j] = NULL;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">   20791664 :         arg_arrays[j] = NULL;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">   20791664 :         is_output[j] = 0;</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :     }</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span>            : </a>
@@ -197,37 +197,37 @@
 <a name="127"><span class="lineNum">     127 </span>            :      */</a>
 <a name="128"><span class="lineNum">     128 </span>            :     arg_j = 0;</a>
 <a name="129"><span class="lineNum">     129 </span>            :     j = 0;</a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">   13095213 :     for (p = spec; *p != '\0'; ++p, ++j, ++arg_j) {</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">   11784654 :         const int *supported_typenums;</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">   11784654 :         int n_supported_typenums;</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">   11784654 :         int cur_typenum;</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">   11784654 :         PyObject *arg;</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">   12982812 :     for (p = spec; *p != '\0'; ++p, ++j, ++arg_j) {</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">   11683333 :         const int *supported_typenums;</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">   11683333 :         int n_supported_typenums;</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">   11683333 :         int cur_typenum;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">   11683333 :         PyObject *arg;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">   11784654 :         if (j &gt;= MAX_ARGS) {</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">   11683333 :         if (j &gt;= MAX_ARGS) {</span></a>
 <a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :             PyErr_SetString(PyExc_ValueError,</span></a>
 <a name="138"><span class="lineNum">     138 </span>            :                             &quot;internal error: too many arguments in spec&quot;);</a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :         }</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">   11784654 :         is_output[j] = next_is_output;</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   11784654 :         next_is_output = 0;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">   11683333 :         is_output[j] = next_is_output;</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   11683333 :         next_is_output = 0;</span></a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">   11784654 :         switch (*p) {</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    2015397 :         case '*':</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    2015397 :             next_is_output = 1;</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">    2015397 :             --j;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    2015397 :             --arg_j;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    2015397 :             continue;</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    3402044 :         case 'i':</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    3402044 :         case 'l':</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">   11683333 :         switch (*p) {</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    2000307 :         case '*':</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    2000307 :             next_is_output = 1;</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">    2000307 :             --j;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    2000307 :             --arg_j;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    2000307 :             continue;</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    3384250 :         case 'i':</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    3384250 :         case 'l':</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :             /* Integer scalars */</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    3402044 :             arg = PyTuple_GetItem(args, arg_j);</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    3402044 :             if (arg == NULL) {</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    3384250 :             arg = PyTuple_GetItem(args, arg_j);</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    3384250 :             if (arg == NULL) {</span></a>
 <a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :             }</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">    3402044 :             Py_INCREF(arg);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">    3402044 :             arg_arrays[j] = arg;</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">    3402044 :             continue;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">    3384250 :             Py_INCREF(arg);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">    3384250 :             arg_arrays[j] = arg;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">    3384250 :             continue;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :         case 'I':</a>
 <a name="162"><span class="lineNum">     162 </span>            :             /* Integer arrays */</a>
 <a name="163"><span class="lineNum">     163 </span>            :             supported_typenums = supported_I_typenums;</a>
@@ -235,13 +235,13 @@
 <a name="165"><span class="lineNum">     165 </span>            :             cur_typenum = I_typenum;</a>
 <a name="166"><span class="lineNum">     166 </span>            :             I_in_arglist = 1;</a>
 <a name="167"><span class="lineNum">     167 </span>            :             break;</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">    2551688 :         case 'T':</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">    2506971 :         case 'T':</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :             /* Data arrays */</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">    2551688 :             supported_typenums = supported_T_typenums;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">    2551688 :             n_supported_typenums = n_supported_T_typenums;</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">    2551688 :             cur_typenum = T_typenum;</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">    2551688 :             T_in_arglist = 1;</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">    2551688 :             break;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">    2506971 :             supported_typenums = supported_T_typenums;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">    2506971 :             n_supported_typenums = n_supported_T_typenums;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">    2506971 :             cur_typenum = T_typenum;</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">    2506971 :             T_in_arglist = 1;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">    2506971 :             break;</span></a>
 <a name="175"><span class="lineNum">     175 </span><span class="lineCov">      30316 :         case 'B':</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :             /* Boolean arrays */</a>
 <a name="177"><span class="lineNum">     177 </span><span class="lineCov">      30316 :             arg = PyTuple_GetItem(args, arg_j);</span></a>
@@ -253,63 +253,63 @@
 <a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :             }</a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineCov">      30316 :             continue;</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">     115484 :         case 'V':</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">     116312 :         case 'V':</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :             /* std::vector integer output array */</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     115484 :             I_in_arglist = 1;</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     115484 :             --arg_j;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     115484 :             VW_count += 1;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     115484 :             continue;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">      57742 :         case 'W':</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     116312 :             I_in_arglist = 1;</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     116312 :             --arg_j;</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     116312 :             VW_count += 1;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     116312 :             continue;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">      58156 :         case 'W':</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :             /* std::vector data output array */</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      57742 :             T_in_arglist = 1;</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      57742 :             --arg_j;</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      57742 :             VW_count += 1;</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      57742 :             continue;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      58156 :             T_in_arglist = 1;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      58156 :             --arg_j;</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      58156 :             VW_count += 1;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      58156 :             continue;</span></a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :         default:</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :             PyErr_SetString(PyExc_ValueError, &quot;unknown character in spec&quot;);</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="201"><span class="lineNum">     201 </span>            :         }</a>
 <a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">    6163671 :         arg = PyTuple_GetItem(args, arg_j);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    6163671 :         if (arg == NULL) {</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">    6093992 :         arg = PyTuple_GetItem(args, arg_j);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">    6093992 :         if (arg == NULL) {</span></a>
 <a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :         }</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    6163671 :         arg_arrays[j] = c_array_from_object(arg, -1, is_output[j]);</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">    6163671 :         if (arg_arrays[j] == NULL) {</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    6093992 :         arg_arrays[j] = c_array_from_object(arg, -1, is_output[j]);</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">    6093992 :         if (arg_arrays[j] == NULL) {</span></a>
 <a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="210"><span class="lineNum">     210 </span>            :         }</a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
 <a name="212"><span class="lineNum">     212 </span>            :         /* Find a compatible supported data type */</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">   31275103 :         for (k = 0; k &lt; n_supported_typenums; ++k) {</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">   31275103 :             if (PyArray_CanCastSafely(PyArray_TYPE((PyArrayObject *)arg_arrays[j]), supported_typenums[k]) &amp;&amp;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">    5183424 :                 (cur_typenum == -1 || PyArray_CanCastSafely(cur_typenum, supported_typenums[k])))</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">   30905660 :         for (k = 0; k &lt; n_supported_typenums; ++k) {</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">   30905660 :             if (PyArray_CanCastSafely(PyArray_TYPE((PyArrayObject *)arg_arrays[j]), supported_typenums[k]) &amp;&amp;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">    5178867 :                 (cur_typenum == -1 || PyArray_CanCastSafely(cur_typenum, supported_typenums[k])))</span></a>
 <a name="217"><span class="lineNum">     217 </span>            :             {</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    6163671 :                 cur_typenum = supported_typenums[k];</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    6163671 :                 break;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    6093992 :                 cur_typenum = supported_typenums[k];</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    6093992 :                 break;</span></a>
 <a name="220"><span class="lineNum">     220 </span>            :             }</a>
 <a name="221"><span class="lineNum">     221 </span>            :         }</a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    6163671 :         if (k == n_supported_typenums) {</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    6093992 :         if (k == n_supported_typenums) {</span></a>
 <a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :             PyErr_SetString(PyExc_ValueError,</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :                             &quot;unsupported data types in input&quot;);</a>
 <a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :         }</a>
 <a name="227"><span class="lineNum">     227 </span>            : </a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">    6163671 :         if (*p == 'I') {</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">    6093992 :         if (*p == 'I') {</span></a>
 <a name="229"><span class="lineNum">     229 </span>            :             I_typenum = cur_typenum;</a>
 <a name="230"><span class="lineNum">     230 </span>            :         }</a>
 <a name="231"><span class="lineNum">     231 </span>            :         else {</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">    2551688 :             T_typenum = cur_typenum;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">    2506971 :             T_typenum = cur_typenum;</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :         }</a>
 <a name="234"><span class="lineNum">     234 </span>            :     }</a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">    1310559 :     if (arg_j != PyTuple_Size(args)) {</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">    1299479 :     if (arg_j != PyTuple_Size(args)) {</span></a>
 <a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;too many arguments&quot;);</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="239"><span class="lineNum">     239 </span>            :     }</a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">    1310559 :     if ((I_in_arglist &amp;&amp; I_typenum == -1) ||</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">    1310559 :         (T_in_arglist &amp;&amp; T_typenum == -1)) {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">    1299479 :     if ((I_in_arglist &amp;&amp; I_typenum == -1) ||</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">    1299479 :         (T_in_arglist &amp;&amp; T_typenum == -1)) {</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError,</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :                         &quot;unsupported data types in input&quot;);</a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
@@ -320,70 +320,70 @@
 <a name="250"><span class="lineNum">     250 </span>            :      * Cast and extract argument arrays</a>
 <a name="251"><span class="lineNum">     251 </span>            :      */</a>
 <a name="252"><span class="lineNum">     252 </span>            :     j = 0;</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">   13094841 :     for (p = spec; *p != '\0'; ++p, ++j) {</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">   11784654 :         PyObject *arg;</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">   11784654 :         int cur_typenum;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">   12982440 :     for (p = spec; *p != '\0'; ++p, ++j) {</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">   11683333 :         PyObject *arg;</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">   11683333 :         int cur_typenum;</span></a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">   11784654 :         if (*p == '*') {</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">    2015397 :             --j;</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">    2015397 :             continue;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">   11683333 :         if (*p == '*') {</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">    2000307 :             --j;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">    2000307 :             continue;</span></a>
 <a name="260"><span class="lineNum">     260 </span>            :         }</a>
 <a name="261"><span class="lineNum">     261 </span>            :         else if (*p == 'i' || *p == 'l') {</a>
 <a name="262"><span class="lineNum">     262 </span>            :             /* Integer scalars */</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">    3402044 :             PY_LONG_LONG value;</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">    3384250 :             PY_LONG_LONG value;</span></a>
 <a name="264"><span class="lineNum">     264 </span>            : </a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">    3402044 :             value = PyLong_AsLongLong(arg_arrays[j]);</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">    3402044 :             if (PyErr_Occurred()) {</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">    3384250 :             value = PyLong_AsLongLong(arg_arrays[j]);</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">    3384250 :             if (PyErr_Occurred()) {</span></a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :             }</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    3215160 :             if ((*p == 'l' || PyArray_EquivTypenums(I_typenum, NPY_INT64))</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">    3402044 :                     &amp;&amp; value == (npy_int64)value) {</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     688756 :                 arg_list[j] = std::malloc(sizeof(npy_int64));</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     688756 :                 *(npy_int64*)arg_list[j] = (npy_int64)value;</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    3192235 :             if ((*p == 'l' || PyArray_EquivTypenums(I_typenum, NPY_INT64))</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">    3384250 :                     &amp;&amp; value == (npy_int64)value) {</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     953803 :                 arg_list[j] = std::malloc(sizeof(npy_int64));</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     953803 :                 *(npy_int64*)arg_list[j] = (npy_int64)value;</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :             }</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    2713288 :             else if (*p == 'i' &amp;&amp; PyArray_EquivTypenums(I_typenum, NPY_INT32)</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">    5426576 :                      &amp;&amp; value == (npy_int32)value) {</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">    2713288 :                 arg_list[j] = std::malloc(sizeof(npy_int32));</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">    2713288 :                 *(npy_int32*)arg_list[j] = (npy_int32)value;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    2430447 :             else if (*p == 'i' &amp;&amp; PyArray_EquivTypenums(I_typenum, NPY_INT32)</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">    4860894 :                      &amp;&amp; value == (npy_int32)value) {</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">    2430447 :                 arg_list[j] = std::malloc(sizeof(npy_int32));</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">    2430447 :                 *(npy_int32*)arg_list[j] = (npy_int32)value;</span></a>
 <a name="279"><span class="lineNum">     279 </span>            :             }</a>
 <a name="280"><span class="lineNum">     280 </span>            :             else {</a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :                 PyErr_SetString(PyExc_ValueError,</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :                                 &quot;could not convert integer scalar&quot;);</a>
 <a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="284"><span class="lineNum">     284 </span>            :             }</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">    3402044 :             continue;</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">    3402044 :         }</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">    3384250 :             continue;</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">    3384250 :         }</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :         else if (*p == 'B') {</a>
 <a name="288"><span class="lineNum">     288 </span>            :             /* Boolean arrays already cast */</a>
 <a name="289"><span class="lineNum">     289 </span>            :         }</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">     115484 :         else if (*p == 'V') {</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">     115484 :             arg_list[j] = allocate_std_vector_typenum(I_typenum);</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">     115484 :             if (arg_list[j] == NULL) {</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">     116312 :         else if (*p == 'V') {</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">     116312 :             arg_list[j] = allocate_std_vector_typenum(I_typenum);</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">     116312 :             if (arg_list[j] == NULL) {</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="294"><span class="lineNum">     294 </span>            :             }</a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">     115484 :             continue;</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">     116312 :             continue;</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         }</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      57742 :         else if (*p == 'W') {</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      57742 :             arg_list[j] = allocate_std_vector_typenum(T_typenum);</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      57742 :             if (arg_list[j] == NULL) {</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      58156 :         else if (*p == 'W') {</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      58156 :             arg_list[j] = allocate_std_vector_typenum(T_typenum);</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      58156 :             if (arg_list[j] == NULL) {</span></a>
 <a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :                 goto fail;</span></a>
 <a name="301"><span class="lineNum">     301 </span>            :             }</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      57742 :             continue;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      58156 :             continue;</span></a>
 <a name="303"><span class="lineNum">     303 </span>            :         }</a>
 <a name="304"><span class="lineNum">     304 </span>            :         else {</a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">    6163671 :             cur_typenum = (*p == 'I' || *p == 'i') ? I_typenum : T_typenum;</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">    6093992 :             cur_typenum = (*p == 'I' || *p == 'i') ? I_typenum : T_typenum;</span></a>
 <a name="306"><span class="lineNum">     306 </span>            : </a>
 <a name="307"><span class="lineNum">     307 </span>            :             /* Cast if necessary */</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">    6163671 :             arg = arg_arrays[j];</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">    6163671 :             if (PyArray_EquivTypenums(PyArray_TYPE((PyArrayObject *)arg), cur_typenum)) {</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">    6093992 :             arg = arg_arrays[j];</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">    6093992 :             if (PyArray_EquivTypenums(PyArray_TYPE((PyArrayObject *)arg), cur_typenum)) {</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :                 /* No cast needed. */</a>
 <a name="311"><span class="lineNum">     311 </span>            :             }</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">     134484 :             else if (!is_output[j] || PyArray_CanCastSafely(cur_typenum, PyArray_TYPE((PyArrayObject *)arg))) {</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">     143475 :             else if (!is_output[j] || PyArray_CanCastSafely(cur_typenum, PyArray_TYPE((PyArrayObject *)arg))) {</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :                 /* Cast needed. Output arrays require safe cast back. */</a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">     134112 :                 arg_arrays[j] = c_array_from_object(arg, cur_typenum, is_output[j]);</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">     134112 :                 Py_DECREF(arg);</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">     134112 :                 if (arg_arrays[j] == NULL) {</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">     143103 :                 arg_arrays[j] = c_array_from_object(arg, cur_typenum, is_output[j]);</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">     143103 :                 Py_DECREF(arg);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">     143103 :                 if (arg_arrays[j] == NULL) {</span></a>
 <a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :                     goto fail;</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :                 }</a>
 <a name="319"><span class="lineNum">     319 </span>            :             }</a>
@@ -396,11 +396,11 @@
 <a name="326"><span class="lineNum">     326 </span>            :         }</a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
 <a name="328"><span class="lineNum">     328 </span>            :         /* Grab value */</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">    6193615 :         arg_list[j] = PyArray_DATA((PyArrayObject *)arg_arrays[j]);</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">    6123936 :         arg_list[j] = PyArray_DATA((PyArrayObject *)arg_arrays[j]);</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : </a>
 <a name="331"><span class="lineNum">     331 </span>            :         /* Find maximum array size */</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">    6193615 :         if (PyArray_SIZE((PyArrayObject *)arg_arrays[j]) &gt; max_array_size) {</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">    2425172 :             max_array_size = PyArray_SIZE((PyArrayObject *)arg_arrays[j]);</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">    6123936 :         if (PyArray_SIZE((PyArrayObject *)arg_arrays[j]) &gt; max_array_size) {</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">    2407666 :             max_array_size = PyArray_SIZE((PyArrayObject *)arg_arrays[j]);</span></a>
 <a name="334"><span class="lineNum">     334 </span>            :         }</a>
 <a name="335"><span class="lineNum">     335 </span>            :     }</a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
@@ -408,13 +408,13 @@
 <a name="338"><span class="lineNum">     338 </span>            :     /*</a>
 <a name="339"><span class="lineNum">     339 </span>            :      * Call thunk</a>
 <a name="340"><span class="lineNum">     340 </span>            :      */</a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">    1310187 :     if (max_array_size &gt; 100) {</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">    1299107 :     if (max_array_size &gt; 100) {</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :         /* Threshold GIL release: it's not a free operation */</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">     209661 :         NPY_BEGIN_THREADS;</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">     197742 :         NPY_BEGIN_THREADS;</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :     }</a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">    1310187 :     try {</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">    1310187 :         ret = thunk(I_typenum, T_typenum, arg_list);</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">    1310186 :         NPY_END_THREADS;</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">    1299107 :     try {</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">    1299107 :         ret = thunk(I_typenum, T_typenum, arg_list);</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">    1299106 :         NPY_END_THREADS;</span></a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">          1 :     } catch (const std::bad_alloc &amp;e) {</span></a>
 <a name="349"><span class="lineNum">     349 </span><span class="lineCov">          1 :         NPY_END_THREADS;</span></a>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">          1 :         PyErr_SetString(PyExc_MemoryError, e.what());</span></a>
@@ -429,13 +429,13 @@
 <a name="359"><span class="lineNum">     359 </span>            :      * Generate return value;</a>
 <a name="360"><span class="lineNum">     360 </span>            :      */</a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">    1310186 :     switch (ret_spec) {</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">     152280 :     case 'i':</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">     152280 :     case 'l':</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">     152280 :         return_value = PyLong_FromLongLong(ret);</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">    1299106 :     switch (ret_spec) {</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">     152840 :     case 'i':</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">     152840 :     case 'l':</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">     152840 :         return_value = PyLong_FromLongLong(ret);</span></a>
 <a name="366"><span class="lineNum">     366 </span>            :         break;</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">    1157906 :     case 'v':</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">    1157906 :         Py_INCREF(Py_None);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">    1146266 :     case 'v':</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">    1146266 :         Py_INCREF(Py_None);</span></a>
 <a name="369"><span class="lineNum">     369 </span>            :         return_value = Py_None;</a>
 <a name="370"><span class="lineNum">     370 </span>            :         break;</a>
 <a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :     default:</span></a>
@@ -446,46 +446,46 @@
 <a name="376"><span class="lineNum">     376 </span>            :     /*</a>
 <a name="377"><span class="lineNum">     377 </span>            :      * Convert any std::vector output arrays to arrays</a>
 <a name="378"><span class="lineNum">     378 </span>            :      */</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">    1310186 :     if (VW_count &gt; 0) {</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">      57742 :         PyObject *new_ret;</span></a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">      57742 :         PyObject *old_ret = return_value;</span></a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">      57742 :         int pos;</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">    1299106 :     if (VW_count &gt; 0) {</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">      58156 :         PyObject *new_ret;</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">      58156 :         PyObject *old_ret = return_value;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">      58156 :         int pos;</span></a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">      57742 :         return_value = NULL;</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">      58156 :         return_value = NULL;</span></a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      57742 :         new_ret = PyTuple_New(VW_count + (old_ret == Py_None ? 0 : 1));</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      57742 :         if (new_ret == NULL) {</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      58156 :         new_ret = PyTuple_New(VW_count + (old_ret == Py_None ? 0 : 1));</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      58156 :         if (new_ret == NULL) {</span></a>
 <a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="389"><span class="lineNum">     389 </span>            :         }</a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      57742 :         if (old_ret != Py_None) {</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      58156 :         if (old_ret != Py_None) {</span></a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :             PyTuple_SET_ITEM(new_ret, 0, old_ret);</span></a>
 <a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :             pos = 1;</span></a>
 <a name="393"><span class="lineNum">     393 </span>            :         }</a>
 <a name="394"><span class="lineNum">     394 </span>            :         else {</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      57742 :             Py_DECREF(old_ret);</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      58156 :             Py_DECREF(old_ret);</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :             pos = 0;</a>
 <a name="397"><span class="lineNum">     397 </span>            :         }</a>
 <a name="398"><span class="lineNum">     398 </span>            : </a>
 <a name="399"><span class="lineNum">     399 </span>            :         j = 0;</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">     923872 :         for (p = spec; *p != '\0'; ++p, ++j) {</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">     866130 :             if (*p == '*') {</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">     173226 :                 --j;</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">     173226 :                 continue;</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">     930496 :         for (p = spec; *p != '\0'; ++p, ++j) {</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">     872340 :             if (*p == '*') {</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">     174468 :                 --j;</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">     174468 :                 continue;</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :             }</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     692904 :             else if (*p == 'V' || *p == 'W') {</span></a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">     173226 :                 PyObject *arg;</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">     173226 :                 if (*p == 'V') {</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">     115484 :                     arg = array_from_std_vector_and_free(I_typenum, arg_list[j]);</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     697872 :             else if (*p == 'V' || *p == 'W') {</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">     174468 :                 PyObject *arg;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">     174468 :                 if (*p == 'V') {</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">     116312 :                     arg = array_from_std_vector_and_free(I_typenum, arg_list[j]);</span></a>
 <a name="409"><span class="lineNum">     409 </span>            :                 } else {</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">      57742 :                     arg = array_from_std_vector_and_free(T_typenum, arg_list[j]);</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">      58156 :                     arg = array_from_std_vector_and_free(T_typenum, arg_list[j]);</span></a>
 <a name="411"><span class="lineNum">     411 </span>            :                 }</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     173226 :                 arg_list[j] = NULL;</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">     173226 :                 if (arg == NULL) {</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     174468 :                 arg_list[j] = NULL;</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">     174468 :                 if (arg == NULL) {</span></a>
 <a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :                     Py_XDECREF(new_ret);</span></a>
 <a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :                     goto fail;</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :                 }</a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">     173226 :                 PyTuple_SET_ITEM(new_ret, pos, arg);</span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">     173226 :                 ++pos;</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">     174468 :                 PyTuple_SET_ITEM(new_ret, pos, arg);</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">     174468 :                 ++pos;</span></a>
 <a name="419"><span class="lineNum">     419 </span>            :             }</a>
 <a name="420"><span class="lineNum">     420 </span>            :         }</a>
 <a name="421"><span class="lineNum">     421 </span>            : </a>
@@ -493,26 +493,26 @@
 <a name="423"><span class="lineNum">     423 </span>            :     }</a>
 <a name="424"><span class="lineNum">     424 </span>            : </a>
 <a name="425"><span class="lineNum">     425 </span>            : </a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">    1252444 : fail:</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">    1240950 : fail:</span></a>
 <a name="427"><span class="lineNum">     427 </span>            :     /*</a>
 <a name="428"><span class="lineNum">     428 </span>            :      * Cleanup</a>
 <a name="429"><span class="lineNum">     429 </span>            :      */</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">   13095213 :     for (j = 0, p = spec; *p != '\0'; ++p, ++j) {</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">   11784654 :         if (*p == '*') {</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">    2015397 :             --j;</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">    2015397 :             continue;</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">   12982812 :     for (j = 0, p = spec; *p != '\0'; ++p, ++j) {</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">   11683333 :         if (*p == '*') {</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">    2000307 :             --j;</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">    2000307 :             continue;</span></a>
 <a name="434"><span class="lineNum">     434 </span>            :         }</a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">    9769257 :         if (is_output[j] &amp;&amp; arg_arrays[j] != NULL &amp;&amp; PyArray_Check(arg_arrays[j])) {</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">    1842171 :             PyArray_ResolveWritebackIfCopy((PyArrayObject *)arg_arrays[j]);</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">    9683026 :         if (is_output[j] &amp;&amp; arg_arrays[j] != NULL &amp;&amp; PyArray_Check(arg_arrays[j])) {</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">    1825839 :             PyArray_ResolveWritebackIfCopy((PyArrayObject *)arg_arrays[j]);</span></a>
 <a name="437"><span class="lineNum">     437 </span>            :         }</a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">    9769257 :         Py_XDECREF(arg_arrays[j]);</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">    9769257 :         if ((*p == 'i' || *p == 'l') &amp;&amp; arg_list[j] != NULL) {</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">    3402044 :             std::free(arg_list[j]);</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">    9683026 :         Py_XDECREF(arg_arrays[j]);</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">    9683026 :         if ((*p == 'i' || *p == 'l') &amp;&amp; arg_list[j] != NULL) {</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">    3384250 :             std::free(arg_list[j]);</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :         }</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">    6367213 :         else if (*p == 'V' &amp;&amp; arg_list[j] != NULL) {</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">    6298776 :         else if (*p == 'V' &amp;&amp; arg_list[j] != NULL) {</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :             free_std_vector_typenum(I_typenum, arg_list[j]);</span></a>
 <a name="444"><span class="lineNum">     444 </span>            :         }</a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">    6367213 :         else if (*p == 'W' &amp;&amp; arg_list[j] != NULL) {</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">    6298776 :         else if (*p == 'W' &amp;&amp; arg_list[j] != NULL) {</span></a>
 <a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :             free_std_vector_typenum(T_typenum, arg_list[j]);</span></a>
 <a name="447"><span class="lineNum">     447 </span>            :         }</a>
 <a name="448"><span class="lineNum">     448 </span>            :     }</a>
@@ -524,15 +524,15 @@
 <a name="454"><span class="lineNum">     454 </span>            :  * Helper functions for dealing with std::vector templated instantiation.</a>
 <a name="455"><span class="lineNum">     455 </span>            :  */</a>
 <a name="456"><span class="lineNum">     456 </span>            : </a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">     173226 : static void *allocate_std_vector_typenum(int typenum)</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">     174468 : static void *allocate_std_vector_typenum(int typenum)</span></a>
 <a name="458"><span class="lineNum">     458 </span>            : {</a>
 <a name="459"><span class="lineNum">     459 </span>            : #define PROCESS(ntype, ctype)                                   \</a>
 <a name="460"><span class="lineNum">     460 </span>            :     if (PyArray_EquivTypenums(typenum, ntype)) {                \</a>
 <a name="461"><span class="lineNum">     461 </span>            :         return (void*)(new std::vector&lt;ctype&gt;());               \</a>
 <a name="462"><span class="lineNum">     462 </span>            :     }</a>
 <a name="463"><span class="lineNum">     463 </span>            : </a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">     173226 :     try {</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">     173226 :         SPTOOLS_FOR_EACH_DATA_TYPE_CODE(PROCESS)</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">     174468 :     try {</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">     174468 :         SPTOOLS_FOR_EACH_DATA_TYPE_CODE(PROCESS)</span></a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :     } catch (std::exception &amp;e) {</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :         /* failed */</a>
 <a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :     }</span></a>
@@ -557,7 +557,7 @@
 <a name="487"><span class="lineNum">     487 </span>            : #undef PROCESS</a>
 <a name="488"><span class="lineNum">     488 </span>            : }</a>
 <a name="489"><span class="lineNum">     489 </span>            : </a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">     173226 : static PyObject *array_from_std_vector_and_free(int typenum, void *p)</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">     174468 : static PyObject *array_from_std_vector_and_free(int typenum, void *p)</span></a>
 <a name="491"><span class="lineNum">     491 </span>            : {</a>
 <a name="492"><span class="lineNum">     492 </span>            : #define PROCESS(ntype, ctype)                                   \</a>
 <a name="493"><span class="lineNum">     493 </span>            :     if (PyArray_EquivTypenums(typenum, ntype)) {                \</a>
@@ -572,7 +572,7 @@
 <a name="502"><span class="lineNum">     502 </span>            :         return obj;                                             \</a>
 <a name="503"><span class="lineNum">     503 </span>            :     }</a>
 <a name="504"><span class="lineNum">     504 </span>            : </a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">     173226 :     SPTOOLS_FOR_EACH_DATA_TYPE_CODE(PROCESS)</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">     174468 :     SPTOOLS_FOR_EACH_DATA_TYPE_CODE(PROCESS)</span></a>
 <a name="506"><span class="lineNum">     506 </span>            : </a>
 <a name="507"><span class="lineNum">     507 </span>            : #undef PROCESS</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
@@ -581,20 +581,20 @@
 <a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :     return NULL;</span></a>
 <a name="512"><span class="lineNum">     512 </span>            : }</a>
 <a name="513"><span class="lineNum">     513 </span>            : </a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">    6328099 : static PyObject *c_array_from_object(PyObject *obj, int typenum, int is_output)</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">    6267411 : static PyObject *c_array_from_object(PyObject *obj, int typenum, int is_output)</span></a>
 <a name="515"><span class="lineNum">     515 </span>            : {</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">    6328099 :     if (!is_output) {</span></a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">    4485928 :         if (typenum == -1) {</span></a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">    4351816 :             return PyArray_FROM_OF(obj, NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_NOTSWAPPED);</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">    6267411 :     if (!is_output) {</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">    4441572 :         if (typenum == -1) {</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">    4298469 :             return PyArray_FROM_OF(obj, NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_NOTSWAPPED);</span></a>
 <a name="519"><span class="lineNum">     519 </span>            :         }</a>
 <a name="520"><span class="lineNum">     520 </span>            :         else {</a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">     134112 :             return PyArray_FROM_OTF(obj, typenum, NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_NOTSWAPPED);</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">     143103 :             return PyArray_FROM_OTF(obj, typenum, NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_NOTSWAPPED);</span></a>
 <a name="522"><span class="lineNum">     522 </span>            :         }</a>
 <a name="523"><span class="lineNum">     523 </span>            :     }</a>
 <a name="524"><span class="lineNum">     524 </span>            :     else {</a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">    1842171 :         int flags = NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_WRITEABLE|NPY_ARRAY_WRITEBACKIFCOPY|NPY_ARRAY_NOTSWAPPED;</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">    1842171 :         if (typenum == -1) {</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">    1811855 :             return PyArray_FROM_OF(obj, flags);</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">    1825839 :         int flags = NPY_ARRAY_C_CONTIGUOUS|NPY_ARRAY_WRITEABLE|NPY_ARRAY_WRITEBACKIFCOPY|NPY_ARRAY_NOTSWAPPED;</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">    1825839 :         if (typenum == -1) {</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">    1795523 :             return PyArray_FROM_OF(obj, flags);</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :         }</a>
 <a name="529"><span class="lineNum">     529 </span>            :         else {</a>
 <a name="530"><span class="lineNum">     530 </span><span class="lineCov">      30316 :             return PyArray_FROM_OTF(obj, typenum, flags);</span></a>
@@ -624,13 +624,13 @@
 <a name="554"><span class="lineNum">     554 </span>            : };</a>
 <a name="555"><span class="lineNum">     555 </span>            : </a>
 <a name="556"><span class="lineNum">     556 </span>            : PyMODINIT_FUNC</a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">          1 : PyInit__sparsetools(void)</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">          3 : PyInit__sparsetools(void)</span></a>
 <a name="558"><span class="lineNum">     558 </span>            : {</a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          1 :     PyObject *module;</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          3 :     PyObject *module;</span></a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">          1 :     import_array();</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">          1 :     module = PyModule_Create(&amp;moduledef);</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">          1 :     if (module == NULL) {</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">          3 :     import_array();</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">          3 :     module = PyModule_Create(&amp;moduledef);</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">          3 :     if (module == NULL) {</span></a>
 <a name="564"><span class="lineNum">     564 </span>            :         return module;</a>
 <a name="565"><span class="lineNum">     565 </span>            :     }</a>
 <a name="566"><span class="lineNum">     566 </span>            : </a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/sp_coletree.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/sp_coletree.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">89</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -128,70 +128,70 @@
 <a name="58"><span class="lineNum">      58 </span>            : </a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
 <a name="60"><span class="lineNum">      60 </span>            : static </a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      26370 : int *mxCallocInt(int n)</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">      26406 : int *mxCallocInt(int n)</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : {</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">      26370 :     register int i;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">      26370 :     int *buf;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">      26406 :     register int i;</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">      26406 :     int *buf;</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">      26370 :     buf = (int *) SUPERLU_MALLOC( n * sizeof(int) );</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">      26370 :     if ( !buf ) {</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">      26406 :     buf = (int *) SUPERLU_MALLOC( n * sizeof(int) );</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">      26406 :     if ( !buf ) {</span></a>
 <a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :          ABORT(&quot;SUPERLU_MALLOC fails for buf in mxCallocInt()&quot;);</span></a>
 <a name="69"><span class="lineNum">      69 </span>            :        }</a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">    1358421 :     for (i = 0; i &lt; n; i++) buf[i] = 0;</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      26370 :     return (buf);</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">    1361463 :     for (i = 0; i &lt; n; i++) buf[i] = 0;</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      26406 :     return (buf);</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : }</a>
 <a name="73"><span class="lineNum">      73 </span>            :       </a>
 <a name="74"><span class="lineNum">      74 </span>            : static</a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       4395 : void initialize_disjoint_sets (</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       4401 : void initialize_disjoint_sets (</span></a>
 <a name="76"><span class="lineNum">      76 </span>            :                                int n,</a>
 <a name="77"><span class="lineNum">      77 </span>            :                                int **pp</a>
 <a name="78"><span class="lineNum">      78 </span>            :                                )</a>
 <a name="79"><span class="lineNum">      79 </span>            : {</a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       8790 :         (*pp) = mxCallocInt(n);</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       8802 :         (*pp) = mxCallocInt(n);</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : }</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
 <a name="84"><span class="lineNum">      84 </span>            : static</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">     219811 : int make_set (</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">     220309 : int make_set (</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :               int i,</a>
 <a name="87"><span class="lineNum">      87 </span>            :               int *pp</a>
 <a name="88"><span class="lineNum">      88 </span>            :               )</a>
 <a name="89"><span class="lineNum">      89 </span>            : {</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">     219811 :         pp[i] = i;</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">     219811 :         return i;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">     220309 :         pp[i] = i;</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">     220309 :         return i;</span></a>
 <a name="92"><span class="lineNum">      92 </span>            : }</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
 <a name="95"><span class="lineNum">      95 </span>            : static</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">     208133 : int link (</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">     208553 : int link (</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :           int s,</a>
 <a name="98"><span class="lineNum">      98 </span>            :           int t,</a>
 <a name="99"><span class="lineNum">      99 </span>            :           int *pp</a>
 <a name="100"><span class="lineNum">     100 </span>            :           )</a>
 <a name="101"><span class="lineNum">     101 </span>            : {</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     208133 :         pp[s] = t;</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">     208133 :         return t;</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     208553 :         pp[s] = t;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">     208553 :         return t;</span></a>
 <a name="104"><span class="lineNum">     104 </span>            : }</a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            : /* PATH HALVING */</a>
 <a name="108"><span class="lineNum">     108 </span>            : static</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    3192896 : int find (</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    3202289 : int find (</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :           int i,</a>
 <a name="111"><span class="lineNum">     111 </span>            :           int *pp</a>
 <a name="112"><span class="lineNum">     112 </span>            :           )</a>
 <a name="113"><span class="lineNum">     113 </span>            : {</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">    3192896 :     register int p, gp;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">    3202289 :     register int p, gp;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :     </a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">    3192896 :     p = pp[i];</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">    3192896 :     gp = pp[p];</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">    3293281 :     while (gp != p) {</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">     100385 :         pp[i] = gp;</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">     100385 :         i = gp;</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">     100385 :         p = pp[i];</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">     100385 :         gp = pp[p];</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">    3202289 :     p = pp[i];</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">    3202289 :     gp = pp[p];</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">    3302896 :     while (gp != p) {</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">     100607 :         pp[i] = gp;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">     100607 :         i = gp;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">     100607 :         p = pp[i];</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">     100607 :         gp = pp[p];</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :     }</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">    3192896 :     return (p);</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">    3202289 :     return (p);</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : }</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
 <a name="127"><span class="lineNum">     127 </span>            : #if 0</a>
@@ -208,11 +208,11 @@
 <a name="138"><span class="lineNum">     138 </span>            : #endif</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <a name="140"><span class="lineNum">     140 </span>            : static</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       4395 : void finalize_disjoint_sets (</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       4401 : void finalize_disjoint_sets (</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :                              int *pp</a>
 <a name="143"><span class="lineNum">     143 </span>            :                              )</a>
 <a name="144"><span class="lineNum">     144 </span>            : {</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4395 :         SUPERLU_FREE(pp);</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4401 :         SUPERLU_FREE(pp);</span></a>
 <a name="146"><span class="lineNum">     146 </span>            : }</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
@@ -237,32 +237,32 @@
 <a name="167"><span class="lineNum">     167 </span>            :  * Nonsymmetric elimination tree</a>
 <a name="168"><span class="lineNum">     168 </span>            :  */</a>
 <a name="169"><span class="lineNum">     169 </span>            : int</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       4395 : sp_coletree(</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       4401 : sp_coletree(</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :             int_t *acolst, int_t *acolend, /* column start and end past 1 */</a>
 <a name="172"><span class="lineNum">     172 </span>            :             int_t *arow,                 /* row indices of A */</a>
 <a name="173"><span class="lineNum">     173 </span>            :             int nr, int nc,            /* dimension of A */</a>
 <a name="174"><span class="lineNum">     174 </span>            :             int *parent                /* parent in elim tree */</a>
 <a name="175"><span class="lineNum">     175 </span>            :             )</a>
 <a name="176"><span class="lineNum">     176 </span>            : {</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4395 :         int     *root;                  /* root of subtee of etree      */</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       4395 :         int     *firstcol;              /* first nonzero col in each row*/</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       4395 :         int     rset, cset;             </span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       4395 :         int     row, col;</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       4395 :         int     rroot;</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       4395 :         int     p;</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       4395 :         int     *pp;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4401 :         int     *root;                  /* root of subtee of etree      */</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       4401 :         int     *firstcol;              /* first nonzero col in each row*/</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       4401 :         int     rset, cset;             </span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       4401 :         int     row, col;</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       4401 :         int     rroot;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       4401 :         int     p;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       4401 :         int     *pp;</span></a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4395 :         root = mxCallocInt (nc);</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       4395 :         initialize_disjoint_sets (nc, &amp;pp);</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4401 :         root = mxCallocInt (nc);</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       4401 :         initialize_disjoint_sets (nc, &amp;pp);</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span>            :         /* Compute firstcol[row] = first nonzero column in row */</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       4395 :         firstcol = mxCallocInt (nr);</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     228601 :         for (row = 0; row &lt; nr; firstcol[row++] = nc);</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     224206 :         for (col = 0; col &lt; nc; col++) </span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    3632470 :                 for (p = acolst[col]; p &lt; acolend[col]; p++) {</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">    3412659 :                         row = arow[p];</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">    3412659 :                         firstcol[row] = SUPERLU_MIN(firstcol[row], col);</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       4401 :         firstcol = mxCallocInt (nr);</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     229111 :         for (row = 0; row &lt; nr; firstcol[row++] = nc);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     224710 :         for (col = 0; col &lt; nc; col++) </span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    3642859 :                 for (p = acolst[col]; p &lt; acolend[col]; p++) {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">    3422550 :                         row = arow[p];</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">    3422550 :                         firstcol[row] = SUPERLU_MIN(firstcol[row], col);</span></a>
 <a name="196"><span class="lineNum">     196 </span>            :                 }</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
 <a name="198"><span class="lineNum">     198 </span>            :         /* Compute etree by Liu's algorithm for symmetric matrices,</a>
@@ -270,27 +270,27 @@
 <a name="200"><span class="lineNum">     200 </span>            :            Thus each row clique in A'*A is replaced by a star</a>
 <a name="201"><span class="lineNum">     201 </span>            :            centered at its first vertex, which has the same fill. */</a>
 <a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">     224206 :         for (col = 0; col &lt; nc; col++) {</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     219811 :                 cset = make_set (col, pp);</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">     219811 :                 root[cset] = col;</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">     219811 :                 parent[col] = nc; /* Matlab */</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    3632470 :                 for (p = acolst[col]; p &lt; acolend[col]; p++) {</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">    3412659 :                         row = firstcol[arow[p]];</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">    3412659 :                         if (row &gt;= col) continue;</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    3192896 :                         rset = find (row, pp);</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    3192896 :                         rroot = root[rset];</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">    3192896 :                         if (rroot != col) {</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">     208133 :                                 parent[rroot] = col;</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     208133 :                                 cset = link (cset, rset, pp);</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     208133 :                                 root[cset] = col;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">     224710 :         for (col = 0; col &lt; nc; col++) {</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     220309 :                 cset = make_set (col, pp);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">     220309 :                 root[cset] = col;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">     220309 :                 parent[col] = nc; /* Matlab */</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">    3642859 :                 for (p = acolst[col]; p &lt; acolend[col]; p++) {</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">    3422550 :                         row = firstcol[arow[p]];</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">    3422550 :                         if (row &gt;= col) continue;</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    3202289 :                         rset = find (row, pp);</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    3202289 :                         rroot = root[rset];</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">    3202289 :                         if (rroot != col) {</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">     208553 :                                 parent[rroot] = col;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     208553 :                                 cset = link (cset, rset, pp);</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     208553 :                                 root[cset] = col;</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :                         }</a>
 <a name="217"><span class="lineNum">     217 </span>            :                 }</a>
 <a name="218"><span class="lineNum">     218 </span>            :         }</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       4395 :         SUPERLU_FREE (root);</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4395 :         SUPERLU_FREE (firstcol);</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4395 :         finalize_disjoint_sets (pp);</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4395 :         return 0;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       4401 :         SUPERLU_FREE (root);</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4401 :         SUPERLU_FREE (firstcol);</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4401 :         finalize_disjoint_sets (pp);</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4401 :         return 0;</span></a>
 <a name="224"><span class="lineNum">     224 </span>            : }</a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
 <a name="226"><span class="lineNum">     226 </span>            : /*</a>
@@ -345,40 +345,40 @@
 <a name="275"><span class="lineNum">     275 </span>            :  * Depth-first search from vertex n.  No recursion.</a>
 <a name="276"><span class="lineNum">     276 </span>            :  * This routine was contributed by Cédric Doucet, CEDRAT Group, Meylan, France.</a>
 <a name="277"><span class="lineNum">     277 </span>            :  */</a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       4395 : void nr_etdfs (int n, int *parent,</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       4401 : void nr_etdfs (int n, int *parent,</span></a>
 <a name="279"><span class="lineNum">     279 </span>            :                int *first_kid, int *next_kid,</a>
 <a name="280"><span class="lineNum">     280 </span>            :                int *post, int postnum)</a>
 <a name="281"><span class="lineNum">     281 </span>            : {</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       4395 :     int current = n, first, next;</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       4401 :     int current = n, first, next;</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     228601 :     while (postnum != n){</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     229111 :     while (postnum != n){</span></a>
 <a name="285"><span class="lineNum">     285 </span>            :      </a>
 <a name="286"><span class="lineNum">     286 </span>            :         /* no kid for the current node */</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">     224206 :         first = first_kid[current];</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">     224710 :         first = first_kid[current];</span></a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
 <a name="289"><span class="lineNum">     289 </span>            :         /* no first kid for the current node */</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">     224206 :         if (first == -1){</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">     224710 :         if (first == -1){</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            :             /* numbering this node because it has no kid */</a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      41374 :             post[current] = postnum++;</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      41576 :             post[current] = postnum++;</span></a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
 <a name="295"><span class="lineNum">     295 </span>            :             /* looking for the next kid */</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      41374 :             next = next_kid[current];</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      41576 :             next = next_kid[current];</span></a>
 <a name="297"><span class="lineNum">     297 </span>            : </a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">     224206 :             while (next == -1){</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">     224710 :             while (next == -1){</span></a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
 <a name="300"><span class="lineNum">     300 </span>            :                 /* no more kids : back to the parent node */</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">     182832 :                 current = parent[current];</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">     183134 :                 current = parent[current];</span></a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
 <a name="303"><span class="lineNum">     303 </span>            :                 /* numbering the parent node */</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">     182832 :                 post[current] = postnum++;</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">     183134 :                 post[current] = postnum++;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
 <a name="306"><span class="lineNum">     306 </span>            :                 /* get the next kid */</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     182832 :                 next = next_kid[current];</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     183134 :                 next = next_kid[current];</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :             }</a>
 <a name="309"><span class="lineNum">     309 </span>            :             </a>
 <a name="310"><span class="lineNum">     310 </span>            :             /* stopping criterion */</a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      41374 :             if (postnum==n+1) return;</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      41576 :             if (postnum==n+1) return;</span></a>
 <a name="312"><span class="lineNum">     312 </span>            : </a>
 <a name="313"><span class="lineNum">     313 </span>            :             /* updating current node */</a>
 <a name="314"><span class="lineNum">     314 </span>            :             current = next;</a>
@@ -393,41 +393,41 @@
 <a name="323"><span class="lineNum">     323 </span>            : /*</a>
 <a name="324"><span class="lineNum">     324 </span>            :  * Post order a tree</a>
 <a name="325"><span class="lineNum">     325 </span>            :  */</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       4395 : int *TreePostorder(</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       4401 : int *TreePostorder(</span></a>
 <a name="327"><span class="lineNum">     327 </span>            :                    int n,</a>
 <a name="328"><span class="lineNum">     328 </span>            :                    int *parent</a>
 <a name="329"><span class="lineNum">     329 </span>            :                    )</a>
 <a name="330"><span class="lineNum">     330 </span>            : {</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       4395 :         int     *first_kid, *next_kid;  /* Linked list of children.     */</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       4395 :         int     *post, postnum;</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">       4395 :         int     v, dad;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       4401 :         int     *first_kid, *next_kid;  /* Linked list of children.     */</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       4401 :         int     *post, postnum;</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">       4401 :         int     v, dad;</span></a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
 <a name="335"><span class="lineNum">     335 </span>            :         /* Allocate storage for working arrays and results      */</a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">       4395 :         first_kid =     mxCallocInt (n+1);</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       4395 :         next_kid  =     mxCallocInt (n+1);</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       4395 :         post      =     mxCallocInt (n+1);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">       4401 :         first_kid =     mxCallocInt (n+1);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       4401 :         next_kid  =     mxCallocInt (n+1);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       4401 :         post      =     mxCallocInt (n+1);</span></a>
 <a name="339"><span class="lineNum">     339 </span>            : </a>
 <a name="340"><span class="lineNum">     340 </span>            :         /* Set up structure describing children */</a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">     232996 :         for (v = 0; v &lt;= n; first_kid[v++] = -1);</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">     224206 :         for (v = n-1; v &gt;= 0; v--) {</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">     219811 :                 dad = parent[v];</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">     219811 :                 next_kid[v] = first_kid[dad];</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">     219811 :                 first_kid[dad] = v;</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">     233512 :         for (v = 0; v &lt;= n; first_kid[v++] = -1);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">     224710 :         for (v = n-1; v &gt;= 0; v--) {</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">     220309 :                 dad = parent[v];</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">     220309 :                 next_kid[v] = first_kid[dad];</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">     220309 :                 first_kid[dad] = v;</span></a>
 <a name="346"><span class="lineNum">     346 </span>            :         }</a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
 <a name="348"><span class="lineNum">     348 </span>            :         /* Depth-first search from dummy root vertex #n */</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       4395 :         postnum = 0;</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       4401 :         postnum = 0;</span></a>
 <a name="350"><span class="lineNum">     350 </span>            : #if 0</a>
 <a name="351"><span class="lineNum">     351 </span>            :         /* recursion */</a>
 <a name="352"><span class="lineNum">     352 </span>            :         etdfs (n, first_kid, next_kid, post, &amp;postnum);</a>
 <a name="353"><span class="lineNum">     353 </span>            : #else</a>
 <a name="354"><span class="lineNum">     354 </span>            :         /* no recursion */</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       4395 :         nr_etdfs(n, parent, first_kid, next_kid, post, postnum);</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       4401 :         nr_etdfs(n, parent, first_kid, next_kid, post, postnum);</span></a>
 <a name="356"><span class="lineNum">     356 </span>            : #endif</a>
 <a name="357"><span class="lineNum">     357 </span>            : </a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       4395 :         SUPERLU_FREE (first_kid);</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       4395 :         SUPERLU_FREE (next_kid);</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       4395 :         return post;</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       4401 :         SUPERLU_FREE (first_kid);</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       4401 :         SUPERLU_FREE (next_kid);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       4401 :         return post;</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : }</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>

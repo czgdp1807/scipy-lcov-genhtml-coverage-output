@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zgetv0.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zgetv0.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">82</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -182,9 +182,9 @@
 <a name="112"><span class="lineNum">     112 </span>            : c</a>
 <a name="113"><span class="lineNum">     113 </span>            : c-----------------------------------------------------------------------</a>
 <a name="114"><span class="lineNum">     114 </span>            : c</a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        442 :       subroutine zgetv0</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        442 :      &amp;   ( ido, bmat, itry, initv, n, j, v, ldv, resid, rnorm,</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        442 :      &amp;     ipntr, workd, ierr )</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        448 :       subroutine zgetv0</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        448 :      &amp;   ( ido, bmat, itry, initv, n, j, v, ldv, resid, rnorm,</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        448 :      &amp;     ipntr, workd, ierr )</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : c</a>
 <a name="119"><span class="lineNum">     119 </span>            : c     %----------------------------------------------------%</a>
 <a name="120"><span class="lineNum">     120 </span>            : c     | Include files for debugging and timing information |</a>
@@ -266,7 +266,7 @@
 <a name="196"><span class="lineNum">     196 </span>            : c     | random number generator           |</a>
 <a name="197"><span class="lineNum">     197 </span>            : c     %-----------------------------------%</a>
 <a name="198"><span class="lineNum">     198 </span>            : c</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        442 :       if (inits) then</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        448 :       if (inits) then</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineCov">          1 :           iseed(1) = 1</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineCov">          1 :           iseed(2) = 3</span></a>
 <a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 :           iseed(3) = 5</span></a>
@@ -274,20 +274,20 @@
 <a name="204"><span class="lineNum">     204 </span><span class="lineCov">          1 :           inits = .false.</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :       end if</a>
 <a name="206"><span class="lineNum">     206 </span>            : c</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        442 :       if (ido .eq.  0) then</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        448 :       if (ido .eq.  0) then</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : c</a>
 <a name="209"><span class="lineNum">     209 </span>            : c        %-------------------------------%</a>
 <a name="210"><span class="lineNum">     210 </span>            : c        | Initialize timing statistics  |</a>
 <a name="211"><span class="lineNum">     211 </span>            : c        | &amp; message level for debugging |</a>
 <a name="212"><span class="lineNum">     212 </span>            : c        %-------------------------------%</a>
 <a name="213"><span class="lineNum">     213 </span>            : c</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        181 :          call arscnd (t0)</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">        181 :          msglvl = mgetv0</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        185 :          call arscnd (t0)</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">        185 :          msglvl = mgetv0</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : c</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        181 :          ierr   = 0</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        181 :          iter   = 0</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        181 :          first  = .FALSE.</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">        181 :          orth   = .FALSE.</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        185 :          ierr   = 0</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        185 :          iter   = 0</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        185 :          first  = .FALSE.</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">        185 :          orth   = .FALSE.</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : c</a>
 <a name="222"><span class="lineNum">     222 </span>            : c        %-----------------------------------------------------%</a>
 <a name="223"><span class="lineNum">     223 </span>            : c        | Possibly generate a random starting vector in RESID |</a>
@@ -298,9 +298,9 @@
 <a name="228"><span class="lineNum">     228 </span>            : c        |    idist = 3: normal  (0,1)  distribution;          |</a>
 <a name="229"><span class="lineNum">     229 </span>            : c        %-----------------------------------------------------%</a>
 <a name="230"><span class="lineNum">     230 </span>            : c</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        181 :          if (.not.initv) then</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        132 :             idist = 2</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        132 :             call zlarnv (idist, iseed, n, resid)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        185 :          if (.not.initv) then</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        136 :             idist = 2</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        136 :             call zlarnv (idist, iseed, n, resid)</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :          end if</a>
 <a name="235"><span class="lineNum">     235 </span>            : c</a>
 <a name="236"><span class="lineNum">     236 </span>            : c        %----------------------------------------------------------%</a>
@@ -308,15 +308,15 @@
 <a name="238"><span class="lineNum">     238 </span>            : c        | the generalized problem when B is possibly (singular).   |</a>
 <a name="239"><span class="lineNum">     239 </span>            : c        %----------------------------------------------------------%</a>
 <a name="240"><span class="lineNum">     240 </span>            : c</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        181 :          call arscnd (t2)</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        181 :          if (itry .eq. 1) then</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        178 :             nopx = nopx + 1</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        178 :             ipntr(1) = 1</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        178 :             ipntr(2) = n + 1</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        178 :             call zcopy (n, resid, 1, workd, 1)</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        178 :             ido = -1</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        178 :             go to 9000</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          3 :          else if (itry .gt. 1 .and. bmat .eq. 'G') then</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        185 :          call arscnd (t2)</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        185 :          if (itry .eq. 1) then</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        180 :             nopx = nopx + 1</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        180 :             ipntr(1) = 1</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        180 :             ipntr(2) = n + 1</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        180 :             call zcopy (n, resid, 1, workd, 1)</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        180 :             ido = -1</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        180 :             go to 9000</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          5 :          else if (itry .gt. 1 .and. bmat .eq. 'G') then</span></a>
 <a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :             call zcopy (n, resid, 1, workd(n + 1), 1)</span></a>
 <a name="251"><span class="lineNum">     251 </span>            :          end if</a>
 <a name="252"><span class="lineNum">     252 </span>            :       end if</a>
@@ -325,56 +325,56 @@
 <a name="255"><span class="lineNum">     255 </span>            : c     | Back from computing OP*(initial-vector) |</a>
 <a name="256"><span class="lineNum">     256 </span>            : c     %----------------------------------------%</a>
 <a name="257"><span class="lineNum">     257 </span>            : c</a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        264 :       if (first) go to 20</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        268 :       if (first) go to 20</span></a>
 <a name="259"><span class="lineNum">     259 </span>            : c</a>
 <a name="260"><span class="lineNum">     260 </span>            : c     %-----------------------------------------------%</a>
 <a name="261"><span class="lineNum">     261 </span>            : c     | Back from computing OP*(orthogonalized-vector) |</a>
 <a name="262"><span class="lineNum">     262 </span>            : c     %-----------------------------------------------%</a>
 <a name="263"><span class="lineNum">     263 </span>            : c</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">        181 :       if (orth)  go to 40</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">        185 :       if (orth)  go to 40</span></a>
 <a name="265"><span class="lineNum">     265 </span>            : c</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        181 :       call arscnd (t3)</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        181 :       tmvopx = tmvopx + (t3 - t2)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        185 :       call arscnd (t3)</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        185 :       tmvopx = tmvopx + (t3 - t2)</span></a>
 <a name="268"><span class="lineNum">     268 </span>            : c</a>
 <a name="269"><span class="lineNum">     269 </span>            : c     %------------------------------------------------------%</a>
 <a name="270"><span class="lineNum">     270 </span>            : c     | Starting vector is now in the range of OP; r = OP*r; |</a>
 <a name="271"><span class="lineNum">     271 </span>            : c     | Compute B-norm of starting vector.                   |</a>
 <a name="272"><span class="lineNum">     272 </span>            : c     %------------------------------------------------------%</a>
 <a name="273"><span class="lineNum">     273 </span>            : c</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        181 :       call arscnd (t2)</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        181 :       first = .TRUE.</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        181 :       if (itry .eq. 1) call zcopy (n, workd(n + 1), 1, resid, 1)</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        181 :       if (bmat .eq. 'G') then</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        185 :       call arscnd (t2)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        185 :       first = .TRUE.</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        185 :       if (itry .eq. 1) call zcopy (n, workd(n + 1), 1, resid, 1)</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        185 :       if (bmat .eq. 'G') then</span></a>
 <a name="278"><span class="lineNum">     278 </span><span class="lineCov">         83 :          nbx = nbx + 1</span></a>
 <a name="279"><span class="lineNum">     279 </span><span class="lineCov">         83 :          ipntr(1) = n + 1</span></a>
 <a name="280"><span class="lineNum">     280 </span><span class="lineCov">         83 :          ipntr(2) = 1</span></a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineCov">         83 :          ido = 2</span></a>
 <a name="282"><span class="lineNum">     282 </span><span class="lineCov">         83 :          go to 9000</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         98 :       else if (bmat .eq. 'I') then</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         98 :          call zcopy (n, resid, 1, workd, 1)</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        102 :       else if (bmat .eq. 'I') then</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">        102 :          call zcopy (n, resid, 1, workd, 1)</span></a>
 <a name="285"><span class="lineNum">     285 </span>            :       end if</a>
 <a name="286"><span class="lineNum">     286 </span>            : c</a>
 <a name="287"><span class="lineNum">     287 </span>            :    20 continue</a>
 <a name="288"><span class="lineNum">     288 </span>            : c</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        181 :       if (bmat .eq. 'G') then</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        185 :       if (bmat .eq. 'G') then</span></a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineCov">         83 :          call arscnd (t3)</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineCov">         83 :          tmvbx = tmvbx + (t3 - t2)</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :       end if</a>
 <a name="293"><span class="lineNum">     293 </span>            : c</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        181 :       first = .FALSE.</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        181 :       if (bmat .eq. 'G') then</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        185 :       first = .FALSE.</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        185 :       if (bmat .eq. 'G') then</span></a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineCov">         83 :           cnorm  = zzdotc (n, resid, 1, workd, 1)</span></a>
 <a name="297"><span class="lineNum">     297 </span><span class="lineCov">         83 :           rnorm0 = sqrt(dlapy2(dble(cnorm),aimag(cnorm)))</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         98 :       else if (bmat .eq. 'I') then</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         98 :            rnorm0 = dznrm2(n, resid, 1)</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        102 :       else if (bmat .eq. 'I') then</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        102 :            rnorm0 = dznrm2(n, resid, 1)</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :       end if</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">        181 :       rnorm  = rnorm0</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">        185 :       rnorm  = rnorm0</span></a>
 <a name="302"><span class="lineNum">     302 </span>            : c</a>
 <a name="303"><span class="lineNum">     303 </span>            : c     %---------------------------------------------%</a>
 <a name="304"><span class="lineNum">     304 </span>            : c     | Exit if this is the very first Arnoldi step |</a>
 <a name="305"><span class="lineNum">     305 </span>            : c     %---------------------------------------------%</a>
 <a name="306"><span class="lineNum">     306 </span>            : c</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">        181 :       if (j .eq. 1) go to 50</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">        185 :       if (j .eq. 1) go to 50</span></a>
 <a name="308"><span class="lineNum">     308 </span>            : c</a>
 <a name="309"><span class="lineNum">     309 </span>            : c     %----------------------------------------------------------------</a>
 <a name="310"><span class="lineNum">     310 </span>            : c     | Otherwise need to B-orthogonalize the starting vector against |</a>
@@ -388,96 +388,96 @@
 <a name="318"><span class="lineNum">     318 </span>            : c     | Parlett's book, page 107 and in Gragg &amp; Reichel TOMS paper.   |</a>
 <a name="319"><span class="lineNum">     319 </span>            : c     %---------------------------------------------------------------%</a>
 <a name="320"><span class="lineNum">     320 </span>            : c</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          6 :       orth = .TRUE.</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         10 :       orth = .TRUE.</span></a>
 <a name="322"><span class="lineNum">     322 </span>            :    30 continue</a>
 <a name="323"><span class="lineNum">     323 </span>            : c</a>
 <a name="324"><span class="lineNum">     324 </span>            :       call zgemv ('C', n, j-1, one, v, ldv, workd, 1,</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          9 :      &amp;            zero, workd(n+1), 1)</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         16 :      &amp;            zero, workd(n+1), 1)</span></a>
 <a name="326"><span class="lineNum">     326 </span>            :       call zgemv ('N', n, j-1, -one, v, ldv, workd(n+1), 1,</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          9 :      &amp;            one, resid, 1)</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         16 :      &amp;            one, resid, 1)</span></a>
 <a name="328"><span class="lineNum">     328 </span>            : c</a>
 <a name="329"><span class="lineNum">     329 </span>            : c     %----------------------------------------------------------%</a>
 <a name="330"><span class="lineNum">     330 </span>            : c     | Compute the B-norm of the orthogonalized starting vector |</a>
 <a name="331"><span class="lineNum">     331 </span>            : c     %----------------------------------------------------------%</a>
 <a name="332"><span class="lineNum">     332 </span>            : c</a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          9 :       call arscnd (t2)</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          9 :       if (bmat .eq. 'G') then</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">         16 :       call arscnd (t2)</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">         16 :       if (bmat .eq. 'G') then</span></a>
 <a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :          nbx = nbx + 1</span></a>
 <a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :          call zcopy (n, resid, 1, workd(n+1), 1)</span></a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :          ipntr(1) = n + 1</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :          ipntr(2) = 1</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :          ido = 2</span></a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :          go to 9000</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          9 :       else if (bmat .eq. 'I') then</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          9 :          call zcopy (n, resid, 1, workd, 1)</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         16 :       else if (bmat .eq. 'I') then</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         16 :          call zcopy (n, resid, 1, workd, 1)</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :       end if</a>
 <a name="344"><span class="lineNum">     344 </span>            : c</a>
 <a name="345"><span class="lineNum">     345 </span>            :    40 continue</a>
 <a name="346"><span class="lineNum">     346 </span>            : c</a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          9 :       if (bmat .eq. 'G') then</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         16 :       if (bmat .eq. 'G') then</span></a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :          call arscnd (t3)</span></a>
 <a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :          tmvbx = tmvbx + (t3 - t2)</span></a>
 <a name="350"><span class="lineNum">     350 </span>            :       end if</a>
 <a name="351"><span class="lineNum">     351 </span>            : c</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          9 :       if (bmat .eq. 'G') then</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         16 :       if (bmat .eq. 'G') then</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :          cnorm = zzdotc (n, resid, 1, workd, 1)</span></a>
 <a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :          rnorm = sqrt(dlapy2(dble(cnorm),aimag(cnorm)))</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          9 :       else if (bmat .eq. 'I') then</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          9 :          rnorm = dznrm2(n, resid, 1)</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         16 :       else if (bmat .eq. 'I') then</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         16 :          rnorm = dznrm2(n, resid, 1)</span></a>
 <a name="357"><span class="lineNum">     357 </span>            :       end if</a>
 <a name="358"><span class="lineNum">     358 </span>            : c</a>
 <a name="359"><span class="lineNum">     359 </span>            : c     %--------------------------------------%</a>
 <a name="360"><span class="lineNum">     360 </span>            : c     | Check for further orthogonalization. |</a>
 <a name="361"><span class="lineNum">     361 </span>            : c     %--------------------------------------%</a>
 <a name="362"><span class="lineNum">     362 </span>            : c</a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          9 :       if (msglvl .gt. 2) then</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         16 :       if (msglvl .gt. 2) then</span></a>
 <a name="364"><span class="lineNum">     364 </span>            :           call dvout (logfil, 1, [rnorm0], ndigit,</a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :      &amp;                '_getv0: re-orthonalization ; rnorm0 is')</span></a>
 <a name="366"><span class="lineNum">     366 </span>            :           call dvout (logfil, 1, [rnorm], ndigit,</a>
 <a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :      &amp;                '_getv0: re-orthonalization ; rnorm is')</span></a>
 <a name="368"><span class="lineNum">     368 </span>            :       end if</a>
 <a name="369"><span class="lineNum">     369 </span>            : c</a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          9 :       if (rnorm .gt. 0.717*rnorm0) go to 50</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         16 :       if (rnorm .gt. 0.717*rnorm0) go to 50</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : c</a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          6 :       iter = iter + 1</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          6 :       if (iter .le. 1) then</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         11 :       iter = iter + 1</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         11 :       if (iter .le. 1) then</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : c</a>
 <a name="375"><span class="lineNum">     375 </span>            : c        %-----------------------------------%</a>
 <a name="376"><span class="lineNum">     376 </span>            : c        | Perform iterative refinement step |</a>
 <a name="377"><span class="lineNum">     377 </span>            : c        %-----------------------------------%</a>
 <a name="378"><span class="lineNum">     378 </span>            : c</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          3 :          rnorm0 = rnorm</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          3 :          go to 30</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          6 :          rnorm0 = rnorm</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          6 :          go to 30</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :       else</a>
 <a name="382"><span class="lineNum">     382 </span>            : c</a>
 <a name="383"><span class="lineNum">     383 </span>            : c        %------------------------------------%</a>
 <a name="384"><span class="lineNum">     384 </span>            : c        | Iterative refinement step &quot;failed&quot; |</a>
 <a name="385"><span class="lineNum">     385 </span>            : c        %------------------------------------%</a>
 <a name="386"><span class="lineNum">     386 </span>            : c</a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         18 :          do 45 jj = 1, n</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         15 :             resid(jj) = zero</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          3 :    45    continue</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          3 :          rnorm = rzero</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">        181 :          ierr = -1</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         30 :          do 45 jj = 1, n</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         25 :             resid(jj) = zero</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          5 :    45    continue</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          5 :          rnorm = rzero</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">        185 :          ierr = -1</span></a>
 <a name="392"><span class="lineNum">     392 </span>            :       end if</a>
 <a name="393"><span class="lineNum">     393 </span>            : c</a>
 <a name="394"><span class="lineNum">     394 </span>            :    50 continue</a>
 <a name="395"><span class="lineNum">     395 </span>            : c</a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">        181 :       if (msglvl .gt. 0) then</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">        185 :       if (msglvl .gt. 0) then</span></a>
 <a name="397"><span class="lineNum">     397 </span>            :          call dvout (logfil, 1, [rnorm], ndigit,</a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :      &amp;        '_getv0: B-norm of initial / restarted starting vector')</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :       end if</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        181 :       if (msglvl .gt. 2) then</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        185 :       if (msglvl .gt. 2) then</span></a>
 <a name="401"><span class="lineNum">     401 </span>            :          call zvout (logfil, n, resid, ndigit,</a>
 <a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :      &amp;        '_getv0: initial / restarted starting vector')</span></a>
 <a name="403"><span class="lineNum">     403 </span>            :       end if</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        181 :       ido = 99</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        185 :       ido = 99</span></a>
 <a name="405"><span class="lineNum">     405 </span>            : c</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        181 :       call arscnd (t1)</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        181 :       tgetv0 = tgetv0 + (t1 - t0)</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        185 :       call arscnd (t1)</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        185 :       tgetv0 = tgetv0 + (t1 - t0)</span></a>
 <a name="408"><span class="lineNum">     408 </span>            : c</a>
 <a name="409"><span class="lineNum">     409 </span>            :  9000 continue</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        442 :       return</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        448 :       return</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : c</a>
 <a name="412"><span class="lineNum">     412 </span>            : c     %---------------%</a>
 <a name="413"><span class="lineNum">     413 </span>            : c     | End of zgetv0 |</a>

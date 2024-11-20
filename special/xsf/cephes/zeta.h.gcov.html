@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/zeta.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/zeta.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">42</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -166,20 +166,20 @@
 <a name="96"><span class="lineNum">      96 </span>            :         /* 30 Nov 86 -- error in third coefficient fixed */</a>
 <a name="97"><span class="lineNum">      97 </span>            :     } // namespace detail</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">    1786749 :     XSF_HOST_DEVICE double inline zeta(double x, double q) {</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">    1786749 :         int i;</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">    1786749 :         double a, b, k, s, t, w;</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">    1870249 :     XSF_HOST_DEVICE double inline zeta(double x, double q) {</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">    1870249 :         int i;</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">    1870249 :         double a, b, k, s, t, w;</span></a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1786749 :         if (x == 1.0)</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">    1870249 :         if (x == 1.0)</span></a>
 <a name="104"><span class="lineNum">     104 </span><span class="lineCov">          8 :             goto retinf;</span></a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">    1786741 :         if (x &lt; 1.0) {</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">    1870241 :         if (x &lt; 1.0) {</span></a>
 <a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 :         domerr:</span></a>
 <a name="108"><span class="lineNum">     108 </span><span class="lineCov">          1 :             set_error(&quot;zeta&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 :             return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :         }</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">    1786740 :         if (q &lt;= 0.0) {</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">    1870240 :         if (q &lt;= 0.0) {</span></a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">        524 :             if (q == floor(q)) {</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :                 set_error(&quot;zeta&quot;, SF_ERROR_SINGULAR, NULL);</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :             retinf:</a>
@@ -192,7 +192,7 @@
 <a name="122"><span class="lineNum">     122 </span>            :         /* Asymptotic expansion</a>
 <a name="123"><span class="lineNum">     123 </span>            :          * https://dlmf.nist.gov/25.11#E43</a>
 <a name="124"><span class="lineNum">     124 </span>            :          */</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">    1786740 :         if (q &gt; 1e8) {</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">    1870240 :         if (q &gt; 1e8) {</span></a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineCov">          2 :             return (1 / (x - 1) + 1 / (2 * q)) * std::pow(q, 1 - x);</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :         }</a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
@@ -203,36 +203,36 @@
 <a name="133"><span class="lineNum">     133 </span>            :          * If q&lt;0 and x is an integer, there is a relation to</a>
 <a name="134"><span class="lineNum">     134 </span>            :          * the polyGamma function.</a>
 <a name="135"><span class="lineNum">     135 </span>            :          */</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">    1786738 :         s = std::pow(q, -x);</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">    1786738 :         a = q;</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">    1786738 :         i = 0;</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">    1786738 :         b = 0.0;</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">   15547691 :         while ((i &lt; 9) || (a &lt;= 9.0)) {</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">   14295635 :             i += 1;</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">   14295635 :             a += 1.0;</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   14295635 :             b = std::pow(a, -x);</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">   14295635 :             s += b;</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">   14295635 :             if (std::abs(b / s) &lt; detail::MACHEP)</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">     534682 :                 goto done;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">    1870238 :         s = std::pow(q, -x);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">    1870238 :         a = q;</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">    1870238 :         i = 0;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">    1870238 :         b = 0.0;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">   16334590 :         while ((i &lt; 9) || (a &lt;= 9.0)) {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">   15006723 :             i += 1;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">   15006723 :             a += 1.0;</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">   15006723 :             b = std::pow(a, -x);</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">   15006723 :             s += b;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">   15006723 :             if (std::abs(b / s) &lt; detail::MACHEP)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">     542371 :                 goto done;</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :         }</a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    1252056 :         w = a;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    1252056 :         s += b * w / (x - 1.0);</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    1252056 :         s -= 0.5 * b;</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    1252056 :         a = 1.0;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    1252056 :         k = 0.0;</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    7199211 :         for (i = 0; i &lt; 12; i++) {</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    7199211 :             a *= x + k;</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">    7199211 :             b /= w;</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">    7199211 :             t = a * b / detail::zeta_A[i];</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">    7199211 :             s = s + t;</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">    7199211 :             t = std::abs(t / s);</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">    7199211 :             if (t &lt; detail::MACHEP)</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">    1252056 :                 goto done;</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">    5947155 :             k += 1.0;</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">    5947155 :             a *= x + k;</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">    5947155 :             b /= w;</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">    5947155 :             k += 1.0;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    1327867 :         w = a;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    1327867 :         s += b * w / (x - 1.0);</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">    1327867 :         s -= 0.5 * b;</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    1327867 :         a = 1.0;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    1327867 :         k = 0.0;</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    7664357 :         for (i = 0; i &lt; 12; i++) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    7664357 :             a *= x + k;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">    7664357 :             b /= w;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">    7664357 :             t = a * b / detail::zeta_A[i];</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">    7664357 :             s = s + t;</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">    7664357 :             t = std::abs(t / s);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">    7664357 :             if (t &lt; detail::MACHEP)</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">    1327867 :                 goto done;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">    6336490 :             k += 1.0;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">    6336490 :             a *= x + k;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">    6336490 :             b /= w;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">    6336490 :             k += 1.0;</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :         }</a>
 <a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     done:</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :         return (s);</a>

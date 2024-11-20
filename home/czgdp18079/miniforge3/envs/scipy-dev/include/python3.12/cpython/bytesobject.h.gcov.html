@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/bytesobject.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/bytesobject.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">5</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -102,15 +102,15 @@
 <a name="32"><span class="lineNum">      32 </span>            : #define _PyBytes_CAST(op) \</a>
 <a name="33"><span class="lineNum">      33 </span>            :     (assert(PyBytes_Check(op)), _Py_CAST(PyBytesObject*, op))</a>
 <a name="34"><span class="lineNum">      34 </span>            : </a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">     359720 : static inline char* PyBytes_AS_STRING(PyObject *op)</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">     353211 : static inline char* PyBytes_AS_STRING(PyObject *op)</span></a>
 <a name="36"><span class="lineNum">      36 </span>            : {</a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">     358976 :     return _PyBytes_CAST(op)-&gt;ob_sval;</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">     352467 :     return _PyBytes_CAST(op)-&gt;ob_sval;</span></a>
 <a name="38"><span class="lineNum">      38 </span>            : }</a>
 <a name="39"><span class="lineNum">      39 </span>            : #define PyBytes_AS_STRING(op) PyBytes_AS_STRING(_PyObject_CAST(op))</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">     157145 : static inline Py_ssize_t PyBytes_GET_SIZE(PyObject *op) {</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">     157343 :     PyBytesObject *self = _PyBytes_CAST(op);</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">     156599 :     return Py_SIZE(self);</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">     148392 : static inline Py_ssize_t PyBytes_GET_SIZE(PyObject *op) {</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">     148590 :     PyBytesObject *self = _PyBytes_CAST(op);</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">     147846 :     return Py_SIZE(self);</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : }</a>
 <a name="45"><span class="lineNum">      45 </span>            : #define PyBytes_GET_SIZE(self) PyBytes_GET_SIZE(_PyObject_CAST(self))</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>

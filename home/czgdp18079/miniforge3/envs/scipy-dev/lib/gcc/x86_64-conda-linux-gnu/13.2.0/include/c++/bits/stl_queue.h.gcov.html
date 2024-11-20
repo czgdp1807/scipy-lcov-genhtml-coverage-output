@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_queue.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_queue.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">16</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -163,7 +163,7 @@
 <a name="93"><span class="lineNum">      93 </span>            :    *  @c pop, which are standard %queue/FIFO operations.</a>
 <a name="94"><span class="lineNum">      94 </span>            :   */</a>
 <a name="95"><span class="lineNum">      95 </span>            :   template&lt;typename _Tp, typename _Sequence = deque&lt;_Tp&gt; &gt;</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        865 :     class queue</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        871 :     class queue</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :     {</a>
 <a name="98"><span class="lineNum">      98 </span>            : #ifdef _GLIBCXX_CONCEPT_CHECKS</a>
 <a name="99"><span class="lineNum">      99 </span>            :       // concept requirements</a>
@@ -233,8 +233,8 @@
 <a name="163"><span class="lineNum">     163 </span>            : #else</a>
 <a name="164"><span class="lineNum">     164 </span>            :       template&lt;typename _Seq = _Sequence, typename _Requires = typename</a>
 <a name="165"><span class="lineNum">     165 </span>            :                enable_if&lt;is_default_constructible&lt;_Seq&gt;::value&gt;::type&gt;</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1403 :         queue()</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       1403 :         : c() { }</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1413 :         queue()</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       1413 :         : c() { }</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
 <a name="169"><span class="lineNum">     169 </span>            :       explicit</a>
 <a name="170"><span class="lineNum">     170 </span>            :       queue(const _Sequence&amp; __c)</a>
@@ -285,8 +285,8 @@
 <a name="215"><span class="lineNum">     215 </span>            :        *  Returns true if the %queue is empty.</a>
 <a name="216"><span class="lineNum">     216 </span>            :        */</a>
 <a name="217"><span class="lineNum">     217 </span>            :       _GLIBCXX_NODISCARD bool</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       7120 :       empty() const</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       4052 :       { return c.empty(); }</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       7174 :       empty() const</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       4084 :       { return c.empty(); }</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            :       /**  Returns the number of elements in the %queue.  */</a>
 <a name="222"><span class="lineNum">     222 </span>            :       _GLIBCXX_NODISCARD</a>
@@ -300,10 +300,10 @@
 <a name="230"><span class="lineNum">     230 </span>            :        */</a>
 <a name="231"><span class="lineNum">     231 </span>            :       _GLIBCXX_NODISCARD</a>
 <a name="232"><span class="lineNum">     232 </span>            :       reference</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1400 :       front()</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1410 :       front()</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :       {</a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1400 :         __glibcxx_requires_nonempty();</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       1400 :         return c.front();</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1410 :         __glibcxx_requires_nonempty();</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       1410 :         return c.front();</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :       }</a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
 <a name="239"><span class="lineNum">     239 </span>            :       /**</a>
@@ -357,14 +357,14 @@
 <a name="287"><span class="lineNum">     287 </span>            : </a>
 <a name="288"><span class="lineNum">     288 </span>            : #if __cplusplus &gt;= 201103L</a>
 <a name="289"><span class="lineNum">     289 </span>            :       void</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        700 :       push(value_type&amp;&amp; __x)</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">        700 :       { c.push_back(std::move(__x)); }</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        705 :       push(value_type&amp;&amp; __x)</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">        705 :       { c.push_back(std::move(__x)); }</span></a>
 <a name="292"><span class="lineNum">     292 </span>            : </a>
 <a name="293"><span class="lineNum">     293 </span>            : #if __cplusplus &gt; 201402L</a>
 <a name="294"><span class="lineNum">     294 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="295"><span class="lineNum">     295 </span>            :         decltype(auto)</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        700 :         emplace(_Args&amp;&amp;... __args)</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        700 :         { return c.emplace_back(std::forward&lt;_Args&gt;(__args)...); }</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        705 :         emplace(_Args&amp;&amp;... __args)</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        705 :         { return c.emplace_back(std::forward&lt;_Args&gt;(__args)...); }</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : #else</a>
 <a name="299"><span class="lineNum">     299 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="300"><span class="lineNum">     300 </span>            :         void</a>
@@ -385,11 +385,11 @@
 <a name="315"><span class="lineNum">     315 </span>            :        *  called.</a>
 <a name="316"><span class="lineNum">     316 </span>            :        */</a>
 <a name="317"><span class="lineNum">     317 </span>            :       void</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       1398 :       pop()</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       1408 :       pop()</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :       {</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       1398 :         __glibcxx_requires_nonempty();</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       1398 :         c.pop_front();</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       1398 :       }</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       1408 :         __glibcxx_requires_nonempty();</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       1408 :         c.pop_front();</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       1408 :       }</span></a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
 <a name="324"><span class="lineNum">     324 </span>            : #if __cplusplus &gt;= 201103L</a>
 <a name="325"><span class="lineNum">     325 </span>            :       void</a>

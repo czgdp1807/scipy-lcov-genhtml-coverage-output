@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/charconv</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/charconv</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">60</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -284,25 +284,25 @@
 <a name="214"><span class="lineNum">     214 </span>            : </a>
 <a name="215"><span class="lineNum">     215 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="216"><span class="lineNum">     216 </span>            :     constexpr __integer_to_chars_result_type&lt;_Tp&gt;</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1644 :     __to_chars_10(char* __first, char* __last, _Tp __val) noexcept</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1646 :     __to_chars_10(char* __first, char* __last, _Tp __val) noexcept</span></a>
 <a name="218"><span class="lineNum">     218 </span>            :     {</a>
 <a name="219"><span class="lineNum">     219 </span>            :       static_assert(__integer_to_chars_is_unsigned&lt;_Tp&gt;, &quot;implementation bug&quot;);</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            :       to_chars_result __res;</a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       1644 :       const unsigned __len = __to_chars_len(__val, 10);</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       1646 :       const unsigned __len = __to_chars_len(__val, 10);</span></a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       1644 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       1646 :       if (__builtin_expect((__last - __first) &lt; __len, 0))</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :         {</a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :           __res.ptr = __last;</span></a>
 <a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :           __res.ec = errc::value_too_large;</span></a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :           return __res;</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :         }</a>
 <a name="231"><span class="lineNum">     231 </span>            : </a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       1644 :       __detail::__to_chars_10_impl(__first, __len, __val);</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1644 :       __res.ptr = __first + __len;</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       1644 :       __res.ec = {};</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1644 :       return __res;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       1646 :       __detail::__to_chars_10_impl(__first, __len, __val);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1646 :       __res.ptr = __first + __len;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       1646 :       __res.ec = {};</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1646 :       return __res;</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :     }</a>
 <a name="237"><span class="lineNum">     237 </span>            : </a>
 <a name="238"><span class="lineNum">     238 </span>            :   template&lt;typename _Tp&gt;</a>
@@ -396,34 +396,34 @@
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="328"><span class="lineNum">     328 </span>            :     constexpr __detail::__integer_to_chars_result_type&lt;_Tp&gt;</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       1656 :     __to_chars_i(char* __first, char* __last, _Tp __value, int __base = 10)</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       1658 :     __to_chars_i(char* __first, char* __last, _Tp __value, int __base = 10)</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :     {</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       1656 :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       1658 :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
 <a name="333"><span class="lineNum">     333 </span>            :       using _Up = __detail::__unsigned_least_t&lt;_Tp&gt;;</a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">       1656 :       _Up __unsigned_val = __value;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">       1658 :       _Up __unsigned_val = __value;</span></a>
 <a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">       1656 :       if (__first == __last) [[__unlikely__]]</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">       1658 :       if (__first == __last) [[__unlikely__]]</span></a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         return { __last, errc::value_too_large };</span></a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">       1656 :       if (__value == 0)</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">       1658 :       if (__value == 0)</span></a>
 <a name="340"><span class="lineNum">     340 </span>            :         {</a>
 <a name="341"><span class="lineNum">     341 </span><span class="lineCov">         12 :           *__first = '0';</span></a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineCov">         12 :           return { __first + 1, errc{} };</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :         }</a>
 <a name="344"><span class="lineNum">     344 </span>            :       else if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       1598 :         if (__value &lt; 0)</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       1600 :         if (__value &lt; 0)</span></a>
 <a name="346"><span class="lineNum">     346 </span>            :           {</a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">          6 :             *__first++ = '-';</span></a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">          6 :             __unsigned_val = _Up(~__value) + _Up(1);</span></a>
 <a name="349"><span class="lineNum">     349 </span>            :           }</a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1644 :       switch (__base)</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1646 :       switch (__base)</span></a>
 <a name="352"><span class="lineNum">     352 </span>            :       {</a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :       case 16:</span></a>
 <a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :         return __detail::__to_chars_16(__first, __last, __unsigned_val);</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       1644 :       case 10:</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       1644 :         return __detail::__to_chars_10(__first, __last, __unsigned_val);</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       1646 :       case 10:</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       1646 :         return __detail::__to_chars_10(__first, __last, __unsigned_val);</span></a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :       case 8:</span></a>
 <a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :         return __detail::__to_chars_8(__first, __last, __unsigned_val);</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :       case 2:</span></a>
@@ -442,7 +442,7 @@
 <a name="372"><span class="lineNum">     372 </span>            : _GLIBCXX_TO_CHARS(unsigned char)</a>
 <a name="373"><span class="lineNum">     373 </span>            : _GLIBCXX_TO_CHARS(signed short)</a>
 <a name="374"><span class="lineNum">     374 </span>            : _GLIBCXX_TO_CHARS(unsigned short)</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       1554 : _GLIBCXX_TO_CHARS(signed int)</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       1556 : _GLIBCXX_TO_CHARS(signed int)</span></a>
 <a name="376"><span class="lineNum">     376 </span><span class="lineCov">          4 : _GLIBCXX_TO_CHARS(unsigned int)</span></a>
 <a name="377"><span class="lineNum">     377 </span><span class="lineCov">         50 : _GLIBCXX_TO_CHARS(signed long)</span></a>
 <a name="378"><span class="lineNum">     378 </span><span class="lineCov">         48 : _GLIBCXX_TO_CHARS(unsigned long)</span></a>
@@ -525,10 +525,10 @@
 <a name="455"><span class="lineNum">     455 </span>            :   // return its corresponding base-36 value, otherwise return a value &gt;= 127.</a>
 <a name="456"><span class="lineNum">     456 </span>            :   template&lt;bool _DecOnly = false&gt;</a>
 <a name="457"><span class="lineNum">     457 </span>            :     _GLIBCXX20_CONSTEXPR unsigned char</a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">      10942 :     __from_chars_alnum_to_val(unsigned char __c)</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">      10960 :     __from_chars_alnum_to_val(unsigned char __c)</span></a>
 <a name="459"><span class="lineNum">     459 </span>            :     {</a>
 <a name="460"><span class="lineNum">     460 </span>            :       if _GLIBCXX17_CONSTEXPR (_DecOnly)</a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">      10942 :         return static_cast&lt;unsigned char&gt;(__c - '0');</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">      10960 :         return static_cast&lt;unsigned char&gt;(__c - '0');</span></a>
 <a name="462"><span class="lineNum">     462 </span>            :       else</a>
 <a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :         return __from_chars_alnum_to_val_table&lt;_DecOnly&gt;::value.__data[__c];</span></a>
 <a name="464"><span class="lineNum">     464 </span>            :     }</a>
@@ -594,24 +594,24 @@
 <a name="524"><span class="lineNum">     524 </span>            :   /// If _DecOnly is true, then we may assume __base is at most 10.</a>
 <a name="525"><span class="lineNum">     525 </span>            :   template&lt;bool _DecOnly, typename _Tp&gt;</a>
 <a name="526"><span class="lineNum">     526 </span>            :     constexpr bool</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">       3025 :     __from_chars_alnum(const char*&amp; __first, const char* __last, _Tp&amp; __val,</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">       3035 :     __from_chars_alnum(const char*&amp; __first, const char* __last, _Tp&amp; __val,</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :                        int __base)</a>
 <a name="529"><span class="lineNum">     529 </span>            :     {</a>
 <a name="530"><span class="lineNum">     530 </span>            :       // __glibcxx_assert(!_DecOnly || __base &lt;= 10);</a>
 <a name="531"><span class="lineNum">     531 </span>            : </a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">       3025 :       const int __bits_per_digit = __bit_width(__base);</span></a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">       3025 :       int __unused_bits_lower_bound = __gnu_cxx::__int_traits&lt;_Tp&gt;::__digits;</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">      11283 :       for (; __first != __last; ++__first)</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">       3035 :       const int __bits_per_digit = __bit_width(__base);</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">       3035 :       int __unused_bits_lower_bound = __gnu_cxx::__int_traits&lt;_Tp&gt;::__digits;</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">      11303 :       for (; __first != __last; ++__first)</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :         {</a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">      10941 :           const unsigned char __c = __from_chars_alnum_to_val&lt;_DecOnly&gt;(*__first);</span></a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">      10941 :           if (__c &gt;= __base)</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">      10959 :           const unsigned char __c = __from_chars_alnum_to_val&lt;_DecOnly&gt;(*__first);</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">      10959 :           if (__c &gt;= __base)</span></a>
 <a name="538"><span class="lineNum">     538 </span>            :             return true;</a>
 <a name="539"><span class="lineNum">     539 </span>            : </a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">       8259 :           __unused_bits_lower_bound -= __bits_per_digit;</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       8259 :           if (__unused_bits_lower_bound &gt;= 0) [[__likely__]]</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">       8269 :           __unused_bits_lower_bound -= __bits_per_digit;</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       8269 :           if (__unused_bits_lower_bound &gt;= 0) [[__likely__]]</span></a>
 <a name="542"><span class="lineNum">     542 </span>            :             // We're definitely not going to overflow.</a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">       8065 :             __val = __val * __base + __c;</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">       8452 :           else if (!__raise_and_add(__val, __base, __c)) [[__unlikely__]]</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">       8075 :             __val = __val * __base + __c;</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">       8462 :           else if (!__raise_and_add(__val, __base, __c)) [[__unlikely__]]</span></a>
 <a name="545"><span class="lineNum">     545 </span>            :             {</a>
 <a name="546"><span class="lineNum">     546 </span><span class="lineCov">          1 :               while (++__first != __last</span></a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineCov">          2 :                      &amp;&amp; __from_chars_alnum_to_val&lt;_DecOnly&gt;(*__first) &lt; __base)</span></a>
@@ -634,54 +634,54 @@
 <a name="564"><span class="lineNum">     564 </span>            :   /// std::from_chars for integral types.</a>
 <a name="565"><span class="lineNum">     565 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="566"><span class="lineNum">     566 </span>            :     _GLIBCXX23_CONSTEXPR __detail::__integer_from_chars_result_type&lt;_Tp&gt;</a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">       3025 :     from_chars(const char* __first, const char* __last, _Tp&amp; __value,</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">       3035 :     from_chars(const char* __first, const char* __last, _Tp&amp; __value,</span></a>
 <a name="568"><span class="lineNum">     568 </span>            :                int __base = 10)</a>
 <a name="569"><span class="lineNum">     569 </span>            :     {</a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       3025 :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       3035 :       __glibcxx_assert(2 &lt;= __base &amp;&amp; __base &lt;= 36);</span></a>
 <a name="571"><span class="lineNum">     571 </span>            : </a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       3025 :       from_chars_result __res{__first, {}};</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       3035 :       from_chars_result __res{__first, {}};</span></a>
 <a name="573"><span class="lineNum">     573 </span>            : </a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       3025 :       int __sign = 1;</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       3035 :       int __sign = 1;</span></a>
 <a name="575"><span class="lineNum">     575 </span>            :       if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">       2973 :         if (__first != __last &amp;&amp; *__first == '-')</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">       2983 :         if (__first != __last &amp;&amp; *__first == '-')</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :           {</a>
 <a name="578"><span class="lineNum">     578 </span><span class="lineCov">         10 :             __sign = -1;</span></a>
 <a name="579"><span class="lineNum">     579 </span><span class="lineCov">         10 :             ++__first;</span></a>
 <a name="580"><span class="lineNum">     580 </span>            :           }</a>
 <a name="581"><span class="lineNum">     581 </span>            : </a>
 <a name="582"><span class="lineNum">     582 </span>            :       using _Up = __detail::__unsigned_least_t&lt;_Tp&gt;;</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">       3025 :       _Up __val = 0;</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">       3035 :       _Up __val = 0;</span></a>
 <a name="584"><span class="lineNum">     584 </span>            : </a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineCov">       3025 :       const auto __start = __first;</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">       3035 :       const auto __start = __first;</span></a>
 <a name="586"><span class="lineNum">     586 </span>            :       bool __valid;</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       3025 :       if ((__base &amp; (__base - 1)) == 0)</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       3035 :       if ((__base &amp; (__base - 1)) == 0)</span></a>
 <a name="588"><span class="lineNum">     588 </span>            :         {</a>
 <a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :           if (__base &lt;= 8)</span></a>
 <a name="590"><span class="lineNum">     590 </span><span class="lineNoCov">          0 :             __valid = __detail::__from_chars_pow2_base&lt;true&gt;(__first, __last, __val, __base);</span></a>
 <a name="591"><span class="lineNum">     591 </span>            :           else</a>
 <a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :             __valid = __detail::__from_chars_pow2_base&lt;false&gt;(__first, __last, __val, __base);</span></a>
 <a name="593"><span class="lineNum">     593 </span>            :         }</a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       3025 :       else if (__base &lt;= 10)</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">       3025 :         __valid = __detail::__from_chars_alnum&lt;true&gt;(__first, __last, __val, __base);</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       3035 :       else if (__base &lt;= 10)</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">       3035 :         __valid = __detail::__from_chars_alnum&lt;true&gt;(__first, __last, __val, __base);</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :       else</a>
 <a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :         __valid = __detail::__from_chars_alnum&lt;false&gt;(__first, __last, __val, __base);</span></a>
 <a name="598"><span class="lineNum">     598 </span>            : </a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       3025 :       if (__builtin_expect(__first == __start, 0))</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       3035 :       if (__builtin_expect(__first == __start, 0))</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :         __res.ec = errc::invalid_argument;</a>
 <a name="601"><span class="lineNum">     601 </span>            :       else</a>
 <a name="602"><span class="lineNum">     602 </span>            :         {</a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       3025 :           __res.ptr = __first;</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">       3025 :           if (!__valid)</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       3035 :           __res.ptr = __first;</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">       3035 :           if (!__valid)</span></a>
 <a name="605"><span class="lineNum">     605 </span>            :             __res.ec = errc::result_out_of_range;</a>
 <a name="606"><span class="lineNum">     606 </span>            :           else</a>
 <a name="607"><span class="lineNum">     607 </span>            :             {</a>
 <a name="608"><span class="lineNum">     608 </span>            :               if _GLIBCXX17_CONSTEXPR (std::is_signed&lt;_Tp&gt;::value)</a>
 <a name="609"><span class="lineNum">     609 </span>            :                 {</a>
 <a name="610"><span class="lineNum">     610 </span>            :                   _Tp __tmp;</a>
-<a name="611"><span class="lineNum">     611 </span><span class="lineCov">       2972 :                   if (__builtin_mul_overflow(__val, __sign, &amp;__tmp))</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineCov">       2982 :                   if (__builtin_mul_overflow(__val, __sign, &amp;__tmp))</span></a>
 <a name="612"><span class="lineNum">     612 </span>            :                     __res.ec = errc::result_out_of_range;</a>
 <a name="613"><span class="lineNum">     613 </span>            :                   else</a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">       2971 :                     __value = __tmp;</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">       2981 :                     __value = __tmp;</span></a>
 <a name="615"><span class="lineNum">     615 </span>            :                 }</a>
 <a name="616"><span class="lineNum">     616 </span>            :               else</a>
 <a name="617"><span class="lineNum">     617 </span>            :                 {</a>
@@ -698,7 +698,7 @@
 <a name="628"><span class="lineNum">     628 </span>            :                 }</a>
 <a name="629"><span class="lineNum">     629 </span>            :             }</a>
 <a name="630"><span class="lineNum">     630 </span>            :         }</a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">       3025 :       return __res;</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">       3035 :       return __res;</span></a>
 <a name="632"><span class="lineNum">     632 </span>            :     }</a>
 <a name="633"><span class="lineNum">     633 </span>            : </a>
 <a name="634"><span class="lineNum">     634 </span>            :   /// floating-point format for primitive numerical conversion</a>

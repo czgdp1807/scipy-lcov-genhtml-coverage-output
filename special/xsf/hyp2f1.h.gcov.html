@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/hyp2f1.h</title>
+  <title>LCOV - lcov.info - special/xsf/hyp2f1.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">243</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">17</td>
@@ -277,7 +277,7 @@
 <a name="207"><span class="lineNum">     207 </span>            :          * chosen empirically based on the relevant benchmarks in</a>
 <a name="208"><span class="lineNum">     208 </span>            :          * scipy/special/_precompute/hyp2f1_data.py */</a>
 <a name="209"><span class="lineNum">     209 </span><span class="lineCov">         57 :         if (std::abs(u) &lt;= 100 &amp;&amp; std::abs(v) &lt;= 100 &amp;&amp; std::abs(w) &lt;= 100 &amp;&amp; std::abs(x) &lt;= 100) {</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         46 :             result = cephes::Gamma(u) * cephes::Gamma(v) / (cephes::Gamma(w) * cephes::Gamma(x));</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         46 :             result = cephes::Gamma(u) * cephes::Gamma(v) * (cephes::rgamma(w) * cephes::rgamma(x));</span></a>
 <a name="211"><span class="lineNum">     211 </span><span class="lineCov">         46 :             if (std::isfinite(result) &amp;&amp; result != 0.0) {</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :                 return result;</a>
 <a name="213"><span class="lineNum">     213 </span>            :             }</a>
@@ -339,7 +339,7 @@
 <a name="269"><span class="lineNum">     269 </span><span class="lineCov">         21 :         XSF_HOST_DEVICE Hyp2f1Transform1LimitSeriesGenerator(double a, double b, double m, std::complex&lt;double&gt; z)</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineCov">         21 :             : d1_(xsf::digamma(a)), d2_(xsf::digamma(b)), d3_(xsf::digamma(1 + m)),</span></a>
 <a name="271"><span class="lineNum">     271 </span><span class="lineCov">         21 :               d4_(xsf::digamma(1.0)), a_(a), b_(b), m_(m), z_(z), log_1_z_(std::log(1.0 - z)),</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         21 :               factor_(1.0 / cephes::Gamma(m + 1)), k_(0) {}</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         21 :               factor_(cephes::rgamma(m + 1)), k_(0) {}</span></a>
 <a name="273"><span class="lineNum">     273 </span>            : </a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineCov">       2646 :         XSF_HOST_DEVICE std::complex&lt;double&gt; operator()() {</span></a>
 <a name="275"><span class="lineNum">     275 </span><span class="lineCov">       2646 :             std::complex&lt;double&gt; term_ = (d1_ + d2_ - d3_ - d4_ + log_1_z_) * factor_;</span></a>
@@ -385,8 +385,8 @@
 <a name="315"><span class="lineNum">     315 </span>            :                                                                  std::complex&lt;double&gt; z)</a>
 <a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :             : d1_(xsf::digamma(1.0)), d2_(xsf::digamma(1 + m)), d3_(xsf::digamma(a)),</span></a>
 <a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :               d4_(xsf::digamma(c - a)), a_(a), b_(b), c_(c), m_(m), z_(z), log_neg_z_(std::log(-z)),</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :               factor_(xsf::cephes::poch(b, m) * xsf::cephes::poch(1 - c + b, m) /</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :                       xsf::cephes::Gamma(m + 1)),</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :               factor_(xsf::cephes::poch(b, m) * xsf::cephes::poch(1 - c + b, m) *</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :                       xsf::cephes::rgamma(m + 1)),</span></a>
 <a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :               k_(0) {}</span></a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
 <a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :         XSF_HOST_DEVICE std::complex&lt;double&gt; operator()() {</span></a>
@@ -415,8 +415,8 @@
 <a name="345"><span class="lineNum">     345 </span>            :                                                                            double n, std::complex&lt;double&gt; z)</a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">        161 :             : d1_(xsf::digamma(1.0)), d2_(xsf::digamma(1 + m)), d3_(xsf::digamma(a)),</span></a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">        161 :               d4_(xsf::digamma(n)), a_(a), b_(b), c_(c), m_(m), n_(n), z_(z), log_neg_z_(std::log(-z)),</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">        161 :               factor_(xsf::cephes::poch(b, m) * xsf::cephes::poch(1 - c + b, m) /</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">        161 :                       xsf::cephes::Gamma(m + 1)),</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">        161 :               factor_(xsf::cephes::poch(b, m) * xsf::cephes::poch(1 - c + b, m) *</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">        161 :                       xsf::cephes::rgamma(m + 1)),</span></a>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">        161 :               k_(0) {}</span></a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineCov">     195042 :         XSF_HOST_DEVICE std::complex&lt;double&gt; operator()() {</span></a>
@@ -486,7 +486,7 @@
 <a name="416"><span class="lineNum">     416 </span>            :       public:</a>
 <a name="417"><span class="lineNum">     417 </span><span class="lineCov">        161 :         XSF_HOST_DEVICE Hyp2f1Transform2LimitFinitePartGenerator(double b, double c, double m,</span></a>
 <a name="418"><span class="lineNum">     418 </span>            :                                                                      std::complex&lt;double&gt; z)</a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">        161 :             : b_(b), c_(c), m_(m), z_(z), term_(cephes::Gamma(m) / cephes::Gamma(c - b)), k_(0) {}</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">        161 :             : b_(b), c_(c), m_(m), z_(z), term_(cephes::Gamma(m) * cephes::rgamma(c - b)), k_(0) {}</span></a>
 <a name="420"><span class="lineNum">     420 </span>            : </a>
 <a name="421"><span class="lineNum">     421 </span><span class="lineCov">        576 :         XSF_HOST_DEVICE std::complex&lt;double&gt; operator()() {</span></a>
 <a name="422"><span class="lineNum">     422 </span><span class="lineCov">        576 :             std::complex&lt;double&gt; output = term_;</span></a>
@@ -556,8 +556,8 @@
 <a name="486"><span class="lineNum">     486 </span><span class="lineCov">         10 :             auto series_generator1 = HypergeometricSeriesGenerator(a + m, b + m, 1 + m, 1.0 - z);</span></a>
 <a name="487"><span class="lineNum">     487 </span><span class="lineCov">         10 :             result *= series_eval_fixed_length(series_generator1, std::complex&lt;double&gt;{0.0, 0.0},</span></a>
 <a name="488"><span class="lineNum">     488 </span><span class="lineCov">         10 :                                                static_cast&lt;std::uint64_t&gt;(-m));</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">         10 :             double prefactor = std::pow(-1.0, m + 1) * xsf::cephes::Gamma(c) /</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         10 :                                (xsf::cephes::Gamma(a + m) * xsf::cephes::Gamma(b + m));</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">         10 :             double prefactor = std::pow(-1.0, m + 1) * xsf::cephes::Gamma(c) *</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         10 :                                (xsf::cephes::rgamma(a + m) * xsf::cephes::rgamma(b + m));</span></a>
 <a name="491"><span class="lineNum">     491 </span><span class="lineCov">         10 :             auto series_generator2 = Hyp2f1Transform1LimitSeriesGenerator(a, b, -m, z);</span></a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">         10 :             result += prefactor * series_eval(series_generator2, std::complex&lt;double&gt;{0.0, 0.0}, hyp2f1_EPS,</span></a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineCov">         10 :                                               hyp2f1_MAXITER, &quot;hyp2f1&quot;);</span></a>
@@ -570,10 +570,10 @@
 <a name="500"><span class="lineNum">     500 </span>            :         /* 1 / z transform in limiting case where a - b approaches a non-negative integer m. Negative integer case</a>
 <a name="501"><span class="lineNum">     501 </span>            :          * can be handled by swapping a and b. */</a>
 <a name="502"><span class="lineNum">     502 </span><span class="lineCov">        161 :         auto series_generator1 = Hyp2f1Transform2LimitFinitePartGenerator(b, c, m, z);</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        161 :         std::complex&lt;double&gt; result = cephes::Gamma(c) / cephes::Gamma(a) * std::pow(-z, -b);</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        161 :         std::complex&lt;double&gt; result = cephes::Gamma(c) * cephes::rgamma(a) * std::pow(-z, -b);</span></a>
 <a name="504"><span class="lineNum">     504 </span><span class="lineCov">        161 :         result *=</span></a>
 <a name="505"><span class="lineNum">     505 </span><span class="lineCov">        161 :             series_eval_fixed_length(series_generator1, std::complex&lt;double&gt;{0.0, 0.0}, static_cast&lt;std::uint64_t&gt;(m));</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        161 :         std::complex&lt;double&gt; prefactor = cephes::Gamma(c) / (cephes::Gamma(a) * cephes::Gamma(c - b) * std::pow(-z, a));</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        161 :         std::complex&lt;double&gt; prefactor = cephes::Gamma(c) * (cephes::rgamma(a) * cephes::rgamma(c - b) * std::pow(-z, -a));</span></a>
 <a name="507"><span class="lineNum">     507 </span><span class="lineCov">        161 :         double n = c - a;</span></a>
 <a name="508"><span class="lineNum">     508 </span><span class="lineCov">        161 :         if (abs(n - std::round(n)) &lt; hyp2f1_EPS) {</span></a>
 <a name="509"><span class="lineNum">     509 </span><span class="lineCov">        161 :             auto series_generator2 = Hyp2f1Transform2LimitSeriesCminusAIntGenerator(a, b, c, m, n, z);</span></a>
@@ -755,7 +755,7 @@
 <a name="685"><span class="lineNum">     685 </span><span class="lineNoCov">          0 :                                                    static_cast&lt;double&gt;(c), static_cast&lt;std::complex&lt;double&gt;&gt;(x)));</span></a>
 <a name="686"><span class="lineNum">     686 </span>            : }</a>
 <a name="687"><span class="lineNum">     687 </span>            : </a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">      10282 : XSF_HOST_DEVICE inline double hyp2f1(double a, double b, double c, double x) { return cephes::hyp2f1(a, b, c, x); }</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">      11794 : XSF_HOST_DEVICE inline double hyp2f1(double a, double b, double c, double x) { return cephes::hyp2f1(a, b, c, x); }</span></a>
 <a name="689"><span class="lineNum">     689 </span>            : </a>
 <a name="690"><span class="lineNum">     690 </span><span class="lineNoCov">          0 : XSF_HOST_DEVICE inline float hyp2f1(float a, float b, float c, float x) {</span></a>
 <a name="691"><span class="lineNum">     691 </span><span class="lineNoCov">          0 :     return hyp2f1(static_cast&lt;double&gt;(a), static_cast&lt;double&gt;(b), static_cast&lt;double&gt;(c), static_cast&lt;double&gt;(x));</span></a>

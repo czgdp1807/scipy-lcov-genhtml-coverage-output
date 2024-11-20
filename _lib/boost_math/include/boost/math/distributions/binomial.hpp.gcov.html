@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/distributions/binomial.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/distributions/binomial.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">99</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -172,9 +172,9 @@
 <a name="102"><span class="lineNum">     102 </span>            :      namespace binomial_detail{</a>
 <a name="103"><span class="lineNum">     103 </span>            :         // common error checking routines for binomial distribution functions:</a>
 <a name="104"><span class="lineNum">     104 </span>            :         template &lt;class RealType, class Policy&gt;</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">      36789 :         BOOST_MATH_CUDA_ENABLED inline bool check_N(const char* function, const RealType&amp; N, RealType* result, const Policy&amp; pol)</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">      36968 :         BOOST_MATH_CUDA_ENABLED inline bool check_N(const char* function, const RealType&amp; N, RealType* result, const Policy&amp; pol)</span></a>
 <a name="106"><span class="lineNum">     106 </span>            :         {</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      36789 :            if((N &lt; 0) || !(boost::math::isfinite)(N))</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      36968 :            if((N &lt; 0) || !(boost::math::isfinite)(N))</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :            {</a>
 <a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :                *result = policies::raise_domain_error&lt;RealType&gt;(</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :                   function,</a>
@@ -184,9 +184,9 @@
 <a name="114"><span class="lineNum">     114 </span>            :            return true;</a>
 <a name="115"><span class="lineNum">     115 </span>            :         }</a>
 <a name="116"><span class="lineNum">     116 </span>            :         template &lt;class RealType, class Policy&gt;</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      36789 :         BOOST_MATH_CUDA_ENABLED inline bool check_success_fraction(const char* function, const RealType&amp; p, RealType* result, const Policy&amp; pol)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">      36968 :         BOOST_MATH_CUDA_ENABLED inline bool check_success_fraction(const char* function, const RealType&amp; p, RealType* result, const Policy&amp; pol)</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :         {</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      36789 :            if((p &lt; 0) || (p &gt; 1) || !(boost::math::isfinite)(p))</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      36968 :            if((p &lt; 0) || (p &gt; 1) || !(boost::math::isfinite)(p))</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :            {</a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :                *result = policies::raise_domain_error&lt;RealType&gt;(</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :                   function,</a>
@@ -196,26 +196,26 @@
 <a name="126"><span class="lineNum">     126 </span>            :            return true;</a>
 <a name="127"><span class="lineNum">     127 </span>            :         }</a>
 <a name="128"><span class="lineNum">     128 </span>            :         template &lt;class RealType, class Policy&gt;</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      36789 :         BOOST_MATH_CUDA_ENABLED inline bool check_dist(const char* function, const RealType&amp; N, const RealType&amp; p, RealType* result, const Policy&amp; pol)</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      36968 :         BOOST_MATH_CUDA_ENABLED inline bool check_dist(const char* function, const RealType&amp; N, const RealType&amp; p, RealType* result, const Policy&amp; pol)</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :         {</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      36789 :            return check_success_fraction(</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      36968 :            return check_success_fraction(</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :               function, p, result, pol)</a>
 <a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :               &amp;&amp; check_N(</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      36789 :                function, N, result, pol);</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      36968 :                function, N, result, pol);</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :         }</a>
 <a name="136"><span class="lineNum">     136 </span>            :         template &lt;class RealType, class Policy&gt;</a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">      26558 :         BOOST_MATH_CUDA_ENABLED inline bool check_dist_and_k(const char* function, const RealType&amp; N, const RealType&amp; p, RealType k, RealType* result, const Policy&amp; pol)</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">      26737 :         BOOST_MATH_CUDA_ENABLED inline bool check_dist_and_k(const char* function, const RealType&amp; N, const RealType&amp; p, RealType k, RealType* result, const Policy&amp; pol)</span></a>
 <a name="138"><span class="lineNum">     138 </span>            :         {</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      26558 :            if(check_dist(function, N, p, result, pol) == false)</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      26737 :            if(check_dist(function, N, p, result, pol) == false)</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :               return false;</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">      26558 :            if((k &lt; 0) || !(boost::math::isfinite)(k))</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">      26737 :            if((k &lt; 0) || !(boost::math::isfinite)(k))</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :            {</a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :                *result = policies::raise_domain_error&lt;RealType&gt;(</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :                   function,</a>
 <a name="145"><span class="lineNum">     145 </span>            :                   &quot;Number of Successes argument is %1%, but must be &gt;= 0 !&quot;, k, pol);</a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :                return false;</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :            }</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      26558 :            if(k &gt; N)</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      26737 :            if(k &gt; N)</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :            {</a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :                *result = policies::raise_domain_error&lt;RealType&gt;(</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :                   function,</a>
@@ -351,7 +351,7 @@
 <a name="281"><span class="lineNum">     281 </span>            :       typedef RealType value_type;</a>
 <a name="282"><span class="lineNum">     282 </span>            :       typedef Policy policy_type;</a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      19031 :       binomial_distribution(RealType n = 1, RealType p = 0.5) : m_n(n), m_p(p)</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      19210 :       binomial_distribution(RealType n = 1, RealType p = 0.5) : m_n(n), m_p(p)</span></a>
 <a name="285"><span class="lineNum">     285 </span>            :       { // Default n = 1 is the Bernoulli distribution</a>
 <a name="286"><span class="lineNum">     286 </span>            :         // with equal probability of 'heads' or 'tails.</a>
 <a name="287"><span class="lineNum">     287 </span>            :          RealType r;</a>
@@ -362,11 +362,11 @@
 <a name="292"><span class="lineNum">     292 </span>            :             &amp;r, Policy());</a>
 <a name="293"><span class="lineNum">     293 </span>            :       } // binomial_distribution constructor.</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      36789 :       BOOST_MATH_CUDA_ENABLED RealType success_fraction() const</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      36968 :       BOOST_MATH_CUDA_ENABLED RealType success_fraction() const</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :       { // Probability.</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      36789 :         return m_p;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      36968 :         return m_p;</span></a>
 <a name="298"><span class="lineNum">     298 </span>            :       }</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      40330 :       BOOST_MATH_CUDA_ENABLED RealType trials() const</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      40509 :       BOOST_MATH_CUDA_ENABLED RealType trials() const</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :       { // Total number of trials.</a>
 <a name="301"><span class="lineNum">     301 </span><span class="lineCov">      10231 :         return m_n;</span></a>
 <a name="302"><span class="lineNum">     302 </span>            :       }</a>
@@ -573,7 +573,7 @@
 <a name="503"><span class="lineNum">     503 </span><span class="lineCov">       5867 :       } // pdf</span></a>
 <a name="504"><span class="lineNum">     504 </span>            : </a>
 <a name="505"><span class="lineNum">     505 </span>            :       template &lt;class RealType, class Policy&gt;</a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">      19620 :       BOOST_MATH_CUDA_ENABLED inline RealType cdf(const binomial_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; k)</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">      19799 :       BOOST_MATH_CUDA_ENABLED inline RealType cdf(const binomial_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; k)</span></a>
 <a name="507"><span class="lineNum">     507 </span>            :       { // Cumulative Distribution Function Binomial.</a>
 <a name="508"><span class="lineNum">     508 </span>            :         // The random variate k is the number of successes in n trials.</a>
 <a name="509"><span class="lineNum">     509 </span>            :         // k argument may be integral, signed, or unsigned, or floating point.</a>
@@ -595,27 +595,27 @@
 <a name="525"><span class="lineNum">     525 </span>            : </a>
 <a name="526"><span class="lineNum">     526 </span>            :         BOOST_MATH_STD_USING // for ADL of std functions</a>
 <a name="527"><span class="lineNum">     527 </span>            : </a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">      19620 :         RealType n = dist.trials();</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">      19620 :         RealType p = dist.success_fraction();</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">      19799 :         RealType n = dist.trials();</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">      19799 :         RealType p = dist.success_fraction();</span></a>
 <a name="530"><span class="lineNum">     530 </span>            : </a>
 <a name="531"><span class="lineNum">     531 </span>            :         // Error check:</a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">      19620 :         RealType result = 0;</span></a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">      19620 :         if(false == binomial_detail::check_dist_and_k(</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">      19799 :         RealType result = 0;</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">      19799 :         if(false == binomial_detail::check_dist_and_k(</span></a>
 <a name="534"><span class="lineNum">     534 </span>            :            &quot;boost::math::cdf(binomial_distribution&lt;%1%&gt; const&amp;, %1%)&quot;,</a>
 <a name="535"><span class="lineNum">     535 </span>            :            n,</a>
 <a name="536"><span class="lineNum">     536 </span>            :            p,</a>
 <a name="537"><span class="lineNum">     537 </span>            :            k,</a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      19620 :            &amp;result, Policy()))</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      19799 :            &amp;result, Policy()))</span></a>
 <a name="539"><span class="lineNum">     539 </span>            :         {</a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :            return result;</span></a>
 <a name="541"><span class="lineNum">     541 </span>            :         }</a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      19620 :         if (k == n)</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      19799 :         if (k == n)</span></a>
 <a name="543"><span class="lineNum">     543 </span>            :         {</a>
 <a name="544"><span class="lineNum">     544 </span>            :           return 1;</a>
 <a name="545"><span class="lineNum">     545 </span>            :         }</a>
 <a name="546"><span class="lineNum">     546 </span>            : </a>
 <a name="547"><span class="lineNum">     547 </span>            :         // Special cases, regardless of k.</a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">      19186 :         if (p == 0)</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">      19266 :         if (p == 0)</span></a>
 <a name="549"><span class="lineNum">     549 </span>            :         {  // This need explanation:</a>
 <a name="550"><span class="lineNum">     550 </span>            :            // the pdf is zero for all cases except when k == 0.</a>
 <a name="551"><span class="lineNum">     551 </span>            :            // For zero p the probability of zero successes is one.</a>
@@ -624,7 +624,7 @@
 <a name="554"><span class="lineNum">     554 </span>            :            // if there are never any successes!</a>
 <a name="555"><span class="lineNum">     555 </span>            :            return 1;</a>
 <a name="556"><span class="lineNum">     556 </span>            :         }</a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">      19174 :         if (p == 1)</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">      19254 :         if (p == 1)</span></a>
 <a name="558"><span class="lineNum">     558 </span>            :         { // This is correct but needs explanation:</a>
 <a name="559"><span class="lineNum">     559 </span>            :           // when k = 1</a>
 <a name="560"><span class="lineNum">     560 </span>            :           // all the cdf and pdf values are zero *except* when k == n,</a>
@@ -641,7 +641,7 @@
 <a name="571"><span class="lineNum">     571 </span>            :         // beta uses a finite sum internally for integer arguments, so</a>
 <a name="572"><span class="lineNum">     572 </span>            :         // we'll just let it take care of the necessary logic.</a>
 <a name="573"><span class="lineNum">     573 </span>            :         //</a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      19156 :         return ibetac(k + 1, n - k, p, Policy());</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      19236 :         return ibetac(k + 1, n - k, p, Policy());</span></a>
 <a name="575"><span class="lineNum">     575 </span>            :       } // binomial cdf</a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
 <a name="577"><span class="lineNum">     577 </span>            :       template &lt;class RealType, class Policy&gt;</a>

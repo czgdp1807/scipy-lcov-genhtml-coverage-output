@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/get_perm_c.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/get_perm_c.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">175</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -109,34 +109,34 @@
 <a name="39"><span class="lineNum">      39 </span>            :  * \param[in]  rowind Row indices of size nnz for matrix A.</a>
 <a name="40"><span class="lineNum">      40 </span>            :  * \param[out] perm_c Column permutation vector.</a>
 <a name="41"><span class="lineNum">      41 </span>            :  */</a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">       3879 : void get_colamd(const int m, const int n, const int_t nnz,</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">       3885 : void get_colamd(const int m, const int n, const int_t nnz,</span></a>
 <a name="43"><span class="lineNum">      43 </span>            :                 int_t *colptr, int_t *rowind, int *perm_c)</a>
 <a name="44"><span class="lineNum">      44 </span>            : {</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       3879 :     size_t Alen;</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       3879 :     int_t *A, i, *p;</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       3879 :     int info;</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       3879 :     double knobs[COLAMD_KNOBS];</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       3879 :     int_t stats[COLAMD_STATS];</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       3885 :     size_t Alen;</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       3885 :     int_t *A, i, *p;</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       3885 :     int info;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       3885 :     double knobs[COLAMD_KNOBS];</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       3885 :     int_t stats[COLAMD_STATS];</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       3879 :     Alen = COLAMD_recommended(nnz, m, n);</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       3885 :     Alen = COLAMD_recommended(nnz, m, n);</span></a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       3879 :     COLAMD_set_defaults(knobs);</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       3885 :     COLAMD_set_defaults(knobs);</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       3879 :     if ( !(A = intMalloc(Alen)) ) ABORT(&quot;Malloc fails for A[]&quot;);</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       3879 :     if ( !(p = intMalloc(n+1)) )  ABORT(&quot;Malloc fails for p[]&quot;);</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">     212608 :     for (i = 0; i &lt;= n; ++i) p[i] = colptr[i];</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">    2484641 :     for (i = 0; i &lt; nnz; ++i) A[i] = rowind[i];</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       3885 :     if ( !(A = intMalloc(Alen)) ) ABORT(&quot;Malloc fails for A[]&quot;);</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       3885 :     if ( !(p = intMalloc(n+1)) )  ABORT(&quot;Malloc fails for p[]&quot;);</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">     213118 :     for (i = 0; i &lt;= n; ++i) p[i] = colptr[i];</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">    2494538 :     for (i = 0; i &lt; nnz; ++i) A[i] = rowind[i];</span></a>
 <a name="59"><span class="lineNum">      59 </span>            :     </a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       3879 :     info = COLAMD_MAIN(m, n, Alen, A, p, knobs, stats);</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       3885 :     info = COLAMD_MAIN(m, n, Alen, A, p, knobs, stats);</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <a name="62"><span class="lineNum">      62 </span>            :     //printf(&quot;after COLAMD_MAIN info %d\n&quot;, info);</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       3879 :     if ( info == FALSE ) ABORT(&quot;COLAMD failed&quot;);</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       3885 :     if ( info == FALSE ) ABORT(&quot;COLAMD failed&quot;);</span></a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">     208729 :     for (i = 0; i &lt; n; ++i) perm_c[p[i]] = i;</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">     209233 :     for (i = 0; i &lt; n; ++i) perm_c[p[i]] = i;</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       3879 :     SUPERLU_FREE(A);</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       3879 :     SUPERLU_FREE(p);</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       3879 : }</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       3885 :     SUPERLU_FREE(A);</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       3885 :     SUPERLU_FREE(p);</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       3885 : }</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : /*!</a>
 <a name="72"><span class="lineNum">      72 </span>            :  * \brief Get METIS' permutation for matrix B</a>
@@ -494,27 +494,27 @@
 <a name="424"><span class="lineNum">     424 </span>            :  *         in position j in A*Pc.</a>
 <a name="425"><span class="lineNum">     425 </span>            :  */</a>
 <a name="426"><span class="lineNum">     426 </span>            : void</a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       4395 : get_perm_c(int ispec, SuperMatrix *A, int *perm_c)</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       4401 : get_perm_c(int ispec, SuperMatrix *A, int *perm_c)</span></a>
 <a name="428"><span class="lineNum">     428 </span>            : {</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       4395 :     NCformat *Astore = A-&gt;Store;</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       4395 :     int m, n;</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       4395 :     int_t i, bnz = 0, *b_colptr, *b_rowind;</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       4395 :     int_t delta, maxint, nofsub;</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       4395 :     int *invp;</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       4395 :     int_t *dhead, *qsize, *llist, *marker;</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       4395 :     double t;</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       4401 :     NCformat *Astore = A-&gt;Store;</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       4401 :     int m, n;</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       4401 :     int_t i, bnz = 0, *b_colptr, *b_rowind;</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       4401 :     int_t delta, maxint, nofsub;</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       4401 :     int *invp;</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       4401 :     int_t *dhead, *qsize, *llist, *marker;</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       4401 :     double t;</span></a>
 <a name="436"><span class="lineNum">     436 </span>            :     </a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">       4395 :     m = A-&gt;nrow;</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">       4395 :     n = A-&gt;ncol;</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">       4401 :     m = A-&gt;nrow;</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">       4401 :     n = A-&gt;ncol;</span></a>
 <a name="439"><span class="lineNum">     439 </span>            : </a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">       4395 :     t = SuperLU_timer_();</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">       4395 :     switch ( ispec ) {</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">       4401 :     t = SuperLU_timer_();</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">       4401 :     switch ( ispec ) {</span></a>
 <a name="442"><span class="lineNum">     442 </span>            :     case (NATURAL): /* Natural ordering */</a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineCov">       1170 :         for (i = 0; i &lt; n; ++i) perm_c[i] = i;</span></a>
 <a name="444"><span class="lineNum">     444 </span>            : #if ( PRNTlevel&gt;=1 )</a>
 <a name="445"><span class="lineNum">     445 </span>            :         printf(&quot;Use natural column ordering.\n&quot;);</a>
 <a name="446"><span class="lineNum">     446 </span>            : #endif</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">       3888 :         return;</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">       3894 :         return;</span></a>
 <a name="448"><span class="lineNum">     448 </span><span class="lineCov">          7 :     case (MMD_ATA): /* Minimum degree ordering on A'*A */</span></a>
 <a name="449"><span class="lineNum">     449 </span><span class="lineCov">          7 :         getata(m, n, Astore-&gt;nnz, Astore-&gt;colptr, Astore-&gt;rowind,</span></a>
 <a name="450"><span class="lineNum">     450 </span>            :                      &amp;bnz, &amp;b_colptr, &amp;b_rowind);</a>
@@ -534,12 +534,12 @@
 <a name="464"><span class="lineNum">     464 </span><span class="lineCov">        500 :         t = SuperLU_timer_() - t;</span></a>
 <a name="465"><span class="lineNum">     465 </span>            :         /*printf(&quot;Form A'+A time = %8.3f\n&quot;, t);*/</a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineCov">        500 :         break;</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       3879 :     case (COLAMD): /* Approximate minimum degree column ordering. */</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       3879 :         get_colamd(m, n, Astore-&gt;nnz, Astore-&gt;colptr, Astore-&gt;rowind, perm_c);</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       3885 :     case (COLAMD): /* Approximate minimum degree column ordering. */</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       3885 :         get_colamd(m, n, Astore-&gt;nnz, Astore-&gt;colptr, Astore-&gt;rowind, perm_c);</span></a>
 <a name="469"><span class="lineNum">     469 </span>            : #if ( PRNTlevel&gt;=1 )</a>
 <a name="470"><span class="lineNum">     470 </span>            :         printf(&quot;.. Use approximate minimum degree column ordering.\n&quot;);</a>
 <a name="471"><span class="lineNum">     471 </span>            : #endif</a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       3879 :         return;</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       3885 :         return;</span></a>
 <a name="473"><span class="lineNum">     473 </span>            : #ifdef HAVE_METIS</a>
 <a name="474"><span class="lineNum">     474 </span>            :     case METIS_ATA: /* METIS ordering on A'*A */</a>
 <a name="475"><span class="lineNum">     475 </span>            :             getata(m, n, Astore-&gt;nnz, Astore-&gt;colptr, Astore-&gt;rowind,</a>

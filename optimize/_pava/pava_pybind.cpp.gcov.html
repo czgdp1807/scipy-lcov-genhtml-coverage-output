@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - optimize/_pava/pava_pybind.cpp</title>
+  <title>LCOV - lcov.info - optimize/_pava/pava_pybind.cpp</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">47</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -157,13 +157,13 @@
 <a name="87"><span class="lineNum">      87 </span><span class="lineCov">         42 :     return std::make_tuple(xa, wa, ra, b + 1);  // b + 1 is number of blocks</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : }</a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          3 : PYBIND11_MODULE(_pava_pybind, m, py::mod_gil_not_used()) {</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          1 :     if (_import_array() != 0) {</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          9 : PYBIND11_MODULE(_pava_pybind, m, py::mod_gil_not_used()) {</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          3 :     if (_import_array() != 0) {</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :         throw py::error_already_set();</span></a>
 <a name="93"><span class="lineNum">      93 </span>            :     }</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 :     m.def(</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          3 :     m.def(</span></a>
 <a name="95"><span class="lineNum">      95 </span>            :         &quot;pava&quot;,</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 :         &amp;pava,</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          3 :         &amp;pava,</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :         &quot;Pool adjacent violators algorithm (PAVA) for isotonic regression\n&quot;</a>
 <a name="98"><span class="lineNum">      98 </span>            :         &quot;\n&quot;</a>
 <a name="99"><span class="lineNum">      99 </span>            :         &quot;The routine might modify the input arguments x, w and r inplace.\n&quot;</a>
@@ -185,9 +185,9 @@
 <a name="115"><span class="lineNum">     115 </span>            :         &quot;    is the i-th block with all elements having the same value.\n&quot;</a>
 <a name="116"><span class="lineNum">     116 </span>            :         &quot;b : np.intp\n&quot;</a>
 <a name="117"><span class="lineNum">     117 </span>            :         &quot;    Number of blocks.\n&quot;,</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 :         py::arg(&quot;x&quot;), py::arg(&quot;w&quot;), py::arg(&quot;indices&quot;)</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          3 :         py::arg(&quot;x&quot;), py::arg(&quot;w&quot;), py::arg(&quot;indices&quot;)</span></a>
 <a name="119"><span class="lineNum">     119 </span>            :     );</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 : }</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          3 : }</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span>            : }  // namespace (anonymous)</a>
 </pre>

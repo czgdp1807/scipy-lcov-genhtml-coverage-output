@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/_uarray/vectorcall.cxx</title>
+  <title>LCOV - lcov.info - _lib/_uarray/vectorcall.cxx</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">2</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -151,7 +151,7 @@
 <a name="81"><span class="lineNum">      81 </span>            : #endif</a>
 <a name="82"><span class="lineNum">      82 </span>            : }</a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">      79049 : PyObject * Q_PyObject_VectorcallMethod(</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">      79139 : PyObject * Q_PyObject_VectorcallMethod(</span></a>
 <a name="85"><span class="lineNum">      85 </span>            :     PyObject * name, PyObject * const * args, size_t nargsf,</a>
 <a name="86"><span class="lineNum">      86 </span>            :     PyObject * kwnames) {</a>
 <a name="87"><span class="lineNum">      87 </span>            : #ifdef PYPY_VERSION</a>
@@ -164,7 +164,7 @@
 <a name="94"><span class="lineNum">      94 </span>            :   Py_DECREF(callable);</a>
 <a name="95"><span class="lineNum">      95 </span>            :   return result;</a>
 <a name="96"><span class="lineNum">      96 </span>            : #else</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">      79049 :   return PyObject_VectorcallMethod(name, args, nargsf, kwnames);</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">      79139 :   return PyObject_VectorcallMethod(name, args, nargsf, kwnames);</span></a>
 <a name="98"><span class="lineNum">      98 </span>            : #endif</a>
 <a name="99"><span class="lineNum">      99 </span>            : }</a>
 </pre>

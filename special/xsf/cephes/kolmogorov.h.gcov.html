@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/kolmogorov.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/kolmogorov.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">459</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">23</td>
@@ -178,44 +178,44 @@
 <a name="108"><span class="lineNum">     108 </span>            :         constexpr double _xtol = std::numeric_limits&lt;double&gt;::epsilon();</a>
 <a name="109"><span class="lineNum">     109 </span>            :         constexpr double _rtol = 2 * _xtol;</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      21049 :         XSF_HOST_DEVICE inline bool _within_tol(double x, double y, double atol, double rtol) {</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      21049 :             double diff = std::abs(x - y);</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      21049 :             bool result = (diff &lt;= (atol + rtol * std::abs(y)));</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      21049 :             return result;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      21162 :         XSF_HOST_DEVICE inline bool _within_tol(double x, double y, double atol, double rtol) {</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      21162 :             double diff = std::abs(x - y);</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      21162 :             bool result = (diff &lt;= (atol + rtol * std::abs(y)));</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      21162 :             return result;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :         }</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            :         /* ************************************************************************ */</a>
 <a name="118"><span class="lineNum">     118 </span>            :         /* Kolmogorov : Two-sided                      **************************** */</a>
 <a name="119"><span class="lineNum">     119 </span>            :         /* ************************************************************************ */</a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">      66875 :         XSF_HOST_DEVICE inline ThreeProbs _kolmogorov(double x) {</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      66875 :             double P = 1.0;</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      66875 :             double D = 0;</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      66875 :             double sf, cdf, pdf;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">      66974 :         XSF_HOST_DEVICE inline ThreeProbs _kolmogorov(double x) {</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      66974 :             double P = 1.0;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      66974 :             double D = 0;</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      66974 :             double sf, cdf, pdf;</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      66875 :             if (std::isnan(x)) {</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      66974 :             if (std::isnan(x)) {</span></a>
 <a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :                 return {std::numeric_limits&lt;double&gt;::quiet_NaN(), std::numeric_limits&lt;double&gt;::quiet_NaN(),</span></a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :                         std::numeric_limits&lt;double&gt;::quiet_NaN()};</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :             }</a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      66875 :             if (x &lt;= 0) {</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      66974 :             if (x &lt;= 0) {</span></a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineCov">         12 :                 return {1.0, 0.0, 0};</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :             }</a>
 <a name="133"><span class="lineNum">     133 </span>            :             /* x &lt;= 0.040611972203751713 */</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      66863 :             if (x &lt;= M_PI / std::sqrt(-MIN_EXPABLE * 8)) {</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      66962 :             if (x &lt;= M_PI / std::sqrt(-MIN_EXPABLE * 8)) {</span></a>
 <a name="135"><span class="lineNum">     135 </span><span class="lineCov">        172 :                 return {1.0, 0.0, 0};</span></a>
 <a name="136"><span class="lineNum">     136 </span>            :             }</a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">      66691 :             P = 1.0;</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      66691 :             if (x &lt;= KOLMOG_CUTOVER) {</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">      66790 :             P = 1.0;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">      66790 :             if (x &lt;= KOLMOG_CUTOVER) {</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :                 /*</a>
 <a name="141"><span class="lineNum">     141 </span>            :                  *  u = e^(-pi^2/(8x^2))</a>
 <a name="142"><span class="lineNum">     142 </span>            :                  *  w = sqrt(2pi)/x</a>
 <a name="143"><span class="lineNum">     143 </span>            :                  *  P = w*u * (1 + u^8 + u^24 + u^48 + ...)</a>
 <a name="144"><span class="lineNum">     144 </span>            :                  */</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      37923 :                 double w = std::sqrt(2 * M_PI) / x;</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      37923 :                 double logu8 = -M_PI * M_PI / (x * x); /* log(u^8) */</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      37923 :                 double u = std::exp(logu8 / 8);</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      37923 :                 if (u == 0) {</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      37915 :                 double w = std::sqrt(2 * M_PI) / x;</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      37915 :                 double logu8 = -M_PI * M_PI / (x * x); /* log(u^8) */</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      37915 :                 double u = std::exp(logu8 / 8);</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      37915 :                 if (u == 0) {</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :                     /*</a>
 <a name="150"><span class="lineNum">     150 </span>            :                      * P = w*u, but u &lt; 1e-308, and w &gt; 1,</a>
 <a name="151"><span class="lineNum">     151 </span>            :                      * so compute as logs, then exponentiate</a>
@@ -224,95 +224,95 @@
 <a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :                     P = std::exp(logP);</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :                 } else {</a>
 <a name="156"><span class="lineNum">     156 </span>            :                     /* Just unroll the loop, 3 iterations */</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      37923 :                     double u8 = std::exp(logu8);</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">      37923 :                     double u8cub = std::pow(u8, 3);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">      37923 :                     P = 1 + u8cub * P;</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      37923 :                     D = 5 * 5 + u8cub * D;</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      37923 :                     P = 1 + u8 * u8 * P;</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      37923 :                     D = 3 * 3 + u8 * u8 * D;</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      37923 :                     P = 1 + u8 * P;</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      37923 :                     D = 1 * 1 + u8 * D;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      37915 :                     double u8 = std::exp(logu8);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">      37915 :                     double u8cub = std::pow(u8, 3);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">      37915 :                     P = 1 + u8cub * P;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      37915 :                     D = 5 * 5 + u8cub * D;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      37915 :                     P = 1 + u8 * u8 * P;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      37915 :                     D = 3 * 3 + u8 * u8 * D;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      37915 :                     P = 1 + u8 * P;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      37915 :                     D = 1 * 1 + u8 * D;</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">      37923 :                     D = M_PI * M_PI / 4 / (x * x) * D - P;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      37923 :                     D *= w * u / x;</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      37923 :                     P = w * u * P;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">      37915 :                     D = M_PI * M_PI / 4 / (x * x) * D - P;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      37915 :                     D *= w * u / x;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      37915 :                     P = w * u * P;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :                 }</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      37923 :                 cdf = P;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      37923 :                 sf = 1 - P;</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      37923 :                 pdf = D;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      37915 :                 cdf = P;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      37915 :                 sf = 1 - P;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      37915 :                 pdf = D;</span></a>
 <a name="173"><span class="lineNum">     173 </span>            :             } else {</a>
 <a name="174"><span class="lineNum">     174 </span>            :                 /*</a>
 <a name="175"><span class="lineNum">     175 </span>            :                  *  v = e^(-2x^2)</a>
 <a name="176"><span class="lineNum">     176 </span>            :                  *  P = 2 (v - v^4 + v^9 - v^16 + ...)</a>
 <a name="177"><span class="lineNum">     177 </span>            :                  *    = 2v(1 - v^3*(1 - v^5*(1 - v^7*(1 - ...)))</a>
 <a name="178"><span class="lineNum">     178 </span>            :                  */</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      28768 :                 double logv = -2 * x * x;</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">      28768 :                 double v = std::exp(logv);</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      28875 :                 double logv = -2 * x * x;</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">      28875 :                 double v = std::exp(logv);</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :                 /*</a>
 <a name="182"><span class="lineNum">     182 </span>            :                  * Want q^((2k-1)^2)(1-q^(4k-1)) / q(1-q^3) &lt; epsilon to break out of loop.</a>
 <a name="183"><span class="lineNum">     183 </span>            :                  * With KOLMOG_CUTOVER ~ 0.82, k &lt;= 4.  Just unroll the loop, 4 iterations</a>
 <a name="184"><span class="lineNum">     184 </span>            :                  */</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">      28768 :                 double vsq = v * v;</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      28768 :                 double v3 = std::pow(v, 3);</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      28768 :                 double vpwr;</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">      28875 :                 double vsq = v * v;</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      28875 :                 double v3 = std::pow(v, 3);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">      28875 :                 double vpwr;</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      28768 :                 vpwr = v3 * v3 * v; /* v**7 */</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">      28768 :                 P = 1 - vpwr * P;   /* P &lt;- 1 - (1-v**(2k-1)) * P */</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">      28768 :                 D = 3 * 3 - vpwr * D;</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      28875 :                 vpwr = v3 * v3 * v; /* v**7 */</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">      28875 :                 P = 1 - vpwr * P;   /* P &lt;- 1 - (1-v**(2k-1)) * P */</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">      28875 :                 D = 3 * 3 - vpwr * D;</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">      28768 :                 vpwr = v3 * vsq;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      28768 :                 P = 1 - vpwr * P;</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      28768 :                 D = 2 * 2 - vpwr * D;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">      28875 :                 vpwr = v3 * vsq;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      28875 :                 P = 1 - vpwr * P;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      28875 :                 D = 2 * 2 - vpwr * D;</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      28768 :                 vpwr = v3;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">      28768 :                 P = 1 - vpwr * P;</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">      28768 :                 D = 1 * 1 - vpwr * D;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      28875 :                 vpwr = v3;</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">      28875 :                 P = 1 - vpwr * P;</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">      28875 :                 D = 1 * 1 - vpwr * D;</span></a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">      28768 :                 P = 2 * v * P;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">      28768 :                 D = 8 * v * x * D;</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">      28768 :                 sf = P;</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">      28768 :                 cdf = 1 - sf;</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">      28768 :                 pdf = D;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">      28875 :                 P = 2 * v * P;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">      28875 :                 D = 8 * v * x * D;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">      28875 :                 sf = P;</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">      28875 :                 cdf = 1 - sf;</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">      28875 :                 pdf = D;</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :             }</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">      66691 :             pdf = std::fmax(0, pdf);</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">      66691 :             cdf = std::clamp(cdf, 0.0, 1.0);</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">      66691 :             sf = std::clamp(sf, 0.0, 1.0);</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">      66691 :             return {sf, cdf, pdf};</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">      66790 :             pdf = std::fmax(0, pdf);</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">      66790 :             cdf = std::clamp(cdf, 0.0, 1.0);</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">      66790 :             sf = std::clamp(sf, 0.0, 1.0);</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">      66790 :             return {sf, cdf, pdf};</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :         }</a>
 <a name="212"><span class="lineNum">     212 </span>            : </a>
 <a name="213"><span class="lineNum">     213 </span>            :         /* Find x such kolmogorov(x)=psf, kolmogc(x)=pcdf */</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       8247 :         XSF_HOST_DEVICE inline double _kolmogi(double psf, double pcdf) {</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       8247 :             double x, t;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       8247 :             double xmin = 0;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       8247 :             double xmax = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       8247 :             int iterations;</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       8247 :             double a = xmin, b = xmax;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       8273 :         XSF_HOST_DEVICE inline double _kolmogi(double psf, double pcdf) {</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       8273 :             double x, t;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       8273 :             double xmin = 0;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       8273 :             double xmax = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       8273 :             int iterations;</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       8273 :             double a = xmin, b = xmax;</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       8247 :             if (!(psf &gt;= 0.0 &amp;&amp; pcdf &gt;= 0.0 &amp;&amp; pcdf &lt;= 1.0 &amp;&amp; psf &lt;= 1.0)) {</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       8273 :             if (!(psf &gt;= 0.0 &amp;&amp; pcdf &gt;= 0.0 &amp;&amp; pcdf &lt;= 1.0 &amp;&amp; psf &lt;= 1.0)) {</span></a>
 <a name="222"><span class="lineNum">     222 </span><span class="lineCov">          6 :                 set_error(&quot;kolmogi&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="223"><span class="lineNum">     223 </span><span class="lineCov">          6 :                 return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :             }</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       8241 :             if (std::abs(1.0 - pcdf - psf) &gt; 4 * std::numeric_limits&lt;double&gt;::epsilon()) {</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       8267 :             if (std::abs(1.0 - pcdf - psf) &gt; 4 * std::numeric_limits&lt;double&gt;::epsilon()) {</span></a>
 <a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :                 set_error(&quot;kolmogi&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :                 return (std::numeric_limits&lt;double&gt;::quiet_NaN());</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :             }</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       8241 :             if (pcdf == 0.0) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       8267 :             if (pcdf == 0.0) {</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :                 return 0.0;</a>
 <a name="231"><span class="lineNum">     231 </span>            :             }</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       8231 :             if (psf == 0.0) {</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       8257 :             if (psf == 0.0) {</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :                 return std::numeric_limits&lt;double&gt;::infinity();</a>
 <a name="234"><span class="lineNum">     234 </span>            :             }</a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       8231 :             if (pcdf &lt;= 0.5) {</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       8257 :             if (pcdf &lt;= 0.5) {</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :                 /* p ~ (sqrt(2pi)/x) *exp(-pi^2/8x^2).  Generate lower and upper bounds  */</a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4112 :                 double logpcdf = std::log(pcdf);</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4136 :                 double logpcdf = std::log(pcdf);</span></a>
 <a name="239"><span class="lineNum">     239 </span>            :                 /* Now that 1 &gt;= x &gt;= sqrt(p) */</a>
 <a name="240"><span class="lineNum">     240 </span>            :                 /* Iterate twice: x &lt;- pi/(sqrt(8) sqrt(log(sqrt(2pi)) - log(x) - log(pdf))) */</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4112 :                 a = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + logpcdf / 2 - LOGSQRT2PI)));</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       4112 :                 b = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + 0 - LOGSQRT2PI)));</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       4112 :                 a = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + std::log(a) - LOGSQRT2PI)));</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4112 :                 b = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + std::log(b) - LOGSQRT2PI)));</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4112 :                 x = (a + b) / 2.0;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4136 :                 a = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + logpcdf / 2 - LOGSQRT2PI)));</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       4136 :                 b = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + 0 - LOGSQRT2PI)));</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       4136 :                 a = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + std::log(a) - LOGSQRT2PI)));</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4136 :                 b = M_PI / (2 * M_SQRT2 * std::sqrt(-(logpcdf + std::log(b) - LOGSQRT2PI)));</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4136 :                 x = (a + b) / 2.0;</span></a>
 <a name="246"><span class="lineNum">     246 </span>            :             } else {</a>
 <a name="247"><span class="lineNum">     247 </span>            :                 /*</a>
 <a name="248"><span class="lineNum">     248 </span>            :                  * Based on the approximation p ~ 2 exp(-2x^2)</a>
@@ -322,54 +322,54 @@
 <a name="252"><span class="lineNum">     252 </span>            :                  *  kolmogi(0.5) = 0.82757355518990772</a>
 <a name="253"><span class="lineNum">     253 </span>            :                  *  so (1-q^(-(4-1)*2*x^2)) = (1-exp(-6*0.8275^2) ~ (1-exp(-4.1)</a>
 <a name="254"><span class="lineNum">     254 </span>            :                  */</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">       4119 :                 constexpr double jiggerb = 256 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4119 :                 double pba = psf / (1.0 - std::exp(-4)) / 2, pbb = psf * (1 - jiggerb) / 2;</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">       4119 :                 double q0;</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4119 :                 a = std::sqrt(-0.5 * std::log(pba));</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       4119 :                 b = std::sqrt(-0.5 * std::log(pbb));</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">       4121 :                 constexpr double jiggerb = 256 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4121 :                 double pba = psf / (1.0 - std::exp(-4)) / 2, pbb = psf * (1 - jiggerb) / 2;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">       4121 :                 double q0;</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4121 :                 a = std::sqrt(-0.5 * std::log(pba));</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       4121 :                 b = std::sqrt(-0.5 * std::log(pbb));</span></a>
 <a name="260"><span class="lineNum">     260 </span>            :                 /*</a>
 <a name="261"><span class="lineNum">     261 </span>            :                  * Use inversion of</a>
 <a name="262"><span class="lineNum">     262 </span>            :                  *   p = q - q^4 + q^9 - q^16 + ...:</a>
 <a name="263"><span class="lineNum">     263 </span>            :                  *   q = p + p^4 + 4p^7 - p^9 + 22p^10  - 13p^12 + 140*p^13 ...</a>
 <a name="264"><span class="lineNum">     264 </span>            :                  */</a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       4119 :                 {</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       4119 :                     double p = psf / 2.0;</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">       4119 :                     double p2 = p * p;</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       4119 :                     double p3 = p * p * p;</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">       4119 :                     q0 = 1 + p3 * (1 + p3 * (4 + p2 * (-1 + p * (22 + p2 * (-13 + 140 * p)))));</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">       4119 :                     q0 *= p;</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       4121 :                 {</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       4121 :                     double p = psf / 2.0;</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">       4121 :                     double p2 = p * p;</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       4121 :                     double p3 = p * p * p;</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">       4121 :                     q0 = 1 + p3 * (1 + p3 * (4 + p2 * (-1 + p * (22 + p2 * (-13 + 140 * p)))));</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">       4121 :                     q0 *= p;</span></a>
 <a name="271"><span class="lineNum">     271 </span>            :                 }</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">       4119 :                 x = std::sqrt(-std::log(q0) / 2);</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       4119 :                 if (x &lt; a || x &gt; b) {</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">       4121 :                 x = std::sqrt(-std::log(q0) / 2);</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">       4121 :                 if (x &lt; a || x &gt; b) {</span></a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                     x = (a + b) / 2;</span></a>
 <a name="275"><span class="lineNum">     275 </span>            :                 }</a>
 <a name="276"><span class="lineNum">     276 </span>            :             }</a>
 <a name="277"><span class="lineNum">     277 </span>            :             XSF_ASSERT(a &lt;= b);</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <a name="279"><span class="lineNum">     279 </span>            :             iterations = 0;</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">      35573 :             do {</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">      21902 :                 double x0 = x;</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      21902 :                 ThreeProbs probs = _kolmogorov(x0);</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">      21902 :                 double df = ((pcdf &lt; 0.5) ? (pcdf - probs.cdf) : (probs.sf - psf));</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      21902 :                 double dfdx;</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">      35745 :             do {</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">      22001 :                 double x0 = x;</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      22001 :                 ThreeProbs probs = _kolmogorov(x0);</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">      22001 :                 double df = ((pcdf &lt; 0.5) ? (pcdf - probs.cdf) : (probs.sf - psf));</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      22001 :                 double dfdx;</span></a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      21902 :                 if (std::abs(df) == 0) {</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      22001 :                 if (std::abs(df) == 0) {</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :                     break;</a>
 <a name="288"><span class="lineNum">     288 </span>            :                 }</a>
 <a name="289"><span class="lineNum">     289 </span>            :                 /* Update the bracketing interval */</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      20785 :                 if (df &gt; 0 &amp;&amp; x &gt; a) {</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      20882 :                 if (df &gt; 0 &amp;&amp; x &gt; a) {</span></a>
 <a name="291"><span class="lineNum">     291 </span>            :                     a = x;</a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      13168 :                 } else if (df &lt; 0 &amp;&amp; x &lt; b) {</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      20785 :                     b = x;</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      13214 :                 } else if (df &lt; 0 &amp;&amp; x &lt; b) {</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      20882 :                     b = x;</span></a>
 <a name="294"><span class="lineNum">     294 </span>            :                 }</a>
 <a name="295"><span class="lineNum">     295 </span>            : </a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      20785 :                 dfdx = -probs.pdf;</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      20785 :                 if (std::abs(dfdx) &lt;= 0.0) {</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      20882 :                 dfdx = -probs.pdf;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      20882 :                 if (std::abs(dfdx) &lt;= 0.0) {</span></a>
 <a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :                     x = (a + b) / 2;</span></a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :                     t = x0 - x;</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :                 } else {</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      20785 :                     t = df / dfdx;</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      20785 :                     x = x0 - t;</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      20882 :                     t = df / dfdx;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      20882 :                     x = x0 - t;</span></a>
 <a name="303"><span class="lineNum">     303 </span>            :                 }</a>
 <a name="304"><span class="lineNum">     304 </span>            : </a>
 <a name="305"><span class="lineNum">     305 </span>            :                 /*</a>
@@ -378,11 +378,11 @@
 <a name="308"><span class="lineNum">     308 </span>            :                  * concave near x=0, and we should be approaching from the correct side.</a>
 <a name="309"><span class="lineNum">     309 </span>            :                  * If out-of-bounds, replace x with a midpoint of the bracket.</a>
 <a name="310"><span class="lineNum">     310 </span>            :                  */</a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      20785 :                 if (x &gt;= a &amp;&amp; x &lt;= b) {</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      20785 :                     if (_within_tol(x, x0, _xtol, _rtol)) {</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      20882 :                 if (x &gt;= a &amp;&amp; x &lt;= b) {</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      20882 :                     if (_within_tol(x, x0, _xtol, _rtol)) {</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :                         break;</a>
 <a name="314"><span class="lineNum">     314 </span>            :                     }</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      13671 :                     if ((x == a) || (x == b)) {</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      13744 :                     if ((x == a) || (x == b)) {</span></a>
 <a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :                         x = (a + b) / 2.0;</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :                         /* If the bracket is already so small ... */</a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :                         if (x == a || x == b) {</span></a>
@@ -396,28 +396,28 @@
 <a name="326"><span class="lineNum">     326 </span>            :                     }</a>
 <a name="327"><span class="lineNum">     327 </span>            :                 }</a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">      13671 :                 if (++iterations &gt; KOLMOG_MAXITER) {</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">      13744 :                 if (++iterations &gt; KOLMOG_MAXITER) {</span></a>
 <a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :                     set_error(&quot;kolmogi&quot;, SF_ERROR_SLOW, NULL);</span></a>
 <a name="331"><span class="lineNum">     331 </span>            :                     break;</a>
 <a name="332"><span class="lineNum">     332 </span>            :                 }</a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      13671 :             } while (1);</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">       8231 :             return (x);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      13744 :             } while (1);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">       8257 :             return (x);</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :         }</a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
 <a name="337"><span class="lineNum">     337 </span>            :     } // namespace detail</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        142 :     XSF_HOST_DEVICE inline double kolmogorov(double x) {</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        142 :         if (std::isnan(x)) {</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        138 :     XSF_HOST_DEVICE inline double kolmogorov(double x) {</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        138 :         if (std::isnan(x)) {</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="342"><span class="lineNum">     342 </span>            :         }</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">        140 :         return detail::_kolmogorov(x).sf;</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">        136 :         return detail::_kolmogorov(x).sf;</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :     }</a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">        611 :     XSF_HOST_DEVICE inline double kolmogc(double x) {</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        611 :         if (std::isnan(x)) {</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">        615 :     XSF_HOST_DEVICE inline double kolmogc(double x) {</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        615 :         if (std::isnan(x)) {</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="349"><span class="lineNum">     349 </span>            :         }</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        611 :         return detail::_kolmogorov(x).cdf;</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        615 :         return detail::_kolmogorov(x).cdf;</span></a>
 <a name="351"><span class="lineNum">     351 </span>            :     }</a>
 <a name="352"><span class="lineNum">     352 </span>            : </a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineCov">      44227 :     XSF_HOST_DEVICE inline double kolmogp(double x) {</span></a>
@@ -443,11 +443,11 @@
 <a name="373"><span class="lineNum">     373 </span>            :     /* Functional inverse of Kolmogorov cumulative statistic for two-sided test.</a>
 <a name="374"><span class="lineNum">     374 </span>            :      * Finds x such that kolmogc(x) = p = (or kolmogorov(x) = 1-p).</a>
 <a name="375"><span class="lineNum">     375 </span>            :      */</a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       8130 :     XSF_HOST_DEVICE inline double kolmogci(double p) {</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       8130 :         if (std::isnan(p)) {</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       8156 :     XSF_HOST_DEVICE inline double kolmogci(double p) {</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       8156 :         if (std::isnan(p)) {</span></a>
 <a name="378"><span class="lineNum">     378 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="379"><span class="lineNum">     379 </span>            :         }</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">       8129 :         return detail::_kolmogi(1 - p, p);</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">       8155 :         return detail::_kolmogi(1 - p, p);</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :     }</a>
 <a name="382"><span class="lineNum">     382 </span>            : </a>
 <a name="383"><span class="lineNum">     383 </span>            :     namespace detail {</a>
@@ -470,30 +470,30 @@
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">          7 :             return L;</span></a>
 <a name="401"><span class="lineNum">     401 </span>            :         }</a>
 <a name="402"><span class="lineNum">     402 </span>            : </a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       1606 :         XSF_HOST_DEVICE inline double modNX(int n, double x, int *pNXFloor, double *pNX) {</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       2167 :         XSF_HOST_DEVICE inline double modNX(int n, double x, int *pNXFloor, double *pNX) {</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :             /*</a>
 <a name="405"><span class="lineNum">     405 </span>            :              * Compute floor(n*x) and remainder *exactly*.</a>
 <a name="406"><span class="lineNum">     406 </span>            :              * If remainder is too close to 1 (E.g. (1, -std::numeric_limits&lt;double&gt;::epsilon()/2))</a>
 <a name="407"><span class="lineNum">     407 </span>            :              *  round up and adjust   */</a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       1606 :             double_double alphaD, nxD, nxfloorD;</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       1606 :             int nxfloor;</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       1606 :             double alpha;</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       2167 :             double_double alphaD, nxD, nxfloorD;</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       2167 :             int nxfloor;</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       2167 :             double alpha;</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : </a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       1606 :             nxD = static_cast&lt;double&gt;(n) * double_double(x);</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">       1606 :             nxfloorD = floor(nxD);</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">       1606 :             alphaD = nxD - nxfloorD;</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       1606 :             alpha = alphaD.hi;</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       1606 :             nxfloor = static_cast&lt;int&gt;(nxfloorD);</span></a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       1606 :             XSF_ASSERT(alpha &gt;= 0);</span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       1606 :             XSF_ASSERT(alpha &lt;= 1);</span></a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       1606 :             if (alpha == 1) {</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       2167 :             nxD = static_cast&lt;double&gt;(n) * double_double(x);</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">       2167 :             nxfloorD = floor(nxD);</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">       2167 :             alphaD = nxD - nxfloorD;</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       2167 :             alpha = alphaD.hi;</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       2167 :             nxfloor = static_cast&lt;int&gt;(nxfloorD);</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       2167 :             XSF_ASSERT(alpha &gt;= 0);</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       2167 :             XSF_ASSERT(alpha &lt;= 1);</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       2167 :             if (alpha == 1) {</span></a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :                 nxfloor += 1;</span></a>
 <a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :                 alpha = 0;</span></a>
 <a name="422"><span class="lineNum">     422 </span>            :             }</a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1606 :             XSF_ASSERT(alpha &lt; 1.0);</span></a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1606 :             *pNX = static_cast&lt;double&gt;(nxD);</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1606 :             *pNXFloor = nxfloor;</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       1606 :             return alpha;</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       2167 :             XSF_ASSERT(alpha &lt; 1.0);</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       2167 :             *pNX = static_cast&lt;double&gt;(nxD);</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       2167 :             *pNXFloor = nxfloor;</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       2167 :             return alpha;</span></a>
 <a name="427"><span class="lineNum">     427 </span>            :         }</a>
 <a name="428"><span class="lineNum">     428 </span>            : </a>
 <a name="429"><span class="lineNum">     429 </span>            :         /*</a>
@@ -503,36 +503,36 @@
 <a name="433"><span class="lineNum">     433 </span>            :          *  I.e a Mantissa/significand, and an exponent.</a>
 <a name="434"><span class="lineNum">     434 </span>            :          *  Cman lies between 0.5 and 1, and the exponent has &gt;=32-bit.</a>
 <a name="435"><span class="lineNum">     435 </span>            :          */</a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     549992 :         XSF_HOST_DEVICE inline void updateBinomial(double_double *Cman, int *Cexpt, int n, int j) {</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     549992 :             int expt;</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">     549992 :             double_double rat = double_double(n - j) / (j + 1.0);</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">     549992 :             double_double man2 = *Cman * rat;</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     549992 :             man2 = frexp(man2, &amp;expt);</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">     549992 :             XSF_ASSERT(man2 != 0.0);</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">     549992 :             *Cexpt += expt;</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">     549992 :             *Cman = man2;</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">     549992 :         }</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     576708 :         XSF_HOST_DEVICE inline void updateBinomial(double_double *Cman, int *Cexpt, int n, int j) {</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     576708 :             int expt;</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">     576708 :             double_double rat = double_double(n - j) / (j + 1.0);</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">     576708 :             double_double man2 = *Cman * rat;</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     576708 :             man2 = frexp(man2, &amp;expt);</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">     576708 :             XSF_ASSERT(man2 != 0.0);</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">     576708 :             *Cexpt += expt;</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">     576708 :             *Cman = man2;</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">     576708 :         }</span></a>
 <a name="445"><span class="lineNum">     445 </span>            : </a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">    1129312 :         XSF_HOST_DEVICE double_double pow_D(const double_double &amp;a, int m) {</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">    1182809 :         XSF_HOST_DEVICE double_double pow_D(const double_double &amp;a, int m) {</span></a>
 <a name="447"><span class="lineNum">     447 </span>            :             /*</a>
 <a name="448"><span class="lineNum">     448 </span>            :              * Using dd_npwr() here would be quite time-consuming.</a>
 <a name="449"><span class="lineNum">     449 </span>            :              * Tradeoff accuracy-time by using pow().</a>
 <a name="450"><span class="lineNum">     450 </span>            :              */</a>
 <a name="451"><span class="lineNum">     451 </span>            : </a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">    1129312 :             double ans, r, adj;</span></a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">    1129312 :             if (m &lt;= 0) {</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">    1182809 :             double ans, r, adj;</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">    1182809 :             if (m &lt;= 0) {</span></a>
 <a name="454"><span class="lineNum">     454 </span><span class="lineNoCov">          0 :                 if (m == 0) {</span></a>
 <a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 :                     return double_double(1.0);</span></a>
 <a name="456"><span class="lineNum">     456 </span>            :                 }</a>
 <a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :                 return 1.0 / pow_D(a, -m);</span></a>
 <a name="458"><span class="lineNum">     458 </span>            :             }</a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">    1129312 :             if (a == 0.0) {</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">    1182809 :             if (a == 0.0) {</span></a>
 <a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :                 return double_double(0.0);</span></a>
 <a name="461"><span class="lineNum">     461 </span>            :             }</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">    1129312 :             ans = std::pow(a.hi, m);</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">    1129312 :             r = a.lo / a.hi;</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">    1129312 :             adj = m * r;</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">    1129312 :             if (std::abs(adj) &gt; 1e-8) {</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">    1182809 :             ans = std::pow(a.hi, m);</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">    1182809 :             r = a.lo / a.hi;</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">    1182809 :             adj = m * r;</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">    1182809 :             if (std::abs(adj) &gt; 1e-8) {</span></a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :                 if (std::abs(adj) &lt; 1e-4) {</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :                     /* Take 1st two terms of Taylor Series for (1+r)^m */</a>
 <a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :                     adj += (m * r) * ((m - 1) / 2.0 * r);</span></a>
@@ -541,7 +541,7 @@
 <a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :                     adj = xsf::cephes::expm1(m * std::log1p(r));</span></a>
 <a name="472"><span class="lineNum">     472 </span>            :                 }</a>
 <a name="473"><span class="lineNum">     473 </span>            :             }</a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">    1129312 :             return double_double(ans) + ans * adj;</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">    1182809 :             return double_double(ans) + ans * adj;</span></a>
 <a name="475"><span class="lineNum">     475 </span>            :         }</a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
 <a name="477"><span class="lineNum">     477 </span><span class="lineCov">        410 :         XSF_HOST_DEVICE inline double pow2(double a, double b, int m) {</span></a>
@@ -554,19 +554,19 @@
 <a name="484"><span class="lineNum">     484 </span>            :          */</a>
 <a name="485"><span class="lineNum">     485 </span>            :         constexpr int SM_MAX_EXPONENT = 960;</a>
 <a name="486"><span class="lineNum">     486 </span>            : </a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">    1195690 :         XSF_HOST_DEVICE double_double pow2Scaled_D(const double_double &amp;a, int m, int *pExponent) {</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">    1252391 :         XSF_HOST_DEVICE double_double pow2Scaled_D(const double_double &amp;a, int m, int *pExponent) {</span></a>
 <a name="488"><span class="lineNum">     488 </span>            :             /* Compute a^m = significand*2^expt and return as (significand, expt) */</a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">    1195690 :             double_double ans, y;</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">    1195690 :             int ansE, yE;</span></a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">    1195690 :             int maxExpt = SM_MAX_EXPONENT;</span></a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">    1195690 :             int q, r, y2mE, y2rE, y2mqE;</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">    1195690 :             double_double y2r, y2m, y2mq;</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">    1252391 :             double_double ans, y;</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">    1252391 :             int ansE, yE;</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">    1252391 :             int maxExpt = SM_MAX_EXPONENT;</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">    1252391 :             int q, r, y2mE, y2rE, y2mqE;</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">    1252391 :             double_double y2r, y2m, y2mq;</span></a>
 <a name="494"><span class="lineNum">     494 </span>            : </a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">    1195690 :             if (m &lt;= 0) {</span></a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       1154 :                 int aE1, aE2;</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       1154 :                 if (m == 0) {</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       1154 :                     *pExponent = 0.0;</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       1154 :                     return double_double(1.0);</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">    1252391 :             if (m &lt;= 0) {</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       1715 :                 int aE1, aE2;</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       1715 :                 if (m == 0) {</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       1715 :                     *pExponent = 0.0;</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       1715 :                     return double_double(1.0);</span></a>
 <a name="500"><span class="lineNum">     500 </span>            :                 }</a>
 <a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :                 ans = pow2Scaled_D(a, -m, &amp;aE1);</span></a>
 <a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :                 ans = frexp(1.0 / ans, &amp;aE2);</span></a>
@@ -574,10 +574,10 @@
 <a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :                 *pExponent = ansE;</span></a>
 <a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :                 return ans;</span></a>
 <a name="506"><span class="lineNum">     506 </span>            :             }</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">    1194536 :             y = frexp(a, &amp;yE);</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">    1194536 :             if (m == 1) {</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">      34414 :                 *pExponent = yE;</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">      34414 :                 return y;</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">    1250676 :             y = frexp(a, &amp;yE);</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">    1250676 :             if (m == 1) {</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">      36187 :                 *pExponent = yE;</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">      36187 :                 return y;</span></a>
 <a name="511"><span class="lineNum">     511 </span>            :             }</a>
 <a name="512"><span class="lineNum">     512 </span>            :             /*</a>
 <a name="513"><span class="lineNum">     513 </span>            :              *  y ^ maxExpt &gt;= 2^{-960}</a>
@@ -586,7 +586,7 @@
 <a name="516"><span class="lineNum">     516 </span>            :              *              &lt;= 665/(1-y.x[0])</a>
 <a name="517"><span class="lineNum">     517 </span>            :              * Quick check to see if we might need to break up the exponentiation</a>
 <a name="518"><span class="lineNum">     518 </span>            :              */</a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">    1160122 :             if (m * (y.hi - 1) / y.hi &lt; -SM_MAX_EXPONENT * M_LN2) {</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">    1214489 :             if (m * (y.hi - 1) / y.hi &lt; -SM_MAX_EXPONENT * M_LN2) {</span></a>
 <a name="520"><span class="lineNum">     520 </span>            :                 /* Now do it carefully, calling log() */</a>
 <a name="521"><span class="lineNum">     521 </span><span class="lineCov">       2656 :                 double lg2y = std::log(y.hi) / M_LN2;</span></a>
 <a name="522"><span class="lineNum">     522 </span><span class="lineCov">       2656 :                 double lgAns = m * lg2y;</span></a>
@@ -594,47 +594,47 @@
 <a name="524"><span class="lineNum">     524 </span><span class="lineCov">          7 :                     maxExpt = static_cast&lt;int&gt;(nextPowerOf2(-SM_MAX_EXPONENT / lg2y + 1) / 2);</span></a>
 <a name="525"><span class="lineNum">     525 </span>            :                 }</a>
 <a name="526"><span class="lineNum">     526 </span>            :             }</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">    1160122 :             if (m &lt;= maxExpt) {</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">    1127726 :                 double_double ans1 = pow_D(y, m);</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">    1127726 :                 ans = frexp(ans1, &amp;ansE);</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">    1127726 :                 ansE += m * yE;</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">    1127726 :                 *pExponent = ansE;</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">    1127726 :                 return ans;</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">    1214489 :             if (m &lt;= maxExpt) {</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">    1180662 :                 double_double ans1 = pow_D(y, m);</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">    1180662 :                 ans = frexp(ans1, &amp;ansE);</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">    1180662 :                 ansE += m * yE;</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">    1180662 :                 *pExponent = ansE;</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">    1180662 :                 return ans;</span></a>
 <a name="533"><span class="lineNum">     533 </span>            :             }</a>
 <a name="534"><span class="lineNum">     534 </span>            : </a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">      32396 :             q = m / maxExpt;</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">      32396 :             r = m % maxExpt;</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">      33827 :             q = m / maxExpt;</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">      33827 :             r = m % maxExpt;</span></a>
 <a name="537"><span class="lineNum">     537 </span>            :             /* y^m = (y^maxExpt)^q * y^r */</a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      32396 :             y2r = pow2Scaled_D(y, r, &amp;y2rE);</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">      32396 :             y2m = pow2Scaled_D(y, maxExpt, &amp;y2mE);</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      32396 :             y2mq = pow2Scaled_D(y2m, q, &amp;y2mqE);</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">      32396 :             ans = frexp(y2r * y2mq, &amp;ansE);</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      32396 :             y2mqE += y2mE * q;</span></a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">      32396 :             ansE += y2mqE + y2rE;</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">      32396 :             ansE += m * yE;</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">      32396 :             *pExponent = ansE;</span></a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      32396 :             return ans;</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      33827 :             y2r = pow2Scaled_D(y, r, &amp;y2rE);</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">      33827 :             y2m = pow2Scaled_D(y, maxExpt, &amp;y2mE);</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      33827 :             y2mq = pow2Scaled_D(y2m, q, &amp;y2mqE);</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">      33827 :             ans = frexp(y2r * y2mq, &amp;ansE);</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      33827 :             y2mqE += y2mE * q;</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">      33827 :             ansE += y2mqE + y2rE;</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">      33827 :             ansE += m * yE;</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">      33827 :             *pExponent = ansE;</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      33827 :             return ans;</span></a>
 <a name="547"><span class="lineNum">     547 </span>            :         }</a>
 <a name="548"><span class="lineNum">     548 </span>            : </a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">       1176 :         XSF_HOST_DEVICE inline double_double pow4_D(double a, double b, double c, double d, int m) {</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">       1737 :         XSF_HOST_DEVICE inline double_double pow4_D(double a, double b, double c, double d, int m) {</span></a>
 <a name="550"><span class="lineNum">     550 </span>            :             /* Compute ((a+b)/(c+d)) ^ m */</a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       1176 :             double_double A, C, X;</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">       1176 :             if (m &lt;= 0) {</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       1737 :             double_double A, C, X;</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">       1737 :             if (m &lt;= 0) {</span></a>
 <a name="553"><span class="lineNum">     553 </span><span class="lineNoCov">          0 :                 if (m == 0) {</span></a>
 <a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :                     return double_double(1.0);</span></a>
 <a name="555"><span class="lineNum">     555 </span>            :                 }</a>
 <a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :                 return pow4_D(c, d, a, b, -m);</span></a>
 <a name="557"><span class="lineNum">     557 </span>            :             }</a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">       1176 :             A = double_double(a) + b;</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       1176 :             C = double_double(c) + d;</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       1176 :             if (A == 0.0) {</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">       1737 :             A = double_double(a) + b;</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       1737 :             C = double_double(c) + d;</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       1737 :             if (A == 0.0) {</span></a>
 <a name="561"><span class="lineNum">     561 </span><span class="lineNoCov">          0 :                 return (C == 0.0) ? quiet_NaN() : double_double(0.0);</span></a>
 <a name="562"><span class="lineNum">     562 </span>            :             }</a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">       1176 :             if (C == 0.0) {</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">       1737 :             if (C == 0.0) {</span></a>
 <a name="564"><span class="lineNum">     564 </span><span class="lineNoCov">          0 :                 return ((A &lt; 0) ? -infinity() : infinity());</span></a>
 <a name="565"><span class="lineNum">     565 </span>            :             }</a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">       1176 :             X = A / C;</span></a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">       1176 :             return pow_D(X, m);</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">       1737 :             X = A / C;</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">       1737 :             return pow_D(X, m);</span></a>
 <a name="568"><span class="lineNum">     568 </span>            :         }</a>
 <a name="569"><span class="lineNum">     569 </span>            : </a>
 <a name="570"><span class="lineNum">     570 </span><span class="lineCov">          9 :         XSF_HOST_DEVICE inline double pow4(double a, double b, double c, double d, int m) {</span></a>
@@ -642,101 +642,101 @@
 <a name="572"><span class="lineNum">     572 </span><span class="lineCov">          9 :             return static_cast&lt;double&gt;(ret);</span></a>
 <a name="573"><span class="lineNum">     573 </span>            :         }</a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">        186 :         XSF_HOST_DEVICE inline double_double logpow4_D(double a, double b, double c, double d, int m) {</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">        202 :         XSF_HOST_DEVICE inline double_double logpow4_D(double a, double b, double c, double d, int m) {</span></a>
 <a name="576"><span class="lineNum">     576 </span>            :             /*</a>
 <a name="577"><span class="lineNum">     577 </span>            :              * Compute log(((a+b)/(c+d)) ^ m)</a>
 <a name="578"><span class="lineNum">     578 </span>            :              *    == m * log((a+b)/(c+d))</a>
 <a name="579"><span class="lineNum">     579 </span>            :              *    == m * log( 1 + (a+b-c-d)/(c+d))</a>
 <a name="580"><span class="lineNum">     580 </span>            :              */</a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">        186 :             double_double ans;</span></a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        186 :             double_double A, C, X;</span></a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">        186 :             if (m == 0) {</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">        202 :             double_double ans;</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        202 :             double_double A, C, X;</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">        202 :             if (m == 0) {</span></a>
 <a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :                 return double_double(0.0);</span></a>
 <a name="585"><span class="lineNum">     585 </span>            :             }</a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        186 :             A = double_double(a) + b;</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">        186 :             C = double_double(c) + d;</span></a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        186 :             if (A == 0.0) {</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        202 :             A = double_double(a) + b;</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">        202 :             C = double_double(c) + d;</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        202 :             if (A == 0.0) {</span></a>
 <a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :                 return ((C == 0.0) ? double_double(0.0) : -infinity());</span></a>
 <a name="590"><span class="lineNum">     590 </span>            :             }</a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        186 :             if (C == 0.0) {</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        202 :             if (C == 0.0) {</span></a>
 <a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :                 return infinity();</span></a>
 <a name="593"><span class="lineNum">     593 </span>            :             }</a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        186 :             X = A / C;</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">        186 :             XSF_ASSERT(X.hi &gt;= 0);</span></a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        186 :             if (0.5 &lt;= X.hi &amp;&amp; X.hi &lt;= 1.5) {</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">         96 :                 double_double A1 = A - C;</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         96 :                 double_double X1 = A1 / C;</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">         96 :                 ans = log1p(X1);</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         96 :             } else {</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         90 :                 ans = log(X);</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        202 :             X = A / C;</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">        202 :             XSF_ASSERT(X.hi &gt;= 0);</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        202 :             if (0.5 &lt;= X.hi &amp;&amp; X.hi &lt;= 1.5) {</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        104 :                 double_double A1 = A - C;</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        104 :                 double_double X1 = A1 / C;</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">        104 :                 ans = log1p(X1);</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        104 :             } else {</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         98 :                 ans = log(X);</span></a>
 <a name="602"><span class="lineNum">     602 </span>            :             }</a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        186 :             ans = m * ans;</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        186 :             return ans;</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        202 :             ans = m * ans;</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        202 :             return ans;</span></a>
 <a name="605"><span class="lineNum">     605 </span>            :         }</a>
 <a name="606"><span class="lineNum">     606 </span>            : </a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        186 :         XSF_HOST_DEVICE inline double logpow4(double a, double b, double c, double d, int m) {</span></a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineCov">        186 :             double_double ans = logpow4_D(a, b, c, d, m);</span></a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         93 :             return static_cast&lt;double&gt;(ans);</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        202 :         XSF_HOST_DEVICE inline double logpow4(double a, double b, double c, double d, int m) {</span></a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineCov">        202 :             double_double ans = logpow4_D(a, b, c, d, m);</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">        101 :             return static_cast&lt;double&gt;(ans);</span></a>
 <a name="610"><span class="lineNum">     610 </span>            :         }</a>
 <a name="611"><span class="lineNum">     611 </span>            : </a>
 <a name="612"><span class="lineNum">     612 </span>            :         /*</a>
 <a name="613"><span class="lineNum">     613 </span>            :          *  Compute a single term in the summation, A_v(n, x):</a>
 <a name="614"><span class="lineNum">     614 </span>            :          *  A_v(n, x) =  Binomial(n,v) * (1-x-v/n)^(n-v) * (x+v/n)^(v-1)</a>
 <a name="615"><span class="lineNum">     615 </span>            :          */</a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">     549251 :         XSF_HOST_DEVICE inline void computeAv(int n, double x, int v, const double_double &amp;Cman, int Cexpt,</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">     575455 :         XSF_HOST_DEVICE inline void computeAv(int n, double x, int v, const double_double &amp;Cman, int Cexpt,</span></a>
 <a name="617"><span class="lineNum">     617 </span>            :                                                   double_double *pt1, double_double *pt2, double_double *pAv) {</a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineCov">     549251 :             int t1E, t2E, ansE;</span></a>
-<a name="619"><span class="lineNum">     619 </span><span class="lineCov">     549251 :             double_double Av;</span></a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">     549251 :             double_double t2x = double_double(n - v) / n - x; /*  1 - x - v/n */</span></a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">     549251 :             double_double t2 = pow2Scaled_D(t2x, n - v, &amp;t2E);</span></a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">     549251 :             double_double t1x = double_double(v) / n + x; /* x + v/n */</span></a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">     549251 :             double_double t1 = pow2Scaled_D(t1x, v - 1, &amp;t1E);</span></a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">     549251 :             double_double ans = t1 * t2;</span></a>
-<a name="625"><span class="lineNum">     625 </span><span class="lineCov">     549251 :             ans = ans * Cman;</span></a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">     549251 :             ansE = Cexpt + t1E + t2E;</span></a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">     549251 :             Av = ldexp(ans, ansE);</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">     549251 :             *pAv = Av;</span></a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">     549251 :             *pt1 = t1;</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineCov">     549251 :             *pt2 = t2;</span></a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">     549251 :         }</span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineCov">     575455 :             int t1E, t2E, ansE;</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">     575455 :             double_double Av;</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">     575455 :             double_double t2x = double_double(n - v) / n - x; /*  1 - x - v/n */</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">     575455 :             double_double t2 = pow2Scaled_D(t2x, n - v, &amp;t2E);</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">     575455 :             double_double t1x = double_double(v) / n + x; /* x + v/n */</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">     575455 :             double_double t1 = pow2Scaled_D(t1x, v - 1, &amp;t1E);</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">     575455 :             double_double ans = t1 * t2;</span></a>
+<a name="625"><span class="lineNum">     625 </span><span class="lineCov">     575455 :             ans = ans * Cman;</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">     575455 :             ansE = Cexpt + t1E + t2E;</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">     575455 :             Av = ldexp(ans, ansE);</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">     575455 :             *pAv = Av;</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">     575455 :             *pt1 = t1;</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">     575455 :             *pt2 = t2;</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">     575455 :         }</span></a>
 <a name="632"><span class="lineNum">     632 </span>            : </a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       2016 :         XSF_HOST_DEVICE inline ThreeProbs _smirnov(int n, double x) {</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">       2016 :             double nx, alpha;</span></a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       2016 :             double_double AjSum = double_double(0.0);</span></a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">       2016 :             double_double dAjSum = double_double(0.0);</span></a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       2016 :             double cdf, sf, pdf;</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       2577 :         XSF_HOST_DEVICE inline ThreeProbs _smirnov(int n, double x) {</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">       2577 :             double nx, alpha;</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       2577 :             double_double AjSum = double_double(0.0);</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">       2577 :             double_double dAjSum = double_double(0.0);</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       2577 :             double cdf, sf, pdf;</span></a>
 <a name="638"><span class="lineNum">     638 </span>            : </a>
-<a name="639"><span class="lineNum">     639 </span><span class="lineCov">       2016 :             int bUseUpperSum;</span></a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       2016 :             int nxfl, n1mxfl, n1mxceil;</span></a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineCov">       2577 :             int bUseUpperSum;</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       2577 :             int nxfl, n1mxfl, n1mxceil;</span></a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">       2016 :             if (!(n &gt; 0 &amp;&amp; x &gt;= 0.0 &amp;&amp; x &lt;= 1.0)) {</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">       2577 :             if (!(n &gt; 0 &amp;&amp; x &gt;= 0.0 &amp;&amp; x &lt;= 1.0)) {</span></a>
 <a name="643"><span class="lineNum">     643 </span><span class="lineCov">         56 :                 return {std::numeric_limits&lt;double&gt;::quiet_NaN(), std::numeric_limits&lt;double&gt;::quiet_NaN(),</span></a>
 <a name="644"><span class="lineNum">     644 </span><span class="lineCov">         56 :                         std::numeric_limits&lt;double&gt;::quiet_NaN()};</span></a>
 <a name="645"><span class="lineNum">     645 </span>            :             }</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       1960 :             if (n == 1) {</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       2521 :             if (n == 1) {</span></a>
 <a name="647"><span class="lineNum">     647 </span><span class="lineCov">        226 :                 return {1 - x, x, 1.0};</span></a>
 <a name="648"><span class="lineNum">     648 </span>            :             }</a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">       1734 :             if (x == 0.0) {</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">       2295 :             if (x == 0.0) {</span></a>
 <a name="650"><span class="lineNum">     650 </span><span class="lineCov">         60 :                 return {1.0, 0.0, 1.0};</span></a>
 <a name="651"><span class="lineNum">     651 </span>            :             }</a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineCov">       1674 :             if (x == 1.0) {</span></a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">       2235 :             if (x == 1.0) {</span></a>
 <a name="653"><span class="lineNum">     653 </span><span class="lineCov">         68 :                 return {0.0, 1.0, 0.0};</span></a>
 <a name="654"><span class="lineNum">     654 </span>            :             }</a>
 <a name="655"><span class="lineNum">     655 </span>            : </a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineCov">       1606 :             alpha = modNX(n, x, &amp;nxfl, &amp;nx);</span></a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">       1606 :             n1mxfl = n - nxfl - (alpha == 0 ? 0 : 1);</span></a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">       1606 :             n1mxceil = n - nxfl;</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">       2167 :             alpha = modNX(n, x, &amp;nxfl, &amp;nx);</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">       2167 :             n1mxfl = n - nxfl - (alpha == 0 ? 0 : 1);</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">       2167 :             n1mxceil = n - nxfl;</span></a>
 <a name="659"><span class="lineNum">     659 </span>            :             /*</a>
 <a name="660"><span class="lineNum">     660 </span>            :              * If alpha is 0, don't actually want to include the last term</a>
 <a name="661"><span class="lineNum">     661 </span>            :              * in either the lower or upper summations.</a>
 <a name="662"><span class="lineNum">     662 </span>            :              */</a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">       1606 :             if (alpha == 0) {</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">       2167 :             if (alpha == 0) {</span></a>
 <a name="664"><span class="lineNum">     664 </span><span class="lineCov">         57 :                 n1mxfl -= 1;</span></a>
 <a name="665"><span class="lineNum">     665 </span><span class="lineCov">         57 :                 n1mxceil += 1;</span></a>
 <a name="666"><span class="lineNum">     666 </span>            :             }</a>
 <a name="667"><span class="lineNum">     667 </span>            : </a>
 <a name="668"><span class="lineNum">     668 </span>            :             /* Special case:  x &lt;= 1/n  */</a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineCov">       1606 :             if (nxfl == 0 || (nxfl == 1 &amp;&amp; alpha == 0)) {</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">       2167 :             if (nxfl == 0 || (nxfl == 1 &amp;&amp; alpha == 0)) {</span></a>
 <a name="670"><span class="lineNum">     670 </span><span class="lineCov">        125 :                 double t = pow2(1, x, n - 1);</span></a>
 <a name="671"><span class="lineNum">     671 </span><span class="lineCov">        125 :                 pdf = (nx + 1) * t / (1 + x);</span></a>
 <a name="672"><span class="lineNum">     672 </span><span class="lineCov">        125 :                 cdf = x * t;</span></a>
@@ -749,18 +749,18 @@
 <a name="679"><span class="lineNum">     679 </span><span class="lineCov">        125 :                 return {sf, cdf, pdf};</span></a>
 <a name="680"><span class="lineNum">     680 </span>            :             }</a>
 <a name="681"><span class="lineNum">     681 </span>            :             /* Special case:  x is so big, the sf underflows double64 */</a>
-<a name="682"><span class="lineNum">     682 </span><span class="lineCov">       1481 :             if (-2 * n * x * x &lt; MINLOG) {</span></a>
+<a name="682"><span class="lineNum">     682 </span><span class="lineCov">       2042 :             if (-2 * n * x * x &lt; MINLOG) {</span></a>
 <a name="683"><span class="lineNum">     683 </span><span class="lineCov">         10 :                 return {0, 1, 0};</span></a>
 <a name="684"><span class="lineNum">     684 </span>            :             }</a>
 <a name="685"><span class="lineNum">     685 </span>            :             /* Special case:  x &gt;= 1 - 1/n */</a>
-<a name="686"><span class="lineNum">     686 </span><span class="lineCov">       1471 :             if (nxfl &gt;= n - 1) {</span></a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">       2032 :             if (nxfl &gt;= n - 1) {</span></a>
 <a name="687"><span class="lineNum">     687 </span><span class="lineCov">        285 :                 sf = pow2(1, -x, n);</span></a>
 <a name="688"><span class="lineNum">     688 </span><span class="lineCov">        285 :                 cdf = 1 - sf;</span></a>
 <a name="689"><span class="lineNum">     689 </span><span class="lineCov">        285 :                 pdf = n * sf / (1 - x);</span></a>
 <a name="690"><span class="lineNum">     690 </span><span class="lineCov">        285 :                 return {sf, cdf, pdf};</span></a>
 <a name="691"><span class="lineNum">     691 </span>            :             }</a>
 <a name="692"><span class="lineNum">     692 </span>            :             /* Special case:  n is so big, take too long to compute */</a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       1186 :             if (n &gt; SMIRNOV_MAX_COMPUTE_N) {</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       1747 :             if (n &gt; SMIRNOV_MAX_COMPUTE_N) {</span></a>
 <a name="694"><span class="lineNum">     694 </span>            :                 /* p ~ e^(-(6nx+1)^2 / 18n) */</a>
 <a name="695"><span class="lineNum">     695 </span><span class="lineCov">         19 :                 double logp = -std::pow(6.0 * n * x + 1, 2) / 18.0 / n;</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :                 /* Maximise precision for small p-value. */</a>
@@ -774,27 +774,27 @@
 <a name="704"><span class="lineNum">     704 </span><span class="lineCov">         19 :                 pdf = (6.0 * n * x + 1) * 2 * sf / 3;</span></a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineCov">         19 :                 return {sf, cdf, pdf};</span></a>
 <a name="706"><span class="lineNum">     706 </span>            :             }</a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">       1167 :             {</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">       1728 :             {</span></a>
 <a name="708"><span class="lineNum">     708 </span>            :                 /*</a>
 <a name="709"><span class="lineNum">     709 </span>            :                  * Use the upper sum if n is large enough, and x is small enough and</a>
 <a name="710"><span class="lineNum">     710 </span>            :                  * the number of terms is going to be small enough.</a>
 <a name="711"><span class="lineNum">     711 </span>            :                  * Otherwise it just drops accuracy, about 1.6bits * nUpperTerms</a>
 <a name="712"><span class="lineNum">     712 </span>            :                  */</a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       1167 :                 int nUpperTerms = n - n1mxceil + 1;</span></a>
-<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       1167 :                 bUseUpperSum = (nUpperTerms &lt;= 1 &amp;&amp; x &lt; 0.5);</span></a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       1167 :                 bUseUpperSum = (bUseUpperSum || ((n &gt;= SM_UPPERSUM_MIN_N) &amp;&amp; (nUpperTerms &lt;= SM_UPPER_MAX_TERMS) &amp;&amp;</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       1728 :                 int nUpperTerms = n - n1mxceil + 1;</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       1728 :                 bUseUpperSum = (nUpperTerms &lt;= 1 &amp;&amp; x &lt; 0.5);</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       1728 :                 bUseUpperSum = (bUseUpperSum || ((n &gt;= SM_UPPERSUM_MIN_N) &amp;&amp; (nUpperTerms &lt;= SM_UPPER_MAX_TERMS) &amp;&amp;</span></a>
 <a name="716"><span class="lineNum">     716 </span><span class="lineCov">         60 :                                                  (x &lt;= 0.5 / std::sqrt(n))));</span></a>
 <a name="717"><span class="lineNum">     717 </span>            :             }</a>
-<a name="718"><span class="lineNum">     718 </span><span class="lineCov">       1167 :             {</span></a>
-<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       1167 :                 int start = 0, step = 1, nTerms = n1mxfl + 1;</span></a>
-<a name="720"><span class="lineNum">     720 </span><span class="lineCov">       1167 :                 int j, firstJ = 0;</span></a>
-<a name="721"><span class="lineNum">     721 </span><span class="lineCov">       1167 :                 int vmid = n / 2;</span></a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       1167 :                 double_double Cman = double_double(1.0);</span></a>
-<a name="723"><span class="lineNum">     723 </span><span class="lineCov">       1167 :                 int Cexpt = 0;</span></a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineCov">       1167 :                 double_double Aj, dAj, t1, t2, dAjCoeff;</span></a>
-<a name="725"><span class="lineNum">     725 </span><span class="lineCov">       1167 :                 double_double oneOverX = double_double(1.0) / x;</span></a>
+<a name="718"><span class="lineNum">     718 </span><span class="lineCov">       1728 :             {</span></a>
+<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       1728 :                 int start = 0, step = 1, nTerms = n1mxfl + 1;</span></a>
+<a name="720"><span class="lineNum">     720 </span><span class="lineCov">       1728 :                 int j, firstJ = 0;</span></a>
+<a name="721"><span class="lineNum">     721 </span><span class="lineCov">       1728 :                 int vmid = n / 2;</span></a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       1728 :                 double_double Cman = double_double(1.0);</span></a>
+<a name="723"><span class="lineNum">     723 </span><span class="lineCov">       1728 :                 int Cexpt = 0;</span></a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">       1728 :                 double_double Aj, dAj, t1, t2, dAjCoeff;</span></a>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">       1728 :                 double_double oneOverX = double_double(1.0) / x;</span></a>
 <a name="726"><span class="lineNum">     726 </span>            : </a>
-<a name="727"><span class="lineNum">     727 </span><span class="lineCov">       1167 :                 if (bUseUpperSum) {</span></a>
+<a name="727"><span class="lineNum">     727 </span><span class="lineCov">       1728 :                 if (bUseUpperSum) {</span></a>
 <a name="728"><span class="lineNum">     728 </span><span class="lineCov">         13 :                     start = n;</span></a>
 <a name="729"><span class="lineNum">     729 </span><span class="lineCov">         13 :                     step = -1;</span></a>
 <a name="730"><span class="lineNum">     730 </span><span class="lineCov">         13 :                     nTerms = n - n1mxceil + 1;</span></a>
@@ -806,129 +806,129 @@
 <a name="736"><span class="lineNum">     736 </span><span class="lineCov">         13 :                     dAjCoeff = (n - 1) / (double_double(1.0) + x);</span></a>
 <a name="737"><span class="lineNum">     737 </span><span class="lineCov">         13 :                     dAjCoeff = dAjCoeff + oneOverX;</span></a>
 <a name="738"><span class="lineNum">     738 </span>            :                 } else {</a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">       1154 :                     t1 = oneOverX;</span></a>
-<a name="740"><span class="lineNum">     740 </span><span class="lineCov">       1154 :                     t2 = pow4_D(1, -x, 1, 0, n);</span></a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       1154 :                     Aj = t2 / x;</span></a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">       1715 :                     t1 = oneOverX;</span></a>
+<a name="740"><span class="lineNum">     740 </span><span class="lineCov">       1715 :                     t2 = pow4_D(1, -x, 1, 0, n);</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       1715 :                     Aj = t2 / x;</span></a>
 <a name="742"><span class="lineNum">     742 </span>            : </a>
-<a name="743"><span class="lineNum">     743 </span><span class="lineCov">       1154 :                     dAjCoeff = (-1 - double_double(n - 1) * x) / (double_double(1.0) - x);</span></a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">       1154 :                     dAjCoeff = dAjCoeff / x;</span></a>
-<a name="745"><span class="lineNum">     745 </span><span class="lineCov">       1154 :                     dAjCoeff = dAjCoeff + oneOverX;</span></a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">       1715 :                     dAjCoeff = (-1 - double_double(n - 1) * x) / (double_double(1.0) - x);</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">       1715 :                     dAjCoeff = dAjCoeff / x;</span></a>
+<a name="745"><span class="lineNum">     745 </span><span class="lineCov">       1715 :                     dAjCoeff = dAjCoeff + oneOverX;</span></a>
 <a name="746"><span class="lineNum">     746 </span>            :                 }</a>
 <a name="747"><span class="lineNum">     747 </span>            : </a>
-<a name="748"><span class="lineNum">     748 </span><span class="lineCov">       1167 :                 dAj = Aj * dAjCoeff;</span></a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">       1167 :                 AjSum = AjSum + Aj;</span></a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">       1167 :                 dAjSum = dAjSum + dAj;</span></a>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">       1728 :                 dAj = Aj * dAjCoeff;</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">       1728 :                 AjSum = AjSum + Aj;</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">       1728 :                 dAjSum = dAjSum + dAj;</span></a>
 <a name="751"><span class="lineNum">     751 </span>            : </a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineCov">       1167 :                 updateBinomial(&amp;Cman, &amp;Cexpt, n, 0);</span></a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       1167 :                 firstJ++;</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">       1728 :                 updateBinomial(&amp;Cman, &amp;Cexpt, n, 0);</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       1728 :                 firstJ++;</span></a>
 <a name="754"><span class="lineNum">     754 </span>            : </a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">     549992 :                 for (j = firstJ; j &lt; nTerms; j += 1) {</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">     549251 :                     int v = start + j * step;</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">     576708 :                 for (j = firstJ; j &lt; nTerms; j += 1) {</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">     575455 :                     int v = start + j * step;</span></a>
 <a name="757"><span class="lineNum">     757 </span>            : </a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">     549251 :                     computeAv(n, x, v, Cman, Cexpt, &amp;t1, &amp;t2, &amp;Aj);</span></a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">     575455 :                     computeAv(n, x, v, Cman, Cexpt, &amp;t1, &amp;t2, &amp;Aj);</span></a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">     549251 :                     if (isfinite(Aj) &amp;&amp; (Aj != 0.0)) {</span></a>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">     575455 :                     if (isfinite(Aj) &amp;&amp; (Aj != 0.0)) {</span></a>
 <a name="761"><span class="lineNum">     761 </span>            :                         /* coeff = 1/x + (j-1)/(x+j/n) - (n-j)/(1-x-j/n) */</a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">     548054 :                         dAjCoeff = (n * (v - 1)) / (double_double(nxfl + v) + alpha) -</span></a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">    1096108 :                                    ((n - v) * n) / (double_double(n - nxfl - v) - alpha);</span></a>
-<a name="764"><span class="lineNum">     764 </span><span class="lineCov">     548054 :                         dAjCoeff = dAjCoeff + oneOverX;</span></a>
-<a name="765"><span class="lineNum">     765 </span><span class="lineCov">     548054 :                         dAj = Aj * dAjCoeff;</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">     574258 :                         dAjCoeff = (n * (v - 1)) / (double_double(nxfl + v) + alpha) -</span></a>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">    1148516 :                                    ((n - v) * n) / (double_double(n - nxfl - v) - alpha);</span></a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">     574258 :                         dAjCoeff = dAjCoeff + oneOverX;</span></a>
+<a name="765"><span class="lineNum">     765 </span><span class="lineCov">     574258 :                         dAj = Aj * dAjCoeff;</span></a>
 <a name="766"><span class="lineNum">     766 </span>            : </a>
-<a name="767"><span class="lineNum">     767 </span><span class="lineCov">     548054 :                         XSF_ASSERT(isfinite(Aj));</span></a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineCov">     548054 :                         AjSum = AjSum + Aj;</span></a>
-<a name="769"><span class="lineNum">     769 </span><span class="lineCov">     548054 :                         dAjSum = dAjSum + dAj;</span></a>
+<a name="767"><span class="lineNum">     767 </span><span class="lineCov">     574258 :                         XSF_ASSERT(isfinite(Aj));</span></a>
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">     574258 :                         AjSum = AjSum + Aj;</span></a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineCov">     574258 :                         dAjSum = dAjSum + dAj;</span></a>
 <a name="770"><span class="lineNum">     770 </span>            :                     }</a>
 <a name="771"><span class="lineNum">     771 </span>            :                     /* Safe to terminate early? */</a>
-<a name="772"><span class="lineNum">     772 </span><span class="lineCov">     549251 :                     if (Aj != 0.0) {</span></a>
-<a name="773"><span class="lineNum">     773 </span><span class="lineCov">     548054 :                         if (((4 * (nTerms - j) * std::abs(static_cast&lt;double&gt;(Aj))) &lt;</span></a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">     548054 :                              (std::numeric_limits&lt;double&gt;::epsilon() * static_cast&lt;double&gt;(AjSum))) &amp;&amp;</span></a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">        526 :                             (j != nTerms - 1)) {</span></a>
+<a name="772"><span class="lineNum">     772 </span><span class="lineCov">     575455 :                     if (Aj != 0.0) {</span></a>
+<a name="773"><span class="lineNum">     773 </span><span class="lineCov">     574258 :                         if (((4 * (nTerms - j) * std::abs(static_cast&lt;double&gt;(Aj))) &lt;</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">     574258 :                              (std::numeric_limits&lt;double&gt;::epsilon() * static_cast&lt;double&gt;(AjSum))) &amp;&amp;</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">        575 :                             (j != nTerms - 1)) {</span></a>
 <a name="776"><span class="lineNum">     776 </span>            :                             break;</a>
 <a name="777"><span class="lineNum">     777 </span>            :                         }</a>
 <a name="778"><span class="lineNum">     778 </span><span class="lineCov">       1197 :                     } else if (j &gt; vmid) {</span></a>
 <a name="779"><span class="lineNum">     779 </span>            :                         XSF_ASSERT(Aj == 0.0);</a>
 <a name="780"><span class="lineNum">     780 </span>            :                         break;</a>
 <a name="781"><span class="lineNum">     781 </span>            :                     }</a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">     548825 :                     updateBinomial(&amp;Cman, &amp;Cexpt, n, j);</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">     574980 :                     updateBinomial(&amp;Cman, &amp;Cexpt, n, j);</span></a>
 <a name="783"><span class="lineNum">     783 </span>            :                 }</a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">       1167 :                 XSF_ASSERT(isfinite(AjSum));</span></a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       1167 :                 XSF_ASSERT(isfinite(dAjSum));</span></a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineCov">       1167 :                 {</span></a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       1167 :                     double_double derivD = x * dAjSum;</span></a>
-<a name="788"><span class="lineNum">     788 </span><span class="lineCov">       1167 :                     double_double probD = x * AjSum;</span></a>
-<a name="789"><span class="lineNum">     789 </span><span class="lineCov">       1167 :                     double deriv = static_cast&lt;double&gt;(derivD);</span></a>
-<a name="790"><span class="lineNum">     790 </span><span class="lineCov">       1167 :                     double prob = static_cast&lt;double&gt;(probD);</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">       1728 :                 XSF_ASSERT(isfinite(AjSum));</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       1728 :                 XSF_ASSERT(isfinite(dAjSum));</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">       1728 :                 {</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       1728 :                     double_double derivD = x * dAjSum;</span></a>
+<a name="788"><span class="lineNum">     788 </span><span class="lineCov">       1728 :                     double_double probD = x * AjSum;</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">       1728 :                     double deriv = static_cast&lt;double&gt;(derivD);</span></a>
+<a name="790"><span class="lineNum">     790 </span><span class="lineCov">       1728 :                     double prob = static_cast&lt;double&gt;(probD);</span></a>
 <a name="791"><span class="lineNum">     791 </span>            : </a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1167 :                     XSF_ASSERT(nx != 1 || alpha &gt; 0);</span></a>
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       1167 :                     if (step &lt; 0) {</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1728 :                     XSF_ASSERT(nx != 1 || alpha &gt; 0);</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       1728 :                     if (step &lt; 0) {</span></a>
 <a name="794"><span class="lineNum">     794 </span><span class="lineCov">         13 :                         cdf = prob;</span></a>
 <a name="795"><span class="lineNum">     795 </span><span class="lineCov">         13 :                         sf = 1 - prob;</span></a>
 <a name="796"><span class="lineNum">     796 </span><span class="lineCov">         13 :                         pdf = deriv;</span></a>
 <a name="797"><span class="lineNum">     797 </span>            :                     } else {</a>
-<a name="798"><span class="lineNum">     798 </span><span class="lineCov">       1154 :                         cdf = 1 - prob;</span></a>
-<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       1154 :                         sf = prob;</span></a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">       1154 :                         pdf = -deriv;</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">       1715 :                         cdf = 1 - prob;</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       1715 :                         sf = prob;</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">       1715 :                         pdf = -deriv;</span></a>
 <a name="801"><span class="lineNum">     801 </span>            :                     }</a>
 <a name="802"><span class="lineNum">     802 </span>            :                 }</a>
 <a name="803"><span class="lineNum">     803 </span>            :             }</a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       1167 :             pdf = std::fmax(0, pdf);</span></a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       1167 :             cdf = std::clamp(cdf, 0.0, 1.0);</span></a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       1167 :             sf = std::clamp(sf, 0.0, 1.0);</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       1167 :             return {sf, cdf, pdf};</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       1728 :             pdf = std::fmax(0, pdf);</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       1728 :             cdf = std::clamp(cdf, 0.0, 1.0);</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       1728 :             sf = std::clamp(sf, 0.0, 1.0);</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       1728 :             return {sf, cdf, pdf};</span></a>
 <a name="808"><span class="lineNum">     808 </span>            :         }</a>
 <a name="809"><span class="lineNum">     809 </span>            : </a>
 <a name="810"><span class="lineNum">     810 </span>            :         /*</a>
 <a name="811"><span class="lineNum">     811 </span>            :          * Functional inverse of Smirnov distribution</a>
 <a name="812"><span class="lineNum">     812 </span>            :          * finds x such that smirnov(n, x) = psf; smirnovc(n, x) = pcdf).</a>
 <a name="813"><span class="lineNum">     813 </span>            :          */</a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        848 :         XSF_HOST_DEVICE inline double _smirnovi(int n, double psf, double pcdf) {</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        856 :         XSF_HOST_DEVICE inline double _smirnovi(int n, double psf, double pcdf) {</span></a>
 <a name="815"><span class="lineNum">     815 </span>            :             /*</a>
 <a name="816"><span class="lineNum">     816 </span>            :              * Need to use a bracketing NR algorithm here and be very careful</a>
 <a name="817"><span class="lineNum">     817 </span>            :              *  about the starting point.</a>
 <a name="818"><span class="lineNum">     818 </span>            :              */</a>
-<a name="819"><span class="lineNum">     819 </span><span class="lineCov">        848 :             double x, logpcdf;</span></a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">        848 :             int iterations = 0;</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">        848 :             double a = 0, b = 1;</span></a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        848 :             double maxlogpcdf, psfrootn;</span></a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">        848 :             double dx, dxold;</span></a>
+<a name="819"><span class="lineNum">     819 </span><span class="lineCov">        856 :             double x, logpcdf;</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">        856 :             int iterations = 0;</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">        856 :             double a = 0, b = 1;</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        856 :             double maxlogpcdf, psfrootn;</span></a>
+<a name="823"><span class="lineNum">     823 </span><span class="lineCov">        856 :             double dx, dxold;</span></a>
 <a name="824"><span class="lineNum">     824 </span>            : </a>
-<a name="825"><span class="lineNum">     825 </span><span class="lineCov">        848 :             if (!(n &gt; 0 &amp;&amp; psf &gt;= 0.0 &amp;&amp; pcdf &gt;= 0.0 &amp;&amp; pcdf &lt;= 1.0 &amp;&amp; psf &lt;= 1.0)) {</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">        856 :             if (!(n &gt; 0 &amp;&amp; psf &gt;= 0.0 &amp;&amp; pcdf &gt;= 0.0 &amp;&amp; pcdf &lt;= 1.0 &amp;&amp; psf &lt;= 1.0)) {</span></a>
 <a name="826"><span class="lineNum">     826 </span><span class="lineCov">         56 :                 set_error(&quot;smirnovi&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="827"><span class="lineNum">     827 </span>            :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="828"><span class="lineNum">     828 </span>            :             }</a>
-<a name="829"><span class="lineNum">     829 </span><span class="lineCov">        792 :             if (std::abs(1.0 - pcdf - psf) &gt; 4 * std::numeric_limits&lt;double&gt;::epsilon()) {</span></a>
+<a name="829"><span class="lineNum">     829 </span><span class="lineCov">        800 :             if (std::abs(1.0 - pcdf - psf) &gt; 4 * std::numeric_limits&lt;double&gt;::epsilon()) {</span></a>
 <a name="830"><span class="lineNum">     830 </span><span class="lineNoCov">          0 :                 set_error(&quot;smirnovi&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="831"><span class="lineNum">     831 </span>            :                 return (std::numeric_limits&lt;double&gt;::quiet_NaN());</a>
 <a name="832"><span class="lineNum">     832 </span>            :             }</a>
 <a name="833"><span class="lineNum">     833 </span>            :             /* STEP 1: Handle psf==0, or pcdf == 0 */</a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">        792 :             if (pcdf == 0.0) {</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">        800 :             if (pcdf == 0.0) {</span></a>
 <a name="835"><span class="lineNum">     835 </span>            :                 return 0.0;</a>
 <a name="836"><span class="lineNum">     836 </span>            :             }</a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">        726 :             if (psf == 0.0) {</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">        734 :             if (psf == 0.0) {</span></a>
 <a name="838"><span class="lineNum">     838 </span>            :                 return 1.0;</a>
 <a name="839"><span class="lineNum">     839 </span>            :             }</a>
 <a name="840"><span class="lineNum">     840 </span>            :             /* STEP 2: Handle n=1 */</a>
-<a name="841"><span class="lineNum">     841 </span><span class="lineCov">        664 :             if (n == 1) {</span></a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">        672 :             if (n == 1) {</span></a>
 <a name="842"><span class="lineNum">     842 </span>            :                 return pcdf;</a>
 <a name="843"><span class="lineNum">     843 </span>            :             }</a>
 <a name="844"><span class="lineNum">     844 </span>            : </a>
 <a name="845"><span class="lineNum">     845 </span>            :             /* STEP 3 Handle psf *very* close to 0.  Correspond to (n-1)/n &lt; x &lt; 1  */</a>
-<a name="846"><span class="lineNum">     846 </span><span class="lineCov">        362 :             psfrootn = std::pow(psf, 1.0 / n);</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">        370 :             psfrootn = std::pow(psf, 1.0 / n);</span></a>
 <a name="847"><span class="lineNum">     847 </span>            :             /* xmin &gt; 1 - 1.0 / n */</a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        362 :             if (n &lt; 150 &amp;&amp; n * psfrootn &lt;= 1) {</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        370 :             if (n &lt; 150 &amp;&amp; n * psfrootn &lt;= 1) {</span></a>
 <a name="849"><span class="lineNum">     849 </span>            :                 /* Solve exactly. */</a>
 <a name="850"><span class="lineNum">     850 </span><span class="lineCov">        269 :                 x = 1 - psfrootn;</span></a>
 <a name="851"><span class="lineNum">     851 </span><span class="lineCov">        269 :                 return x;</span></a>
 <a name="852"><span class="lineNum">     852 </span>            :             }</a>
 <a name="853"><span class="lineNum">     853 </span>            : </a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         93 :             logpcdf = (pcdf &lt; 0.5 ? std::log(pcdf) : std::log1p(-psf));</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">        101 :             logpcdf = (pcdf &lt; 0.5 ? std::log(pcdf) : std::log1p(-psf));</span></a>
 <a name="855"><span class="lineNum">     855 </span>            : </a>
 <a name="856"><span class="lineNum">     856 </span>            :             /*</a>
 <a name="857"><span class="lineNum">     857 </span>            :              * STEP 4 Find bracket and initial estimate for use in N-R</a>
 <a name="858"><span class="lineNum">     858 </span>            :              * 4(a)  Handle 0 &lt; x &lt;= 1/n:   pcdf = x * (1+x)^*(n-1)</a>
 <a name="859"><span class="lineNum">     859 </span>            :              */</a>
-<a name="860"><span class="lineNum">     860 </span><span class="lineCov">         93 :             maxlogpcdf = logpow4(1, 0.0, n, 0, 1) + logpow4(n, 1, n, 0, n - 1);</span></a>
-<a name="861"><span class="lineNum">     861 </span><span class="lineCov">         93 :             if (logpcdf &lt;= maxlogpcdf) {</span></a>
+<a name="860"><span class="lineNum">     860 </span><span class="lineCov">        101 :             maxlogpcdf = logpow4(1, 0.0, n, 0, 1) + logpow4(n, 1, n, 0, n - 1);</span></a>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">        101 :             if (logpcdf &lt;= maxlogpcdf) {</span></a>
 <a name="862"><span class="lineNum">     862 </span><span class="lineCov">          9 :                 double xmin = pcdf / SCIPY_El;</span></a>
 <a name="863"><span class="lineNum">     863 </span><span class="lineCov">          9 :                 double xmax = pcdf;</span></a>
 <a name="864"><span class="lineNum">     864 </span><span class="lineCov">          9 :                 double P1 = pow4(n, 1, n, 0, n - 1) / n;</span></a>
@@ -944,7 +944,7 @@
 <a name="874"><span class="lineNum">     874 </span>            :                      * R=1 is OK;</a>
 <a name="875"><span class="lineNum">     875 </span>            :                      * R&gt;1 can happen due to truncation error for x = (1-1/n)+-eps</a>
 <a name="876"><span class="lineNum">     876 </span>            :                      */</a>
-<a name="877"><span class="lineNum">     877 </span><span class="lineCov">        848 :                     R = 1;</span></a>
+<a name="877"><span class="lineNum">     877 </span><span class="lineCov">        856 :                     R = 1;</span></a>
 <a name="878"><span class="lineNum">     878 </span>            :                     x = R / n;</a>
 <a name="879"><span class="lineNum">     879 </span>            :                     return x;</a>
 <a name="880"><span class="lineNum">     880 </span>            :                 }</a>
@@ -957,23 +957,23 @@
 <a name="887"><span class="lineNum">     887 </span><span class="lineCov">          9 :                 x = std::clamp(x, a, b);</span></a>
 <a name="888"><span class="lineNum">     888 </span>            :             } else {</a>
 <a name="889"><span class="lineNum">     889 </span>            :                 /* 4(b) : 1/n &lt; x &lt; (n-1)/n */</a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">         84 :                 double xmin = 1 - psfrootn;</span></a>
-<a name="891"><span class="lineNum">     891 </span><span class="lineCov">         84 :                 double logpsf = (psf &lt; 0.5 ? std::log(psf) : std::log1p(-pcdf));</span></a>
-<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         84 :                 double xmax = std::sqrt(-logpsf / (2.0L * n));</span></a>
-<a name="893"><span class="lineNum">     893 </span><span class="lineCov">         84 :                 double xmax6 = xmax - 1.0L / (6 * n);</span></a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineCov">         84 :                 a = xmin;</span></a>
-<a name="895"><span class="lineNum">     895 </span><span class="lineCov">         84 :                 b = xmax;</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">         92 :                 double xmin = 1 - psfrootn;</span></a>
+<a name="891"><span class="lineNum">     891 </span><span class="lineCov">         92 :                 double logpsf = (psf &lt; 0.5 ? std::log(psf) : std::log1p(-pcdf));</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         92 :                 double xmax = std::sqrt(-logpsf / (2.0L * n));</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">         92 :                 double xmax6 = xmax - 1.0L / (6 * n);</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">         92 :                 a = xmin;</span></a>
+<a name="895"><span class="lineNum">     895 </span><span class="lineCov">         92 :                 b = xmax;</span></a>
 <a name="896"><span class="lineNum">     896 </span>            :                 /* Allow for a little rounding error */</a>
-<a name="897"><span class="lineNum">     897 </span><span class="lineCov">         84 :                 a *= 1 - 4 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineCov">         84 :                 b *= 1 + 4 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">         84 :                 a = std::fmax(xmin, 1.0 / n);</span></a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">         84 :                 b = std::fmin(xmax, 1 - 1.0 / n);</span></a>
-<a name="901"><span class="lineNum">     901 </span><span class="lineCov">         84 :                 x = xmax6;</span></a>
+<a name="897"><span class="lineNum">     897 </span><span class="lineCov">         92 :                 a *= 1 - 4 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
+<a name="898"><span class="lineNum">     898 </span><span class="lineCov">         92 :                 b *= 1 + 4 * std::numeric_limits&lt;double&gt;::epsilon();</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">         92 :                 a = std::fmax(xmin, 1.0 / n);</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">         92 :                 b = std::fmin(xmax, 1 - 1.0 / n);</span></a>
+<a name="901"><span class="lineNum">     901 </span><span class="lineCov">         92 :                 x = xmax6;</span></a>
 <a name="902"><span class="lineNum">     902 </span>            :             }</a>
-<a name="903"><span class="lineNum">     903 </span><span class="lineCov">         93 :             if (x &lt; a || x &gt; b) {</span></a>
+<a name="903"><span class="lineNum">     903 </span><span class="lineCov">        101 :             if (x &lt; a || x &gt; b) {</span></a>
 <a name="904"><span class="lineNum">     904 </span><span class="lineNoCov">          0 :                 x = (a + b) / 2;</span></a>
 <a name="905"><span class="lineNum">     905 </span>            :             }</a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         93 :             XSF_ASSERT(x &lt; 1);</span></a>
+<a name="906"><span class="lineNum">     906 </span><span class="lineCov">        101 :             XSF_ASSERT(x &lt; 1);</span></a>
 <a name="907"><span class="lineNum">     907 </span>            : </a>
 <a name="908"><span class="lineNum">     908 </span>            :             /*</a>
 <a name="909"><span class="lineNum">     909 </span>            :              * Skip computing fa, fb as that takes cycles and the exact values</a>
@@ -984,28 +984,28 @@
 <a name="914"><span class="lineNum">     914 </span>            :              * smirnov should be well-enough behaved for NR starting at this location.</a>
 <a name="915"><span class="lineNum">     915 </span>            :              * Use smirnov(n, x)-psf, or pcdf - smirnovc(n, x), whichever has smaller p.</a>
 <a name="916"><span class="lineNum">     916 </span>            :              */</a>
-<a name="917"><span class="lineNum">     917 </span><span class="lineCov">         93 :             dxold = b - a;</span></a>
-<a name="918"><span class="lineNum">     918 </span><span class="lineCov">         93 :             dx = dxold;</span></a>
-<a name="919"><span class="lineNum">     919 </span><span class="lineCov">        315 :             do {</span></a>
-<a name="920"><span class="lineNum">     920 </span><span class="lineCov">        315 :                 double dfdx, x0 = x, deltax, df;</span></a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineCov">        315 :                 XSF_ASSERT(x &lt; 1);</span></a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">        315 :                 XSF_ASSERT(x &gt; 0);</span></a>
-<a name="923"><span class="lineNum">     923 </span><span class="lineCov">        315 :                 {</span></a>
-<a name="924"><span class="lineNum">     924 </span><span class="lineCov">        315 :                     ThreeProbs probs = _smirnov(n, x0);</span></a>
-<a name="925"><span class="lineNum">     925 </span><span class="lineCov">        315 :                     df = ((pcdf &lt; 0.5) ? (pcdf - probs.cdf) : (probs.sf - psf));</span></a>
-<a name="926"><span class="lineNum">     926 </span><span class="lineCov">        315 :                     dfdx = -probs.pdf;</span></a>
+<a name="917"><span class="lineNum">     917 </span><span class="lineCov">        101 :             dxold = b - a;</span></a>
+<a name="918"><span class="lineNum">     918 </span><span class="lineCov">        101 :             dx = dxold;</span></a>
+<a name="919"><span class="lineNum">     919 </span><span class="lineCov">        339 :             do {</span></a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">        339 :                 double dfdx, x0 = x, deltax, df;</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">        339 :                 XSF_ASSERT(x &lt; 1);</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">        339 :                 XSF_ASSERT(x &gt; 0);</span></a>
+<a name="923"><span class="lineNum">     923 </span><span class="lineCov">        339 :                 {</span></a>
+<a name="924"><span class="lineNum">     924 </span><span class="lineCov">        339 :                     ThreeProbs probs = _smirnov(n, x0);</span></a>
+<a name="925"><span class="lineNum">     925 </span><span class="lineCov">        339 :                     df = ((pcdf &lt; 0.5) ? (pcdf - probs.cdf) : (probs.sf - psf));</span></a>
+<a name="926"><span class="lineNum">     926 </span><span class="lineCov">        339 :                     dfdx = -probs.pdf;</span></a>
 <a name="927"><span class="lineNum">     927 </span>            :                 }</a>
-<a name="928"><span class="lineNum">     928 </span><span class="lineCov">        315 :                 if (df == 0) {</span></a>
-<a name="929"><span class="lineNum">     929 </span><span class="lineCov">         51 :                     return x;</span></a>
+<a name="928"><span class="lineNum">     928 </span><span class="lineCov">        339 :                 if (df == 0) {</span></a>
+<a name="929"><span class="lineNum">     929 </span><span class="lineCov">         59 :                     return x;</span></a>
 <a name="930"><span class="lineNum">     930 </span>            :                 }</a>
 <a name="931"><span class="lineNum">     931 </span>            :                 /* Update the bracketing interval */</a>
-<a name="932"><span class="lineNum">     932 </span><span class="lineCov">        264 :                 if (df &gt; 0 &amp;&amp; x &gt; a) {</span></a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">        181 :                     a = x;</span></a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">        280 :                 if (df &gt; 0 &amp;&amp; x &gt; a) {</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">        197 :                     a = x;</span></a>
 <a name="934"><span class="lineNum">     934 </span><span class="lineCov">         83 :                 } else if (df &lt; 0 &amp;&amp; x &lt; b) {</span></a>
 <a name="935"><span class="lineNum">     935 </span><span class="lineCov">         78 :                     b = x;</span></a>
 <a name="936"><span class="lineNum">     936 </span>            :                 }</a>
 <a name="937"><span class="lineNum">     937 </span>            : </a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineCov">        264 :                 if (dfdx == 0) {</span></a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">        280 :                 if (dfdx == 0) {</span></a>
 <a name="939"><span class="lineNum">     939 </span>            :                     /*</a>
 <a name="940"><span class="lineNum">     940 </span>            :                      * x was not within tolerance, but now we hit a 0 derivative.</a>
 <a name="941"><span class="lineNum">     941 </span>            :                      * This implies that x &gt;&gt; 1/sqrt(n), and even then |smirnovp| &gt;= |smirnov|</a>
@@ -1014,8 +1014,8 @@
 <a name="944"><span class="lineNum">     944 </span><span class="lineNoCov">          0 :                     x = (a + b) / 2;</span></a>
 <a name="945"><span class="lineNum">     945 </span><span class="lineNoCov">          0 :                     deltax = x0 - x;</span></a>
 <a name="946"><span class="lineNum">     946 </span>            :                 } else {</a>
-<a name="947"><span class="lineNum">     947 </span><span class="lineCov">        264 :                     deltax = df / dfdx;</span></a>
-<a name="948"><span class="lineNum">     948 </span><span class="lineCov">        264 :                     x = x0 - deltax;</span></a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineCov">        280 :                     deltax = df / dfdx;</span></a>
+<a name="948"><span class="lineNum">     948 </span><span class="lineCov">        280 :                     x = x0 - deltax;</span></a>
 <a name="949"><span class="lineNum">     949 </span>            :                 }</a>
 <a name="950"><span class="lineNum">     950 </span>            :                 /*</a>
 <a name="951"><span class="lineNum">     951 </span>            :                  * Check out-of-bounds.</a>
@@ -1024,8 +1024,8 @@
 <a name="954"><span class="lineNum">     954 </span>            :                  * If out-of-bounds, replace x with a midpoint of the bracket.</a>
 <a name="955"><span class="lineNum">     955 </span>            :                  * Also check fast enough convergence.</a>
 <a name="956"><span class="lineNum">     956 </span>            :                  */</a>
-<a name="957"><span class="lineNum">     957 </span><span class="lineCov">        264 :                 if ((a &lt;= x) &amp;&amp; (x &lt;= b) &amp;&amp;</span></a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">        264 :                     (std::abs(2 * deltax) &lt;= std::abs(dxold) ||</span></a>
+<a name="957"><span class="lineNum">     957 </span><span class="lineCov">        280 :                 if ((a &lt;= x) &amp;&amp; (x &lt;= b) &amp;&amp;</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">        280 :                     (std::abs(2 * deltax) &lt;= std::abs(dxold) ||</span></a>
 <a name="959"><span class="lineNum">     959 </span><span class="lineCov">          1 :                      std::abs(dxold) &lt; 256 * std::numeric_limits&lt;double&gt;::epsilon())) {</span></a>
 <a name="960"><span class="lineNum">     960 </span>            :                     dxold = dx;</a>
 <a name="961"><span class="lineNum">     961 </span>            :                     dx = deltax;</a>
@@ -1041,10 +1041,10 @@
 <a name="971"><span class="lineNum">     971 </span>            :                  *  =&gt; |x-x0|/x &gt;= std::numeric_limits&lt;double&gt;::epsilon()/x.</a>
 <a name="972"><span class="lineNum">     972 </span>            :                  *  =&gt; cannot use a purely relative criteria as it will fail for x close to 0.</a>
 <a name="973"><span class="lineNum">     973 </span>            :                  */</a>
-<a name="974"><span class="lineNum">     974 </span><span class="lineCov">        420 :                 if (_within_tol(x, x0, (psf &lt; 0.5 ? 0 : _xtol), _rtol)) {</span></a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">        452 :                 if (_within_tol(x, x0, (psf &lt; 0.5 ? 0 : _xtol), _rtol)) {</span></a>
 <a name="975"><span class="lineNum">     975 </span>            :                     break;</a>
 <a name="976"><span class="lineNum">     976 </span>            :                 }</a>
-<a name="977"><span class="lineNum">     977 </span><span class="lineCov">        222 :                 if (++iterations &gt; KOLMOG_MAXITER) {</span></a>
+<a name="977"><span class="lineNum">     977 </span><span class="lineCov">        238 :                 if (++iterations &gt; KOLMOG_MAXITER) {</span></a>
 <a name="978"><span class="lineNum">     978 </span><span class="lineNoCov">          0 :                     set_error(&quot;smirnovi&quot;, SF_ERROR_SLOW, NULL);</span></a>
 <a name="979"><span class="lineNum">     979 </span><span class="lineNoCov">          0 :                     return (x);</span></a>
 <a name="980"><span class="lineNum">     980 </span>            :                 }</a>
@@ -1054,18 +1054,18 @@
 <a name="984"><span class="lineNum">     984 </span>            : </a>
 <a name="985"><span class="lineNum">     985 </span>            :     } // namespace detail</a>
 <a name="986"><span class="lineNum">     986 </span>            : </a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">        981 :     XSF_HOST_DEVICE inline double smirnov(int n, double d) {</span></a>
-<a name="988"><span class="lineNum">     988 </span><span class="lineCov">        981 :         if (std::isnan(d)) {</span></a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">       1522 :     XSF_HOST_DEVICE inline double smirnov(int n, double d) {</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">       1522 :         if (std::isnan(d)) {</span></a>
 <a name="989"><span class="lineNum">     989 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="990"><span class="lineNum">     990 </span>            :         }</a>
-<a name="991"><span class="lineNum">     991 </span><span class="lineCov">        979 :         return detail::_smirnov(n, d).sf;</span></a>
+<a name="991"><span class="lineNum">     991 </span><span class="lineCov">       1520 :         return detail::_smirnov(n, d).sf;</span></a>
 <a name="992"><span class="lineNum">     992 </span>            :     }</a>
 <a name="993"><span class="lineNum">     993 </span>            : </a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineCov">        365 :     XSF_HOST_DEVICE inline double smirnovc(int n, double d) {</span></a>
-<a name="995"><span class="lineNum">     995 </span><span class="lineCov">        365 :         if (std::isnan(d)) {</span></a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineCov">        361 :     XSF_HOST_DEVICE inline double smirnovc(int n, double d) {</span></a>
+<a name="995"><span class="lineNum">     995 </span><span class="lineCov">        361 :         if (std::isnan(d)) {</span></a>
 <a name="996"><span class="lineNum">     996 </span>            :             return NAN;</a>
 <a name="997"><span class="lineNum">     997 </span>            :         }</a>
-<a name="998"><span class="lineNum">     998 </span><span class="lineCov">        364 :         return detail::_smirnov(n, d).cdf;</span></a>
+<a name="998"><span class="lineNum">     998 </span><span class="lineCov">        360 :         return detail::_smirnov(n, d).cdf;</span></a>
 <a name="999"><span class="lineNum">     999 </span>            :     }</a>
 <a name="1000"><span class="lineNum">    1000 </span>            : </a>
 <a name="1001"><span class="lineNum">    1001 </span>            :     /*</a>
@@ -1100,11 +1100,11 @@
 <a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">        389 :         return detail::_smirnovi(n, p, 1 - p);</span></a>
 <a name="1031"><span class="lineNum">    1031 </span>            :     }</a>
 <a name="1032"><span class="lineNum">    1032 </span>            : </a>
-<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">        460 :     XSF_HOST_DEVICE inline double smirnovci(int n, double p) {</span></a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">        460 :         if (std::isnan(p)) {</span></a>
+<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">        468 :     XSF_HOST_DEVICE inline double smirnovci(int n, double p) {</span></a>
+<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">        468 :         if (std::isnan(p)) {</span></a>
 <a name="1035"><span class="lineNum">    1035 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="1036"><span class="lineNum">    1036 </span>            :         }</a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">        459 :         return detail::_smirnovi(n, 1 - p, p);</span></a>
+<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">        467 :         return detail::_smirnovi(n, 1 - p, p);</span></a>
 <a name="1038"><span class="lineNum">    1038 </span>            :     }</a>
 <a name="1039"><span class="lineNum">    1039 </span>            : </a>
 <a name="1040"><span class="lineNum">    1040 </span>            : } // namespace cephes</a>

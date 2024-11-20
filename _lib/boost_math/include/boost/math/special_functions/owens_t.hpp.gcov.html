@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/special_functions/owens_t.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/special_functions/owens_t.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">184</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">17</td>
@@ -120,25 +120,25 @@
 <a name="50"><span class="lineNum">      50 </span>            :       {</a>
 <a name="51"><span class="lineNum">      51 </span>            :          // owens_t_znorm1(x) = P(-oo&lt;Z&lt;=x)-0.5 with Z being normally distributed.</a>
 <a name="52"><span class="lineNum">      52 </span>            :          template&lt;typename RealType, class Policy&gt;</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       1622 :          inline RealType owens_t_znorm1(const RealType x, const Policy&amp; pol)</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       1826 :          inline RealType owens_t_znorm1(const RealType x, const Policy&amp; pol)</span></a>
 <a name="54"><span class="lineNum">      54 </span>            :          {</a>
 <a name="55"><span class="lineNum">      55 </span>            :             using namespace boost::math::constants;</a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        944 :             return boost::math::erf(x*one_div_root_two&lt;RealType&gt;(), pol)*half&lt;RealType&gt;();</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       1046 :             return boost::math::erf(x*one_div_root_two&lt;RealType&gt;(), pol)*half&lt;RealType&gt;();</span></a>
 <a name="57"><span class="lineNum">      57 </span>            :          } // RealType owens_t_znorm1(const RealType x)</a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
 <a name="59"><span class="lineNum">      59 </span>            :          // owens_t_znorm2(x) = P(x&lt;=Z&lt;oo) with Z being normally distributed.</a>
 <a name="60"><span class="lineNum">      60 </span>            :          template&lt;typename RealType, class Policy&gt;</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       1552 :          inline RealType owens_t_znorm2(const RealType x, const Policy&amp; pol)</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       2352 :          inline RealType owens_t_znorm2(const RealType x, const Policy&amp; pol)</span></a>
 <a name="62"><span class="lineNum">      62 </span>            :          {</a>
 <a name="63"><span class="lineNum">      63 </span>            :             using namespace boost::math::constants;</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        769 :             return boost::math::erfc(x*one_div_root_two&lt;RealType&gt;(), pol)*half&lt;RealType&gt;();</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1169 :             return boost::math::erfc(x*one_div_root_two&lt;RealType&gt;(), pol)*half&lt;RealType&gt;();</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :          } // RealType owens_t_znorm2(const RealType x)</a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            :          // Auxiliary function, it computes an array key that is used to determine</a>
 <a name="68"><span class="lineNum">      68 </span>            :          // the specific computation method for Owen's T and the order thereof</a>
 <a name="69"><span class="lineNum">      69 </span>            :          // used in owens_t_dispatch.</a>
 <a name="70"><span class="lineNum">      70 </span>            :          template&lt;typename RealType&gt;</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       1391 :          inline unsigned short owens_t_compute_code(const RealType h, const RealType a)</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       1849 :          inline unsigned short owens_t_compute_code(const RealType h, const RealType a)</span></a>
 <a name="72"><span class="lineNum">      72 </span>            :          {</a>
 <a name="73"><span class="lineNum">      73 </span>            :             static const RealType hrange[] =</a>
 <a name="74"><span class="lineNum">      74 </span>            :             { 0.02f, 0.06f, 0.09f, 0.125f, 0.26f, 0.4f,  0.6f,  1.6f,  1.7f,  2.33f,  2.4f,  3.36f, 3.4f,  4.8f };</a>
@@ -168,19 +168,19 @@
 <a name="98"><span class="lineNum">      98 </span>            :                1  ,  2   , 3   , 3   , 5  ,  5 ,  17  , 17  , 17 ,  17  , 16 ,  16 ,  16 ,  11 ,  11</a>
 <a name="99"><span class="lineNum">      99 </span>            :             };</a>
 <a name="100"><span class="lineNum">     100 </span>            : </a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       1391 :             unsigned short ihint = 14, iaint = 7;</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">      15293 :             for(unsigned short i = 0; i != 14; i++)</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       1849 :             unsigned short ihint = 14, iaint = 7;</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">      20443 :             for(unsigned short i = 0; i != 14; i++)</span></a>
 <a name="103"><span class="lineNum">     103 </span>            :             {</a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">      15025 :                if( h &lt;= hrange[i] )</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">      20171 :                if( h &lt;= hrange[i] )</span></a>
 <a name="105"><span class="lineNum">     105 </span>            :                {</a>
 <a name="106"><span class="lineNum">     106 </span>            :                   ihint = i;</a>
 <a name="107"><span class="lineNum">     107 </span>            :                   break;</a>
 <a name="108"><span class="lineNum">     108 </span>            :                }</a>
 <a name="109"><span class="lineNum">     109 </span>            :             } // for(unsigned short i = 0; i != 14; i++)</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       5530 :             for(unsigned short i = 0; i != 7; i++)</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       7378 :             for(unsigned short i = 0; i != 7; i++)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :             {</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       5530 :                if( a &lt;= arange[i] )</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       7378 :                if( a &lt;= arange[i] )</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :                {</a>
 <a name="115"><span class="lineNum">     115 </span>            :                   iaint = i;</a>
 <a name="116"><span class="lineNum">     116 </span>            :                   break;</a>
@@ -188,33 +188,33 @@
 <a name="118"><span class="lineNum">     118 </span>            :             } // for(unsigned short i = 0; i != 7; i++)</a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            :             // interpret select array as 8x15 matrix</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1391 :             return select[iaint*15 + ihint];</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1849 :             return select[iaint*15 + ihint];</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
 <a name="123"><span class="lineNum">     123 </span>            :          } // unsigned short owens_t_compute_code(const RealType h, const RealType a)</a>
 <a name="124"><span class="lineNum">     124 </span>            : </a>
 <a name="125"><span class="lineNum">     125 </span>            :          template&lt;typename RealType&gt;</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          2 :          inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          6 :          inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :          {</a>
 <a name="128"><span class="lineNum">     128 </span>            :             static const unsigned short ord[] = {2, 3, 4, 5, 7, 10, 12, 18, 10, 20, 30, 0, 4, 7, 8, 20, 0, 0}; // 18 entries</a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            :             BOOST_MATH_ASSERT(icode&lt;18);</a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          2 :             return ord[icode];</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          6 :             return ord[icode];</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :          } // unsigned short owens_t_get_order(const unsigned short icode, RealType, std::integral_constant&lt;int, 53&gt; const&amp;)</a>
 <a name="134"><span class="lineNum">     134 </span>            : </a>
 <a name="135"><span class="lineNum">     135 </span>            :          template&lt;typename RealType&gt;</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1389 :          inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1843 :          inline unsigned short owens_t_get_order_imp(const unsigned short icode, RealType, const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :         {</a>
 <a name="138"><span class="lineNum">     138 </span>            :            // method ================&gt;&gt;&gt;       {1, 1, 1, 1, 1,  1,  1,  1,  2,  2,  2,  3, 4,  4,  4,  4,  5, 6}</a>
 <a name="139"><span class="lineNum">     139 </span>            :            static const unsigned short ord[] = {3, 4, 5, 6, 8, 11, 13, 19, 10, 20, 30,  0, 7, 10, 11, 23,  0, 0}; // 18 entries</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span>            :           BOOST_MATH_ASSERT(icode&lt;18);</a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1389 :           return ord[icode];</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1843 :           return ord[icode];</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :         } // unsigned short owens_t_get_order(const unsigned short icode, RealType, std::integral_constant&lt;int, 64&gt; const&amp;)</a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            :          template&lt;typename RealType, typename Policy&gt;</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1391 :          inline unsigned short owens_t_get_order(const unsigned short icode, RealType r, const Policy&amp;)</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1849 :          inline unsigned short owens_t_get_order(const unsigned short icode, RealType r, const Policy&amp;)</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :          {</a>
 <a name="149"><span class="lineNum">     149 </span>            :             typedef typename policies::precision&lt;RealType, Policy&gt;::type precision_type;</a>
 <a name="150"><span class="lineNum">     150 </span>            :             typedef std::integral_constant&lt;int,</a>
@@ -222,43 +222,43 @@
 <a name="152"><span class="lineNum">     152 </span>            :                precision_type::value &lt;= 53 ? 53 : 64</a>
 <a name="153"><span class="lineNum">     153 </span>            :             &gt; tag_type;</a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1391 :             return owens_t_get_order_imp(icode, r, tag_type());</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1849 :             return owens_t_get_order_imp(icode, r, tag_type());</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :          }</a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
 <a name="158"><span class="lineNum">     158 </span>            :          // compute the value of Owen's T function with method T1 from the reference paper</a>
 <a name="159"><span class="lineNum">     159 </span>            :          template&lt;typename RealType, typename Policy&gt;</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">        476 :          inline RealType owens_t_T1(const RealType h, const RealType a, const unsigned short m, const Policy&amp; pol)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">        526 :          inline RealType owens_t_T1(const RealType h, const RealType a, const unsigned short m, const Policy&amp; pol)</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :          {</a>
 <a name="162"><span class="lineNum">     162 </span>            :             BOOST_MATH_STD_USING</a>
 <a name="163"><span class="lineNum">     163 </span>            :             using namespace boost::math::constants;</a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        476 :             const RealType hs = -h*h*half&lt;RealType&gt;();</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        476 :             const RealType dhs = exp( hs );</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        476 :             const RealType as = a*a;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        526 :             const RealType hs = -h*h*half&lt;RealType&gt;();</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        526 :             const RealType dhs = exp( hs );</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        526 :             const RealType as = a*a;</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        476 :             unsigned short j=1;</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        476 :             RealType jj = 1;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        476 :             RealType aj = a * one_div_two_pi&lt;RealType&gt;();</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        476 :             RealType dj = boost::math::expm1( hs, pol);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        476 :             RealType gj = hs*dhs;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        526 :             unsigned short j=1;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        526 :             RealType jj = 1;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        526 :             RealType aj = a * one_div_two_pi&lt;RealType&gt;();</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        526 :             RealType dj = boost::math::expm1( hs, pol);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        526 :             RealType gj = hs*dhs;</span></a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        476 :             RealType val = atan( a ) * one_div_two_pi&lt;RealType&gt;();</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        526 :             RealType val = atan( a ) * one_div_two_pi&lt;RealType&gt;();</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4596 :             while( true )</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4946 :             while( true )</span></a>
 <a name="178"><span class="lineNum">     178 </span>            :             {</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       5072 :                val += dj*aj/jj;</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       5472 :                val += dj*aj/jj;</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       5072 :                if( m &lt;= j )</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       5472 :                if( m &lt;= j )</span></a>
 <a name="182"><span class="lineNum">     182 </span>            :                   break;</a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       4596 :                j++;</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4596 :                jj += static_cast&lt;RealType&gt;(2);</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       4596 :                aj *= as;</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       4596 :                dj = gj - dj;</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4596 :                gj *= hs / static_cast&lt;RealType&gt;(j);</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       4946 :                j++;</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4946 :                jj += static_cast&lt;RealType&gt;(2);</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       4946 :                aj *= as;</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       4946 :                dj = gj - dj;</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4946 :                gj *= hs / static_cast&lt;RealType&gt;(j);</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :             } // while( true )</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        476 :             return val;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        526 :             return val;</span></a>
 <a name="192"><span class="lineNum">     192 </span>            :          } // RealType owens_t_T1(const RealType h, const RealType a, const unsigned short m)</a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
 <a name="194"><span class="lineNum">     194 </span>            :          // compute the value of Owen's T function with method T2 from the reference paper</a>
@@ -296,12 +296,12 @@
 <a name="226"><span class="lineNum">     226 </span>            : </a>
 <a name="227"><span class="lineNum">     227 </span>            :          // compute the value of Owen's T function with method T3 from the reference paper</a>
 <a name="228"><span class="lineNum">     228 </span>            :          template&lt;typename RealType, class Policy&gt;</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          1 :          inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant&lt;int, 53&gt;&amp;, const Policy&amp; pol)</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :          inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant&lt;int, 53&gt;&amp;, const Policy&amp; pol)</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :          {</a>
 <a name="231"><span class="lineNum">     231 </span>            :             BOOST_MATH_STD_USING</a>
 <a name="232"><span class="lineNum">     232 </span>            :             using namespace boost::math::constants;</a>
 <a name="233"><span class="lineNum">     233 </span>            : </a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          1 :       const unsigned short m = 20;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          3 :       const unsigned short m = 20;</span></a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
 <a name="236"><span class="lineNum">     236 </span>            :             static const RealType c2[] =</a>
 <a name="237"><span class="lineNum">     237 </span>            :             {</a>
@@ -318,42 +318,42 @@
 <a name="248"><span class="lineNum">     248 </span>            :                static_cast&lt;RealType&gt;(-0.44676566663971825242E-02),  static_cast&lt;RealType&gt;(0.39141169402373836468E-03)</a>
 <a name="249"><span class="lineNum">     249 </span>            :             };</a>
 <a name="250"><span class="lineNum">     250 </span>            : </a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          1 :             const RealType as = a*a;</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :             const RealType hs = h*h;</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :             const RealType y = static_cast&lt;RealType&gt;(1)/hs;</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          3 :             const RealType as = a*a;</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          3 :             const RealType hs = h*h;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          3 :             const RealType y = static_cast&lt;RealType&gt;(1)/hs;</span></a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 :             RealType ii = 1;</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          1 :             unsigned short i = 0;</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          1 :             RealType vi = a * exp( -ah*ah*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          1 :             RealType zi = owens_t_znorm1(ah, pol)/h;</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          1 :             RealType val = 0;</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          3 :             RealType ii = 1;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          3 :             unsigned short i = 0;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :             RealType vi = a * exp( -ah*ah*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          3 :             RealType zi = owens_t_znorm1(ah, pol)/h;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          3 :             RealType val = 0;</span></a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         20 :             while( true )</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         60 :             while( true )</span></a>
 <a name="262"><span class="lineNum">     262 </span>            :             {</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         20 :                BOOST_MATH_ASSERT(i &lt; 21);</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         21 :                val += zi*c2[i];</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         21 :                if( m &lt;= i ) // if( m &lt; i+1 )</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         60 :                BOOST_MATH_ASSERT(i &lt; 21);</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         63 :                val += zi*c2[i];</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         63 :                if( m &lt;= i ) // if( m &lt; i+1 )</span></a>
 <a name="266"><span class="lineNum">     266 </span>            :                {</a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 :                   val *= exp( -hs*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          3 :                   val *= exp( -hs*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :                   break;</a>
 <a name="269"><span class="lineNum">     269 </span>            :                } // if( m &lt; i )</a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         20 :                zi = y * (ii*zi - vi);</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         20 :                vi *= as;</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         20 :                ii += 2;</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         20 :                i++;</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         60 :                zi = y * (ii*zi - vi);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         60 :                vi *= as;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         60 :                ii += 2;</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         60 :                i++;</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :             } // while( true )</a>
 <a name="275"><span class="lineNum">     275 </span>            : </a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          1 :             return val;</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          3 :             return val;</span></a>
 <a name="277"><span class="lineNum">     277 </span>            :          } // RealType owens_t_T3(const RealType h, const RealType a, const RealType ah)</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <a name="279"><span class="lineNum">     279 </span>            :         // compute the value of Owen's T function with method T3 from the reference paper</a>
 <a name="280"><span class="lineNum">     280 </span>            :         template&lt;class RealType, class Policy&gt;</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          1 :         inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant&lt;int, 64&gt;&amp;, const Policy&amp; pol)</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          3 :         inline RealType owens_t_T3_imp(const RealType h, const RealType a, const RealType ah, const std::integral_constant&lt;int, 64&gt;&amp;, const Policy&amp; pol)</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :         {</a>
 <a name="283"><span class="lineNum">     283 </span>            :           BOOST_MATH_STD_USING</a>
 <a name="284"><span class="lineNum">     284 </span>            :           using namespace boost::math::constants;</a>
 <a name="285"><span class="lineNum">     285 </span>            :           </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">          1 :           const unsigned short m = 30;</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">          3 :           const unsigned short m = 30;</span></a>
 <a name="287"><span class="lineNum">     287 </span>            : </a>
 <a name="288"><span class="lineNum">     288 </span>            :           static const RealType c2[] =</a>
 <a name="289"><span class="lineNum">     289 </span>            :           {</a>
@@ -390,36 +390,36 @@
 <a name="320"><span class="lineNum">     320 </span>            :              BOOST_MATH_BIG_CONSTANT(RealType, 260, 9.072354320794357587710929507988814669454281514268844884841547607134260303118208e-6)</a>
 <a name="321"><span class="lineNum">     321 </span>            :           };</a>
 <a name="322"><span class="lineNum">     322 </span>            : </a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 :           const RealType as = a*a;</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          1 :           const RealType hs = h*h;</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          1 :           const RealType y = 1 / hs;</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          3 :           const RealType as = a*a;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          3 :           const RealType hs = h*h;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          3 :           const RealType y = 1 / hs;</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          1 :           RealType ii = 1;</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          1 :           unsigned short i = 0;</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          1 :           RealType vi = a * exp( -ah*ah*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          1 :           RealType zi = owens_t_znorm1(ah, pol)/h;</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          1 :           RealType val = 0;</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          3 :           RealType ii = 1;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          3 :           unsigned short i = 0;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          3 :           RealType vi = a * exp( -ah*ah*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          3 :           RealType zi = owens_t_znorm1(ah, pol)/h;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          3 :           RealType val = 0;</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">         30 :           while( true )</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">         90 :           while( true )</span></a>
 <a name="334"><span class="lineNum">     334 </span>            :           {</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">         30 :               BOOST_MATH_ASSERT(i &lt; 31);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         31 :               val += zi*c2[i];</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         31 :               if( m &lt;= i ) // if( m &lt; i+1 )</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">         90 :               BOOST_MATH_ASSERT(i &lt; 31);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         93 :               val += zi*c2[i];</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         93 :               if( m &lt;= i ) // if( m &lt; i+1 )</span></a>
 <a name="338"><span class="lineNum">     338 </span>            :               {</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          1 :                 val *= exp( -hs*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          3 :                 val *= exp( -hs*half&lt;RealType&gt;() ) * one_div_root_two_pi&lt;RealType&gt;();</span></a>
 <a name="340"><span class="lineNum">     340 </span>            :                 break;</a>
 <a name="341"><span class="lineNum">     341 </span>            :               } // if( m &lt; i )</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         30 :               zi = y * (ii*zi - vi);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         30 :               vi *= as;</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         30 :               ii += 2;</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         30 :               i++;</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         90 :               zi = y * (ii*zi - vi);</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         90 :               vi *= as;</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         90 :               ii += 2;</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         90 :               i++;</span></a>
 <a name="346"><span class="lineNum">     346 </span>            :           } // while( true )</a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          1 :           return val;</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          3 :           return val;</span></a>
 <a name="349"><span class="lineNum">     349 </span>            :         } // RealType owens_t_T3(const RealType h, const RealType a, const RealType ah)</a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
 <a name="351"><span class="lineNum">     351 </span>            :         template&lt;class RealType, class Policy&gt;</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          2 :         inline RealType owens_t_T3(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol)</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          6 :         inline RealType owens_t_T3(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol)</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :         {</a>
 <a name="354"><span class="lineNum">     354 </span>            :             typedef typename policies::precision&lt;RealType, Policy&gt;::type precision_type;</a>
 <a name="355"><span class="lineNum">     355 </span>            :             typedef std::integral_constant&lt;int,</a>
@@ -427,41 +427,41 @@
 <a name="357"><span class="lineNum">     357 </span>            :                precision_type::value &lt;= 53 ? 53 : 64</a>
 <a name="358"><span class="lineNum">     358 </span>            :             &gt; tag_type;</a>
 <a name="359"><span class="lineNum">     359 </span>            : </a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          4 :             return owens_t_T3_imp(h, a, ah, tag_type(), pol);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">         12 :             return owens_t_T3_imp(h, a, ah, tag_type(), pol);</span></a>
 <a name="361"><span class="lineNum">     361 </span>            :         }</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
 <a name="363"><span class="lineNum">     363 </span>            :          // compute the value of Owen's T function with method T4 from the reference paper</a>
 <a name="364"><span class="lineNum">     364 </span>            :          template&lt;typename RealType&gt;</a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        645 :          inline RealType owens_t_T4(const RealType h, const RealType a, const unsigned short m)</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       1045 :          inline RealType owens_t_T4(const RealType h, const RealType a, const unsigned short m)</span></a>
 <a name="366"><span class="lineNum">     366 </span>            :          {</a>
 <a name="367"><span class="lineNum">     367 </span>            :             BOOST_MATH_STD_USING</a>
 <a name="368"><span class="lineNum">     368 </span>            :             using namespace boost::math::constants;</a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        645 :             const unsigned short maxii = m+m+1;</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        645 :             const RealType hs = h*h;</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">        645 :             const RealType as = -a*a;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       1045 :             const unsigned short maxii = m+m+1;</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">       1045 :             const RealType hs = h*h;</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1045 :             const RealType as = -a*a;</span></a>
 <a name="373"><span class="lineNum">     373 </span>            : </a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        645 :             unsigned short ii = 1;</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        645 :             RealType ai = a * exp( -hs*(static_cast&lt;RealType&gt;(1)-as)*half&lt;RealType&gt;() ) * one_div_two_pi&lt;RealType&gt;();</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        645 :             RealType yi = 1;</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        645 :             RealType val = 0;</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       1045 :             unsigned short ii = 1;</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       1045 :             RealType ai = a * exp( -hs*(static_cast&lt;RealType&gt;(1)-as)*half&lt;RealType&gt;() ) * one_div_two_pi&lt;RealType&gt;();</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       1045 :             RealType yi = 1;</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       1045 :             RealType val = 0;</span></a>
 <a name="378"><span class="lineNum">     378 </span>            : </a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">      14819 :             while( true )</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">      24019 :             while( true )</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :             {</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">      15464 :                val += ai*yi;</span></a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">      15464 :                if( maxii &lt;= ii )</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">      25064 :                val += ai*yi;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">      25064 :                if( maxii &lt;= ii )</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :                   break;</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">      14819 :                ii += 2;</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">      14819 :                yi = (static_cast&lt;RealType&gt;(1)-hs*yi) / static_cast&lt;RealType&gt;(ii);</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      14819 :                ai *= as;</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">      24019 :                ii += 2;</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">      24019 :                yi = (static_cast&lt;RealType&gt;(1)-hs*yi) / static_cast&lt;RealType&gt;(ii);</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      24019 :                ai *= as;</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :             } // while( true )</a>
 <a name="388"><span class="lineNum">     388 </span>            : </a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">        645 :             return val;</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">       1045 :             return val;</span></a>
 <a name="390"><span class="lineNum">     390 </span>            :          } // RealType owens_t_T4(const RealType h, const RealType a, const unsigned short m)</a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
 <a name="392"><span class="lineNum">     392 </span>            :          // compute the value of Owen's T function with method T5 from the reference paper</a>
 <a name="393"><span class="lineNum">     393 </span>            :          template&lt;typename RealType&gt;</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          1 :          inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          3 :          inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant&lt;int, 53&gt;&amp;)</span></a>
 <a name="395"><span class="lineNum">     395 </span>            :          {</a>
 <a name="396"><span class="lineNum">     396 </span>            :             BOOST_MATH_STD_USING</a>
 <a name="397"><span class="lineNum">     397 </span>            :             /*</a>
@@ -473,7 +473,7 @@
 <a name="403"><span class="lineNum">     403 </span>            :                  of 1/(2*pi) according to T5(h,a,m).</a>
 <a name="404"><span class="lineNum">     404 </span>            :              */</a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          1 :             const unsigned short m = 13;</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          3 :             const unsigned short m = 13;</span></a>
 <a name="407"><span class="lineNum">     407 </span>            :             static const RealType pts[] = {</a>
 <a name="408"><span class="lineNum">     408 </span>            :                static_cast&lt;RealType&gt;(0.35082039676451715489E-02),</a>
 <a name="409"><span class="lineNum">     409 </span>            :                static_cast&lt;RealType&gt;(0.31279042338030753740E-01),  static_cast&lt;RealType&gt;(0.85266826283219451090E-01),</a>
@@ -491,23 +491,23 @@
 <a name="421"><span class="lineNum">     421 </span>            :                static_cast&lt;RealType&gt;(0.81130545742299586629E-02),  static_cast&lt;RealType&gt;(0.60419009528470238773E-02),</a>
 <a name="422"><span class="lineNum">     422 </span>            :                static_cast&lt;RealType&gt;(0.38862217010742057883E-02),  static_cast&lt;RealType&gt;(0.16793031084546090448E-02) };</a>
 <a name="423"><span class="lineNum">     423 </span>            : </a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          1 :             const RealType as = a*a;</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">          1 :             const RealType hs = -h*h*boost::math::constants::half&lt;RealType&gt;();</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          3 :             const RealType as = a*a;</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">          3 :             const RealType hs = -h*h*boost::math::constants::half&lt;RealType&gt;();</span></a>
 <a name="426"><span class="lineNum">     426 </span>            : </a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">          1 :             RealType val = 0;</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">         14 :             for(unsigned short i = 0; i &lt; m; ++i)</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">          3 :             RealType val = 0;</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">         42 :             for(unsigned short i = 0; i &lt; m; ++i)</span></a>
 <a name="429"><span class="lineNum">     429 </span>            :             {</a>
 <a name="430"><span class="lineNum">     430 </span>            :                BOOST_MATH_ASSERT(i &lt; 13);</a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         13 :                const RealType r = static_cast&lt;RealType&gt;(1) + as*pts[i];</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         13 :                val += wts[i] * exp( hs*r ) / r;</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         39 :                const RealType r = static_cast&lt;RealType&gt;(1) + as*pts[i];</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         39 :                val += wts[i] * exp( hs*r ) / r;</span></a>
 <a name="433"><span class="lineNum">     433 </span>            :             } // for(unsigned short i = 0; i &lt; m; ++i)</a>
 <a name="434"><span class="lineNum">     434 </span>            : </a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          1 :             return val*a;</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          3 :             return val*a;</span></a>
 <a name="436"><span class="lineNum">     436 </span>            :          } // RealType owens_t_T5(const RealType h, const RealType a)</a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>
 <a name="438"><span class="lineNum">     438 </span>            :         // compute the value of Owen's T function with method T5 from the reference paper</a>
 <a name="439"><span class="lineNum">     439 </span>            :         template&lt;typename RealType&gt;</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          1 :         inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          3 :         inline RealType owens_t_T5_imp(const RealType h, const RealType a, const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :         {</a>
 <a name="442"><span class="lineNum">     442 </span>            :           BOOST_MATH_STD_USING</a>
 <a name="443"><span class="lineNum">     443 </span>            :             /*</a>
@@ -519,7 +519,7 @@
 <a name="449"><span class="lineNum">     449 </span>            :               of 1/(2*pi) according to T5(h,a,m).</a>
 <a name="450"><span class="lineNum">     450 </span>            :             */</a>
 <a name="451"><span class="lineNum">     451 </span>            : </a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">          1 :           const unsigned short m = 19;</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">          3 :           const unsigned short m = 19;</span></a>
 <a name="453"><span class="lineNum">     453 </span>            :           static const RealType pts[] = {</a>
 <a name="454"><span class="lineNum">     454 </span>            :                BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.0016634282895983227941),</a>
 <a name="455"><span class="lineNum">     455 </span>            :                BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.014904509242697054183),</a>
@@ -563,22 +563,22 @@
 <a name="493"><span class="lineNum">     493 </span>            :                BOOST_MATH_BIG_CONSTANT(RealType, 64, 0.00079623320100438873578)</a>
 <a name="494"><span class="lineNum">     494 </span>            :           };</a>
 <a name="495"><span class="lineNum">     495 </span>            : </a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          1 :           const RealType as = a*a;</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          1 :           const RealType hs = -h*h*boost::math::constants::half&lt;RealType&gt;();</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          3 :           const RealType as = a*a;</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          3 :           const RealType hs = -h*h*boost::math::constants::half&lt;RealType&gt;();</span></a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          1 :           RealType val = 0;</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">         20 :           for(unsigned short i = 0; i &lt; m; ++i)</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          3 :           RealType val = 0;</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">         60 :           for(unsigned short i = 0; i &lt; m; ++i)</span></a>
 <a name="501"><span class="lineNum">     501 </span>            :             {</a>
 <a name="502"><span class="lineNum">     502 </span>            :               BOOST_MATH_ASSERT(i &lt; 19);</a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">         19 :               const RealType r = 1 + as*pts[i];</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         19 :               val += wts[i] * exp( hs*r ) / r;</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">         57 :               const RealType r = 1 + as*pts[i];</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         57 :               val += wts[i] * exp( hs*r ) / r;</span></a>
 <a name="505"><span class="lineNum">     505 </span>            :             } // for(unsigned short i = 0; i &lt; m; ++i)</a>
 <a name="506"><span class="lineNum">     506 </span>            : </a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">          1 :           return val*a;</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">          3 :           return val*a;</span></a>
 <a name="508"><span class="lineNum">     508 </span>            :         } // RealType owens_t_T5(const RealType h, const RealType a)</a>
 <a name="509"><span class="lineNum">     509 </span>            : </a>
 <a name="510"><span class="lineNum">     510 </span>            :         template&lt;class RealType, class Policy&gt;</a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          2 :         inline RealType owens_t_T5(const RealType h, const RealType a, const Policy&amp;)</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          6 :         inline RealType owens_t_T5(const RealType h, const RealType a, const Policy&amp;)</span></a>
 <a name="512"><span class="lineNum">     512 </span>            :         {</a>
 <a name="513"><span class="lineNum">     513 </span>            :             typedef typename policies::precision&lt;RealType, Policy&gt;::type precision_type;</a>
 <a name="514"><span class="lineNum">     514 </span>            :             typedef std::integral_constant&lt;int,</a>
@@ -586,7 +586,7 @@
 <a name="516"><span class="lineNum">     516 </span>            :                precision_type::value &lt;= 53 ? 53 : 64</a>
 <a name="517"><span class="lineNum">     517 </span>            :             &gt; tag_type;</a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">          4 :             return owens_t_T5_imp(h, a, tag_type());</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         12 :             return owens_t_T5_imp(h, a, tag_type());</span></a>
 <a name="520"><span class="lineNum">     520 </span>            :         }</a>
 <a name="521"><span class="lineNum">     521 </span>            : </a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
@@ -846,7 +846,7 @@
 <a name="776"><span class="lineNum">     776 </span>            :          //</a>
 <a name="777"><span class="lineNum">     777 </span>            :          // Note there are different versions for different precisions....</a>
 <a name="778"><span class="lineNum">     778 </span>            :          template&lt;typename RealType, typename Policy&gt;</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">       1457 :          inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol, std::integral_constant&lt;int, 64&gt; const&amp;)</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">       1965 :          inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol, std::integral_constant&lt;int, 64&gt; const&amp;)</span></a>
 <a name="780"><span class="lineNum">     780 </span>            :          {</a>
 <a name="781"><span class="lineNum">     781 </span>            :             // Simple main case for 64-bit precision or less, this is as per the Patefield-Tandy paper:</a>
 <a name="782"><span class="lineNum">     782 </span>            :             BOOST_MATH_STD_USING</a>
@@ -854,47 +854,47 @@
 <a name="784"><span class="lineNum">     784 </span>            :             // Handle some special cases first, these are from</a>
 <a name="785"><span class="lineNum">     785 </span>            :             // page 1077 of Owen's original paper:</a>
 <a name="786"><span class="lineNum">     786 </span>            :             //</a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       1457 :             if(h == 0)</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       1965 :             if(h == 0)</span></a>
 <a name="788"><span class="lineNum">     788 </span>            :             {</a>
-<a name="789"><span class="lineNum">     789 </span><span class="lineCov">         59 :                return atan(a) * constants::one_div_two_pi&lt;RealType&gt;();</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">        109 :                return atan(a) * constants::one_div_two_pi&lt;RealType&gt;();</span></a>
 <a name="790"><span class="lineNum">     790 </span>            :             }</a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       1398 :             if(a == 0)</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       1856 :             if(a == 0)</span></a>
 <a name="792"><span class="lineNum">     792 </span>            :             {</a>
 <a name="793"><span class="lineNum">     793 </span>            :                return 0;</a>
 <a name="794"><span class="lineNum">     794 </span>            :             }</a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       1398 :             if(a == 1)</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       1856 :             if(a == 1)</span></a>
 <a name="796"><span class="lineNum">     796 </span>            :             {</a>
 <a name="797"><span class="lineNum">     797 </span><span class="lineCov">          7 :                return owens_t_znorm2(RealType(-h), pol) * owens_t_znorm2(h, pol) / 2;</span></a>
 <a name="798"><span class="lineNum">     798 </span>            :             }</a>
-<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       1391 :             if(a &gt;= tools::max_value&lt;RealType&gt;())</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       1849 :             if(a &gt;= tools::max_value&lt;RealType&gt;())</span></a>
 <a name="800"><span class="lineNum">     800 </span>            :             {</a>
 <a name="801"><span class="lineNum">     801 </span><span class="lineNoCov">          0 :                return owens_t_znorm2(RealType(fabs(h)), pol);</span></a>
 <a name="802"><span class="lineNum">     802 </span>            :             }</a>
-<a name="803"><span class="lineNum">     803 </span><span class="lineCov">       1391 :             RealType val = 0; // avoid compiler warnings, 0 will be overwritten in any case</span></a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       1391 :             const unsigned short icode = owens_t_compute_code(h, a);</span></a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       1391 :             const unsigned short m = owens_t_get_order(icode, val /* just a dummy for the type */, pol);</span></a>
+<a name="803"><span class="lineNum">     803 </span><span class="lineCov">       1849 :             RealType val = 0; // avoid compiler warnings, 0 will be overwritten in any case</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       1849 :             const unsigned short icode = owens_t_compute_code(h, a);</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       1849 :             const unsigned short m = owens_t_get_order(icode, val /* just a dummy for the type */, pol);</span></a>
 <a name="806"><span class="lineNum">     806 </span>            :             static const unsigned short meth[] = {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5, 6}; // 18 entries</a>
 <a name="807"><span class="lineNum">     807 </span>            : </a>
 <a name="808"><span class="lineNum">     808 </span>            :             // determine the appropriate method, T1 ... T6</a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineCov">       1391 :             switch( meth[icode] )</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">       1849 :             switch( meth[icode] )</span></a>
 <a name="810"><span class="lineNum">     810 </span>            :             {</a>
-<a name="811"><span class="lineNum">     811 </span><span class="lineCov">        476 :             case 1: // T1</span></a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">        476 :                val = owens_t_T1(h,a,m,pol);</span></a>
-<a name="813"><span class="lineNum">     813 </span><span class="lineCov">        476 :                break;</span></a>
+<a name="811"><span class="lineNum">     811 </span><span class="lineCov">        526 :             case 1: // T1</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">        526 :                val = owens_t_T1(h,a,m,pol);</span></a>
+<a name="813"><span class="lineNum">     813 </span><span class="lineCov">        526 :                break;</span></a>
 <a name="814"><span class="lineNum">     814 </span><span class="lineCov">        266 :             case 2: // T2</span></a>
 <a name="815"><span class="lineNum">     815 </span>            :                typedef typename policies::precision&lt;RealType, Policy&gt;::type precision_type;</a>
 <a name="816"><span class="lineNum">     816 </span>            :                typedef std::integral_constant&lt;bool, (precision_type::value == 0) || (precision_type::value &gt; 64)&gt; tag_type;</a>
 <a name="817"><span class="lineNum">     817 </span><span class="lineCov">        266 :                val = owens_t_T2(h, a, m, ah, pol, tag_type());</span></a>
 <a name="818"><span class="lineNum">     818 </span><span class="lineCov">        266 :                break;</span></a>
-<a name="819"><span class="lineNum">     819 </span><span class="lineCov">          2 :             case 3: // T3</span></a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          2 :                val = owens_t_T3(h,a,ah, pol);</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          2 :                break;</span></a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        645 :             case 4: // T4</span></a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">        645 :                val = owens_t_T4(h,a,m);</span></a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">        645 :                break;</span></a>
-<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          2 :             case 5: // T5</span></a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          2 :                val = owens_t_T5(h,a, pol);</span></a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">          2 :                break;</span></a>
+<a name="819"><span class="lineNum">     819 </span><span class="lineCov">          6 :             case 3: // T3</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          6 :                val = owens_t_T3(h,a,ah, pol);</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          6 :                break;</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">       1045 :             case 4: // T4</span></a>
+<a name="823"><span class="lineNum">     823 </span><span class="lineCov">       1045 :                val = owens_t_T4(h,a,m);</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">       1045 :                break;</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          6 :             case 5: // T5</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          6 :                val = owens_t_T5(h,a, pol);</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">          6 :                break;</span></a>
 <a name="828"><span class="lineNum">     828 </span><span class="lineNoCov">          0 :             case 6: // T6</span></a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineNoCov">          0 :                val = owens_t_T6(h,a, pol);</span></a>
 <a name="830"><span class="lineNum">     830 </span><span class="lineNoCov">          0 :                break;</span></a>
@@ -1037,7 +1037,7 @@
 <a name="967"><span class="lineNum">     967 </span>            :             return owens_t_dispatch(h, a, ah, pol, std::integral_constant&lt;int, 65&gt;());</a>
 <a name="968"><span class="lineNum">     968 </span>            :          }</a>
 <a name="969"><span class="lineNum">     969 </span>            :          template&lt;typename RealType, typename Policy&gt;</a>
-<a name="970"><span class="lineNum">     970 </span><span class="lineCov">       1457 :          inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol)</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">       1965 :          inline RealType owens_t_dispatch(const RealType h, const RealType a, const RealType ah, const Policy&amp; pol)</span></a>
 <a name="971"><span class="lineNum">     971 </span>            :          {</a>
 <a name="972"><span class="lineNum">     972 </span>            :             // Figure out the precision and forward to the correct version:</a>
 <a name="973"><span class="lineNum">     973 </span>            :             typedef typename policies::precision&lt;RealType, Policy&gt;::type precision_type;</a>
@@ -1046,51 +1046,51 @@
 <a name="976"><span class="lineNum">     976 </span>            :                precision_type::value &lt;= 64 ? 64 : 65</a>
 <a name="977"><span class="lineNum">     977 </span>            :             &gt; tag_type;</a>
 <a name="978"><span class="lineNum">     978 </span>            : </a>
-<a name="979"><span class="lineNum">     979 </span><span class="lineCov">         11 :             return owens_t_dispatch(h, a, ah, pol, tag_type());</span></a>
+<a name="979"><span class="lineNum">     979 </span><span class="lineCov">         19 :             return owens_t_dispatch(h, a, ah, pol, tag_type());</span></a>
 <a name="980"><span class="lineNum">     980 </span>            :          }</a>
 <a name="981"><span class="lineNum">     981 </span>            :          // compute Owen's T function, T(h,a), for arbitrary values of h and a</a>
 <a name="982"><span class="lineNum">     982 </span>            :          template&lt;typename RealType, class Policy&gt;</a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineCov">       1457 :          inline RealType owens_t(RealType h, RealType a, const Policy&amp; pol)</span></a>
+<a name="983"><span class="lineNum">     983 </span><span class="lineCov">       1965 :          inline RealType owens_t(RealType h, RealType a, const Policy&amp; pol)</span></a>
 <a name="984"><span class="lineNum">     984 </span>            :          {</a>
 <a name="985"><span class="lineNum">     985 </span>            :             BOOST_MATH_STD_USING</a>
 <a name="986"><span class="lineNum">     986 </span>            :             // exploit that T(-h,a) == T(h,a)</a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">       1457 :             h = fabs(h);</span></a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">       1965 :             h = fabs(h);</span></a>
 <a name="988"><span class="lineNum">     988 </span>            : </a>
 <a name="989"><span class="lineNum">     989 </span>            :             // Use equation (2) in the paper to remap the arguments</a>
 <a name="990"><span class="lineNum">     990 </span>            :             // such that h&gt;=0 and 0&lt;=a&lt;=1 for the call of the actual</a>
 <a name="991"><span class="lineNum">     991 </span>            :             // computation routine.</a>
 <a name="992"><span class="lineNum">     992 </span>            : </a>
-<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1457 :             const RealType fabs_a = fabs(a);</span></a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       1457 :             const RealType fabs_ah = fabs_a*h;</span></a>
+<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1965 :             const RealType fabs_a = fabs(a);</span></a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       1965 :             const RealType fabs_ah = fabs_a*h;</span></a>
 <a name="995"><span class="lineNum">     995 </span>            : </a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1457 :             RealType val = static_cast&lt;RealType&gt;(0.0f); // avoid compiler warnings, 0.0 will be overwritten in any case</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1965 :             RealType val = static_cast&lt;RealType&gt;(0.0f); // avoid compiler warnings, 0.0 will be overwritten in any case</span></a>
 <a name="997"><span class="lineNum">     997 </span>            : </a>
-<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1457 :             if(fabs_a &lt;= 1)</span></a>
+<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1965 :             if(fabs_a &lt;= 1)</span></a>
 <a name="999"><span class="lineNum">     999 </span>            :             {</a>
-<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">         11 :                val = owens_t_dispatch(h, fabs_a, fabs_ah, pol);</span></a>
+<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">         19 :                val = owens_t_dispatch(h, fabs_a, fabs_ah, pol);</span></a>
 <a name="1001"><span class="lineNum">    1001 </span>            :             } // if(fabs_a &lt;= 1.0)</a>
 <a name="1002"><span class="lineNum">    1002 </span>            :             else </a>
 <a name="1003"><span class="lineNum">    1003 </span>            :             {</a>
-<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">       1446 :                if( h &lt;= RealType(0.67) )</span></a>
+<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">       1946 :                if( h &lt;= RealType(0.67) )</span></a>
 <a name="1005"><span class="lineNum">    1005 </span>            :                {</a>
-<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        677 :                   const RealType normh = owens_t_znorm1(h, pol);</span></a>
-<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">        677 :                   const RealType normah = owens_t_znorm1(fabs_ah, pol);</span></a>
-<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">       1354 :                   val = static_cast&lt;RealType&gt;(1)/static_cast&lt;RealType&gt;(4) - normh*normah -</span></a>
-<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">        677 :                      owens_t_dispatch(fabs_ah, static_cast&lt;RealType&gt;(1 / fabs_a), h, pol);</span></a>
+<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        777 :                   const RealType normh = owens_t_znorm1(h, pol);</span></a>
+<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">        777 :                   const RealType normah = owens_t_znorm1(fabs_ah, pol);</span></a>
+<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">       1554 :                   val = static_cast&lt;RealType&gt;(1)/static_cast&lt;RealType&gt;(4) - normh*normah -</span></a>
+<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">        777 :                      owens_t_dispatch(fabs_ah, static_cast&lt;RealType&gt;(1 / fabs_a), h, pol);</span></a>
 <a name="1010"><span class="lineNum">    1010 </span>            :                } // if( h &lt;= 0.67 )</a>
 <a name="1011"><span class="lineNum">    1011 </span>            :                else</a>
 <a name="1012"><span class="lineNum">    1012 </span>            :                {</a>
-<a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">        769 :                   const RealType normh = detail::owens_t_znorm2(h, pol);</span></a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">        769 :                   const RealType normah = detail::owens_t_znorm2(fabs_ah, pol);</span></a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">       1538 :                   val = constants::half&lt;RealType&gt;()*(normh+normah) - normh*normah -</span></a>
-<a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">        769 :                      owens_t_dispatch(fabs_ah, static_cast&lt;RealType&gt;(1 / fabs_a), h, pol);</span></a>
+<a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">       1169 :                   const RealType normh = detail::owens_t_znorm2(h, pol);</span></a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">       1169 :                   const RealType normah = detail::owens_t_znorm2(fabs_ah, pol);</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">       2338 :                   val = constants::half&lt;RealType&gt;()*(normh+normah) - normh*normah -</span></a>
+<a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">       1169 :                      owens_t_dispatch(fabs_ah, static_cast&lt;RealType&gt;(1 / fabs_a), h, pol);</span></a>
 <a name="1017"><span class="lineNum">    1017 </span>            :                } // else [if( h &lt;= 0.67 )]</a>
 <a name="1018"><span class="lineNum">    1018 </span>            :             } // else [if(fabs_a &lt;= 1)]</a>
 <a name="1019"><span class="lineNum">    1019 </span>            : </a>
 <a name="1020"><span class="lineNum">    1020 </span>            :             // exploit that T(h,-a) == -T(h,a)</a>
-<a name="1021"><span class="lineNum">    1021 </span><span class="lineCov">       1457 :             if(a &lt; 0)</span></a>
+<a name="1021"><span class="lineNum">    1021 </span><span class="lineCov">       1965 :             if(a &lt; 0)</span></a>
 <a name="1022"><span class="lineNum">    1022 </span>            :             {</a>
-<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">        230 :                return -val;</span></a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">        223 :                return -val;</span></a>
 <a name="1024"><span class="lineNum">    1024 </span>            :             } // if(a &lt; 0)</a>
 <a name="1025"><span class="lineNum">    1025 </span>            : </a>
 <a name="1026"><span class="lineNum">    1026 </span>            :             return val;</a>
@@ -1107,11 +1107,11 @@
 <a name="1037"><span class="lineNum">    1037 </span>            :                }</a>
 <a name="1038"><span class="lineNum">    1038 </span>            :                template &lt;int N&gt;</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :                static void do_init(const std::integral_constant&lt;int, N&gt;&amp;){}</a>
-<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">          2 :                static void do_init(const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">          6 :                static void do_init(const std::integral_constant&lt;int, 64&gt;&amp;)</span></a>
 <a name="1041"><span class="lineNum">    1041 </span>            :                {</a>
-<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">          2 :                   boost::math::owens_t(static_cast&lt;T&gt;(7), static_cast&lt;T&gt;(0.96875), Policy());</span></a>
-<a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">          2 :                   boost::math::owens_t(static_cast&lt;T&gt;(2), static_cast&lt;T&gt;(0.5), Policy());</span></a>
-<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">          2 :                }</span></a>
+<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">          6 :                   boost::math::owens_t(static_cast&lt;T&gt;(7), static_cast&lt;T&gt;(0.96875), Policy());</span></a>
+<a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">          6 :                   boost::math::owens_t(static_cast&lt;T&gt;(2), static_cast&lt;T&gt;(0.5), Policy());</span></a>
+<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">          6 :                }</span></a>
 <a name="1045"><span class="lineNum">    1045 </span>            :                void force_instantiate()const{}</a>
 <a name="1046"><span class="lineNum">    1046 </span>            :             };</a>
 <a name="1047"><span class="lineNum">    1047 </span>            :             static const init initializer;</a>
@@ -1127,7 +1127,7 @@
 <a name="1057"><span class="lineNum">    1057 </span>            :       } // namespace detail</a>
 <a name="1058"><span class="lineNum">    1058 </span>            : </a>
 <a name="1059"><span class="lineNum">    1059 </span>            :       template &lt;class T1, class T2, class Policy&gt;</a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">       1457 :       inline typename tools::promote_args&lt;T1, T2&gt;::type owens_t(T1 h, T2 a, const Policy&amp; pol)</span></a>
+<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">       1965 :       inline typename tools::promote_args&lt;T1, T2&gt;::type owens_t(T1 h, T2 a, const Policy&amp; pol)</span></a>
 <a name="1061"><span class="lineNum">    1061 </span>            :       {</a>
 <a name="1062"><span class="lineNum">    1062 </span>            :          typedef typename tools::promote_args&lt;T1, T2&gt;::type result_type;</a>
 <a name="1063"><span class="lineNum">    1063 </span>            :          typedef typename policies::evaluation&lt;result_type, Policy&gt;::type value_type;</a>
@@ -1139,13 +1139,13 @@
 <a name="1069"><span class="lineNum">    1069 </span>            : </a>
 <a name="1070"><span class="lineNum">    1070 </span>            :          detail::owens_t_initializer&lt;result_type, Policy, tag_type&gt;::force_instantiate();</a>
 <a name="1071"><span class="lineNum">    1071 </span>            :             </a>
-<a name="1072"><span class="lineNum">    1072 </span><span class="lineCov">       1457 :          return policies::checked_narrowing_cast&lt;result_type, Policy&gt;(detail::owens_t(static_cast&lt;value_type&gt;(h), static_cast&lt;value_type&gt;(a), pol), &quot;boost::math::owens_t&lt;%1%&gt;(%1%,%1%)&quot;);</span></a>
+<a name="1072"><span class="lineNum">    1072 </span><span class="lineCov">       1965 :          return policies::checked_narrowing_cast&lt;result_type, Policy&gt;(detail::owens_t(static_cast&lt;value_type&gt;(h), static_cast&lt;value_type&gt;(a), pol), &quot;boost::math::owens_t&lt;%1%&gt;(%1%,%1%)&quot;);</span></a>
 <a name="1073"><span class="lineNum">    1073 </span>            :       }</a>
 <a name="1074"><span class="lineNum">    1074 </span>            : </a>
 <a name="1075"><span class="lineNum">    1075 </span>            :       template &lt;class T1, class T2&gt;</a>
-<a name="1076"><span class="lineNum">    1076 </span><span class="lineCov">       1453 :       inline typename tools::promote_args&lt;T1, T2&gt;::type owens_t(T1 h, T2 a)</span></a>
+<a name="1076"><span class="lineNum">    1076 </span><span class="lineCov">       1953 :       inline typename tools::promote_args&lt;T1, T2&gt;::type owens_t(T1 h, T2 a)</span></a>
 <a name="1077"><span class="lineNum">    1077 </span>            :       {</a>
-<a name="1078"><span class="lineNum">    1078 </span><span class="lineCov">       1453 :          return owens_t(h, a, policies::policy&lt;&gt;());</span></a>
+<a name="1078"><span class="lineNum">    1078 </span><span class="lineCov">       1953 :          return owens_t(h, a, policies::policy&lt;&gt;());</span></a>
 <a name="1079"><span class="lineNum">    1079 </span>            :       }</a>
 <a name="1080"><span class="lineNum">    1080 </span>            : </a>
 <a name="1081"><span class="lineNum">    1081 </span>            : </a>

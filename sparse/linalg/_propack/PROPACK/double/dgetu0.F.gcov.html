@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/double/dgetu0.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/double/dgetu0.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">27</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -78,7 +78,7 @@
 <a name="8"><span class="lineNum">       8 </span>            : c     Op(A) = A^T if transa='t'.</a>
 <a name="9"><span class="lineNum">       9 </span>            : c</a>
 <a name="10"><span class="lineNum">      10 </span>            : </a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        204 :       subroutine dgetu0(transa, m, n, j, ntry, u0, u0norm, U, ldu,</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        214 :       subroutine dgetu0(transa, m, n, j, ntry, u0, u0norm, U, ldu,</span></a>
 <a name="12"><span class="lineNum">      12 </span>            :      c     aprod, dparm, iparm, ierr, icgs, anormest, work)</a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
 <a name="14"><span class="lineNum">      14 </span>            : c     %-----------%</a>
@@ -114,48 +114,48 @@
 <a name="44"><span class="lineNum">      44 </span>            : </a>
 <a name="45"><span class="lineNum">      45 </span>            : c-------------------- Here begins executable code ---------------------</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        204 :       iseed(1) = 1</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        204 :       iseed(2) = 3</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">        204 :       iseed(3) = 5</span></a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        204 :       iseed(4) = 7</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        214 :       iseed(1) = 1</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        214 :       iseed(2) = 3</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">        214 :       iseed(3) = 5</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">        214 :       iseed(4) = 7</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        204 :       if (lsame(transa,'n')) then</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        214 :       if (lsame(transa,'n')) then</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : c     %-------------------------%</a>
 <a name="54"><span class="lineNum">      54 </span>            : c     | u0 is to be an m-vector |</a>
 <a name="55"><span class="lineNum">      55 </span>            : c     %-------------------------%</a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         92 :          rsize = n</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         92 :          usize = m</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        106 :          rsize = n</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        106 :          usize = m</span></a>
 <a name="58"><span class="lineNum">      58 </span>            :       else</a>
 <a name="59"><span class="lineNum">      59 </span>            : c     %-------------------------%</a>
 <a name="60"><span class="lineNum">      60 </span>            : c     | u0 is to be an n-vector |</a>
 <a name="61"><span class="lineNum">      61 </span>            : c     %-------------------------%</a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        112 :          rsize = m</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        112 :          usize = n</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        108 :          rsize = m</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        108 :          usize = n</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :       endif</a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        204 :       idist = 2</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        204 :       ierr = 0</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        366 :       do itry=1,ntry</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        314 :          call dlarnv(idist, iseed, rsize, work)</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        314 :          nrm = pdnrm2(rsize,work,1)</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        314 :          call aprod(transa,m,n,work,u0,dparm,iparm)</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        314 :          nopx = nopx+1</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        214 :       idist = 2</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        214 :       ierr = 0</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        406 :       do itry=1,ntry</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        342 :          call dlarnv(idist, iseed, rsize, work)</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        342 :          nrm = pdnrm2(rsize,work,1)</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        342 :          call aprod(transa,m,n,work,u0,dparm,iparm)</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        342 :          nopx = nopx+1</span></a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        314 :          u0norm = pdnrm2(usize,u0,1)</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        314 :          anormest = u0norm/nrm</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        342 :          u0norm = pdnrm2(usize,u0,1)</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        342 :          anormest = u0norm/nrm</span></a>
 <a name="76"><span class="lineNum">      76 </span>            :          </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        314 :          if (j.ge.1) then</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        192 :             index(1) = 1</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        192 :             index(2) = j</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        192 :             index(3) = j+1            </span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        342 :          if (j.ge.1) then</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        222 :             index(1) = 1</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        222 :             index(2) = j</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        222 :             index(3) = j+1            </span></a>
 <a name="81"><span class="lineNum">      81 </span>            :             call dreorth(usize,j,U,ldu,u0,u0norm,index,kappa,</a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        192 :      c           work,icgs)</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        222 :      c           work,icgs)</span></a>
 <a name="83"><span class="lineNum">      83 </span>            :          endif</a>
 <a name="84"><span class="lineNum">      84 </span>            : </a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        366 :          if (u0norm.gt.0) goto 9999</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        406 :          if (u0norm.gt.0) goto 9999</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :       enddo</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        204 :       ierr = -1</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        204 :  9999 return</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        214 :       ierr = -1</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        214 :  9999 return</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :       end</a>
 <a name="90"><span class="lineNum">      90 </span>            :       </a>
 </pre>

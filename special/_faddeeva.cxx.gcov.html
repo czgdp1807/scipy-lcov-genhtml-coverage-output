@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/_faddeeva.cxx</title>
+  <title>LCOV - lcov.info - special/_faddeeva.cxx</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">76</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -84,26 +84,26 @@
 <a name="14"><span class="lineNum">      14 </span><span class="lineCov">         52 :     return npy_cpack(real(w), imag(w));</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : }</a>
 <a name="16"><span class="lineNum">      16 </span>            : </a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">      31778 : npy_cdouble faddeeva_erf(npy_cdouble zp)</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">      31775 : npy_cdouble faddeeva_erf(npy_cdouble zp)</span></a>
 <a name="18"><span class="lineNum">      18 </span>            : {</a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">      31778 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">      31778 :     complex&lt;double&gt; w = Faddeeva::erf(z);</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">      31778 :     return npy_cpack(real(w), imag(w));</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">      31775 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">      31775 :     complex&lt;double&gt; w = Faddeeva::erf(z);</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">      31775 :     return npy_cpack(real(w), imag(w));</span></a>
 <a name="22"><span class="lineNum">      22 </span>            : }</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">    7168921 : double faddeeva_erfc(double x)</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">    7671848 : double faddeeva_erfc(double x)</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : {</a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :     return Faddeeva::erfc(x);</span></a>
 <a name="27"><span class="lineNum">      27 </span>            : }</a>
 <a name="28"><span class="lineNum">      28 </span>            : </a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      15773 : npy_cdouble faddeeva_erfc_complex(npy_cdouble zp)</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      15768 : npy_cdouble faddeeva_erfc_complex(npy_cdouble zp)</span></a>
 <a name="30"><span class="lineNum">      30 </span>            : {</a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">      15773 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">      15773 :     complex&lt;double&gt; w = Faddeeva::erfc(z);</span></a>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">      15773 :     return npy_cpack(real(w), imag(w));</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">      15768 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">      15768 :     complex&lt;double&gt; w = Faddeeva::erfc(z);</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">      15768 :     return npy_cpack(real(w), imag(w));</span></a>
 <a name="34"><span class="lineNum">      34 </span>            : }</a>
 <a name="35"><span class="lineNum">      35 </span>            : </a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">    1355021 : double faddeeva_erfcx(double x)</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">    3566089 : double faddeeva_erfcx(double x)</span></a>
 <a name="37"><span class="lineNum">      37 </span>            : {</a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">        665 :     return Faddeeva::erfcx(x);</span></a>
 <a name="39"><span class="lineNum">      39 </span>            : }</a>
@@ -143,12 +143,12 @@
 <a name="73"><span class="lineNum">      73 </span>            :  * A wrapper for a normal CDF for complex argument</a>
 <a name="74"><span class="lineNum">      74 </span>            :  */</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        378 : npy_cdouble faddeeva_ndtr(npy_cdouble zp)</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        386 : npy_cdouble faddeeva_ndtr(npy_cdouble zp)</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : {</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        378 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        378 :     z *= M_SQRT1_2;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        378 :     complex&lt;double&gt; w = 0.5 * Faddeeva::erfc(-z);</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        378 :     return npy_cpack(real(w), imag(w));</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        386 :     complex&lt;double&gt; z(npy_creal(zp), npy_cimag(zp));</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        386 :     z *= M_SQRT1_2;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        386 :     complex&lt;double&gt; w = 0.5 * Faddeeva::erfc(-z);</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        386 :     return npy_cpack(real(w), imag(w));</span></a>
 <a name="82"><span class="lineNum">      82 </span>            : }</a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
 <a name="84"><span class="lineNum">      84 </span>            : /*</a>
@@ -173,14 +173,14 @@
 <a name="103"><span class="lineNum">     103 </span>            :  *   log F(x) = log(1 - erfc(x/√2)/2)</a>
 <a name="104"><span class="lineNum">     104 </span>            :  *            = log1p(-erfc(x/√2)/2)</a>
 <a name="105"><span class="lineNum">     105 </span>            :  */</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">    8523277 : double faddeeva_log_ndtr(double x)</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">   11237272 : double faddeeva_log_ndtr(double x)</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : {</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">    8523277 :     double t = x*M_SQRT1_2;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    8523277 :     if (x &lt; -1.0) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    1354356 :         return log(faddeeva_erfcx(-t)/2) - t*t;</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">   11237272 :     double t = x*M_SQRT1_2;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">   11237272 :     if (x &lt; -1.0) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    3565424 :         return log(faddeeva_erfcx(-t)/2) - t*t;</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :     }</a>
 <a name="112"><span class="lineNum">     112 </span>            :     else {</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">    7168921 :         return log1p(-faddeeva_erfc(t)/2);</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">    7671848 :         return log1p(-faddeeva_erfc(t)/2);</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :     }</a>
 <a name="115"><span class="lineNum">     115 </span>            : }</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>

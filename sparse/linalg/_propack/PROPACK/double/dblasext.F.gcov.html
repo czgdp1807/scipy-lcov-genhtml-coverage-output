@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/double/dblasext.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/double/dblasext.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">30</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -221,22 +221,22 @@
 <a name="151"><span class="lineNum">     151 </span>            : </a>
 <a name="152"><span class="lineNum">     152 </span>            : #else</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       9587 :       double precision function pdnrm2(n, x, incx)</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       9492 :       double precision function pdnrm2(n, x, incx)</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :       implicit none</a>
 <a name="156"><span class="lineNum">     156 </span>            :       integer n, incx</a>
 <a name="157"><span class="lineNum">     157 </span>            :       double precision x(*), dnrm2</a>
 <a name="158"><span class="lineNum">     158 </span>            :       external dnrm2</a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       9587 :       pdnrm2 = dnrm2(n, x, incx)</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       9587 :       end</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       9492 :       pdnrm2 = dnrm2(n, x, incx)</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       9492 :       end</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       7647 :       subroutine pdscal(n, alpha, x , incx)</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       7409 :       subroutine pdscal(n, alpha, x , incx)</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :       implicit none</a>
 <a name="165"><span class="lineNum">     165 </span>            :       integer n, incx</a>
 <a name="166"><span class="lineNum">     166 </span>            :       double precision alpha,x(*)</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       7647 :       call dscal(n, alpha, x , incx)</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       7647 :       end</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">       7409 :       call dscal(n, alpha, x , incx)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       7409 :       end</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :       subroutine pdcopy(n, x , incx, y, incy)</span></a>
 <a name="172"><span class="lineNum">     172 </span>            :       implicit none</a>
@@ -246,43 +246,43 @@
 <a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :       call dcopy(n, x , incx, y, incy)</span></a>
 <a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :       end</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       4090 :       subroutine pdaxpy(n, alpha, x , incx, y, incy)</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       3861 :       subroutine pdaxpy(n, alpha, x , incx, y, incy)</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :       implicit none</a>
 <a name="181"><span class="lineNum">     181 </span>            :       integer n, incx, incy</a>
 <a name="182"><span class="lineNum">     182 </span>            :       double precision alpha,x(*),y(*)</a>
 <a name="183"><span class="lineNum">     183 </span>            :      </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       4090 :       call daxpy(n, alpha, x , incx, y, incy)</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4090 :       end</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       3861 :       call daxpy(n, alpha, x , incx, y, incy)</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       3861 :       end</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            :       </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        623 :       double precision function pddot(n, x , incx, y, incy)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        624 :       double precision function pddot(n, x , incx, y, incy)</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :       implicit none</a>
 <a name="190"><span class="lineNum">     190 </span>            :       integer n, incx, incy</a>
 <a name="191"><span class="lineNum">     191 </span>            :       double precision x(*),y(*),ddot</a>
 <a name="192"><span class="lineNum">     192 </span>            :       external ddot</a>
 <a name="193"><span class="lineNum">     193 </span>            :       </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        623 :       pddot = ddot(n, x , incx, y, incy)</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">        623 :       end</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        624 :       pddot = ddot(n, x , incx, y, incy)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">        624 :       end</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : #endif</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
 <a name="198"><span class="lineNum">     198 </span>            : c</a>
 <a name="199"><span class="lineNum">     199 </span>            : c****************************************************************************</a>
 <a name="200"><span class="lineNum">     200 </span>            : c </a>
 <a name="201"><span class="lineNum">     201 </span>            :          </a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       2391 :       subroutine pdzero(n, x , incx)</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       2403 :       subroutine pdzero(n, x , incx)</span></a>
 <a name="203"><span class="lineNum">     203 </span>            :       implicit none</a>
 <a name="204"><span class="lineNum">     204 </span>            :       integer n, incx</a>
 <a name="205"><span class="lineNum">     205 </span>            :       double precision x(*)</a>
 <a name="206"><span class="lineNum">     206 </span>            :       </a>
 <a name="207"><span class="lineNum">     207 </span>            :       integer i</a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       2391 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       2391 :          if (incx.eq.1) then</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       2403 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       2403 :          if (incx.eq.1) then</span></a>
 <a name="211"><span class="lineNum">     211 </span>            : #ifdef _OPENMP</a>
 <a name="212"><span class="lineNum">     212 </span>            : c$OMP PARALLEL DO </a>
 <a name="213"><span class="lineNum">     213 </span>            : #endif</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     360857 :             do i=1,n</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     360857 :                x(i) = 0d0</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     358933 :             do i=1,n</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     358933 :                x(i) = 0d0</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :             enddo</a>
 <a name="217"><span class="lineNum">     217 </span>            :          else</a>
 <a name="218"><span class="lineNum">     218 </span>            : #ifdef _OPENMP</a>
@@ -293,24 +293,24 @@
 <a name="223"><span class="lineNum">     223 </span>            :             enddo</a>
 <a name="224"><span class="lineNum">     224 </span>            :          endif</a>
 <a name="225"><span class="lineNum">     225 </span>            :       endif</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       2391 :       return</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       2403 :       return</span></a>
 <a name="227"><span class="lineNum">     227 </span>            :       end</a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
 <a name="229"><span class="lineNum">     229 </span>            : </a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       2151 :       subroutine pizero(n, x , incx)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       2141 :       subroutine pizero(n, x , incx)</span></a>
 <a name="231"><span class="lineNum">     231 </span>            :       implicit none</a>
 <a name="232"><span class="lineNum">     232 </span>            :       integer n, incx</a>
 <a name="233"><span class="lineNum">     233 </span>            :       integer x(*)</a>
 <a name="234"><span class="lineNum">     234 </span>            :       </a>
 <a name="235"><span class="lineNum">     235 </span>            :       integer i</a>
 <a name="236"><span class="lineNum">     236 </span>            : </a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       2151 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       2151 :          if (incx.eq.1) then</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       2141 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       2141 :          if (incx.eq.1) then</span></a>
 <a name="239"><span class="lineNum">     239 </span>            : #ifdef _OPENMP</a>
 <a name="240"><span class="lineNum">     240 </span>            : c$OMP PARALLEL DO  schedule(static)</a>
 <a name="241"><span class="lineNum">     241 </span>            : #endif</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">     209548 :             do i=1,n</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">     209548 :                x(i) = 0</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">     208828 :             do i=1,n</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">     208828 :                x(i) = 0</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :             enddo</a>
 <a name="245"><span class="lineNum">     245 </span>            :          else</a>
 <a name="246"><span class="lineNum">     246 </span>            : #ifdef _OPENMP</a>
@@ -321,7 +321,7 @@
 <a name="251"><span class="lineNum">     251 </span>            :             enddo</a>
 <a name="252"><span class="lineNum">     252 </span>            :          endif</a>
 <a name="253"><span class="lineNum">     253 </span>            :       endif</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       2151 :       return</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       2141 :       return</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :       end</a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
@@ -537,17 +537,17 @@
 <a name="467"><span class="lineNum">     467 </span>            :       end</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
 <a name="469"><span class="lineNum">     469 </span>            :                  </a>
-<a name="470"><span class="lineNum">     470 </span><span class="lineCov">       8303 :       subroutine dzero(n, x , incx)</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">       8285 :       subroutine dzero(n, x , incx)</span></a>
 <a name="471"><span class="lineNum">     471 </span>            :       implicit none</a>
 <a name="472"><span class="lineNum">     472 </span>            :       integer n, incx</a>
 <a name="473"><span class="lineNum">     473 </span>            :       double precision x(*),zero</a>
 <a name="474"><span class="lineNum">     474 </span>            :       parameter (zero = 0.0)          </a>
 <a name="475"><span class="lineNum">     475 </span>            :       integer i</a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       8303 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       6303 :          if (incx.eq.1) then</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">   10680140 :             do i=1,n</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">   10680140 :                x(i) = zero</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       8285 :       if ((n.gt.0).and.(incx.ne.0)) then         </span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       6285 :          if (incx.eq.1) then</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">   10626866 :             do i=1,n</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">   10626866 :                x(i) = zero</span></a>
 <a name="481"><span class="lineNum">     481 </span>            :             enddo</a>
 <a name="482"><span class="lineNum">     482 </span>            :          else</a>
 <a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 :             do i=1,n</span></a>
@@ -555,7 +555,7 @@
 <a name="485"><span class="lineNum">     485 </span>            :             enddo</a>
 <a name="486"><span class="lineNum">     486 </span>            :          endif</a>
 <a name="487"><span class="lineNum">     487 </span>            :       endif</a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       8303 :       return</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       8285 :       return</span></a>
 <a name="489"><span class="lineNum">     489 </span>            :       end</a>
 <a name="490"><span class="lineNum">     490 </span>            : </a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>

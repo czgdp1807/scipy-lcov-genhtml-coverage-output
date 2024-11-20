@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/functional</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/functional</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -558,7 +558,7 @@
 <a name="488"><span class="lineNum">     488 </span>            :     class _Bind;</a>
 <a name="489"><span class="lineNum">     489 </span>            : </a>
 <a name="490"><span class="lineNum">     490 </span>            :    template&lt;typename _Functor, typename... _Bound_args&gt;</a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">        540 :     class _Bind&lt;_Functor(_Bound_args...)&gt;</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">        544 :     class _Bind&lt;_Functor(_Bound_args...)&gt;</span></a>
 <a name="492"><span class="lineNum">     492 </span>            :     : public _Weak_result_type&lt;_Functor&gt;</a>
 <a name="493"><span class="lineNum">     493 </span>            :     {</a>
 <a name="494"><span class="lineNum">     494 </span>            :       typedef typename _Build_index_tuple&lt;sizeof...(_Bound_args)&gt;::__type</a>
@@ -571,11 +571,11 @@
 <a name="501"><span class="lineNum">     501 </span>            :       template&lt;typename _Result, typename... _Args, std::size_t... _Indexes&gt;</a>
 <a name="502"><span class="lineNum">     502 </span>            :         _GLIBCXX20_CONSTEXPR</a>
 <a name="503"><span class="lineNum">     503 </span>            :         _Result</a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">        700 :         __call(tuple&lt;_Args...&gt;&amp;&amp; __args, _Index_tuple&lt;_Indexes...&gt;)</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">        705 :         __call(tuple&lt;_Args...&gt;&amp;&amp; __args, _Index_tuple&lt;_Indexes...&gt;)</span></a>
 <a name="505"><span class="lineNum">     505 </span>            :         {</a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        430 :           return std::__invoke(_M_f,</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        430 :               _Mu&lt;_Bound_args&gt;()(std::get&lt;_Indexes&gt;(_M_bound_args), __args)...</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">        698 :               );</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        433 :           return std::__invoke(_M_f,</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        433 :               _Mu&lt;_Bound_args&gt;()(std::get&lt;_Indexes&gt;(_M_bound_args), __args)...</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">        703 :               );</span></a>
 <a name="509"><span class="lineNum">     509 </span>            :         }</a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
 <a name="511"><span class="lineNum">     511 </span>            :       // Call as const</a>
@@ -644,23 +644,23 @@
 <a name="574"><span class="lineNum">     574 </span>            : </a>
 <a name="575"><span class="lineNum">     575 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="576"><span class="lineNum">     576 </span>            :         explicit _GLIBCXX20_CONSTEXPR</a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">        700 :         _Bind(_Functor&amp;&amp; __f, _Args&amp;&amp;... __args)</span></a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1106 :         : _M_f(std::move(__f)), _M_bound_args(std::forward&lt;_Args&gt;(__args)...)</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">        705 :         _Bind(_Functor&amp;&amp; __f, _Args&amp;&amp;... __args)</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1114 :         : _M_f(std::move(__f)), _M_bound_args(std::forward&lt;_Args&gt;(__args)...)</span></a>
 <a name="579"><span class="lineNum">     579 </span>            :         { }</a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
 <a name="581"><span class="lineNum">     581 </span>            :       _Bind(const _Bind&amp;) = default;</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        430 :       _Bind(_Bind&amp;&amp;) = default;</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        433 :       _Bind(_Bind&amp;&amp;) = default;</span></a>
 <a name="583"><span class="lineNum">     583 </span>            : </a>
 <a name="584"><span class="lineNum">     584 </span>            :       // Call unqualified</a>
 <a name="585"><span class="lineNum">     585 </span>            :       template&lt;typename... _Args,</a>
 <a name="586"><span class="lineNum">     586 </span>            :                typename _Result = _Res_type&lt;tuple&lt;_Args...&gt;&gt;&gt;</a>
 <a name="587"><span class="lineNum">     587 </span>            :         _GLIBCXX20_CONSTEXPR</a>
 <a name="588"><span class="lineNum">     588 </span>            :         _Result</a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">        700 :         operator()(_Args&amp;&amp;... __args)</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">        705 :         operator()(_Args&amp;&amp;... __args)</span></a>
 <a name="590"><span class="lineNum">     590 </span>            :         {</a>
 <a name="591"><span class="lineNum">     591 </span>            :           return this-&gt;__call&lt;_Result&gt;(</a>
 <a name="592"><span class="lineNum">     592 </span>            :               std::forward_as_tuple(std::forward&lt;_Args&gt;(__args)...),</a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        698 :               _Bound_indexes());</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        703 :               _Bound_indexes());</span></a>
 <a name="594"><span class="lineNum">     594 </span>            :         }</a>
 <a name="595"><span class="lineNum">     595 </span>            : </a>
 <a name="596"><span class="lineNum">     596 </span>            :       // Call as const</a>
@@ -948,11 +948,11 @@
 <a name="878"><span class="lineNum">     878 </span>            :   template&lt;typename _Func, typename... _BoundArgs&gt;</a>
 <a name="879"><span class="lineNum">     879 </span>            :     inline _GLIBCXX20_CONSTEXPR typename</a>
 <a name="880"><span class="lineNum">     880 </span>            :     _Bind_helper&lt;__is_socketlike&lt;_Func&gt;::value, _Func, _BoundArgs...&gt;::type</a>
-<a name="881"><span class="lineNum">     881 </span><span class="lineCov">        430 :     bind(_Func&amp;&amp; __f, _BoundArgs&amp;&amp;... __args)</span></a>
+<a name="881"><span class="lineNum">     881 </span><span class="lineCov">        433 :     bind(_Func&amp;&amp; __f, _BoundArgs&amp;&amp;... __args)</span></a>
 <a name="882"><span class="lineNum">     882 </span>            :     {</a>
 <a name="883"><span class="lineNum">     883 </span>            :       typedef _Bind_helper&lt;false, _Func, _BoundArgs...&gt; __helper_type;</a>
 <a name="884"><span class="lineNum">     884 </span>            :       return typename __helper_type::type(std::forward&lt;_Func&gt;(__f),</a>
-<a name="885"><span class="lineNum">     885 </span><span class="lineCov">        970 :                                           std::forward&lt;_BoundArgs&gt;(__args)...);</span></a>
+<a name="885"><span class="lineNum">     885 </span><span class="lineCov">        977 :                                           std::forward&lt;_BoundArgs&gt;(__args)...);</span></a>
 <a name="886"><span class="lineNum">     886 </span>            :     }</a>
 <a name="887"><span class="lineNum">     887 </span>            : </a>
 <a name="888"><span class="lineNum">     888 </span>            :   template&lt;typename _Result, typename _Func, typename... _BoundArgs&gt;</a>

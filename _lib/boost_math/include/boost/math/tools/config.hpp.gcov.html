@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/tools/config.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/tools/config.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">8</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -658,15 +658,15 @@
 <a name="588"><span class="lineNum">     588 </span>            :    {</a>
 <a name="589"><span class="lineNum">     589 </span>            :    struct fpu_guard</a>
 <a name="590"><span class="lineNum">     590 </span>            :    {</a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">   11008117 :       fpu_guard()</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">   11008117 :       {</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">   11008117 :          fegetexceptflag(&amp;m_flags, FE_ALL_EXCEPT);</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">   11008117 :          feclearexcept(FE_ALL_EXCEPT);</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">   11008117 :       }</span></a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">   11008117 :       ~fpu_guard()</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">   11081446 :       fpu_guard()</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">   11081446 :       {</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">   11081446 :          fegetexceptflag(&amp;m_flags, FE_ALL_EXCEPT);</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">   11081446 :          feclearexcept(FE_ALL_EXCEPT);</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">   11081446 :       }</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">   11081446 :       ~fpu_guard()</span></a>
 <a name="597"><span class="lineNum">     597 </span>            :       {</a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">   11008117 :          fesetexceptflag(&amp;m_flags, FE_ALL_EXCEPT);</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">   11008115 :       }</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">   11081446 :          fesetexceptflag(&amp;m_flags, FE_ALL_EXCEPT);</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">   11081444 :       }</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :    private:</a>
 <a name="601"><span class="lineNum">     601 </span>            :       fexcept_t m_flags;</a>
 <a name="602"><span class="lineNum">     602 </span>            :    };</a>
@@ -745,122 +745,122 @@
 <a name="675"><span class="lineNum">     675 </span>            : #include &lt;cuda_runtime.h&gt;</a>
 <a name="676"><span class="lineNum">     676 </span>            : #include &lt;cuda/std/type_traits&gt;</a>
 <a name="677"><span class="lineNum">     677 </span>            : #include &lt;cuda/std/utility&gt;</a>
-<a name="678"><span class="lineNum">     678 </span>            : </a>
-<a name="679"><span class="lineNum">     679 </span>            : #  define BOOST_MATH_CUDA_ENABLED __host__ __device__</a>
-<a name="680"><span class="lineNum">     680 </span>            : #  define BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="681"><span class="lineNum">     681 </span>            : </a>
-<a name="682"><span class="lineNum">     682 </span>            : #  ifndef BOOST_MATH_ENABLE_CUDA</a>
-<a name="683"><span class="lineNum">     683 </span>            : #    define BOOST_MATH_ENABLE_CUDA</a>
-<a name="684"><span class="lineNum">     684 </span>            : #  endif</a>
+<a name="678"><span class="lineNum">     678 </span>            : #include &lt;cuda/std/cstdint&gt;</a>
+<a name="679"><span class="lineNum">     679 </span>            : #include &lt;cuda/std/array&gt;</a>
+<a name="680"><span class="lineNum">     680 </span>            : #include &lt;cuda/std/tuple&gt;</a>
+<a name="681"><span class="lineNum">     681 </span>            : #include &lt;cuda/std/complex&gt;</a>
+<a name="682"><span class="lineNum">     682 </span>            : </a>
+<a name="683"><span class="lineNum">     683 </span>            : #  define BOOST_MATH_CUDA_ENABLED __host__ __device__</a>
+<a name="684"><span class="lineNum">     684 </span>            : #  define BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="685"><span class="lineNum">     685 </span>            : </a>
-<a name="686"><span class="lineNum">     686 </span>            : // Device code can not handle exceptions</a>
-<a name="687"><span class="lineNum">     687 </span>            : #  ifndef BOOST_MATH_NO_EXCEPTIONS</a>
-<a name="688"><span class="lineNum">     688 </span>            : #    define BOOST_MATH_NO_EXCEPTIONS</a>
-<a name="689"><span class="lineNum">     689 </span>            : #  endif</a>
-<a name="690"><span class="lineNum">     690 </span>            : </a>
-<a name="691"><span class="lineNum">     691 </span>            : // We want to use force inline from CUDA instead of the host compiler</a>
-<a name="692"><span class="lineNum">     692 </span>            : #  undef BOOST_MATH_FORCEINLINE</a>
-<a name="693"><span class="lineNum">     693 </span>            : #  define BOOST_MATH_FORCEINLINE __forceinline__</a>
+<a name="686"><span class="lineNum">     686 </span>            : #  ifndef BOOST_MATH_ENABLE_CUDA</a>
+<a name="687"><span class="lineNum">     687 </span>            : #    define BOOST_MATH_ENABLE_CUDA</a>
+<a name="688"><span class="lineNum">     688 </span>            : #  endif</a>
+<a name="689"><span class="lineNum">     689 </span>            : </a>
+<a name="690"><span class="lineNum">     690 </span>            : // Device code can not handle exceptions</a>
+<a name="691"><span class="lineNum">     691 </span>            : #  ifndef BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="692"><span class="lineNum">     692 </span>            : #    define BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="693"><span class="lineNum">     693 </span>            : #  endif</a>
 <a name="694"><span class="lineNum">     694 </span>            : </a>
-<a name="695"><span class="lineNum">     695 </span>            : #elif defined(SYCL_LANGUAGE_VERSION)</a>
-<a name="696"><span class="lineNum">     696 </span>            : </a>
-<a name="697"><span class="lineNum">     697 </span>            : #  define BOOST_MATH_SYCL_ENABLED SYCL_EXTERNAL</a>
-<a name="698"><span class="lineNum">     698 </span>            : #  define BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="699"><span class="lineNum">     699 </span>            : </a>
-<a name="700"><span class="lineNum">     700 </span>            : #  ifndef BOOST_MATH_ENABLE_SYCL</a>
-<a name="701"><span class="lineNum">     701 </span>            : #    define BOOST_MATH_ENABLE_SYCL</a>
-<a name="702"><span class="lineNum">     702 </span>            : #  endif</a>
+<a name="695"><span class="lineNum">     695 </span>            : // We want to use force inline from CUDA instead of the host compiler</a>
+<a name="696"><span class="lineNum">     696 </span>            : #  undef BOOST_MATH_FORCEINLINE</a>
+<a name="697"><span class="lineNum">     697 </span>            : #  define BOOST_MATH_FORCEINLINE __forceinline__</a>
+<a name="698"><span class="lineNum">     698 </span>            : </a>
+<a name="699"><span class="lineNum">     699 </span>            : #elif defined(SYCL_LANGUAGE_VERSION)</a>
+<a name="700"><span class="lineNum">     700 </span>            : </a>
+<a name="701"><span class="lineNum">     701 </span>            : #  define BOOST_MATH_SYCL_ENABLED SYCL_EXTERNAL</a>
+<a name="702"><span class="lineNum">     702 </span>            : #  define BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="703"><span class="lineNum">     703 </span>            : </a>
-<a name="704"><span class="lineNum">     704 </span>            : #  ifndef BOOST_MATH_NO_EXCEPTIONS</a>
-<a name="705"><span class="lineNum">     705 </span>            : #    define BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="704"><span class="lineNum">     704 </span>            : #  ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="705"><span class="lineNum">     705 </span>            : #    define BOOST_MATH_ENABLE_SYCL</a>
 <a name="706"><span class="lineNum">     706 </span>            : #  endif</a>
 <a name="707"><span class="lineNum">     707 </span>            : </a>
-<a name="708"><span class="lineNum">     708 </span>            : // spir64 does not support long double</a>
-<a name="709"><span class="lineNum">     709 </span>            : #  define BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS</a>
-<a name="710"><span class="lineNum">     710 </span>            : #  define BOOST_MATH_NO_REAL_CONCEPT_TESTS</a>
+<a name="708"><span class="lineNum">     708 </span>            : #  ifndef BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="709"><span class="lineNum">     709 </span>            : #    define BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="710"><span class="lineNum">     710 </span>            : #  endif</a>
 <a name="711"><span class="lineNum">     711 </span>            : </a>
-<a name="712"><span class="lineNum">     712 </span>            : #  undef BOOST_MATH_FORCEINLINE</a>
-<a name="713"><span class="lineNum">     713 </span>            : #  define BOOST_MATH_FORCEINLINE inline</a>
-<a name="714"><span class="lineNum">     714 </span>            : </a>
-<a name="715"><span class="lineNum">     715 </span>            : #endif</a>
-<a name="716"><span class="lineNum">     716 </span>            : </a>
-<a name="717"><span class="lineNum">     717 </span>            : #ifndef BOOST_MATH_CUDA_ENABLED</a>
-<a name="718"><span class="lineNum">     718 </span>            : #  define BOOST_MATH_CUDA_ENABLED</a>
+<a name="712"><span class="lineNum">     712 </span>            : // spir64 does not support long double</a>
+<a name="713"><span class="lineNum">     713 </span>            : #  define BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS</a>
+<a name="714"><span class="lineNum">     714 </span>            : #  define BOOST_MATH_NO_REAL_CONCEPT_TESTS</a>
+<a name="715"><span class="lineNum">     715 </span>            : </a>
+<a name="716"><span class="lineNum">     716 </span>            : #  undef BOOST_MATH_FORCEINLINE</a>
+<a name="717"><span class="lineNum">     717 </span>            : #  define BOOST_MATH_FORCEINLINE inline</a>
+<a name="718"><span class="lineNum">     718 </span>            : </a>
 <a name="719"><span class="lineNum">     719 </span>            : #endif</a>
 <a name="720"><span class="lineNum">     720 </span>            : </a>
-<a name="721"><span class="lineNum">     721 </span>            : #ifndef BOOST_MATH_SYCL_ENABLED</a>
-<a name="722"><span class="lineNum">     722 </span>            : #  define BOOST_MATH_SYCL_ENABLED</a>
+<a name="721"><span class="lineNum">     721 </span>            : #ifndef BOOST_MATH_CUDA_ENABLED</a>
+<a name="722"><span class="lineNum">     722 </span>            : #  define BOOST_MATH_CUDA_ENABLED</a>
 <a name="723"><span class="lineNum">     723 </span>            : #endif</a>
 <a name="724"><span class="lineNum">     724 </span>            : </a>
-<a name="725"><span class="lineNum">     725 </span>            : // Not all functions that allow CUDA allow SYCL (e.g. Recursion is disallowed by SYCL)</a>
-<a name="726"><span class="lineNum">     726 </span>            : #  define BOOST_MATH_GPU_ENABLED BOOST_MATH_CUDA_ENABLED BOOST_MATH_SYCL_ENABLED</a>
-<a name="727"><span class="lineNum">     727 </span>            : </a>
-<a name="728"><span class="lineNum">     728 </span>            : // Additional functions that need replaced/marked up</a>
-<a name="729"><span class="lineNum">     729 </span>            : #ifdef BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="730"><span class="lineNum">     730 </span>            : template &lt;class T&gt;</a>
-<a name="731"><span class="lineNum">     731 </span>            : BOOST_MATH_GPU_ENABLED constexpr void gpu_safe_swap(T&amp; a, T&amp; b) { T t(a); a = b; b = t; }</a>
-<a name="732"><span class="lineNum">     732 </span>            : template &lt;class T&gt;</a>
-<a name="733"><span class="lineNum">     733 </span>            : BOOST_MATH_GPU_ENABLED constexpr T gpu_safe_min(const T&amp; a, const T&amp; b) { return a &lt; b ? a : b; }</a>
+<a name="725"><span class="lineNum">     725 </span>            : #ifndef BOOST_MATH_SYCL_ENABLED</a>
+<a name="726"><span class="lineNum">     726 </span>            : #  define BOOST_MATH_SYCL_ENABLED</a>
+<a name="727"><span class="lineNum">     727 </span>            : #endif</a>
+<a name="728"><span class="lineNum">     728 </span>            : </a>
+<a name="729"><span class="lineNum">     729 </span>            : // Not all functions that allow CUDA allow SYCL (e.g. Recursion is disallowed by SYCL)</a>
+<a name="730"><span class="lineNum">     730 </span>            : #  define BOOST_MATH_GPU_ENABLED BOOST_MATH_CUDA_ENABLED BOOST_MATH_SYCL_ENABLED</a>
+<a name="731"><span class="lineNum">     731 </span>            : </a>
+<a name="732"><span class="lineNum">     732 </span>            : // Additional functions that need replaced/marked up</a>
+<a name="733"><span class="lineNum">     733 </span>            : #ifdef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="734"><span class="lineNum">     734 </span>            : template &lt;class T&gt;</a>
-<a name="735"><span class="lineNum">     735 </span>            : BOOST_MATH_GPU_ENABLED constexpr T cuda_safe_max(const T&amp; a, const T&amp; b) { return a &gt; b ? a : b; }</a>
-<a name="736"><span class="lineNum">     736 </span>            : </a>
-<a name="737"><span class="lineNum">     737 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) gpu_safe_swap(a, b)</a>
-<a name="738"><span class="lineNum">     738 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) gpu_safe_min(a, b)</a>
-<a name="739"><span class="lineNum">     739 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) gpu_safe_max(a, b)</a>
+<a name="735"><span class="lineNum">     735 </span>            : BOOST_MATH_GPU_ENABLED constexpr void gpu_safe_swap(T&amp; a, T&amp; b) { T t(a); a = b; b = t; }</a>
+<a name="736"><span class="lineNum">     736 </span>            : template &lt;class T&gt;</a>
+<a name="737"><span class="lineNum">     737 </span>            : BOOST_MATH_GPU_ENABLED constexpr T gpu_safe_min(const T&amp; a, const T&amp; b) { return a &lt; b ? a : b; }</a>
+<a name="738"><span class="lineNum">     738 </span>            : template &lt;class T&gt;</a>
+<a name="739"><span class="lineNum">     739 </span>            : BOOST_MATH_GPU_ENABLED constexpr T gpu_safe_max(const T&amp; a, const T&amp; b) { return a &gt; b ? a : b; }</a>
 <a name="740"><span class="lineNum">     740 </span>            : </a>
-<a name="741"><span class="lineNum">     741 </span>            : #else</a>
-<a name="742"><span class="lineNum">     742 </span>            : </a>
-<a name="743"><span class="lineNum">     743 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) std::swap(a, b)</a>
-<a name="744"><span class="lineNum">     744 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) (std::min)(a, b)</a>
-<a name="745"><span class="lineNum">     745 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) (std::max)(a, b)</a>
+<a name="741"><span class="lineNum">     741 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) gpu_safe_swap(a, b)</a>
+<a name="742"><span class="lineNum">     742 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) gpu_safe_min(a, b)</a>
+<a name="743"><span class="lineNum">     743 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) gpu_safe_max(a, b)</a>
+<a name="744"><span class="lineNum">     744 </span>            : </a>
+<a name="745"><span class="lineNum">     745 </span>            : #else</a>
 <a name="746"><span class="lineNum">     746 </span>            : </a>
-<a name="747"><span class="lineNum">     747 </span>            : #endif</a>
-<a name="748"><span class="lineNum">     748 </span>            : </a>
-<a name="749"><span class="lineNum">     749 </span>            : // Static variables are not allowed with CUDA or C++20 modules</a>
-<a name="750"><span class="lineNum">     750 </span>            : // See if we can inline them instead</a>
-<a name="751"><span class="lineNum">     751 </span>            : </a>
-<a name="752"><span class="lineNum">     752 </span>            : #if defined(__cpp_inline_variables) &amp;&amp; __cpp_inline_variables &gt;= 201606L</a>
-<a name="753"><span class="lineNum">     753 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR inline constexpr</a>
-<a name="754"><span class="lineNum">     754 </span>            : #  define BOOST_MATH_STATIC static</a>
-<a name="755"><span class="lineNum">     755 </span>            : #  ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="756"><span class="lineNum">     756 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE static</a>
-<a name="757"><span class="lineNum">     757 </span>            : #  else</a>
-<a name="758"><span class="lineNum">     758 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE</a>
-<a name="759"><span class="lineNum">     759 </span>            : #  endif</a>
-<a name="760"><span class="lineNum">     760 </span>            : #else</a>
-<a name="761"><span class="lineNum">     761 </span>            : #  ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="762"><span class="lineNum">     762 </span>            : #    define BOOST_MATH_INLINE_CONSTEXPR static constexpr</a>
-<a name="763"><span class="lineNum">     763 </span>            : #    define BOOST_MATH_STATIC static</a>
-<a name="764"><span class="lineNum">     764 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE</a>
-<a name="765"><span class="lineNum">     765 </span>            : #  else</a>
-<a name="766"><span class="lineNum">     766 </span>            : #    define BOOST_MATH_INLINE_CONSTEXPR constexpr</a>
-<a name="767"><span class="lineNum">     767 </span>            : #    define BOOST_MATH_STATIC constexpr</a>
-<a name="768"><span class="lineNum">     768 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE static</a>
-<a name="769"><span class="lineNum">     769 </span>            : #  endif</a>
-<a name="770"><span class="lineNum">     770 </span>            : #endif</a>
-<a name="771"><span class="lineNum">     771 </span>            : </a>
-<a name="772"><span class="lineNum">     772 </span>            : #define BOOST_MATH_FP_NAN FP_NAN</a>
-<a name="773"><span class="lineNum">     773 </span>            : #define BOOST_MATH_FP_INFINITE FP_INFINITE</a>
-<a name="774"><span class="lineNum">     774 </span>            : #define BOOST_MATH_FP_ZERO FP_ZERO</a>
-<a name="775"><span class="lineNum">     775 </span>            : #define BOOST_MATH_FP_SUBNORMAL FP_SUBNORMAL</a>
-<a name="776"><span class="lineNum">     776 </span>            : #define BOOST_MATH_FP_NORMAL FP_NORMAL</a>
-<a name="777"><span class="lineNum">     777 </span>            : </a>
-<a name="778"><span class="lineNum">     778 </span>            : // Missing type from NVRTC</a>
-<a name="779"><span class="lineNum">     779 </span>            : #include &lt;cstdint&gt;</a>
-<a name="780"><span class="lineNum">     780 </span>            : #define BOOST_MATH_SIZE_T std::size_t</a>
-<a name="781"><span class="lineNum">     781 </span>            : #define BOOST_MATH_UINTMAX_T std::uintmax_t</a>
-<a name="782"><span class="lineNum">     782 </span>            : </a>
-<a name="783"><span class="lineNum">     783 </span>            : #else // Special section for CUDA NVRTC to ensure we consume no STL headers</a>
-<a name="784"><span class="lineNum">     784 </span>            : </a>
-<a name="785"><span class="lineNum">     785 </span>            : #ifndef BOOST_MATH_STANDALONE</a>
-<a name="786"><span class="lineNum">     786 </span>            : #  define BOOST_MATH_STANDALONE</a>
-<a name="787"><span class="lineNum">     787 </span>            : #endif</a>
-<a name="788"><span class="lineNum">     788 </span>            : </a>
-<a name="789"><span class="lineNum">     789 </span>            : #define BOOST_MATH_HAS_NVRTC</a>
-<a name="790"><span class="lineNum">     790 </span>            : #define BOOST_MATH_ENABLE_CUDA</a>
-<a name="791"><span class="lineNum">     791 </span>            : #define BOOST_MATH_HAS_GPU_SUPPORT</a>
-<a name="792"><span class="lineNum">     792 </span>            : </a>
-<a name="793"><span class="lineNum">     793 </span>            : #define BOOST_MATH_GPU_ENABLED __host__ __device__</a>
+<a name="747"><span class="lineNum">     747 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) std::swap(a, b)</a>
+<a name="748"><span class="lineNum">     748 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) (std::min)(a, b)</a>
+<a name="749"><span class="lineNum">     749 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) (std::max)(a, b)</a>
+<a name="750"><span class="lineNum">     750 </span>            : </a>
+<a name="751"><span class="lineNum">     751 </span>            : #endif</a>
+<a name="752"><span class="lineNum">     752 </span>            : </a>
+<a name="753"><span class="lineNum">     753 </span>            : // Static variables are not allowed with CUDA or C++20 modules</a>
+<a name="754"><span class="lineNum">     754 </span>            : // See if we can inline them instead</a>
+<a name="755"><span class="lineNum">     755 </span>            : </a>
+<a name="756"><span class="lineNum">     756 </span>            : #if defined(__cpp_inline_variables) &amp;&amp; __cpp_inline_variables &gt;= 201606L</a>
+<a name="757"><span class="lineNum">     757 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR inline constexpr</a>
+<a name="758"><span class="lineNum">     758 </span>            : #  define BOOST_MATH_STATIC static</a>
+<a name="759"><span class="lineNum">     759 </span>            : #  ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
+<a name="760"><span class="lineNum">     760 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE static</a>
+<a name="761"><span class="lineNum">     761 </span>            : #  else</a>
+<a name="762"><span class="lineNum">     762 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE</a>
+<a name="763"><span class="lineNum">     763 </span>            : #  endif</a>
+<a name="764"><span class="lineNum">     764 </span>            : #else</a>
+<a name="765"><span class="lineNum">     765 </span>            : #  ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
+<a name="766"><span class="lineNum">     766 </span>            : #    define BOOST_MATH_INLINE_CONSTEXPR static constexpr</a>
+<a name="767"><span class="lineNum">     767 </span>            : #    define BOOST_MATH_STATIC static</a>
+<a name="768"><span class="lineNum">     768 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE</a>
+<a name="769"><span class="lineNum">     769 </span>            : #  else</a>
+<a name="770"><span class="lineNum">     770 </span>            : #    define BOOST_MATH_INLINE_CONSTEXPR constexpr</a>
+<a name="771"><span class="lineNum">     771 </span>            : #    define BOOST_MATH_STATIC constexpr</a>
+<a name="772"><span class="lineNum">     772 </span>            : #    define BOOST_MATH_STATIC_LOCAL_VARIABLE static</a>
+<a name="773"><span class="lineNum">     773 </span>            : #  endif</a>
+<a name="774"><span class="lineNum">     774 </span>            : #endif</a>
+<a name="775"><span class="lineNum">     775 </span>            : </a>
+<a name="776"><span class="lineNum">     776 </span>            : #define BOOST_MATH_FP_NAN FP_NAN</a>
+<a name="777"><span class="lineNum">     777 </span>            : #define BOOST_MATH_FP_INFINITE FP_INFINITE</a>
+<a name="778"><span class="lineNum">     778 </span>            : #define BOOST_MATH_FP_ZERO FP_ZERO</a>
+<a name="779"><span class="lineNum">     779 </span>            : #define BOOST_MATH_FP_SUBNORMAL FP_SUBNORMAL</a>
+<a name="780"><span class="lineNum">     780 </span>            : #define BOOST_MATH_FP_NORMAL FP_NORMAL</a>
+<a name="781"><span class="lineNum">     781 </span>            : </a>
+<a name="782"><span class="lineNum">     782 </span>            : #else // Special section for CUDA NVRTC to ensure we consume no STL headers</a>
+<a name="783"><span class="lineNum">     783 </span>            : </a>
+<a name="784"><span class="lineNum">     784 </span>            : #ifndef BOOST_MATH_STANDALONE</a>
+<a name="785"><span class="lineNum">     785 </span>            : #  define BOOST_MATH_STANDALONE</a>
+<a name="786"><span class="lineNum">     786 </span>            : #endif</a>
+<a name="787"><span class="lineNum">     787 </span>            : </a>
+<a name="788"><span class="lineNum">     788 </span>            : #define BOOST_MATH_HAS_NVRTC</a>
+<a name="789"><span class="lineNum">     789 </span>            : #define BOOST_MATH_ENABLE_CUDA</a>
+<a name="790"><span class="lineNum">     790 </span>            : #define BOOST_MATH_HAS_GPU_SUPPORT</a>
+<a name="791"><span class="lineNum">     791 </span>            : </a>
+<a name="792"><span class="lineNum">     792 </span>            : #define BOOST_MATH_GPU_ENABLED __host__ __device__</a>
+<a name="793"><span class="lineNum">     793 </span>            : #define BOOST_MATH_CUDA_ENABLED __host__ __device__</a>
 <a name="794"><span class="lineNum">     794 </span>            : </a>
 <a name="795"><span class="lineNum">     795 </span>            : #define BOOST_MATH_STATIC static</a>
 <a name="796"><span class="lineNum">     796 </span>            : #define BOOST_MATH_STATIC_LOCAL_VARIABLE</a>
@@ -868,48 +868,56 @@
 <a name="798"><span class="lineNum">     798 </span>            : #define BOOST_MATH_NOEXCEPT(T) noexcept(boost::math::is_floating_point_v&lt;T&gt;)</a>
 <a name="799"><span class="lineNum">     799 </span>            : #define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(T) </a>
 <a name="800"><span class="lineNum">     800 </span>            : #define BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(T) </a>
-<a name="801"><span class="lineNum">     801 </span>            : #define BOOST_MATH_BIG_CONSTANT(T, N, V) static_cast&lt;T&gt;(V)</a>
-<a name="802"><span class="lineNum">     802 </span>            : #define BOOST_MATH_FORCEINLINE __forceinline__</a>
-<a name="803"><span class="lineNum">     803 </span>            : #define BOOST_MATH_STD_USING  </a>
-<a name="804"><span class="lineNum">     804 </span>            : #define BOOST_MATH_IF_CONSTEXPR if constexpr</a>
-<a name="805"><span class="lineNum">     805 </span>            : </a>
-<a name="806"><span class="lineNum">     806 </span>            : // This should be defined to nothing but since it is not specifically a math macro</a>
-<a name="807"><span class="lineNum">     807 </span>            : // we need to undef before proceeding</a>
-<a name="808"><span class="lineNum">     808 </span>            : #ifdef BOOST_FPU_EXCEPTION_GUARD</a>
-<a name="809"><span class="lineNum">     809 </span>            : #  undef BOOST_FPU_EXCEPTION_GUARD</a>
-<a name="810"><span class="lineNum">     810 </span>            : #endif</a>
-<a name="811"><span class="lineNum">     811 </span>            : </a>
-<a name="812"><span class="lineNum">     812 </span>            : #define BOOST_FPU_EXCEPTION_GUARD</a>
-<a name="813"><span class="lineNum">     813 </span>            : </a>
-<a name="814"><span class="lineNum">     814 </span>            : template &lt;class T&gt;</a>
-<a name="815"><span class="lineNum">     815 </span>            : BOOST_MATH_GPU_ENABLED constexpr void gpu_safe_swap(T&amp; a, T&amp; b) { T t(a); a = b; b = t; }</a>
+<a name="801"><span class="lineNum">     801 </span>            : #define BOOST_MATH_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(T) </a>
+<a name="802"><span class="lineNum">     802 </span>            : #define BOOST_MATH_BIG_CONSTANT(T, N, V) static_cast&lt;T&gt;(V)</a>
+<a name="803"><span class="lineNum">     803 </span>            : #define BOOST_MATH_FORCEINLINE __forceinline__</a>
+<a name="804"><span class="lineNum">     804 </span>            : #define BOOST_MATH_STD_USING  </a>
+<a name="805"><span class="lineNum">     805 </span>            : #define BOOST_MATH_IF_CONSTEXPR if</a>
+<a name="806"><span class="lineNum">     806 </span>            : #define BOOST_MATH_IS_FLOAT(T) (boost::math::is_floating_point&lt;T&gt;::value)</a>
+<a name="807"><span class="lineNum">     807 </span>            : #define BOOST_MATH_CONSTEXPR_TABLE_FUNCTION constexpr</a>
+<a name="808"><span class="lineNum">     808 </span>            : #define BOOST_MATH_NO_EXCEPTIONS</a>
+<a name="809"><span class="lineNum">     809 </span>            : #define BOOST_MATH_PREVENT_MACRO_SUBSTITUTION </a>
+<a name="810"><span class="lineNum">     810 </span>            : </a>
+<a name="811"><span class="lineNum">     811 </span>            : // This should be defined to nothing but since it is not specifically a math macro</a>
+<a name="812"><span class="lineNum">     812 </span>            : // we need to undef before proceeding</a>
+<a name="813"><span class="lineNum">     813 </span>            : #ifdef BOOST_FPU_EXCEPTION_GUARD</a>
+<a name="814"><span class="lineNum">     814 </span>            : #  undef BOOST_FPU_EXCEPTION_GUARD</a>
+<a name="815"><span class="lineNum">     815 </span>            : #endif</a>
 <a name="816"><span class="lineNum">     816 </span>            : </a>
-<a name="817"><span class="lineNum">     817 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) gpu_safe_swap(a, b)</a>
-<a name="818"><span class="lineNum">     818 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) (::min)(a, b)</a>
-<a name="819"><span class="lineNum">     819 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) (::max)(a, b)</a>
-<a name="820"><span class="lineNum">     820 </span>            : </a>
-<a name="821"><span class="lineNum">     821 </span>            : #define BOOST_MATH_FP_NAN 0</a>
-<a name="822"><span class="lineNum">     822 </span>            : #define BOOST_MATH_FP_INFINITE 1</a>
-<a name="823"><span class="lineNum">     823 </span>            : #define BOOST_MATH_FP_ZERO 2</a>
-<a name="824"><span class="lineNum">     824 </span>            : #define BOOST_MATH_FP_SUBNORMAL 3</a>
-<a name="825"><span class="lineNum">     825 </span>            : #define BOOST_MATH_FP_NORMAL 4</a>
-<a name="826"><span class="lineNum">     826 </span>            : </a>
-<a name="827"><span class="lineNum">     827 </span>            : #define BOOST_MATH_SIZE_T unsigned long</a>
-<a name="828"><span class="lineNum">     828 </span>            : #define BOOST_MATH_UINTMAX_T unsigned long</a>
-<a name="829"><span class="lineNum">     829 </span>            : </a>
-<a name="830"><span class="lineNum">     830 </span>            : #if defined(__cpp_inline_variables) &amp;&amp; __cpp_inline_variables &gt;= 201606L</a>
-<a name="831"><span class="lineNum">     831 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR inline constexpr</a>
-<a name="832"><span class="lineNum">     832 </span>            : #else</a>
-<a name="833"><span class="lineNum">     833 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR constexpr</a>
-<a name="834"><span class="lineNum">     834 </span>            : #endif</a>
-<a name="835"><span class="lineNum">     835 </span>            : </a>
-<a name="836"><span class="lineNum">     836 </span>            : #endif // NVRTC</a>
-<a name="837"><span class="lineNum">     837 </span>            : </a>
-<a name="838"><span class="lineNum">     838 </span>            : #endif // BOOST_MATH_TOOLS_CONFIG_HPP</a>
-<a name="839"><span class="lineNum">     839 </span>            : </a>
+<a name="817"><span class="lineNum">     817 </span>            : #define BOOST_FPU_EXCEPTION_GUARD</a>
+<a name="818"><span class="lineNum">     818 </span>            : </a>
+<a name="819"><span class="lineNum">     819 </span>            : template &lt;class T&gt;</a>
+<a name="820"><span class="lineNum">     820 </span>            : BOOST_MATH_GPU_ENABLED constexpr void gpu_safe_swap(T&amp; a, T&amp; b) { T t(a); a = b; b = t; }</a>
+<a name="821"><span class="lineNum">     821 </span>            : </a>
+<a name="822"><span class="lineNum">     822 </span>            : #define BOOST_MATH_GPU_SAFE_SWAP(a, b) gpu_safe_swap(a, b)</a>
+<a name="823"><span class="lineNum">     823 </span>            : #define BOOST_MATH_GPU_SAFE_MIN(a, b) (::min)(a, b)</a>
+<a name="824"><span class="lineNum">     824 </span>            : #define BOOST_MATH_GPU_SAFE_MAX(a, b) (::max)(a, b)</a>
+<a name="825"><span class="lineNum">     825 </span>            : </a>
+<a name="826"><span class="lineNum">     826 </span>            : #define BOOST_MATH_FP_NAN 0</a>
+<a name="827"><span class="lineNum">     827 </span>            : #define BOOST_MATH_FP_INFINITE 1</a>
+<a name="828"><span class="lineNum">     828 </span>            : #define BOOST_MATH_FP_ZERO 2</a>
+<a name="829"><span class="lineNum">     829 </span>            : #define BOOST_MATH_FP_SUBNORMAL 3</a>
+<a name="830"><span class="lineNum">     830 </span>            : #define BOOST_MATH_FP_NORMAL 4</a>
+<a name="831"><span class="lineNum">     831 </span>            : </a>
+<a name="832"><span class="lineNum">     832 </span>            : #define BOOST_MATH_INT_VALUE_SUFFIX(RV, SUF) RV##SUF</a>
+<a name="833"><span class="lineNum">     833 </span>            : #define BOOST_MATH_INT_TABLE_TYPE(RT, IT) IT</a>
+<a name="834"><span class="lineNum">     834 </span>            : </a>
+<a name="835"><span class="lineNum">     835 </span>            : #if defined(__cpp_inline_variables) &amp;&amp; __cpp_inline_variables &gt;= 201606L</a>
+<a name="836"><span class="lineNum">     836 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR inline constexpr</a>
+<a name="837"><span class="lineNum">     837 </span>            : #else</a>
+<a name="838"><span class="lineNum">     838 </span>            : #  define BOOST_MATH_INLINE_CONSTEXPR constexpr</a>
+<a name="839"><span class="lineNum">     839 </span>            : #endif</a>
 <a name="840"><span class="lineNum">     840 </span>            : </a>
-<a name="841"><span class="lineNum">     841 </span>            : </a>
-<a name="842"><span class="lineNum">     842 </span>            : </a>
+<a name="841"><span class="lineNum">     841 </span>            : #define BOOST_MATH_INSTRUMENT_VARIABLE(x)</a>
+<a name="842"><span class="lineNum">     842 </span>            : #define BOOST_MATH_INSTRUMENT_CODE(x) </a>
+<a name="843"><span class="lineNum">     843 </span>            : </a>
+<a name="844"><span class="lineNum">     844 </span>            : #endif // NVRTC</a>
+<a name="845"><span class="lineNum">     845 </span>            : </a>
+<a name="846"><span class="lineNum">     846 </span>            : #endif // BOOST_MATH_TOOLS_CONFIG_HPP</a>
+<a name="847"><span class="lineNum">     847 </span>            : </a>
+<a name="848"><span class="lineNum">     848 </span>            : </a>
+<a name="849"><span class="lineNum">     849 </span>            : </a>
+<a name="850"><span class="lineNum">     850 </span>            : </a>
 </pre>
       </td>
     </tr>

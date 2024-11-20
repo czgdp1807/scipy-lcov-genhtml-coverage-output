@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/detail/common.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/detail/common.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">14</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -579,9 +579,9 @@
 <a name="509"><span class="lineNum">     509 </span>            : using size_t = std::size_t;</a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
 <a name="511"><span class="lineNum">     511 </span>            : template &lt;typename IntType&gt;</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          3 : inline ssize_t ssize_t_cast(const IntType &amp;val) {</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          6 : inline ssize_t ssize_t_cast(const IntType &amp;val) {</span></a>
 <a name="513"><span class="lineNum">     513 </span>            :     static_assert(sizeof(IntType) &lt;= sizeof(ssize_t), &quot;Implicit narrowing is not permitted.&quot;);</a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">     164604 :     return static_cast&lt;ssize_t&gt;(val);</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">     164722 :     return static_cast&lt;ssize_t&gt;(val);</span></a>
 <a name="515"><span class="lineNum">     515 </span>            : }</a>
 <a name="516"><span class="lineNum">     516 </span>            : </a>
 <a name="517"><span class="lineNum">     517 </span>            : /// Approach used to cast a previously unknown C++ instance into a Python object</a>
@@ -643,8 +643,8 @@
 <a name="573"><span class="lineNum">     573 </span>            : }</a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
 <a name="575"><span class="lineNum">     575 </span>            : // Returns the size as a multiple of sizeof(void *), rounded up.</a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">          3 : inline static constexpr size_t size_in_ptrs(size_t s) {</span></a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">          3 :     return 1 + ((s - 1) &gt;&gt; log2(sizeof(void *)));</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">          6 : inline static constexpr size_t size_in_ptrs(size_t s) {</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">          6 :     return 1 + ((s - 1) &gt;&gt; log2(sizeof(void *)));</span></a>
 <a name="578"><span class="lineNum">     578 </span>            : }</a>
 <a name="579"><span class="lineNum">     579 </span>            : </a>
 <a name="580"><span class="lineNum">     580 </span>            : /**</a>
@@ -1177,10 +1177,10 @@
 <a name="1107"><span class="lineNum">    1107 </span>            : /// RAII wrapper that temporarily clears any Python error state</a>
 <a name="1108"><span class="lineNum">    1108 </span>            : struct error_scope {</a>
 <a name="1109"><span class="lineNum">    1109 </span>            :     PyObject *type, *value, *trace;</a>
-<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">        810 :     error_scope() { PyErr_Fetch(&amp;type, &amp;value, &amp;trace); }</span></a>
+<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">       6645 :     error_scope() { PyErr_Fetch(&amp;type, &amp;value, &amp;trace); }</span></a>
 <a name="1111"><span class="lineNum">    1111 </span>            :     error_scope(const error_scope &amp;) = delete;</a>
 <a name="1112"><span class="lineNum">    1112 </span>            :     error_scope &amp;operator=(const error_scope &amp;) = delete;</a>
-<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">        810 :     ~error_scope() { PyErr_Restore(type, value, trace); }</span></a>
+<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">       6645 :     ~error_scope() { PyErr_Restore(type, value, trace); }</span></a>
 <a name="1114"><span class="lineNum">    1114 </span>            : };</a>
 <a name="1115"><span class="lineNum">    1115 </span>            : </a>
 <a name="1116"><span class="lineNum">    1116 </span>            : /// Dummy destructor wrapper that can be used to expose classes with a private destructor</a>
@@ -1240,15 +1240,15 @@
 <a name="1170"><span class="lineNum">    1170 </span>            : // any standard container (or C-style array) supporting std::begin/std::end, any singleton</a>
 <a name="1171"><span class="lineNum">    1171 </span>            : // arithmetic type (if T is arithmetic), or explicitly constructible from an iterator pair.</a>
 <a name="1172"><span class="lineNum">    1172 </span>            : template &lt;typename T&gt;</a>
-<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">     518802 : class any_container {</span></a>
+<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">     519265 : class any_container {</span></a>
 <a name="1174"><span class="lineNum">    1174 </span>            :     std::vector&lt;T&gt; v;</a>
 <a name="1175"><span class="lineNum">    1175 </span>            : </a>
 <a name="1176"><span class="lineNum">    1176 </span>            : public:</a>
-<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       7374 :     any_container() = default;</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       7365 :     any_container() = default;</span></a>
 <a name="1178"><span class="lineNum">    1178 </span>            : </a>
 <a name="1179"><span class="lineNum">    1179 </span>            :     // Can construct from a pair of iterators</a>
 <a name="1180"><span class="lineNum">    1180 </span>            :     template &lt;typename It, typename = enable_if_t&lt;is_input_iterator&lt;It&gt;::value&gt;&gt;</a>
-<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">     107221 :     any_container(It first, It last) : v(first, last) {}</span></a>
+<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">     107298 :     any_container(It first, It last) : v(first, last) {}</span></a>
 <a name="1182"><span class="lineNum">    1182 </span>            : </a>
 <a name="1183"><span class="lineNum">    1183 </span>            :     // Implicit conversion constructor from any arbitrary container type</a>
 <a name="1184"><span class="lineNum">    1184 </span>            :     // with values convertible to T</a>
@@ -1257,27 +1257,27 @@
 <a name="1187"><span class="lineNum">    1187 </span>            :                   std::is_convertible&lt;decltype(*std::begin(std::declval&lt;const Container &amp;&gt;())),</a>
 <a name="1188"><span class="lineNum">    1188 </span>            :                                       T&gt;::value&gt;&gt;</a>
 <a name="1189"><span class="lineNum">    1189 </span>            :     // NOLINTNEXTLINE(google-explicit-constructor)</a>
-<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">     102402 :     any_container(const Container &amp;c) : any_container(std::begin(c), std::end(c)) {}</span></a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">     102428 :     any_container(const Container &amp;c) : any_container(std::begin(c), std::end(c)) {}</span></a>
 <a name="1191"><span class="lineNum">    1191 </span>            : </a>
 <a name="1192"><span class="lineNum">    1192 </span>            :     // initializer_list's aren't deducible, so don't get matched by the above template;</a>
 <a name="1193"><span class="lineNum">    1193 </span>            :     // we need this to explicitly allow implicit conversion from one:</a>
 <a name="1194"><span class="lineNum">    1194 </span>            :     template &lt;typename TIn, typename = enable_if_t&lt;std::is_convertible&lt;TIn, T&gt;::value&gt;&gt;</a>
-<a name="1195"><span class="lineNum">    1195 </span><span class="lineCov">       4819 :     any_container(const std::initializer_list&lt;TIn&gt; &amp;c) : any_container(c.begin(), c.end()) {}</span></a>
+<a name="1195"><span class="lineNum">    1195 </span><span class="lineCov">       4870 :     any_container(const std::initializer_list&lt;TIn&gt; &amp;c) : any_container(c.begin(), c.end()) {}</span></a>
 <a name="1196"><span class="lineNum">    1196 </span>            : </a>
 <a name="1197"><span class="lineNum">    1197 </span>            :     // Avoid copying if given an rvalue vector of the correct type.</a>
 <a name="1198"><span class="lineNum">    1198 </span>            :     // NOLINTNEXTLINE(google-explicit-constructor)</a>
-<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">      99847 :     any_container(std::vector&lt;T&gt; &amp;&amp;v) : v(std::move(v)) {}</span></a>
+<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">      99933 :     any_container(std::vector&lt;T&gt; &amp;&amp;v) : v(std::move(v)) {}</span></a>
 <a name="1200"><span class="lineNum">    1200 </span>            : </a>
 <a name="1201"><span class="lineNum">    1201 </span>            :     // Moves the vector out of an rvalue any_container</a>
 <a name="1202"><span class="lineNum">    1202 </span>            :     // NOLINTNEXTLINE(google-explicit-constructor)</a>
 <a name="1203"><span class="lineNum">    1203 </span>            :     operator std::vector&lt;T&gt; &amp;&amp;() &amp;&amp; { return std::move(v); }</a>
 <a name="1204"><span class="lineNum">    1204 </span>            : </a>
 <a name="1205"><span class="lineNum">    1205 </span>            :     // Dereferencing obtains a reference to the underlying vector</a>
-<a name="1206"><span class="lineNum">    1206 </span><span class="lineCov">     107221 :     std::vector&lt;T&gt; &amp;operator*() { return v; }</span></a>
+<a name="1206"><span class="lineNum">    1206 </span><span class="lineCov">     107298 :     std::vector&lt;T&gt; &amp;operator*() { return v; }</span></a>
 <a name="1207"><span class="lineNum">    1207 </span>            :     const std::vector&lt;T&gt; &amp;operator*() const { return v; }</a>
 <a name="1208"><span class="lineNum">    1208 </span>            : </a>
 <a name="1209"><span class="lineNum">    1209 </span>            :     // -&gt; lets you call methods on the underlying vector</a>
-<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">     221816 :     std::vector&lt;T&gt; *operator-&gt;() { return &amp;v; }</span></a>
+<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">     221961 :     std::vector&lt;T&gt; *operator-&gt;() { return &amp;v; }</span></a>
 <a name="1211"><span class="lineNum">    1211 </span>            :     const std::vector&lt;T&gt; *operator-&gt;() const { return &amp;v; }</a>
 <a name="1212"><span class="lineNum">    1212 </span>            : };</a>
 <a name="1213"><span class="lineNum">    1213 </span>            : </a>

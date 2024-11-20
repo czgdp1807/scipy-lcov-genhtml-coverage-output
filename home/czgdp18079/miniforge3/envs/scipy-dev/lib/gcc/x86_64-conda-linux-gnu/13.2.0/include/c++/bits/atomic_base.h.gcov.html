@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/atomic_base.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/atomic_base.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">42</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -288,14 +288,14 @@
 <a name="218"><span class="lineNum">     218 </span>            :     atomic_flag&amp; operator=(const atomic_flag&amp;) volatile = delete;</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
 <a name="220"><span class="lineNum">     220 </span>            :     // Conversion to ATOMIC_FLAG_INIT.</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       1400 :     constexpr atomic_flag(bool __i) noexcept</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       1400 :       : __atomic_flag_base{ _S_init(__i) }</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       1410 :     constexpr atomic_flag(bool __i) noexcept</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       1410 :       : __atomic_flag_base{ _S_init(__i) }</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :     { }</a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
 <a name="225"><span class="lineNum">     225 </span>            :     _GLIBCXX_ALWAYS_INLINE bool</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        951 :     test_and_set(memory_order __m = memory_order_seq_cst) noexcept</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        957 :     test_and_set(memory_order __m = memory_order_seq_cst) noexcept</span></a>
 <a name="227"><span class="lineNum">     227 </span>            :     {</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        951 :       return __atomic_test_and_set (&amp;_M_i, int(__m));</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        957 :       return __atomic_test_and_set (&amp;_M_i, int(__m));</span></a>
 <a name="229"><span class="lineNum">     229 </span>            :     }</a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
 <a name="231"><span class="lineNum">     231 </span>            :     _GLIBCXX_ALWAYS_INLINE bool</a>
@@ -377,8 +377,8 @@
 <a name="307"><span class="lineNum">     307 </span>            : </a>
 <a name="308"><span class="lineNum">     308 </span>            :   private:</a>
 <a name="309"><span class="lineNum">     309 </span>            :     static constexpr __atomic_flag_data_type</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1400 :     _S_init(bool __i)</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       1400 :     { return __i ? __GCC_ATOMIC_TEST_AND_SET_TRUEVAL : 0; }</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1410 :     _S_init(bool __i)</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       1410 :     { return __i ? __GCC_ATOMIC_TEST_AND_SET_TRUEVAL : 0; }</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :   };</a>
 <a name="313"><span class="lineNum">     313 </span>            : </a>
 <a name="314"><span class="lineNum">     314 </span>            :   /// @cond undocumented</a>
@@ -429,10 +429,10 @@
 <a name="359"><span class="lineNum">     359 </span>            :       __atomic_base&amp; operator=(const __atomic_base&amp;) volatile = delete;</a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
 <a name="361"><span class="lineNum">     361 </span>            :       // Requires __int_type convertible to _M_i.</a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1484 :       constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1494 :       constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }</span></a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        562 :       operator __int_type() const noexcept</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        562 :       { return load(); }</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        558 :       operator __int_type() const noexcept</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        558 :       { return load(); }</span></a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
 <a name="367"><span class="lineNum">     367 </span>            :       operator __int_type() const volatile noexcept</a>
 <a name="368"><span class="lineNum">     368 </span>            :       { return load(); }</a>
@@ -565,14 +565,14 @@
 <a name="495"><span class="lineNum">     495 </span>            :       }</a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       2698 :       load(memory_order __m = memory_order_seq_cst) const noexcept</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       2704 :       load(memory_order __m = memory_order_seq_cst) const noexcept</span></a>
 <a name="499"><span class="lineNum">     499 </span>            :       {</a>
 <a name="500"><span class="lineNum">     500 </span>            :         memory_order __b __attribute__ ((__unused__))</a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">       2698 :           = __m &amp; __memory_order_mask;</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">       1998 :         __glibcxx_assert(__b != memory_order_release);</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       1998 :         __glibcxx_assert(__b != memory_order_acq_rel);</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">       2704 :           = __m &amp; __memory_order_mask;</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">       1999 :         __glibcxx_assert(__b != memory_order_release);</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       1999 :         __glibcxx_assert(__b != memory_order_acq_rel);</span></a>
 <a name="504"><span class="lineNum">     504 </span>            : </a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       2698 :         return __atomic_load_n(&amp;_M_i, int(__m));</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       2704 :         return __atomic_load_n(&amp;_M_i, int(__m));</span></a>
 <a name="506"><span class="lineNum">     506 </span>            :       }</a>
 <a name="507"><span class="lineNum">     507 </span>            : </a>
 <a name="508"><span class="lineNum">     508 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
@@ -587,10 +587,10 @@
 <a name="517"><span class="lineNum">     517 </span>            :       }</a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
 <a name="519"><span class="lineNum">     519 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">       1400 :       exchange(__int_type __i,</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">       1410 :       exchange(__int_type __i,</span></a>
 <a name="521"><span class="lineNum">     521 </span>            :                memory_order __m = memory_order_seq_cst) noexcept</a>
 <a name="522"><span class="lineNum">     522 </span>            :       {</a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       1400 :         return __atomic_exchange_n(&amp;_M_i, __i, int(__m));</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       1410 :         return __atomic_exchange_n(&amp;_M_i, __i, int(__m));</span></a>
 <a name="524"><span class="lineNum">     524 </span>            :       }</a>
 <a name="525"><span class="lineNum">     525 </span>            : </a>
 <a name="526"><span class="lineNum">     526 </span>            : </a>
@@ -700,9 +700,9 @@
 <a name="630"><span class="lineNum">     630 </span>            : #endif // __cpp_lib_atomic_wait</a>
 <a name="631"><span class="lineNum">     631 </span>            : </a>
 <a name="632"><span class="lineNum">     632 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">   54754633 :       fetch_add(__int_type __i,</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">   54738464 :       fetch_add(__int_type __i,</span></a>
 <a name="634"><span class="lineNum">     634 </span>            :                 memory_order __m = memory_order_seq_cst) noexcept</a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">   54754633 :       { return __atomic_fetch_add(&amp;_M_i, __i, int(__m)); }</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">   54738464 :       { return __atomic_fetch_add(&amp;_M_i, __i, int(__m)); }</span></a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
 <a name="637"><span class="lineNum">     637 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
 <a name="638"><span class="lineNum">     638 </span>            :       fetch_add(__int_type __i,</a>
@@ -710,9 +710,9 @@
 <a name="640"><span class="lineNum">     640 </span>            :       { return __atomic_fetch_add(&amp;_M_i, __i, int(__m)); }</a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
 <a name="642"><span class="lineNum">     642 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">   54754633 :       fetch_sub(__int_type __i,</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">   54738464 :       fetch_sub(__int_type __i,</span></a>
 <a name="644"><span class="lineNum">     644 </span>            :                 memory_order __m = memory_order_seq_cst) noexcept</a>
-<a name="645"><span class="lineNum">     645 </span><span class="lineCov">   54754633 :       { return __atomic_fetch_sub(&amp;_M_i, __i, int(__m)); }</span></a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">   54738464 :       { return __atomic_fetch_sub(&amp;_M_i, __i, int(__m)); }</span></a>
 <a name="646"><span class="lineNum">     646 </span>            : </a>
 <a name="647"><span class="lineNum">     647 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
 <a name="648"><span class="lineNum">     648 </span>            :       fetch_sub(__int_type __i,</a>
@@ -730,9 +730,9 @@
 <a name="660"><span class="lineNum">     660 </span>            :       { return __atomic_fetch_and(&amp;_M_i, __i, int(__m)); }</a>
 <a name="661"><span class="lineNum">     661 </span>            : </a>
 <a name="662"><span class="lineNum">     662 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        700 :       fetch_or(__int_type __i,</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        705 :       fetch_or(__int_type __i,</span></a>
 <a name="664"><span class="lineNum">     664 </span>            :                memory_order __m = memory_order_seq_cst) noexcept</a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">        700 :       { return __atomic_fetch_or(&amp;_M_i, __i, int(__m)); }</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">        705 :       { return __atomic_fetch_or(&amp;_M_i, __i, int(__m)); }</span></a>
 <a name="666"><span class="lineNum">     666 </span>            : </a>
 <a name="667"><span class="lineNum">     667 </span>            :       _GLIBCXX_ALWAYS_INLINE __int_type</a>
 <a name="668"><span class="lineNum">     668 </span>            :       fetch_or(__int_type __i,</a>

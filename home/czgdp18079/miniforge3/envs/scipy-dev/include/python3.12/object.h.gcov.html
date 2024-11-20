@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/object.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/object.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">47</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -277,8 +277,8 @@
 <a name="207"><span class="lineNum">     207 </span>            : #define Py_Is(x, y) ((x) == (y))</a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    9882119 : static inline Py_ssize_t Py_REFCNT(PyObject *ob) {</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    1477181 :     return ob-&gt;ob_refcnt;</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">    3310707 : static inline Py_ssize_t Py_REFCNT(PyObject *ob) {</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    1440023 :     return ob-&gt;ob_refcnt;</span></a>
 <a name="212"><span class="lineNum">     212 </span>            : }</a>
 <a name="213"><span class="lineNum">     213 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="214"><span class="lineNum">     214 </span>            : #  define Py_REFCNT(ob) Py_REFCNT(_PyObject_CAST(ob))</a>
@@ -286,8 +286,8 @@
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
 <a name="218"><span class="lineNum">     218 </span>            : // bpo-39573: The Py_SET_TYPE() function must be used to set an object type.</a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">   64002047 : static inline PyTypeObject* Py_TYPE(PyObject *ob) {</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">   34102378 :     return ob-&gt;ob_type;</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">   54565745 : static inline PyTypeObject* Py_TYPE(PyObject *ob) {</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">   30366574 :     return ob-&gt;ob_type;</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : }</a>
 <a name="222"><span class="lineNum">     222 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="223"><span class="lineNum">     223 </span>            : #  define Py_TYPE(ob) Py_TYPE(_PyObject_CAST(ob))</a>
@@ -297,59 +297,59 @@
 <a name="227"><span class="lineNum">     227 </span>            : PyAPI_DATA(PyTypeObject) PyBool_Type;</a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
 <a name="229"><span class="lineNum">     229 </span>            : // bpo-39573: The Py_SET_SIZE() function must be used to set an object size.</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">   16720280 : static inline Py_ssize_t Py_SIZE(PyObject *ob) {</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">   16720280 :     assert(ob-&gt;ob_type != &amp;PyLong_Type);</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">   16720280 :     assert(ob-&gt;ob_type != &amp;PyBool_Type);</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">   16719518 :     return  _PyVarObject_CAST(ob)-&gt;ob_size;</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">   10054268 : static inline Py_ssize_t Py_SIZE(PyObject *ob) {</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">   10054268 :     assert(ob-&gt;ob_type != &amp;PyLong_Type);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">   10054268 :     assert(ob-&gt;ob_type != &amp;PyBool_Type);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">   10053488 :     return  _PyVarObject_CAST(ob)-&gt;ob_size;</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : }</a>
 <a name="235"><span class="lineNum">     235 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="236"><span class="lineNum">     236 </span>            : #  define Py_SIZE(ob) Py_SIZE(_PyObject_CAST(ob))</a>
 <a name="237"><span class="lineNum">     237 </span>            : #endif</a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">  108882734 : static inline Py_ALWAYS_INLINE int _Py_IsImmortal(PyObject *op)</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">   89174959 : static inline Py_ALWAYS_INLINE int _Py_IsImmortal(PyObject *op)</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : {</a>
 <a name="241"><span class="lineNum">     241 </span>            : #if SIZEOF_VOID_P &gt; 4</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">  108882734 :     return _Py_CAST(PY_INT32_T, op-&gt;ob_refcnt) &lt; 0;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">   89174959 :     return _Py_CAST(PY_INT32_T, op-&gt;ob_refcnt) &lt; 0;</span></a>
 <a name="243"><span class="lineNum">     243 </span>            : #else</a>
 <a name="244"><span class="lineNum">     244 </span>            :     return op-&gt;ob_refcnt == _Py_IMMORTAL_REFCNT;</a>
 <a name="245"><span class="lineNum">     245 </span>            : #endif</a>
 <a name="246"><span class="lineNum">     246 </span>            : }</a>
 <a name="247"><span class="lineNum">     247 </span>            : #define _Py_IsImmortal(op) _Py_IsImmortal(_PyObject_CAST(op))</a>
 <a name="248"><span class="lineNum">     248 </span>            : </a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">   19646817 : static inline int Py_IS_TYPE(PyObject *ob, PyTypeObject *type) {</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">   15287763 :     return Py_TYPE(ob) == type;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">   20041766 : static inline int Py_IS_TYPE(PyObject *ob, PyTypeObject *type) {</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">   15755220 :     return Py_TYPE(ob) == type;</span></a>
 <a name="251"><span class="lineNum">     251 </span>            : }</a>
 <a name="252"><span class="lineNum">     252 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="253"><span class="lineNum">     253 </span>            : #  define Py_IS_TYPE(ob, type) Py_IS_TYPE(_PyObject_CAST(ob), (type))</a>
 <a name="254"><span class="lineNum">     254 </span>            : #endif</a>
 <a name="255"><span class="lineNum">     255 </span>            : </a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">    9881718 : static inline void Py_SET_REFCNT(PyObject *ob, Py_ssize_t refcnt) {</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">    3309844 : static inline void Py_SET_REFCNT(PyObject *ob, Py_ssize_t refcnt) {</span></a>
 <a name="258"><span class="lineNum">     258 </span>            :     // This immortal check is for code that is unaware of immortal objects.</a>
 <a name="259"><span class="lineNum">     259 </span>            :     // The runtime tracks these objects and we should avoid as much</a>
 <a name="260"><span class="lineNum">     260 </span>            :     // as possible having extensions inadvertently change the refcnt</a>
 <a name="261"><span class="lineNum">     261 </span>            :     // of an immortalized object.</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">    9881718 :     if (_Py_IsImmortal(ob)) {</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">    3309844 :     if (_Py_IsImmortal(ob)) {</span></a>
 <a name="263"><span class="lineNum">     263 </span>            :         return;</a>
 <a name="264"><span class="lineNum">     264 </span>            :     }</a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">    9881718 :     ob-&gt;ob_refcnt = refcnt;</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">    3309844 :     ob-&gt;ob_refcnt = refcnt;</span></a>
 <a name="266"><span class="lineNum">     266 </span>            : }</a>
 <a name="267"><span class="lineNum">     267 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="268"><span class="lineNum">     268 </span>            : #  define Py_SET_REFCNT(ob, refcnt) Py_SET_REFCNT(_PyObject_CAST(ob), (refcnt))</a>
 <a name="269"><span class="lineNum">     269 </span>            : #endif</a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            : </a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         16 : static inline void Py_SET_TYPE(PyObject *ob, PyTypeObject *type) {</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         16 :     ob-&gt;ob_type = type;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         46 : static inline void Py_SET_TYPE(PyObject *ob, PyTypeObject *type) {</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         46 :     ob-&gt;ob_type = type;</span></a>
 <a name="274"><span class="lineNum">     274 </span>            : }</a>
 <a name="275"><span class="lineNum">     275 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="276"><span class="lineNum">     276 </span>            : #  define Py_SET_TYPE(ob, type) Py_SET_TYPE(_PyObject_CAST(ob), type)</a>
 <a name="277"><span class="lineNum">     277 </span>            : #endif</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     350755 : static inline void Py_SET_SIZE(PyVarObject *ob, Py_ssize_t size) {</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     350755 :     assert(ob-&gt;ob_base.ob_type != &amp;PyLong_Type);</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     350755 :     assert(ob-&gt;ob_base.ob_type != &amp;PyBool_Type);</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     350755 :     ob-&gt;ob_size = size;</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     106303 : static inline void Py_SET_SIZE(PyVarObject *ob, Py_ssize_t size) {</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     106303 :     assert(ob-&gt;ob_base.ob_type != &amp;PyLong_Type);</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     106303 :     assert(ob-&gt;ob_base.ob_type != &amp;PyBool_Type);</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     106303 :     ob-&gt;ob_size = size;</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : }</a>
 <a name="284"><span class="lineNum">     284 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="285"><span class="lineNum">     285 </span>            : #  define Py_SET_SIZE(ob, size) Py_SET_SIZE(_PyVarObject_CAST(ob), (size))</a>
@@ -447,8 +447,8 @@
 <a name="377"><span class="lineNum">     377 </span>            : /* Generic type check */</a>
 <a name="378"><span class="lineNum">     378 </span>            : PyAPI_FUNC(int) PyType_IsSubtype(PyTypeObject *, PyTypeObject *);</a>
 <a name="379"><span class="lineNum">     379 </span>            : </a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">    6841586 : static inline int PyObject_TypeCheck(PyObject *ob, PyTypeObject *type) {</span></a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">    6841586 :     return Py_IS_TYPE(ob, type) || PyType_IsSubtype(Py_TYPE(ob), type);</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">    6786668 : static inline int PyObject_TypeCheck(PyObject *ob, PyTypeObject *type) {</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">    6786668 :     return Py_IS_TYPE(ob, type) || PyType_IsSubtype(Py_TYPE(ob), type);</span></a>
 <a name="382"><span class="lineNum">     382 </span>            : }</a>
 <a name="383"><span class="lineNum">     383 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="384"><span class="lineNum">     384 </span>            : #  define PyObject_TypeCheck(ob, type) PyObject_TypeCheck(_PyObject_CAST(ob), (type))</a>
@@ -691,7 +691,7 @@
 <a name="621"><span class="lineNum">     621 </span>            : PyAPI_FUNC(void) _Py_IncRef(PyObject *);</a>
 <a name="622"><span class="lineNum">     622 </span>            : PyAPI_FUNC(void) _Py_DecRef(PyObject *);</a>
 <a name="623"><span class="lineNum">     623 </span>            : </a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">   61550428 : static inline Py_ALWAYS_INLINE void Py_INCREF(PyObject *op)</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">   38758917 : static inline Py_ALWAYS_INLINE void Py_INCREF(PyObject *op)</span></a>
 <a name="625"><span class="lineNum">     625 </span>            : {</a>
 <a name="626"><span class="lineNum">     626 </span>            : #if defined(Py_LIMITED_API) &amp;&amp; (Py_LIMITED_API+0 &gt;= 0x030c0000 || defined(Py_REF_DEBUG))</a>
 <a name="627"><span class="lineNum">     627 </span>            :     // Stable ABI implements Py_INCREF() as a function call on limited C API</a>
@@ -708,12 +708,12 @@
 <a name="638"><span class="lineNum">     638 </span>            :     // directly PyObject.ob_refcnt.</a>
 <a name="639"><span class="lineNum">     639 </span>            : #if SIZEOF_VOID_P &gt; 4</a>
 <a name="640"><span class="lineNum">     640 </span>            :     // Portable saturated add, branching on the carry flag and set low bits</a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">   61550428 :     PY_UINT32_T cur_refcnt = op-&gt;ob_refcnt_split[PY_BIG_ENDIAN];</span></a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">   61550428 :     PY_UINT32_T new_refcnt = cur_refcnt + 1;</span></a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">   50441144 :     if (new_refcnt == 0) {</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">   38758917 :     PY_UINT32_T cur_refcnt = op-&gt;ob_refcnt_split[PY_BIG_ENDIAN];</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">   38758917 :     PY_UINT32_T new_refcnt = cur_refcnt + 1;</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">   34071512 :     if (new_refcnt == 0) {</span></a>
 <a name="644"><span class="lineNum">     644 </span>            :         return;</a>
 <a name="645"><span class="lineNum">     645 </span>            :     }</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">   33020208 :     op-&gt;ob_refcnt_split[PY_BIG_ENDIAN] = new_refcnt;</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">   23228084 :     op-&gt;ob_refcnt_split[PY_BIG_ENDIAN] = new_refcnt;</span></a>
 <a name="647"><span class="lineNum">     647 </span>            : #else</a>
 <a name="648"><span class="lineNum">     648 </span>            :     // Explicitly check immortality against the immortal value</a>
 <a name="649"><span class="lineNum">     649 </span>            :     if (_Py_IsImmortal(op)) {</a>
@@ -721,7 +721,7 @@
 <a name="651"><span class="lineNum">     651 </span>            :     }</a>
 <a name="652"><span class="lineNum">     652 </span>            :     op-&gt;ob_refcnt++;</a>
 <a name="653"><span class="lineNum">     653 </span>            : #endif</a>
-<a name="654"><span class="lineNum">     654 </span><span class="lineCov">   41919824 :     _Py_INCREF_STAT_INC();</span></a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineCov">   28882211 :     _Py_INCREF_STAT_INC();</span></a>
 <a name="655"><span class="lineNum">     655 </span>            : #ifdef Py_REF_DEBUG</a>
 <a name="656"><span class="lineNum">     656 </span>            :     _Py_INCREF_IncRefTotal();</a>
 <a name="657"><span class="lineNum">     657 </span>            : #endif</a>
@@ -763,16 +763,16 @@
 <a name="693"><span class="lineNum">     693 </span>            : #define Py_DECREF(op) Py_DECREF(__FILE__, __LINE__, _PyObject_CAST(op))</a>
 <a name="694"><span class="lineNum">     694 </span>            : </a>
 <a name="695"><span class="lineNum">     695 </span>            : #else</a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">   99001016 : static inline Py_ALWAYS_INLINE void Py_DECREF(PyObject *op)</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">   85865115 : static inline Py_ALWAYS_INLINE void Py_DECREF(PyObject *op)</span></a>
 <a name="697"><span class="lineNum">     697 </span>            : {</a>
 <a name="698"><span class="lineNum">     698 </span>            :     // Non-limited C API and limited C API for Python 3.9 and older access</a>
 <a name="699"><span class="lineNum">     699 </span>            :     // directly PyObject.ob_refcnt.</a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">   55532444 :     if (_Py_IsImmortal(op)) {</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">   45180463 :     if (_Py_IsImmortal(op)) {</span></a>
 <a name="701"><span class="lineNum">     701 </span>            :         return;</a>
 <a name="702"><span class="lineNum">     702 </span>            :     }</a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">   73677623 :     _Py_DECREF_STAT_INC();</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">   73677623 :     if (--op-&gt;ob_refcnt == 0) {</span></a>
-<a name="705"><span class="lineNum">     705 </span><span class="lineCov">   30175097 :         _Py_Dealloc(op);</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">   70145267 :     _Py_DECREF_STAT_INC();</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">   70145267 :     if (--op-&gt;ob_refcnt == 0) {</span></a>
+<a name="705"><span class="lineNum">     705 </span><span class="lineCov">   24071649 :         _Py_Dealloc(op);</span></a>
 <a name="706"><span class="lineNum">     706 </span>            :     }</a>
 <a name="707"><span class="lineNum">     707 </span>            : }</a>
 <a name="708"><span class="lineNum">     708 </span>            : #define Py_DECREF(op) Py_DECREF(_PyObject_CAST(op))</a>
@@ -852,22 +852,22 @@
 <a name="782"><span class="lineNum">     782 </span>            : </a>
 <a name="783"><span class="lineNum">     783 </span>            : </a>
 <a name="784"><span class="lineNum">     784 </span>            : /* Function to use in case the object pointer can be NULL: */</a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">    1399070 : static inline void Py_XINCREF(PyObject *op)</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">    1432778 : static inline void Py_XINCREF(PyObject *op)</span></a>
 <a name="786"><span class="lineNum">     786 </span>            : {</a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">    1054684 :     if (op != _Py_NULL) {</span></a>
-<a name="788"><span class="lineNum">     788 </span><span class="lineCov">    2267035 :         Py_INCREF(op);</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">    1076579 :     if (op != _Py_NULL) {</span></a>
+<a name="788"><span class="lineNum">     788 </span><span class="lineCov">    2301093 :         Py_INCREF(op);</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :     }</a>
 <a name="790"><span class="lineNum">     790 </span>            : }</a>
 <a name="791"><span class="lineNum">     791 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="792"><span class="lineNum">     792 </span>            : #  define Py_XINCREF(op) Py_XINCREF(_PyObject_CAST(op))</a>
 <a name="793"><span class="lineNum">     793 </span>            : #endif</a>
 <a name="794"><span class="lineNum">     794 </span>            : </a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">   74162648 : static inline void Py_XDECREF(PyObject *op)</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">   69352593 : static inline void Py_XDECREF(PyObject *op)</span></a>
 <a name="796"><span class="lineNum">     796 </span>            : {</a>
-<a name="797"><span class="lineNum">     797 </span><span class="lineCov">   74162648 :     if (op != _Py_NULL) {</span></a>
-<a name="798"><span class="lineNum">     798 </span><span class="lineCov">   43372673 :         Py_DECREF(op);</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">   69352593 :     if (op != _Py_NULL) {</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">   40569092 :         Py_DECREF(op);</span></a>
 <a name="799"><span class="lineNum">     799 </span>            :     }</a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">   74162648 : }</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">   69352593 : }</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="802"><span class="lineNum">     802 </span>            : #  define Py_XDECREF(op) Py_XDECREF(_PyObject_CAST(op))</a>
 <a name="803"><span class="lineNum">     803 </span>            : #endif</a>
@@ -1026,22 +1026,22 @@
 <a name="956"><span class="lineNum">     956 </span>            : </a>
 <a name="957"><span class="lineNum">     957 </span>            : </a>
 <a name="958"><span class="lineNum">     958 </span>            : static inline int</a>
-<a name="959"><span class="lineNum">     959 </span><span class="lineCov">   11691233 : PyType_HasFeature(PyTypeObject *type, unsigned long feature)</span></a>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">   13365453 : PyType_HasFeature(PyTypeObject *type, unsigned long feature)</span></a>
 <a name="960"><span class="lineNum">     960 </span>            : {</a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineCov">   11691233 :     unsigned long flags;</span></a>
+<a name="961"><span class="lineNum">     961 </span><span class="lineCov">   13365453 :     unsigned long flags;</span></a>
 <a name="962"><span class="lineNum">     962 </span>            : #ifdef Py_LIMITED_API</a>
 <a name="963"><span class="lineNum">     963 </span>            :     // PyTypeObject is opaque in the limited C API</a>
 <a name="964"><span class="lineNum">     964 </span>            :     flags = PyType_GetFlags(type);</a>
 <a name="965"><span class="lineNum">     965 </span>            : #else</a>
-<a name="966"><span class="lineNum">     966 </span><span class="lineCov">   11690172 :     flags = type-&gt;tp_flags;</span></a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">   13364392 :     flags = type-&gt;tp_flags;</span></a>
 <a name="967"><span class="lineNum">     967 </span>            : #endif</a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">   11492421 :     return ((flags &amp; feature) != 0);</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">   13166611 :     return ((flags &amp; feature) != 0);</span></a>
 <a name="969"><span class="lineNum">     969 </span>            : }</a>
 <a name="970"><span class="lineNum">     970 </span>            : </a>
 <a name="971"><span class="lineNum">     971 </span>            : #define PyType_FastSubclass(type, flag) PyType_HasFeature((type), (flag))</a>
 <a name="972"><span class="lineNum">     972 </span>            : </a>
-<a name="973"><span class="lineNum">     973 </span><span class="lineCov">       1619 : static inline int PyType_Check(PyObject *op) {</span></a>
-<a name="974"><span class="lineNum">     974 </span><span class="lineCov">       1619 :     return PyType_FastSubclass(Py_TYPE(op), Py_TPFLAGS_TYPE_SUBCLASS);</span></a>
+<a name="973"><span class="lineNum">     973 </span><span class="lineCov">       3129 : static inline int PyType_Check(PyObject *op) {</span></a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">       3129 :     return PyType_FastSubclass(Py_TYPE(op), Py_TPFLAGS_TYPE_SUBCLASS);</span></a>
 <a name="975"><span class="lineNum">     975 </span>            : }</a>
 <a name="976"><span class="lineNum">     976 </span>            : #if !defined(Py_LIMITED_API) || Py_LIMITED_API+0 &lt; 0x030b0000</a>
 <a name="977"><span class="lineNum">     977 </span>            : #  define PyType_Check(op) PyType_Check(_PyObject_CAST(op))</a>

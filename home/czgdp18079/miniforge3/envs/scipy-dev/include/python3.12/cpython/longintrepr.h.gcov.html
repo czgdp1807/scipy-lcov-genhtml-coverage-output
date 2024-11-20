@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/longintrepr.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/longintrepr.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">9</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -176,21 +176,21 @@
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
 <a name="108"><span class="lineNum">     108 </span>            : static inline int</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    8001000 : _PyLong_IsCompact(const PyLongObject* op) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    8001000 :     assert(PyType_HasFeature((op)-&gt;ob_base.ob_type, Py_TPFLAGS_LONG_SUBCLASS));</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">    8001000 :     return op-&gt;long_value.lv_tag &lt; (2 &lt;&lt; _PyLong_NON_SIZE_BITS);</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    4867375 : _PyLong_IsCompact(const PyLongObject* op) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">    4867375 :     assert(PyType_HasFeature((op)-&gt;ob_base.ob_type, Py_TPFLAGS_LONG_SUBCLASS));</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">    4867375 :     return op-&gt;long_value.lv_tag &lt; (2 &lt;&lt; _PyLong_NON_SIZE_BITS);</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : }</a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
 <a name="114"><span class="lineNum">     114 </span>            : #define PyUnstable_Long_IsCompact _PyLong_IsCompact</a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            : static inline Py_ssize_t</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">    8001731 : _PyLong_CompactValue(const PyLongObject *op)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">    4868104 : _PyLong_CompactValue(const PyLongObject *op)</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : {</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">    8001731 :     Py_ssize_t sign;</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">    8001731 :     assert(PyType_HasFeature((op)-&gt;ob_base.ob_type, Py_TPFLAGS_LONG_SUBCLASS));</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">    8001731 :     assert(PyUnstable_Long_IsCompact(op));</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">    8001731 :     sign = 1 - (op-&gt;long_value.lv_tag &amp; _PyLong_SIGN_MASK);</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">    8001731 :     return sign * (Py_ssize_t)op-&gt;long_value.ob_digit[0];</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">    4868104 :     Py_ssize_t sign;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">    4868104 :     assert(PyType_HasFeature((op)-&gt;ob_base.ob_type, Py_TPFLAGS_LONG_SUBCLASS));</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">    4868104 :     assert(PyUnstable_Long_IsCompact(op));</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">    4868104 :     sign = 1 - (op-&gt;long_value.lv_tag &amp; _PyLong_SIGN_MASK);</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">    4868104 :     return sign * (Py_ssize_t)op-&gt;long_value.ob_digit[0];</span></a>
 <a name="124"><span class="lineNum">     124 </span>            : }</a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
 <a name="126"><span class="lineNum">     126 </span>            : #define PyUnstable_Long_CompactValue _PyLong_CompactValue</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - io/_fast_matrix_market/fast_matrix_market/include/fast_matrix_market/formatters.hpp</title>
+  <title>LCOV - lcov.info - io/_fast_matrix_market/fast_matrix_market/include/fast_matrix_market/formatters.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">88</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">47</td>
@@ -87,27 +87,27 @@
 <a name="17"><span class="lineNum">      17 </span>            :     template &lt;typename IT, typename VT&gt;</a>
 <a name="18"><span class="lineNum">      18 </span>            :     class line_formatter {</a>
 <a name="19"><span class="lineNum">      19 </span>            :     public:</a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        161 :         line_formatter(const matrix_market_header &amp;header, const write_options &amp;options) : header(header),</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">        161 :                                                                                            options(options) {}</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        162 :         line_formatter(const matrix_market_header &amp;header, const write_options &amp;options) : header(header),</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">        162 :                                                                                            options(options) {}</span></a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">        768 :         std::string coord_matrix(const IT&amp; row, const IT&amp; col, const VT&amp; val) {</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        768 :             if (header.format == array) {</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">        769 :         std::string coord_matrix(const IT&amp; row, const IT&amp; col, const VT&amp; val) {</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        769 :             if (header.format == array) {</span></a>
 <a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :                 return array_matrix(row, col, val);</span></a>
 <a name="26"><span class="lineNum">      26 </span>            :             }</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        768 :             std::string line{};</span></a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">       1536 :             line += int_to_string(row + 1);</span></a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">        768 :             line += kSpace;</span></a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">       1536 :             line += int_to_string(col + 1);</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        769 :             std::string line{};</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">       1538 :             line += int_to_string(row + 1);</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">        769 :             line += kSpace;</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">       1538 :             line += int_to_string(col + 1);</span></a>
 <a name="32"><span class="lineNum">      32 </span>            : </a>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">        768 :             if (header.field != pattern) {</span></a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        768 :                 line += kSpace;</span></a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">       1536 :                 line += value_to_string(val, options.precision);</span></a>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">        769 :             if (header.field != pattern) {</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        769 :                 line += kSpace;</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">       1538 :                 line += value_to_string(val, options.precision);</span></a>
 <a name="36"><span class="lineNum">      36 </span>            :             }</a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        768 :             line += kNewline;</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        769 :             line += kNewline;</span></a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        768 :             return line;</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">        768 :         }</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        769 :             return line;</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">        769 :         }</span></a>
 <a name="41"><span class="lineNum">      41 </span>            : </a>
 <a name="42"><span class="lineNum">      42 </span><span class="lineCov">          3 :         std::string coord_matrix_pattern(const IT&amp; row, const IT&amp; col) {</span></a>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">          3 :             std::string line{};</span></a>
@@ -187,49 +187,49 @@
 <a name="117"><span class="lineNum">     117 </span>            :     template&lt;typename LF, typename A_ITER, typename B_ITER, typename C_ITER&gt;</a>
 <a name="118"><span class="lineNum">     118 </span>            :     class triplet_formatter {</a>
 <a name="119"><span class="lineNum">     119 </span>            :     public:</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        137 :         explicit triplet_formatter(LF lf,</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        138 :         explicit triplet_formatter(LF lf,</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :                                    const A_ITER row_begin, const A_ITER row_end,</a>
 <a name="122"><span class="lineNum">     122 </span>            :                                    const B_ITER col_begin, const B_ITER col_end,</a>
 <a name="123"><span class="lineNum">     123 </span>            :                                    const C_ITER val_begin, const C_ITER val_end) :</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        137 :                                    line_formatter(lf),</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        137 :                                    row_iter(row_begin), row_end(row_end),</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        137 :                                    col_iter(col_begin),</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        137 :                                    val_iter(val_begin), val_end(val_end) {</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        137 :             if (row_end - row_begin != col_end - col_begin ||</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        137 :                     (row_end - row_begin != val_end - val_begin &amp;&amp; val_end != val_begin)) {</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        138 :                                    line_formatter(lf),</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        138 :                                    row_iter(row_begin), row_end(row_end),</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        138 :                                    col_iter(col_begin),</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        138 :                                    val_iter(val_begin), val_end(val_end) {</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        138 :             if (row_end - row_begin != col_end - col_begin ||</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        138 :                     (row_end - row_begin != val_end - val_begin &amp;&amp; val_end != val_begin)) {</span></a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :                 throw invalid_argument(&quot;Row, column, and value ranges must have equal length.&quot;);</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :             }</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        137 :         }</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        138 :         }</span></a>
 <a name="133"><span class="lineNum">     133 </span>            : </a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        409 :         [[nodiscard]] bool has_next() const {</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        409 :             return row_iter != row_end;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        412 :         [[nodiscard]] bool has_next() const {</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        412 :             return row_iter != row_end;</span></a>
 <a name="136"><span class="lineNum">     136 </span>            :         }</a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
 <a name="138"><span class="lineNum">     138 </span>            :         class chunk {</a>
 <a name="139"><span class="lineNum">     139 </span>            :         public:</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        136 :             explicit chunk(LF lf,</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        137 :             explicit chunk(LF lf,</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :                            const A_ITER row_begin, const A_ITER row_end,</a>
 <a name="142"><span class="lineNum">     142 </span>            :                            const B_ITER col_begin,</a>
 <a name="143"><span class="lineNum">     143 </span>            :                            const C_ITER val_begin, const C_ITER val_end) :</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        136 :                     line_formatter(lf),</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">        136 :                     row_iter(row_begin), row_end(row_end),</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        136 :                     col_iter(col_begin),</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        136 :                     val_iter(val_begin), val_end(val_end) {}</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        137 :                     line_formatter(lf),</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">        137 :                     row_iter(row_begin), row_end(row_end),</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        137 :                     col_iter(col_begin),</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        137 :                     val_iter(val_begin), val_end(val_end) {}</span></a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        136 :             std::string operator()() {</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        136 :                 std::string chunk;</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        136 :                 chunk.reserve((row_end - row_iter)*25);</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        137 :             std::string operator()() {</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        137 :                 std::string chunk;</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        137 :                 chunk.reserve((row_end - row_iter)*25);</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        907 :                 for (; row_iter != row_end; ++row_iter, ++col_iter) {</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">        771 :                     if (val_iter != val_end) {</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1536 :                         chunk += line_formatter.coord_matrix(*row_iter, *col_iter, *val_iter);</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        768 :                         ++val_iter;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        909 :                 for (; row_iter != row_end; ++row_iter, ++col_iter) {</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">        772 :                     if (val_iter != val_end) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1538 :                         chunk += line_formatter.coord_matrix(*row_iter, *col_iter, *val_iter);</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        769 :                         ++val_iter;</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :                     } else {</a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineCov">          6 :                         chunk += line_formatter.coord_matrix_pattern(*row_iter, *col_iter);</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :                     }</a>
 <a name="160"><span class="lineNum">     160 </span>            :                 }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">        136 :                 return chunk;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">        137 :                 return chunk;</span></a>
 <a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :             }</span></a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
 <a name="165"><span class="lineNum">     165 </span>            :             LF line_formatter;</a>
@@ -238,22 +238,22 @@
 <a name="168"><span class="lineNum">     168 </span>            :             C_ITER val_iter, val_end;</a>
 <a name="169"><span class="lineNum">     169 </span>            :         };</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        136 :         chunk next_chunk(const write_options&amp; options) {</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        136 :             auto chunk_size = std::min(options.chunk_size_values, (int64_t)(row_end - row_iter));</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        136 :             A_ITER row_chunk_end = row_iter + chunk_size;</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">        136 :             B_ITER col_chunk_end = col_iter + chunk_size;</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        136 :             C_ITER val_chunk_end = (val_iter != val_end) ? val_iter + chunk_size: val_end;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        137 :         chunk next_chunk(const write_options&amp; options) {</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        137 :             auto chunk_size = std::min(options.chunk_size_values, (int64_t)(row_end - row_iter));</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        137 :             A_ITER row_chunk_end = row_iter + chunk_size;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">        137 :             B_ITER col_chunk_end = col_iter + chunk_size;</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        137 :             C_ITER val_chunk_end = (val_iter != val_end) ? val_iter + chunk_size: val_end;</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        136 :             chunk c(line_formatter,</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">        136 :                     row_iter, row_chunk_end,</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        136 :                     col_iter,</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        136 :                     val_iter, val_chunk_end);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        137 :             chunk c(line_formatter,</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">        137 :                     row_iter, row_chunk_end,</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        137 :                     col_iter,</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        137 :                     val_iter, val_chunk_end);</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        136 :             row_iter = row_chunk_end;</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        136 :             col_iter = col_chunk_end;</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        136 :             val_iter = val_chunk_end;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        137 :             row_iter = row_chunk_end;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        137 :             col_iter = col_chunk_end;</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        137 :             val_iter = val_chunk_end;</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">        136 :             return c;</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">        137 :             return c;</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :         }</a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
 <a name="189"><span class="lineNum">     189 </span>            :     protected:</a>

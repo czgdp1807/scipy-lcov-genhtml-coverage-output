@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/Quansight/scipy/build/scipy/optimize/_group_columns.cpython-312-x86_64-linux-gnu.so.p/_group_columns.cpp</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/Quansight/scipy/build/scipy/optimize/_group_columns.cpython-312-x86_64-linux-gnu.so.p/_group_columns.cpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">157</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -75,16 +75,16 @@
 <a name="5"><span class="lineNum">       5 </span>            : #ifdef _OPENMP</a>
 <a name="6"><span class="lineNum">       6 </span>            : #include &lt;omp.h&gt;</a>
 <a name="7"><span class="lineNum">       7 </span>            : #endif</a>
-<a name="8"><span class="lineNum">       8 </span>            : #include &lt;pythonic/include/types/ndarray.hpp&gt;</a>
-<a name="9"><span class="lineNum">       9 </span>            : #include &lt;pythonic/include/types/int.hpp&gt;</a>
-<a name="10"><span class="lineNum">      10 </span>            : #include &lt;pythonic/include/types/int32.hpp&gt;</a>
-<a name="11"><span class="lineNum">      11 </span>            : #include &lt;pythonic/include/types/numpy_texpr.hpp&gt;</a>
-<a name="12"><span class="lineNum">      12 </span>            : #include &lt;pythonic/include/types/int64.hpp&gt;</a>
-<a name="13"><span class="lineNum">      13 </span>            : #include &lt;pythonic/types/ndarray.hpp&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : #include &lt;pythonic/include/types/int.hpp&gt;</a>
+<a name="9"><span class="lineNum">       9 </span>            : #include &lt;pythonic/include/types/int64.hpp&gt;</a>
+<a name="10"><span class="lineNum">      10 </span>            : #include &lt;pythonic/include/types/ndarray.hpp&gt;</a>
+<a name="11"><span class="lineNum">      11 </span>            : #include &lt;pythonic/include/types/int32.hpp&gt;</a>
+<a name="12"><span class="lineNum">      12 </span>            : #include &lt;pythonic/include/types/numpy_texpr.hpp&gt;</a>
+<a name="13"><span class="lineNum">      13 </span>            : #include &lt;pythonic/types/int.hpp&gt;</a>
 <a name="14"><span class="lineNum">      14 </span>            : #include &lt;pythonic/types/int32.hpp&gt;</a>
-<a name="15"><span class="lineNum">      15 </span>            : #include &lt;pythonic/types/int64.hpp&gt;</a>
-<a name="16"><span class="lineNum">      16 </span>            : #include &lt;pythonic/types/numpy_texpr.hpp&gt;</a>
-<a name="17"><span class="lineNum">      17 </span>            : #include &lt;pythonic/types/int.hpp&gt;</a>
+<a name="15"><span class="lineNum">      15 </span>            : #include &lt;pythonic/types/numpy_texpr.hpp&gt;</a>
+<a name="16"><span class="lineNum">      16 </span>            : #include &lt;pythonic/types/int64.hpp&gt;</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &lt;pythonic/types/ndarray.hpp&gt;</a>
 <a name="18"><span class="lineNum">      18 </span>            : #include &lt;pythonic/include/builtins/getattr.hpp&gt;</a>
 <a name="19"><span class="lineNum">      19 </span>            : #include &lt;pythonic/include/builtins/pythran/and_.hpp&gt;</a>
 <a name="20"><span class="lineNum">      20 </span>            : #include &lt;pythonic/include/builtins/range.hpp&gt;</a>
@@ -277,8 +277,8 @@
 <a name="207"><span class="lineNum">     207 </span><span class="lineCov">         36 :       __type31 current_group = 0L;</span></a>
 <a name="208"><span class="lineNum">     208 </span><span class="lineCov">         36 :       __type71 union_ = pythonic::numpy::functor::empty{}(m, pythonic::numpy::functor::intp{});</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :       {</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         36 :         long  __target140170156973200 = n;</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       3358 :         for (long  i=0L; i &lt; __target140170156973200; i += 1L)</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         36 :         long  __target140671900923216 = n;</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       3358 :         for (long  i=0L; i &lt; __target140671900923216; i += 1L)</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :         {</a>
 <a name="213"><span class="lineNum">     213 </span><span class="lineCov">       3324 :           if (pythonic::operator_::ge(pythonic::types::as_const(groups)[i], 0L))</span></a>
 <a name="214"><span class="lineNum">     214 </span>            :           {</a>
@@ -288,15 +288,15 @@
 <a name="218"><span class="lineNum">     218 </span><span class="lineCov">        164 :           typename pythonic::lazy&lt;decltype(true)&gt;::type all_grouped = true;</span></a>
 <a name="219"><span class="lineNum">     219 </span><span class="lineCov">        164 :           pythonic::numpy::ndarray::functor::fill{}(union_, 0L);</span></a>
 <a name="220"><span class="lineNum">     220 </span>            :           {</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        164 :             long  __target140170156896208 = pythonic::types::as_const(indptr)[pythonic::operator_::add(i, 1L)];</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        663 :             for (long  k=pythonic::types::as_const(indptr)[i]; k &lt; __target140170156896208; k += 1L)</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        164 :             long  __target140671901061968 = pythonic::types::as_const(indptr)[pythonic::operator_::add(i, 1L)];</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        663 :             for (long  k=pythonic::types::as_const(indptr)[i]; k &lt; __target140671901061968; k += 1L)</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :             {</a>
 <a name="224"><span class="lineNum">     224 </span><span class="lineCov">        499 :               union_[indices[k]] = 1L;</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :             }</a>
 <a name="226"><span class="lineNum">     226 </span>            :           }</a>
 <a name="227"><span class="lineNum">     227 </span>            :           {</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        164 :             long  __target140170155870224 = std::get&lt;0&gt;(pythonic::types::as_const(pythonic::builtins::getattr(pythonic::types::attr::SHAPE{}, groups)));</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">      17508 :             for (long  j=0L; j &lt; __target140170155870224; j += 1L)</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">        164 :             long  __target140671900646608 = std::get&lt;0&gt;(pythonic::types::as_const(pythonic::builtins::getattr(pythonic::types::attr::SHAPE{}, groups)));</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">      17508 :             for (long  j=0L; j &lt; __target140671900646608; j += 1L)</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :             {</a>
 <a name="231"><span class="lineNum">     231 </span><span class="lineCov">      17344 :               if (pythonic::operator_::lt(pythonic::types::as_const(groups)[j], 0L))</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :               {</a>
@@ -308,8 +308,8 @@
 <a name="238"><span class="lineNum">     238 </span>            :               }</a>
 <a name="239"><span class="lineNum">     239 </span><span class="lineCov">       7660 :               typename pythonic::lazy&lt;decltype(false)&gt;::type intersect = false;</span></a>
 <a name="240"><span class="lineNum">     240 </span>            :               {</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       7660 :                 long  __target140170157354000 = pythonic::types::as_const(indptr)[pythonic::operator_::add(j, 1L)];</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">      19284 :                 for (long  k_=pythonic::types::as_const(indptr)[j]; k_ &lt; __target140170157354000; k_ += 1L)</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       7660 :                 long  __target140671900707856 = pythonic::types::as_const(indptr)[pythonic::operator_::add(j, 1L)];</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">      19284 :                 for (long  k_=pythonic::types::as_const(indptr)[j]; k_ &lt; __target140671900707856; k_ += 1L)</span></a>
 <a name="243"><span class="lineNum">     243 </span>            :                 {</a>
 <a name="244"><span class="lineNum">     244 </span><span class="lineCov">      16100 :                   if (pythonic::operator_::eq(pythonic::types::as_const(union_)[pythonic::types::as_const(indices)[k_]], 1L))</span></a>
 <a name="245"><span class="lineNum">     245 </span>            :                   {</a>
@@ -321,8 +321,8 @@
 <a name="251"><span class="lineNum">     251 </span><span class="lineCov">       7660 :               if (pythonic::operator_::not_(intersect))</span></a>
 <a name="252"><span class="lineNum">     252 </span>            :               {</a>
 <a name="253"><span class="lineNum">     253 </span>            :                 {</a>
-<a name="254"><span class="lineNum">     254 </span>            :                   long  __target140170157459536 = pythonic::types::as_const(indptr)[pythonic::operator_::add(j, 1L)];</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">      12657 :                   for (long  k__=pythonic::types::as_const(indptr)[j]; k__ &lt; __target140170157459536; k__ += 1L)</span></a>
+<a name="254"><span class="lineNum">     254 </span>            :                   long  __target140671900563984 = pythonic::types::as_const(indptr)[pythonic::operator_::add(j, 1L)];</a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">      12657 :                   for (long  k__=pythonic::types::as_const(indptr)[j]; k__ &lt; __target140671900563984; k__ += 1L)</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :                   {</a>
 <a name="257"><span class="lineNum">     257 </span><span class="lineCov">       9473 :                     union_[indices[k__]] = 1L;</span></a>
 <a name="258"><span class="lineNum">     258 </span>            :                   }</a>
@@ -395,8 +395,8 @@
 <a name="325"><span class="lineNum">     325 </span><span class="lineCov">         11 :       __type31 current_group = 0L;</span></a>
 <a name="326"><span class="lineNum">     326 </span><span class="lineCov">         11 :       __type46 union_ = pythonic::numpy::functor::empty{}(m, pythonic::numpy::functor::intp{});</span></a>
 <a name="327"><span class="lineNum">     327 </span>            :       {</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         11 :         long  __target140170157348176 = n;</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        191 :         for (long  i=0L; i &lt; __target140170157348176; i += 1L)</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         11 :         long  __target140671901206800 = n;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        191 :         for (long  i=0L; i &lt; __target140671901206800; i += 1L)</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :         {</a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineCov">        186 :           if (pythonic::operator_::ge(pythonic::types::as_const(groups)[i], 0L))</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :           {</a>
@@ -406,8 +406,8 @@
 <a name="336"><span class="lineNum">     336 </span><span class="lineCov">         27 :           typename pythonic::lazy&lt;decltype(true)&gt;::type all_grouped = true;</span></a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineCov">         27 :           pythonic::numpy::functor::copyto{}(union_, pythonic::types::as_const(B)[i]);</span></a>
 <a name="338"><span class="lineNum">     338 </span>            :           {</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         27 :             long  __target140170157356112 = std::get&lt;0&gt;(pythonic::types::as_const(pythonic::builtins::getattr(pythonic::types::attr::SHAPE{}, groups)));</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        718 :             for (long  j=0L; j &lt; __target140170157356112; j += 1L)</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         27 :             long  __target140671900970512 = std::get&lt;0&gt;(pythonic::types::as_const(pythonic::builtins::getattr(pythonic::types::attr::SHAPE{}, groups)));</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        718 :             for (long  j=0L; j &lt; __target140671900970512; j += 1L)</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :             {</a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineCov">        691 :               if (pythonic::operator_::lt(pythonic::types::as_const(groups)[j], 0L))</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :               {</a>
@@ -419,8 +419,8 @@
 <a name="349"><span class="lineNum">     349 </span>            :               }</a>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">        390 :               typename pythonic::lazy&lt;decltype(false)&gt;::type intersect = false;</span></a>
 <a name="351"><span class="lineNum">     351 </span>            :               {</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        390 :                 long  __target140170157258640 = m;</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">      12296 :                 for (long  k=0L; k &lt; __target140170157258640; k += 1L)</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        390 :                 long  __target140671901011664 = m;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">      12296 :                 for (long  k=0L; k &lt; __target140671901011664; k += 1L)</span></a>
 <a name="354"><span class="lineNum">     354 </span>            :                 {</a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">      30859 :                   if (pythonic::builtins::pythran::and_([&amp;] () { return pythonic::operator_::gt(pythonic::types::as_const(union_)[k], 0L); }, [&amp;] () { return pythonic::operator_::gt(pythonic::types::as_const(B)[pythonic::types::make_tuple(j, k)], 0L); }))</span></a>
 <a name="356"><span class="lineNum">     356 </span>            :                   {</a>
@@ -813,30 +813,30 @@
 <a name="743"><span class="lineNum">     743 </span>            : #endif</a>
 <a name="744"><span class="lineNum">     744 </span>            : ;</a>
 <a name="745"><span class="lineNum">     745 </span>            : PyMODINIT_FUNC</a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineCov">          1 : PYTHRAN_MODULE_INIT(_group_columns)(void) {</span></a>
-<a name="747"><span class="lineNum">     747 </span><span class="lineCov">          1 :     import_array();</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineCov">          3 : PYTHRAN_MODULE_INIT(_group_columns)(void) {</span></a>
+<a name="747"><span class="lineNum">     747 </span><span class="lineCov">          3 :     import_array();</span></a>
 <a name="748"><span class="lineNum">     748 </span>            : </a>
 <a name="749"><span class="lineNum">     749 </span>            :     #if PY_MAJOR_VERSION &gt;= 3</a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          1 :     PyObject* theModule = PyModule_Create(&amp;moduledef);</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          3 :     PyObject* theModule = PyModule_Create(&amp;moduledef);</span></a>
 <a name="751"><span class="lineNum">     751 </span>            :     #else</a>
 <a name="752"><span class="lineNum">     752 </span>            :     PyObject* theModule = Py_InitModule3(&quot;_group_columns&quot;,</a>
 <a name="753"><span class="lineNum">     753 </span>            :                                          Methods,</a>
 <a name="754"><span class="lineNum">     754 </span>            :                                          &quot;\n&quot;&quot;Pythran implementation of columns grouping for finite difference Jacobian\n&quot;&quot;estimation. Used by ._numdiff.group_columns and based on the Cython version.\n&quot;&quot;&quot;</a>
 <a name="755"><span class="lineNum">     755 </span>            :     );</a>
 <a name="756"><span class="lineNum">     756 </span>            :     #endif</a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">          1 :     if(! theModule)</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">          3 :     if(! theModule)</span></a>
 <a name="758"><span class="lineNum">     758 </span>            :         PYTHRAN_RETURN;</a>
-<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          1 :     PyObject * theDoc = Py_BuildValue(&quot;(ss)&quot;,</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          3 :     PyObject * theDoc = Py_BuildValue(&quot;(ss)&quot;,</span></a>
 <a name="760"><span class="lineNum">     760 </span>            :                                       &quot;0.16.1&quot;,</a>
 <a name="761"><span class="lineNum">     761 </span>            :                                       &quot;d7c1aa78dafa22cfad7f46fb815cf1eb0c6860602fdb0cdd51232c7729bd53d6&quot;);</a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">          1 :     if(! theDoc)</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">          3 :     if(! theDoc)</span></a>
 <a name="763"><span class="lineNum">     763 </span>            :         PYTHRAN_RETURN;</a>
-<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          1 :     PyModule_AddObject(theModule,</span></a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          3 :     PyModule_AddObject(theModule,</span></a>
 <a name="765"><span class="lineNum">     765 </span>            :                        &quot;__pythran__&quot;,</a>
 <a name="766"><span class="lineNum">     766 </span>            :                        theDoc);</a>
 <a name="767"><span class="lineNum">     767 </span>            : </a>
 <a name="768"><span class="lineNum">     768 </span>            : </a>
-<a name="769"><span class="lineNum">     769 </span><span class="lineCov">          1 :     PYTHRAN_RETURN;</span></a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineCov">          3 :     PYTHRAN_RETURN;</span></a>
 <a name="770"><span class="lineNum">     770 </span>            : }</a>
 <a name="771"><span class="lineNum">     771 </span>            : </a>
 <a name="772"><span class="lineNum">     772 </span>            : #endif</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/_superluobject.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/_superluobject.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">408</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -88,32 +88,32 @@
 <a name="18"><span class="lineNum">      18 </span>            :  * SuperLUObject methods</a>
 <a name="19"><span class="lineNum">      19 </span>            :  */</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">      31621 : static PyObject *SuperLU_solve(SuperLUObject * self, PyObject * args,</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">      31679 : static PyObject *SuperLU_solve(SuperLUObject * self, PyObject * args,</span></a>
 <a name="22"><span class="lineNum">      22 </span>            :                                PyObject * kwds)</a>
 <a name="23"><span class="lineNum">      23 </span>            : {</a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">      31621 :     volatile PyArrayObject *b, *x = NULL;</span></a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">      31621 :     volatile SuperMatrix B = { 0 };</span></a>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">      31621 :     volatile int itrans = 'N';</span></a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">      31621 :     volatile int info;</span></a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">      31621 :     volatile trans_t trans;</span></a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      31621 :     volatile SuperLUStat_t stat = { 0 };</span></a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">      31621 :     static char *kwlist[] = { &quot;rhs&quot;, &quot;trans&quot;, NULL };</span></a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">      31621 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">      31621 :     SLU_BEGIN_THREADS_DEF;</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">      31679 :     volatile PyArrayObject *b, *x = NULL;</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">      31679 :     volatile SuperMatrix B = { 0 };</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">      31679 :     volatile int itrans = 'N';</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">      31679 :     volatile int info;</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">      31679 :     volatile trans_t trans;</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">      31679 :     volatile SuperLUStat_t stat = { 0 };</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">      31679 :     static char *kwlist[] = { &quot;rhs&quot;, &quot;trans&quot;, NULL };</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">      31679 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">      31679 :     SLU_BEGIN_THREADS_DEF;</span></a>
 <a name="33"><span class="lineNum">      33 </span>            : </a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">      31621 :     if (!CHECK_SLU_TYPE(self-&gt;type)) {</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">      31679 :     if (!CHECK_SLU_TYPE(self-&gt;type)) {</span></a>
 <a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;unsupported data type&quot;);</span></a>
 <a name="36"><span class="lineNum">      36 </span>            :         return NULL;</a>
 <a name="37"><span class="lineNum">      37 </span>            :     }</a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">      31621 :     if (!PyArg_ParseTupleAndKeywords(args, kwds, &quot;O!|C&quot;, kwlist,</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">      31621 :                                      &amp;PyArray_Type, &amp;b, &amp;itrans))</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">      31679 :     if (!PyArg_ParseTupleAndKeywords(args, kwds, &quot;O!|C&quot;, kwlist,</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">      31679 :                                      &amp;PyArray_Type, &amp;b, &amp;itrans))</span></a>
 <a name="41"><span class="lineNum">      41 </span>            :         return NULL;</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
 <a name="43"><span class="lineNum">      43 </span>            :     /* solve transposed system: matrix was passed row-wise instead of</a>
 <a name="44"><span class="lineNum">      44 </span>            :      * column-wise */</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      31621 :     if (itrans == 'n' || itrans == 'N')</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">      31446 :         trans = NOTRANS;</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      31679 :     if (itrans == 'n' || itrans == 'N')</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">      31504 :         trans = NOTRANS;</span></a>
 <a name="47"><span class="lineNum">      47 </span><span class="lineCov">        175 :     else if (itrans == 't' || itrans == 'T')</span></a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineCov">         95 :         trans = TRANS;</span></a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">         80 :     else if (itrans == 'h' || itrans == 'H')</span></a>
@@ -123,50 +123,50 @@
 <a name="53"><span class="lineNum">      53 </span>            :         return NULL;</a>
 <a name="54"><span class="lineNum">      54 </span>            :     }</a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      31621 :     x = (PyArrayObject*)PyArray_FROMANY(</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      31679 :     x = (PyArrayObject*)PyArray_FROMANY(</span></a>
 <a name="57"><span class="lineNum">      57 </span>            :         (PyObject*)b, self-&gt;type, 1, 2,</a>
 <a name="58"><span class="lineNum">      58 </span>            :         NPY_ARRAY_F_CONTIGUOUS | NPY_ARRAY_ENSURECOPY);</a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">      31621 :     if (x == NULL) {</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">      31679 :     if (x == NULL) {</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">          9 :         goto fail;</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :     }</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">      31612 :     if (PyArray_DIM((PyArrayObject*)x, 0) != self-&gt;n) {</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">      31670 :     if (PyArray_DIM((PyArrayObject*)x, 0) != self-&gt;n) {</span></a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">          6 :         PyErr_SetString(PyExc_ValueError, &quot;b is of incompatible size&quot;);</span></a>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">          6 :         goto fail;</span></a>
 <a name="66"><span class="lineNum">      66 </span>            :     }</a>
 <a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">      31606 :     if (DenseSuper_from_Numeric((SuperMatrix*)&amp;B, (PyObject *)x))</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">      31664 :     if (DenseSuper_from_Numeric((SuperMatrix*)&amp;B, (PyObject *)x))</span></a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      31606 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">      31606 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      31664 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">      31664 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :     }</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">      31606 :     StatInit((SuperLUStat_t *)&amp;stat);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">      31664 :     StatInit((SuperLUStat_t *)&amp;stat);</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
 <a name="78"><span class="lineNum">      78 </span>            :     /* Solve the system, overwriting vector x. */</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">      31606 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">      31606 :     SLU_BEGIN_THREADS;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">      31606 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">      31664 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">      31664 :     SLU_BEGIN_THREADS;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">      31664 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :         SLU_END_THREADS;</span></a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     }</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      31606 :     gstrs(self-&gt;type,</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      31664 :     gstrs(self-&gt;type,</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :           trans, &amp;self-&gt;L, &amp;self-&gt;U, self-&gt;perm_c, self-&gt;perm_r,</a>
 <a name="87"><span class="lineNum">      87 </span>            :           (SuperMatrix *)&amp;B, (SuperLUStat_t *)&amp;stat, (int *)&amp;info);</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      31606 :     SLU_END_THREADS;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      31664 :     SLU_END_THREADS;</span></a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">      31606 :     if (info) {</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">      31664 :     if (info) {</span></a>
 <a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_SystemError,</span></a>
 <a name="92"><span class="lineNum">      92 </span>            :                         &quot;gstrs was called with invalid arguments&quot;);</a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="94"><span class="lineNum">      94 </span>            :     }</a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
 <a name="96"><span class="lineNum">      96 </span>            :     /* free memory */</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">      31606 :     Destroy_SuperMatrix_Store((SuperMatrix *)&amp;B);</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">      31606 :     StatFree((SuperLUStat_t *)&amp;stat);</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">      31606 :     return (PyObject *) x;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">      31664 :     Destroy_SuperMatrix_Store((SuperMatrix *)&amp;B);</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">      31664 :     StatFree((SuperLUStat_t *)&amp;stat);</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">      31664 :     return (PyObject *) x;</span></a>
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">         15 :   fail:</span></a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">         15 :     XDestroy_SuperMatrix_Store((SuperMatrix *)&amp;B);</span></a>
@@ -187,22 +187,22 @@
 <a name="117"><span class="lineNum">     117 </span>            :  * SuperLUType methods</a>
 <a name="118"><span class="lineNum">     118 </span>            :  */</a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       3696 : static void SuperLU_dealloc(SuperLUObject * self)</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       3702 : static void SuperLU_dealloc(SuperLUObject * self)</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : {</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3696 :     Py_XDECREF(self-&gt;cached_U);</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3696 :     Py_XDECREF(self-&gt;cached_L);</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       3696 :     Py_XDECREF(self-&gt;py_csc_construct_func);</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3696 :     self-&gt;cached_U = NULL;</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       3696 :     self-&gt;cached_L = NULL;</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       3696 :     self-&gt;py_csc_construct_func = NULL;</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       3696 :     SUPERLU_FREE(self-&gt;perm_r);</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       3696 :     SUPERLU_FREE(self-&gt;perm_c);</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       3696 :     self-&gt;perm_r = NULL;</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       3696 :     self-&gt;perm_c = NULL;</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3696 :     XDestroy_SuperNode_Matrix(&amp;self-&gt;L);</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       3696 :     XDestroy_CompCol_Matrix(&amp;self-&gt;U);</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3696 :     PyObject_Del(self);</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       3696 : }</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3702 :     Py_XDECREF(self-&gt;cached_U);</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3702 :     Py_XDECREF(self-&gt;cached_L);</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       3702 :     Py_XDECREF(self-&gt;py_csc_construct_func);</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3702 :     self-&gt;cached_U = NULL;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       3702 :     self-&gt;cached_L = NULL;</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       3702 :     self-&gt;py_csc_construct_func = NULL;</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       3702 :     SUPERLU_FREE(self-&gt;perm_r);</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       3702 :     SUPERLU_FREE(self-&gt;perm_c);</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       3702 :     self-&gt;perm_r = NULL;</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       3702 :     self-&gt;perm_c = NULL;</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3702 :     XDestroy_SuperNode_Matrix(&amp;self-&gt;L);</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       3702 :     XDestroy_CompCol_Matrix(&amp;self-&gt;U);</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3702 :     PyObject_Del(self);</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       3702 : }</span></a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span><span class="lineCov">         34 : static PyObject *SuperLU_getter(PyObject *selfp, void *data)</span></a>
 <a name="138"><span class="lineNum">     138 </span>            : {</a>
@@ -338,36 +338,36 @@
 <a name="268"><span class="lineNum">     268 </span>            : };</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">      32314 : int DenseSuper_from_Numeric(SuperMatrix *X, PyObject *PyX)</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">      32372 : int DenseSuper_from_Numeric(SuperMatrix *X, PyObject *PyX)</span></a>
 <a name="272"><span class="lineNum">     272 </span>            : {</a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">      32314 :     volatile PyArrayObject *aX;</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">      32314 :     volatile int m, n, ldx, nd;</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      32314 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">      32372 :     volatile PyArrayObject *aX;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">      32372 :     volatile int m, n, ldx, nd;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      32372 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
 <a name="276"><span class="lineNum">     276 </span>            : </a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">      32314 :     if (!PyArray_Check(PyX)) {</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">      32372 :     if (!PyArray_Check(PyX)) {</span></a>
 <a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_TypeError,</span></a>
 <a name="279"><span class="lineNum">     279 </span>            :                         &quot;argument is not an array.&quot;);</a>
 <a name="280"><span class="lineNum">     280 </span>            :         return -1;</a>
 <a name="281"><span class="lineNum">     281 </span>            :     }</a>
 <a name="282"><span class="lineNum">     282 </span>            : </a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">      32314 :     aX = (PyArrayObject*)PyX;</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">      32372 :     aX = (PyArrayObject*)PyX;</span></a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">      32314 :     if (!CHECK_SLU_TYPE(PyArray_TYPE((PyArrayObject*)aX))) {</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">      32372 :     if (!CHECK_SLU_TYPE(PyArray_TYPE((PyArrayObject*)aX))) {</span></a>
 <a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;unsupported array data type&quot;);</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :         return -1;</a>
 <a name="288"><span class="lineNum">     288 </span>            :     }</a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      32314 :     if (!(PyArray_FLAGS((PyArrayObject*)aX) &amp; NPY_ARRAY_F_CONTIGUOUS)) {</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      32372 :     if (!(PyArray_FLAGS((PyArrayObject*)aX) &amp; NPY_ARRAY_F_CONTIGUOUS)) {</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;array is not fortran contiguous&quot;);</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :         return -1;</a>
 <a name="293"><span class="lineNum">     293 </span>            :     }</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      32314 :     nd = PyArray_NDIM((PyArrayObject*)aX);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      32372 :     nd = PyArray_NDIM((PyArrayObject*)aX);</span></a>
 <a name="296"><span class="lineNum">     296 </span>            : </a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      32314 :     if (nd == 1) {</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      32106 :         m = PyArray_DIM((PyArrayObject*)aX, 0);</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      32106 :         n = 1;</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      32106 :         ldx = m;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      32372 :     if (nd == 1) {</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      32164 :         m = PyArray_DIM((PyArrayObject*)aX, 0);</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      32164 :         n = 1;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      32164 :         ldx = m;</span></a>
 <a name="301"><span class="lineNum">     301 </span>            :     }</a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">        208 :     else if (nd == 2) {</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">        208 :         m = PyArray_DIM((PyArrayObject*)aX, 0);</span></a>
@@ -379,14 +379,14 @@
 <a name="309"><span class="lineNum">     309 </span>            :         return -1;</a>
 <a name="310"><span class="lineNum">     310 </span>            :     }</a>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      32314 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      32314 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      32372 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      32372 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="314"><span class="lineNum">     314 </span>            :         return -1;</a>
 <a name="315"><span class="lineNum">     315 </span>            :     }</a>
 <a name="316"><span class="lineNum">     316 </span>            :     else {</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      64628 :         Create_Dense_Matrix(PyArray_TYPE((PyArrayObject*)aX), X, m, n,</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      64744 :         Create_Dense_Matrix(PyArray_TYPE((PyArrayObject*)aX), X, m, n,</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :                             PyArray_DATA((PyArrayObject*)aX), ldx, SLU_DN,</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">      32314 :                             NPY_TYPECODE_TO_SLU(PyArray_TYPE((PyArrayObject*)aX)),</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">      32372 :                             NPY_TYPECODE_TO_SLU(PyArray_TYPE((PyArrayObject*)aX)),</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :                             SLU_GE);</a>
 <a name="321"><span class="lineNum">     321 </span>            :     }</a>
 <a name="322"><span class="lineNum">     322 </span>            :     return 0;</a>
@@ -402,11 +402,11 @@
 <a name="332"><span class="lineNum">     332 </span>            :                                       typenum, SLU_NR, SLU_GE, NULL, NULL);</a>
 <a name="333"><span class="lineNum">     333 </span>            : }</a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">       3709 : int NCFormat_from_spMatrix(SuperMatrix * A, int m, int n, int nnz,</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">       3715 : int NCFormat_from_spMatrix(SuperMatrix * A, int m, int n, int nnz,</span></a>
 <a name="336"><span class="lineNum">     336 </span>            :                            PyArrayObject * nzvals, PyArrayObject * rowind,</a>
 <a name="337"><span class="lineNum">     337 </span>            :                            PyArrayObject * colptr, int typenum)</a>
 <a name="338"><span class="lineNum">     338 </span>            : {</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">       3709 :     return SparseFormat_from_spMatrix(A, m, n, nnz, 0, nzvals, rowind, colptr,</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">       3715 :     return SparseFormat_from_spMatrix(A, m, n, nnz, 0, nzvals, rowind, colptr,</span></a>
 <a name="340"><span class="lineNum">     340 </span>            :                                       typenum, SLU_NC, SLU_GE, NULL, NULL);</a>
 <a name="341"><span class="lineNum">     341 </span>            : }</a>
 <a name="342"><span class="lineNum">     342 </span>            : </a>
@@ -419,7 +419,7 @@
 <a name="349"><span class="lineNum">     349 </span>            :  * - `identity_col_to_sup`: (for supernodal CSC only) must be int array {0,1,2,...,n-2,n-1,n-1}</a>
 <a name="350"><span class="lineNum">     350 </span>            :  * - `identity_sup_to_col`: (for supernodal CSC only) must be int array {0,1,...,n}</a>
 <a name="351"><span class="lineNum">     351 </span>            :  */</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       4415 : int SparseFormat_from_spMatrix(SuperMatrix * A, int m, int n, int nnz, int csr,</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       4421 : int SparseFormat_from_spMatrix(SuperMatrix * A, int m, int n, int nnz, int csr,</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :                                PyArrayObject * nzvals,</a>
 <a name="354"><span class="lineNum">     354 </span>            :                                PyArrayObject * indices,</a>
 <a name="355"><span class="lineNum">     355 </span>            :                                PyArrayObject * pointers,</a>
@@ -428,38 +428,38 @@
 <a name="358"><span class="lineNum">     358 </span>            :                                int* identity_col_to_sup,</a>
 <a name="359"><span class="lineNum">     359 </span>            :                                int* identity_sup_to_col)</a>
 <a name="360"><span class="lineNum">     360 </span>            : {</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       4415 :     volatile int ok = 0;</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       4415 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       4421 :     volatile int ok = 0;</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       4421 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       8830 :     ok = (PyArray_EquivTypenums(PyArray_TYPE(nzvals), typenum) &amp;&amp;</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       8830 :           PyArray_EquivTypenums(PyArray_TYPE(indices), NPY_INT) &amp;&amp;</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       4415 :           PyArray_EquivTypenums(PyArray_TYPE(pointers), NPY_INT) &amp;&amp;</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4415 :           PyArray_NDIM(nzvals) == 1 &amp;&amp;</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">       4415 :           PyArray_NDIM(indices) == 1 &amp;&amp;</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       4415 :           PyArray_NDIM(pointers) == 1 &amp;&amp;</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       4415 :           PyArray_IS_C_CONTIGUOUS(nzvals) &amp;&amp;</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">       4415 :           PyArray_IS_C_CONTIGUOUS(indices) &amp;&amp;</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       4415 :           PyArray_IS_C_CONTIGUOUS(pointers) &amp;&amp;</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       4415 :           nnz &lt;= PyArray_DIM(nzvals, 0) &amp;&amp;</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       8830 :           nnz &lt;= PyArray_DIM(indices, 0) &amp;&amp;</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       4415 :           (csr ? (m+1) : (n+1)) &lt;= PyArray_DIM(pointers, 0));</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       4415 :     if (!ok) {</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       8842 :     ok = (PyArray_EquivTypenums(PyArray_TYPE(nzvals), typenum) &amp;&amp;</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       8842 :           PyArray_EquivTypenums(PyArray_TYPE(indices), NPY_INT) &amp;&amp;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       4421 :           PyArray_EquivTypenums(PyArray_TYPE(pointers), NPY_INT) &amp;&amp;</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4421 :           PyArray_NDIM(nzvals) == 1 &amp;&amp;</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">       4421 :           PyArray_NDIM(indices) == 1 &amp;&amp;</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       4421 :           PyArray_NDIM(pointers) == 1 &amp;&amp;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       4421 :           PyArray_IS_C_CONTIGUOUS(nzvals) &amp;&amp;</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">       4421 :           PyArray_IS_C_CONTIGUOUS(indices) &amp;&amp;</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       4421 :           PyArray_IS_C_CONTIGUOUS(pointers) &amp;&amp;</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       4421 :           nnz &lt;= PyArray_DIM(nzvals, 0) &amp;&amp;</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       8842 :           nnz &lt;= PyArray_DIM(indices, 0) &amp;&amp;</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       4421 :           (csr ? (m+1) : (n+1)) &lt;= PyArray_DIM(pointers, 0));</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       4421 :     if (!ok) {</span></a>
 <a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError,</span></a>
 <a name="378"><span class="lineNum">     378 </span>            :                         &quot;sparse matrix arrays must be 1-D C-contiguous and of proper &quot;</a>
 <a name="379"><span class="lineNum">     379 </span>            :                         &quot;sizes and types&quot;);</a>
 <a name="380"><span class="lineNum">     380 </span>            :         return -1;</a>
 <a name="381"><span class="lineNum">     381 </span>            :     }</a>
 <a name="382"><span class="lineNum">     382 </span>            : </a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">       4415 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">       4415 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">       4421 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">       4421 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="385"><span class="lineNum">     385 </span>            :         return -1;</a>
 <a name="386"><span class="lineNum">     386 </span>            :     }</a>
 <a name="387"><span class="lineNum">     387 </span>            :     else {</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       4415 :         if (!CHECK_SLU_TYPE(PyArray_TYPE(nzvals))) {</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       4421 :         if (!CHECK_SLU_TYPE(PyArray_TYPE(nzvals))) {</span></a>
 <a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 :             PyErr_SetString(PyExc_TypeError, &quot;Invalid type for array.&quot;);</span></a>
 <a name="390"><span class="lineNum">     390 </span>            :             return -1;</a>
 <a name="391"><span class="lineNum">     391 </span>            :         }</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       4415 :         if (csr == 1) {</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       4421 :         if (csr == 1) {</span></a>
 <a name="393"><span class="lineNum">     393 </span><span class="lineCov">       1372 :             Create_CompRow_Matrix(PyArray_TYPE(nzvals),</span></a>
 <a name="394"><span class="lineNum">     394 </span>            :                                   A, m, n, nnz, PyArray_DATA(nzvals),</a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineCov">        686 :                                   (int *) PyArray_DATA(indices),</span></a>
@@ -467,13 +467,13 @@
 <a name="397"><span class="lineNum">     397 </span>            :                                   stype,</a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineCov">        686 :                                   NPY_TYPECODE_TO_SLU(PyArray_TYPE(nzvals)),</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :                                   mtype);</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       3729 :         } else if (csr == 0) {</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       7438 :             Create_CompCol_Matrix(PyArray_TYPE(nzvals),</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       3735 :         } else if (csr == 0) {</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       7450 :             Create_CompCol_Matrix(PyArray_TYPE(nzvals),</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :                                   A, m, n, nnz, PyArray_DATA(nzvals),</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       3719 :                                   (int *) PyArray_DATA(indices),</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">       3719 :                                   (int *) PyArray_DATA(pointers),</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       3725 :                                   (int *) PyArray_DATA(indices),</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">       3725 :                                   (int *) PyArray_DATA(pointers),</span></a>
 <a name="405"><span class="lineNum">     405 </span>            :                                   stype,</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">       3719 :                                   NPY_TYPECODE_TO_SLU(PyArray_TYPE(nzvals)),</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">       3725 :                                   NPY_TYPECODE_TO_SLU(PyArray_TYPE(nzvals)),</span></a>
 <a name="407"><span class="lineNum">     407 </span>            :                                   mtype);</a>
 <a name="408"><span class="lineNum">     408 </span><span class="lineCov">         10 :         } else if (csr == -1) {</span></a>
 <a name="409"><span class="lineNum">     409 </span>            :             /* We do not know if/which columns have the same sparsity structure, therefore</a>
@@ -747,87 +747,87 @@
 <a name="677"><span class="lineNum">     677 </span>            : }</a>
 <a name="678"><span class="lineNum">     678 </span>            : </a>
 <a name="679"><span class="lineNum">     679 </span>            : </a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">       3696 : PyObject *newSuperLUObject(SuperMatrix * A, PyObject * option_dict,</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">       3702 : PyObject *newSuperLUObject(SuperMatrix * A, PyObject * option_dict,</span></a>
 <a name="681"><span class="lineNum">     681 </span>            :                            int intype, int ilu, PyObject * py_csc_construct_func)</a>
 <a name="682"><span class="lineNum">     682 </span>            : {</a>
 <a name="683"><span class="lineNum">     683 </span>            : </a>
 <a name="684"><span class="lineNum">     684 </span>            :     /* A must be in SLU_NC format used by the factorization routine. */</a>
-<a name="685"><span class="lineNum">     685 </span><span class="lineCov">       3696 :     volatile SuperLUObject *self;</span></a>
-<a name="686"><span class="lineNum">     686 </span><span class="lineCov">       3696 :     volatile SuperMatrix AC = { 0 };    /* Matrix postmultiplied by Pc */</span></a>
-<a name="687"><span class="lineNum">     687 </span><span class="lineCov">       3696 :     volatile int lwork = 0;</span></a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">       3696 :     volatile int *etree = NULL;</span></a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">       3696 :     volatile int info;</span></a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">       3696 :     volatile int n;</span></a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">       3696 :     volatile superlu_options_t options;</span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">       3696 :     volatile SuperLUStat_t stat = { 0 };</span></a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       3696 :     volatile int panel_size, relax;</span></a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">       3696 :     volatile GlobalLU_t Glu;</span></a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       3696 :     static volatile GlobalLU_t static_Glu;</span></a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">       3696 :     volatile GlobalLU_t *Glu_ptr;</span></a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       3696 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
-<a name="698"><span class="lineNum">     698 </span><span class="lineCov">       3696 :     SLU_BEGIN_THREADS_DEF;</span></a>
+<a name="685"><span class="lineNum">     685 </span><span class="lineCov">       3702 :     volatile SuperLUObject *self;</span></a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">       3702 :     volatile SuperMatrix AC = { 0 };    /* Matrix postmultiplied by Pc */</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">       3702 :     volatile int lwork = 0;</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">       3702 :     volatile int *etree = NULL;</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">       3702 :     volatile int info;</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">       3702 :     volatile int n;</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">       3702 :     volatile superlu_options_t options;</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">       3702 :     volatile SuperLUStat_t stat = { 0 };</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       3702 :     volatile int panel_size, relax;</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">       3702 :     volatile GlobalLU_t Glu;</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       3702 :     static volatile GlobalLU_t static_Glu;</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">       3702 :     volatile GlobalLU_t *Glu_ptr;</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       3702 :     volatile jmp_buf *jmpbuf_ptr;</span></a>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">       3702 :     SLU_BEGIN_THREADS_DEF;</span></a>
 <a name="699"><span class="lineNum">     699 </span>            : </a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       3696 :     n = A-&gt;ncol;</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       3702 :     n = A-&gt;ncol;</span></a>
 <a name="701"><span class="lineNum">     701 </span>            : </a>
-<a name="702"><span class="lineNum">     702 </span><span class="lineCov">       3696 :     if (!set_superlu_options_from_dict((superlu_options_t*)&amp;options, ilu, option_dict,</span></a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineCov">       3702 :     if (!set_superlu_options_from_dict((superlu_options_t*)&amp;options, ilu, option_dict,</span></a>
 <a name="703"><span class="lineNum">     703 </span>            :                                        (int*)&amp;panel_size, (int*)&amp;relax)) {</a>
 <a name="704"><span class="lineNum">     704 </span>            :         return NULL;</a>
 <a name="705"><span class="lineNum">     705 </span>            :     }</a>
 <a name="706"><span class="lineNum">     706 </span>            : </a>
 <a name="707"><span class="lineNum">     707 </span>            :     /* Create SLUObject */</a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">       3696 :     self = PyObject_New(SuperLUObject, &amp;SuperLUType);</span></a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3696 :     if (self == NULL)</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">       3702 :     self = PyObject_New(SuperLUObject, &amp;SuperLUType);</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3702 :     if (self == NULL)</span></a>
 <a name="710"><span class="lineNum">     710 </span><span class="lineNoCov">          0 :         return PyErr_NoMemory();</span></a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       3696 :     self-&gt;m = A-&gt;nrow;</span></a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">       3696 :     self-&gt;n = n;</span></a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       3696 :     self-&gt;perm_r = NULL;</span></a>
-<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       3696 :     self-&gt;perm_c = NULL;</span></a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       3696 :     self-&gt;L.Store = NULL;</span></a>
-<a name="716"><span class="lineNum">     716 </span><span class="lineCov">       3696 :     self-&gt;U.Store = NULL;</span></a>
-<a name="717"><span class="lineNum">     717 </span><span class="lineCov">       3696 :     self-&gt;cached_U = NULL;</span></a>
-<a name="718"><span class="lineNum">     718 </span><span class="lineCov">       3696 :     self-&gt;cached_L = NULL;</span></a>
-<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       3696 :     self-&gt;py_csc_construct_func = NULL;</span></a>
-<a name="720"><span class="lineNum">     720 </span><span class="lineCov">       3696 :     self-&gt;type = intype;</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       3702 :     self-&gt;m = A-&gt;nrow;</span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineCov">       3702 :     self-&gt;n = n;</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       3702 :     self-&gt;perm_r = NULL;</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       3702 :     self-&gt;perm_c = NULL;</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       3702 :     self-&gt;L.Store = NULL;</span></a>
+<a name="716"><span class="lineNum">     716 </span><span class="lineCov">       3702 :     self-&gt;U.Store = NULL;</span></a>
+<a name="717"><span class="lineNum">     717 </span><span class="lineCov">       3702 :     self-&gt;cached_U = NULL;</span></a>
+<a name="718"><span class="lineNum">     718 </span><span class="lineCov">       3702 :     self-&gt;cached_L = NULL;</span></a>
+<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       3702 :     self-&gt;py_csc_construct_func = NULL;</span></a>
+<a name="720"><span class="lineNum">     720 </span><span class="lineCov">       3702 :     self-&gt;type = intype;</span></a>
 <a name="721"><span class="lineNum">     721 </span>            : </a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       3696 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="723"><span class="lineNum">     723 </span><span class="lineCov">       3696 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       3702 :     jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="723"><span class="lineNum">     723 </span><span class="lineCov">       3702 :     if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="724"><span class="lineNum">     724 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="725"><span class="lineNum">     725 </span>            :     }</a>
 <a name="726"><span class="lineNum">     726 </span>            : </a>
 <a name="727"><span class="lineNum">     727 </span>            :     /* Calculate and apply minimum degree ordering */</a>
-<a name="728"><span class="lineNum">     728 </span><span class="lineCov">       3696 :     etree = intMalloc(n);</span></a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">       3696 :     self-&gt;perm_r = intMalloc(n);</span></a>
-<a name="730"><span class="lineNum">     730 </span><span class="lineCov">       3696 :     self-&gt;perm_c = intMalloc(n);</span></a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">       3696 :     StatInit((SuperLUStat_t *)&amp;stat);</span></a>
+<a name="728"><span class="lineNum">     728 </span><span class="lineCov">       3702 :     etree = intMalloc(n);</span></a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">       3702 :     self-&gt;perm_r = intMalloc(n);</span></a>
+<a name="730"><span class="lineNum">     730 </span><span class="lineCov">       3702 :     self-&gt;perm_c = intMalloc(n);</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">       3702 :     StatInit((SuperLUStat_t *)&amp;stat);</span></a>
 <a name="732"><span class="lineNum">     732 </span>            : </a>
 <a name="733"><span class="lineNum">     733 </span>            :     /* calc column permutation */</a>
-<a name="734"><span class="lineNum">     734 </span><span class="lineCov">       3696 :     get_perm_c(options.ColPerm, A, self-&gt;perm_c);</span></a>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">       3702 :     get_perm_c(options.ColPerm, A, self-&gt;perm_c);</span></a>
 <a name="735"><span class="lineNum">     735 </span>            : </a>
 <a name="736"><span class="lineNum">     736 </span>            :     /* apply column permutation */</a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">       3696 :     sp_preorder((superlu_options_t*)&amp;options, A, self-&gt;perm_c, (int*)etree,</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">       3702 :     sp_preorder((superlu_options_t*)&amp;options, A, self-&gt;perm_c, (int*)etree,</span></a>
 <a name="738"><span class="lineNum">     738 </span>            :                 (SuperMatrix*)&amp;AC);</a>
 <a name="739"><span class="lineNum">     739 </span>            : </a>
 <a name="740"><span class="lineNum">     740 </span>            :     /* Perform factorization */</a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       3696 :     if (!CHECK_SLU_TYPE(SLU_TYPECODE_TO_NPY(A-&gt;Dtype))) {</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       3702 :     if (!CHECK_SLU_TYPE(SLU_TYPECODE_TO_NPY(A-&gt;Dtype))) {</span></a>
 <a name="742"><span class="lineNum">     742 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;Invalid type in SuperMatrix.&quot;);</span></a>
 <a name="743"><span class="lineNum">     743 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="744"><span class="lineNum">     744 </span>            :     }</a>
 <a name="745"><span class="lineNum">     745 </span>            : </a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineCov">       3696 :     if (options.Fact == SamePattern || options.Fact == SamePattern_SameRowPerm) {</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineCov">       3702 :     if (options.Fact == SamePattern || options.Fact == SamePattern_SameRowPerm) {</span></a>
 <a name="747"><span class="lineNum">     747 </span>            :         /* XXX: not nice, a better new API should be introduced for this */</a>
 <a name="748"><span class="lineNum">     748 </span>            :         Glu_ptr = &amp;static_Glu;</a>
 <a name="749"><span class="lineNum">     749 </span>            :     }</a>
 <a name="750"><span class="lineNum">     750 </span>            :     else {</a>
-<a name="751"><span class="lineNum">     751 </span><span class="lineCov">       3696 :         Glu_ptr = &amp;Glu;</span></a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineCov">       3696 :         jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       3696 :         SLU_BEGIN_THREADS;</span></a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       3698 :         if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">       3702 :         Glu_ptr = &amp;Glu;</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">       3702 :         jmpbuf_ptr = (volatile jmp_buf *)superlu_python_jmpbuf();</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       3702 :         SLU_BEGIN_THREADS;</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       3704 :         if (setjmp(*(jmp_buf*)jmpbuf_ptr)) {</span></a>
 <a name="755"><span class="lineNum">     755 </span><span class="lineCov">          2 :             SLU_END_THREADS;</span></a>
 <a name="756"><span class="lineNum">     756 </span><span class="lineCov">          2 :             goto fail;</span></a>
 <a name="757"><span class="lineNum">     757 </span>            :         }</a>
 <a name="758"><span class="lineNum">     758 </span>            :     }</a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">       3696 :     if (ilu) {</span></a>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">       3702 :     if (ilu) {</span></a>
 <a name="761"><span class="lineNum">     761 </span><span class="lineCov">         17 :         gsitrf(SLU_TYPECODE_TO_NPY(A-&gt;Dtype),</span></a>
 <a name="762"><span class="lineNum">     762 </span>            :                (superlu_options_t*)&amp;options, (SuperMatrix*)&amp;AC, relax, panel_size,</a>
 <a name="763"><span class="lineNum">     763 </span><span class="lineCov">         17 :                (int*)etree, NULL, lwork, self-&gt;perm_c, self-&gt;perm_r,</span></a>
@@ -835,16 +835,16 @@
 <a name="765"><span class="lineNum">     765 </span>            :                (SuperLUStat_t*)&amp;stat, (int*)&amp;info);</a>
 <a name="766"><span class="lineNum">     766 </span>            :     }</a>
 <a name="767"><span class="lineNum">     767 </span>            :     else {</a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineCov">       3679 :         gstrf(SLU_TYPECODE_TO_NPY(A-&gt;Dtype),</span></a>
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">       3685 :         gstrf(SLU_TYPECODE_TO_NPY(A-&gt;Dtype),</span></a>
 <a name="769"><span class="lineNum">     769 </span>            :               (superlu_options_t*)&amp;options, (SuperMatrix*)&amp;AC, relax, panel_size,</a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">       3679 :               (int*)etree, NULL, lwork, self-&gt;perm_c, self-&gt;perm_r,</span></a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       3679 :               (SuperMatrix*)&amp;self-&gt;L, (SuperMatrix*)&amp;self-&gt;U, (GlobalLU_t*)Glu_ptr,</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">       3685 :               (int*)etree, NULL, lwork, self-&gt;perm_c, self-&gt;perm_r,</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       3685 :               (SuperMatrix*)&amp;self-&gt;L, (SuperMatrix*)&amp;self-&gt;U, (GlobalLU_t*)Glu_ptr,</span></a>
 <a name="772"><span class="lineNum">     772 </span>            :               (SuperLUStat_t*)&amp;stat, (int*)&amp;info);</a>
 <a name="773"><span class="lineNum">     773 </span>            :     }</a>
 <a name="774"><span class="lineNum">     774 </span>            : </a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">       3694 :     SLU_END_THREADS;</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">       3700 :     SLU_END_THREADS;</span></a>
 <a name="776"><span class="lineNum">     776 </span>            : </a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       3694 :     if (info) {</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       3700 :     if (info) {</span></a>
 <a name="778"><span class="lineNum">     778 </span><span class="lineCov">          6 :         if (info &lt; 0)</span></a>
 <a name="779"><span class="lineNum">     779 </span><span class="lineNoCov">          0 :             PyErr_SetString(PyExc_SystemError,</span></a>
 <a name="780"><span class="lineNum">     780 </span>            :                             &quot;gstrf was called with invalid arguments&quot;);</a>
@@ -858,15 +858,15 @@
 <a name="788"><span class="lineNum">     788 </span><span class="lineCov">          6 :         goto fail;</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :     }</a>
 <a name="790"><span class="lineNum">     790 </span>            : </a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       3688 :     Py_INCREF(py_csc_construct_func);</span></a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       3688 :     self-&gt;py_csc_construct_func = py_csc_construct_func;</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       3694 :     Py_INCREF(py_csc_construct_func);</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       3694 :     self-&gt;py_csc_construct_func = py_csc_construct_func;</span></a>
 <a name="793"><span class="lineNum">     793 </span>            : </a>
 <a name="794"><span class="lineNum">     794 </span>            :     /* free memory */</a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       3688 :     SUPERLU_FREE((void*)etree);</span></a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       3688 :     Destroy_CompCol_Permuted((SuperMatrix*)&amp;AC);</span></a>
-<a name="797"><span class="lineNum">     797 </span><span class="lineCov">       3688 :     StatFree((SuperLUStat_t*)&amp;stat);</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       3694 :     SUPERLU_FREE((void*)etree);</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       3694 :     Destroy_CompCol_Permuted((SuperMatrix*)&amp;AC);</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">       3694 :     StatFree((SuperLUStat_t*)&amp;stat);</span></a>
 <a name="798"><span class="lineNum">     798 </span>            : </a>
-<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       3688 :     return (PyObject *) self;</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">       3694 :     return (PyObject *) self;</span></a>
 <a name="800"><span class="lineNum">     800 </span>            : </a>
 <a name="801"><span class="lineNum">     801 </span><span class="lineCov">          8 :   fail:</span></a>
 <a name="802"><span class="lineNum">     802 </span><span class="lineCov">          8 :     SUPERLU_FREE((void*)etree);</span></a>
@@ -970,9 +970,9 @@
 <a name="900"><span class="lineNum">     900 </span><span class="lineNoCov">          0 :     ENUM_CHECK_FINISH(&quot;invalid value for 'RowPerm' parameter&quot;);</span></a>
 <a name="901"><span class="lineNum">     901 </span>            : }</a>
 <a name="902"><span class="lineNum">     902 </span>            : </a>
-<a name="903"><span class="lineNum">     903 </span><span class="lineCov">       4395 : static int colperm_cvt(PyObject * input, colperm_t * value)</span></a>
+<a name="903"><span class="lineNum">     903 </span><span class="lineCov">       4401 : static int colperm_cvt(PyObject * input, colperm_t * value)</span></a>
 <a name="904"><span class="lineNum">     904 </span>            : {</a>
-<a name="905"><span class="lineNum">     905 </span><span class="lineCov">       4395 :     ENUM_CHECK_INIT;</span></a>
+<a name="905"><span class="lineNum">     905 </span><span class="lineCov">       4401 :     ENUM_CHECK_INIT;</span></a>
 <a name="906"><span class="lineNum">     906 </span><span class="lineCov">        523 :     ENUM_CHECK(NATURAL);</span></a>
 <a name="907"><span class="lineNum">     907 </span><span class="lineCov">        514 :     ENUM_CHECK(MMD_ATA);</span></a>
 <a name="908"><span class="lineNum">     908 </span><span class="lineCov">        507 :     ENUM_CHECK(MMD_AT_PLUS_A);</span></a>
@@ -1128,9 +1128,9 @@
 <a name="1058"><span class="lineNum">    1058 </span><span class="lineNoCov">          0 :     return 0;</span></a>
 <a name="1059"><span class="lineNum">    1059 </span>            : }</a>
 <a name="1060"><span class="lineNum">    1060 </span>            : </a>
-<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">       3730 : static int double_cvt(PyObject * input, double *value)</span></a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">       3736 : static int double_cvt(PyObject * input, double *value)</span></a>
 <a name="1062"><span class="lineNum">    1062 </span>            : {</a>
-<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">       3730 :     if (input == Py_None)</span></a>
+<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">       3736 :     if (input == Py_None)</span></a>
 <a name="1064"><span class="lineNum">    1064 </span>            :         return 1;</a>
 <a name="1065"><span class="lineNum">    1065 </span><span class="lineNoCov">          0 :     *value = PyFloat_AsDouble(input);</span></a>
 <a name="1066"><span class="lineNum">    1066 </span><span class="lineNoCov">          0 :     if (PyErr_Occurred())</span></a>
@@ -1138,9 +1138,9 @@
 <a name="1068"><span class="lineNum">    1068 </span>            :     return 1;</a>
 <a name="1069"><span class="lineNum">    1069 </span>            : }</a>
 <a name="1070"><span class="lineNum">    1070 </span>            : </a>
-<a name="1071"><span class="lineNum">    1071 </span><span class="lineCov">       7392 : static int int_cvt(PyObject * input, int *value)</span></a>
+<a name="1071"><span class="lineNum">    1071 </span><span class="lineCov">       7404 : static int int_cvt(PyObject * input, int *value)</span></a>
 <a name="1072"><span class="lineNum">    1072 </span>            : {</a>
-<a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">       7392 :     if (input == Py_None)</span></a>
+<a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">       7404 :     if (input == Py_None)</span></a>
 <a name="1074"><span class="lineNum">    1074 </span>            :         return 1;</a>
 <a name="1075"><span class="lineNum">    1075 </span><span class="lineNoCov">          0 :     *value = PyLong_AsLong(input);</span></a>
 <a name="1076"><span class="lineNum">    1076 </span><span class="lineNoCov">          0 :     if (PyErr_Occurred())</span></a>
@@ -1148,15 +1148,15 @@
 <a name="1078"><span class="lineNum">    1078 </span>            :     return 1;</a>
 <a name="1079"><span class="lineNum">    1079 </span>            : }</a>
 <a name="1080"><span class="lineNum">    1080 </span>            : </a>
-<a name="1081"><span class="lineNum">    1081 </span><span class="lineCov">       4395 : int set_superlu_options_from_dict(superlu_options_t * options,</span></a>
+<a name="1081"><span class="lineNum">    1081 </span><span class="lineCov">       4401 : int set_superlu_options_from_dict(superlu_options_t * options,</span></a>
 <a name="1082"><span class="lineNum">    1082 </span>            :                                   int ilu, PyObject * option_dict,</a>
 <a name="1083"><span class="lineNum">    1083 </span>            :                                   int *panel_size, int *relax)</a>
 <a name="1084"><span class="lineNum">    1084 </span>            : {</a>
-<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">       4395 :     PyObject *args;</span></a>
-<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">       4395 :     int ret;</span></a>
-<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">       4395 :     int _relax, _panel_size;</span></a>
+<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">       4401 :     PyObject *args;</span></a>
+<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">       4401 :     int ret;</span></a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">       4401 :     int _relax, _panel_size;</span></a>
 <a name="1088"><span class="lineNum">    1088 </span>            : </a>
-<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">       4395 :     static char *kwlist[] = {</span></a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">       4401 :     static char *kwlist[] = {</span></a>
 <a name="1090"><span class="lineNum">    1090 </span>            :         &quot;Fact&quot;, &quot;Equil&quot;, &quot;ColPerm&quot;, &quot;Trans&quot;, &quot;IterRefine&quot;,</a>
 <a name="1091"><span class="lineNum">    1091 </span>            :         &quot;DiagPivotThresh&quot;, &quot;PivotGrowth&quot;, &quot;ConditionNumber&quot;,</a>
 <a name="1092"><span class="lineNum">    1092 </span>            :         &quot;RowPerm&quot;, &quot;SymmetricMode&quot;, &quot;PrintStat&quot;, &quot;ReplaceTinyPivot&quot;,</a>
@@ -1165,23 +1165,23 @@
 <a name="1095"><span class="lineNum">    1095 </span>            :         &quot;ILU_DropRule&quot;, &quot;PanelSize&quot;, &quot;Relax&quot;, NULL</a>
 <a name="1096"><span class="lineNum">    1096 </span>            :     };</a>
 <a name="1097"><span class="lineNum">    1097 </span>            : </a>
-<a name="1098"><span class="lineNum">    1098 </span><span class="lineCov">       4395 :     if (ilu) {</span></a>
+<a name="1098"><span class="lineNum">    1098 </span><span class="lineCov">       4401 :     if (ilu) {</span></a>
 <a name="1099"><span class="lineNum">    1099 </span><span class="lineCov">         17 :         ilu_set_default_options(options);</span></a>
 <a name="1100"><span class="lineNum">    1100 </span>            :     }</a>
 <a name="1101"><span class="lineNum">    1101 </span>            :     else {</a>
-<a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">       4378 :         set_default_options(options);</span></a>
+<a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">       4384 :         set_default_options(options);</span></a>
 <a name="1103"><span class="lineNum">    1103 </span>            :     }</a>
 <a name="1104"><span class="lineNum">    1104 </span>            : </a>
-<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">       4395 :     _panel_size = sp_ienv(1);</span></a>
-<a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">       4395 :     _relax = sp_ienv(2);</span></a>
+<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">       4401 :     _panel_size = sp_ienv(1);</span></a>
+<a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">       4401 :     _relax = sp_ienv(2);</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            : </a>
-<a name="1108"><span class="lineNum">    1108 </span><span class="lineCov">       4395 :     if (option_dict == NULL) {</span></a>
+<a name="1108"><span class="lineNum">    1108 </span><span class="lineCov">       4401 :     if (option_dict == NULL) {</span></a>
 <a name="1109"><span class="lineNum">    1109 </span>            :         /* Proceed with default options */</a>
 <a name="1110"><span class="lineNum">    1110 </span>            :         ret = 1;</a>
 <a name="1111"><span class="lineNum">    1111 </span>            :     }</a>
 <a name="1112"><span class="lineNum">    1112 </span>            :     else {</a>
-<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">       4395 :         args = PyTuple_New(0);</span></a>
-<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">       4395 :         ret = PyArg_ParseTupleAndKeywords(args, option_dict,</span></a>
+<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">       4401 :         args = PyTuple_New(0);</span></a>
+<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">       4401 :         ret = PyArg_ParseTupleAndKeywords(args, option_dict,</span></a>
 <a name="1115"><span class="lineNum">    1115 </span>            :                                           &quot;|O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;O&amp;&quot;,</a>
 <a name="1116"><span class="lineNum">    1116 </span>            :                                           kwlist, fact_cvt, &amp;options-&gt;Fact,</a>
 <a name="1117"><span class="lineNum">    1117 </span>            :                                           yes_no_cvt, &amp;options-&gt;Equil,</a>
@@ -1210,18 +1210,18 @@
 <a name="1140"><span class="lineNum">    1140 </span>            :                                           droprule_cvt, &amp;options-&gt;ILU_DropRule,</a>
 <a name="1141"><span class="lineNum">    1141 </span>            :                                           int_cvt, &amp;_panel_size, int_cvt,</a>
 <a name="1142"><span class="lineNum">    1142 </span>            :                                           &amp;_relax);</a>
-<a name="1143"><span class="lineNum">    1143 </span><span class="lineCov">       4395 :         Py_DECREF(args);</span></a>
+<a name="1143"><span class="lineNum">    1143 </span><span class="lineCov">       4401 :         Py_DECREF(args);</span></a>
 <a name="1144"><span class="lineNum">    1144 </span>            :     }</a>
 <a name="1145"><span class="lineNum">    1145 </span>            : </a>
-<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">       4395 :     if (panel_size != NULL) {</span></a>
-<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">       3696 :         *panel_size = _panel_size;</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">       4401 :     if (panel_size != NULL) {</span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">       3702 :         *panel_size = _panel_size;</span></a>
 <a name="1148"><span class="lineNum">    1148 </span>            :     }</a>
 <a name="1149"><span class="lineNum">    1149 </span>            : </a>
-<a name="1150"><span class="lineNum">    1150 </span><span class="lineCov">       4395 :     if (relax != NULL) {</span></a>
-<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">       3696 :         *relax = _relax;</span></a>
+<a name="1150"><span class="lineNum">    1150 </span><span class="lineCov">       4401 :     if (relax != NULL) {</span></a>
+<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">       3702 :         *relax = _relax;</span></a>
 <a name="1152"><span class="lineNum">    1152 </span>            :     }</a>
 <a name="1153"><span class="lineNum">    1153 </span>            : </a>
-<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">       4395 :     return ret;</span></a>
+<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">       4401 :     return ret;</span></a>
 <a name="1155"><span class="lineNum">    1155 </span>            : }</a>
 </pre>
       </td>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/detail/internals.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/detail/internals.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">81</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">20</td>
@@ -287,7 +287,7 @@
 <a name="217"><span class="lineNum">     217 </span>            :     std::string function_record_capsule_name = internals_function_record_capsule_name;</a>
 <a name="218"><span class="lineNum">     218 </span>            : #endif</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 :     internals() = default;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          3 :     internals() = default;</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :     internals(const internals &amp;other) = delete;</a>
 <a name="222"><span class="lineNum">     222 </span>            :     internals &amp;operator=(const internals &amp;other) = delete;</a>
 <a name="223"><span class="lineNum">     223 </span>            :     ~internals() {</a>
@@ -308,7 +308,7 @@
 <a name="238"><span class="lineNum">     238 </span>            : </a>
 <a name="239"><span class="lineNum">     239 </span>            : /// Additional type information which does not fit into the PyTypeObject.</a>
 <a name="240"><span class="lineNum">     240 </span>            : /// Changes to this struct also require bumping `PYBIND11_INTERNALS_VERSION`.</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          9 : struct type_info {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         72 : struct type_info {</span></a>
 <a name="242"><span class="lineNum">     242 </span>            :     PyTypeObject *type;</a>
 <a name="243"><span class="lineNum">     243 </span>            :     const std::type_info *cpptype;</a>
 <a name="244"><span class="lineNum">     244 </span>            :     size_t type_size, type_align, holder_size_in_ptrs;</a>
@@ -517,39 +517,39 @@
 <a name="447"><span class="lineNum">     447 </span>            : }</a>
 <a name="448"><span class="lineNum">     448 </span>            : #endif</a>
 <a name="449"><span class="lineNum">     449 </span>            : </a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">          4 : inline object get_python_state_dict() {</span></a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">          4 :     object state_dict;</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">         13 : inline object get_python_state_dict() {</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         13 :     object state_dict;</span></a>
 <a name="452"><span class="lineNum">     452 </span>            : #if PYBIND11_INTERNALS_VERSION &lt;= 4 || PY_VERSION_HEX &lt; 0x03080000 || defined(PYPY_VERSION)</a>
 <a name="453"><span class="lineNum">     453 </span>            :     state_dict = reinterpret_borrow&lt;object&gt;(PyEval_GetBuiltins());</a>
 <a name="454"><span class="lineNum">     454 </span>            : #else</a>
 <a name="455"><span class="lineNum">     455 </span>            : #    if PY_VERSION_HEX &lt; 0x03090000</a>
 <a name="456"><span class="lineNum">     456 </span>            :     PyInterpreterState *istate = _PyInterpreterState_Get();</a>
 <a name="457"><span class="lineNum">     457 </span>            : #    else</a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">          4 :     PyInterpreterState *istate = PyInterpreterState_Get();</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">         13 :     PyInterpreterState *istate = PyInterpreterState_Get();</span></a>
 <a name="459"><span class="lineNum">     459 </span>            : #    endif</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">          4 :     if (istate) {</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          8 :         state_dict = reinterpret_borrow&lt;object&gt;(PyInterpreterState_GetDict(istate));</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         13 :     if (istate) {</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         26 :         state_dict = reinterpret_borrow&lt;object&gt;(PyInterpreterState_GetDict(istate));</span></a>
 <a name="462"><span class="lineNum">     462 </span>            :     }</a>
 <a name="463"><span class="lineNum">     463 </span>            : #endif</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">          4 :     if (!state_dict) {</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         13 :     if (!state_dict) {</span></a>
 <a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :         raise_from(PyExc_SystemError, &quot;pybind11::detail::get_python_state_dict() FAILED&quot;);</span></a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :         throw error_already_set();</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :     }</a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">          4 :     return state_dict;</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">         13 :     return state_dict;</span></a>
 <a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          4 : inline object get_internals_obj_from_state_dict(handle state_dict) {</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">          4 :     return reinterpret_steal&lt;object&gt;(</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">          4 :         dict_getitemstringref(state_dict.ptr(), PYBIND11_INTERNALS_ID));</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">         13 : inline object get_internals_obj_from_state_dict(handle state_dict) {</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         13 :     return reinterpret_steal&lt;object&gt;(</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         13 :         dict_getitemstringref(state_dict.ptr(), PYBIND11_INTERNALS_ID));</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : }</a>
 <a name="475"><span class="lineNum">     475 </span>            : </a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">          3 : inline internals **get_internals_pp_from_capsule(handle obj) {</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">          3 :     void *raw_ptr = PyCapsule_GetPointer(obj.ptr(), /*name=*/nullptr);</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">          3 :     if (raw_ptr == nullptr) {</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">         10 : inline internals **get_internals_pp_from_capsule(handle obj) {</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">         10 :     void *raw_ptr = PyCapsule_GetPointer(obj.ptr(), /*name=*/nullptr);</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">         10 :     if (raw_ptr == nullptr) {</span></a>
 <a name="479"><span class="lineNum">     479 </span><span class="lineNoCov">          0 :         raise_from(PyExc_SystemError, &quot;pybind11::detail::get_internals_pp_from_capsule() FAILED&quot;);</span></a>
 <a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :         throw error_already_set();</span></a>
 <a name="481"><span class="lineNum">     481 </span>            :     }</a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">          3 :     return static_cast&lt;internals **&gt;(raw_ptr);</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         10 :     return static_cast&lt;internals **&gt;(raw_ptr);</span></a>
 <a name="483"><span class="lineNum">     483 </span>            : }</a>
 <a name="484"><span class="lineNum">     484 </span>            : </a>
 <a name="485"><span class="lineNum">     485 </span>            : inline uint64_t round_up_to_next_pow2(uint64_t x) {</a>
@@ -567,9 +567,9 @@
 <a name="497"><span class="lineNum">     497 </span>            : }</a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
 <a name="499"><span class="lineNum">     499 </span>            : /// Return a reference to the current `internals` data</a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">     808889 : PYBIND11_NOINLINE internals &amp;get_internals() {</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">     808889 :     auto **&amp;internals_pp = get_internals_pp();</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">     808889 :     if (internals_pp &amp;&amp; *internals_pp) {</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">   14592607 : PYBIND11_NOINLINE internals &amp;get_internals() {</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">   14592607 :     auto **&amp;internals_pp = get_internals_pp();</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">   14592607 :     if (internals_pp &amp;&amp; *internals_pp) {</span></a>
 <a name="503"><span class="lineNum">     503 </span>            :         return **internals_pp;</a>
 <a name="504"><span class="lineNum">     504 </span>            :     }</a>
 <a name="505"><span class="lineNum">     505 </span>            : </a>
@@ -578,21 +578,21 @@
 <a name="508"><span class="lineNum">     508 </span>            : #else</a>
 <a name="509"><span class="lineNum">     509 </span>            :     // Ensure that the GIL is held since we will need to make Python calls.</a>
 <a name="510"><span class="lineNum">     510 </span>            :     // Cannot use py::gil_scoped_acquire here since that constructor calls get_internals.</a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          4 :     struct gil_scoped_acquire_local {</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          4 :         gil_scoped_acquire_local() : state(PyGILState_Ensure()) {}</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         13 :     struct gil_scoped_acquire_local {</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         13 :         gil_scoped_acquire_local() : state(PyGILState_Ensure()) {}</span></a>
 <a name="513"><span class="lineNum">     513 </span>            :         gil_scoped_acquire_local(const gil_scoped_acquire_local &amp;) = delete;</a>
 <a name="514"><span class="lineNum">     514 </span>            :         gil_scoped_acquire_local &amp;operator=(const gil_scoped_acquire_local &amp;) = delete;</a>
 <a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :         ~gil_scoped_acquire_local() { PyGILState_Release(state); }</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :         const PyGILState_STATE state;</a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">          4 :     } gil;</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">         13 :     } gil;</span></a>
 <a name="518"><span class="lineNum">     518 </span>            : #endif</a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">          4 :     error_scope err_scope;</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         13 :     error_scope err_scope;</span></a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">          4 :     dict state_dict = get_python_state_dict();</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          4 :     if (object internals_obj = get_internals_obj_from_state_dict(state_dict)) {</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">          3 :         internals_pp = get_internals_pp_from_capsule(internals_obj);</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         13 :     dict state_dict = get_python_state_dict();</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">         13 :     if (object internals_obj = get_internals_obj_from_state_dict(state_dict)) {</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         10 :         internals_pp = get_internals_pp_from_capsule(internals_obj);</span></a>
 <a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :     }</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">          4 :     if (internals_pp &amp;&amp; *internals_pp) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         13 :     if (internals_pp &amp;&amp; *internals_pp) {</span></a>
 <a name="526"><span class="lineNum">     526 </span>            :         // We loaded the internals through `state_dict`, which means that our `error_already_set`</a>
 <a name="527"><span class="lineNum">     527 </span>            :         // and `builtin_exception` may be different local classes than the ones set up in the</a>
 <a name="528"><span class="lineNum">     528 </span>            :         // initial exception translator, below, so add another for our local exception classes.</a>
@@ -604,32 +604,32 @@
 <a name="534"><span class="lineNum">     534 </span>            :         (*internals_pp)-&gt;registered_exception_translators.push_front(&amp;translate_local_exception);</a>
 <a name="535"><span class="lineNum">     535 </span>            : #endif</a>
 <a name="536"><span class="lineNum">     536 </span>            :     } else {</a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">          1 :         if (!internals_pp) {</span></a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">          1 :             internals_pp = new internals *();</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">          3 :         if (!internals_pp) {</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">          3 :             internals_pp = new internals *();</span></a>
 <a name="539"><span class="lineNum">     539 </span>            :         }</a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">          1 :         auto *&amp;internals_ptr = *internals_pp;</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">          1 :         internals_ptr = new internals();</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">          3 :         auto *&amp;internals_ptr = *internals_pp;</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">          3 :         internals_ptr = new internals();</span></a>
 <a name="542"><span class="lineNum">     542 </span>            : </a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">          1 :         PyThreadState *tstate = PyThreadState_Get();</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">          3 :         PyThreadState *tstate = PyThreadState_Get();</span></a>
 <a name="544"><span class="lineNum">     544 </span>            :         // NOLINTNEXTLINE(bugprone-assignment-in-if-condition)</a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">          1 :         if (!PYBIND11_TLS_KEY_CREATE(internals_ptr-&gt;tstate)) {</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">          3 :         if (!PYBIND11_TLS_KEY_CREATE(internals_ptr-&gt;tstate)) {</span></a>
 <a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;get_internals: could not successfully initialize the tstate TSS key!&quot;);</span></a>
 <a name="547"><span class="lineNum">     547 </span>            :         }</a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">          1 :         PYBIND11_TLS_REPLACE_VALUE(internals_ptr-&gt;tstate, tstate);</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">          3 :         PYBIND11_TLS_REPLACE_VALUE(internals_ptr-&gt;tstate, tstate);</span></a>
 <a name="549"><span class="lineNum">     549 </span>            : </a>
 <a name="550"><span class="lineNum">     550 </span>            : #if PYBIND11_INTERNALS_VERSION &gt; 4</a>
 <a name="551"><span class="lineNum">     551 </span>            :         // NOLINTNEXTLINE(bugprone-assignment-in-if-condition)</a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">          1 :         if (!PYBIND11_TLS_KEY_CREATE(internals_ptr-&gt;loader_life_support_tls_key)) {</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">          3 :         if (!PYBIND11_TLS_KEY_CREATE(internals_ptr-&gt;loader_life_support_tls_key)) {</span></a>
 <a name="553"><span class="lineNum">     553 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;get_internals: could not successfully initialize the &quot;</span></a>
 <a name="554"><span class="lineNum">     554 </span>            :                           &quot;loader_life_support TSS key!&quot;);</a>
 <a name="555"><span class="lineNum">     555 </span>            :         }</a>
 <a name="556"><span class="lineNum">     556 </span>            : #endif</a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">          1 :         internals_ptr-&gt;istate = tstate-&gt;interp;</span></a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">          2 :         state_dict[PYBIND11_INTERNALS_ID] = capsule(reinterpret_cast&lt;void *&gt;(internals_pp));</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          1 :         internals_ptr-&gt;registered_exception_translators.push_front(&amp;translate_exception);</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">          1 :         internals_ptr-&gt;static_property_type = make_static_property_type();</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">          1 :         internals_ptr-&gt;default_metaclass = make_default_metaclass();</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">          1 :         internals_ptr-&gt;instance_base = make_object_base_type(internals_ptr-&gt;default_metaclass);</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">          3 :         internals_ptr-&gt;istate = tstate-&gt;interp;</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">          6 :         state_dict[PYBIND11_INTERNALS_ID] = capsule(reinterpret_cast&lt;void *&gt;(internals_pp));</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          3 :         internals_ptr-&gt;registered_exception_translators.push_front(&amp;translate_exception);</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">          3 :         internals_ptr-&gt;static_property_type = make_static_property_type();</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">          3 :         internals_ptr-&gt;default_metaclass = make_default_metaclass();</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">          3 :         internals_ptr-&gt;instance_base = make_object_base_type(internals_ptr-&gt;default_metaclass);</span></a>
 <a name="563"><span class="lineNum">     563 </span>            : #ifdef Py_GIL_DISABLED</a>
 <a name="564"><span class="lineNum">     564 </span>            :         // Scale proportional to the number of cores. 2x is a heuristic to reduce contention.</a>
 <a name="565"><span class="lineNum">     565 </span>            :         auto num_shards</a>
@@ -641,8 +641,8 @@
 <a name="571"><span class="lineNum">     571 </span>            :         internals_ptr-&gt;instance_shards_mask = num_shards - 1;</a>
 <a name="572"><span class="lineNum">     572 </span>            : #endif // Py_GIL_DISABLED</a>
 <a name="573"><span class="lineNum">     573 </span>            :     }</a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">          4 :     return **internals_pp;</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">          4 : }</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         13 :     return **internals_pp;</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         13 : }</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
 <a name="577"><span class="lineNum">     577 </span>            : // the internals struct (above) is shared between all the modules. local_internals are only</a>
 <a name="578"><span class="lineNum">     578 </span>            : // for a single module. Any changes made to internals may require an update to</a>
@@ -650,7 +650,7 @@
 <a name="580"><span class="lineNum">     580 </span>            : // restricted to a single module. Whether a module has local internals or not should not</a>
 <a name="581"><span class="lineNum">     581 </span>            : // impact any other modules, because the only things accessing the local internals is the</a>
 <a name="582"><span class="lineNum">     582 </span>            : // module that contains them.</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          3 : struct local_internals {</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          6 : struct local_internals {</span></a>
 <a name="584"><span class="lineNum">     584 </span>            :     type_map&lt;type_info *&gt; registered_types_cpp;</a>
 <a name="585"><span class="lineNum">     585 </span>            :     std::forward_list&lt;ExceptionTranslator&gt; registered_exception_translators;</a>
 <a name="586"><span class="lineNum">     586 </span>            : #if PYBIND11_INTERNALS_VERSION == 4</a>
@@ -690,14 +690,14 @@
 <a name="620"><span class="lineNum">     620 </span>            : };</a>
 <a name="621"><span class="lineNum">     621 </span>            : </a>
 <a name="622"><span class="lineNum">     622 </span>            : /// Works like `get_internals`, but for things which are locally registered.</a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">      14161 : inline local_internals &amp;get_local_internals() {</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">      27462 : inline local_internals &amp;get_local_internals() {</span></a>
 <a name="624"><span class="lineNum">     624 </span>            :     // Current static can be created in the interpreter finalization routine. If the later will be</a>
 <a name="625"><span class="lineNum">     625 </span>            :     // destroyed in another static variable destructor, creation of this static there will cause</a>
 <a name="626"><span class="lineNum">     626 </span>            :     // static deinitialization fiasco. In order to avoid it we avoid destruction of the</a>
 <a name="627"><span class="lineNum">     627 </span>            :     // local_internals static. One can read more about the problem and current solution here:</a>
 <a name="628"><span class="lineNum">     628 </span>            :     // https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables</a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">      14161 :     static auto *locals = new local_internals();</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineCov">      14161 :     return *locals;</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">      27462 :     static auto *locals = new local_internals();</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">      27462 :     return *locals;</span></a>
 <a name="631"><span class="lineNum">     631 </span>            : }</a>
 <a name="632"><span class="lineNum">     632 </span>            : </a>
 <a name="633"><span class="lineNum">     633 </span>            : #ifdef Py_GIL_DISABLED</a>
@@ -707,10 +707,10 @@
 <a name="637"><span class="lineNum">     637 </span>            : #endif</a>
 <a name="638"><span class="lineNum">     638 </span>            : </a>
 <a name="639"><span class="lineNum">     639 </span>            : template &lt;typename F&gt;</a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">      18128 : inline auto with_internals(const F &amp;cb) -&gt; decltype(cb(get_internals())) {</span></a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">      18128 :     auto &amp;internals = get_internals();</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">    9165084 : inline auto with_internals(const F &amp;cb) -&gt; decltype(cb(get_internals())) {</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">    9165084 :     auto &amp;internals = get_internals();</span></a>
 <a name="642"><span class="lineNum">     642 </span>            :     PYBIND11_LOCK_INTERNALS(internals);</a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">      18128 :     return cb(internals);</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">    9165084 :     return cb(internals);</span></a>
 <a name="644"><span class="lineNum">     644 </span>            : }</a>
 <a name="645"><span class="lineNum">     645 </span>            : </a>
 <a name="646"><span class="lineNum">     646 </span>            : inline std::uint64_t mix64(std::uint64_t z) {</a>
@@ -723,9 +723,9 @@
 <a name="653"><span class="lineNum">     653 </span>            : }</a>
 <a name="654"><span class="lineNum">     654 </span>            : </a>
 <a name="655"><span class="lineNum">     655 </span>            : template &lt;typename F&gt;</a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineCov">       9736 : inline auto with_instance_map(const void *ptr,</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">    4577236 : inline auto with_instance_map(const void *ptr,</span></a>
 <a name="657"><span class="lineNum">     657 </span>            :                               const F &amp;cb) -&gt; decltype(cb(std::declval&lt;instance_map &amp;&gt;())) {</a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">       9736 :     auto &amp;internals = get_internals();</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">    4577236 :     auto &amp;internals = get_internals();</span></a>
 <a name="659"><span class="lineNum">     659 </span>            : </a>
 <a name="660"><span class="lineNum">     660 </span>            : #ifdef Py_GIL_DISABLED</a>
 <a name="661"><span class="lineNum">     661 </span>            :     // Hash address to compute shard, but ignore low bits. We'd like allocations</a>
@@ -742,7 +742,7 @@
 <a name="672"><span class="lineNum">     672 </span>            :     return cb(shard.registered_instances);</a>
 <a name="673"><span class="lineNum">     673 </span>            : #else</a>
 <a name="674"><span class="lineNum">     674 </span>            :     (void) ptr;</a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">       9736 :     return cb(internals.registered_instances);</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">    4577236 :     return cb(internals.registered_instances);</span></a>
 <a name="676"><span class="lineNum">     676 </span>            : #endif</a>
 <a name="677"><span class="lineNum">     677 </span>            : }</a>
 <a name="678"><span class="lineNum">     678 </span>            : </a>
@@ -768,19 +768,19 @@
 <a name="698"><span class="lineNum">     698 </span>            : /// cleared when the program exits or after interpreter shutdown (when embedding), and so are</a>
 <a name="699"><span class="lineNum">     699 </span>            : /// suitable for c-style strings needed by Python internals (such as PyTypeObject's tp_name).</a>
 <a name="700"><span class="lineNum">     700 </span>            : template &lt;typename... Args&gt;</a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineCov">          3 : const char *c_str(Args &amp;&amp;...args) {</span></a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineCov">          6 : const char *c_str(Args &amp;&amp;...args) {</span></a>
 <a name="702"><span class="lineNum">     702 </span>            :     // GCC 4.8 doesn't like parameter unpack within lambda capture, so use</a>
 <a name="703"><span class="lineNum">     703 </span>            :     // PYBIND11_LOCK_INTERNALS.</a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">          3 :     auto &amp;internals = get_internals();</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">          6 :     auto &amp;internals = get_internals();</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :     PYBIND11_LOCK_INTERNALS(internals);</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">          3 :     auto &amp;strings = internals.static_strings;</span></a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">          3 :     strings.emplace_front(std::forward&lt;Args&gt;(args)...);</span></a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          3 :     return strings.front().c_str();</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">          6 :     auto &amp;strings = internals.static_strings;</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">          6 :     strings.emplace_front(std::forward&lt;Args&gt;(args)...);</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          6 :     return strings.front().c_str();</span></a>
 <a name="709"><span class="lineNum">     709 </span>            : }</a>
 <a name="710"><span class="lineNum">     710 </span>            : </a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">     130703 : inline const char *get_function_record_capsule_name() {</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">     144052 : inline const char *get_function_record_capsule_name() {</span></a>
 <a name="712"><span class="lineNum">     712 </span>            : #if PYBIND11_INTERNALS_VERSION &gt; 4</a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">     130703 :     return get_internals().function_record_capsule_name.c_str();</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">     144052 :     return get_internals().function_record_capsule_name.c_str();</span></a>
 <a name="714"><span class="lineNum">     714 </span>            : #else</a>
 <a name="715"><span class="lineNum">     715 </span>            :     return nullptr;</a>
 <a name="716"><span class="lineNum">     716 </span>            : #endif</a>

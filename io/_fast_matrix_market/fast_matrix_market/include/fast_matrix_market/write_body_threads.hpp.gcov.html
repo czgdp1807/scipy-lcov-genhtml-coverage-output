@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - io/_fast_matrix_market/fast_matrix_market/include/fast_matrix_market/write_body_threads.hpp</title>
+  <title>LCOV - lcov.info - io/_fast_matrix_market/fast_matrix_market/include/fast_matrix_market/write_body_threads.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -87,7 +87,7 @@
 <a name="17"><span class="lineNum">      17 </span>            :      * @tparam FORMATTER implementation class that writes chunks.</a>
 <a name="18"><span class="lineNum">      18 </span>            :      */</a>
 <a name="19"><span class="lineNum">      19 </span>            :     template &lt;typename FORMATTER&gt;</a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        161 :     void write_body_threads(std::ostream&amp; os,</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        162 :     void write_body_threads(std::ostream&amp; os,</span></a>
 <a name="21"><span class="lineNum">      21 </span>            :                             FORMATTER&amp; formatter, const write_options&amp; options = {}) {</a>
 <a name="22"><span class="lineNum">      22 </span>            :         /*</a>
 <a name="23"><span class="lineNum">      23 </span>            :          * Requirements:</a>
@@ -103,35 +103,35 @@
 <a name="33"><span class="lineNum">      33 </span>            :          * We take a simple approach. The main thread handles the serial chunk generation and I/O,</a>
 <a name="34"><span class="lineNum">      34 </span>            :          * and a thread pool performs the parallel work.</a>
 <a name="35"><span class="lineNum">      35 </span>            :          */</a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        161 :         std::queue&lt;std::future&lt;std::string&gt;&gt; futures;</span></a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        161 :         task_thread_pool::task_thread_pool pool(options.num_threads);</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        162 :         std::queue&lt;std::future&lt;std::string&gt;&gt; futures;</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">        162 :         task_thread_pool::task_thread_pool pool(options.num_threads);</span></a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
 <a name="39"><span class="lineNum">      39 </span>            :         // Number of concurrent chunks available to work on.</a>
 <a name="40"><span class="lineNum">      40 </span>            :         // Too few may starve workers (such as due to uneven chunk splits)</a>
 <a name="41"><span class="lineNum">      41 </span>            :         // Too many increases costs, such as storing chunk results in memory before they're written.</a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">        161 :         const int inflight_count = 2 * (int)pool.get_num_threads();</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">        162 :         const int inflight_count = 2 * (int)pool.get_num_threads();</span></a>
 <a name="43"><span class="lineNum">      43 </span>            : </a>
 <a name="44"><span class="lineNum">      44 </span>            :         // Start computing tasks.</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">        321 :         for (int batch_i = 0; batch_i &lt; inflight_count &amp;&amp; formatter.has_next(); ++batch_i) {</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">        323 :         for (int batch_i = 0; batch_i &lt; inflight_count &amp;&amp; formatter.has_next(); ++batch_i) {</span></a>
 <a name="46"><span class="lineNum">      46 </span>            :             // Could push the chunk directly, but MSVC.</a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        480 :             futures.push(pool.submit([](auto chunk){ return chunk(); }, formatter.next_chunk(options)));</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        483 :             futures.push(pool.submit([](auto chunk){ return chunk(); }, formatter.next_chunk(options)));</span></a>
 <a name="48"><span class="lineNum">      48 </span>            : //            futures.push(pool.submit(formatter.next_chunk(options)));</a>
 <a name="49"><span class="lineNum">      49 </span>            :         }</a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
 <a name="51"><span class="lineNum">      51 </span>            :         // Write chunks in order as they become available.</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        321 :         while (!futures.empty()) {</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        160 :             std::string chunk = futures.front().get();</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        160 :             futures.pop();</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        323 :         while (!futures.empty()) {</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        161 :             std::string chunk = futures.front().get();</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        161 :             futures.pop();</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            :             // Next chunk is ready. Start another to replace it.</a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        160 :             if (formatter.has_next()) {</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        161 :             if (formatter.has_next()) {</span></a>
 <a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :                 futures.push(pool.submit([](auto chunk){ return chunk(); }, formatter.next_chunk(options)));</span></a>
 <a name="59"><span class="lineNum">      59 </span>            :             }</a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            :             // Write this one out.</a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        160 :             os.write(chunk.c_str(), (std::streamsize) chunk.size());</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        161 :             os.write(chunk.c_str(), (std::streamsize) chunk.size());</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :         }</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        161 :     }</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        162 :     }</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : }</a>
 </pre>
       </td>

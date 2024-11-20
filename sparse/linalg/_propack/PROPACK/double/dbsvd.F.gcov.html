@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/double/dbsvd.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/double/dbsvd.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">77</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -72,7 +72,7 @@
 <a name="2"><span class="lineNum">       2 </span>            : c     (C) Rasmus Munk Larsen, Stanford University, 2004</a>
 <a name="3"><span class="lineNum">       3 </span>            : c</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        106 :       subroutine dbsvdstep(jobu,jobv,m,n,k,sigma,D,E,U,ldu,V,ldv)</span></a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        104 :       subroutine dbsvdstep(jobu,jobv,m,n,k,sigma,D,E,U,ldu,V,ldv)</span></a>
 <a name="6"><span class="lineNum">       6 </span>            : c</a>
 <a name="7"><span class="lineNum">       7 </span>            : c     Perform one implicit LQ SVD sweep with shift SIGMA.</a>
 <a name="8"><span class="lineNum">       8 </span>            : c</a>
@@ -103,50 +103,50 @@
 <a name="33"><span class="lineNum">      33 </span>            :       </a>
 <a name="34"><span class="lineNum">      34 </span>            : c-------------------- Here begins executable code ---------------------</a>
 <a name="35"><span class="lineNum">      35 </span>            : </a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        106 :       if (k.le.1) return</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        104 :       if (k.le.1) return</span></a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">        106 :       dou = lsame(jobu,'y')</span></a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        106 :       dov = lsame(jobv,'y')</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">        104 :       dou = lsame(jobu,'y')</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        104 :       dov = lsame(jobv,'y')</span></a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
 <a name="41"><span class="lineNum">      41 </span>            : c     Compute the initial rotation based on B*B^T-sigma^2</a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">        106 :       x = D(1)*D(1) - sigma*sigma</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">        106 :       y = E(1)*D(1)</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">        104 :       x = D(1)*D(1) - sigma*sigma</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">        104 :       y = E(1)*D(1)</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : </a>
 <a name="45"><span class="lineNum">      45 </span>            : c     Chase the &quot;bulge&quot; down the lower bidiagonal with Givens rotations.</a>
 <a name="46"><span class="lineNum">      46 </span>            : c     Below 'y' is the &quot;bulge&quot; and 'x' is the element used to eliminate it.</a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       3650 :       do i=1,k-1</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       3544 :         if (i.gt.1) then</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       3438 :            call dlartg(x,y,c,s,E(i-1))</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">       3550 :       do i=1,k-1</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">       3446 :         if (i.gt.1) then</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       3342 :            call dlartg(x,y,c,s,E(i-1))</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :         else</a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">        106 :            call dlartg(x,y,c,s,r)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">        104 :            call dlartg(x,y,c,s,r)</span></a>
 <a name="52"><span class="lineNum">      52 </span>            :         endif</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       3544 :         x = c*D(i) + s*E(i)</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       3544 :         E(i) = -s*D(i) + c*E(i)</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       3544 :         D(i) = x</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       3544 :         y = s*D(i+1)</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       3544 :         D(i+1) = c*D(i+1)</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       3446 :         x = c*D(i) + s*E(i)</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       3446 :         E(i) = -s*D(i) + c*E(i)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       3446 :         D(i) = x</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       3446 :         y = s*D(i+1)</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       3446 :         D(i+1) = c*D(i+1)</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       3544 :         if (dou .and. m.gt.0) then</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       3544 :            call drot(m,U(1,i),1,U(1,i+1),1,c,s)</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       3446 :         if (dou .and. m.gt.0) then</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       3446 :            call drot(m,U(1,i),1,U(1,i+1),1,c,s)</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :         endif</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       3544 :         call dlartg(x,y,c,s,D(i))</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       3544 :         x = c*E(i) + s*D(i+1)</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">       3544 :         D(i+1) = -s*E(i) + c*D(i+1)</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       3544 :         E(i) = x</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       3544 :         y = s*E(i+1)</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       3544 :         E(i+1) = c*E(i+1)</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       3446 :         call dlartg(x,y,c,s,D(i))</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       3446 :         x = c*E(i) + s*D(i+1)</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">       3446 :         D(i+1) = -s*E(i) + c*D(i+1)</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       3446 :         E(i) = x</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       3446 :         y = s*E(i+1)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       3446 :         E(i+1) = c*E(i+1)</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       3650 :         if (dov .and. n.gt.0) then</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       3544 :            call drot(n,V(1,i),1,V(1,i+1),1,c,s)</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       3550 :         if (dov .and. n.gt.0) then</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">       3446 :            call drot(n,V(1,i),1,V(1,i+1),1,c,s)</span></a>
 <a name="72"><span class="lineNum">      72 </span>            :         endif</a>
 <a name="73"><span class="lineNum">      73 </span>            :       enddo</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        106 :       call dlartg(x,y,c,s,E(k-1))</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        106 :       x = c*D(k) + s*E(k)</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        106 :       E(k) = -s*D(k) + c*E(k)</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        106 :       D(k) = x</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        106 :       if (dou .and. m.gt.0) then</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        106 :          call drot(m,U(1,k),1,U(1,k+1),1,c,s)</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        104 :       call dlartg(x,y,c,s,E(k-1))</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        104 :       x = c*D(k) + s*E(k)</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        104 :       E(k) = -s*D(k) + c*E(k)</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        104 :       D(k) = x</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        104 :       if (dou .and. m.gt.0) then</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        104 :          call drot(m,U(1,k),1,U(1,k+1),1,c,s)</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :       endif</a>
 <a name="81"><span class="lineNum">      81 </span>            :       return</a>
 <a name="82"><span class="lineNum">      82 </span>            :       end</a>
@@ -154,7 +154,7 @@
 <a name="84"><span class="lineNum">      84 </span>            : </a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       2267 :       subroutine dbdqr(ignorelast, jobq, n, D, E, c1, c2, Qt, ldq)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       2255 :       subroutine dbdqr(ignorelast, jobq, n, D, E, c1, c2, Qt, ldq)</span></a>
 <a name="88"><span class="lineNum">      88 </span>            :       implicit none</a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
 <a name="90"><span class="lineNum">      90 </span>            : c Compute QR factorization B = Q*R of (n+1) x n lower bidiagonal matrix </a>
@@ -186,42 +186,42 @@
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            : c-------------------- Here begins executable code ---------------------</a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       2267 :       if (n.lt.1) return</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2267 :       if (lsame(jobq,'Y')) then</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1779 :          do j=1,n+1</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      67646 :             do i=1,n+1</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      67646 :                Qt(i,j) = 0.0</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       2255 :       if (n.lt.1) return</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2255 :       if (lsame(jobq,'Y')) then</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1661 :          do j=1,n+1</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      63178 :             do i=1,n+1</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">      63178 :                Qt(i,j) = 0.0</span></a>
 <a name="124"><span class="lineNum">     124 </span>            :             enddo</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       1779 :             Qt(j,j) = 1.0</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       1661 :             Qt(j,j) = 1.0</span></a>
 <a name="126"><span class="lineNum">     126 </span>            :          enddo</a>
 <a name="127"><span class="lineNum">     127 </span>            :       endif</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">     104140 :       do i=1,n-1</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">     101873 :          call dlartg(d(i),e(i),cs,sn,r)</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">     101873 :          d(i) = r</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">     101873 :          e(i) = sn*d(i+1)</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     101873 :          d(i+1) = cs*d(i+1)</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     104140 :          if (lsame(jobq,'Y')) then</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      32044 :             do j=1,i</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      30604 :                Qt(i+1,j) = -sn*Qt(i,j)</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      32044 :                Qt(i,j) = cs*Qt(i,j)</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">     103664 :       do i=1,n-1</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">     101409 :          call dlartg(d(i),e(i),cs,sn,r)</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">     101409 :          d(i) = r</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">     101409 :          e(i) = sn*d(i+1)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     101409 :          d(i+1) = cs*d(i+1)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     103664 :          if (lsame(jobq,'Y')) then</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      29928 :             do j=1,i</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      28600 :                Qt(i+1,j) = -sn*Qt(i,j)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      29928 :                Qt(i,j) = cs*Qt(i,j)</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :             enddo</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1440 :             Qt(i,i+1) = sn</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       1440 :             Qt(i+1,i+1) = cs</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1328 :             Qt(i,i+1) = sn</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       1328 :             Qt(i+1,i+1) = cs</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :          endif</a>
 <a name="141"><span class="lineNum">     141 </span>            :       enddo</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       2267 :       if (.not.ignorelast) then</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       2171 :          call dlartg(d(n),e(n),cs,sn,r)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2171 :          d(n) = r</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       2171 :          e(n) = 0.0</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       2171 :          c1 = sn</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       2171 :          c2 = cs</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       2171 :          if (lsame(jobq,'Y')) then</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       1160 :             do j=1,i</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       1092 :                Qt(i+1,j) = -sn*Qt(i,j)</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       1160 :                Qt(i,j) = cs*Qt(i,j)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       2255 :       if (.not.ignorelast) then</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       2131 :          call dlartg(d(n),e(n),cs,sn,r)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2131 :          d(n) = r</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       2131 :          e(n) = 0.0</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       2131 :          c1 = sn</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       2131 :          c2 = cs</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       2131 :          if (lsame(jobq,'Y')) then</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        978 :             do j=1,i</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        926 :                Qt(i+1,j) = -sn*Qt(i,j)</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        978 :                Qt(i,j) = cs*Qt(i,j)</span></a>
 <a name="152"><span class="lineNum">     152 </span>            :             enddo</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         68 :             Qt(i,i+1) = sn</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         68 :             Qt(i+1,i+1) = cs</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         52 :             Qt(i,i+1) = sn</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         52 :             Qt(i+1,i+1) = cs</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :          endif</a>
 <a name="156"><span class="lineNum">     156 </span>            :       endif</a>
 <a name="157"><span class="lineNum">     157 </span>            :       end</a>
@@ -229,7 +229,7 @@
 <a name="159"><span class="lineNum">     159 </span>            : </a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       2151 :       subroutine drefinebounds(n,k,theta,bound,tol,eps34)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       2141 :       subroutine drefinebounds(n,k,theta,bound,tol,eps34)</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : c</a>
 <a name="164"><span class="lineNum">     164 </span>            : c     Refine Lanczos error bounds using the gap theorem.</a>
 <a name="165"><span class="lineNum">     165 </span>            : c     </a>
@@ -261,11 +261,11 @@
 <a name="191"><span class="lineNum">     191 </span>            :       external dlapy2</a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
 <a name="193"><span class="lineNum">     193 </span>            : c-------------------- Here begins executable code ---------------------</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       2151 :       if (k.le.1) return</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      24058 :       do i=1,k</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      45966 :          do l=-1,1,2</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      65724 :             if ((l.eq.1.and.i.lt.k) .or. (l.eq.-1.and.i.gt.1)) then</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">      39516 :                if (abs(theta(i)-theta(i+l)) .lt. eps34*(theta(i))) then</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       2141 :       if (k.le.1) return</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      23766 :       do i=1,k</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      45392 :          do l=-1,1,2</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      64878 :             if ((l.eq.1.and.i.lt.k) .or. (l.eq.-1.and.i.gt.1)) then</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">      38972 :                if (abs(theta(i)-theta(i+l)) .lt. eps34*(theta(i))) then</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :                   if (bound(i).gt.tol .and. bound(i+l).gt.tol) then</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :                      bound(i+l) = dlapy2(bound(i),bound(i+l))</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :                      bound(i) = 0.0</span></a>
@@ -274,8 +274,8 @@
 <a name="204"><span class="lineNum">     204 </span>            :             endif</a>
 <a name="205"><span class="lineNum">     205 </span>            :          enddo         </a>
 <a name="206"><span class="lineNum">     206 </span>            :       enddo</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">      24058 :       do i=1,k</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">      24058 :          if (i.lt.k .or. k.eq.n) then</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">      23766 :       do i=1,k</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">      23766 :          if (i.lt.k .or. k.eq.n) then</span></a>
 <a name="209"><span class="lineNum">     209 </span>            : c</a>
 <a name="210"><span class="lineNum">     210 </span>            : c     We cannot compute a reliable value for the gap of the last</a>
 <a name="211"><span class="lineNum">     211 </span>            : c     Ritz value unless we know it is an approximation to the </a>
@@ -284,17 +284,17 @@
 <a name="214"><span class="lineNum">     214 </span>            : c     save us from getting stuck on matrices with a single isolated tiny </a>
 <a name="215"><span class="lineNum">     215 </span>            : c     singular value.</a>
 <a name="216"><span class="lineNum">     216 </span>            : c</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      19804 :             if (i.eq.1) then</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       2150 :                gap = abs(theta(i)-theta(i+1))-max(bound(i),bound(i+1))</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">      17654 :             else if (i.eq.n) then</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         81 :                gap = abs(theta(i-1)-theta(i))-max(bound(i-1),bound(i))</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      19546 :             if (i.eq.1) then</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       2140 :                gap = abs(theta(i)-theta(i+1))-max(bound(i),bound(i+1))</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">      17406 :             else if (i.eq.n) then</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         83 :                gap = abs(theta(i-1)-theta(i))-max(bound(i-1),bound(i))</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :             else</a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">      17573 :                gap = abs(theta(i)-theta(i+1))-max(bound(i),bound(i+1)) </span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">      17323 :                gap = abs(theta(i)-theta(i+1))-max(bound(i),bound(i+1)) </span></a>
 <a name="223"><span class="lineNum">     223 </span>            :                gap = min(gap,abs(theta(i-1) - theta(i)) - </a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">      17573 :      c              max(bound(i-1),bound(i)))</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">      17323 :      c              max(bound(i-1),bound(i)))</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :             endif</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">      19804 :             if (gap.gt.bound(i)) then</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">      19096 :                bound(i) = bound(i) * (bound(i)/gap)</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">      19546 :             if (gap.gt.bound(i)) then</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">      19024 :                bound(i) = bound(i) * (bound(i)/gap)</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :             endif</a>
 <a name="229"><span class="lineNum">     229 </span>            :          endif</a>
 <a name="230"><span class="lineNum">     230 </span>            :       enddo</a>

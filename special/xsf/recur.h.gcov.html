@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/recur.h</title>
+  <title>LCOV - lcov.info - special/xsf/recur.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">44</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">52</td>
@@ -78,14 +78,14 @@
 <a name="8"><span class="lineNum">       8 </span><span class="lineCov">    6961848 : T dot(const T (&amp;x)[N], const T (&amp;y)[N]) {</span></a>
 <a name="9"><span class="lineNum">       9 </span><span class="lineCov">    5831912 :     T res = T(0);</span></a>
 <a name="10"><span class="lineNum">      10 </span><span class="lineCov">   20885544 :     for (size_t i = 0; i &lt; N; ++i) {</span></a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">   18170920 :         res += x[i] * y[i];</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">   30062482 :         res += x[i] * y[i];</span></a>
 <a name="12"><span class="lineNum">      12 </span>            :     }</a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
 <a name="14"><span class="lineNum">      14 </span><span class="lineCov">    2123612 :     return res;</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : }</a>
 <a name="16"><span class="lineNum">      16 </span>            : </a>
 <a name="17"><span class="lineNum">      17 </span>            : template &lt;typename T, size_t K&gt;</a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">    9696307 : void forward_recur_shift_left(T (&amp;res)[K]) {</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">    7572695 : void forward_recur_shift_left(T (&amp;res)[K]) {</span></a>
 <a name="19"><span class="lineNum">      19 </span><span class="lineCov">    9702101 :     for (size_t k = 1; k &lt; K; ++k) {</span></a>
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">       2136 :         res[k - 1] = res[k];</span></a>
 <a name="21"><span class="lineNum">      21 </span>            :     }</a>

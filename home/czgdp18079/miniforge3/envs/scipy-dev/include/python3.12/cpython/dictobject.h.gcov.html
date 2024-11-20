@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/dictobject.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/python3.12/cpython/dictobject.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">5</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -120,11 +120,11 @@
 <a name="50"><span class="lineNum">      50 </span>            :     PyObject *mp, Py_ssize_t *pos, PyObject **key, PyObject **value, Py_hash_t *hash);</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
 <a name="52"><span class="lineNum">      52 </span>            : /* Get the number of items of a dictionary. */</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">      10488 : static inline Py_ssize_t PyDict_GET_SIZE(PyObject *op) {</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">      10488 :     PyDictObject *mp;</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">      10488 :     assert(PyDict_Check(op));</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      10488 :     mp = _Py_CAST(PyDictObject*, op);</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">      10488 :     return mp-&gt;ma_used;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">      10572 : static inline Py_ssize_t PyDict_GET_SIZE(PyObject *op) {</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">      10572 :     PyDictObject *mp;</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">      10572 :     assert(PyDict_Check(op));</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      10572 :     mp = _Py_CAST(PyDictObject*, op);</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">      10572 :     return mp-&gt;ma_used;</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : }</a>
 <a name="59"><span class="lineNum">      59 </span>            : #define PyDict_GET_SIZE(op) PyDict_GET_SIZE(_PyObject_CAST(op))</a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>

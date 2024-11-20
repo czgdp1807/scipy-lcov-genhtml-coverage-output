@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/distributions/skew_normal.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/distributions/skew_normal.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">111</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -106,13 +106,13 @@
 <a name="36"><span class="lineNum">      36 </span>            :   namespace detail</a>
 <a name="37"><span class="lineNum">      37 </span>            :   {</a>
 <a name="38"><span class="lineNum">      38 </span>            :     template &lt;class RealType, class Policy&gt;</a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       2356 :     inline bool check_skew_normal_shape(</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">       3006 :     inline bool check_skew_normal_shape(</span></a>
 <a name="40"><span class="lineNum">      40 </span>            :       const char* function,</a>
 <a name="41"><span class="lineNum">      41 </span>            :       RealType shape,</a>
 <a name="42"><span class="lineNum">      42 </span>            :       RealType* result,</a>
 <a name="43"><span class="lineNum">      43 </span>            :       const Policy&amp; pol)</a>
 <a name="44"><span class="lineNum">      44 </span>            :     {</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       1631 :       if(!(boost::math::isfinite)(shape))</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       2231 :       if(!(boost::math::isfinite)(shape))</span></a>
 <a name="46"><span class="lineNum">      46 </span>            :       {</a>
 <a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :         *result =</span></a>
 <a name="48"><span class="lineNum">      48 </span>            :           policies::raise_domain_error&lt;RealType&gt;(function,</a>
@@ -132,30 +132,30 @@
 <a name="62"><span class="lineNum">      62 </span>            :     typedef RealType value_type;</a>
 <a name="63"><span class="lineNum">      63 </span>            :     typedef Policy policy_type;</a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        725 :     skew_normal_distribution(RealType l_location = 0, RealType l_scale = 1, RealType l_shape = 0)</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        725 :       : location_(l_location), scale_(l_scale), shape_(l_shape)</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        775 :     skew_normal_distribution(RealType l_location = 0, RealType l_scale = 1, RealType l_shape = 0)</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        775 :       : location_(l_location), scale_(l_scale), shape_(l_shape)</span></a>
 <a name="67"><span class="lineNum">      67 </span>            :     { // Default is a 'standard' normal distribution N01. (shape=0 results in the normal distribution with no skew)</a>
 <a name="68"><span class="lineNum">      68 </span>            :       static const char* function = &quot;boost::math::skew_normal_distribution&lt;%1%&gt;::skew_normal_distribution&quot;;</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            :       RealType result;</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        707 :       detail::check_scale(function, l_scale, &amp;result, Policy());</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        725 :       detail::check_location(function, l_location, &amp;result, Policy());</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        707 :       detail::check_skew_normal_shape(function, l_shape, &amp;result, Policy());</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        757 :       detail::check_scale(function, l_scale, &amp;result, Policy());</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        775 :       detail::check_location(function, l_location, &amp;result, Policy());</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        757 :       detail::check_skew_normal_shape(function, l_shape, &amp;result, Policy());</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :     }</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1711 :     RealType location()const</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       2361 :     RealType location()const</span></a>
 <a name="77"><span class="lineNum">      77 </span>            :     {</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       1711 :       return location_;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       2361 :       return location_;</span></a>
 <a name="79"><span class="lineNum">      79 </span>            :     }</a>
 <a name="80"><span class="lineNum">      80 </span>            : </a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1791 :     RealType scale()const</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       2491 :     RealType scale()const</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :     {</a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       1791 :       return scale_;</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       2491 :       return scale_;</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     }</a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       1951 :     RealType shape()const</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       2751 :     RealType shape()const</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :     {</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       1951 :       return shape_;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       2751 :       return shape_;</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :     }</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
@@ -198,28 +198,28 @@
 <a name="128"><span class="lineNum">     128 </span>            :   }</a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">         80 :   inline RealType pdf(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; x)</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        130 :   inline RealType pdf(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; x)</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :   {</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         80 :     const RealType scale = dist.scale();</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         80 :     const RealType location = dist.location();</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">         80 :     const RealType shape = dist.shape();</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        130 :     const RealType scale = dist.scale();</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        130 :     const RealType location = dist.location();</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        130 :     const RealType shape = dist.shape();</span></a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            :     static const char* function = &quot;boost::math::pdf(const skew_normal_distribution&lt;%1%&gt;&amp;, %1%)&quot;;</a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         80 :     RealType result = 0;</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        160 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        130 :     RealType result = 0;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        260 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :     {</a>
 <a name="142"><span class="lineNum">     142 </span>            :       return result;</a>
 <a name="143"><span class="lineNum">     143 </span>            :     }</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         80 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        130 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :     {</a>
 <a name="146"><span class="lineNum">     146 </span>            :       return result;</a>
 <a name="147"><span class="lineNum">     147 </span>            :     }</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         80 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        130 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :     {</a>
 <a name="150"><span class="lineNum">     150 </span>            :       return result;</a>
 <a name="151"><span class="lineNum">     151 </span>            :     }</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         80 :     if((boost::math::isinf)(x))</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        130 :     if((boost::math::isinf)(x))</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :     {</a>
 <a name="154"><span class="lineNum">     154 </span>            :        return 0; // pdf + and - infinity is zero.</a>
 <a name="155"><span class="lineNum">     155 </span>            :     }</a>
@@ -228,42 +228,42 @@
 <a name="158"><span class="lineNum">     158 </span>            :     //{ // pdf + and - infinity is zero.</a>
 <a name="159"><span class="lineNum">     159 </span>            :     //  return 0;</a>
 <a name="160"><span class="lineNum">     160 </span>            :     //}</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         80 :     if(false == detail::check_x(function, x, &amp;result, Policy()))</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        130 :     if(false == detail::check_x(function, x, &amp;result, Policy()))</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :     {</a>
 <a name="163"><span class="lineNum">     163 </span>            :       return result;</a>
 <a name="164"><span class="lineNum">     164 </span>            :     }</a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         80 :     const RealType transformed_x = (x-location)/scale;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        130 :     const RealType transformed_x = (x-location)/scale;</span></a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         80 :     normal_distribution&lt;RealType, Policy&gt; std_normal;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        130 :     normal_distribution&lt;RealType, Policy&gt; std_normal;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         80 :     result = pdf(std_normal, transformed_x) * cdf(std_normal, shape*transformed_x) * 2 / scale;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        130 :     result = pdf(std_normal, transformed_x) * cdf(std_normal, shape*transformed_x) * 2 / scale;</span></a>
 <a name="171"><span class="lineNum">     171 </span>            : </a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         80 :     return result;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        130 :     return result;</span></a>
 <a name="173"><span class="lineNum">     173 </span>            :   } // pdf</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1453 :   inline RealType cdf(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; x)</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1953 :   inline RealType cdf(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; x)</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :   {</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       1453 :     const RealType scale = dist.scale();</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1453 :     const RealType location = dist.location();</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       1453 :     const RealType shape = dist.shape();</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       1953 :     const RealType scale = dist.scale();</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1953 :     const RealType location = dist.location();</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       1953 :     const RealType shape = dist.shape();</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            :     static const char* function = &quot;boost::math::cdf(const skew_normal_distribution&lt;%1%&gt;&amp;, %1%)&quot;;</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       1453 :     RealType result = 0;</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       2906 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       1953 :     RealType result = 0;</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       3906 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :     {</a>
 <a name="186"><span class="lineNum">     186 </span>            :       return result;</a>
 <a name="187"><span class="lineNum">     187 </span>            :     }</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       1453 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       1953 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :     {</a>
 <a name="190"><span class="lineNum">     190 </span>            :       return result;</a>
 <a name="191"><span class="lineNum">     191 </span>            :     }</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       1453 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       1953 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :     {</a>
 <a name="194"><span class="lineNum">     194 </span>            :       return result;</a>
 <a name="195"><span class="lineNum">     195 </span>            :     }</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       1453 :     if((boost::math::isinf)(x))</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       1953 :     if((boost::math::isinf)(x))</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :     {</a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :       if(x &lt; 0) return 0; // -infinity</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :       return 1; // + infinity</span></a>
@@ -277,18 +277,18 @@
 <a name="207"><span class="lineNum">     207 </span>            :     //{ // cdf -infinity is zero.</a>
 <a name="208"><span class="lineNum">     208 </span>            :     //  return 0;</a>
 <a name="209"><span class="lineNum">     209 </span>            :     //}</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       1453 :     if(false == detail::check_x(function, x, &amp;result, Policy()))</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       1953 :     if(false == detail::check_x(function, x, &amp;result, Policy()))</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :     {</a>
 <a name="212"><span class="lineNum">     212 </span>            :       return result;</a>
 <a name="213"><span class="lineNum">     213 </span>            :     }</a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1453 :     const RealType transformed_x = (x-location)/scale;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1953 :     const RealType transformed_x = (x-location)/scale;</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1453 :     normal_distribution&lt;RealType, Policy&gt; std_normal;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1953 :     normal_distribution&lt;RealType, Policy&gt; std_normal;</span></a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       1453 :     result = cdf(std_normal, transformed_x) - owens_t(transformed_x, shape)*static_cast&lt;RealType&gt;(2);</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       1953 :     result = cdf(std_normal, transformed_x) - owens_t(transformed_x, shape)*static_cast&lt;RealType&gt;(2);</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       1453 :     return result;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       1953 :     return result;</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :   } // cdf</a>
 <a name="223"><span class="lineNum">     223 </span>            : </a>
 <a name="224"><span class="lineNum">     224 </span>            :   template &lt;class RealType, class Policy&gt;</a>
@@ -352,7 +352,7 @@
 <a name="282"><span class="lineNum">     282 </span>            :   }</a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
 <a name="284"><span class="lineNum">     284 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">         80 :   inline RealType mean(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        130 :   inline RealType mean(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
 <a name="286"><span class="lineNum">     286 </span>            :   {</a>
 <a name="287"><span class="lineNum">     287 </span>            :     BOOST_MATH_STD_USING  // for ADL of std functions</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
@@ -362,21 +362,21 @@
 <a name="292"><span class="lineNum">     292 </span>            : </a>
 <a name="293"><span class="lineNum">     293 </span>            :     //return dist.location() + dist.scale() * delta * root_two_div_pi&lt;RealType&gt;();</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         80 :     return dist.location() + dist.scale() * dist.shape() / sqrt(pi&lt;RealType&gt;()+pi&lt;RealType&gt;()*dist.shape()*dist.shape()) * root_two&lt;RealType&gt;();</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        130 :     return dist.location() + dist.scale() * dist.shape() / sqrt(pi&lt;RealType&gt;()+pi&lt;RealType&gt;()*dist.shape()*dist.shape()) * root_two&lt;RealType&gt;();</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :   }</a>
 <a name="297"><span class="lineNum">     297 </span>            : </a>
 <a name="298"><span class="lineNum">     298 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         80 :   inline RealType variance(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        130 :   inline RealType variance(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :   {</a>
 <a name="301"><span class="lineNum">     301 </span>            :     using namespace boost::math::constants;</a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         80 :     const RealType delta2 = dist.shape() != 0 ? static_cast&lt;RealType&gt;(1) / (static_cast&lt;RealType&gt;(1)+static_cast&lt;RealType&gt;(1)/(dist.shape()*dist.shape())) : static_cast&lt;RealType&gt;(0);</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">        130 :     const RealType delta2 = dist.shape() != 0 ? static_cast&lt;RealType&gt;(1) / (static_cast&lt;RealType&gt;(1)+static_cast&lt;RealType&gt;(1)/(dist.shape()*dist.shape())) : static_cast&lt;RealType&gt;(0);</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :     //const RealType inv_delta2 = static_cast&lt;RealType&gt;(1)+static_cast&lt;RealType&gt;(1)/(dist.shape()*dist.shape());</a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         80 :     RealType variance = dist.scale()*dist.scale()*(static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta2);</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">        130 :     RealType variance = dist.scale()*dist.scale()*(static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta2);</span></a>
 <a name="307"><span class="lineNum">     307 </span>            :     //RealType variance = dist.scale()*dist.scale()*(static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()/inv_delta2);</a>
 <a name="308"><span class="lineNum">     308 </span>            : </a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         80 :     return variance;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">        130 :     return variance;</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :   }</a>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
 <a name="312"><span class="lineNum">     312 </span>            :   namespace detail</a>
@@ -655,16 +655,16 @@
 <a name="585"><span class="lineNum">     585 </span>            : </a>
 <a name="586"><span class="lineNum">     586 </span>            : </a>
 <a name="587"><span class="lineNum">     587 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">         80 :   inline RealType skewness(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        130 :   inline RealType skewness(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
 <a name="589"><span class="lineNum">     589 </span>            :   {</a>
 <a name="590"><span class="lineNum">     590 </span>            :     BOOST_MATH_STD_USING  // for ADL of std functions</a>
 <a name="591"><span class="lineNum">     591 </span>            :     using namespace boost::math::constants;</a>
 <a name="592"><span class="lineNum">     592 </span>            : </a>
 <a name="593"><span class="lineNum">     593 </span>            :     static const RealType factor = four_minus_pi&lt;RealType&gt;()/static_cast&lt;RealType&gt;(2);</a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">         80 :     const RealType delta = dist.shape() / sqrt(static_cast&lt;RealType&gt;(1)+dist.shape()*dist.shape());</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        130 :     const RealType delta = dist.shape() / sqrt(static_cast&lt;RealType&gt;(1)+dist.shape()*dist.shape());</span></a>
 <a name="595"><span class="lineNum">     595 </span>            : </a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">         80 :     return static_cast&lt;RealType&gt;(factor * pow(root_two_div_pi&lt;RealType&gt;() * delta, 3) /</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">         80 :       pow(static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta*delta, static_cast&lt;RealType&gt;(1.5)));</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        130 :     return static_cast&lt;RealType&gt;(factor * pow(root_two_div_pi&lt;RealType&gt;() * delta, 3) /</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        130 :       pow(static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta*delta, static_cast&lt;RealType&gt;(1.5)));</span></a>
 <a name="598"><span class="lineNum">     598 </span>            :   }</a>
 <a name="599"><span class="lineNum">     599 </span>            : </a>
 <a name="600"><span class="lineNum">     600 </span>            :   template &lt;class RealType, class Policy&gt;</a>
@@ -674,79 +674,79 @@
 <a name="604"><span class="lineNum">     604 </span>            :   }</a>
 <a name="605"><span class="lineNum">     605 </span>            : </a>
 <a name="606"><span class="lineNum">     606 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">         80 :   inline RealType kurtosis_excess(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        130 :   inline RealType kurtosis_excess(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist)</span></a>
 <a name="608"><span class="lineNum">     608 </span>            :   {</a>
 <a name="609"><span class="lineNum">     609 </span>            :     using namespace boost::math::constants;</a>
 <a name="610"><span class="lineNum">     610 </span>            : </a>
 <a name="611"><span class="lineNum">     611 </span>            :     static const RealType factor = pi_minus_three&lt;RealType&gt;()*static_cast&lt;RealType&gt;(2);</a>
 <a name="612"><span class="lineNum">     612 </span>            : </a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         80 :     const RealType delta2 = dist.shape() != 0 ? static_cast&lt;RealType&gt;(1) / (static_cast&lt;RealType&gt;(1)+static_cast&lt;RealType&gt;(1)/(dist.shape()*dist.shape())) : static_cast&lt;RealType&gt;(0);</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">        130 :     const RealType delta2 = dist.shape() != 0 ? static_cast&lt;RealType&gt;(1) / (static_cast&lt;RealType&gt;(1)+static_cast&lt;RealType&gt;(1)/(dist.shape()*dist.shape())) : static_cast&lt;RealType&gt;(0);</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineCov">         80 :     const RealType x = static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta2;</span></a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">         80 :     const RealType y = two_div_pi&lt;RealType&gt;() * delta2;</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">        130 :     const RealType x = static_cast&lt;RealType&gt;(1)-two_div_pi&lt;RealType&gt;()*delta2;</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        130 :     const RealType y = two_div_pi&lt;RealType&gt;() * delta2;</span></a>
 <a name="617"><span class="lineNum">     617 </span>            : </a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineCov">         80 :     return factor * y*y / (x*x);</span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineCov">        130 :     return factor * y*y / (x*x);</span></a>
 <a name="619"><span class="lineNum">     619 </span>            :   }</a>
 <a name="620"><span class="lineNum">     620 </span>            : </a>
 <a name="621"><span class="lineNum">     621 </span>            :   template &lt;class RealType, class Policy&gt;</a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         80 :   inline RealType quantile(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; p)</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">        130 :   inline RealType quantile(const skew_normal_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; p)</span></a>
 <a name="623"><span class="lineNum">     623 </span>            :   {</a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">         80 :     const RealType scale = dist.scale();</span></a>
-<a name="625"><span class="lineNum">     625 </span><span class="lineCov">         80 :     const RealType location = dist.location();</span></a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         80 :     const RealType shape = dist.shape();</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">        130 :     const RealType scale = dist.scale();</span></a>
+<a name="625"><span class="lineNum">     625 </span><span class="lineCov">        130 :     const RealType location = dist.location();</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">        130 :     const RealType shape = dist.shape();</span></a>
 <a name="627"><span class="lineNum">     627 </span>            : </a>
 <a name="628"><span class="lineNum">     628 </span>            :     static const char* function = &quot;boost::math::quantile(const skew_normal_distribution&lt;%1%&gt;&amp;, %1%)&quot;;</a>
 <a name="629"><span class="lineNum">     629 </span>            : </a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineCov">         80 :     RealType result = 0;</span></a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">         80 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">        130 :     RealType result = 0;</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">        130 :     if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
 <a name="632"><span class="lineNum">     632 </span>            :       return result;</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         80 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">        130 :     if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
 <a name="634"><span class="lineNum">     634 </span>            :       return result;</a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">         80 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        130 :     if(false == detail::check_skew_normal_shape(function, shape, &amp;result, Policy()))</span></a>
 <a name="636"><span class="lineNum">     636 </span>            :       return result;</a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">         80 :     if(false == detail::check_probability(function, p, &amp;result, Policy()))</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">        130 :     if(false == detail::check_probability(function, p, &amp;result, Policy()))</span></a>
 <a name="638"><span class="lineNum">     638 </span>            :       return result;</a>
 <a name="639"><span class="lineNum">     639 </span>            : </a>
 <a name="640"><span class="lineNum">     640 </span>            :     // Compute initial guess via Cornish-Fisher expansion.</a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">         80 :     RealType x = -boost::math::erfc_inv(2 * p, Policy()) * constants::root_two&lt;RealType&gt;();</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">        130 :     RealType x = -boost::math::erfc_inv(2 * p, Policy()) * constants::root_two&lt;RealType&gt;();</span></a>
 <a name="642"><span class="lineNum">     642 </span>            : </a>
 <a name="643"><span class="lineNum">     643 </span>            :     // Avoid unnecessary computations if there is no skew.</a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineCov">         80 :     if(shape != 0)</span></a>
+<a name="644"><span class="lineNum">     644 </span><span class="lineCov">        130 :     if(shape != 0)</span></a>
 <a name="645"><span class="lineNum">     645 </span>            :     {</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">         80 :       const RealType skew = skewness(dist);</span></a>
-<a name="647"><span class="lineNum">     647 </span><span class="lineCov">         80 :       const RealType exk = kurtosis_excess(dist);</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">        130 :       const RealType skew = skewness(dist);</span></a>
+<a name="647"><span class="lineNum">     647 </span><span class="lineCov">        130 :       const RealType exk = kurtosis_excess(dist);</span></a>
 <a name="648"><span class="lineNum">     648 </span>            : </a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">         80 :       x = x + (x*x-static_cast&lt;RealType&gt;(1))*skew/static_cast&lt;RealType&gt;(6)</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">         80 :       + x*(x*x-static_cast&lt;RealType&gt;(3))*exk/static_cast&lt;RealType&gt;(24)</span></a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineCov">         80 :       - x*(static_cast&lt;RealType&gt;(2)*x*x-static_cast&lt;RealType&gt;(5))*skew*skew/static_cast&lt;RealType&gt;(36);</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        130 :       x = x + (x*x-static_cast&lt;RealType&gt;(1))*skew/static_cast&lt;RealType&gt;(6)</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">        130 :       + x*(x*x-static_cast&lt;RealType&gt;(3))*exk/static_cast&lt;RealType&gt;(24)</span></a>
+<a name="651"><span class="lineNum">     651 </span><span class="lineCov">        130 :       - x*(static_cast&lt;RealType&gt;(2)*x*x-static_cast&lt;RealType&gt;(5))*skew*skew/static_cast&lt;RealType&gt;(36);</span></a>
 <a name="652"><span class="lineNum">     652 </span>            :     } // if(shape != 0)</a>
 <a name="653"><span class="lineNum">     653 </span>            : </a>
-<a name="654"><span class="lineNum">     654 </span><span class="lineCov">         80 :     result = standard_deviation(dist)*x+mean(dist);</span></a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineCov">        130 :     result = standard_deviation(dist)*x+mean(dist);</span></a>
 <a name="655"><span class="lineNum">     655 </span>            : </a>
 <a name="656"><span class="lineNum">     656 </span>            :     // handle special case of non-skew normal distribution.</a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">         80 :     if(shape == 0)</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">        130 :     if(shape == 0)</span></a>
 <a name="658"><span class="lineNum">     658 </span>            :       return result;</a>
 <a name="659"><span class="lineNum">     659 </span>            : </a>
 <a name="660"><span class="lineNum">     660 </span>            :     // refine the result by numerically searching the root of (p-cdf)</a>
 <a name="661"><span class="lineNum">     661 </span>            : </a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineCov">         80 :     const int get_digits = policies::digits&lt;RealType, Policy&gt;();// get digits from policy,</span></a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">         80 :     std::uintmax_t max_iter = policies::get_max_root_iterations&lt;Policy&gt;(); // and max iterations.</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">        130 :     const int get_digits = policies::digits&lt;RealType, Policy&gt;();// get digits from policy,</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        130 :     std::uintmax_t max_iter = policies::get_max_root_iterations&lt;Policy&gt;(); // and max iterations.</span></a>
 <a name="664"><span class="lineNum">     664 </span>            : </a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">         80 :     if (result == 0)</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">        130 :     if (result == 0)</span></a>
 <a name="666"><span class="lineNum">     666 </span><span class="lineNoCov">          0 :        result = tools::min_value&lt;RealType&gt;(); // we need to be one side of zero or the other for the root finder to work.</span></a>
 <a name="667"><span class="lineNum">     667 </span>            : </a>
-<a name="668"><span class="lineNum">     668 </span><span class="lineCov">        692 :     auto fun = [&amp;, dist, p](const RealType&amp; x)-&gt;RealType { return cdf(dist, x) - p; };</span></a>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">       1092 :     auto fun = [&amp;, dist, p](const RealType&amp; x)-&gt;RealType { return cdf(dist, x) - p; };</span></a>
 <a name="669"><span class="lineNum">     669 </span>            : </a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">         80 :     RealType f_result = fun(result);</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">        130 :     RealType f_result = fun(result);</span></a>
 <a name="671"><span class="lineNum">     671 </span>            : </a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">         80 :     if (f_result == 0)</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">        130 :     if (f_result == 0)</span></a>
 <a name="673"><span class="lineNum">     673 </span><span class="lineNoCov">          0 :        return result;</span></a>
 <a name="674"><span class="lineNum">     674 </span>            : </a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">         80 :     if (f_result * result &gt; 0)</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">        130 :     if (f_result * result &gt; 0)</span></a>
 <a name="676"><span class="lineNum">     676 </span>            :     {</a>
 <a name="677"><span class="lineNum">     677 </span>            :        // If the root is in the direction of zero, we need to check that we're the correct side of it:</a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">         53 :        RealType f_zero = fun(static_cast&lt;RealType&gt;(0));</span></a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">         53 :        if (f_zero * f_result &gt; 0)</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        103 :        RealType f_zero = fun(static_cast&lt;RealType&gt;(0));</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">        103 :        if (f_zero * f_result &gt; 0)</span></a>
 <a name="680"><span class="lineNum">     680 </span>            :        {</a>
 <a name="681"><span class="lineNum">     681 </span>            :           // we're the wrong side of zero:</a>
 <a name="682"><span class="lineNum">     682 </span><span class="lineCov">          1 :           result = -result;</span></a>
@@ -754,40 +754,40 @@
 <a name="684"><span class="lineNum">     684 </span>            :        }</a>
 <a name="685"><span class="lineNum">     685 </span>            :     }</a>
 <a name="686"><span class="lineNum">     686 </span>            : </a>
-<a name="687"><span class="lineNum">     687 </span><span class="lineCov">         80 :     RealType scaling_factor = 1.25;</span></a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">         80 :     if (f_result * result &gt; 0)</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">        130 :     RealType scaling_factor = 1.25;</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">        130 :     if (f_result * result &gt; 0)</span></a>
 <a name="689"><span class="lineNum">     689 </span>            :     {</a>
 <a name="690"><span class="lineNum">     690 </span>            :        // We're heading towards zero... it's a long way down so use a larger scaling factor:</a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">         53 :        scaling_factor = 16;</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">        103 :        scaling_factor = 16;</span></a>
 <a name="692"><span class="lineNum">     692 </span>            :     }</a>
 <a name="693"><span class="lineNum">     693 </span>            : </a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">         80 :     auto p_result = tools::bracket_and_solve_root(fun, result, scaling_factor, true, tools::eps_tolerance&lt;RealType&gt;(get_digits), max_iter, Policy());</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">        130 :     auto p_result = tools::bracket_and_solve_root(fun, result, scaling_factor, true, tools::eps_tolerance&lt;RealType&gt;(get_digits), max_iter, Policy());</span></a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
 <a name="696"><span class="lineNum">     696 </span>            : #ifdef BOOST_MATH_INSTRUMENT_SKEW_NORMAL_ITERATIONS</a>
 <a name="697"><span class="lineNum">     697 </span>            :     global_iter_count += max_iter;</a>
 <a name="698"><span class="lineNum">     698 </span>            : #endif</a>
 <a name="699"><span class="lineNum">     699 </span>            : </a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">         80 :     result = (p_result.first + p_result.second) / 2;</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">        130 :     result = (p_result.first + p_result.second) / 2;</span></a>
 <a name="701"><span class="lineNum">     701 </span>            : </a>
 <a name="702"><span class="lineNum">     702 </span>            :     //</a>
 <a name="703"><span class="lineNum">     703 </span>            :     // Try one last Newton step, just to close up the interval:</a>
 <a name="704"><span class="lineNum">     704 </span>            :     //</a>
-<a name="705"><span class="lineNum">     705 </span><span class="lineCov">         80 :     RealType step = fun(result) / pdf(dist, result);</span></a>
+<a name="705"><span class="lineNum">     705 </span><span class="lineCov">        130 :     RealType step = fun(result) / pdf(dist, result);</span></a>
 <a name="706"><span class="lineNum">     706 </span>            : </a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">         80 :     if (result - step &lt;= p_result.first)</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">        130 :     if (result - step &lt;= p_result.first)</span></a>
 <a name="708"><span class="lineNum">     708 </span><span class="lineCov">         36 :        result = p_result.first;</span></a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineCov">         44 :     else if (result - step &gt;= p_result.second)</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">         94 :     else if (result - step &gt;= p_result.second)</span></a>
 <a name="710"><span class="lineNum">     710 </span><span class="lineCov">          9 :        result = p_result.second;</span></a>
 <a name="711"><span class="lineNum">     711 </span>            :     else</a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">         35 :        result -= step;</span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineCov">         85 :        result -= step;</span></a>
 <a name="713"><span class="lineNum">     713 </span>            : </a>
-<a name="714"><span class="lineNum">     714 </span><span class="lineCov">         80 :     if (max_iter &gt;= policies::get_max_root_iterations&lt;Policy&gt;())</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">        130 :     if (max_iter &gt;= policies::get_max_root_iterations&lt;Policy&gt;())</span></a>
 <a name="715"><span class="lineNum">     715 </span>            :     {</a>
 <a name="716"><span class="lineNum">     716 </span>            :        return policies::raise_evaluation_error&lt;RealType&gt;(function, &quot;Unable to locate solution in a reasonable time: either there is no answer to quantile&quot; // LCOV_EXCL_LINE</a>
 <a name="717"><span class="lineNum">     717 </span>            :           &quot; or the answer is infinite.  Current best guess is %1%&quot;, result, Policy());  // LCOV_EXCL_LINE</a>
 <a name="718"><span class="lineNum">     718 </span>            :     }</a>
 <a name="719"><span class="lineNum">     719 </span>            : </a>
-<a name="720"><span class="lineNum">     720 </span><span class="lineCov">         80 :     return result;</span></a>
+<a name="720"><span class="lineNum">     720 </span><span class="lineCov">        130 :     return result;</span></a>
 <a name="721"><span class="lineNum">     721 </span>            :   } // quantile</a>
 <a name="722"><span class="lineNum">     722 </span>            : </a>
 <a name="723"><span class="lineNum">     723 </span>            :   template &lt;class RealType, class Policy&gt;</a>

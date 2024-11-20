@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/mutex</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/mutex</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">13</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -867,7 +867,7 @@
 <a name="797"><span class="lineNum">     797 </span>            :   /// Flag type used by std::call_once</a>
 <a name="798"><span class="lineNum">     798 </span>            :   struct once_flag</a>
 <a name="799"><span class="lineNum">     799 </span>            :   {</a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">       1400 :     constexpr once_flag() noexcept = default;</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">       1410 :     constexpr once_flag() noexcept = default;</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
 <a name="802"><span class="lineNum">     802 </span>            :     /// Deleted copy constructor</a>
 <a name="803"><span class="lineNum">     803 </span>            :     once_flag(const once_flag&amp;) = delete;</a>
@@ -898,19 +898,19 @@
 <a name="828"><span class="lineNum">     828 </span>            :   {</a>
 <a name="829"><span class="lineNum">     829 </span>            :     template&lt;typename _Callable&gt;</a>
 <a name="830"><span class="lineNum">     830 </span>            :       explicit</a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">       1552 :       _Prepare_execution(_Callable&amp; __c)</span></a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">       1563 :       _Prepare_execution(_Callable&amp; __c)</span></a>
 <a name="832"><span class="lineNum">     832 </span>            :       {</a>
 <a name="833"><span class="lineNum">     833 </span>            :         // Store address in thread-local pointer:</a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">       1552 :         __once_callable = std::__addressof(__c);</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">       1563 :         __once_callable = std::__addressof(__c);</span></a>
 <a name="835"><span class="lineNum">     835 </span>            :         // Trampoline function to invoke the closure via thread-local pointer:</a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       1552 :         __once_call = [] { (*static_cast&lt;_Callable*&gt;(__once_callable))(); };</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       1563 :         __once_call = [] { (*static_cast&lt;_Callable*&gt;(__once_callable))(); };</span></a>
 <a name="837"><span class="lineNum">     837 </span>            :       }</a>
 <a name="838"><span class="lineNum">     838 </span>            : </a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">       1552 :     ~_Prepare_execution()</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">       1563 :     ~_Prepare_execution()</span></a>
 <a name="840"><span class="lineNum">     840 </span>            :     {</a>
 <a name="841"><span class="lineNum">     841 </span>            :       // PR libstdc++/82481</a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineCov">       1552 :       __once_callable = nullptr;</span></a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineCov">       1552 :       __once_call = nullptr;</span></a>
+<a name="842"><span class="lineNum">     842 </span><span class="lineCov">       1563 :       __once_callable = nullptr;</span></a>
+<a name="843"><span class="lineNum">     843 </span><span class="lineCov">       1563 :       __once_call = nullptr;</span></a>
 <a name="844"><span class="lineNum">     844 </span>            :     }</a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <a name="846"><span class="lineNum">     846 </span>            :     _Prepare_execution(const _Prepare_execution&amp;) = delete;</a>
@@ -963,20 +963,20 @@
 <a name="893"><span class="lineNum">     893 </span>            :   /// Invoke a callable and synchronize with other calls using the same flag</a>
 <a name="894"><span class="lineNum">     894 </span>            :   template&lt;typename _Callable, typename... _Args&gt;</a>
 <a name="895"><span class="lineNum">     895 </span>            :     void</a>
-<a name="896"><span class="lineNum">     896 </span><span class="lineCov">       1552 :     call_once(once_flag&amp; __once, _Callable&amp;&amp; __f, _Args&amp;&amp;... __args)</span></a>
+<a name="896"><span class="lineNum">     896 </span><span class="lineCov">       1563 :     call_once(once_flag&amp; __once, _Callable&amp;&amp; __f, _Args&amp;&amp;... __args)</span></a>
 <a name="897"><span class="lineNum">     897 </span>            :     {</a>
 <a name="898"><span class="lineNum">     898 </span>            :       // Closure type that runs the function</a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       4352 :       auto __callable = [&amp;] {</span></a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">       1400 :           std::__invoke(std::forward&lt;_Callable&gt;(__f),</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       4383 :       auto __callable = [&amp;] {</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">       1410 :           std::__invoke(std::forward&lt;_Callable&gt;(__f),</span></a>
 <a name="901"><span class="lineNum">     901 </span>            :                         std::forward&lt;_Args&gt;(__args)...);</a>
 <a name="902"><span class="lineNum">     902 </span>            :       };</a>
 <a name="903"><span class="lineNum">     903 </span>            : </a>
-<a name="904"><span class="lineNum">     904 </span><span class="lineCov">       1552 :       once_flag::_Prepare_execution __exec(__callable);</span></a>
+<a name="904"><span class="lineNum">     904 </span><span class="lineCov">       1563 :       once_flag::_Prepare_execution __exec(__callable);</span></a>
 <a name="905"><span class="lineNum">     905 </span>            : </a>
 <a name="906"><span class="lineNum">     906 </span>            :       // XXX pthread_once does not reset the flag if an exception is thrown.</a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">       3104 :       if (int __e = __gthread_once(&amp;__once._M_once, &amp;__once_proxy))</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">       3126 :       if (int __e = __gthread_once(&amp;__once._M_once, &amp;__once_proxy))</span></a>
 <a name="908"><span class="lineNum">     908 </span><span class="lineNoCov">          0 :         __throw_system_error(__e);</span></a>
-<a name="909"><span class="lineNum">     909 </span><span class="lineCov">       1552 :     }</span></a>
+<a name="909"><span class="lineNum">     909 </span><span class="lineCov">       1563 :     }</span></a>
 <a name="910"><span class="lineNum">     910 </span>            : </a>
 <a name="911"><span class="lineNum">     911 </span>            : #else // _GLIBCXX_HAS_GTHREADS</a>
 <a name="912"><span class="lineNum">     912 </span>            : </a>

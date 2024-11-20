@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/distributions/complement.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/distributions/complement.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">3</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -92,7 +92,7 @@
 <a name="22"><span class="lineNum">      22 </span>            : template &lt;class Dist, class RealType&gt;</a>
 <a name="23"><span class="lineNum">      23 </span>            : struct complemented2_type</a>
 <a name="24"><span class="lineNum">      24 </span>            : {</a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">       6592 :    BOOST_MATH_GPU_ENABLED complemented2_type(</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">      12791 :    BOOST_MATH_GPU_ENABLED complemented2_type(</span></a>
 <a name="26"><span class="lineNum">      26 </span>            :       const Dist&amp; d, </a>
 <a name="27"><span class="lineNum">      27 </span>            :       const RealType&amp; p1)</a>
 <a name="28"><span class="lineNum">      28 </span>            :       : dist(d), </a>
@@ -226,9 +226,9 @@
 <a name="156"><span class="lineNum">     156 </span>            : };</a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
 <a name="158"><span class="lineNum">     158 </span>            : template &lt;class Dist, class RealType&gt;</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       6592 : BOOST_MATH_GPU_ENABLED inline complemented2_type&lt;Dist, RealType&gt; complement(const Dist&amp; d, const RealType&amp; r)</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">      12791 : BOOST_MATH_GPU_ENABLED inline complemented2_type&lt;Dist, RealType&gt; complement(const Dist&amp; d, const RealType&amp; r)</span></a>
 <a name="160"><span class="lineNum">     160 </span>            : {</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       5952 :    return complemented2_type&lt;Dist, RealType&gt;(d, r);</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      12151 :    return complemented2_type&lt;Dist, RealType&gt;(d, r);</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : }</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
 <a name="164"><span class="lineNum">     164 </span>            : template &lt;class Dist, class RealType1, class RealType2&gt;</a>

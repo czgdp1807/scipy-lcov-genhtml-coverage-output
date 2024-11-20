@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/sstqrb.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/sstqrb.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">166</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -172,7 +172,7 @@
 <a name="102"><span class="lineNum">     102 </span>            : c</a>
 <a name="103"><span class="lineNum">     103 </span>            : c-----------------------------------------------------------------------</a>
 <a name="104"><span class="lineNum">     104 </span>            : c</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        620 :       subroutine sstqrb ( n, d, e, z, work, info )</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        422 :       subroutine sstqrb ( n, d, e, z, work, info )</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : c</a>
 <a name="107"><span class="lineNum">     107 </span>            : c     %------------------%</a>
 <a name="108"><span class="lineNum">     108 </span>            : c     | Scalar Arguments |</a>
@@ -220,7 +220,7 @@
 <a name="150"><span class="lineNum">     150 </span>            : c</a>
 <a name="151"><span class="lineNum">     151 </span>            : c     test the input parameters.</a>
 <a name="152"><span class="lineNum">     152 </span>            : c</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        620 :       info = 0</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        422 :       info = 0</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : c</a>
 <a name="155"><span class="lineNum">     155 </span>            : c$$$      IF( LSAME( COMPZ, 'N' ) ) THEN</a>
 <a name="156"><span class="lineNum">     156 </span>            : c$$$         ICOMPZ = 0</a>
@@ -246,27 +246,27 @@
 <a name="176"><span class="lineNum">     176 </span>            : c</a>
 <a name="177"><span class="lineNum">     177 </span>            : c    *** New starting with version 2.5 ***</a>
 <a name="178"><span class="lineNum">     178 </span>            : c</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        620 :       icompz = 2</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        422 :       icompz = 2</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : c    *************************************</a>
 <a name="181"><span class="lineNum">     181 </span>            : c</a>
 <a name="182"><span class="lineNum">     182 </span>            : c     quick return if possible</a>
 <a name="183"><span class="lineNum">     183 </span>            : c</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        620 :       if( n.eq.0 )</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        422 :       if( n.eq.0 )</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :      $   return</a>
 <a name="186"><span class="lineNum">     186 </span>            : c</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">        620 :       if( n.eq.1 ) then</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">        422 :       if( n.eq.1 ) then</span></a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :          if( icompz.eq.2 )  z( 1 ) = one</span></a>
 <a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :          return</span></a>
 <a name="190"><span class="lineNum">     190 </span>            :       end if</a>
 <a name="191"><span class="lineNum">     191 </span>            : c</a>
 <a name="192"><span class="lineNum">     192 </span>            : c     determine the unit roundoff and over/underflow thresholds.</a>
 <a name="193"><span class="lineNum">     193 </span>            : c</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        620 :       eps = slamch( 'e' )</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">        620 :       eps2 = eps**2</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">        620 :       safmin = slamch( 's' )</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        620 :       safmax = one / safmin</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        620 :       ssfmax = sqrt( safmax ) / three</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        620 :       ssfmin = sqrt( safmin ) / eps2</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        422 :       eps = slamch( 'e' )</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">        422 :       eps2 = eps**2</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">        422 :       safmin = slamch( 's' )</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        422 :       safmax = one / safmin</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        422 :       ssfmax = sqrt( safmax ) / three</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        422 :       ssfmin = sqrt( safmin ) / eps2</span></a>
 <a name="200"><span class="lineNum">     200 </span>            : c</a>
 <a name="201"><span class="lineNum">     201 </span>            : c     compute the eigenvalues and eigenvectors of the tridiagonal</a>
 <a name="202"><span class="lineNum">     202 </span>            : c     matrix.</a>
@@ -277,64 +277,64 @@
 <a name="207"><span class="lineNum">     207 </span>            : c     *** New starting with version 2.5 ***</a>
 <a name="208"><span class="lineNum">     208 </span>            : c</a>
 <a name="209"><span class="lineNum">     209 </span>            :       if ( icompz .eq. 2 ) then</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">      10556 :          do 5 j = 1, n-1</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       9936 :             z(j) = zero</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        620 :   5      continue</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        620 :          z( n ) = one</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       6596 :          do 5 j = 1, n-1</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       6174 :             z(j) = zero</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        422 :   5      continue</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        422 :          z( n ) = one</span></a>
 <a name="214"><span class="lineNum">     214 </span>            :       end if</a>
 <a name="215"><span class="lineNum">     215 </span>            : c     *************************************</a>
 <a name="216"><span class="lineNum">     216 </span>            : c</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        620 :       nmaxit = n*maxit</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        620 :       jtot = 0</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        422 :       nmaxit = n*maxit</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        422 :       jtot = 0</span></a>
 <a name="219"><span class="lineNum">     219 </span>            : c</a>
 <a name="220"><span class="lineNum">     220 </span>            : c     determine where the matrix splits and choose ql or qr iteration</a>
 <a name="221"><span class="lineNum">     221 </span>            : c     for each block, according to whether top or bottom diagonal</a>
 <a name="222"><span class="lineNum">     222 </span>            : c     element is smaller.</a>
 <a name="223"><span class="lineNum">     223 </span>            : c</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        620 :       l1 = 1</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        620 :       nm1 = n - 1</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        422 :       l1 = 1</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        422 :       nm1 = n - 1</span></a>
 <a name="226"><span class="lineNum">     226 </span>            : c</a>
 <a name="227"><span class="lineNum">     227 </span>            :    10 continue</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       1725 :       if( l1.gt.n )</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       1131 :       if( l1.gt.n )</span></a>
 <a name="229"><span class="lineNum">     229 </span>            :      $   go to 160</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       1105 :       if( l1.gt.1 )</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        485 :      $   e( l1-1 ) = zero</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       1105 :       if( l1.le.nm1 ) then</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">      10556 :          do 20 m = l1, nm1</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       9936 :             tst = abs( e( m ) )</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       9936 :             if( tst.eq.zero )</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        709 :       if( l1.gt.1 )</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        287 :      $   e( l1-1 ) = zero</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        709 :       if( l1.le.nm1 ) then</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       6596 :          do 20 m = l1, nm1</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       6174 :             tst = abs( e( m ) )</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       6174 :             if( tst.eq.zero )</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :      $         go to 30</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       9451 :             if( tst.le.( sqrt( abs( d( m ) ) )*sqrt( abs( d( m+</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       5887 :             if( tst.le.( sqrt( abs( d( m ) ) )*sqrt( abs( d( m+</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :      $          1 ) ) ) )*eps ) then</a>
 <a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :                e( m ) = zero</span></a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :                go to 30</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :             end if</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        620 :    20    continue</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">        422 :    20    continue</span></a>
 <a name="243"><span class="lineNum">     243 </span>            :       end if</a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        485 :       m = n</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        287 :       m = n</span></a>
 <a name="245"><span class="lineNum">     245 </span>            : c</a>
 <a name="246"><span class="lineNum">     246 </span>            :    30 continue</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       1105 :       l = l1</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">       1105 :       lsv = l</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       1105 :       lend = m</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">       1105 :       lendsv = lend</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       1105 :       l1 = m + 1</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       1105 :       if( lend.eq.l )</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        709 :       l = l1</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        709 :       lsv = l</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        709 :       lend = m</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">        709 :       lendsv = lend</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">        709 :       l1 = m + 1</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">        709 :       if( lend.eq.l )</span></a>
 <a name="253"><span class="lineNum">     253 </span>            :      $   go to 10</a>
 <a name="254"><span class="lineNum">     254 </span>            : c</a>
 <a name="255"><span class="lineNum">     255 </span>            : c     scale submatrix in rows and columns l to lend</a>
 <a name="256"><span class="lineNum">     256 </span>            : c</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        623 :       anorm = slanst( 'i', lend-l+1, d( l ), e( l ) )</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        623 :       iscale = 0</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">        623 :       if( anorm.eq.zero )</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        425 :       anorm = slanst( 'i', lend-l+1, d( l ), e( l ) )</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        425 :       iscale = 0</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">        425 :       if( anorm.eq.zero )</span></a>
 <a name="260"><span class="lineNum">     260 </span>            :      $   go to 10</a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        623 :       if( anorm.gt.ssfmax ) then</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        425 :       if( anorm.gt.ssfmax ) then</span></a>
 <a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :          iscale = 1</span></a>
 <a name="263"><span class="lineNum">     263 </span>            :          call slascl( 'g', 0, 0, anorm, ssfmax, lend-l+1, 1, d( l ), n,</a>
 <a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :      $                info )</span></a>
 <a name="265"><span class="lineNum">     265 </span>            :          call slascl( 'g', 0, 0, anorm, ssfmax, lend-l, 1, e( l ), n,</a>
 <a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :      $                info )</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        623 :       else if( anorm.lt.ssfmin ) then</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        425 :       else if( anorm.lt.ssfmin ) then</span></a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :          iscale = 2</span></a>
 <a name="269"><span class="lineNum">     269 </span>            :          call slascl( 'g', 0, 0, anorm, ssfmin, lend-l+1, 1, d( l ), n,</a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :      $                info )</span></a>
@@ -344,128 +344,128 @@
 <a name="274"><span class="lineNum">     274 </span>            : c</a>
 <a name="275"><span class="lineNum">     275 </span>            : c     choose between ql and qr iteration</a>
 <a name="276"><span class="lineNum">     276 </span>            : c</a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        623 :       if( abs( d( lend ) ).lt.abs( d( l ) ) ) then</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        139 :          lend = lsv</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        139 :          l = lendsv</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        425 :       if( abs( d( lend ) ).lt.abs( d( l ) ) ) then</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        141 :          lend = lsv</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        141 :          l = lendsv</span></a>
 <a name="280"><span class="lineNum">     280 </span>            :       end if</a>
 <a name="281"><span class="lineNum">     281 </span>            : c</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        623 :       if( lend.gt.l ) then</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        425 :       if( lend.gt.l ) then</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : c</a>
 <a name="284"><span class="lineNum">     284 </span>            : c        ql iteration</a>
 <a name="285"><span class="lineNum">     285 </span>            : c</a>
 <a name="286"><span class="lineNum">     286 </span>            : c        look for small subdiagonal element.</a>
 <a name="287"><span class="lineNum">     287 </span>            : c</a>
 <a name="288"><span class="lineNum">     288 </span>            :    40    continue</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      21830 :          if( l.ne.lend ) then</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      12861 :          if( l.ne.lend ) then</span></a>
 <a name="290"><span class="lineNum">     290 </span>            :             lendm1 = lend - 1</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">     144189 :             do 50 m = l, lendm1</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">     131095 :                tst = abs( e( m ) )**2</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">     131095 :                if( tst.le.( eps2*abs( d( m ) ) )*abs( d( m+1 ) )+</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      86917 :             do 50 m = l, lendm1</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      79125 :                tst = abs( e( m ) )**2</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      79125 :                if( tst.le.( eps2*abs( d( m ) ) )*abs( d( m+1 ) )+</span></a>
 <a name="294"><span class="lineNum">     294 </span>            :      $             safmin )go to 60</a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      13094 :    50       continue</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       7792 :    50       continue</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :          end if</a>
 <a name="297"><span class="lineNum">     297 </span>            : c</a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       8736 :          m = lend</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       5069 :          m = lend</span></a>
 <a name="299"><span class="lineNum">     299 </span>            : c</a>
 <a name="300"><span class="lineNum">     300 </span>            :    60    continue</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      21830 :          if( m.lt.lend )</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       8736 :      $      e( m ) = zero</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">      21830 :          p = d( l )</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">      21830 :          if( m.eq.l )</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      12861 :          if( m.lt.lend )</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       5069 :      $      e( m ) = zero</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">      12861 :          p = d( l )</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">      12861 :          if( m.eq.l )</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :      $      go to 80</a>
 <a name="306"><span class="lineNum">     306 </span>            : c</a>
 <a name="307"><span class="lineNum">     307 </span>            : c        if remaining matrix is 2-by-2, use slae2 or slaev2</a>
 <a name="308"><span class="lineNum">     308 </span>            : c        to compute its eigensystem.</a>
 <a name="309"><span class="lineNum">     309 </span>            : c</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">      14594 :          if( m.eq.l+1 ) then</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       8536 :          if( m.eq.l+1 ) then</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :             if( icompz.gt.0 ) then</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        951 :                call slaev2( d( l ), e( l ), d( l+1 ), rt1, rt2, c, s )</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        951 :                work( l ) = c</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        951 :                work( n-1+l ) = s</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        516 :                call slaev2( d( l ), e( l ), d( l+1 ), rt1, rt2, c, s )</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        516 :                work( l ) = c</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        516 :                work( n-1+l ) = s</span></a>
 <a name="315"><span class="lineNum">     315 </span>            : c$$$               call slasr( 'r', 'v', 'b', n, 2, work( l ),</a>
 <a name="316"><span class="lineNum">     316 </span>            : c$$$     $                     work( n-1+l ), z( 1, l ), ldz )</a>
 <a name="317"><span class="lineNum">     317 </span>            : c</a>
 <a name="318"><span class="lineNum">     318 </span>            : c              *** New starting with version 2.5 ***</a>
 <a name="319"><span class="lineNum">     319 </span>            : c</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        951 :                tst      = z(l+1)</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        951 :                z(l+1) = c*tst - s*z(l)</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        951 :                z(l)   = s*tst + c*z(l)</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        516 :                tst      = z(l+1)</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        516 :                z(l+1) = c*tst - s*z(l)</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        516 :                z(l)   = s*tst + c*z(l)</span></a>
 <a name="323"><span class="lineNum">     323 </span>            : c              *************************************</a>
 <a name="324"><span class="lineNum">     324 </span>            :             else</a>
 <a name="325"><span class="lineNum">     325 </span>            :                call slae2( d( l ), e( l ), d( l+1 ), rt1, rt2 )</a>
 <a name="326"><span class="lineNum">     326 </span>            :             end if</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        951 :             d( l ) = rt1</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        951 :             d( l+1 ) = rt2</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        951 :             e( l ) = zero</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        951 :             l = l + 2</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        951 :             if( l.le.lend )</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        516 :             d( l ) = rt1</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        516 :             d( l+1 ) = rt2</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        516 :             e( l ) = zero</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        516 :             l = l + 2</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        516 :             if( l.le.lend )</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :      $         go to 40</a>
 <a name="333"><span class="lineNum">     333 </span>            :             go to 140</a>
 <a name="334"><span class="lineNum">     334 </span>            :          end if</a>
 <a name="335"><span class="lineNum">     335 </span>            : c</a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">      13643 :          if( jtot.eq.nmaxit )</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">       8020 :          if( jtot.eq.nmaxit )</span></a>
 <a name="337"><span class="lineNum">     337 </span>            :      $      go to 140</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">      13643 :          jtot = jtot + 1</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       8020 :          jtot = jtot + 1</span></a>
 <a name="339"><span class="lineNum">     339 </span>            : c</a>
 <a name="340"><span class="lineNum">     340 </span>            : c        form shift.</a>
 <a name="341"><span class="lineNum">     341 </span>            : c</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">      13643 :          g = ( d( l+1 )-p ) / ( two*e( l ) )</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">      13643 :          r = slapy2( g, one )</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">      13643 :          g = d( m ) - p + ( e( l ) / ( g+sign( r, g ) ) )</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">       8020 :          g = ( d( l+1 )-p ) / ( two*e( l ) )</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       8020 :          r = slapy2( g, one )</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       8020 :          g = d( m ) - p + ( e( l ) / ( g+sign( r, g ) ) )</span></a>
 <a name="345"><span class="lineNum">     345 </span>            : c</a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">      13643 :          s = one</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">      13643 :          c = one</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">      13643 :          p = zero</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">       8020 :          s = one</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">       8020 :          c = one</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">       8020 :          p = zero</span></a>
 <a name="349"><span class="lineNum">     349 </span>            : c</a>
 <a name="350"><span class="lineNum">     350 </span>            : c        inner loop</a>
 <a name="351"><span class="lineNum">     351 </span>            : c</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">      13643 :          mm1 = m - 1</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">     135051 :          do 70 i = mm1, l, -1</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">     121408 :             f = s*e( i )</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     121408 :             b = c*e( i )</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     121408 :             call slartg( g, f, c, s, r )</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     121408 :             if( i.ne.m-1 )</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">     107765 :      $         e( i+1 ) = r</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">     121408 :             g = d( i+1 ) - p</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     121408 :             r = ( d( i )-g )*s + two*c*b</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">     121408 :             p = s*r</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">     121408 :             d( i+1 ) = g + p</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">     121408 :             g = c*r - b</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       8020 :          mm1 = m - 1</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">      81560 :          do 70 i = mm1, l, -1</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">      73540 :             f = s*e( i )</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">      73540 :             b = c*e( i )</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">      73540 :             call slartg( g, f, c, s, r )</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">      73540 :             if( i.ne.m-1 )</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">      65520 :      $         e( i+1 ) = r</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">      73540 :             g = d( i+1 ) - p</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">      73540 :             r = ( d( i )-g )*s + two*c*b</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      73540 :             p = s*r</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      73540 :             d( i+1 ) = g + p</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      73540 :             g = c*r - b</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : c</a>
 <a name="365"><span class="lineNum">     365 </span>            : c           if eigenvectors are desired, then save rotations.</a>
 <a name="366"><span class="lineNum">     366 </span>            : c</a>
 <a name="367"><span class="lineNum">     367 </span>            :             if( icompz.gt.0 ) then</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">     121408 :                work( i ) = c</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">     121408 :                work( n-1+i ) = -s</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">      73540 :                work( i ) = c</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">      73540 :                work( n-1+i ) = -s</span></a>
 <a name="370"><span class="lineNum">     370 </span>            :             end if</a>
 <a name="371"><span class="lineNum">     371 </span>            : c</a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">      13643 :    70    continue</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       8020 :    70    continue</span></a>
 <a name="373"><span class="lineNum">     373 </span>            : c</a>
 <a name="374"><span class="lineNum">     374 </span>            : c        if eigenvectors are desired, then apply saved rotations.</a>
 <a name="375"><span class="lineNum">     375 </span>            : c</a>
 <a name="376"><span class="lineNum">     376 </span>            :          if( icompz.gt.0 ) then</a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">      13643 :             mm = m - l + 1</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       8020 :             mm = m - l + 1</span></a>
 <a name="378"><span class="lineNum">     378 </span>            : c$$$            call slasr( 'r', 'v', 'b', n, mm, work( l ), work( n-1+l ),</a>
 <a name="379"><span class="lineNum">     379 </span>            : c$$$     $                  z( 1, l ), ldz )</a>
 <a name="380"><span class="lineNum">     380 </span>            : c</a>
 <a name="381"><span class="lineNum">     381 </span>            : c             *** New starting with version 2.5 ***</a>
 <a name="382"><span class="lineNum">     382 </span>            : c</a>
 <a name="383"><span class="lineNum">     383 </span>            :               call slasr( 'r', 'v', 'b', 1, mm, work( l ),</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">      13643 :      &amp;                    work( n-1+l ), z( l ), 1 )</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">       8020 :      &amp;                    work( n-1+l ), z( l ), 1 )</span></a>
 <a name="385"><span class="lineNum">     385 </span>            : c             *************************************</a>
 <a name="386"><span class="lineNum">     386 </span>            :          end if</a>
 <a name="387"><span class="lineNum">     387 </span>            : c</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">      13643 :          d( l ) = d( l ) - p</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">      13643 :          e( l ) = g</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      20879 :          go to 40</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       8020 :          d( l ) = d( l ) - p</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">       8020 :          e( l ) = g</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      12345 :          go to 40</span></a>
 <a name="391"><span class="lineNum">     391 </span>            : c</a>
 <a name="392"><span class="lineNum">     392 </span>            : c        eigenvalue found.</a>
 <a name="393"><span class="lineNum">     393 </span>            : c</a>
 <a name="394"><span class="lineNum">     394 </span>            :    80    continue</a>
 <a name="395"><span class="lineNum">     395 </span>            :          d( l ) = p</a>
 <a name="396"><span class="lineNum">     396 </span>            : c</a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       7236 :          l = l + 1</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       7236 :          if( l.le.lend )</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       4325 :          l = l + 1</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       4325 :          if( l.le.lend )</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :      $      go to 40</a>
 <a name="400"><span class="lineNum">     400 </span>            :          go to 140</a>
 <a name="401"><span class="lineNum">     401 </span>            : c</a>
@@ -476,30 +476,30 @@
 <a name="406"><span class="lineNum">     406 </span>            : c        look for small superdiagonal element.</a>
 <a name="407"><span class="lineNum">     407 </span>            : c</a>
 <a name="408"><span class="lineNum">     408 </span>            :    90    continue</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       1923 :          if( l.ne.lend ) then</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       1981 :          if( l.ne.lend ) then</span></a>
 <a name="410"><span class="lineNum">     410 </span>            :             lendp1 = lend + 1</a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">       7617 :             do 100 m = l, lendp1, -1</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       6482 :                tst = abs( e( m-1 ) )**2</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">       6482 :                if( tst.le.( eps2*abs( d( m ) ) )*abs( d( m-1 ) )+</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">       7974 :             do 100 m = l, lendp1, -1</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       6812 :                tst = abs( e( m-1 ) )**2</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">       6812 :                if( tst.le.( eps2*abs( d( m ) ) )*abs( d( m-1 ) )+</span></a>
 <a name="414"><span class="lineNum">     414 </span>            :      $             safmin )go to 110</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       1135 :   100       continue</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       1162 :   100       continue</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :          end if</a>
 <a name="417"><span class="lineNum">     417 </span>            : c</a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">        767 :          m = lend</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">        798 :          m = lend</span></a>
 <a name="419"><span class="lineNum">     419 </span>            : c</a>
 <a name="420"><span class="lineNum">     420 </span>            :   110    continue</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       1923 :          if( m.gt.lend )</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">        767 :      $      e( m-1 ) = zero</span></a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1923 :          p = d( l )</span></a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1923 :          if( m.eq.l )</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       1981 :          if( m.gt.lend )</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">        798 :      $      e( m-1 ) = zero</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       1981 :          p = d( l )</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1981 :          if( m.eq.l )</span></a>
 <a name="425"><span class="lineNum">     425 </span>            :      $      go to 130</a>
 <a name="426"><span class="lineNum">     426 </span>            : c</a>
 <a name="427"><span class="lineNum">     427 </span>            : c        if remaining matrix is 2-by-2, use slae2 or slaev2</a>
 <a name="428"><span class="lineNum">     428 </span>            : c        to compute its eigensystem.</a>
 <a name="429"><span class="lineNum">     429 </span>            : c</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       1251 :          if( m.eq.l-1 ) then</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       1294 :          if( m.eq.l-1 ) then</span></a>
 <a name="431"><span class="lineNum">     431 </span>            :             if( icompz.gt.0 ) then</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">        132 :                call slaev2( d( l-1 ), e( l-1 ), d( l ), rt1, rt2, c, s )</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">        134 :                call slaev2( d( l-1 ), e( l-1 ), d( l ), rt1, rt2, c, s )</span></a>
 <a name="433"><span class="lineNum">     433 </span>            : c$$$               work( m ) = c</a>
 <a name="434"><span class="lineNum">     434 </span>            : c$$$               work( n-1+m ) = s</a>
 <a name="435"><span class="lineNum">     435 </span>            : c$$$               call slasr( 'r', 'v', 'f', n, 2, work( m ),</a>
@@ -507,85 +507,85 @@
 <a name="437"><span class="lineNum">     437 </span>            : c</a>
 <a name="438"><span class="lineNum">     438 </span>            : c               *** New starting with version 2.5 ***</a>
 <a name="439"><span class="lineNum">     439 </span>            : c</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        132 :                 tst      = z(l)</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        132 :                 z(l)   = c*tst - s*z(l-1)</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        132 :                 z(l-1) = s*tst + c*z(l-1)</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        134 :                 tst      = z(l)</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        134 :                 z(l)   = c*tst - s*z(l-1)</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        134 :                 z(l-1) = s*tst + c*z(l-1)</span></a>
 <a name="443"><span class="lineNum">     443 </span>            : c               *************************************</a>
 <a name="444"><span class="lineNum">     444 </span>            :             else</a>
 <a name="445"><span class="lineNum">     445 </span>            :                call slae2( d( l-1 ), e( l-1 ), d( l ), rt1, rt2 )</a>
 <a name="446"><span class="lineNum">     446 </span>            :             end if</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        132 :             d( l-1 ) = rt1</span></a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">        132 :             d( l ) = rt2</span></a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">        132 :             e( l-1 ) = zero</span></a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">        132 :             l = l - 2</span></a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">        132 :             if( l.ge.lend )</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        134 :             d( l-1 ) = rt1</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">        134 :             d( l ) = rt2</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">        134 :             e( l-1 ) = zero</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">        134 :             l = l - 2</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">        134 :             if( l.ge.lend )</span></a>
 <a name="452"><span class="lineNum">     452 </span>            :      $         go to 90</a>
 <a name="453"><span class="lineNum">     453 </span>            :             go to 140</a>
 <a name="454"><span class="lineNum">     454 </span>            :          end if</a>
 <a name="455"><span class="lineNum">     455 </span>            : c</a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       1119 :          if( jtot.eq.nmaxit )</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       1160 :          if( jtot.eq.nmaxit )</span></a>
 <a name="457"><span class="lineNum">     457 </span>            :      $      go to 140</a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       1119 :          jtot = jtot + 1</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       1160 :          jtot = jtot + 1</span></a>
 <a name="459"><span class="lineNum">     459 </span>            : c</a>
 <a name="460"><span class="lineNum">     460 </span>            : c        form shift.</a>
 <a name="461"><span class="lineNum">     461 </span>            : c</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       1119 :          g = ( d( l-1 )-p ) / ( two*e( l-1 ) )</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       1119 :          r = slapy2( g, one )</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       1119 :          g = d( m ) - p + ( e( l-1 ) / ( g+sign( r, g ) ) )</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       1160 :          g = ( d( l-1 )-p ) / ( two*e( l-1 ) )</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       1160 :          r = slapy2( g, one )</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       1160 :          g = d( m ) - p + ( e( l-1 ) / ( g+sign( r, g ) ) )</span></a>
 <a name="465"><span class="lineNum">     465 </span>            : c</a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       1119 :          s = one</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       1119 :          c = one</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       1119 :          p = zero</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       1160 :          s = one</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       1160 :          c = one</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       1160 :          p = zero</span></a>
 <a name="469"><span class="lineNum">     469 </span>            : c</a>
 <a name="470"><span class="lineNum">     470 </span>            : c        inner loop</a>
 <a name="471"><span class="lineNum">     471 </span>            : c</a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       1119 :          lm1 = l - 1</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       6702 :          do 120 i = m, lm1</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">       5583 :             f = s*e( i )</span></a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       5583 :             b = c*e( i )</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       5583 :             call slartg( g, f, c, s, r )</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       5583 :             if( i.ne.m )</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       4464 :      $         e( i-1 ) = r</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       5583 :             g = d( i ) - p</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       5583 :             r = ( d( i+1 )-g )*s + two*c*b</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       5583 :             p = s*r</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">       5583 :             d( i ) = g + p</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       5583 :             g = c*r - b</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       1160 :          lm1 = l - 1</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       7040 :          do 120 i = m, lm1</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">       5880 :             f = s*e( i )</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       5880 :             b = c*e( i )</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       5880 :             call slartg( g, f, c, s, r )</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       5880 :             if( i.ne.m )</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       4720 :      $         e( i-1 ) = r</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       5880 :             g = d( i ) - p</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       5880 :             r = ( d( i+1 )-g )*s + two*c*b</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       5880 :             p = s*r</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">       5880 :             d( i ) = g + p</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       5880 :             g = c*r - b</span></a>
 <a name="484"><span class="lineNum">     484 </span>            : c</a>
 <a name="485"><span class="lineNum">     485 </span>            : c           if eigenvectors are desired, then save rotations.</a>
 <a name="486"><span class="lineNum">     486 </span>            : c</a>
 <a name="487"><span class="lineNum">     487 </span>            :             if( icompz.gt.0 ) then</a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       5583 :                work( i ) = c</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       5583 :                work( n-1+i ) = s</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       5880 :                work( i ) = c</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       5880 :                work( n-1+i ) = s</span></a>
 <a name="490"><span class="lineNum">     490 </span>            :             end if</a>
 <a name="491"><span class="lineNum">     491 </span>            : c</a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1119 :   120    continue</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1160 :   120    continue</span></a>
 <a name="493"><span class="lineNum">     493 </span>            : c</a>
 <a name="494"><span class="lineNum">     494 </span>            : c        if eigenvectors are desired, then apply saved rotations.</a>
 <a name="495"><span class="lineNum">     495 </span>            : c</a>
 <a name="496"><span class="lineNum">     496 </span>            :          if( icompz.gt.0 ) then</a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       1119 :             mm = l - m + 1</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       1160 :             mm = l - m + 1</span></a>
 <a name="498"><span class="lineNum">     498 </span>            : c$$$            call slasr( 'r', 'v', 'f', n, mm, work( m ), work( n-1+m ),</a>
 <a name="499"><span class="lineNum">     499 </span>            : c$$$     $                  z( 1, m ), ldz )</a>
 <a name="500"><span class="lineNum">     500 </span>            : c</a>
 <a name="501"><span class="lineNum">     501 </span>            : c           *** New starting with version 2.5 ***</a>
 <a name="502"><span class="lineNum">     502 </span>            : c</a>
 <a name="503"><span class="lineNum">     503 </span>            :             call slasr( 'r', 'v', 'f', 1, mm, work( m ), work( n-1+m ),</a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       1119 :      &amp;                  z( m ), 1 )</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       1160 :      &amp;                  z( m ), 1 )</span></a>
 <a name="505"><span class="lineNum">     505 </span>            : c           *************************************</a>
 <a name="506"><span class="lineNum">     506 </span>            :          end if</a>
 <a name="507"><span class="lineNum">     507 </span>            : c</a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       1119 :          d( l ) = d( l ) - p</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">       1119 :          e( lm1 ) = g</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       1791 :          go to 90</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">       1160 :          d( l ) = d( l ) - p</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">       1160 :          e( lm1 ) = g</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       1847 :          go to 90</span></a>
 <a name="511"><span class="lineNum">     511 </span>            : c</a>
 <a name="512"><span class="lineNum">     512 </span>            : c        eigenvalue found.</a>
 <a name="513"><span class="lineNum">     513 </span>            : c</a>
 <a name="514"><span class="lineNum">     514 </span>            :   130    continue</a>
 <a name="515"><span class="lineNum">     515 </span>            :          d( l ) = p</a>
 <a name="516"><span class="lineNum">     516 </span>            : c</a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">        672 :          l = l - 1</span></a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">        672 :          if( l.ge.lend )</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">        687 :          l = l - 1</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">        687 :          if( l.ge.lend )</span></a>
 <a name="519"><span class="lineNum">     519 </span>            :      $      go to 90</a>
 <a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :          go to 140</span></a>
 <a name="521"><span class="lineNum">     521 </span>            : c</a>
@@ -594,12 +594,12 @@
 <a name="524"><span class="lineNum">     524 </span>            : c     undo scaling if necessary</a>
 <a name="525"><span class="lineNum">     525 </span>            : c</a>
 <a name="526"><span class="lineNum">     526 </span>            :   140 continue</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        623 :       if( iscale.eq.1 ) then</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        425 :       if( iscale.eq.1 ) then</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :          call slascl( 'g', 0, 0, ssfmax, anorm, lendsv-lsv+1, 1,</a>
 <a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :      $                d( lsv ), n, info )</span></a>
 <a name="530"><span class="lineNum">     530 </span>            :          call slascl( 'g', 0, 0, ssfmax, anorm, lendsv-lsv, 1, e( lsv ),</a>
 <a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :      $                n, info )</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        623 :       else if( iscale.eq.2 ) then</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        425 :       else if( iscale.eq.2 ) then</span></a>
 <a name="533"><span class="lineNum">     533 </span>            :          call slascl( 'g', 0, 0, ssfmin, anorm, lendsv-lsv+1, 1,</a>
 <a name="534"><span class="lineNum">     534 </span><span class="lineNoCov">          0 :      $                d( lsv ), n, info )</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :          call slascl( 'g', 0, 0, ssfmin, anorm, lendsv-lsv, 1, e( lsv ),</a>
@@ -609,13 +609,13 @@
 <a name="539"><span class="lineNum">     539 </span>            : c     check for no convergence to an eigenvalue after a total</a>
 <a name="540"><span class="lineNum">     540 </span>            : c     of n*maxit iterations.</a>
 <a name="541"><span class="lineNum">     541 </span>            : c</a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        623 :       if( jtot.lt.nmaxit )</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        425 :       if( jtot.lt.nmaxit )</span></a>
 <a name="543"><span class="lineNum">     543 </span>            :      $   go to 10</a>
 <a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :       do 150 i = 1, n - 1</span></a>
 <a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :          if( e( i ).ne.zero )</span></a>
 <a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :      $      info = info + 1</span></a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :   150 continue</span></a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">        620 :       go to 190</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">        422 :       go to 190</span></a>
 <a name="549"><span class="lineNum">     549 </span>            : c</a>
 <a name="550"><span class="lineNum">     550 </span>            : c     order eigenvalues and eigenvectors.</a>
 <a name="551"><span class="lineNum">     551 </span>            : c</a>
@@ -630,28 +630,28 @@
 <a name="560"><span class="lineNum">     560 </span>            : c</a>
 <a name="561"><span class="lineNum">     561 </span>            : c        use selection sort to minimize swaps of eigenvectors</a>
 <a name="562"><span class="lineNum">     562 </span>            : c</a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">      10556 :          do 180 ii = 2, n</span></a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">       9936 :             i = ii - 1</span></a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">       9936 :             k = i</span></a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">       9936 :             p = d( i )</span></a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">     104666 :             do 170 j = ii, n</span></a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">      94730 :                if( d( j ).lt.p ) then</span></a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">      10423 :                   k = j</span></a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">      10423 :                   p = d( j )</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">       6596 :          do 180 ii = 2, n</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">       6174 :             i = ii - 1</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">       6174 :             k = i</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">       6174 :             p = d( i )</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      63284 :             do 170 j = ii, n</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">      57110 :                if( d( j ).lt.p ) then</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">       6667 :                   k = j</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       6667 :                   p = d( j )</span></a>
 <a name="571"><span class="lineNum">     571 </span>            :                end if</a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       9936 :   170       continue</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       9936 :             if( k.ne.i ) then</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       8109 :                d( k ) = d( i )</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       8109 :                d( i ) = p</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       6174 :   170       continue</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       6174 :             if( k.ne.i ) then</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       5013 :                d( k ) = d( i )</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       5013 :                d( i ) = p</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : c$$$               call sswap( n, z( 1, i ), 1, z( 1, k ), 1 )</a>
 <a name="577"><span class="lineNum">     577 </span>            : c           *** New starting with version 2.5 ***</a>
 <a name="578"><span class="lineNum">     578 </span>            : c</a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">       8109 :                p    = z(k)</span></a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       8109 :                z(k) = z(i)</span></a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">       8109 :                z(i) = p</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">       5013 :                p    = z(k)</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       5013 :                z(k) = z(i)</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">       5013 :                z(i) = p</span></a>
 <a name="582"><span class="lineNum">     582 </span>            : c           *************************************</a>
 <a name="583"><span class="lineNum">     583 </span>            :             end if</a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        620 :   180    continue</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        422 :   180    continue</span></a>
 <a name="585"><span class="lineNum">     585 </span>            :       end if</a>
 <a name="586"><span class="lineNum">     586 </span>            : c</a>
 <a name="587"><span class="lineNum">     587 </span>            :   190 continue</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dseupd.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dseupd.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">162</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -285,11 +285,11 @@
 <a name="215"><span class="lineNum">     215 </span>            : c\EndLib</a>
 <a name="216"><span class="lineNum">     216 </span>            : c</a>
 <a name="217"><span class="lineNum">     217 </span>            : c-----------------------------------------------------------------------</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        253 :       subroutine dseupd (rvec  , howmny, select, d    ,</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        253 :      &amp;                   z     , ldz   , sigma , bmat ,</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        265 :       subroutine dseupd (rvec  , howmny, select, d    ,</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        265 :      &amp;                   z     , ldz   , sigma , bmat ,</span></a>
 <a name="220"><span class="lineNum">     220 </span>            :      &amp;                   n     , which , nev   , tol  ,</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        253 :      &amp;                   resid , ncv   , v     , ldv  ,</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        253 :      &amp;                   iparam, ipntr , workd , workl,</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        265 :      &amp;                   resid , ncv   , v     , ldv  ,</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        265 :      &amp;                   iparam, ipntr , workd , workl,</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :      &amp;                   lworkl, info )</a>
 <a name="224"><span class="lineNum">     224 </span>            : c</a>
 <a name="225"><span class="lineNum">     225 </span>            : c     %----------------------------------------------------%</a>
@@ -370,38 +370,38 @@
 <a name="300"><span class="lineNum">     300 </span>            : c     | Set default parameters |</a>
 <a name="301"><span class="lineNum">     301 </span>            : c     %------------------------%</a>
 <a name="302"><span class="lineNum">     302 </span>            : c</a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">        253 :       msglvl = mseupd</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">        253 :       mode = iparam(7)</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        253 :       nconv = iparam(5)</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">        253 :       info = 0</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">        265 :       msglvl = mseupd</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">        265 :       mode = iparam(7)</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        265 :       nconv = iparam(5)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">        265 :       info = 0</span></a>
 <a name="307"><span class="lineNum">     307 </span>            : c</a>
 <a name="308"><span class="lineNum">     308 </span>            : c     %--------------%</a>
 <a name="309"><span class="lineNum">     309 </span>            : c     | Quick return |</a>
 <a name="310"><span class="lineNum">     310 </span>            : c     %--------------%</a>
 <a name="311"><span class="lineNum">     311 </span>            : c</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        253 :       if (nconv .eq. 0) go to 9000</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        252 :       ierr = 0</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        265 :       if (nconv .eq. 0) go to 9000</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        264 :       ierr = 0</span></a>
 <a name="314"><span class="lineNum">     314 </span>            : c</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">        252 :       if (nconv .le. 0)                        ierr = -14</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        252 :       if (n .le. 0)                            ierr = -1</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">        252 :       if (nev .le. 0)                          ierr = -2</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        252 :       if (ncv .le. nev .or.  ncv .gt. n)       ierr = -3</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">        264 :       if (nconv .le. 0)                        ierr = -14</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        264 :       if (n .le. 0)                            ierr = -1</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">        264 :       if (nev .le. 0)                          ierr = -2</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        264 :       if (ncv .le. nev .or.  ncv .gt. n)       ierr = -3</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :       if (which .ne. 'LM' .and.</a>
 <a name="320"><span class="lineNum">     320 </span>            :      &amp;    which .ne. 'SM' .and.</a>
 <a name="321"><span class="lineNum">     321 </span>            :      &amp;    which .ne. 'LA' .and.</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        252 :      &amp;    which .ne. 'SA' .and.</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        264 :      &amp;    which .ne. 'SA' .and.</span></a>
 <a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :      &amp;    which .ne. 'BE')                     ierr = -5</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">        252 :       if (bmat .ne. 'I' .and. bmat .ne. 'G')   ierr = -6</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">        264 :       if (bmat .ne. 'I' .and. bmat .ne. 'G')   ierr = -6</span></a>
 <a name="325"><span class="lineNum">     325 </span>            :       if ( (howmny .ne. 'A' .and.</a>
 <a name="326"><span class="lineNum">     326 </span>            :      &amp;           howmny .ne. 'P' .and.</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        252 :      &amp;           howmny .ne. 'S') .and. rvec )</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        264 :      &amp;           howmny .ne. 'S') .and. rvec )</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :      &amp;                                         ierr = -15</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        252 :       if (rvec .and. howmny .eq. 'S')           ierr = -16</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        264 :       if (rvec .and. howmny .eq. 'S')           ierr = -16</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : c</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        252 :       if (rvec .and. lworkl .lt. ncv**2+8*ncv) ierr = -7</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        264 :       if (rvec .and. lworkl .lt. ncv**2+8*ncv) ierr = -7</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : c</a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        252 :       if (mode .eq. 1 .or. mode .eq. 2) then</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        162 :          type = 'REGULR'</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        264 :       if (mode .eq. 1 .or. mode .eq. 2) then</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        174 :          type = 'REGULR'</span></a>
 <a name="335"><span class="lineNum">     335 </span><span class="lineCov">         90 :       else if (mode .eq. 3 ) then</span></a>
 <a name="336"><span class="lineNum">     336 </span><span class="lineCov">         30 :          type = 'SHIFTI'</span></a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineCov">         60 :       else if (mode .eq. 4 ) then</span></a>
@@ -411,14 +411,14 @@
 <a name="341"><span class="lineNum">     341 </span>            :       else</a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :                                                ierr = -10</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :       end if</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">        162 :       if (mode .eq. 1 .and. bmat .eq. 'G')     ierr = -11</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        252 :       if (nev .eq. 1 .and. which .eq. 'BE')    ierr = -12</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">        174 :       if (mode .eq. 1 .and. bmat .eq. 'G')     ierr = -11</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        264 :       if (nev .eq. 1 .and. which .eq. 'BE')    ierr = -12</span></a>
 <a name="346"><span class="lineNum">     346 </span>            : c</a>
 <a name="347"><span class="lineNum">     347 </span>            : c     %------------%</a>
 <a name="348"><span class="lineNum">     348 </span>            : c     | Error Exit |</a>
 <a name="349"><span class="lineNum">     349 </span>            : c     %------------%</a>
 <a name="350"><span class="lineNum">     350 </span>            : c</a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        252 :       if (ierr .ne. 0) then</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        264 :       if (ierr .ne. 0) then</span></a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :          info = ierr</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :          go to 9000</span></a>
 <a name="354"><span class="lineNum">     354 </span>            :       end if</a>
@@ -466,20 +466,20 @@
 <a name="396"><span class="lineNum">     396 </span>            : c     %-------------------------------------------------------%</a>
 <a name="397"><span class="lineNum">     397 </span>            : c</a>
 <a name="398"><span class="lineNum">     398 </span>            : c</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">        252 :       ih     = ipntr(5)</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        252 :       ritz   = ipntr(6)</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">        252 :       bounds = ipntr(7)</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">        252 :       ldh    = ncv</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">        252 :       ldq    = ncv</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        252 :       ihd    = bounds + ldh</span></a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">        252 :       ihb    = ihd    + ldh</span></a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        252 :       iq     = ihb    + ldh</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        252 :       iw     = iq     + ldh*ncv</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">        252 :       next   = iw     + 2*ncv</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">        252 :       ipntr(4)  = next</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        252 :       ipntr(8)  = ihd</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        252 :       ipntr(9)  = ihb</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        252 :       ipntr(10) = iq</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">        264 :       ih     = ipntr(5)</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        264 :       ritz   = ipntr(6)</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">        264 :       bounds = ipntr(7)</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">        264 :       ldh    = ncv</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">        264 :       ldq    = ncv</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        264 :       ihd    = bounds + ldh</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">        264 :       ihb    = ihd    + ldh</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        264 :       iq     = ihb    + ldh</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        264 :       iw     = iq     + ldh*ncv</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">        264 :       next   = iw     + 2*ncv</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">        264 :       ipntr(4)  = next</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        264 :       ipntr(8)  = ihd</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        264 :       ipntr(9)  = ihb</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        264 :       ipntr(10) = iq</span></a>
 <a name="413"><span class="lineNum">     413 </span>            : c</a>
 <a name="414"><span class="lineNum">     414 </span>            : c     %----------------------------------------%</a>
 <a name="415"><span class="lineNum">     415 </span>            : c     | irz points to the Ritz values computed |</a>
@@ -489,16 +489,16 @@
 <a name="419"><span class="lineNum">     419 </span>            : c     |     _saup2.                            |</a>
 <a name="420"><span class="lineNum">     420 </span>            : c     %----------------------------------------%</a>
 <a name="421"><span class="lineNum">     421 </span>            : c</a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">        252 :       irz = ipntr(11)+ncv</span></a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">        252 :       ibd = irz+ncv</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">        264 :       irz = ipntr(11)+ncv</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">        264 :       ibd = irz+ncv</span></a>
 <a name="424"><span class="lineNum">     424 </span>            : c</a>
 <a name="425"><span class="lineNum">     425 </span>            : c</a>
 <a name="426"><span class="lineNum">     426 </span>            : c     %---------------------------------%</a>
 <a name="427"><span class="lineNum">     427 </span>            : c     | Set machine dependent constant. |</a>
 <a name="428"><span class="lineNum">     428 </span>            : c     %---------------------------------%</a>
 <a name="429"><span class="lineNum">     429 </span>            : c</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        252 :       eps23 = dlamch ('Epsilon-Machine')</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        252 :       eps23 = eps23**(2.0D+0  / 3.0D+0 )</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        264 :       eps23 = dlamch ('Epsilon-Machine')</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        264 :       eps23 = eps23**(2.0D+0  / 3.0D+0 )</span></a>
 <a name="432"><span class="lineNum">     432 </span>            : c</a>
 <a name="433"><span class="lineNum">     433 </span>            : c     %---------------------------------------%</a>
 <a name="434"><span class="lineNum">     434 </span>            : c     | RNORM is B-norm of the RESID(1:N).    |</a>
@@ -507,33 +507,33 @@
 <a name="437"><span class="lineNum">     437 </span>            : c     | B*RESID(1:N).                         |</a>
 <a name="438"><span class="lineNum">     438 </span>            : c     %---------------------------------------%</a>
 <a name="439"><span class="lineNum">     439 </span>            : c</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        252 :       rnorm = workl(ih)</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        252 :       if (bmat .eq. 'I') then</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        172 :          bnorm2 = rnorm</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">         80 :       else if (bmat .eq. 'G') then</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         80 :          bnorm2 = dnrm2 (n, workd, 1)</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        264 :       rnorm = workl(ih)</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        264 :       if (bmat .eq. 'I') then</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        177 :          bnorm2 = rnorm</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">         87 :       else if (bmat .eq. 'G') then</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         87 :          bnorm2 = dnrm2 (n, workd, 1)</span></a>
 <a name="445"><span class="lineNum">     445 </span>            :       end if</a>
 <a name="446"><span class="lineNum">     446 </span>            : c</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        252 :       if (msglvl .gt. 2) then</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        264 :       if (msglvl .gt. 2) then</span></a>
 <a name="448"><span class="lineNum">     448 </span>            :          call dvout (logfil, ncv, workl(irz), ndigit,</a>
 <a name="449"><span class="lineNum">     449 </span><span class="lineNoCov">          0 :      &amp;   '_seupd: Ritz values passed in from _SAUPD.')</span></a>
 <a name="450"><span class="lineNum">     450 </span>            :          call dvout (logfil, ncv, workl(ibd), ndigit,</a>
 <a name="451"><span class="lineNum">     451 </span><span class="lineNoCov">          0 :      &amp;   '_seupd: Ritz estimates passed in from _SAUPD.')</span></a>
 <a name="452"><span class="lineNum">     452 </span>            :       end if</a>
 <a name="453"><span class="lineNum">     453 </span>            : c</a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">        252 :       if (rvec) then</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">        264 :       if (rvec) then</span></a>
 <a name="455"><span class="lineNum">     455 </span>            : c</a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">        252 :          reord = .false.</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">        264 :          reord = .false.</span></a>
 <a name="457"><span class="lineNum">     457 </span>            : c</a>
 <a name="458"><span class="lineNum">     458 </span>            : c        %---------------------------------------------------%</a>
 <a name="459"><span class="lineNum">     459 </span>            : c        | Use the temporary bounds array to store indices   |</a>
 <a name="460"><span class="lineNum">     460 </span>            : c        | These will be used to mark the select array later |</a>
 <a name="461"><span class="lineNum">     461 </span>            : c        %---------------------------------------------------%</a>
 <a name="462"><span class="lineNum">     462 </span>            : c</a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       2268 :          do 10 j = 1,ncv</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       2016 :             workl(bounds+j-1) = j</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       2016 :             select(j) = .false.</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        252 :    10    continue</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       2464 :          do 10 j = 1,ncv</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       2200 :             workl(bounds+j-1) = j</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       2200 :             select(j) = .false.</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        264 :    10    continue</span></a>
 <a name="467"><span class="lineNum">     467 </span>            : c</a>
 <a name="468"><span class="lineNum">     468 </span>            : c        %-------------------------------------%</a>
 <a name="469"><span class="lineNum">     469 </span>            : c        | Select the wanted Ritz values.      |</a>
@@ -545,13 +545,13 @@
 <a name="475"><span class="lineNum">     475 </span>            : c        | accordingly.                        |</a>
 <a name="476"><span class="lineNum">     476 </span>            : c        %-------------------------------------%</a>
 <a name="477"><span class="lineNum">     477 </span>            : c</a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">        252 :          np     = ncv - nev</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        252 :          ishift = 0</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">        264 :          np     = ncv - nev</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        264 :          ishift = 0</span></a>
 <a name="480"><span class="lineNum">     480 </span>            :          call dsgets (ishift, which       , nev          ,</a>
 <a name="481"><span class="lineNum">     481 </span>            :      &amp;                np    , workl(irz)  , workl(bounds),</a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        252 :      &amp;                workl)</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        264 :      &amp;                workl)</span></a>
 <a name="483"><span class="lineNum">     483 </span>            : c</a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        252 :          if (msglvl .gt. 2) then</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        264 :          if (msglvl .gt. 2) then</span></a>
 <a name="485"><span class="lineNum">     485 </span>            :             call dvout (logfil, ncv, workl(irz), ndigit,</a>
 <a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :      &amp;      '_seupd: Ritz values after calling _SGETS.')</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :             call dvout (logfil, ncv, workl(bounds), ndigit,</a>
@@ -563,17 +563,17 @@
 <a name="493"><span class="lineNum">     493 </span>            : c        | Mark the select array for possible reordering       |</a>
 <a name="494"><span class="lineNum">     494 </span>            : c        %-----------------------------------------------------%</a>
 <a name="495"><span class="lineNum">     495 </span>            : c</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">        252 :          numcnv = 0</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       2268 :          do 11 j = 1,ncv</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       2016 :             temp1 = max(eps23, abs(workl(irz+ncv-j)) )</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       2016 :             jj = workl(bounds + ncv - j)</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       2016 :             if (numcnv .lt. nconv .and.</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">        264 :          numcnv = 0</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">       2464 :          do 11 j = 1,ncv</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">       2200 :             temp1 = max(eps23, abs(workl(irz+ncv-j)) )</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       2200 :             jj = workl(bounds + ncv - j)</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       2200 :             if (numcnv .lt. nconv .and.</span></a>
 <a name="501"><span class="lineNum">     501 </span>            :      &amp;          workl(ibd+jj-1) .le. tol*temp1) then</a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        576 :                select(jj) = .true.</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        576 :                numcnv = numcnv + 1</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">        576 :                if (jj .gt. nconv) reord = .true.</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        640 :                select(jj) = .true.</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        640 :                numcnv = numcnv + 1</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">        640 :                if (jj .gt. nconv) reord = .true.</span></a>
 <a name="505"><span class="lineNum">     505 </span>            :             endif</a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        252 :    11    continue</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">        264 :    11    continue</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : c</a>
 <a name="508"><span class="lineNum">     508 </span>            : c        %-----------------------------------------------------------%</a>
 <a name="509"><span class="lineNum">     509 </span>            : c        | Check the count (numcnv) of converged Ritz values with    |</a>
@@ -582,14 +582,14 @@
 <a name="512"><span class="lineNum">     512 </span>            : c        | caused by incorrect passing of the _saupd data.           |</a>
 <a name="513"><span class="lineNum">     513 </span>            : c        %-----------------------------------------------------------%</a>
 <a name="514"><span class="lineNum">     514 </span>            : c</a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">        252 :          if (msglvl .gt. 2) then</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">        264 :          if (msglvl .gt. 2) then</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :              call ivout(logfil, 1, [numcnv], ndigit,</a>
 <a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :      &amp;            '_seupd: Number of specified eigenvalues')</span></a>
 <a name="518"><span class="lineNum">     518 </span>            :              call ivout(logfil, 1, [nconv], ndigit,</a>
 <a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :      &amp;            '_seupd: Number of &quot;converged&quot; eigenvalues')</span></a>
 <a name="520"><span class="lineNum">     520 </span>            :          end if</a>
 <a name="521"><span class="lineNum">     521 </span>            : c</a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        252 :          if (numcnv .ne. nconv) then</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        264 :          if (numcnv .ne. nconv) then</span></a>
 <a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :             info = -17</span></a>
 <a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :             go to 9000</span></a>
 <a name="525"><span class="lineNum">     525 </span>            :          end if</a>
@@ -600,18 +600,18 @@
 <a name="530"><span class="lineNum">     530 </span>            : c        | Initialize the eigenvector matrix Q to the identity.      |</a>
 <a name="531"><span class="lineNum">     531 </span>            : c        %-----------------------------------------------------------%</a>
 <a name="532"><span class="lineNum">     532 </span>            : c</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">        252 :          call dcopy (ncv-1, workl(ih+1), 1, workl(ihb), 1)</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">        252 :          call dcopy (ncv, workl(ih+ldh), 1, workl(ihd), 1)</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">        264 :          call dcopy (ncv-1, workl(ih+1), 1, workl(ihb), 1)</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">        264 :          call dcopy (ncv, workl(ih+ldh), 1, workl(ihd), 1)</span></a>
 <a name="535"><span class="lineNum">     535 </span>            : c</a>
 <a name="536"><span class="lineNum">     536 </span>            :          call dsteqr ('Identity', ncv, workl(ihd), workl(ihb),</a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">        252 :      &amp;                workl(iq) , ldq, workl(iw), ierr)</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">        264 :      &amp;                workl(iq) , ldq, workl(iw), ierr)</span></a>
 <a name="538"><span class="lineNum">     538 </span>            : c</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        252 :          if (ierr .ne. 0) then</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        264 :          if (ierr .ne. 0) then</span></a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :             info = -8</span></a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :             go to 9000</span></a>
 <a name="542"><span class="lineNum">     542 </span>            :          end if</a>
 <a name="543"><span class="lineNum">     543 </span>            : c</a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        252 :          if (msglvl .gt. 1) then</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        264 :          if (msglvl .gt. 1) then</span></a>
 <a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :             call dcopy (ncv, workl(iq+ncv-1), ldq, workl(iw), 1)</span></a>
 <a name="546"><span class="lineNum">     546 </span>            :             call dvout (logfil, ncv, workl(ihd), ndigit,</a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :      &amp;          '_seupd: NCV Ritz values of the final H matrix')</span></a>
@@ -619,7 +619,7 @@
 <a name="549"><span class="lineNum">     549 </span><span class="lineNoCov">          0 :      &amp;           '_seupd: last row of the eigenvector matrix for H')</span></a>
 <a name="550"><span class="lineNum">     550 </span>            :          end if</a>
 <a name="551"><span class="lineNum">     551 </span>            : c</a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">        252 :          if (reord) then</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">        264 :          if (reord) then</span></a>
 <a name="553"><span class="lineNum">     553 </span>            : c</a>
 <a name="554"><span class="lineNum">     554 </span>            : c           %---------------------------------------------%</a>
 <a name="555"><span class="lineNum">     555 </span>            : c           | Reordered the eigenvalues and eigenvectors  |</a>
@@ -630,28 +630,28 @@
 <a name="560"><span class="lineNum">     560 </span>            : c           | columns.                                    |</a>
 <a name="561"><span class="lineNum">     561 </span>            : c           %---------------------------------------------%</a>
 <a name="562"><span class="lineNum">     562 </span>            : c</a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        187 :             leftptr = 1</span></a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">        187 :             rghtptr = ncv</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        195 :             leftptr = 1</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">        195 :             rghtptr = ncv</span></a>
 <a name="565"><span class="lineNum">     565 </span>            : c</a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">        187 :             if (ncv .eq. 1) go to 30</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">        195 :             if (ncv .eq. 1) go to 30</span></a>
 <a name="567"><span class="lineNum">     567 </span>            : c</a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        932 :  20         if (select(leftptr)) then</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        995 :  20         if (select(leftptr)) then</span></a>
 <a name="569"><span class="lineNum">     569 </span>            : c</a>
 <a name="570"><span class="lineNum">     570 </span>            : c              %-------------------------------------------%</a>
 <a name="571"><span class="lineNum">     571 </span>            : c              | Search, from the left, for the first Ritz |</a>
 <a name="572"><span class="lineNum">     572 </span>            : c              | value that has not converged.             |</a>
 <a name="573"><span class="lineNum">     573 </span>            : c              %-------------------------------------------%</a>
 <a name="574"><span class="lineNum">     574 </span>            : c</a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         59 :                leftptr = leftptr + 1</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         61 :                leftptr = leftptr + 1</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : c</a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">        873 :             else if ( .not. select(rghtptr)) then</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">        934 :             else if ( .not. select(rghtptr)) then</span></a>
 <a name="578"><span class="lineNum">     578 </span>            : c</a>
 <a name="579"><span class="lineNum">     579 </span>            : c              %----------------------------------------------%</a>
 <a name="580"><span class="lineNum">     580 </span>            : c              | Search, from the right, the first Ritz value |</a>
 <a name="581"><span class="lineNum">     581 </span>            : c              | that has converged.                          |</a>
 <a name="582"><span class="lineNum">     582 </span>            : c              %----------------------------------------------%</a>
 <a name="583"><span class="lineNum">     583 </span>            : c</a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        558 :                rghtptr = rghtptr - 1</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        565 :                rghtptr = rghtptr - 1</span></a>
 <a name="585"><span class="lineNum">     585 </span>            : c</a>
 <a name="586"><span class="lineNum">     586 </span>            :             else</a>
 <a name="587"><span class="lineNum">     587 </span>            : c</a>
@@ -663,25 +663,25 @@
 <a name="593"><span class="lineNum">     593 </span>            : c              | well.                                        |</a>
 <a name="594"><span class="lineNum">     594 </span>            : c              %----------------------------------------------%</a>
 <a name="595"><span class="lineNum">     595 </span>            : c</a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        315 :                temp = workl(ihd+leftptr-1)</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        315 :                workl(ihd+leftptr-1) = workl(ihd+rghtptr-1)</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        315 :                workl(ihd+rghtptr-1) = temp</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        369 :                temp = workl(ihd+leftptr-1)</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        369 :                workl(ihd+leftptr-1) = workl(ihd+rghtptr-1)</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        369 :                workl(ihd+rghtptr-1) = temp</span></a>
 <a name="599"><span class="lineNum">     599 </span>            :                call dcopy (ncv, workl(iq+ncv*(leftptr-1)), 1,</a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        315 :      &amp;                    workl(iw), 1)</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        369 :      &amp;                    workl(iw), 1)</span></a>
 <a name="601"><span class="lineNum">     601 </span>            :                call dcopy (ncv, workl(iq+ncv*(rghtptr-1)), 1,</a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        315 :      &amp;                    workl(iq+ncv*(leftptr-1)), 1)</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        369 :      &amp;                    workl(iq+ncv*(leftptr-1)), 1)</span></a>
 <a name="603"><span class="lineNum">     603 </span>            :                call dcopy (ncv, workl(iw), 1,</a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        315 :      &amp;                    workl(iq+ncv*(rghtptr-1)), 1)</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        315 :                leftptr = leftptr + 1</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        315 :                rghtptr = rghtptr - 1</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        369 :      &amp;                    workl(iq+ncv*(rghtptr-1)), 1)</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        369 :                leftptr = leftptr + 1</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        369 :                rghtptr = rghtptr - 1</span></a>
 <a name="607"><span class="lineNum">     607 </span>            : c</a>
 <a name="608"><span class="lineNum">     608 </span>            :             end if</a>
 <a name="609"><span class="lineNum">     609 </span>            : c</a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineCov">        932 :             if (leftptr .lt. rghtptr) go to 20</span></a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">        995 :             if (leftptr .lt. rghtptr) go to 20</span></a>
 <a name="611"><span class="lineNum">     611 </span>            : c</a>
 <a name="612"><span class="lineNum">     612 </span>            :           end if</a>
 <a name="613"><span class="lineNum">     613 </span>            : c</a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">        252 :   30      if (msglvl .gt. 2) then</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">        264 :   30      if (msglvl .gt. 2) then</span></a>
 <a name="615"><span class="lineNum">     615 </span>            :              call dvout  (logfil, ncv, workl(ihd), ndigit,</a>
 <a name="616"><span class="lineNum">     616 </span><span class="lineNoCov">          0 :      &amp;       '_seupd: The eigenvalues of H--reordered')</span></a>
 <a name="617"><span class="lineNum">     617 </span>            :          end if</a>
@@ -690,7 +690,7 @@
 <a name="620"><span class="lineNum">     620 </span>            : c        | Load the converged Ritz values into D. |</a>
 <a name="621"><span class="lineNum">     621 </span>            : c        %----------------------------------------%</a>
 <a name="622"><span class="lineNum">     622 </span>            : c</a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        252 :          call dcopy (nconv, workl(ihd), 1, d, 1)</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        264 :          call dcopy (nconv, workl(ihd), 1, d, 1)</span></a>
 <a name="624"><span class="lineNum">     624 </span>            : c</a>
 <a name="625"><span class="lineNum">     625 </span>            :       else</a>
 <a name="626"><span class="lineNum">     626 </span>            : c</a>
@@ -709,15 +709,15 @@
 <a name="639"><span class="lineNum">     639 </span>            : c     | (and corresponding data) are returned in ascending order.        |</a>
 <a name="640"><span class="lineNum">     640 </span>            : c     %------------------------------------------------------------------%</a>
 <a name="641"><span class="lineNum">     641 </span>            : c</a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        252 :       if (type .eq. 'REGULR') then</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        264 :       if (type .eq. 'REGULR') then</span></a>
 <a name="643"><span class="lineNum">     643 </span>            : c</a>
 <a name="644"><span class="lineNum">     644 </span>            : c        %---------------------------------------------------------%</a>
 <a name="645"><span class="lineNum">     645 </span>            : c        | Ascending sort of wanted Ritz values, vectors and error |</a>
 <a name="646"><span class="lineNum">     646 </span>            : c        | bounds. Not necessary if only Ritz values are desired.  |</a>
 <a name="647"><span class="lineNum">     647 </span>            : c        %---------------------------------------------------------%</a>
 <a name="648"><span class="lineNum">     648 </span>            : c</a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        162 :          if (rvec) then</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">        162 :             call dsesrt ('LA', rvec , nconv, d, ncv, workl(iq), ldq)</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        174 :          if (rvec) then</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">        174 :             call dsesrt ('LA', rvec , nconv, d, ncv, workl(iq), ldq)</span></a>
 <a name="651"><span class="lineNum">     651 </span>            :          else</a>
 <a name="652"><span class="lineNum">     652 </span><span class="lineNoCov">          0 :             call dcopy (ncv, workl(bounds), 1, workl(ihb), 1)</span></a>
 <a name="653"><span class="lineNum">     653 </span>            :          end if</a>
@@ -789,7 +789,7 @@
 <a name="719"><span class="lineNum">     719 </span>            : c     | the Lanczos basis matrix V.                    |</a>
 <a name="720"><span class="lineNum">     720 </span>            : c     %------------------------------------------------%</a>
 <a name="721"><span class="lineNum">     721 </span>            : c</a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">        252 :       if (rvec .and. howmny .eq. 'A') then</span></a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">        264 :       if (rvec .and. howmny .eq. 'A') then</span></a>
 <a name="723"><span class="lineNum">     723 </span>            : c</a>
 <a name="724"><span class="lineNum">     724 </span>            : c        %----------------------------------------------------------%</a>
 <a name="725"><span class="lineNum">     725 </span>            : c        | Compute the QR factorization of the matrix representing  |</a>
@@ -799,7 +799,7 @@
 <a name="729"><span class="lineNum">     729 </span>            : c</a>
 <a name="730"><span class="lineNum">     730 </span>            :          call dgeqr2 (ncv, nconv        , workl(iq) ,</a>
 <a name="731"><span class="lineNum">     731 </span>            :      &amp;                ldq, workl(iw+ncv), workl(ihb),</a>
-<a name="732"><span class="lineNum">     732 </span><span class="lineCov">        252 :      &amp;                ierr)</span></a>
+<a name="732"><span class="lineNum">     732 </span><span class="lineCov">        264 :      &amp;                ierr)</span></a>
 <a name="733"><span class="lineNum">     733 </span>            : c</a>
 <a name="734"><span class="lineNum">     734 </span>            : c        %--------------------------------------------------------%</a>
 <a name="735"><span class="lineNum">     735 </span>            : c        | * Postmultiply V by Q.                                 |</a>
@@ -812,8 +812,8 @@
 <a name="742"><span class="lineNum">     742 </span>            :          call dorm2r ('Right', 'Notranspose', n        ,</a>
 <a name="743"><span class="lineNum">     743 </span>            :      &amp;                ncv    , nconv        , workl(iq),</a>
 <a name="744"><span class="lineNum">     744 </span>            :      &amp;                ldq    , workl(iw+ncv), v        ,</a>
-<a name="745"><span class="lineNum">     745 </span><span class="lineCov">        252 :      &amp;                ldv    , workd(n+1)   , ierr)</span></a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineCov">        252 :          call dlacpy ('All', n, nconv, v, ldv, z, ldz)</span></a>
+<a name="745"><span class="lineNum">     745 </span><span class="lineCov">        264 :      &amp;                ldv    , workd(n+1)   , ierr)</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineCov">        264 :          call dlacpy ('All', n, nconv, v, ldv, z, ldz)</span></a>
 <a name="747"><span class="lineNum">     747 </span>            : c</a>
 <a name="748"><span class="lineNum">     748 </span>            : c        %-----------------------------------------------------%</a>
 <a name="749"><span class="lineNum">     749 </span>            : c        | In order to compute the Ritz estimates for the Ritz |</a>
@@ -821,14 +821,14 @@
 <a name="751"><span class="lineNum">     751 </span>            : c        | eigenvector matrix. Remember, it`s in factored form |</a>
 <a name="752"><span class="lineNum">     752 </span>            : c        %-----------------------------------------------------%</a>
 <a name="753"><span class="lineNum">     753 </span>            : c</a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       2016 :          do 65 j = 1, ncv-1</span></a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">       1764 :             workl(ihb+j-1) = zero</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        252 :   65     continue</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        252 :          workl(ihb+ncv-1) = one</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       2200 :          do 65 j = 1, ncv-1</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">       1936 :             workl(ihb+j-1) = zero</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        264 :   65     continue</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        264 :          workl(ihb+ncv-1) = one</span></a>
 <a name="758"><span class="lineNum">     758 </span>            :          call dorm2r ('Left', 'Transpose'  , ncv       ,</a>
 <a name="759"><span class="lineNum">     759 </span>            :      &amp;                1     , nconv        , workl(iq) ,</a>
 <a name="760"><span class="lineNum">     760 </span>            :      &amp;                ldq   , workl(iw+ncv), workl(ihb),</a>
-<a name="761"><span class="lineNum">     761 </span><span class="lineCov">        252 :      &amp;                ncv   , temp         , ierr)</span></a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineCov">        264 :      &amp;                ncv   , temp         , ierr)</span></a>
 <a name="762"><span class="lineNum">     762 </span>            : c</a>
 <a name="763"><span class="lineNum">     763 </span>            : c        %-----------------------------------------------------%</a>
 <a name="764"><span class="lineNum">     764 </span>            : c        | Make a copy of the last row into                    |</a>
@@ -836,9 +836,9 @@
 <a name="766"><span class="lineNum">     766 </span>            : c        | the Ritz vector purification step below             |</a>
 <a name="767"><span class="lineNum">     767 </span>            : c        %-----------------------------------------------------%</a>
 <a name="768"><span class="lineNum">     768 </span>            : c</a>
-<a name="769"><span class="lineNum">     769 </span><span class="lineCov">        828 :          do 67 j = 1, nconv</span></a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">        576 :             workl(iw+ncv+j-1) = workl(ihb+j-1)</span></a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">        252 :  67      continue</span></a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineCov">        904 :          do 67 j = 1, nconv</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">        640 :             workl(iw+ncv+j-1) = workl(ihb+j-1)</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">        264 :  67      continue</span></a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span>            :       else if (rvec .and. howmny .eq. 'S') then</a>
 <a name="774"><span class="lineNum">     774 </span>            : c</a>
@@ -846,11 +846,11 @@
 <a name="776"><span class="lineNum">     776 </span>            : c</a>
 <a name="777"><span class="lineNum">     777 </span>            :       end if</a>
 <a name="778"><span class="lineNum">     778 </span>            : c</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">        252 :       if (type .eq. 'REGULR' .and. rvec) then</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">        264 :       if (type .eq. 'REGULR' .and. rvec) then</span></a>
 <a name="780"><span class="lineNum">     780 </span>            : c</a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       1638 :             do 70 j=1, ncv</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       1476 :                workl(ihb+j-1) = rnorm * abs( workl(ihb+j-1) )</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">        162 :  70         continue</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       1834 :             do 70 j=1, ncv</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       1660 :                workl(ihb+j-1) = rnorm * abs( workl(ihb+j-1) )</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">        174 :  70         continue</span></a>
 <a name="784"><span class="lineNum">     784 </span>            : c</a>
 <a name="785"><span class="lineNum">     785 </span><span class="lineCov">         90 :       else if (type .ne. 'REGULR' .and. rvec) then</span></a>
 <a name="786"><span class="lineNum">     786 </span>            : c</a>
@@ -889,12 +889,12 @@
 <a name="819"><span class="lineNum">     819 </span>            : c</a>
 <a name="820"><span class="lineNum">     820 </span>            :       end if</a>
 <a name="821"><span class="lineNum">     821 </span>            : c</a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        252 :       if (type .ne. 'REGULR' .and. msglvl .gt. 1) then</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        264 :       if (type .ne. 'REGULR' .and. msglvl .gt. 1) then</span></a>
 <a name="823"><span class="lineNum">     823 </span>            :          call dvout (logfil, nconv, d, ndigit,</a>
 <a name="824"><span class="lineNum">     824 </span><span class="lineNoCov">          0 :      &amp;          '_seupd: Untransformed converged Ritz values')</span></a>
 <a name="825"><span class="lineNum">     825 </span>            :          call dvout (logfil, nconv, workl(ihb), ndigit,</a>
 <a name="826"><span class="lineNum">     826 </span><span class="lineNoCov">          0 :      &amp;     '_seupd: Ritz estimates of the untransformed Ritz values')</span></a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        162 :       else if (msglvl .gt. 1) then</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        174 :       else if (msglvl .gt. 1) then</span></a>
 <a name="828"><span class="lineNum">     828 </span>            :          call dvout (logfil, nconv, d, ndigit,</a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineNoCov">          0 :      &amp;          '_seupd: Converged Ritz values')</span></a>
 <a name="830"><span class="lineNum">     830 </span>            :          call dvout (logfil, nconv, workl(ihb), ndigit,</a>
@@ -907,14 +907,14 @@
 <a name="837"><span class="lineNum">     837 </span>            : c     | for MODE = 3,4,5. See reference 7               |</a>
 <a name="838"><span class="lineNum">     838 </span>            : c     %-------------------------------------------------%</a>
 <a name="839"><span class="lineNum">     839 </span>            : c</a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">        252 :       if (rvec .and. (type .eq. 'SHIFTI' .or. type .eq. 'CAYLEY')) then</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">        264 :       if (rvec .and. (type .eq. 'SHIFTI' .or. type .eq. 'CAYLEY')) then</span></a>
 <a name="841"><span class="lineNum">     841 </span>            : c</a>
 <a name="842"><span class="lineNum">     842 </span><span class="lineCov">        180 :          do 110 k=0, nconv-1</span></a>
 <a name="843"><span class="lineNum">     843 </span>            :             workl(iw+k) = workl(iw+ncv+k)</a>
 <a name="844"><span class="lineNum">     844 </span><span class="lineCov">        120 :      &amp;                  / workl(iw+k)</span></a>
 <a name="845"><span class="lineNum">     845 </span><span class="lineCov">         60 :  110     continue</span></a>
 <a name="846"><span class="lineNum">     846 </span>            : c</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        192 :       else if (rvec .and. type .eq. 'BUCKLE') then</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        204 :       else if (rvec .and. type .eq. 'BUCKLE') then</span></a>
 <a name="848"><span class="lineNum">     848 </span>            : c</a>
 <a name="849"><span class="lineNum">     849 </span><span class="lineCov">         90 :          do 120 k=0, nconv-1</span></a>
 <a name="850"><span class="lineNum">     850 </span>            :             workl(iw+k) = workl(iw+ncv+k)</a>
@@ -923,12 +923,12 @@
 <a name="853"><span class="lineNum">     853 </span>            : c</a>
 <a name="854"><span class="lineNum">     854 </span>            :       end if</a>
 <a name="855"><span class="lineNum">     855 </span>            : c</a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">        252 :       if (rvec .and. type .ne. 'REGULR')</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">        264 :       if (rvec .and. type .ne. 'REGULR')</span></a>
 <a name="857"><span class="lineNum">     857 </span><span class="lineCov">         90 :      &amp;   call dger  (n, nconv, one, resid, 1, workl(iw), 1, z, ldz)</span></a>
 <a name="858"><span class="lineNum">     858 </span>            : c</a>
 <a name="859"><span class="lineNum">     859 </span>            :  9000 continue</a>
 <a name="860"><span class="lineNum">     860 </span>            : c</a>
-<a name="861"><span class="lineNum">     861 </span><span class="lineCov">        253 :       return</span></a>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">        265 :       return</span></a>
 <a name="862"><span class="lineNum">     862 </span>            : c</a>
 <a name="863"><span class="lineNum">     863 </span>            : c     %---------------%</a>
 <a name="864"><span class="lineNum">     864 </span>            : c     | End of dseupd |</a>

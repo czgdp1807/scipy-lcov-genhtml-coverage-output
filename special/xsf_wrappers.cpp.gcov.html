@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf_wrappers.cpp</title>
+  <title>LCOV - lcov.info - special/xsf_wrappers.cpp</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,21 +28,21 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">266</td>
-            <td class="headerCovTableEntry">318</td>
-            <td class="headerCovTableEntryMed">83.6 %</td>
+            <td class="headerCovTableEntry">244</td>
+            <td class="headerCovTableEntry">316</td>
+            <td class="headerCovTableEntryMed">77.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">219</td>
-            <td class="headerCovTableEntry">246</td>
-            <td class="headerCovTableEntryMed">89.0 %</td>
+            <td class="headerCovTableEntry">201</td>
+            <td class="headerCovTableEntry">244</td>
+            <td class="headerCovTableEntryMed">82.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -124,9 +124,9 @@
 <a name="54"><span class="lineNum">      54 </span>            : </a>
 <a name="55"><span class="lineNum">      55 </span>            : namespace {</a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4888 : complex&lt;double&gt; to_complex(npy_cdouble z) { return {npy_creal(z), npy_cimag(z)}; }</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4120 : complex&lt;double&gt; to_complex(npy_cdouble z) { return {npy_creal(z), npy_cimag(z)}; }</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       4486 : npy_cdouble to_ccomplex(complex&lt;double&gt; z) { return {z.real(), z.imag()}; }</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       3718 : npy_cdouble to_ccomplex(complex&lt;double&gt; z) { return {z.real(), z.imag()}; }</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : } // namespace</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
@@ -367,11 +367,11 @@
 <a name="297"><span class="lineNum">     297 </span><span class="lineCov">        256 :     return to_ccomplex(::sph_harm(static_cast&lt;long&gt;(m), static_cast&lt;long&gt;(n), theta, phi));</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : }</a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       3550 : double cephes_expm1_wrap(double x) { return xsf::cephes::expm1(x); }</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       4478 : double cephes_expm1_wrap(double x) { return xsf::cephes::expm1(x); }</span></a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">       1432 : double cephes_expn_wrap(Py_ssize_t n, double x) { return xsf::cephes::expn(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="303"><span class="lineNum">     303 </span>            : </a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">       1050 : double cephes_log1p_wrap(double x) { return xsf::cephes::log1p(x); }</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">       1051 : double cephes_log1p_wrap(double x) { return xsf::cephes::log1p(x); }</span></a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
 <a name="306"><span class="lineNum">     306 </span><span class="lineCov">         11 : double cephes_jv_wrap(double v, double x) { return xsf::cephes::jv(v, x); }</span></a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
@@ -409,9 +409,9 @@
 <a name="339"><span class="lineNum">     339 </span>            : </a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineCov">        891 : double cephes_yn_wrap(Py_ssize_t n, double x) { return xsf::cephes::yn(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="341"><span class="lineNum">     341 </span>            : </a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">     407769 : double cephes_polevl_wrap(double x, const double coef[], int N) { return xsf::cephes::polevl(x, coef, N); }</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">     368966 : double cephes_polevl_wrap(double x, const double coef[], int N) { return xsf::cephes::polevl(x, coef, N); }</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       6461 : double cephes_p1evl_wrap(double x, const double coef[], int N) { return xsf::cephes::p1evl(x, coef, N); }</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       6898 : double cephes_p1evl_wrap(double x, const double coef[], int N) { return xsf::cephes::p1evl(x, coef, N); }</span></a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">         64 : double special_wright_bessel(double a, double b, double x) { return xsf::wright_bessel(a, b, x); }</span></a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">         64 : double special_log_wright_bessel(double a, double b, double x) { return xsf::log_wright_bessel(a, b, x); }</span></a>
@@ -420,13 +420,13 @@
 <a name="350"><span class="lineNum">     350 </span>            : </a>
 <a name="351"><span class="lineNum">     351 </span><span class="lineCov">          4 : double special_ellipk(double m) { return xsf::ellipk(m); }</span></a>
 <a name="352"><span class="lineNum">     352 </span>            : </a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       1565 : double xsf_beta(double a, double b) { return xsf::beta(a, b); }</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       1909 : double xsf_beta(double a, double b) { return xsf::beta(a, b); }</span></a>
 <a name="354"><span class="lineNum">     354 </span>            : </a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">         16 : double xsf_betaln(double a, double b) { return xsf::betaln(a, b); }</span></a>
 <a name="356"><span class="lineNum">     356 </span>            : </a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineCov">          4 : double xsf_cbrt(double x) { return xsf::cbrt(x); }</span></a>
 <a name="358"><span class="lineNum">     358 </span>            : </a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       3351 : double xsf_gamma(double x) { return xsf::gamma(x); }</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       3348 : double xsf_gamma(double x) { return xsf::gamma(x); }</span></a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
 <a name="361"><span class="lineNum">     361 </span><span class="lineCov">         18 : npy_cdouble xsf_cgamma(npy_cdouble z) { return to_ccomplex(xsf::gamma(to_complex(z))); }</span></a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
@@ -434,7 +434,7 @@
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">         42 : double xsf_gammasgn(double x) { return xsf::gammasgn(x); }</span></a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4511 : double xsf_hyp2f1(double a, double b, double c, double x) { return xsf::hyp2f1(a, b, c, x); }</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       4510 : double xsf_hyp2f1(double a, double b, double c, double x) { return xsf::hyp2f1(a, b, c, x); }</span></a>
 <a name="368"><span class="lineNum">     368 </span>            : </a>
 <a name="369"><span class="lineNum">     369 </span><span class="lineCov">       1537 : npy_cdouble xsf_chyp2f1(double a, double b, double c, npy_cdouble z) {</span></a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineCov">       1537 :     return to_ccomplex(xsf::hyp2f1(a, b, c, to_complex(z)));</span></a>
@@ -452,23 +452,23 @@
 <a name="382"><span class="lineNum">     382 </span>            : </a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 : double cephes_lanczos_sum_expg_scaled(double x) { return xsf::cephes::lanczos_sum_expg_scaled(x); }</span></a>
 <a name="384"><span class="lineNum">     384 </span>            : </a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">    2282183 : double cephes_erf(double x) { return xsf::cephes::erf(x); }</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">    2050969 : double cephes_erf(double x) { return xsf::cephes::erf(x); }</span></a>
 <a name="386"><span class="lineNum">     386 </span>            : </a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">    3609925 : double cephes_erfc(double x) { return xsf::cephes::erfc(x); }</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">    3205234 : double cephes_erfc(double x) { return xsf::cephes::erfc(x); }</span></a>
 <a name="388"><span class="lineNum">     388 </span>            : </a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">     306966 : double cephes_poch(double x, double m) { return xsf::cephes::poch(x, m); }</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">     306977 : double cephes_poch(double x, double m) { return xsf::cephes::poch(x, m); }</span></a>
 <a name="390"><span class="lineNum">     390 </span>            : </a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 : double cephes_rgamma(double x) { return xsf::cephes::rgamma(x); }</span></a>
 <a name="392"><span class="lineNum">     392 </span>            : </a>
 <a name="393"><span class="lineNum">     393 </span><span class="lineCov">          4 : double xsf_zetac(double x) { return xsf::zetac(x); }</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : </a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">   19494514 : double cephes_log1p(double x) { return xsf::cephes::log1p(x); }</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">   19671058 : double cephes_log1p(double x) { return xsf::cephes::log1p(x); }</span></a>
 <a name="396"><span class="lineNum">     396 </span>            : </a>
 <a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 : double cephes_log1pmx(double x) { return xsf::cephes::log1pmx(x); }</span></a>
 <a name="398"><span class="lineNum">     398 </span>            : </a>
 <a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 : double cephes_lgam1p(double x) { return xsf::cephes::lgam1p(x); }</span></a>
 <a name="400"><span class="lineNum">     400 </span>            : </a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">    5340988 : double cephes_expm1(double x) { return xsf::cephes::expm1(x); }</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">    6140060 : double cephes_expm1(double x) { return xsf::cephes::expm1(x); }</span></a>
 <a name="402"><span class="lineNum">     402 </span>            : </a>
 <a name="403"><span class="lineNum">     403 </span><span class="lineCov">         16 : double cephes_expn(int n, double x) { return xsf::cephes::expn(n, x); }</span></a>
 <a name="404"><span class="lineNum">     404 </span>            : </a>
@@ -482,7 +482,7 @@
 <a name="412"><span class="lineNum">     412 </span>            : </a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineCov">        275 : double cephes_poch_wrap(double x, double m) { return xsf::cephes::poch(x, m); }</span></a>
 <a name="414"><span class="lineNum">     414 </span>            : </a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">        347 : double cephes_erfcinv(double y) { return xsf::cephes::erfcinv(y); }</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">        373 : double cephes_erfcinv(double y) { return xsf::cephes::erfcinv(y); }</span></a>
 <a name="416"><span class="lineNum">     416 </span>            : </a>
 <a name="417"><span class="lineNum">     417 </span><span class="lineCov">         12 : double cephes_exp10(double x) { return xsf::cephes::exp10(x); }</span></a>
 <a name="418"><span class="lineNum">     418 </span>            : </a>
@@ -562,7 +562,7 @@
 <a name="492"><span class="lineNum">     492 </span>            : </a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineCov">         64 : npy_cdouble special_ccyl_bessel_k(double v, npy_cdouble z) { return to_ccomplex(xsf::cyl_bessel_k(v, to_complex(z))); }</span></a>
 <a name="494"><span class="lineNum">     494 </span>            : </a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">    1853319 : double special_cyl_bessel_ke(double v, double z) { return xsf::cyl_bessel_ke(v, z); }</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">    2145429 : double special_cyl_bessel_ke(double v, double z) { return xsf::cyl_bessel_ke(v, z); }</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineCov">         64 : npy_cdouble special_ccyl_bessel_ke(double v, npy_cdouble z) {</span></a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineCov">         64 :     return to_ccomplex(xsf::cyl_bessel_ke(v, to_complex(z)));</span></a>
@@ -578,44 +578,44 @@
 <a name="508"><span class="lineNum">     508 </span>            : </a>
 <a name="509"><span class="lineNum">     509 </span>            : // Spherical Bessel</a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         32 : double special_sph_bessel_j(long n, double x) { return xsf::sph_bessel_j(n, x); }</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 : double special_sph_bessel_j(long n, double x) { return xsf::sph_bessel_j(n, x); }</span></a>
 <a name="512"><span class="lineNum">     512 </span>            : </a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">        128 : npy_cdouble special_csph_bessel_j(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_j(n, to_complex(z))); }</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_j(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_j(n, to_complex(z))); }</span></a>
 <a name="514"><span class="lineNum">     514 </span>            : </a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">         16 : double special_sph_bessel_j_jac(long n, double x) { return xsf::sph_bessel_j_jac(n, x); }</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 : double special_sph_bessel_j_jac(long n, double x) { return xsf::sph_bessel_j_jac(n, x); }</span></a>
 <a name="516"><span class="lineNum">     516 </span>            : </a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">         64 : npy_cdouble special_csph_bessel_j_jac(long n, npy_cdouble z) {</span></a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         64 :     return to_ccomplex(xsf::sph_bessel_j_jac(n, to_complex(z)));</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_j_jac(long n, npy_cdouble z) {</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :     return to_ccomplex(xsf::sph_bessel_j_jac(n, to_complex(z)));</span></a>
 <a name="519"><span class="lineNum">     519 </span>            : }</a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         32 : double special_sph_bessel_y(long n, double x) { return xsf::sph_bessel_y(n, x); }</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 : double special_sph_bessel_y(long n, double x) { return xsf::sph_bessel_y(n, x); }</span></a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">        128 : npy_cdouble special_csph_bessel_y(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_y(n, to_complex(z))); }</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_y(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_y(n, to_complex(z))); }</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         16 : double special_sph_bessel_y_jac(long n, double x) { return xsf::sph_bessel_y_jac(n, x); }</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 : double special_sph_bessel_y_jac(long n, double x) { return xsf::sph_bessel_y_jac(n, x); }</span></a>
 <a name="526"><span class="lineNum">     526 </span>            : </a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">         64 : npy_cdouble special_csph_bessel_y_jac(long n, npy_cdouble z) {</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         64 :     return to_ccomplex(xsf::sph_bessel_y_jac(n, to_complex(z)));</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_y_jac(long n, npy_cdouble z) {</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :     return to_ccomplex(xsf::sph_bessel_y_jac(n, to_complex(z)));</span></a>
 <a name="529"><span class="lineNum">     529 </span>            : }</a>
 <a name="530"><span class="lineNum">     530 </span>            : </a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         32 : double special_sph_bessel_i(long n, double x) { return xsf::sph_bessel_i(n, x); }</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 : double special_sph_bessel_i(long n, double x) { return xsf::sph_bessel_i(n, x); }</span></a>
 <a name="532"><span class="lineNum">     532 </span>            : </a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">        128 : npy_cdouble special_csph_bessel_i(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_i(n, to_complex(z))); }</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_i(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_i(n, to_complex(z))); }</span></a>
 <a name="534"><span class="lineNum">     534 </span>            : </a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">         16 : double special_sph_bessel_i_jac(long n, double x) { return xsf::sph_bessel_i_jac(n, x); }</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 : double special_sph_bessel_i_jac(long n, double x) { return xsf::sph_bessel_i_jac(n, x); }</span></a>
 <a name="536"><span class="lineNum">     536 </span>            : </a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">         64 : npy_cdouble special_csph_bessel_i_jac(long n, npy_cdouble z) {</span></a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">         64 :     return to_ccomplex(xsf::sph_bessel_i_jac(n, to_complex(z)));</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_i_jac(long n, npy_cdouble z) {</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineNoCov">          0 :     return to_ccomplex(xsf::sph_bessel_i_jac(n, to_complex(z)));</span></a>
 <a name="539"><span class="lineNum">     539 </span>            : }</a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         32 : double special_sph_bessel_k(long n, double x) { return xsf::sph_bessel_k(n, x); }</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 : double special_sph_bessel_k(long n, double x) { return xsf::sph_bessel_k(n, x); }</span></a>
 <a name="542"><span class="lineNum">     542 </span>            : </a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">        128 : npy_cdouble special_csph_bessel_k(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_k(n, to_complex(z))); }</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_k(long n, npy_cdouble z) { return to_ccomplex(xsf::sph_bessel_k(n, to_complex(z))); }</span></a>
 <a name="544"><span class="lineNum">     544 </span>            : </a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         16 : double special_sph_bessel_k_jac(long n, double x) { return xsf::sph_bessel_k_jac(n, x); }</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 : double special_sph_bessel_k_jac(long n, double x) { return xsf::sph_bessel_k_jac(n, x); }</span></a>
 <a name="546"><span class="lineNum">     546 </span>            : </a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         64 : npy_cdouble special_csph_bessel_k_jac(long n, npy_cdouble z) {</span></a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">         64 :     return to_ccomplex(xsf::sph_bessel_k_jac(n, to_complex(z)));</span></a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 : npy_cdouble special_csph_bessel_k_jac(long n, npy_cdouble z) {</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineNoCov">          0 :     return to_ccomplex(xsf::sph_bessel_k_jac(n, to_complex(z)));</span></a>
 <a name="549"><span class="lineNum">     549 </span>            : }</a>
 <a name="550"><span class="lineNum">     550 </span>            : </a>
 <a name="551"><span class="lineNum">     551 </span>            : // Stats</a>
@@ -626,121 +626,117 @@
 <a name="556"><span class="lineNum">     556 </span>            : </a>
 <a name="557"><span class="lineNum">     557 </span><span class="lineCov">         64 : double xsf_bdtrc(double k, int n, double p) { return xsf::bdtrc(k, n, p); }</span></a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       2549 : double xsf_btdtri(double aa, double bb, double yy0) { return xsf::btdtri(aa, bb, yy0); }</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">      14518 : double xsf_chdtr(double df, double x) { return xsf::chdtr(df, x); }</span></a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">       3339 : double xsf_btdtr(double a, double b, double x) { return xsf::btdtr(a, b, x); }</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">      56524 : double xsf_chdtrc(double df, double x) { return xsf::chdtrc(df, x); }</span></a>
 <a name="562"><span class="lineNum">     562 </span>            : </a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">      14517 : double xsf_chdtr(double df, double x) { return xsf::chdtr(df, x); }</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         53 : double xsf_chdtri(double df, double y) { return xsf::chdtri(df, y); }</span></a>
 <a name="564"><span class="lineNum">     564 </span>            : </a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">      52994 : double xsf_chdtrc(double df, double x) { return xsf::chdtrc(df, x); }</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">        723 : double xsf_fdtr(double a, double b, double x) { return xsf::fdtr(a, b, x); }</span></a>
 <a name="566"><span class="lineNum">     566 </span>            : </a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">         53 : double xsf_chdtri(double df, double y) { return xsf::chdtri(df, y); }</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      11569 : double xsf_fdtrc(double a, double b, double x) { return xsf::fdtrc(a, b, x); }</span></a>
 <a name="568"><span class="lineNum">     568 </span>            : </a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">        714 : double xsf_fdtr(double a, double b, double x) { return xsf::fdtr(a, b, x); }</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">        250 : double xsf_fdtri(double a, double b, double y) { return xsf::fdtri(a, b, y); }</span></a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">      10758 : double xsf_fdtrc(double a, double b, double x) { return xsf::fdtrc(a, b, x); }</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">       1510 : double xsf_gdtr(double a, double b, double x) { return xsf::gdtr(a, b, x); }</span></a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">        212 : double xsf_fdtri(double a, double b, double y) { return xsf::fdtri(a, b, y); }</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       1509 : double xsf_gdtrc(double a, double b, double x) { return xsf::gdtrc(a, b, x); }</span></a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1510 : double xsf_gdtr(double a, double b, double x) { return xsf::gdtr(a, b, x); }</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1064 : double xsf_gdtrib(double a, double p, double x) {return xsf::gdtrib(a, p, x); }</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">       1509 : double xsf_gdtrc(double a, double b, double x) { return xsf::gdtrc(a, b, x); }</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">        138 : double xsf_kolmogorov(double x) { return xsf::kolmogorov(x); }</span></a>
 <a name="578"><span class="lineNum">     578 </span>            : </a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">       1064 : double xsf_gdtrib(double a, double p, double x) {return xsf::gdtrib(a, p, x); }</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">        615 : double xsf_kolmogc(double x) { return xsf::kolmogc(x); }</span></a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">        142 : double xsf_kolmogorov(double x) { return xsf::kolmogorov(x); }</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">        121 : double xsf_kolmogi(double x) { return xsf::kolmogi(x); }</span></a>
 <a name="582"><span class="lineNum">     582 </span>            : </a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">        611 : double xsf_kolmogc(double x) { return xsf::kolmogc(x); }</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">       8156 : double xsf_kolmogci(double x) { return xsf::kolmogci(x); }</span></a>
 <a name="584"><span class="lineNum">     584 </span>            : </a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        121 : double xsf_kolmogi(double x) { return xsf::kolmogi(x); }</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">      44227 : double xsf_kolmogp(double x) { return xsf::kolmogp(x); }</span></a>
 <a name="586"><span class="lineNum">     586 </span>            : </a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       8130 : double xsf_kolmogci(double x) { return xsf::kolmogci(x); }</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">         64 : double xsf_nbdtr(int k, int n, double p) { return xsf::nbdtr(k, n, p); }</span></a>
 <a name="588"><span class="lineNum">     588 </span>            : </a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">      44227 : double xsf_kolmogp(double x) { return xsf::kolmogp(x); }</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">         64 : double xsf_nbdtrc(int k, int n, double p) { return xsf::nbdtrc(k, n, p); }</span></a>
 <a name="590"><span class="lineNum">     590 </span>            : </a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">         64 : double xsf_nbdtr(int k, int n, double p) { return xsf::nbdtr(k, n, p); }</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">         64 : double xsf_nbdtri(int k, int n, double p) { return xsf::nbdtri(k, n, p); }</span></a>
 <a name="592"><span class="lineNum">     592 </span>            : </a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         64 : double xsf_nbdtrc(int k, int n, double p) { return xsf::nbdtrc(k, n, p); }</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">   27577927 : double xsf_ndtr(double x) { return xsf::ndtr(x); }</span></a>
 <a name="594"><span class="lineNum">     594 </span>            : </a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">         64 : double xsf_nbdtri(int k, int n, double p) { return xsf::nbdtri(k, n, p); }</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">   10677885 : double xsf_ndtri(double x) { return xsf::ndtri(x); }</span></a>
 <a name="596"><span class="lineNum">     596 </span>            : </a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">   27681670 : double xsf_ndtr(double x) { return xsf::ndtr(x); }</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">       1506 : double xsf_owens_t(double h, double a) { return xsf::owens_t(h, a); }</span></a>
 <a name="598"><span class="lineNum">     598 </span>            : </a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">   10544546 : double xsf_ndtri(double x) { return xsf::ndtri(x); }</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       1645 : double xsf_pdtr(double k, double m) { return xsf::pdtr(k, m); }</span></a>
 <a name="600"><span class="lineNum">     600 </span>            : </a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">       1506 : double xsf_owens_t(double h, double a) { return xsf::owens_t(h, a); }</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         98 : double xsf_pdtrc(double k, double m) { return xsf::pdtrc(k, m); }</span></a>
 <a name="602"><span class="lineNum">     602 </span>            : </a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       1808 : double xsf_pdtr(double k, double m) { return xsf::pdtr(k, m); }</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         16 : double xsf_pdtri(int k, double y) { return xsf::pdtri(k, y); }</span></a>
 <a name="604"><span class="lineNum">     604 </span>            : </a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         98 : double xsf_pdtrc(double k, double m) { return xsf::pdtrc(k, m); }</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         16 : double xsf_smirnov(int n, double x) { return xsf::smirnov(n, x); }</span></a>
 <a name="606"><span class="lineNum">     606 </span>            : </a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">         16 : double xsf_pdtri(int k, double y) { return xsf::pdtri(k, y); }</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineNoCov">          0 : double xsf_smirnovc(int n, double x) { return xsf::smirnovc(n, x); }</span></a>
 <a name="608"><span class="lineNum">     608 </span>            : </a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         16 : double xsf_smirnov(int n, double x) { return xsf::smirnov(n, x); }</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         16 : double xsf_smirnovi(int n, double x) { return xsf::smirnovi(n, x); }</span></a>
 <a name="610"><span class="lineNum">     610 </span>            : </a>
-<a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 : double xsf_smirnovc(int n, double x) { return xsf::smirnovc(n, x); }</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 : double xsf_smirnovci(int n, double x) { return xsf::smirnovci(n, x); }</span></a>
 <a name="612"><span class="lineNum">     612 </span>            : </a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         16 : double xsf_smirnovi(int n, double x) { return xsf::smirnovi(n, x); }</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineNoCov">          0 : double xsf_smirnovp(int n, double x) { return xsf::smirnovp(n, x); }</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineNoCov">          0 : double xsf_smirnovci(int n, double x) { return xsf::smirnovci(n, x); }</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">       1987 : double xsf_tukeylambdacdf(double x, double lmbda) { return xsf::tukeylambdacdf(x, lmbda); }</span></a>
 <a name="616"><span class="lineNum">     616 </span>            : </a>
-<a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 : double xsf_smirnovp(int n, double x) { return xsf::smirnovp(n, x); }</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineCov">        212 : double cephes_bdtr_wrap(double k, Py_ssize_t n, double p) { return xsf::bdtr(k, static_cast&lt;int&gt;(n), p); }</span></a>
 <a name="618"><span class="lineNum">     618 </span>            : </a>
-<a name="619"><span class="lineNum">     619 </span><span class="lineCov">       1987 : double xsf_tukeylambdacdf(double x, double lmbda) { return xsf::tukeylambdacdf(x, lmbda); }</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">        207 : double cephes_bdtri_wrap(double k, Py_ssize_t n, double y) { return xsf::bdtri(k, static_cast&lt;int&gt;(n), y); }</span></a>
 <a name="620"><span class="lineNum">     620 </span>            : </a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">        212 : double cephes_bdtr_wrap(double k, Py_ssize_t n, double p) { return xsf::bdtr(k, static_cast&lt;int&gt;(n), p); }</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">        211 : double cephes_bdtrc_wrap(double k, Py_ssize_t n, double p) { return xsf::bdtrc(k, static_cast&lt;int&gt;(n), p); }</span></a>
 <a name="622"><span class="lineNum">     622 </span>            : </a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        207 : double cephes_bdtri_wrap(double k, Py_ssize_t n, double y) { return xsf::bdtri(k, static_cast&lt;int&gt;(n), y); }</span></a>
-<a name="624"><span class="lineNum">     624 </span>            : </a>
-<a name="625"><span class="lineNum">     625 </span><span class="lineCov">        211 : double cephes_bdtrc_wrap(double k, Py_ssize_t n, double p) { return xsf::bdtrc(k, static_cast&lt;int&gt;(n), p); }</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        195 : double cephes_nbdtr_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtr(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
+<a name="625"><span class="lineNum">     625 </span>            : }</a>
 <a name="626"><span class="lineNum">     626 </span>            : </a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        195 : double cephes_nbdtr_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtr(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        195 : double cephes_nbdtrc_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtrc(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
 <a name="629"><span class="lineNum">     629 </span>            : }</a>
 <a name="630"><span class="lineNum">     630 </span>            : </a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">        195 : double cephes_nbdtrc_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
-<a name="632"><span class="lineNum">     632 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtrc(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">        195 : double cephes_nbdtri_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtri(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
 <a name="633"><span class="lineNum">     633 </span>            : }</a>
 <a name="634"><span class="lineNum">     634 </span>            : </a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        195 : double cephes_nbdtri_wrap(Py_ssize_t k, Py_ssize_t n, double p) {</span></a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">        195 :     return xsf::cephes::nbdtri(static_cast&lt;int&gt;(k), static_cast&lt;int&gt;(n), p);</span></a>
-<a name="637"><span class="lineNum">     637 </span>            : }</a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">         24 : double cephes_ndtr_wrap(double x) { return xsf::cephes::ndtr(x); }</span></a>
+<a name="636"><span class="lineNum">     636 </span>            : </a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       8414 : double cephes_ndtri_wrap(double x) { return xsf::cephes::ndtri(x); }</span></a>
 <a name="638"><span class="lineNum">     638 </span>            : </a>
-<a name="639"><span class="lineNum">     639 </span><span class="lineCov">         24 : double cephes_ndtr_wrap(double x) { return xsf::cephes::ndtr(x); }</span></a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineCov">         51 : double cephes_pdtri_wrap(Py_ssize_t k, double y) { return xsf::cephes::pdtri(static_cast&lt;int&gt;(k), y); }</span></a>
 <a name="640"><span class="lineNum">     640 </span>            : </a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">       5312 : double cephes_ndtri_wrap(double x) { return xsf::cephes::ndtri(x); }</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">       1506 : double cephes_smirnov_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnov(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="642"><span class="lineNum">     642 </span>            : </a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">         51 : double cephes_pdtri_wrap(Py_ssize_t k, double y) { return xsf::cephes::pdtri(static_cast&lt;int&gt;(k), y); }</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">        361 : double cephes_smirnovc_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovc(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="644"><span class="lineNum">     644 </span>            : </a>
-<a name="645"><span class="lineNum">     645 </span><span class="lineCov">        965 : double cephes_smirnov_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnov(static_cast&lt;int&gt;(n), x); }</span></a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">        375 : double cephes_smirnovi_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovi(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="646"><span class="lineNum">     646 </span>            : </a>
-<a name="647"><span class="lineNum">     647 </span><span class="lineCov">        365 : double cephes_smirnovc_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovc(static_cast&lt;int&gt;(n), x); }</span></a>
+<a name="647"><span class="lineNum">     647 </span><span class="lineCov">        468 : double cephes_smirnovci_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovci(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="648"><span class="lineNum">     648 </span>            : </a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        375 : double cephes_smirnovi_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovi(static_cast&lt;int&gt;(n), x); }</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">       5228 : double cephes_smirnovp_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovp(static_cast&lt;int&gt;(n), x); }</span></a>
 <a name="650"><span class="lineNum">     650 </span>            : </a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineCov">        460 : double cephes_smirnovci_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovci(static_cast&lt;int&gt;(n), x); }</span></a>
+<a name="651"><span class="lineNum">     651 </span>            : // Trig</a>
 <a name="652"><span class="lineNum">     652 </span>            : </a>
-<a name="653"><span class="lineNum">     653 </span><span class="lineCov">       5228 : double cephes_smirnovp_wrap(Py_ssize_t n, double x) { return xsf::cephes::smirnovp(static_cast&lt;int&gt;(n), x); }</span></a>
+<a name="653"><span class="lineNum">     653 </span><span class="lineNoCov">          0 : double xsf_sinpi(double x) { return xsf::sinpi(x); }</span></a>
 <a name="654"><span class="lineNum">     654 </span>            : </a>
-<a name="655"><span class="lineNum">     655 </span>            : // Trig</a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineNoCov">          0 : npy_cdouble xsf_csinpi(npy_cdouble z) { return to_ccomplex(xsf::sinpi(to_complex(z))); }</span></a>
 <a name="656"><span class="lineNum">     656 </span>            : </a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineNoCov">          0 : double xsf_sinpi(double x) { return xsf::sinpi(x); }</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineNoCov">          0 : double xsf_cospi(double x) { return xsf::cospi(x); }</span></a>
 <a name="658"><span class="lineNum">     658 </span>            : </a>
-<a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 : npy_cdouble xsf_csinpi(npy_cdouble z) { return to_ccomplex(xsf::sinpi(to_complex(z))); }</span></a>
+<a name="659"><span class="lineNum">     659 </span><span class="lineCov">       4482 : double xsf_cosm1(double x) { return xsf::cosm1(x); }</span></a>
 <a name="660"><span class="lineNum">     660 </span>            : </a>
-<a name="661"><span class="lineNum">     661 </span><span class="lineNoCov">          0 : double xsf_cospi(double x) { return xsf::cospi(x); }</span></a>
+<a name="661"><span class="lineNum">     661 </span><span class="lineCov">          4 : double xsf_sindg(double x) { return xsf::sindg(x); }</span></a>
 <a name="662"><span class="lineNum">     662 </span>            : </a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">       3554 : double xsf_cosm1(double x) { return xsf::cosm1(x); }</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">          4 : double xsf_cosdg(double x) { return xsf::cosdg(x); }</span></a>
 <a name="664"><span class="lineNum">     664 </span>            : </a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">          4 : double xsf_sindg(double x) { return xsf::sindg(x); }</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">          4 : double xsf_tandg(double x) { return xsf::tandg(x); }</span></a>
 <a name="666"><span class="lineNum">     666 </span>            : </a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">          4 : double xsf_cosdg(double x) { return xsf::cosdg(x); }</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">          4 : double xsf_cotdg(double x) { return xsf::cotdg(x); }</span></a>
 <a name="668"><span class="lineNum">     668 </span>            : </a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineCov">          4 : double xsf_tandg(double x) { return xsf::tandg(x); }</span></a>
-<a name="670"><span class="lineNum">     670 </span>            : </a>
-<a name="671"><span class="lineNum">     671 </span><span class="lineCov">          4 : double xsf_cotdg(double x) { return xsf::cotdg(x); }</span></a>
-<a name="672"><span class="lineNum">     672 </span>            : </a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">         64 : double xsf_radian(double d, double m, double s) { return xsf::radian(d, m, s); }</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">         64 : double xsf_radian(double d, double m, double s) { return xsf::radian(d, m, s); }</span></a>
 </pre>
       </td>
     </tr>

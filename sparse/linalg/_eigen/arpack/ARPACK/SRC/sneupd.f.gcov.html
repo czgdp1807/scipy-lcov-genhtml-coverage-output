@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/sneupd.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/sneupd.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">167</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -657,9 +657,9 @@
 <a name="587"><span class="lineNum">     587 </span><span class="lineCov">       1897 :             jj = workl(bounds + ncv - j)</span></a>
 <a name="588"><span class="lineNum">     588 </span><span class="lineCov">       1897 :             if (numcnv .lt. nconv .and.</span></a>
 <a name="589"><span class="lineNum">     589 </span>            :      &amp;          workl(ibd+jj-1) .le. tol*temp1) then</a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        870 :                select(jj) = .true.</span></a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        870 :                numcnv = numcnv + 1</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        870 :                if (jj .gt. nconv) reord = .true.</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        807 :                select(jj) = .true.</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        807 :                numcnv = numcnv + 1</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        807 :                if (jj .gt. nconv) reord = .true.</span></a>
 <a name="593"><span class="lineNum">     593 </span>            :             endif</a>
 <a name="594"><span class="lineNum">     594 </span><span class="lineCov">        218 :    11    continue</span></a>
 <a name="595"><span class="lineNum">     595 </span>            : c</a>
@@ -734,18 +734,18 @@
 <a name="664"><span class="lineNum">     664 </span>            :      &amp;                   nconv2       , conds        ,</a>
 <a name="665"><span class="lineNum">     665 </span>            :      &amp;                   sep          , workl(ihbds) ,</a>
 <a name="666"><span class="lineNum">     666 </span>            :      &amp;                   ncv          , iwork        ,</a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">        143 :      &amp;                   1            , ierr)</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">        142 :      &amp;                   1            , ierr)</span></a>
 <a name="668"><span class="lineNum">     668 </span>            : c</a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineCov">        143 :             if (nconv2 .lt. nconv) then</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">        142 :             if (nconv2 .lt. nconv) then</span></a>
 <a name="670"><span class="lineNum">     670 </span><span class="lineNoCov">          0 :                nconv = nconv2</span></a>
 <a name="671"><span class="lineNum">     671 </span>            :             end if</a>
 <a name="672"><span class="lineNum">     672 </span>            : </a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">        143 :             if (ierr .eq. 1) then</span></a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">        142 :             if (ierr .eq. 1) then</span></a>
 <a name="674"><span class="lineNum">     674 </span><span class="lineNoCov">          0 :                info = 1</span></a>
 <a name="675"><span class="lineNum">     675 </span><span class="lineNoCov">          0 :                go to 9000</span></a>
 <a name="676"><span class="lineNum">     676 </span>            :             end if</a>
 <a name="677"><span class="lineNum">     677 </span>            : c</a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        143 :             if (msglvl .gt. 2) then</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">        142 :             if (msglvl .gt. 2) then</span></a>
 <a name="679"><span class="lineNum">     679 </span>            :                 call svout(logfil, ncv, workl(iheigr), ndigit,</a>
 <a name="680"><span class="lineNum">     680 </span><span class="lineNoCov">          0 :      &amp;           '_neupd: Real part of the eigenvalues of H--reordered')</span></a>
 <a name="681"><span class="lineNum">     681 </span>            :                 call svout(logfil, ncv, workl(iheigi), ndigit,</a>
@@ -806,7 +806,7 @@
 <a name="736"><span class="lineNum">     736 </span><span class="lineCov">        218 :      &amp;                ldv   , workd(n+1)   , ierr)</span></a>
 <a name="737"><span class="lineNum">     737 </span><span class="lineCov">        218 :          call slacpy('All', n, nconv, v, ldv, z, ldz)</span></a>
 <a name="738"><span class="lineNum">     738 </span>            : c</a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">       1088 :          do 20 j=1, nconv</span></a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">       1025 :          do 20 j=1, nconv</span></a>
 <a name="740"><span class="lineNum">     740 </span>            : c</a>
 <a name="741"><span class="lineNum">     741 </span>            : c           %---------------------------------------------------%</a>
 <a name="742"><span class="lineNum">     742 </span>            : c           | Perform both a column and row scaling if the      |</a>
@@ -817,9 +817,9 @@
 <a name="747"><span class="lineNum">     747 </span>            : c           | matrix consisting of plus or minus ones           |</a>
 <a name="748"><span class="lineNum">     748 </span>            : c           %---------------------------------------------------%</a>
 <a name="749"><span class="lineNum">     749 </span>            : c</a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">        870 :             if (workl(invsub+(j-1)*ldq+j-1) .lt. zero) then</span></a>
-<a name="751"><span class="lineNum">     751 </span><span class="lineCov">        382 :                call sscal(nconv, -one, workl(iuptri+j-1), ldq)</span></a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineCov">        382 :                call sscal(nconv, -one, workl(iuptri+(j-1)*ldq), 1)</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">        807 :             if (workl(invsub+(j-1)*ldq+j-1) .lt. zero) then</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">        353 :                call sscal(nconv, -one, workl(iuptri+j-1), ldq)</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">        353 :                call sscal(nconv, -one, workl(iuptri+(j-1)*ldq), 1)</span></a>
 <a name="753"><span class="lineNum">     753 </span>            :             end if</a>
 <a name="754"><span class="lineNum">     754 </span>            : c</a>
 <a name="755"><span class="lineNum">     755 </span><span class="lineCov">        218 :  20      continue</span></a>
@@ -833,9 +833,9 @@
 <a name="763"><span class="lineNum">     763 </span>            : c</a>
 <a name="764"><span class="lineNum">     764 </span><span class="lineCov">       2115 :             do 30 j=1, ncv</span></a>
 <a name="765"><span class="lineNum">     765 </span><span class="lineCov">       1897 :                if (j .le. nconv) then</span></a>
-<a name="766"><span class="lineNum">     766 </span><span class="lineCov">        870 :                   select(j) = .true.</span></a>
+<a name="766"><span class="lineNum">     766 </span><span class="lineCov">        807 :                   select(j) = .true.</span></a>
 <a name="767"><span class="lineNum">     767 </span>            :                else</a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineCov">       1027 :                   select(j) = .false.</span></a>
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">       1090 :                   select(j) = .false.</span></a>
 <a name="769"><span class="lineNum">     769 </span>            :                end if</a>
 <a name="770"><span class="lineNum">     770 </span><span class="lineCov">        218 :  30         continue</span></a>
 <a name="771"><span class="lineNum">     771 </span>            : c</a>
@@ -859,17 +859,17 @@
 <a name="789"><span class="lineNum">     789 </span>            : c           %------------------------------------------------%</a>
 <a name="790"><span class="lineNum">     790 </span>            : c</a>
 <a name="791"><span class="lineNum">     791 </span><span class="lineCov">        218 :             iconj = 0</span></a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1088 :             do 40 j=1, nconv</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1025 :             do 40 j=1, nconv</span></a>
 <a name="793"><span class="lineNum">     793 </span>            : c</a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">        870 :                if ( workl(iheigi+j-1) .eq. zero ) then</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">        807 :                if ( workl(iheigi+j-1) .eq. zero ) then</span></a>
 <a name="795"><span class="lineNum">     795 </span>            : c</a>
 <a name="796"><span class="lineNum">     796 </span>            : c                 %----------------------%</a>
 <a name="797"><span class="lineNum">     797 </span>            : c                 | real eigenvalue case |</a>
 <a name="798"><span class="lineNum">     798 </span>            : c                 %----------------------%</a>
 <a name="799"><span class="lineNum">     799 </span>            : c</a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">        202 :                   temp = snrm2( ncv, workl(invsub+(j-1)*ldq), 1 )</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">        715 :                   temp = snrm2( ncv, workl(invsub+(j-1)*ldq), 1 )</span></a>
 <a name="801"><span class="lineNum">     801 </span>            :                   call sscal( ncv, one / temp,</a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">        202 :      &amp;                 workl(invsub+(j-1)*ldq), 1 )</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">        715 :      &amp;                 workl(invsub+(j-1)*ldq), 1 )</span></a>
 <a name="803"><span class="lineNum">     803 </span>            : c</a>
 <a name="804"><span class="lineNum">     804 </span>            :                else</a>
 <a name="805"><span class="lineNum">     805 </span>            : c</a>
@@ -881,18 +881,18 @@
 <a name="811"><span class="lineNum">     811 </span>            : c                 | square root of two.                       |</a>
 <a name="812"><span class="lineNum">     812 </span>            : c                 %-------------------------------------------%</a>
 <a name="813"><span class="lineNum">     813 </span>            : c</a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        668 :                   if (iconj .eq. 0) then</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">         92 :                   if (iconj .eq. 0) then</span></a>
 <a name="815"><span class="lineNum">     815 </span>            :                      temp = slapy2(snrm2(ncv,</a>
 <a name="816"><span class="lineNum">     816 </span>            :      &amp;                                   workl(invsub+(j-1)*ldq),</a>
 <a name="817"><span class="lineNum">     817 </span>            :      &amp;                                   1),</a>
 <a name="818"><span class="lineNum">     818 </span>            :      &amp;                             snrm2(ncv,</a>
 <a name="819"><span class="lineNum">     819 </span>            :      &amp;                                   workl(invsub+j*ldq),</a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">        334 :      &amp;                                   1))</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">         46 :      &amp;                                   1))</span></a>
 <a name="821"><span class="lineNum">     821 </span>            :                      call sscal(ncv, one/temp,</a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        334 :      &amp;                           workl(invsub+(j-1)*ldq), 1 )</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">         46 :      &amp;                           workl(invsub+(j-1)*ldq), 1 )</span></a>
 <a name="823"><span class="lineNum">     823 </span>            :                      call sscal(ncv, one/temp,</a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">        334 :      &amp;                           workl(invsub+j*ldq), 1 )</span></a>
-<a name="825"><span class="lineNum">     825 </span><span class="lineCov">        334 :                      iconj = 1</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">         46 :      &amp;                           workl(invsub+j*ldq), 1 )</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">         46 :                      iconj = 1</span></a>
 <a name="826"><span class="lineNum">     826 </span>            :                   else</a>
 <a name="827"><span class="lineNum">     827 </span>            :                      iconj = 0</a>
 <a name="828"><span class="lineNum">     828 </span>            :                   end if</a>
@@ -905,8 +905,8 @@
 <a name="835"><span class="lineNum">     835 </span><span class="lineCov">        218 :      &amp;                 ldq, workl(ihbds), 1, zero,  workev, 1)</span></a>
 <a name="836"><span class="lineNum">     836 </span>            : c</a>
 <a name="837"><span class="lineNum">     837 </span><span class="lineCov">        218 :             iconj = 0</span></a>
-<a name="838"><span class="lineNum">     838 </span><span class="lineCov">       1088 :             do 45 j=1, nconv</span></a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">        870 :                if (workl(iheigi+j-1) .ne. zero) then</span></a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineCov">       1025 :             do 45 j=1, nconv</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">        807 :                if (workl(iheigi+j-1) .ne. zero) then</span></a>
 <a name="840"><span class="lineNum">     840 </span>            : c</a>
 <a name="841"><span class="lineNum">     841 </span>            : c                 %-------------------------------------------%</a>
 <a name="842"><span class="lineNum">     842 </span>            : c                 | Complex conjugate pair case. Note that    |</a>
@@ -914,10 +914,10 @@
 <a name="844"><span class="lineNum">     844 </span>            : c                 | the eigenvector are stored in consecutive |</a>
 <a name="845"><span class="lineNum">     845 </span>            : c                 %-------------------------------------------%</a>
 <a name="846"><span class="lineNum">     846 </span>            : c</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        668 :                   if (iconj .eq. 0) then</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        334 :                      workev(j) = slapy2(workev(j), workev(j+1))</span></a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">        334 :                      workev(j+1) = workev(j)</span></a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">        334 :                      iconj = 1</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">         92 :                   if (iconj .eq. 0) then</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">         46 :                      workev(j) = slapy2(workev(j), workev(j+1))</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">         46 :                      workev(j+1) = workev(j)</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">         46 :                      iconj = 1</span></a>
 <a name="851"><span class="lineNum">     851 </span>            :                   else</a>
 <a name="852"><span class="lineNum">     852 </span>            :                      iconj = 0</a>
 <a name="853"><span class="lineNum">     853 </span>            :                   end if</a>
@@ -1097,22 +1097,22 @@
 <a name="1027"><span class="lineNum">    1027 </span>            : c        %------------------------------------------------%</a>
 <a name="1028"><span class="lineNum">    1028 </span>            : c</a>
 <a name="1029"><span class="lineNum">    1029 </span><span class="lineCov">        114 :          iconj = 0</span></a>
-<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">        624 :          do 110 j=1, nconv</span></a>
-<a name="1031"><span class="lineNum">    1031 </span><span class="lineCov">        510 :             if ((workl(iheigi+j-1) .eq. zero) .and.</span></a>
+<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">        582 :          do 110 j=1, nconv</span></a>
+<a name="1031"><span class="lineNum">    1031 </span><span class="lineCov">        468 :             if ((workl(iheigi+j-1) .eq. zero) .and.</span></a>
 <a name="1032"><span class="lineNum">    1032 </span>            :      &amp;           (workl(iheigr+j-1) .ne. zero)) then</a>
 <a name="1033"><span class="lineNum">    1033 </span>            :                workev(j) =  workl(invsub+(j-1)*ldq+ncv-1) /</a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">        102 :      &amp;                      workl(iheigr+j-1)</span></a>
-<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">        408 :             else if (iconj .eq. 0) then</span></a>
-<a name="1036"><span class="lineNum">    1036 </span><span class="lineCov">        204 :                temp = slapy2( workl(iheigr+j-1), workl(iheigi+j-1) )</span></a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">        204 :                if (temp. ne. zero) then</span></a>
+<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">        444 :      &amp;                      workl(iheigr+j-1)</span></a>
+<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">         24 :             else if (iconj .eq. 0) then</span></a>
+<a name="1036"><span class="lineNum">    1036 </span><span class="lineCov">         12 :                temp = slapy2( workl(iheigr+j-1), workl(iheigi+j-1) )</span></a>
+<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">         12 :                if (temp. ne. zero) then</span></a>
 <a name="1038"><span class="lineNum">    1038 </span>            :                   workev(j) = ( workl(invsub+(j-1)*ldq+ncv-1) *</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :      &amp;                          workl(iheigr+j-1) +</a>
 <a name="1040"><span class="lineNum">    1040 </span>            :      &amp;                          workl(invsub+j*ldq+ncv-1) *</a>
-<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">        204 :      &amp;                          workl(iheigi+j-1) ) / temp / temp</span></a>
+<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">         12 :      &amp;                          workl(iheigi+j-1) ) / temp / temp</span></a>
 <a name="1042"><span class="lineNum">    1042 </span>            :                   workev(j+1) = ( workl(invsub+j*ldq+ncv-1) *</a>
 <a name="1043"><span class="lineNum">    1043 </span>            :      &amp;                            workl(iheigr+j-1) -</a>
 <a name="1044"><span class="lineNum">    1044 </span>            :      &amp;                            workl(invsub+(j-1)*ldq+ncv-1) *</a>
-<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">        204 :      &amp;                            workl(iheigi+j-1) ) / temp / temp</span></a>
+<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">         12 :      &amp;                            workl(iheigi+j-1) ) / temp / temp</span></a>
 <a name="1046"><span class="lineNum">    1046 </span>            :                end if</a>
 <a name="1047"><span class="lineNum">    1047 </span>            :                iconj = 1</a>
 <a name="1048"><span class="lineNum">    1048 </span>            :             else</a>

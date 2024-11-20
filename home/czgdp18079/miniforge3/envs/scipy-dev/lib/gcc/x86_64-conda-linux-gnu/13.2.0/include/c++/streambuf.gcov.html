@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/streambuf</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/streambuf</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -271,8 +271,8 @@
 <a name="201"><span class="lineNum">     201 </span>            :   public:</a>
 <a name="202"><span class="lineNum">     202 </span>            :       /// Destructor deallocates no buffer space.</a>
 <a name="203"><span class="lineNum">     203 </span>            :       virtual</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         10 :       ~basic_streambuf()</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         10 :       { }</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         11 :       ~basic_streambuf()</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         11 :       { }</span></a>
 <a name="206"><span class="lineNum">     206 </span>            : </a>
 <a name="207"><span class="lineNum">     207 </span>            :       // [27.5.2.2.1] locales</a>
 <a name="208"><span class="lineNum">     208 </span>            :       /**</a>
@@ -583,11 +583,11 @@
 <a name="513"><span class="lineNum">     513 </span>            :        *         @a __gend == @c egptr()</a>
 <a name="514"><span class="lineNum">     514 </span>            :       */</a>
 <a name="515"><span class="lineNum">     515 </span>            :       void</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         15 :       setg(char_type* __gbeg, char_type* __gnext, char_type* __gend)</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         17 :       setg(char_type* __gbeg, char_type* __gnext, char_type* __gend)</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :       {</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         15 :         _M_in_beg = __gbeg;</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         15 :         _M_in_cur = __gnext;</span></a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         15 :         _M_in_end = __gend;</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         17 :         _M_in_beg = __gbeg;</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         17 :         _M_in_cur = __gnext;</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         17 :         _M_in_end = __gend;</span></a>
 <a name="521"><span class="lineNum">     521 </span>            :       }</a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
 <a name="523"><span class="lineNum">     523 </span>            :       // [27.5.2.3.2] put area access</a>
@@ -606,7 +606,7 @@
 <a name="536"><span class="lineNum">     536 </span><span class="lineCov">         12 :       pbase() const { return _M_out_beg; }</span></a>
 <a name="537"><span class="lineNum">     537 </span>            : </a>
 <a name="538"><span class="lineNum">     538 </span>            :       char_type*</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         22 :       pptr() const { return _M_out_cur; }</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         23 :       pptr() const { return _M_out_cur; }</span></a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
 <a name="541"><span class="lineNum">     541 </span>            :       char_type*</a>
 <a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :       epptr() const { return _M_out_end; }</span></a>
@@ -629,10 +629,10 @@
 <a name="559"><span class="lineNum">     559 </span>            :        *         @a __pend == @c epptr()</a>
 <a name="560"><span class="lineNum">     560 </span>            :       */</a>
 <a name="561"><span class="lineNum">     561 </span>            :       void</a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         10 :       setp(char_type* __pbeg, char_type* __pend)</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         11 :       setp(char_type* __pbeg, char_type* __pend)</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :       {</a>
 <a name="564"><span class="lineNum">     564 </span><span class="lineNoCov">          0 :         _M_out_beg = _M_out_cur = __pbeg;</span></a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         10 :         _M_out_end = __pend;</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         11 :         _M_out_end = __pend;</span></a>
 <a name="566"><span class="lineNum">     566 </span><span class="lineNoCov">          0 :       }</span></a>
 <a name="567"><span class="lineNum">     567 </span>            : </a>
 <a name="568"><span class="lineNum">     568 </span>            :       // [27.5.2.4] virtual functions</a>

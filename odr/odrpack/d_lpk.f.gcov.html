@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - odr/odrpack/d_lpk.f</title>
+  <title>LCOV - lcov.info - odr/odrpack/d_lpk.f</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">216</td>
+            <td class="headerCovTableEntry">215</td>
             <td class="headerCovTableEntry">393</td>
-            <td class="headerCovTableEntryLo">55.0 %</td>
+            <td class="headerCovTableEntryLo">54.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -412,38 +412,38 @@
 <a name="342"><span class="lineNum">     342 </span>            : C     COMPUTE INVERSE(R)</a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">         33 :       IF (MOD(JOB,10) .EQ. 0) GO TO 140</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        120 :          DO 100 K = 1, N</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         87 :             A(K,K) = 1.0D0/A(K,K)</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         87 :             T = -A(K,K)</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         87 :             CALL DSCAL(K-1,T,A(1,K),1)</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         87 :             KP1 = K + 1</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         87 :             IF (N .LT. KP1) GO TO 90</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        166 :             DO 80 J = KP1, N</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        112 :                T = A(K,J)</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        112 :                A(K,J) = 0.0D0</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">        112 :                CALL DAXPY(K,T,A(1,K),1,A(1,J),1)</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         87 :    80       CONTINUE</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        121 :          DO 100 K = 1, N</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         88 :             A(K,K) = 1.0D0/A(K,K)</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         88 :             T = -A(K,K)</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         88 :             CALL DSCAL(K-1,T,A(1,K),1)</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         88 :             KP1 = K + 1</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         88 :             IF (N .LT. KP1) GO TO 90</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        168 :             DO 80 J = KP1, N</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        113 :                T = A(K,J)</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        113 :                A(K,J) = 0.0D0</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">        113 :                CALL DAXPY(K,T,A(1,K),1,A(1,J),1)</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         88 :    80       CONTINUE</span></a>
 <a name="356"><span class="lineNum">     356 </span>            :    90       CONTINUE</a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineCov">         33 :   100    CONTINUE</span></a>
 <a name="358"><span class="lineNum">     358 </span>            : </a>
 <a name="359"><span class="lineNum">     359 </span>            : C        FORM  INVERSE(R) * TRANS(INVERSE(R))</a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        120 :          DO 130 J = 1, N</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         87 :             JM1 = J - 1</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         87 :             IF (JM1 .LT. 1) GO TO 120</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        166 :             DO 110 K = 1, JM1</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        112 :                T = A(K,J)</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        112 :                CALL DAXPY(K,T,A(1,J),1,A(1,K),1)</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         87 :   110       CONTINUE</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        121 :          DO 130 J = 1, N</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         88 :             JM1 = J - 1</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         88 :             IF (JM1 .LT. 1) GO TO 120</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        168 :             DO 110 K = 1, JM1</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        113 :                T = A(K,J)</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        113 :                CALL DAXPY(K,T,A(1,J),1,A(1,K),1)</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         88 :   110       CONTINUE</span></a>
 <a name="368"><span class="lineNum">     368 </span>            :   120       CONTINUE</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         87 :             T = A(J,J)</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         87 :             CALL DSCAL(J,T,A(1,J),1)</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         88 :             T = A(J,J)</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         88 :             CALL DSCAL(J,T,A(1,J),1)</span></a>
 <a name="371"><span class="lineNum">     371 </span><span class="lineCov">         33 :   130    CONTINUE</span></a>
 <a name="372"><span class="lineNum">     372 </span>            :   140 CONTINUE</a>
 <a name="373"><span class="lineNum">     373 </span><span class="lineCov">         33 :       RETURN</span></a>
 <a name="374"><span class="lineNum">     374 </span>            :       END</a>
 <a name="375"><span class="lineNum">     375 </span>            : *DQRDC</a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        791 :       SUBROUTINE DQRDC(X,LDX,N,P,QRAUX,JPVT,WORK,JOB)</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        792 :       SUBROUTINE DQRDC(X,LDX,N,P,QRAUX,JPVT,WORK,JOB)</span></a>
 <a name="377"><span class="lineNum">     377 </span>            : C***BEGIN PROLOGUE  DQRDC</a>
 <a name="378"><span class="lineNum">     378 </span>            : C***DATE WRITTEN   780814   (YYMMDD)</a>
 <a name="379"><span class="lineNum">     379 </span>            : C***REVISION DATE  820801   (YYMMDD)</a>
@@ -551,29 +551,29 @@
 <a name="481"><span class="lineNum">     481 </span>            : C***FIRST EXECUTABLE STATEMENT  DQRDC</a>
 <a name="482"><span class="lineNum">     482 </span>            : </a>
 <a name="483"><span class="lineNum">     483 </span>            : </a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        791 :       PL = 1</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        791 :       PU = 0</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        791 :       IF (JOB .EQ. 0) GO TO 60</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        792 :       PL = 1</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        792 :       PU = 0</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        792 :       IF (JOB .EQ. 0) GO TO 60</span></a>
 <a name="487"><span class="lineNum">     487 </span>            : </a>
 <a name="488"><span class="lineNum">     488 </span>            : C        PIVOTING HAS BEEN REQUESTED.  REARRANGE THE COLUMNS</a>
 <a name="489"><span class="lineNum">     489 </span>            : C        ACCORDING TO JPVT.</a>
 <a name="490"><span class="lineNum">     490 </span>            : </a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       1513 :          DO 20 J = 1, P</span></a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1123 :             SWAPJ = JPVT(J) .GT. 0</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       1123 :             NEGJ = JPVT(J) .LT. 0</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       1123 :             JPVT(J) = J</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1123 :             IF (NEGJ) JPVT(J) = -J</span></a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       1123 :             IF (.NOT.SWAPJ) GO TO 10</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       1516 :          DO 20 J = 1, P</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1125 :             SWAPJ = JPVT(J) .GT. 0</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       1125 :             NEGJ = JPVT(J) .LT. 0</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       1125 :             JPVT(J) = J</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1125 :             IF (NEGJ) JPVT(J) = -J</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       1125 :             IF (.NOT.SWAPJ) GO TO 10</span></a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :                IF (J .NE. PL) CALL DSWAP(N,X(1,PL),1,X(1,J),1)</span></a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :                JPVT(J) = JPVT(PL)</span></a>
 <a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :                JPVT(PL) = J</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       1123 :                PL = PL + 1</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       1125 :                PL = PL + 1</span></a>
 <a name="501"><span class="lineNum">     501 </span>            :    10       CONTINUE</a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        390 :    20    CONTINUE</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        390 :          PU = P</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       1513 :          DO 50 JJ = 1, P</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       1123 :             J = P - JJ + 1</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">       1123 :             IF (JPVT(J) .GE. 0) GO TO 40</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        391 :    20    CONTINUE</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        391 :          PU = P</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       1516 :          DO 50 JJ = 1, P</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       1125 :             J = P - JJ + 1</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">       1125 :             IF (JPVT(J) .GE. 0) GO TO 40</span></a>
 <a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :                JPVT(J) = -JPVT(J)</span></a>
 <a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                IF (J .EQ. PU) GO TO 30</span></a>
 <a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :                   CALL DSWAP(N,X(1,PU),1,X(1,J),1)</span></a>
@@ -581,93 +581,93 @@
 <a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :                   JPVT(PU) = JPVT(J)</span></a>
 <a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :                   JPVT(J) = JP</span></a>
 <a name="513"><span class="lineNum">     513 </span>            :    30          CONTINUE</a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">       1123 :                PU = PU - 1</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">       1125 :                PU = PU - 1</span></a>
 <a name="515"><span class="lineNum">     515 </span>            :    40       CONTINUE</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        791 :    50    CONTINUE</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        792 :    50    CONTINUE</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :    60 CONTINUE</a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
 <a name="519"><span class="lineNum">     519 </span>            : C     COMPUTE THE NORMS OF THE FREE COLUMNS.</a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">        390 :       IF (PU .LT. PL) GO TO 80</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">       1513 :       DO 70 J = PL, PU</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       1123 :          QRAUX(J) = DNRM2(N,X(1,J),1)</span></a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">       1123 :          WORK(J) = QRAUX(J)</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        390 :    70 CONTINUE</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">        391 :       IF (PU .LT. PL) GO TO 80</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">       1516 :       DO 70 J = PL, PU</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       1125 :          QRAUX(J) = DNRM2(N,X(1,J),1)</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">       1125 :          WORK(J) = QRAUX(J)</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        391 :    70 CONTINUE</span></a>
 <a name="526"><span class="lineNum">     526 </span>            :    80 CONTINUE</a>
 <a name="527"><span class="lineNum">     527 </span>            : </a>
 <a name="528"><span class="lineNum">     528 </span>            : C     PERFORM THE HOUSEHOLDER REDUCTION OF X.</a>
 <a name="529"><span class="lineNum">     529 </span>            : </a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        791 :       LUP = MIN0(N,P)</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">       3146 :       DO 200 L = 1, LUP</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">       2355 :          IF (L .LT. PL .OR. L .GE. PU) GO TO 120</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        792 :       LUP = MIN0(N,P)</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">       3149 :       DO 200 L = 1, LUP</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">       2357 :          IF (L .LT. PL .OR. L .GE. PU) GO TO 120</span></a>
 <a name="533"><span class="lineNum">     533 </span>            : </a>
 <a name="534"><span class="lineNum">     534 </span>            : C           LOCATE THE COLUMN OF LARGEST NORM AND BRING IT</a>
 <a name="535"><span class="lineNum">     535 </span>            : C           INTO THE PIVOT POSITION.</a>
 <a name="536"><span class="lineNum">     536 </span>            : </a>
 <a name="537"><span class="lineNum">     537 </span>            :             MAXNRM = 0.0D0</a>
 <a name="538"><span class="lineNum">     538 </span>            :             MAXJ = L</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">       3283 :             DO 100 J = L, PU</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">       2550 :                IF (QRAUX(J) .LE. MAXNRM) GO TO 90</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       1591 :                   MAXNRM = QRAUX(J)</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">       2550 :                   MAXJ = J</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">       3286 :             DO 100 J = L, PU</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">       2552 :                IF (QRAUX(J) .LE. MAXNRM) GO TO 90</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       1592 :                   MAXNRM = QRAUX(J)</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">       2552 :                   MAXJ = J</span></a>
 <a name="543"><span class="lineNum">     543 </span>            :    90          CONTINUE</a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        733 :   100       CONTINUE</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">        733 :             IF (MAXJ .EQ. L) GO TO 110</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        734 :   100       CONTINUE</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">        734 :             IF (MAXJ .EQ. L) GO TO 110</span></a>
 <a name="546"><span class="lineNum">     546 </span><span class="lineCov">        565 :                CALL DSWAP(N,X(1,L),1,X(1,MAXJ),1)</span></a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineCov">        565 :                QRAUX(MAXJ) = QRAUX(L)</span></a>
 <a name="548"><span class="lineNum">     548 </span><span class="lineCov">        565 :                WORK(MAXJ) = WORK(L)</span></a>
 <a name="549"><span class="lineNum">     549 </span><span class="lineCov">        565 :                JP = JPVT(MAXJ)</span></a>
 <a name="550"><span class="lineNum">     550 </span><span class="lineCov">        565 :                JPVT(MAXJ) = JPVT(L)</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       2355 :                JPVT(L) = JP</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       2357 :                JPVT(L) = JP</span></a>
 <a name="552"><span class="lineNum">     552 </span>            :   110       CONTINUE</a>
 <a name="553"><span class="lineNum">     553 </span>            :   120    CONTINUE</a>
-<a name="554"><span class="lineNum">     554 </span><span class="lineCov">       2355 :          QRAUX(L) = 0.0D0</span></a>
-<a name="555"><span class="lineNum">     555 </span><span class="lineCov">       2355 :          IF (L .EQ. N) GO TO 190</span></a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineCov">       2357 :          QRAUX(L) = 0.0D0</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">       2357 :          IF (L .EQ. N) GO TO 190</span></a>
 <a name="556"><span class="lineNum">     556 </span>            : </a>
 <a name="557"><span class="lineNum">     557 </span>            : C           COMPUTE THE HOUSEHOLDER TRANSFORMATION FOR COLUMN L.</a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       2355 :             NRMXL = DNRM2(N-L+1,X(L,L),1)</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       2355 :             IF (NRMXL .EQ. 0.0D0) GO TO 180</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">       2355 :                IF (X(L,L) .NE. 0.0D0) NRMXL = DSIGN(NRMXL,X(L,L))</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">       2355 :                CALL DSCAL(N-L+1,1.0D0/NRMXL,X(L,L),1)</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">       2355 :                X(L,L) = 1.0D0 + X(L,L)</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       2357 :             NRMXL = DNRM2(N-L+1,X(L,L),1)</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       2357 :             IF (NRMXL .EQ. 0.0D0) GO TO 180</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">       2357 :                IF (X(L,L) .NE. 0.0D0) NRMXL = DSIGN(NRMXL,X(L,L))</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">       2357 :                CALL DSCAL(N-L+1,1.0D0/NRMXL,X(L,L),1)</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">       2357 :                X(L,L) = 1.0D0 + X(L,L)</span></a>
 <a name="564"><span class="lineNum">     564 </span>            : </a>
 <a name="565"><span class="lineNum">     565 </span>            : C              APPLY THE TRANSFORMATION TO THE REMAINING COLUMNS,</a>
 <a name="566"><span class="lineNum">     566 </span>            : C              UPDATING THE NORMS.</a>
 <a name="567"><span class="lineNum">     567 </span>            : </a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">       2355 :                LP1 = L + 1</span></a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">       2355 :                IF (P .LT. LP1) GO TO 170</span></a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       5670 :                DO 160 J = LP1, P</span></a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">       4106 :                   T = -DDOT(N-L+1,X(L,L),1,X(L,J),1)/X(L,L)</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       4106 :                   CALL DAXPY(N-L+1,T,X(L,L),1,X(L,J),1)</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       4106 :                   IF (J .LT. PL .OR. J .GT. PU) GO TO 150</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       1817 :                   IF (QRAUX(J) .EQ. 0.0D0) GO TO 150</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1817 :                      TT = 1.0D0 - (DABS(X(L,J))/QRAUX(J))**2</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">       1817 :                      TT = DMAX1(TT,0.0D0)</span></a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">       1817 :                      T = TT</span></a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1817 :                      TT = 1.0D0 + 0.05D0*TT*(QRAUX(J)/WORK(J))**2</span></a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">       1817 :                      IF (TT .EQ. 1.0D0) GO TO 130</span></a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       1816 :                         QRAUX(J) = QRAUX(J)*DSQRT(T)</span></a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">       1817 :                      GO TO 140</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">       2357 :                LP1 = L + 1</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">       2357 :                IF (P .LT. LP1) GO TO 170</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       5672 :                DO 160 J = LP1, P</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">       4107 :                   T = -DDOT(N-L+1,X(L,L),1,X(L,J),1)/X(L,L)</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       4107 :                   CALL DAXPY(N-L+1,T,X(L,L),1,X(L,J),1)</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       4107 :                   IF (J .LT. PL .OR. J .GT. PU) GO TO 150</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       1818 :                   IF (QRAUX(J) .EQ. 0.0D0) GO TO 150</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1818 :                      TT = 1.0D0 - (DABS(X(L,J))/QRAUX(J))**2</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">       1818 :                      TT = DMAX1(TT,0.0D0)</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">       1818 :                      T = TT</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1818 :                      TT = 1.0D0 + 0.05D0*TT*(QRAUX(J)/WORK(J))**2</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">       1818 :                      IF (TT .EQ. 1.0D0) GO TO 130</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       1818 :                         QRAUX(J) = QRAUX(J)*DSQRT(T)</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">       1818 :                      GO TO 140</span></a>
 <a name="582"><span class="lineNum">     582 </span>            :   130                CONTINUE</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          1 :                         QRAUX(J) = DNRM2(N-L,X(L+1,J),1)</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">       2290 :                         WORK(J) = QRAUX(J)</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineNoCov">          0 :                         QRAUX(J) = DNRM2(N-L,X(L+1,J),1)</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">       2289 :                         WORK(J) = QRAUX(J)</span></a>
 <a name="585"><span class="lineNum">     585 </span>            :   140                CONTINUE</a>
 <a name="586"><span class="lineNum">     586 </span>            :   150             CONTINUE</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       2355 :   160          CONTINUE</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       2357 :   160          CONTINUE</span></a>
 <a name="588"><span class="lineNum">     588 </span>            :   170          CONTINUE</a>
 <a name="589"><span class="lineNum">     589 </span>            : </a>
 <a name="590"><span class="lineNum">     590 </span>            : C              SAVE THE TRANSFORMATION.</a>
 <a name="591"><span class="lineNum">     591 </span>            : </a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">       2355 :                QRAUX(L) = X(L,L)</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       2355 :                X(L,L) = -NRMXL</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">       2357 :                QRAUX(L) = X(L,L)</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       2357 :                X(L,L) = -NRMXL</span></a>
 <a name="594"><span class="lineNum">     594 </span>            :   180       CONTINUE</a>
 <a name="595"><span class="lineNum">     595 </span>            :   190    CONTINUE</a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        791 :   200 CONTINUE</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        791 :       RETURN</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        792 :   200 CONTINUE</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        792 :       RETURN</span></a>
 <a name="598"><span class="lineNum">     598 </span>            :       END</a>
 <a name="599"><span class="lineNum">     599 </span>            : *DQRSL</a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        791 :       SUBROUTINE DQRSL(X,LDX,N,K,QRAUX,Y,QY,QTY,B,RSD,XB,JOB,INFO)</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        792 :       SUBROUTINE DQRSL(X,LDX,N,K,QRAUX,Y,QY,QTY,B,RSD,XB,JOB,INFO)</span></a>
 <a name="601"><span class="lineNum">     601 </span>            : C***BEGIN PROLOGUE  DQRSL</a>
 <a name="602"><span class="lineNum">     602 </span>            : C***DATE WRITTEN   780814   (YYMMDD)</a>
 <a name="603"><span class="lineNum">     603 </span>            : C***REVISION DATE  820801   (YYMMDD)</a>
@@ -816,20 +816,20 @@
 <a name="746"><span class="lineNum">     746 </span>            : C***FIRST EXECUTABLE STATEMENT  DQRSL</a>
 <a name="747"><span class="lineNum">     747 </span>            : </a>
 <a name="748"><span class="lineNum">     748 </span>            : </a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">        791 :       INFO = 0</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">        792 :       INFO = 0</span></a>
 <a name="750"><span class="lineNum">     750 </span>            : </a>
 <a name="751"><span class="lineNum">     751 </span>            : C     DETERMINE WHAT IS TO BE COMPUTED.</a>
 <a name="752"><span class="lineNum">     752 </span>            : </a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">        791 :       CQY = JOB/10000 .NE. 0</span></a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">        791 :       CQTY = MOD(JOB,10000) .NE. 0</span></a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">        791 :       CB = MOD(JOB,1000)/100 .NE. 0</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        791 :       CR = MOD(JOB,100)/10 .NE. 0</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        791 :       CXB = MOD(JOB,10) .NE. 0</span></a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">        791 :       JU = MIN0(K,N-1)</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">        792 :       CQY = JOB/10000 .NE. 0</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">        792 :       CQTY = MOD(JOB,10000) .NE. 0</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">        792 :       CB = MOD(JOB,1000)/100 .NE. 0</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">        792 :       CR = MOD(JOB,100)/10 .NE. 0</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">        792 :       CXB = MOD(JOB,10) .NE. 0</span></a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">        792 :       JU = MIN0(K,N-1)</span></a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
 <a name="760"><span class="lineNum">     760 </span>            : C     SPECIAL ACTION WHEN N=1.</a>
 <a name="761"><span class="lineNum">     761 </span>            : </a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">        791 :       IF (JU .NE. 0) GO TO 40</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">        792 :       IF (JU .NE. 0) GO TO 40</span></a>
 <a name="763"><span class="lineNum">     763 </span><span class="lineNoCov">          0 :          IF (CQY) QY(1) = Y(1)</span></a>
 <a name="764"><span class="lineNum">     764 </span><span class="lineNoCov">          0 :          IF (CQTY) QTY(1) = Y(1)</span></a>
 <a name="765"><span class="lineNum">     765 </span><span class="lineNoCov">          0 :          IF (CXB) XB(1) = Y(1)</span></a>
@@ -842,14 +842,14 @@
 <a name="772"><span class="lineNum">     772 </span>            :    20       CONTINUE</a>
 <a name="773"><span class="lineNum">     773 </span>            :    30    CONTINUE</a>
 <a name="774"><span class="lineNum">     774 </span><span class="lineNoCov">          0 :          IF (CR) RSD(1) = 0.0D0</span></a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">        791 :       GO TO 250</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">        792 :       GO TO 250</span></a>
 <a name="776"><span class="lineNum">     776 </span>            :    40 CONTINUE</a>
 <a name="777"><span class="lineNum">     777 </span>            : </a>
 <a name="778"><span class="lineNum">     778 </span>            : C        SET UP TO COMPUTE QY OR QTY.</a>
 <a name="779"><span class="lineNum">     779 </span>            : </a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">        791 :          IF (CQY) CALL DCOPY(N,Y,1,QY,1)</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">        791 :          IF (CQTY) CALL DCOPY(N,Y,1,QTY,1)</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">        791 :          IF (.NOT.CQY) GO TO 70</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">        792 :          IF (CQY) CALL DCOPY(N,Y,1,QY,1)</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">        792 :          IF (CQTY) CALL DCOPY(N,Y,1,QTY,1)</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">        792 :          IF (.NOT.CQY) GO TO 70</span></a>
 <a name="783"><span class="lineNum">     783 </span>            : </a>
 <a name="784"><span class="lineNum">     784 </span>            : C           COMPUTE QY.</a>
 <a name="785"><span class="lineNum">     785 </span>            : </a>
@@ -862,40 +862,40 @@
 <a name="792"><span class="lineNum">     792 </span><span class="lineNoCov">          0 :                   CALL DAXPY(N-J+1,T,X(J,J),1,QY(J),1)</span></a>
 <a name="793"><span class="lineNum">     793 </span><span class="lineNoCov">          0 :                   X(J,J) = TEMP</span></a>
 <a name="794"><span class="lineNum">     794 </span>            :    50          CONTINUE</a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">        791 :    60       CONTINUE</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">        792 :    60       CONTINUE</span></a>
 <a name="796"><span class="lineNum">     796 </span>            :    70    CONTINUE</a>
-<a name="797"><span class="lineNum">     797 </span><span class="lineCov">        791 :          IF (.NOT.CQTY) GO TO 100</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">        792 :          IF (.NOT.CQTY) GO TO 100</span></a>
 <a name="798"><span class="lineNum">     798 </span>            : </a>
 <a name="799"><span class="lineNum">     799 </span>            : C           COMPUTE TRANS(Q)*Y.</a>
 <a name="800"><span class="lineNum">     800 </span>            : </a>
-<a name="801"><span class="lineNum">     801 </span><span class="lineCov">       3146 :             DO 90 J = 1, JU</span></a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">       2355 :                IF (QRAUX(J) .EQ. 0.0D0) GO TO 80</span></a>
-<a name="803"><span class="lineNum">     803 </span><span class="lineCov">       2355 :                   TEMP = X(J,J)</span></a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       2355 :                   X(J,J) = QRAUX(J)</span></a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       2355 :                   T = -DDOT(N-J+1,X(J,J),1,QTY(J),1)/X(J,J)</span></a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       2355 :                   CALL DAXPY(N-J+1,T,X(J,J),1,QTY(J),1)</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       2355 :                   X(J,J) = TEMP</span></a>
+<a name="801"><span class="lineNum">     801 </span><span class="lineCov">       3149 :             DO 90 J = 1, JU</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">       2357 :                IF (QRAUX(J) .EQ. 0.0D0) GO TO 80</span></a>
+<a name="803"><span class="lineNum">     803 </span><span class="lineCov">       2357 :                   TEMP = X(J,J)</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       2357 :                   X(J,J) = QRAUX(J)</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">       2357 :                   T = -DDOT(N-J+1,X(J,J),1,QTY(J),1)/X(J,J)</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       2357 :                   CALL DAXPY(N-J+1,T,X(J,J),1,QTY(J),1)</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       2357 :                   X(J,J) = TEMP</span></a>
 <a name="808"><span class="lineNum">     808 </span>            :    80          CONTINUE</a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        791 :    90       CONTINUE</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        792 :    90       CONTINUE</span></a>
 <a name="810"><span class="lineNum">     810 </span>            :   100    CONTINUE</a>
 <a name="811"><span class="lineNum">     811 </span>            : </a>
 <a name="812"><span class="lineNum">     812 </span>            : C        SET UP TO COMPUTE B, RSD, OR XB.</a>
 <a name="813"><span class="lineNum">     813 </span>            : </a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        791 :          IF (CB) CALL DCOPY(K,QTY,1,B,1)</span></a>
-<a name="815"><span class="lineNum">     815 </span><span class="lineCov">        791 :          KP1 = K + 1</span></a>
-<a name="816"><span class="lineNum">     816 </span><span class="lineCov">        791 :          IF (CXB) CALL DCOPY(K,QTY,1,XB,1)</span></a>
-<a name="817"><span class="lineNum">     817 </span><span class="lineCov">        791 :          IF (CR .AND. K .LT. N) CALL DCOPY(N-K,QTY(KP1),1,RSD(KP1),1)</span></a>
-<a name="818"><span class="lineNum">     818 </span><span class="lineCov">        791 :          IF (.NOT.CXB .OR. KP1 .GT. N) GO TO 120</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        792 :          IF (CB) CALL DCOPY(K,QTY,1,B,1)</span></a>
+<a name="815"><span class="lineNum">     815 </span><span class="lineCov">        792 :          KP1 = K + 1</span></a>
+<a name="816"><span class="lineNum">     816 </span><span class="lineCov">        792 :          IF (CXB) CALL DCOPY(K,QTY,1,XB,1)</span></a>
+<a name="817"><span class="lineNum">     817 </span><span class="lineCov">        792 :          IF (CR .AND. K .LT. N) CALL DCOPY(N-K,QTY(KP1),1,RSD(KP1),1)</span></a>
+<a name="818"><span class="lineNum">     818 </span><span class="lineCov">        792 :          IF (.NOT.CXB .OR. KP1 .GT. N) GO TO 120</span></a>
 <a name="819"><span class="lineNum">     819 </span><span class="lineNoCov">          0 :             DO 110 I = KP1, N</span></a>
 <a name="820"><span class="lineNum">     820 </span><span class="lineNoCov">          0 :                XB(I) = 0.0D0</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">        791 :   110       CONTINUE</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">        792 :   110       CONTINUE</span></a>
 <a name="822"><span class="lineNum">     822 </span>            :   120    CONTINUE</a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">        791 :          IF (.NOT.CR) GO TO 140</span></a>
+<a name="823"><span class="lineNum">     823 </span><span class="lineCov">        792 :          IF (.NOT.CR) GO TO 140</span></a>
 <a name="824"><span class="lineNum">     824 </span><span class="lineNoCov">          0 :             DO 130 I = 1, K</span></a>
 <a name="825"><span class="lineNum">     825 </span><span class="lineNoCov">          0 :                RSD(I) = 0.0D0</span></a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">        791 :   130       CONTINUE</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">        792 :   130       CONTINUE</span></a>
 <a name="827"><span class="lineNum">     827 </span>            :   140    CONTINUE</a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">        791 :          IF (.NOT.CB) GO TO 190</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">        792 :          IF (.NOT.CB) GO TO 190</span></a>
 <a name="829"><span class="lineNum">     829 </span>            : </a>
 <a name="830"><span class="lineNum">     830 </span>            : C           COMPUTE B.</a>
 <a name="831"><span class="lineNum">     831 </span>            : </a>
@@ -911,10 +911,10 @@
 <a name="841"><span class="lineNum">     841 </span><span class="lineNoCov">          0 :                   T = -B(J)</span></a>
 <a name="842"><span class="lineNum">     842 </span><span class="lineNoCov">          0 :                   CALL DAXPY(J-1,T,X(1,J),1,B,1)</span></a>
 <a name="843"><span class="lineNum">     843 </span>            :   160          CONTINUE</a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">        791 :   170       CONTINUE</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">        792 :   170       CONTINUE</span></a>
 <a name="845"><span class="lineNum">     845 </span>            :   180       CONTINUE</a>
 <a name="846"><span class="lineNum">     846 </span>            :   190    CONTINUE</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        791 :          IF (.NOT.CR .AND. .NOT.CXB) GO TO 240</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        792 :          IF (.NOT.CR .AND. .NOT.CXB) GO TO 240</span></a>
 <a name="848"><span class="lineNum">     848 </span>            : </a>
 <a name="849"><span class="lineNum">     849 </span>            : C           COMPUTE RSD OR XB AS REQUIRED.</a>
 <a name="850"><span class="lineNum">     850 </span>            : </a>
@@ -933,13 +933,13 @@
 <a name="863"><span class="lineNum">     863 </span>            :   210             CONTINUE</a>
 <a name="864"><span class="lineNum">     864 </span><span class="lineNoCov">          0 :                   X(J,J) = TEMP</span></a>
 <a name="865"><span class="lineNum">     865 </span>            :   220          CONTINUE</a>
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">        791 :   230       CONTINUE</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">        792 :   230       CONTINUE</span></a>
 <a name="867"><span class="lineNum">     867 </span>            :   240    CONTINUE</a>
 <a name="868"><span class="lineNum">     868 </span>            :   250 CONTINUE</a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineCov">        791 :       RETURN</span></a>
+<a name="869"><span class="lineNum">     869 </span><span class="lineCov">        792 :       RETURN</span></a>
 <a name="870"><span class="lineNum">     870 </span>            :       END</a>
 <a name="871"><span class="lineNum">     871 </span>            : *DTRCO</a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">        394 :       SUBROUTINE DTRCO(T,LDT,N,RCOND,Z,JOB)</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">        391 :       SUBROUTINE DTRCO(T,LDT,N,RCOND,Z,JOB)</span></a>
 <a name="873"><span class="lineNum">     873 </span>            : C***BEGIN PROLOGUE  DTRCO</a>
 <a name="874"><span class="lineNum">     874 </span>            : C***DATE WRITTEN   780814   (YYMMDD)</a>
 <a name="875"><span class="lineNum">     875 </span>            : C***REVISION DATE  820801   (YYMMDD)</a>
@@ -1025,18 +1025,18 @@
 <a name="955"><span class="lineNum">     955 </span>            : C***FIRST EXECUTABLE STATEMENT  DTRCO</a>
 <a name="956"><span class="lineNum">     956 </span>            : </a>
 <a name="957"><span class="lineNum">     957 </span>            : </a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">        394 :       LOWER = JOB .EQ. 0</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">        391 :       LOWER = JOB .EQ. 0</span></a>
 <a name="959"><span class="lineNum">     959 </span>            : </a>
 <a name="960"><span class="lineNum">     960 </span>            : C     COMPUTE 1-NORM OF T</a>
 <a name="961"><span class="lineNum">     961 </span>            : </a>
-<a name="962"><span class="lineNum">     962 </span><span class="lineCov">        394 :       TNORM = 0.0D0</span></a>
-<a name="963"><span class="lineNum">     963 </span><span class="lineCov">       1521 :       DO 10 J = 1, N</span></a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       1127 :          L = J</span></a>
-<a name="965"><span class="lineNum">     965 </span><span class="lineCov">       1127 :          IF (LOWER) L = N + 1 - J</span></a>
+<a name="962"><span class="lineNum">     962 </span><span class="lineCov">        391 :       TNORM = 0.0D0</span></a>
+<a name="963"><span class="lineNum">     963 </span><span class="lineCov">       1516 :       DO 10 J = 1, N</span></a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       1125 :          L = J</span></a>
+<a name="965"><span class="lineNum">     965 </span><span class="lineCov">       1125 :          IF (LOWER) L = N + 1 - J</span></a>
 <a name="966"><span class="lineNum">     966 </span>            :          I1 = 1</a>
 <a name="967"><span class="lineNum">     967 </span><span class="lineNoCov">          0 :          IF (LOWER) I1 = J</span></a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">       1127 :          TNORM = DMAX1(TNORM,DASUM(L,T(I1,J),1))</span></a>
-<a name="969"><span class="lineNum">     969 </span><span class="lineCov">        394 :    10 CONTINUE</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">       1125 :          TNORM = DMAX1(TNORM,DASUM(L,T(I1,J),1))</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">        391 :    10 CONTINUE</span></a>
 <a name="970"><span class="lineNum">     970 </span>            : </a>
 <a name="971"><span class="lineNum">     971 </span>            : C     RCOND = 1/(NORM(T)*(ESTIMATE OF NORM(INVERSE(T)))) .</a>
 <a name="972"><span class="lineNum">     972 </span>            : C     ESTIMATE = NORM(Z)/NORM(Y) WHERE  T*Z = Y  AND  TRANS(T)*Y = E .</a>
@@ -1047,86 +1047,86 @@
 <a name="977"><span class="lineNum">     977 </span>            : </a>
 <a name="978"><span class="lineNum">     978 </span>            : C     SOLVE TRANS(T)*Y = E</a>
 <a name="979"><span class="lineNum">     979 </span>            : </a>
-<a name="980"><span class="lineNum">     980 </span><span class="lineCov">        394 :       EK = 1.0D0</span></a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineCov">       1521 :       DO 20 J = 1, N</span></a>
-<a name="982"><span class="lineNum">     982 </span><span class="lineCov">       1127 :          Z(J) = 0.0D0</span></a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineCov">        394 :    20 CONTINUE</span></a>
-<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       1521 :       DO 100 KK = 1, N</span></a>
-<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       1127 :          K = KK</span></a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       1127 :          IF (LOWER) K = N + 1 - KK</span></a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">       1127 :          IF (Z(K) .NE. 0.0D0) EK = DSIGN(EK,-Z(K))</span></a>
-<a name="988"><span class="lineNum">     988 </span><span class="lineCov">       1127 :          IF (DABS(EK-Z(K)) .LE. DABS(T(K,K))) GO TO 30</span></a>
-<a name="989"><span class="lineNum">     989 </span><span class="lineCov">        229 :             S = DABS(T(K,K))/DABS(EK-Z(K))</span></a>
-<a name="990"><span class="lineNum">     990 </span><span class="lineCov">        229 :             CALL DSCAL(N,S,Z,1)</span></a>
-<a name="991"><span class="lineNum">     991 </span><span class="lineCov">       1127 :             EK = S*EK</span></a>
+<a name="980"><span class="lineNum">     980 </span><span class="lineCov">        391 :       EK = 1.0D0</span></a>
+<a name="981"><span class="lineNum">     981 </span><span class="lineCov">       1516 :       DO 20 J = 1, N</span></a>
+<a name="982"><span class="lineNum">     982 </span><span class="lineCov">       1125 :          Z(J) = 0.0D0</span></a>
+<a name="983"><span class="lineNum">     983 </span><span class="lineCov">        391 :    20 CONTINUE</span></a>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       1516 :       DO 100 KK = 1, N</span></a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       1125 :          K = KK</span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       1125 :          IF (LOWER) K = N + 1 - KK</span></a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">       1125 :          IF (Z(K) .NE. 0.0D0) EK = DSIGN(EK,-Z(K))</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">       1125 :          IF (DABS(EK-Z(K)) .LE. DABS(T(K,K))) GO TO 30</span></a>
+<a name="989"><span class="lineNum">     989 </span><span class="lineCov">        230 :             S = DABS(T(K,K))/DABS(EK-Z(K))</span></a>
+<a name="990"><span class="lineNum">     990 </span><span class="lineCov">        230 :             CALL DSCAL(N,S,Z,1)</span></a>
+<a name="991"><span class="lineNum">     991 </span><span class="lineCov">       1125 :             EK = S*EK</span></a>
 <a name="992"><span class="lineNum">     992 </span>            :    30    CONTINUE</a>
-<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1127 :          WK = EK - Z(K)</span></a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       1127 :          WKM = -EK - Z(K)</span></a>
-<a name="995"><span class="lineNum">     995 </span><span class="lineCov">       1127 :          S = DABS(WK)</span></a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1127 :          SM = DABS(WKM)</span></a>
-<a name="997"><span class="lineNum">     997 </span><span class="lineCov">       1127 :          IF (T(K,K) .EQ. 0.0D0) GO TO 40</span></a>
-<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1127 :             WK = WK/T(K,K)</span></a>
-<a name="999"><span class="lineNum">     999 </span><span class="lineCov">       1127 :             WKM = WKM/T(K,K)</span></a>
-<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">       1127 :          GO TO 50</span></a>
+<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1125 :          WK = EK - Z(K)</span></a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       1125 :          WKM = -EK - Z(K)</span></a>
+<a name="995"><span class="lineNum">     995 </span><span class="lineCov">       1125 :          S = DABS(WK)</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1125 :          SM = DABS(WKM)</span></a>
+<a name="997"><span class="lineNum">     997 </span><span class="lineCov">       1125 :          IF (T(K,K) .EQ. 0.0D0) GO TO 40</span></a>
+<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1125 :             WK = WK/T(K,K)</span></a>
+<a name="999"><span class="lineNum">     999 </span><span class="lineCov">       1125 :             WKM = WKM/T(K,K)</span></a>
+<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">       1125 :          GO TO 50</span></a>
 <a name="1001"><span class="lineNum">    1001 </span>            :    40    CONTINUE</a>
 <a name="1002"><span class="lineNum">    1002 </span>            :             WK = 1.0D0</a>
 <a name="1003"><span class="lineNum">    1003 </span>            :             WKM = 1.0D0</a>
 <a name="1004"><span class="lineNum">    1004 </span>            :    50    CONTINUE</a>
-<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">       1127 :          IF (KK .EQ. N) GO TO 90</span></a>
-<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        733 :             J1 = K + 1</span></a>
-<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">        733 :             IF (LOWER) J1 = 1</span></a>
-<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">        733 :             J2 = N</span></a>
-<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">        733 :             IF (LOWER) J2 = K - 1</span></a>
-<a name="1010"><span class="lineNum">    1010 </span><span class="lineCov">       2550 :             DO 60 J = J1, J2</span></a>
-<a name="1011"><span class="lineNum">    1011 </span><span class="lineCov">       1817 :                SM = SM + DABS(Z(J)+WKM*T(K,J))</span></a>
-<a name="1012"><span class="lineNum">    1012 </span><span class="lineCov">       1817 :                Z(J) = Z(J) + WK*T(K,J)</span></a>
-<a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">       1817 :                S = S + DABS(Z(J))</span></a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">        733 :    60       CONTINUE</span></a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">        733 :             IF (S .GE. SM) GO TO 80</span></a>
+<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">       1125 :          IF (KK .EQ. N) GO TO 90</span></a>
+<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        734 :             J1 = K + 1</span></a>
+<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">        734 :             IF (LOWER) J1 = 1</span></a>
+<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">        734 :             J2 = N</span></a>
+<a name="1009"><span class="lineNum">    1009 </span><span class="lineCov">        734 :             IF (LOWER) J2 = K - 1</span></a>
+<a name="1010"><span class="lineNum">    1010 </span><span class="lineCov">       2552 :             DO 60 J = J1, J2</span></a>
+<a name="1011"><span class="lineNum">    1011 </span><span class="lineCov">       1818 :                SM = SM + DABS(Z(J)+WKM*T(K,J))</span></a>
+<a name="1012"><span class="lineNum">    1012 </span><span class="lineCov">       1818 :                Z(J) = Z(J) + WK*T(K,J)</span></a>
+<a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">       1818 :                S = S + DABS(Z(J))</span></a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">        734 :    60       CONTINUE</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">        734 :             IF (S .GE. SM) GO TO 80</span></a>
 <a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">        114 :                W = WKM - WK</span></a>
 <a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">        114 :                WK = WKM</span></a>
 <a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">        334 :                DO 70 J = J1, J2</span></a>
 <a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">        220 :                   Z(J) = Z(J) + W*T(K,J)</span></a>
-<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       1127 :    70          CONTINUE</span></a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       1125 :    70          CONTINUE</span></a>
 <a name="1021"><span class="lineNum">    1021 </span>            :    80       CONTINUE</a>
 <a name="1022"><span class="lineNum">    1022 </span>            :    90    CONTINUE</a>
-<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">       1127 :          Z(K) = WK</span></a>
-<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">        394 :   100 CONTINUE</span></a>
-<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">        394 :       S = 1.0D0/DASUM(N,Z,1)</span></a>
-<a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">        394 :       CALL DSCAL(N,S,Z,1)</span></a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">       1125 :          Z(K) = WK</span></a>
+<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">        391 :   100 CONTINUE</span></a>
+<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">        391 :       S = 1.0D0/DASUM(N,Z,1)</span></a>
+<a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">        391 :       CALL DSCAL(N,S,Z,1)</span></a>
 <a name="1027"><span class="lineNum">    1027 </span>            : </a>
-<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">        394 :       YNORM = 1.0D0</span></a>
+<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">        391 :       YNORM = 1.0D0</span></a>
 <a name="1029"><span class="lineNum">    1029 </span>            : </a>
 <a name="1030"><span class="lineNum">    1030 </span>            : C     SOLVE T*Z = Y</a>
 <a name="1031"><span class="lineNum">    1031 </span>            : </a>
-<a name="1032"><span class="lineNum">    1032 </span><span class="lineCov">       1521 :       DO 130 KK = 1, N</span></a>
-<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">       1127 :          K = N + 1 - KK</span></a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">       1127 :          IF (LOWER) K = KK</span></a>
-<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">       1127 :          IF (DABS(Z(K)) .LE. DABS(T(K,K))) GO TO 110</span></a>
-<a name="1036"><span class="lineNum">    1036 </span><span class="lineCov">        129 :             S = DABS(T(K,K))/DABS(Z(K))</span></a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">        129 :             CALL DSCAL(N,S,Z,1)</span></a>
-<a name="1038"><span class="lineNum">    1038 </span><span class="lineCov">       1127 :             YNORM = S*YNORM</span></a>
+<a name="1032"><span class="lineNum">    1032 </span><span class="lineCov">       1516 :       DO 130 KK = 1, N</span></a>
+<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">       1125 :          K = N + 1 - KK</span></a>
+<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">       1125 :          IF (LOWER) K = KK</span></a>
+<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">       1125 :          IF (DABS(Z(K)) .LE. DABS(T(K,K))) GO TO 110</span></a>
+<a name="1036"><span class="lineNum">    1036 </span><span class="lineCov">        130 :             S = DABS(T(K,K))/DABS(Z(K))</span></a>
+<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">        130 :             CALL DSCAL(N,S,Z,1)</span></a>
+<a name="1038"><span class="lineNum">    1038 </span><span class="lineCov">       1125 :             YNORM = S*YNORM</span></a>
 <a name="1039"><span class="lineNum">    1039 </span>            :   110    CONTINUE</a>
-<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">       1127 :          IF (T(K,K) .NE. 0.0D0) Z(K) = Z(K)/T(K,K)</span></a>
-<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">       1127 :          IF (T(K,K) .EQ. 0.0D0) Z(K) = 1.0D0</span></a>
-<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">       1127 :          I1 = 1</span></a>
-<a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">       1127 :          IF (LOWER) I1 = K + 1</span></a>
-<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">       1127 :          IF (KK .GE. N) GO TO 120</span></a>
-<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">        733 :             W = -Z(K)</span></a>
-<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">       1127 :             CALL DAXPY(N-KK,W,T(I1,K),1,Z(I1),1)</span></a>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">       1125 :          IF (T(K,K) .NE. 0.0D0) Z(K) = Z(K)/T(K,K)</span></a>
+<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">       1125 :          IF (T(K,K) .EQ. 0.0D0) Z(K) = 1.0D0</span></a>
+<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">       1125 :          I1 = 1</span></a>
+<a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">       1125 :          IF (LOWER) I1 = K + 1</span></a>
+<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">       1125 :          IF (KK .GE. N) GO TO 120</span></a>
+<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">        734 :             W = -Z(K)</span></a>
+<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">       1125 :             CALL DAXPY(N-KK,W,T(I1,K),1,Z(I1),1)</span></a>
 <a name="1047"><span class="lineNum">    1047 </span>            :   120    CONTINUE</a>
-<a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">        394 :   130 CONTINUE</span></a>
+<a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">        391 :   130 CONTINUE</span></a>
 <a name="1049"><span class="lineNum">    1049 </span>            : C     MAKE ZNORM = 1.0</a>
-<a name="1050"><span class="lineNum">    1050 </span><span class="lineCov">        394 :       S = 1.0D0/DASUM(N,Z,1)</span></a>
-<a name="1051"><span class="lineNum">    1051 </span><span class="lineCov">        394 :       CALL DSCAL(N,S,Z,1)</span></a>
-<a name="1052"><span class="lineNum">    1052 </span><span class="lineCov">        394 :       YNORM = S*YNORM</span></a>
+<a name="1050"><span class="lineNum">    1050 </span><span class="lineCov">        391 :       S = 1.0D0/DASUM(N,Z,1)</span></a>
+<a name="1051"><span class="lineNum">    1051 </span><span class="lineCov">        391 :       CALL DSCAL(N,S,Z,1)</span></a>
+<a name="1052"><span class="lineNum">    1052 </span><span class="lineCov">        391 :       YNORM = S*YNORM</span></a>
 <a name="1053"><span class="lineNum">    1053 </span>            : </a>
-<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">        394 :       IF (TNORM .NE. 0.0D0) RCOND = YNORM/TNORM</span></a>
+<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">        391 :       IF (TNORM .NE. 0.0D0) RCOND = YNORM/TNORM</span></a>
 <a name="1055"><span class="lineNum">    1055 </span><span class="lineNoCov">          0 :       IF (TNORM .EQ. 0.0D0) RCOND = 0.0D0</span></a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">        394 :       RETURN</span></a>
+<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">        391 :       RETURN</span></a>
 <a name="1057"><span class="lineNum">    1057 </span>            :       END</a>
 <a name="1058"><span class="lineNum">    1058 </span>            : *DTRSL</a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        758 :       SUBROUTINE DTRSL(T,LDT,N,B,JOB,INFO)</span></a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        759 :       SUBROUTINE DTRSL(T,LDT,N,B,JOB,INFO)</span></a>
 <a name="1060"><span class="lineNum">    1060 </span>            : C***BEGIN PROLOGUE  DTRSL</a>
 <a name="1061"><span class="lineNum">    1061 </span>            : C***DATE WRITTEN   780814   (YYMMDD)</a>
 <a name="1062"><span class="lineNum">    1062 </span>            : C***REVISION DATE  820801   (YYMMDD)</a>
@@ -1212,18 +1212,18 @@
 <a name="1142"><span class="lineNum">    1142 </span>            : </a>
 <a name="1143"><span class="lineNum">    1143 </span>            : C        CHECK FOR ZERO DIAGONAL ELEMENTS.</a>
 <a name="1144"><span class="lineNum">    1144 </span>            : </a>
-<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">       3022 :          DO 10 INFO = 1, N</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">       3028 :          DO 10 INFO = 1, N</span></a>
 <a name="1146"><span class="lineNum">    1146 </span>            : C     ......EXIT</a>
-<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">       2264 :             IF (T(INFO,INFO) .EQ. 0.0D0) GO TO 150</span></a>
-<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">        758 :    10    CONTINUE</span></a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">        758 :          INFO = 0</span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">       2269 :             IF (T(INFO,INFO) .EQ. 0.0D0) GO TO 150</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">        759 :    10    CONTINUE</span></a>
+<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">        759 :          INFO = 0</span></a>
 <a name="1150"><span class="lineNum">    1150 </span>            : </a>
 <a name="1151"><span class="lineNum">    1151 </span>            : C        DETERMINE THE TASK AND GO TO IT.</a>
 <a name="1152"><span class="lineNum">    1152 </span>            : </a>
-<a name="1153"><span class="lineNum">    1153 </span><span class="lineCov">        758 :          CASE = 1</span></a>
-<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">        758 :          IF (MOD(JOB,10) .NE. 0) CASE = 2</span></a>
-<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">        758 :          IF (MOD(JOB,100)/10 .NE. 0) CASE = CASE + 2</span></a>
-<a name="1156"><span class="lineNum">    1156 </span><span class="lineCov">        758 :          GO TO (20,50,80,110), CASE</span></a>
+<a name="1153"><span class="lineNum">    1153 </span><span class="lineCov">        759 :          CASE = 1</span></a>
+<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">        759 :          IF (MOD(JOB,10) .NE. 0) CASE = 2</span></a>
+<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">        759 :          IF (MOD(JOB,100)/10 .NE. 0) CASE = CASE + 2</span></a>
+<a name="1156"><span class="lineNum">    1156 </span><span class="lineCov">        759 :          GO TO (20,50,80,110), CASE</span></a>
 <a name="1157"><span class="lineNum">    1157 </span>            : </a>
 <a name="1158"><span class="lineNum">    1158 </span>            : C        SOLVE T*X=B FOR T LOWER TRIANGULAR</a>
 <a name="1159"><span class="lineNum">    1159 </span>            : </a>
@@ -1241,14 +1241,14 @@
 <a name="1171"><span class="lineNum">    1171 </span>            : C        SOLVE T*X=B FOR T UPPER TRIANGULAR.</a>
 <a name="1172"><span class="lineNum">    1172 </span>            : </a>
 <a name="1173"><span class="lineNum">    1173 </span>            :    50    CONTINUE</a>
-<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">        758 :             B(N) = B(N)/T(N,N)</span></a>
-<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">        758 :             IF (N .LT. 2) GO TO 70</span></a>
-<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">       1925 :             DO 60 JJ = 2, N</span></a>
-<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       1506 :                J = N - JJ + 1</span></a>
-<a name="1178"><span class="lineNum">    1178 </span><span class="lineCov">       1506 :                TEMP = -B(J+1)</span></a>
-<a name="1179"><span class="lineNum">    1179 </span><span class="lineCov">       1506 :                CALL DAXPY(J,TEMP,T(1,J+1),1,B(1),1)</span></a>
-<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">       1506 :                B(J) = B(J)/T(J,J)</span></a>
-<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">        758 :    60       CONTINUE</span></a>
+<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">        759 :             B(N) = B(N)/T(N,N)</span></a>
+<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">        759 :             IF (N .LT. 2) GO TO 70</span></a>
+<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">       1933 :             DO 60 JJ = 2, N</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       1510 :                J = N - JJ + 1</span></a>
+<a name="1178"><span class="lineNum">    1178 </span><span class="lineCov">       1510 :                TEMP = -B(J+1)</span></a>
+<a name="1179"><span class="lineNum">    1179 </span><span class="lineCov">       1510 :                CALL DAXPY(J,TEMP,T(1,J+1),1,B(1),1)</span></a>
+<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">       1510 :                B(J) = B(J)/T(J,J)</span></a>
+<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">        759 :    60       CONTINUE</span></a>
 <a name="1182"><span class="lineNum">    1182 </span>            :    70       CONTINUE</a>
 <a name="1183"><span class="lineNum">    1183 </span>            :          GO TO 140</a>
 <a name="1184"><span class="lineNum">    1184 </span>            : </a>
@@ -1277,7 +1277,7 @@
 <a name="1207"><span class="lineNum">    1207 </span>            :   130       CONTINUE</a>
 <a name="1208"><span class="lineNum">    1208 </span>            :   140    CONTINUE</a>
 <a name="1209"><span class="lineNum">    1209 </span>            :   150 CONTINUE</a>
-<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">        758 :       RETURN</span></a>
+<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">        759 :       RETURN</span></a>
 <a name="1211"><span class="lineNum">    1211 </span>            :       END</a>
 </pre>
       </td>

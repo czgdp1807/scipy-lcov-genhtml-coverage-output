@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zngets.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zngets.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">10</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -155,7 +155,7 @@
 <a name="85"><span class="lineNum">      85 </span>            : c</a>
 <a name="86"><span class="lineNum">      86 </span>            : c-----------------------------------------------------------------------</a>
 <a name="87"><span class="lineNum">      87 </span>            : c</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       1718 :       subroutine zngets ( ishift, which, kev, np, ritz, bounds)</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       1721 :       subroutine zngets ( ishift, which, kev, np, ritz, bounds)</span></a>
 <a name="89"><span class="lineNum">      89 </span>            : c</a>
 <a name="90"><span class="lineNum">      90 </span>            : c     %----------------------------------------------------%</a>
 <a name="91"><span class="lineNum">      91 </span>            : c     | Include files for debugging and timing information |</a>
@@ -207,12 +207,12 @@
 <a name="137"><span class="lineNum">     137 </span>            : c     | &amp; message level for debugging |</a>
 <a name="138"><span class="lineNum">     138 </span>            : c     %-------------------------------%</a>
 <a name="139"><span class="lineNum">     139 </span>            : c</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1718 :       call arscnd (t0)</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1718 :       msglvl = mcgets</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1721 :       call arscnd (t0)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1721 :       msglvl = mcgets</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : c</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1718 :       call zsortc (which, .true., kev+np, ritz, bounds)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1721 :       call zsortc (which, .true., kev+np, ritz, bounds)</span></a>
 <a name="144"><span class="lineNum">     144 </span>            : c</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1718 :       if ( ishift .eq. 1 ) then</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1721 :       if ( ishift .eq. 1 ) then</span></a>
 <a name="146"><span class="lineNum">     146 </span>            : c</a>
 <a name="147"><span class="lineNum">     147 </span>            : c        %-------------------------------------------------------%</a>
 <a name="148"><span class="lineNum">     148 </span>            : c        | Sort the unwanted Ritz values used as shifts so that  |</a>
@@ -223,14 +223,14 @@
 <a name="153"><span class="lineNum">     153 </span>            : c        | Be careful and use 'SM' since we want to sort BOUNDS! |</a>
 <a name="154"><span class="lineNum">     154 </span>            : c        %-------------------------------------------------------%</a>
 <a name="155"><span class="lineNum">     155 </span>            : c</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       1543 :          call zsortc ( 'SM', .true., np, bounds, ritz )</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       1546 :          call zsortc ( 'SM', .true., np, bounds, ritz )</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : c</a>
 <a name="158"><span class="lineNum">     158 </span>            :       end if</a>
 <a name="159"><span class="lineNum">     159 </span>            : c</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1718 :       call arscnd (t1)</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1718 :       tcgets = tcgets + (t1 - t0)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1721 :       call arscnd (t1)</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1721 :       tcgets = tcgets + (t1 - t0)</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : c</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1718 :       if (msglvl .gt. 0) then</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1721 :       if (msglvl .gt. 0) then</span></a>
 <a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :          call ivout (logfil, 1, [kev], ndigit, '_ngets: KEV is')</span></a>
 <a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :          call ivout (logfil, 1, [np], ndigit, '_ngets: NP is')</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :          call zvout (logfil, kev+np, ritz, ndigit,</a>
@@ -239,7 +239,7 @@
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :      &amp;      '_ngets: Ritz estimates of the current KEV+NP Ritz values')</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :       end if</a>
 <a name="171"><span class="lineNum">     171 </span>            : c</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       1718 :       return</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       1721 :       return</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : c</a>
 <a name="174"><span class="lineNum">     174 </span>            : c     %---------------%</a>
 <a name="175"><span class="lineNum">     175 </span>            : c     | End of zngets |</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dsaupd.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dsaupd.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">60</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -475,9 +475,9 @@
 <a name="405"><span class="lineNum">     405 </span>            : c</a>
 <a name="406"><span class="lineNum">     406 </span>            : c-----------------------------------------------------------------------</a>
 <a name="407"><span class="lineNum">     407 </span>            : c</a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">      31663 :       subroutine dsaupd</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">      31663 :      &amp;   ( ido, bmat, n, which, nev, tol, resid, ncv, v, ldv, iparam,</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">      31663 :      &amp;     ipntr, workd, workl, lworkl, info )</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">      30201 :       subroutine dsaupd</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">      30201 :      &amp;   ( ido, bmat, n, which, nev, tol, resid, ncv, v, ldv, iparam,</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">      30201 :      &amp;     ipntr, workd, workl, lworkl, info )</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : c</a>
 <a name="412"><span class="lineNum">     412 </span>            : c     %----------------------------------------------------%</a>
 <a name="413"><span class="lineNum">     413 </span>            : c     | Include files for debugging and timing information |</a>
@@ -540,39 +540,39 @@
 <a name="470"><span class="lineNum">     470 </span>            : c     | Executable Statements |</a>
 <a name="471"><span class="lineNum">     471 </span>            : c     %-----------------------%</a>
 <a name="472"><span class="lineNum">     472 </span>            : c</a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">      31663 :       if (ido .eq. 0) then</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">      30201 :       if (ido .eq. 0) then</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : c</a>
 <a name="475"><span class="lineNum">     475 </span>            : c        %-------------------------------%</a>
 <a name="476"><span class="lineNum">     476 </span>            : c        | Initialize timing statistics  |</a>
 <a name="477"><span class="lineNum">     477 </span>            : c        | &amp; message level for debugging |</a>
 <a name="478"><span class="lineNum">     478 </span>            : c        %-------------------------------%</a>
 <a name="479"><span class="lineNum">     479 </span>            : c</a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">        254 :          call dstats</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        254 :          call arscnd (t0)</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        254 :          msglvl = msaupd</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">        266 :          call dstats</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        266 :          call arscnd (t0)</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        266 :          msglvl = msaupd</span></a>
 <a name="483"><span class="lineNum">     483 </span>            : c</a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        254 :          ierr   = 0</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        254 :          ishift = iparam(1)</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        254 :          mxiter = iparam(3)</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        266 :          ierr   = 0</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        266 :          ishift = iparam(1)</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        266 :          mxiter = iparam(3)</span></a>
 <a name="487"><span class="lineNum">     487 </span>            : c         nb     = iparam(4)</a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">        254 :          nb     = 1</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">        266 :          nb     = 1</span></a>
 <a name="489"><span class="lineNum">     489 </span>            : c</a>
 <a name="490"><span class="lineNum">     490 </span>            : c        %--------------------------------------------%</a>
 <a name="491"><span class="lineNum">     491 </span>            : c        | Revision 2 performs only implicit restart. |</a>
 <a name="492"><span class="lineNum">     492 </span>            : c        %--------------------------------------------%</a>
 <a name="493"><span class="lineNum">     493 </span>            : c</a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        254 :          iupd   = 1</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">        254 :          mode   = iparam(7)</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        266 :          iupd   = 1</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">        266 :          mode   = iparam(7)</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : c</a>
 <a name="497"><span class="lineNum">     497 </span>            : c        %----------------%</a>
 <a name="498"><span class="lineNum">     498 </span>            : c        | Error checking |</a>
 <a name="499"><span class="lineNum">     499 </span>            : c        %----------------%</a>
 <a name="500"><span class="lineNum">     500 </span>            : c</a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        254 :          if (n .le. 0) then</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        266 :          if (n .le. 0) then</span></a>
 <a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :             ierr = -1</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        254 :          else if (nev .le. 0) then</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">        266 :          else if (nev .le. 0) then</span></a>
 <a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :             ierr = -2</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">        254 :          else if (ncv .le. nev .or.  ncv .gt. n) then</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">        266 :          else if (ncv .le. nev .or.  ncv .gt. n) then</span></a>
 <a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :             ierr = -3</span></a>
 <a name="507"><span class="lineNum">     507 </span>            :          end if</a>
 <a name="508"><span class="lineNum">     508 </span>            : c</a>
@@ -581,24 +581,24 @@
 <a name="511"><span class="lineNum">     511 </span>            : c        | extend the length NEV Lanczos factorization. |</a>
 <a name="512"><span class="lineNum">     512 </span>            : c        %----------------------------------------------%</a>
 <a name="513"><span class="lineNum">     513 </span>            : c</a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">        254 :          np     = ncv - nev</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">        266 :          np     = ncv - nev</span></a>
 <a name="515"><span class="lineNum">     515 </span>            : c</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        254 :          if (mxiter .le. 0)                     ierr = -4</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        266 :          if (mxiter .le. 0)                     ierr = -4</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :          if (which .ne. 'LM' .and.</a>
 <a name="518"><span class="lineNum">     518 </span>            :      &amp;       which .ne. 'SM' .and.</a>
 <a name="519"><span class="lineNum">     519 </span>            :      &amp;       which .ne. 'LA' .and.</a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">        254 :      &amp;       which .ne. 'SA' .and.</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">        266 :      &amp;       which .ne. 'SA' .and.</span></a>
 <a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :      &amp;       which .ne. 'BE')                   ierr = -5</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        254 :          if (bmat .ne. 'I' .and. bmat .ne. 'G') ierr = -6</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        266 :          if (bmat .ne. 'I' .and. bmat .ne. 'G') ierr = -6</span></a>
 <a name="523"><span class="lineNum">     523 </span>            : c</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        254 :          if (lworkl .lt. ncv**2 + 8*ncv)        ierr = -7</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        254 :          if (mode .lt. 1 .or. mode .gt. 5) then</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        266 :          if (lworkl .lt. ncv**2 + 8*ncv)        ierr = -7</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        266 :          if (mode .lt. 1 .or. mode .gt. 5) then</span></a>
 <a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :                                                 ierr = -10</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        254 :          else if (mode .eq. 1 .and. bmat .eq. 'G') then</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        266 :          else if (mode .eq. 1 .and. bmat .eq. 'G') then</span></a>
 <a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :                                                 ierr = -11</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">        254 :          else if (ishift .lt. 0 .or. ishift .gt. 1) then</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">        266 :          else if (ishift .lt. 0 .or. ishift .gt. 1) then</span></a>
 <a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :                                                 ierr = -12</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        254 :          else if (nev .eq. 1 .and. which .eq. 'BE') then</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        266 :          else if (nev .eq. 1 .and. which .eq. 'BE') then</span></a>
 <a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :                                                 ierr = -13</span></a>
 <a name="533"><span class="lineNum">     533 </span>            :          end if</a>
 <a name="534"><span class="lineNum">     534 </span>            : c</a>
@@ -606,7 +606,7 @@
 <a name="536"><span class="lineNum">     536 </span>            : c        | Error Exit |</a>
 <a name="537"><span class="lineNum">     537 </span>            : c        %------------%</a>
 <a name="538"><span class="lineNum">     538 </span>            : c</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        254 :          if (ierr .ne. 0) then</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        266 :          if (ierr .ne. 0) then</span></a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :             info = ierr</span></a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :             ido  = 99</span></a>
 <a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :             go to 9000</span></a>
@@ -617,7 +617,7 @@
 <a name="547"><span class="lineNum">     547 </span>            : c        %------------------------%</a>
 <a name="548"><span class="lineNum">     548 </span>            : c</a>
 <a name="549"><span class="lineNum">     549 </span>            :          if (nb .le. 0)                         nb = 1</a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">        254 :          if (tol .le. zero)                     tol = dlamch ('EpsMach')</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">        266 :          if (tol .le. zero)                     tol = dlamch ('EpsMach')</span></a>
 <a name="551"><span class="lineNum">     551 </span>            : c</a>
 <a name="552"><span class="lineNum">     552 </span>            : c        %----------------------------------------------%</a>
 <a name="553"><span class="lineNum">     553 </span>            : c        | NP is the number of additional steps to      |</a>
@@ -626,16 +626,16 @@
 <a name="556"><span class="lineNum">     556 </span>            : c        | size of the invariant subspace desired.      |</a>
 <a name="557"><span class="lineNum">     557 </span>            : c        %----------------------------------------------%</a>
 <a name="558"><span class="lineNum">     558 </span>            : c</a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        254 :          np     = ncv - nev</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">        254 :          nev0   = nev</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        266 :          np     = ncv - nev</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">        266 :          nev0   = nev</span></a>
 <a name="561"><span class="lineNum">     561 </span>            : c</a>
 <a name="562"><span class="lineNum">     562 </span>            : c        %-----------------------------%</a>
 <a name="563"><span class="lineNum">     563 </span>            : c        | Zero out internal workspace |</a>
 <a name="564"><span class="lineNum">     564 </span>            : c        %-----------------------------%</a>
 <a name="565"><span class="lineNum">     565 </span>            : c</a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">      40697 :          do 10 j = 1, ncv**2 + 8*ncv</span></a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      40443 :             workl(j) = zero</span></a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        254 :  10      continue</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">      45719 :          do 10 j = 1, ncv**2 + 8*ncv</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      45453 :             workl(j) = zero</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        266 :  10      continue</span></a>
 <a name="569"><span class="lineNum">     569 </span>            : c</a>
 <a name="570"><span class="lineNum">     570 </span>            : c        %-------------------------------------------------------%</a>
 <a name="571"><span class="lineNum">     571 </span>            : c        | Pointer into WORKL for address of H, RITZ, BOUNDS, Q  |</a>
@@ -649,20 +649,20 @@
 <a name="579"><span class="lineNum">     579 </span>            : c        | workl(4*ncv+ncv*ncv+1:7*ncv+ncv*ncv) := workspace     |</a>
 <a name="580"><span class="lineNum">     580 </span>            : c        %-------------------------------------------------------%</a>
 <a name="581"><span class="lineNum">     581 </span>            : c</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        254 :          ldh    = ncv</span></a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">        254 :          ldq    = ncv</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        254 :          ih     = 1</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        254 :          ritz   = ih     + 2*ldh</span></a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        254 :          bounds = ritz   + ncv</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">        254 :          iq     = bounds + ncv</span></a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        254 :          iw     = iq     + ncv**2</span></a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">        254 :          next   = iw     + 3*ncv</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        266 :          ldh    = ncv</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">        266 :          ldq    = ncv</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">        266 :          ih     = 1</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        266 :          ritz   = ih     + 2*ldh</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        266 :          bounds = ritz   + ncv</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">        266 :          iq     = bounds + ncv</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        266 :          iw     = iq     + ncv**2</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">        266 :          next   = iw     + 3*ncv</span></a>
 <a name="590"><span class="lineNum">     590 </span>            : c</a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        254 :          ipntr(4) = next</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        254 :          ipntr(5) = ih</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        254 :          ipntr(6) = ritz</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        254 :          ipntr(7) = bounds</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">        254 :          ipntr(11) = iw</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        266 :          ipntr(4) = next</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        266 :          ipntr(5) = ih</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        266 :          ipntr(6) = ritz</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        266 :          ipntr(7) = bounds</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">        266 :          ipntr(11) = iw</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :       end if</a>
 <a name="597"><span class="lineNum">     597 </span>            : c</a>
 <a name="598"><span class="lineNum">     598 </span>            : c     %-------------------------------------------------------%</a>
@@ -673,31 +673,31 @@
 <a name="603"><span class="lineNum">     603 </span>            :      &amp;   ( ido, bmat, n, which, nev0, np, tol, resid, mode, iupd,</a>
 <a name="604"><span class="lineNum">     604 </span>            :      &amp;     ishift, mxiter, v, ldv, workl(ih), ldh, workl(ritz),</a>
 <a name="605"><span class="lineNum">     605 </span>            :      &amp;     workl(bounds), workl(iq), ldq, workl(iw), ipntr, workd,</a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">      31663 :      &amp;     info )</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">      30201 :      &amp;     info )</span></a>
 <a name="607"><span class="lineNum">     607 </span>            : c</a>
 <a name="608"><span class="lineNum">     608 </span>            : c     %--------------------------------------------------%</a>
 <a name="609"><span class="lineNum">     609 </span>            : c     | ido .ne. 99 implies use of reverse communication |</a>
 <a name="610"><span class="lineNum">     610 </span>            : c     | to compute operations involving OP or shifts.    |</a>
 <a name="611"><span class="lineNum">     611 </span>            : c     %--------------------------------------------------%</a>
 <a name="612"><span class="lineNum">     612 </span>            : c</a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      31663 :       if (ido .eq. 3) iparam(8) = np</span></a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      31663 :       if (ido .ne. 99) go to 9000</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      30201 :       if (ido .eq. 3) iparam(8) = np</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      30201 :       if (ido .ne. 99) go to 9000</span></a>
 <a name="615"><span class="lineNum">     615 </span>            : c</a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        253 :       iparam(3) = mxiter</span></a>
-<a name="617"><span class="lineNum">     617 </span><span class="lineCov">        253 :       iparam(5) = np</span></a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineCov">        253 :       iparam(9) = nopx</span></a>
-<a name="619"><span class="lineNum">     619 </span><span class="lineCov">        253 :       iparam(10) = nbx</span></a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">        253 :       iparam(11) = nrorth</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        265 :       iparam(3) = mxiter</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineCov">        265 :       iparam(5) = np</span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineCov">        265 :       iparam(9) = nopx</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">        265 :       iparam(10) = nbx</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">        265 :       iparam(11) = nrorth</span></a>
 <a name="621"><span class="lineNum">     621 </span>            : c</a>
 <a name="622"><span class="lineNum">     622 </span>            : c     %------------------------------------%</a>
 <a name="623"><span class="lineNum">     623 </span>            : c     | Exit if there was an informational |</a>
 <a name="624"><span class="lineNum">     624 </span>            : c     | error within dsaup2 .               |</a>
 <a name="625"><span class="lineNum">     625 </span>            : c     %------------------------------------%</a>
 <a name="626"><span class="lineNum">     626 </span>            : c</a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        253 :       if (info .lt. 0) go to 9000</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        253 :       if (info .eq. 2) info = 3</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        265 :       if (info .lt. 0) go to 9000</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        265 :       if (info .eq. 2) info = 3</span></a>
 <a name="629"><span class="lineNum">     629 </span>            : c</a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineCov">        253 :       if (msglvl .gt. 0) then</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">        265 :       if (msglvl .gt. 0) then</span></a>
 <a name="631"><span class="lineNum">     631 </span>            :          call ivout (logfil, 1, [mxiter], ndigit,</a>
 <a name="632"><span class="lineNum">     632 </span><span class="lineNoCov">          0 :      &amp;               '_saupd: number of update iterations taken')</span></a>
 <a name="633"><span class="lineNum">     633 </span>            :          call ivout (logfil, 1, [np], ndigit,</a>
@@ -708,10 +708,10 @@
 <a name="638"><span class="lineNum">     638 </span><span class="lineNoCov">          0 :      &amp;               '_saupd: corresponding error bounds')</span></a>
 <a name="639"><span class="lineNum">     639 </span>            :       end if</a>
 <a name="640"><span class="lineNum">     640 </span>            : c</a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">        253 :       call arscnd (t1)</span></a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        253 :       tsaupd = t1 - t0</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">        265 :       call arscnd (t1)</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        265 :       tsaupd = t1 - t0</span></a>
 <a name="643"><span class="lineNum">     643 </span>            : c</a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineCov">        253 :       if (msglvl .gt. 0) then</span></a>
+<a name="644"><span class="lineNum">     644 </span><span class="lineCov">        265 :       if (msglvl .gt. 0) then</span></a>
 <a name="645"><span class="lineNum">     645 </span>            : c</a>
 <a name="646"><span class="lineNum">     646 </span>            : c        %--------------------------------------------------------%</a>
 <a name="647"><span class="lineNum">     647 </span>            : c        | Version Number &amp; Version Date are defined in version.h |</a>
@@ -751,7 +751,7 @@
 <a name="681"><span class="lineNum">     681 </span>            : c</a>
 <a name="682"><span class="lineNum">     682 </span>            :  9000 continue</a>
 <a name="683"><span class="lineNum">     683 </span>            : c</a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">      31663 :       return</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">      30201 :       return</span></a>
 <a name="685"><span class="lineNum">     685 </span>            : c</a>
 <a name="686"><span class="lineNum">     686 </span>            : c     %---------------%</a>
 <a name="687"><span class="lineNum">     687 </span>            : c     | End of dsaupd  |</a>

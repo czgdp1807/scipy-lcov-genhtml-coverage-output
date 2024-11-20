@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/sp_preorder.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/sp_preorder.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">43</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -141,34 +141,34 @@
 <a name="71"><span class="lineNum">      71 </span>            :  * &lt;/pre&gt;</a>
 <a name="72"><span class="lineNum">      72 </span>            :  */</a>
 <a name="73"><span class="lineNum">      73 </span>            : void</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       4395 : sp_preorder(superlu_options_t *options,  SuperMatrix *A, int *perm_c, </span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       4401 : sp_preorder(superlu_options_t *options,  SuperMatrix *A, int *perm_c, </span></a>
 <a name="75"><span class="lineNum">      75 </span>            :             int *etree, SuperMatrix *AC)</a>
 <a name="76"><span class="lineNum">      76 </span>            : {</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">       4395 :     NCformat  *Astore;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       4395 :     NCPformat *ACstore;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       4395 :     int       *iwork, *post;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       4395 :     register  int n, i;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       4395 :     extern void check_perm(char *what, int n, int *perm);</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">       4401 :     NCformat  *Astore;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       4401 :     NCPformat *ACstore;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       4401 :     int       *iwork, *post;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       4401 :     register  int n, i;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       4401 :     extern void check_perm(char *what, int n, int *perm);</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :         </a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       4395 :     n = A-&gt;ncol;</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       4401 :     n = A-&gt;ncol;</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     </a>
 <a name="85"><span class="lineNum">      85 </span>            :     /* Apply column permutation perm_c to A's column pointers so to</a>
 <a name="86"><span class="lineNum">      86 </span>            :        obtain NCP format in AC = A*Pc.  */</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       4395 :     AC-&gt;Stype       = SLU_NCP;</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       4395 :     AC-&gt;Dtype       = A-&gt;Dtype;</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">       4395 :     AC-&gt;Mtype       = A-&gt;Mtype;</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       4395 :     AC-&gt;nrow        = A-&gt;nrow;</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       4395 :     AC-&gt;ncol        = A-&gt;ncol;</span></a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       4395 :     Astore          = A-&gt;Store;</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       4395 :     ACstore = AC-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(NCPformat) );</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       4395 :     if ( !ACstore ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore&quot;);</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       4395 :     ACstore-&gt;nnz    = Astore-&gt;nnz;</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">       4395 :     ACstore-&gt;nzval  = Astore-&gt;nzval;</span></a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">       4395 :     ACstore-&gt;rowind = Astore-&gt;rowind;</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">       4395 :     ACstore-&gt;colbeg = intMalloc(n);</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       4395 :     if ( !(ACstore-&gt;colbeg) ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore-&gt;colbeg&quot;);</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       4395 :     ACstore-&gt;colend = intMalloc(n);</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       4395 :     if ( !(ACstore-&gt;colend) ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore-&gt;colend&quot;);</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       4401 :     AC-&gt;Stype       = SLU_NCP;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       4401 :     AC-&gt;Dtype       = A-&gt;Dtype;</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">       4401 :     AC-&gt;Mtype       = A-&gt;Mtype;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       4401 :     AC-&gt;nrow        = A-&gt;nrow;</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       4401 :     AC-&gt;ncol        = A-&gt;ncol;</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       4401 :     Astore          = A-&gt;Store;</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       4401 :     ACstore = AC-&gt;Store = (void *) SUPERLU_MALLOC( sizeof(NCPformat) );</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       4401 :     if ( !ACstore ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore&quot;);</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       4401 :     ACstore-&gt;nnz    = Astore-&gt;nnz;</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">       4401 :     ACstore-&gt;nzval  = Astore-&gt;nzval;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">       4401 :     ACstore-&gt;rowind = Astore-&gt;rowind;</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">       4401 :     ACstore-&gt;colbeg = intMalloc(n);</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       4401 :     if ( !(ACstore-&gt;colbeg) ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore-&gt;colbeg&quot;);</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       4401 :     ACstore-&gt;colend = intMalloc(n);</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       4401 :     if ( !(ACstore-&gt;colend) ) ABORT(&quot;SUPERLU_MALLOC fails for ACstore-&gt;colend&quot;);</span></a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span>            : #if ( DEBUGlevel&gt;=1 )</a>
 <a name="104"><span class="lineNum">     104 </span>            :     check_perm(&quot;Initial perm_c&quot;, n, perm_c);</a>
@@ -177,12 +177,12 @@
 <a name="107"><span class="lineNum">     107 </span>            :     print_int_vec(&quot;pre_order:&quot;, n, perm_c);</a>
 <a name="108"><span class="lineNum">     108 </span>            : #endif      </a>
 <a name="109"><span class="lineNum">     109 </span>            : </a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">     224206 :     for (i = 0; i &lt; n; i++) {</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">     219811 :         ACstore-&gt;colbeg[perm_c[i]] = Astore-&gt;colptr[i]; </span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     219811 :         ACstore-&gt;colend[perm_c[i]] = Astore-&gt;colptr[i+1];</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">     224710 :     for (i = 0; i &lt; n; i++) {</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">     220309 :         ACstore-&gt;colbeg[perm_c[i]] = Astore-&gt;colptr[i]; </span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     220309 :         ACstore-&gt;colend[perm_c[i]] = Astore-&gt;colptr[i+1];</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :     }</a>
 <a name="114"><span class="lineNum">     114 </span>            :         </a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       4395 :     if ( options-&gt;Fact == DOFACT ) {</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       4401 :     if ( options-&gt;Fact == DOFACT ) {</span></a>
 <a name="116"><span class="lineNum">     116 </span>            : #undef ETREE_ATplusA</a>
 <a name="117"><span class="lineNum">     117 </span>            : #ifdef ETREE_ATplusA</a>
 <a name="118"><span class="lineNum">     118 </span>            :         /*--------------------------------------------</a>
@@ -222,7 +222,7 @@
 <a name="152"><span class="lineNum">     152 </span>            :         /*--------------------------------------------</a>
 <a name="153"><span class="lineNum">     153 </span>            :           COMPUTE THE COLUMN ELIMINATION TREE.</a>
 <a name="154"><span class="lineNum">     154 </span>            :           --------------------------------------------*/</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       4395 :         sp_coletree(ACstore-&gt;colbeg, ACstore-&gt;colend, ACstore-&gt;rowind,</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       4401 :         sp_coletree(ACstore-&gt;colbeg, ACstore-&gt;colend, ACstore-&gt;rowind,</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :                     A-&gt;nrow, A-&gt;ncol, etree);</a>
 <a name="157"><span class="lineNum">     157 </span>            : #endif</a>
 <a name="158"><span class="lineNum">     158 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
@@ -230,9 +230,9 @@
 <a name="160"><span class="lineNum">     160 </span>            : #endif  </a>
 <a name="161"><span class="lineNum">     161 </span>            :         </a>
 <a name="162"><span class="lineNum">     162 </span>            :         /* In symmetric mode, do not do postorder here. */</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       4395 :         if ( options-&gt;SymmetricMode == NO ) {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       4401 :         if ( options-&gt;SymmetricMode == NO ) {</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :             /* Post order etree */</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       4386 :             post = (int *) TreePostorder(n, etree);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       4392 :             post = (int *) TreePostorder(n, etree);</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :             /* for (i = 0; i &lt; n+1; ++i) inv_post[post[i]] = i;</a>
 <a name="167"><span class="lineNum">     167 </span>            :                iwork = post; */</a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
@@ -242,26 +242,26 @@
 <a name="172"><span class="lineNum">     172 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
 <a name="173"><span class="lineNum">     173 </span>            :             print_int_vec(&quot;post:&quot;, n+1, post);</a>
 <a name="174"><span class="lineNum">     174 </span>            : #endif  </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       4386 :             iwork = (int*) SUPERLU_MALLOC((n+1)*sizeof(int)); </span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       4386 :             if ( !iwork ) ABORT(&quot;SUPERLU_MALLOC fails for iwork[]&quot;);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       4392 :             iwork = (int*) SUPERLU_MALLOC((n+1)*sizeof(int)); </span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       4392 :             if ( !iwork ) ABORT(&quot;SUPERLU_MALLOC fails for iwork[]&quot;);</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            :             /* Renumber etree in postorder */</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = post[etree[i]];</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) etree[i] = iwork[i];</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = post[etree[i]];</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) etree[i] = iwork[i];</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
 <a name="183"><span class="lineNum">     183 </span>            :             print_int_vec(&quot;postorder etree:&quot;, n, etree);</a>
 <a name="184"><span class="lineNum">     184 </span>            : #endif</a>
 <a name="185"><span class="lineNum">     185 </span>            :         </a>
 <a name="186"><span class="lineNum">     186 </span>            :             /* Postmultiply A*Pc by post[] */</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = ACstore-&gt;colbeg[i];</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) ACstore-&gt;colbeg[i] = iwork[i];</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = ACstore-&gt;colend[i];</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) ACstore-&gt;colend[i] = iwork[i];</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = ACstore-&gt;colbeg[i];</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) ACstore-&gt;colbeg[i] = iwork[i];</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) iwork[post[i]] = ACstore-&gt;colend[i];</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) ACstore-&gt;colend[i] = iwork[i];</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i)</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     218650 :                 iwork[i] = post[perm_c[i]];  /* product of perm_c and post */</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">     223036 :             for (i = 0; i &lt; n; ++i) perm_c[i] = iwork[i];</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i)</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     219148 :                 iwork[i] = post[perm_c[i]];  /* product of perm_c and post */</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">     223540 :             for (i = 0; i &lt; n; ++i) perm_c[i] = iwork[i];</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
 <a name="196"><span class="lineNum">     196 </span>            : #if ( DEBUGlevel&gt;=1 )</a>
 <a name="197"><span class="lineNum">     197 </span>            :             check_perm(&quot;final perm_c&quot;, n, perm_c);    </a>
@@ -269,13 +269,13 @@
 <a name="199"><span class="lineNum">     199 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
 <a name="200"><span class="lineNum">     200 </span>            :             print_int_vec(&quot;Pc*post:&quot;, n, perm_c);</a>
 <a name="201"><span class="lineNum">     201 </span>            : #endif</a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4386 :             SUPERLU_FREE (post);</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       4386 :             SUPERLU_FREE (iwork);</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4392 :             SUPERLU_FREE (post);</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       4392 :             SUPERLU_FREE (iwork);</span></a>
 <a name="204"><span class="lineNum">     204 </span>            :         } /* end postordering */</a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
 <a name="206"><span class="lineNum">     206 </span>            :     } /* if options-&gt;Fact == DOFACT ... */</a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4395 : }</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4401 : }</span></a>
 </pre>
       </td>
     </tr>

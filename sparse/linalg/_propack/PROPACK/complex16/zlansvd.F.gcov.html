@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/complex16/zlansvd.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/complex16/zlansvd.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">63</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -257,7 +257,7 @@
 <a name="187"><span class="lineNum">     187 </span>            : c     %------------------------------%</a>
 <a name="188"><span class="lineNum">     188 </span>            : c     | Iterate until convergence... |</a>
 <a name="189"><span class="lineNum">     189 </span>            : c     %------------------------------%</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         51 :       do while (neig.lt.k)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         52 :       do while (neig.lt.k)</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            : c     %---------------------------------------------------%</a>
 <a name="193"><span class="lineNum">     193 </span>            : c     | Compute bidiagonalization A*V_{j} = U_{j+1}*B_{j} |</a>
@@ -284,8 +284,8 @@
 <a name="214"><span class="lineNum">     214 </span>            :          else</a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineCov">         42 :             anorm = max(anorm,work(ib1))</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :          endif</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        288 :          do i=1,j</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        288 :             work(ibnd+i-1) = abs(rnorm*work(ibnd+i-1))</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">        289 :          do i=1,j</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        289 :             work(ibnd+i-1) = abs(rnorm*work(ibnd+i-1))</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :          enddo</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            : c     %---------------------------------------------%</a>
@@ -320,14 +320,14 @@
 <a name="250"><span class="lineNum">     250 </span>            : c     | if the workspace has been exhausted.             |</a>
 <a name="251"><span class="lineNum">     251 </span>            : c     %--------------------------------------------------%</a>
 <a name="252"><span class="lineNum">     252 </span><span class="lineCov">         49 :          if (ierr.lt.0) then</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         24 :             if (j.lt.k) then</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         23 :             if (j.lt.k) then</span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :                write(*,*) 'WARNING: Invariant subspace found.',</span></a>
 <a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :      c              ' Dimension = ',j</span></a>
 <a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :                info = j</span></a>
 <a name="257"><span class="lineNum">     257 </span>            :             endif</a>
 <a name="258"><span class="lineNum">     258 </span>            :             goto 50               </a>
 <a name="259"><span class="lineNum">     259 </span>            :          endif</a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         25 :          if (j.ge.lanmax) then</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         26 :          if (j.ge.lanmax) then</span></a>
 <a name="261"><span class="lineNum">     261 </span><span class="lineCov">         23 :             if (neig.lt.k) then</span></a>
 <a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :                write(*,*) 'WARNING: Maximum dimension of Krylov',</span></a>
 <a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :      c              ' subspace exceeded prior to convergence.',</span></a>
@@ -345,14 +345,14 @@
 <a name="275"><span class="lineNum">     275 </span>            : c     | converged Ritz value.                              |</a>
 <a name="276"><span class="lineNum">     276 </span>            : c     | Else increase the dimension by 50%.                |</a>
 <a name="277"><span class="lineNum">     277 </span>            : c     %----------------------------------------------------%</a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          2 :          if (neig.gt.1) then</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          2 :             dj = min(j/2,((k-neig)*(j-6))/(2*neig+1))</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          2 :             dj = min(100,max(2,dj))</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          3 :          if (neig.gt.1) then</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          3 :             dj = min(j/2,((k-neig)*(j-6))/(2*neig+1))</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          3 :             dj = min(100,max(2,dj))</span></a>
 <a name="281"><span class="lineNum">     281 </span>            :          else</a>
 <a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :             dj = j/2</span></a>
 <a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :             dj = min(100,max(10,dj))</span></a>
 <a name="284"><span class="lineNum">     284 </span>            :         endif</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          4 :          j = min(j + dj,lanmax)</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          6 :          j = min(j + dj,lanmax)</span></a>
 <a name="286"><span class="lineNum">     286 </span>            :       enddo</a>
 <a name="287"><span class="lineNum">     287 </span>            : </a>
 <a name="288"><span class="lineNum">     288 </span><span class="lineCov">         49 :  50   if ((neig.ge.k .or. info.gt.0)  .and. </span></a>

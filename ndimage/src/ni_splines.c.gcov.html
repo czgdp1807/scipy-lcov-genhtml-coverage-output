@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - ndimage/src/ni_splines.c</title>
+  <title>LCOV - lcov.info - ndimage/src/ni_splines.c</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">149</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -74,17 +74,17 @@
 <a name="4"><span class="lineNum">       4 </span>            : </a>
 <a name="5"><span class="lineNum">       5 </span>            : </a>
 <a name="6"><span class="lineNum">       6 </span>            : int</a>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">     345678 : get_spline_interpolation_weights(double x, int order, double *weights)</span></a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">     345718 : get_spline_interpolation_weights(double x, int order, double *weights)</span></a>
 <a name="8"><span class="lineNum">       8 </span>            : {</a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">     345678 :     int i;</span></a>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">     345678 :     double y, z, t;</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">     345718 :     int i;</span></a>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">     345718 :     double y, z, t;</span></a>
 <a name="11"><span class="lineNum">      11 </span>            : </a>
 <a name="12"><span class="lineNum">      12 </span>            :     /* Convert x to the delta to the middle knot. */</a>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">     345678 :     x -= floor(order &amp; 1 ? x : x + 0.5);</span></a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">     345678 :     y = x;</span></a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">     345678 :     z = 1.0 - x;</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">     345718 :     x -= floor(order &amp; 1 ? x : x + 0.5);</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">     345718 :     y = x;</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">     345718 :     z = 1.0 - x;</span></a>
 <a name="16"><span class="lineNum">      16 </span>            : </a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">     345678 :     switch (order) {</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">     345718 :     switch (order) {</span></a>
 <a name="18"><span class="lineNum">      18 </span><span class="lineCov">      54180 :         case 1:</span></a>
 <a name="19"><span class="lineNum">      19 </span>            :             /* 0 &lt;= x &lt; 1*/</a>
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">      54180 :             weights[0] = 1.0 - x;</span></a>
@@ -103,11 +103,11 @@
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">      54116 :             y = 0.5 - x;</span></a>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">      54116 :             weights[0] = 0.5 * y * y;</span></a>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">      54116 :             break;</span></a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">      76249 :         case 3:</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">      76289 :         case 3:</span></a>
 <a name="37"><span class="lineNum">      37 </span>            :             /* y = x, 0 &lt;= y &lt; 1 */</a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">      76249 :             weights[1] = (y * y * (y - 2.0) * 3.0 + 4.0) / 6.0;</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">      76289 :             weights[1] = (y * y * (y - 2.0) * 3.0 + 4.0) / 6.0;</span></a>
 <a name="39"><span class="lineNum">      39 </span>            :             /* z = 1 - x, 0 &lt; z &lt;= 1 */</a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">      76249 :             weights[2] = (z * z * (z - 2.0) * 3.0 + 4.0) / 6.0;</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">      76289 :             weights[2] = (z * z * (z - 2.0) * 3.0 + 4.0) / 6.0;</span></a>
 <a name="41"><span class="lineNum">      41 </span>            :             /*</a>
 <a name="42"><span class="lineNum">      42 </span>            :              * For weights[0] we would normally do:</a>
 <a name="43"><span class="lineNum">      43 </span>            :              *</a>
@@ -117,8 +117,8 @@
 <a name="47"><span class="lineNum">      47 </span>            :              *</a>
 <a name="48"><span class="lineNum">      48 </span>            :              * But we already have yy in z.</a>
 <a name="49"><span class="lineNum">      49 </span>            :              */</a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">      76249 :             weights[0] = z * z * z / 6.0;</span></a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">      76249 :             break;</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">      76289 :             weights[0] = z * z * z / 6.0;</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">      76289 :             break;</span></a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">      54116 :         case 4:</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :             /* -0.5 &lt; x &lt;= 0.5 */</a>
 <a name="54"><span class="lineNum">      54 </span><span class="lineCov">      54116 :             t = x * x;</span></a>
@@ -175,9 +175,9 @@
 <a name="105"><span class="lineNum">     105 </span>            :     }</a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            :     /* All interpolation weights add to 1.0, so use it for the last one. */</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     292777 :     weights[order] = 1.0;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    1170980 :     for (i = 0; i &lt; order; ++i) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">     878203 :         weights[order] -= weights[i];</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     292817 :     weights[order] = 1.0;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">    1171140 :     for (i = 0; i &lt; order; ++i) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">     878323 :         weights[order] -= weights[i];</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :     }</a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
 <a name="113"><span class="lineNum">     113 </span>            :     return 0;</a>
@@ -185,24 +185,24 @@
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            : int</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       5676 : get_filter_poles(int order, int *npoles, double *poles)</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       5678 : get_filter_poles(int order, int *npoles, double *poles)</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : {</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       5676 :     *npoles = order / 2;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       5678 :     *npoles = order / 2;</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :     /*</a>
 <a name="122"><span class="lineNum">     122 </span>            :      * If this assert is triggered, someone added more orders here but</a>
 <a name="123"><span class="lineNum">     123 </span>            :      * MAX_SPLIINE_FILTER_POLES was not kept in sync.</a>
 <a name="124"><span class="lineNum">     124 </span>            :      */</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       5676 :     assert(*npoles &lt;= MAX_SPLINE_FILTER_POLES);</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       5678 :     assert(*npoles &lt;= MAX_SPLINE_FILTER_POLES);</span></a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       5676 :     switch (order) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       5678 :     switch (order) {</span></a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineCov">        890 :         case 2:</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :             /* sqrt(8.0) - 3.0 */</a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineCov">        890 :             poles[0] = -0.171572875253809902396622551580603843;</span></a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineCov">        890 :             break;</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3006 :         case 3:</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3008 :         case 3:</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :             /* sqrt(3.0) - 2.0 */</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3006 :             poles[0] = -0.267949192431122706472553658494127633;</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       3006 :             break;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3008 :             poles[0] = -0.267949192431122706472553658494127633;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       3008 :             break;</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">        890 :         case 4:</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :             /* sqrt(664.0 - sqrt(438976.0)) + sqrt(304.0) - 19.0 */</a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">        890 :             poles[0] = -0.361341225900220177092212841325675255;</span></a>
@@ -227,26 +227,26 @@
 <a name="157"><span class="lineNum">     157 </span>            : </a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            : static void</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      32729 : _init_causal_mirror(double *c, const npy_intp n, const double z)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      32731 : _init_causal_mirror(double *c, const npy_intp n, const double z)</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : {</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      32729 :     npy_intp i;</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      32729 :     double z_i = z;</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      32729 :     const double z_n_1 = pow(z, n - 1);</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      32731 :     npy_intp i;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      32731 :     double z_i = z;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      32731 :     const double z_n_1 = pow(z, n - 1);</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">      32729 :     c[0] = c[0] + z_n_1 * c[n - 1];</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">     600752 :     for (i = 1; i &lt; n - 1; ++i) {</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     568023 :         c[0] += z_i * (c[i] + z_n_1 * c[n - 1 - i]);</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">     568023 :         z_i *= z;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">      32731 :     c[0] = c[0] + z_n_1 * c[n - 1];</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">     600770 :     for (i = 1; i &lt; n - 1; ++i) {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     568039 :         c[0] += z_i * (c[i] + z_n_1 * c[n - 1 - i]);</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">     568039 :         z_i *= z;</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :     }</a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      32729 :     c[0] /= 1 - z_n_1 * z_n_1;</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      32729 : }</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      32731 :     c[0] /= 1 - z_n_1 * z_n_1;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      32731 : }</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            : static void</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      32729 : _init_anticausal_mirror(double *c, const npy_intp n, const double z)</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      32731 : _init_anticausal_mirror(double *c, const npy_intp n, const double z)</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : {</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      32729 :     c[n - 1] = (z * c[n - 2] + c[n - 1]) * z / (z * z - 1);</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      32729 : }</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      32731 :     c[n - 1] = (z * c[n - 2] + c[n - 1]) * z / (z * z - 1);</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      32731 : }</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : static void</a>
@@ -320,55 +320,55 @@
 <a name="250"><span class="lineNum">     250 </span>            :  * obtained from a private communication with Dr. Philippe Thévenaz.</a>
 <a name="251"><span class="lineNum">     251 </span>            :  */</a>
 <a name="252"><span class="lineNum">     252 </span>            : static void</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      42468 : _apply_filter(double *c, npy_intp n, double z, init_fn *causal_init,</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      42470 : _apply_filter(double *c, npy_intp n, double z, init_fn *causal_init,</span></a>
 <a name="254"><span class="lineNum">     254 </span>            :               init_fn *anticausal_init)</a>
 <a name="255"><span class="lineNum">     255 </span>            : {</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">      42468 :     npy_intp i;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">      42470 :     npy_intp i;</span></a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">      42468 :     causal_init(c, n, z);</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">    1389297 :     for (i = 1; i &lt; n; ++i) {</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">    1304361 :         c[i] += z * c[i - 1];</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">      42470 :     causal_init(c, n, z);</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">    1389319 :     for (i = 1; i &lt; n; ++i) {</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">    1304379 :         c[i] += z * c[i - 1];</span></a>
 <a name="261"><span class="lineNum">     261 </span>            :     }</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      42468 :     anticausal_init(c, n, z);</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">    1346829 :     for (i = n - 2; i &gt;= 0; --i) {</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">    1304361 :         c[i] = z * (c[i + 1] - c[i]);</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      42470 :     anticausal_init(c, n, z);</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">    1346849 :     for (i = n - 2; i &gt;= 0; --i) {</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">    1304379 :         c[i] = z * (c[i + 1] - c[i]);</span></a>
 <a name="265"><span class="lineNum">     265 </span>            :     }</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      42468 : }</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      42470 : }</span></a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
 <a name="269"><span class="lineNum">     269 </span>            : static void</a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">      30892 : _apply_filter_gain(double *c, npy_intp n, const double *zs, int nz)</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">      30894 : _apply_filter_gain(double *c, npy_intp n, const double *zs, int nz)</span></a>
 <a name="271"><span class="lineNum">     271 </span>            : {</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">      30892 :     double gain = 1.0;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">      30894 :     double gain = 1.0;</span></a>
 <a name="273"><span class="lineNum">     273 </span>            : </a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">      73360 :     while (nz--) {</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      42468 :         const double z = *zs++;</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">      42468 :         gain *= (1.0 - z) * (1.0 - 1.0 / z);</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">      73364 :     while (nz--) {</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      42470 :         const double z = *zs++;</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">      42470 :         gain *= (1.0 - z) * (1.0 - 1.0 / z);</span></a>
 <a name="277"><span class="lineNum">     277 </span>            :     }</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     938649 :     while (n--) {</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     907757 :         *c++ *= gain;</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     938671 :     while (n--) {</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     907777 :         *c++ *= gain;</span></a>
 <a name="281"><span class="lineNum">     281 </span>            :     }</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      30892 : }</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">      30894 : }</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
 <a name="285"><span class="lineNum">     285 </span>            : void</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      30892 : apply_filter(double *coefficients, const npy_intp len, const double *poles,</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      30894 : apply_filter(double *coefficients, const npy_intp len, const double *poles,</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :              int npoles, NI_ExtendMode mode)</a>
 <a name="288"><span class="lineNum">     288 </span>            : {</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      30892 :     init_fn *causal = NULL;</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      30892 :     init_fn *anticausal = NULL;</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      30894 :     init_fn *causal = NULL;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">      30894 :     init_fn *anticausal = NULL;</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            :     //Note: This switch statement should match the settings used for</a>
 <a name="293"><span class="lineNum">     293 </span>            :         //      the spline_mode variable in NI_GeometricTransform</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">      30892 :     switch(mode) {</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      24377 :         case NI_EXTEND_GRID_CONSTANT:</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">      30894 :     switch(mode) {</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      24379 :         case NI_EXTEND_GRID_CONSTANT:</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         case NI_EXTEND_CONSTANT:</a>
 <a name="297"><span class="lineNum">     297 </span>            :         case NI_EXTEND_MIRROR:</a>
 <a name="298"><span class="lineNum">     298 </span>            :         case NI_EXTEND_WRAP:</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      24377 :             causal = &amp;_init_causal_mirror;</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      24377 :             anticausal = &amp;_init_anticausal_mirror;</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      24377 :             break;</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      24379 :             causal = &amp;_init_causal_mirror;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      24379 :             anticausal = &amp;_init_anticausal_mirror;</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      24379 :             break;</span></a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">       2249 :         case NI_EXTEND_GRID_WRAP:</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">       2249 :             causal = &amp;_init_causal_wrap;</span></a>
 <a name="304"><span class="lineNum">     304 </span><span class="lineCov">       2249 :             anticausal = &amp;_init_anticausal_wrap;</span></a>
@@ -378,16 +378,16 @@
 <a name="308"><span class="lineNum">     308 </span><span class="lineCov">       4266 :             causal = &amp;_init_causal_reflect;</span></a>
 <a name="309"><span class="lineNum">     309 </span><span class="lineCov">       4266 :             anticausal = &amp;_init_anticausal_reflect;</span></a>
 <a name="310"><span class="lineNum">     310 </span><span class="lineCov">       4266 :             break;</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      30892 :         default:</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      30892 :             assert(0); /* We should never get here. */</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      30894 :         default:</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      30894 :             assert(0); /* We should never get here. */</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :     }</a>
 <a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      30892 :     _apply_filter_gain(coefficients, len, poles, npoles);</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      30894 :     _apply_filter_gain(coefficients, len, poles, npoles);</span></a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      73360 :     while (npoles--) {</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">      42468 :         _apply_filter(coefficients, len, *poles++, causal, anticausal);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      73364 :     while (npoles--) {</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">      42470 :         _apply_filter(coefficients, len, *poles++, causal, anticausal);</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :     }</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">      30892 : }</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">      30894 : }</span></a>
 </pre>
       </td>
     </tr>

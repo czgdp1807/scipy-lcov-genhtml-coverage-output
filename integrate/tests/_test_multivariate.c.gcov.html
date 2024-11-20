@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - integrate/tests/_test_multivariate.c</title>
+  <title>LCOV - lcov.info - integrate/tests/_test_multivariate.c</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">32</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -134,32 +134,32 @@
 <a name="64"><span class="lineNum">      64 </span>            : };</a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          1 : static int create_pointers(PyObject *module)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          2 : static int create_pointers(PyObject *module)</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : {</a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 :     PyObject *d, *obj = NULL;</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          1 :     size_t i;</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          2 :     PyObject *d, *obj = NULL;</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          2 :     size_t i;</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          1 :     d = PyModule_GetDict(module);</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          1 :     if (d == NULL) {</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          2 :     d = PyModule_GetDict(module);</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          2 :     if (d == NULL) {</span></a>
 <a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :         goto fail;</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :     }</a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          8 :     for (i = 0; i &lt; sizeof(routines) / sizeof(routine_t); ++i) {</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          7 :         obj = PyLong_FromVoidPtr(routines[i].ptr);</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          7 :         if (obj == NULL) {</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         16 :     for (i = 0; i &lt; sizeof(routines) / sizeof(routine_t); ++i) {</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         14 :         obj = PyLong_FromVoidPtr(routines[i].ptr);</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         14 :         if (obj == NULL) {</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="81"><span class="lineNum">      81 </span>            :         }</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          7 :         if (PyDict_SetItemString(d, routines[i].name, obj)) {</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         14 :         if (PyDict_SetItemString(d, routines[i].name, obj)) {</span></a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :             goto fail;</span></a>
 <a name="85"><span class="lineNum">      85 </span>            :         }</a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          7 :         Py_DECREF(obj);</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          7 :         obj = NULL;</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         14 :         Py_DECREF(obj);</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         14 :         obj = NULL;</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :     }</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          1 :     Py_XDECREF(obj);</span></a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          1 :     return 0;</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          2 :     Py_XDECREF(obj);</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          2 :     return 0;</span></a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 : fail:</span></a>
 <a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :     Py_XDECREF(obj);</span></a>
@@ -180,14 +180,14 @@
 <a name="110"><span class="lineNum">     110 </span>            : };</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <a name="112"><span class="lineNum">     112 </span>            : PyMODINIT_FUNC</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : PyInit__test_multivariate(void)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 : PyInit__test_multivariate(void)</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : {</a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 :     PyObject *m;</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 :     m = PyModule_Create(&amp;moduledef);</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :     if (m == NULL) {</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          2 :     PyObject *m;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          2 :     m = PyModule_Create(&amp;moduledef);</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          2 :     if (m == NULL) {</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :         return NULL;</a>
 <a name="119"><span class="lineNum">     119 </span>            :     }</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 :     if (create_pointers(m)) {</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          2 :     if (create_pointers(m)) {</span></a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :         Py_DECREF(m);</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :     }</a>

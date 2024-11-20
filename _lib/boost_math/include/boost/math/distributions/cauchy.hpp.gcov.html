@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/distributions/cauchy.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/distributions/cauchy.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">28</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -127,7 +127,7 @@
 <a name="57"><span class="lineNum">      57 </span>            :    //</a>
 <a name="58"><span class="lineNum">      58 </span>            :    // Substituting into the above we get:</a>
 <a name="59"><span class="lineNum">      59 </span>            :    //</a>
-<a name="60"><span class="lineNum">      60 </span>            :    // CDF = -atan(1/x)  ; x &lt; 0</a>
+<a name="60"><span class="lineNum">      60 </span>            :    // CDF = -atan(1/x)/pi  ; x &lt; 0</a>
 <a name="61"><span class="lineNum">      61 </span>            :    //</a>
 <a name="62"><span class="lineNum">      62 </span>            :    // So the procedure is to calculate the cdf for -fabs(x)</a>
 <a name="63"><span class="lineNum">      63 </span>            :    // using the above formula, and then subtract from 1 when required</a>
@@ -179,7 +179,7 @@
 <a name="109"><span class="lineNum">     109 </span>            : } // cdf</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
 <a name="111"><span class="lineNum">     111 </span>            : template &lt;class RealType, class Policy&gt;</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      12716 : BOOST_MATH_GPU_ENABLED RealType quantile_imp(</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">      13486 : BOOST_MATH_GPU_ENABLED RealType quantile_imp(</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :       const cauchy_distribution&lt;RealType, Policy&gt;&amp; dist,</a>
 <a name="114"><span class="lineNum">     114 </span>            :       RealType p,</a>
 <a name="115"><span class="lineNum">     115 </span>            :       bool complement)</a>
@@ -191,39 +191,39 @@
 <a name="121"><span class="lineNum">     121 </span>            :    // mid-point of the distribution.  This is either added or subtracted</a>
 <a name="122"><span class="lineNum">     122 </span>            :    // from the location parameter depending on whether `complement` is true.</a>
 <a name="123"><span class="lineNum">     123 </span>            :    //</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      12716 :    constexpr auto function = &quot;boost::math::quantile(cauchy&lt;%1%&gt;&amp;, %1%)&quot;;</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      13486 :    constexpr auto function = &quot;boost::math::quantile(cauchy&lt;%1%&gt;&amp;, %1%)&quot;;</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :    BOOST_MATH_STD_USING // for ADL of std functions</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      12716 :    RealType result = 0;</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      12716 :    RealType location = dist.location();</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      12716 :    RealType scale = dist.scale();</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      12716 :    if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      13486 :    RealType result = 0;</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      13486 :    RealType location = dist.location();</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      13486 :    RealType scale = dist.scale();</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      13486 :    if(false == detail::check_location(function, location, &amp;result, Policy()))</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :    {</a>
 <a name="132"><span class="lineNum">     132 </span>            :      return result;</a>
 <a name="133"><span class="lineNum">     133 </span>            :    }</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      12716 :    if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      13486 :    if(false == detail::check_scale(function, scale, &amp;result, Policy()))</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :    {</a>
 <a name="136"><span class="lineNum">     136 </span>            :       return result;</a>
 <a name="137"><span class="lineNum">     137 </span>            :    }</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">      12716 :    if(false == detail::check_probability(function, p, &amp;result, Policy()))</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">      13486 :    if(false == detail::check_probability(function, p, &amp;result, Policy()))</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :    {</a>
 <a name="140"><span class="lineNum">     140 </span>            :       return result;</a>
 <a name="141"><span class="lineNum">     141 </span>            :    }</a>
 <a name="142"><span class="lineNum">     142 </span>            :    // Special cases:</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">      12716 :    if(p == 1)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">      13486 :    if(p == 1)</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :    {</a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :       return (complement ? -1 : 1) * policies::raise_overflow_error&lt;RealType&gt;(function, 0, Policy());</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :    }</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      12716 :    if(p == 0)</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      13486 :    if(p == 0)</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :    {</a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :       return (complement ? 1 : -1) * policies::raise_overflow_error&lt;RealType&gt;(function, 0, Policy());</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :    }</a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">      12716 :    if(p &gt; 0.5)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">      13486 :    if(p &gt; 0.5)</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :    {</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       6315 :       p = p - 1;</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       6316 :       p = p - 1;</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :    }</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">      12716 :    if(p == 0.5)   // special case:</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">      13486 :    if(p == 0.5)   // special case:</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :    {</a>
 <a name="158"><span class="lineNum">     158 </span>            :       return location;</a>
 <a name="159"><span class="lineNum">     159 </span>            :    }</a>
@@ -240,22 +240,22 @@
 <a name="170"><span class="lineNum">     170 </span>            :    typedef RealType value_type;</a>
 <a name="171"><span class="lineNum">     171 </span>            :    typedef Policy policy_type;</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      12716 :    BOOST_MATH_GPU_ENABLED cauchy_distribution(RealType l_location = 0, RealType l_scale = 1)</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">      12716 :       : m_a(l_location), m_hg(l_scale)</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      13486 :    BOOST_MATH_GPU_ENABLED cauchy_distribution(RealType l_location = 0, RealType l_scale = 1)</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">      13486 :       : m_a(l_location), m_hg(l_scale)</span></a>
 <a name="175"><span class="lineNum">     175 </span>            :    {</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      12716 :     constexpr auto function = &quot;boost::math::cauchy_distribution&lt;%1%&gt;::cauchy_distribution&quot;;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">      13486 :     constexpr auto function = &quot;boost::math::cauchy_distribution&lt;%1%&gt;::cauchy_distribution&quot;;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :      RealType result;</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      12716 :      detail::check_location(function, l_location, &amp;result, Policy());</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      12716 :      detail::check_scale(function, l_scale, &amp;result, Policy());</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      13486 :      detail::check_location(function, l_location, &amp;result, Policy());</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      13486 :      detail::check_scale(function, l_scale, &amp;result, Policy());</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :    } // cauchy_distribution</a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">      12716 :    BOOST_MATH_GPU_ENABLED RealType location()const</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">      13486 :    BOOST_MATH_GPU_ENABLED RealType location()const</span></a>
 <a name="183"><span class="lineNum">     183 </span>            :    {</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">      12716 :       return m_a;</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">      13486 :       return m_a;</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :    }</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      12716 :    BOOST_MATH_GPU_ENABLED RealType scale()const</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      13486 :    BOOST_MATH_GPU_ENABLED RealType scale()const</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :    {</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">      12716 :       return m_hg;</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">      13486 :       return m_hg;</span></a>
 <a name="189"><span class="lineNum">     189 </span>            :    }</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
 <a name="191"><span class="lineNum">     191 </span>            : private:</a>
@@ -345,9 +345,9 @@
 <a name="275"><span class="lineNum">     275 </span>            : } // cdf</a>
 <a name="276"><span class="lineNum">     276 </span>            : </a>
 <a name="277"><span class="lineNum">     277 </span>            : template &lt;class RealType, class Policy&gt;</a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">      12691 : BOOST_MATH_GPU_ENABLED inline RealType quantile(const cauchy_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; p)</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">      13461 : BOOST_MATH_GPU_ENABLED inline RealType quantile(const cauchy_distribution&lt;RealType, Policy&gt;&amp; dist, const RealType&amp; p)</span></a>
 <a name="279"><span class="lineNum">     279 </span>            : {</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">      12691 :    return detail::quantile_imp(dist, p, false);</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">      13461 :    return detail::quantile_imp(dist, p, false);</span></a>
 <a name="281"><span class="lineNum">     281 </span>            : } // quantile</a>
 <a name="282"><span class="lineNum">     282 </span>            : </a>
 <a name="283"><span class="lineNum">     283 </span>            : template &lt;class RealType, class Policy&gt;</a>

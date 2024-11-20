@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/double/dsafescal.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/double/dsafescal.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">6</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -71,7 +71,7 @@
 <a name="1"><span class="lineNum">       1 </span>            : c</a>
 <a name="2"><span class="lineNum">       2 </span>            : c     (C) Rasmus Munk Larsen, Stanford University, 2000,2004</a>
 <a name="3"><span class="lineNum">       3 </span>            : c</a>
-<a name="4"><span class="lineNum">       4 </span><span class="lineCov">       5618 :       subroutine dsafescal(n,alpha,x)</span></a>
+<a name="4"><span class="lineNum">       4 </span><span class="lineCov">       5388 :       subroutine dsafescal(n,alpha,x)</span></a>
 <a name="5"><span class="lineNum">       5 </span>            : c</a>
 <a name="6"><span class="lineNum">       6 </span>            : c     Scale the vector x by 1/alpha avoiding unnecessary under- and overflow.</a>
 <a name="7"><span class="lineNum">       7 </span>            : c</a>
@@ -112,17 +112,17 @@
 <a name="42"><span class="lineNum">      42 </span>            :       save</a>
 <a name="43"><span class="lineNum">      43 </span>            :       data sfmin /-1d0/</a>
 <a name="44"><span class="lineNum">      44 </span>            :       </a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       5618 :       if (sfmin.eq.-1d0) then         </span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       5388 :       if (sfmin.eq.-1d0) then         </span></a>
 <a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 :          sfmin = dlamch('s')</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :       endif</a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       5618 :       if (abs(alpha).ge.sfmin) then</span></a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">       5618 :          call pdscal(n,one/alpha, x, 1)</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">       5388 :       if (abs(alpha).ge.sfmin) then</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">       5388 :          call pdscal(n,one/alpha, x, 1)</span></a>
 <a name="51"><span class="lineNum">      51 </span>            :       else</a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :          call dlascl('General',i,i,alpha,one,n,1,x,n,info)</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :       endif</a>
 <a name="54"><span class="lineNum">      54 </span>            :       </a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       5618 :       end</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       5388 :       end</span></a>
 </pre>
       </td>
     </tr>

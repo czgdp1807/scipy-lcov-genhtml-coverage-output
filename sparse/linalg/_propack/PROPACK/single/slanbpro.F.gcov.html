@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/single/slanbpro.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/single/slanbpro.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">211</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -371,19 +371,19 @@
 <a name="301"><span class="lineNum">     301 </span>            : c     %------------------------------------%</a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">        424 :             if (j.gt.1 .and. ioption(2).gt.0 .and.</span></a>
 <a name="303"><span class="lineNum">     303 </span>            :      c           alpha.lt.kappa*beta) then</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         52 :                do i=1,ioption(2)</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         52 :                   s = psdot(n,V(1,j-1),1,V(1,j),1)</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         52 :                   call psaxpy(n,-s,V(1,j-1),1,V(1,j),1)</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         52 :                   if (beta .ne. zero) then</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         52 :                      beta = beta + s</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         52 :                      B(j-1,2) = beta</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         60 :                do i=1,ioption(2)</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         60 :                   s = psdot(n,V(1,j-1),1,V(1,j),1)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         60 :                   call psaxpy(n,-s,V(1,j-1),1,V(1,j),1)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         60 :                   if (beta .ne. zero) then</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         60 :                      beta = beta + s</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         60 :                      B(j-1,2) = beta</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :                   endif</a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">         52 :                   s = psnrm2(n,V(1,j),1)</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         52 :                   if (s .ge. kappa*alpha) goto 10                  </span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         52 :                   alpha = s</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">         60 :                   s = psnrm2(n,V(1,j),1)</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         60 :                   if (s .ge. kappa*alpha) goto 10                  </span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         60 :                   alpha = s</span></a>
 <a name="314"><span class="lineNum">     314 </span>            :                enddo</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         52 :  10            work(inu+j-2) = eps</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         52 :                alpha = s</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         60 :  10            work(inu+j-2) = eps</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         60 :                alpha = s</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :             endif</a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
 <a name="319"><span class="lineNum">     319 </span><span class="lineCov">        424 :             B(j,1) = alpha</span></a>
@@ -418,19 +418,19 @@
 <a name="348"><span class="lineNum">     348 </span>            : c     %------------------------------%</a>
 <a name="349"><span class="lineNum">     349 </span>            :          if ( (full_reorth .or. numax.gt.delta .or. force_reorth) </a>
 <a name="350"><span class="lineNum">     350 </span><span class="lineCov">        440 :      c        .and. alpha.ne.zero) then</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        201 :             if (full_reorth .or. eta.eq.zero) then</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        209 :             if (full_reorth .or. eta.eq.zero) then</span></a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :                iwork(iidx) = 1</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :                iwork(iidx+1) = j-1</span></a>
 <a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :                iwork(iidx+2) = j</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">        201 :             else if (.not. force_reorth) then</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        143 :                call scompute_int(work(inu),j-1,delta,eta,iwork(iidx))</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">        209 :             else if (.not. force_reorth) then</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        151 :                call scompute_int(work(inu),j-1,delta,eta,iwork(iidx))</span></a>
 <a name="357"><span class="lineNum">     357 </span>            :             endif</a>
 <a name="358"><span class="lineNum">     358 </span>            :             call sreorth(n,j-1,V,ldv,V(1,j),alpha,iwork(iidx),</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        201 :      c           kappa,work(is),ioption(1))</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        209 :      c           kappa,work(is),ioption(1))</span></a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        201 :             call sset_mu(j-1,work(inu),iwork(iidx),eps)</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">        201 :             numax = eta</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        201 :             if (force_reorth) then</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        209 :             call sset_mu(j-1,work(inu),iwork(iidx),eps)</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">        209 :             numax = eta</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        209 :             if (force_reorth) then</span></a>
 <a name="364"><span class="lineNum">     364 </span>            :                force_reorth = .false.</a>
 <a name="365"><span class="lineNum">     365 </span>            :             else</a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineCov">        440 :                force_reorth = .true.</span></a>
@@ -441,16 +441,16 @@
 <a name="371"><span class="lineNum">     371 </span>            : c     | Check whether an invariant subspace was found |</a>
 <a name="372"><span class="lineNum">     372 </span>            : c     %-----------------------------------------------% </a>
 <a name="373"><span class="lineNum">     373 </span><span class="lineCov">        440 :          if (alpha .lt. anorm*epsn .and. j.lt.k) then</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         22 :             rnorm = alpha</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         22 :             alpha = zero</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         21 :             rnorm = alpha</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         21 :             alpha = zero</span></a>
 <a name="376"><span class="lineNum">     376 </span>            : c     %------------------------------------------------%</a>
 <a name="377"><span class="lineNum">     377 </span>            : c     | Try to build an orthogonal subspace, starting  |</a>
 <a name="378"><span class="lineNum">     378 </span>            : c     | with a random vector.                          |</a>
 <a name="379"><span class="lineNum">     379 </span>            : c     %------------------------------------------------%</a>
 <a name="380"><span class="lineNum">     380 </span>            :             call sgetu0('t', m, n, j-1, 3, V(1,j), alpha, V, ldv,</a>
 <a name="381"><span class="lineNum">     381 </span>            :      c           aprod, dparm, iparm, ierr,ioption(1),anormest,</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         22 :      c           work(is))</span></a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         22 :             if (alpha .eq. zero) then</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         21 :      c           work(is))</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         21 :             if (alpha .eq. zero) then</span></a>
 <a name="384"><span class="lineNum">     384 </span>            : c     %------------------------------------------------%</a>
 <a name="385"><span class="lineNum">     385 </span>            : c     | We failed to generate a new random vector      |</a>
 <a name="386"><span class="lineNum">     386 </span>            : c     | in span(A^T) orthogonal to span(V(:,1:j-1)).   |</a>
@@ -467,16 +467,16 @@
 <a name="397"><span class="lineNum">     397 </span>            : c     | can continue the LBD and &quot;deflate&quot; the subspace |</a>
 <a name="398"><span class="lineNum">     398 </span>            : c     | by setting alpha_{j} = 0.                       |</a>
 <a name="399"><span class="lineNum">     399 </span>            : c     %-------------------------------------------------%</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         22 :               call ssafescal(n,alpha,V(1,j))</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         22 :                alpha = zero</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         22 :                force_reorth = .true.</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         22 :                if (delta.gt.zero) then</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         22 :                   full_reorth = .false.</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         21 :               call ssafescal(n,alpha,V(1,j))</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         21 :                alpha = zero</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         21 :                force_reorth = .true.</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         21 :                if (delta.gt.zero) then</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         21 :                   full_reorth = .false.</span></a>
 <a name="405"><span class="lineNum">     405 </span>            :                endif</a>
 <a name="406"><span class="lineNum">     406 </span>            :             endif</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        418 :          else if (j.gt.1 .and. .not. full_reorth .and. j.lt.k .and.</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">        419 :          else if (j.gt.1 .and. .not. full_reorth .and. j.lt.k .and.</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :      c           (delta*alpha .lt. anorm*eps)) then</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         12 :             ierr = j</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         15 :             ierr = j</span></a>
 <a name="410"><span class="lineNum">     410 </span>            :          endif            </a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineCov">        440 :          B(j,1) = alpha</span></a>
 <a name="412"><span class="lineNum">     412 </span>            : </a>
@@ -498,19 +498,19 @@
 <a name="428"><span class="lineNum">     428 </span>            : c     | Extended local reorthogonalization |</a>
 <a name="429"><span class="lineNum">     429 </span>            : c     %------------------------------------%</a>
 <a name="430"><span class="lineNum">     430 </span><span class="lineCov">        440 :          if (ioption(2).gt.0 .and. beta.lt.kappa*alpha) then</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        102 :             do i=1,ioption(2)</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">        102 :                s = psdot(m,U(1,j),1,U(1,j+1),1)</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        102 :                call psaxpy(m,-s,U(1,j),1,U(1,j+1),1)</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        102 :                if (alpha .ne. zero) then</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">        102 :                   alpha = alpha + s</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">        102 :                   B(j,1) = alpha</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         91 :             do i=1,ioption(2)</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         91 :                s = psdot(m,U(1,j),1,U(1,j+1),1)</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         91 :                call psaxpy(m,-s,U(1,j),1,U(1,j+1),1)</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         91 :                if (alpha .ne. zero) then</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">         91 :                   alpha = alpha + s</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         91 :                   B(j,1) = alpha</span></a>
 <a name="437"><span class="lineNum">     437 </span>            :                endif</a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">        102 :                s = psnrm2(m,U(1,j+1),1)       </span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">        102 :                if (s .ge. kappa*beta) goto 20</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        102 :                beta = s</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         91 :                s = psnrm2(m,U(1,j+1),1)       </span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         91 :                if (s .ge. kappa*beta) goto 20</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         91 :                beta = s</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :             enddo</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        102 :  20         work(imu+j-1) = eps</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">        102 :             beta = s</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         91 :  20         work(imu+j-1) = eps</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">         91 :             beta = s</span></a>
 <a name="444"><span class="lineNum">     444 </span>            :          endif</a>
 <a name="445"><span class="lineNum">     445 </span>            : </a>
 <a name="446"><span class="lineNum">     446 </span><span class="lineCov">        440 :          B(j,2) = beta</span></a>
@@ -533,7 +533,7 @@
 <a name="463"><span class="lineNum">     463 </span>            : c     %--------------------------%</a>
 <a name="464"><span class="lineNum">     464 </span><span class="lineCov">        440 :          if (.not.full_reorth .and. beta.ne.zero) then</span></a>
 <a name="465"><span class="lineNum">     465 </span>            :             call supdate_mu(mumax,work(imu),work(inu),j,B(1,1),</a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        440 :      c           B(1,2),anorm,epsn2)</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        439 :      c           B(1,2),anorm,epsn2)</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :          endif</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
 <a name="469"><span class="lineNum">     469 </span>            : c     %--------------------------------------%</a>
@@ -541,27 +541,27 @@
 <a name="471"><span class="lineNum">     471 </span>            : c     %--------------------------------------%</a>
 <a name="472"><span class="lineNum">     472 </span>            :          if ( (full_reorth .or. mumax.gt.delta .or. force_reorth) </a>
 <a name="473"><span class="lineNum">     473 </span><span class="lineCov">        440 :      c        .and. beta.ne.zero) then</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">        210 :             if (full_reorth .or. eta.eq.zero) then</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">        219 :             if (full_reorth .or. eta.eq.zero) then</span></a>
 <a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :                iwork(iidx) = 1</span></a>
 <a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :                iwork(iidx+1) = j</span></a>
 <a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :                iwork(iidx+2) = j+1</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">        210 :             else if (.not. force_reorth) then</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         47 :                call scompute_int(work(imu),j,delta,eta,iwork(iidx))</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">        219 :             else if (.not. force_reorth) then</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         49 :                call scompute_int(work(imu),j,delta,eta,iwork(iidx))</span></a>
 <a name="480"><span class="lineNum">     480 </span>            :             else</a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        489 :                do i=1,2*j+1</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        489 :                   if (iwork(iidx+i-1).eq.j) then</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        163 :                      iwork(iidx+i-1) = j+1</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        163 :                      goto 25</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        510 :                do i=1,2*j+1</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        510 :                   if (iwork(iidx+i-1).eq.j) then</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        170 :                      iwork(iidx+i-1) = j+1</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        170 :                      goto 25</span></a>
 <a name="485"><span class="lineNum">     485 </span>            :                   endif</a>
 <a name="486"><span class="lineNum">     486 </span>            :                enddo</a>
 <a name="487"><span class="lineNum">     487 </span>            :             endif</a>
 <a name="488"><span class="lineNum">     488 </span>            :  </a>
 <a name="489"><span class="lineNum">     489 </span>            :  25         call sreorth(m,j,U,ldu,U(1,j+1),beta,iwork(iidx),</a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        210 :      c              kappa, work(is),ioption(1))</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        219 :      c              kappa, work(is),ioption(1))</span></a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">        210 :             call sset_mu(j,work(imu),iwork(iidx),eps)</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        210 :             mumax = eta</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        210 :             if (force_reorth) then</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">        219 :             call sset_mu(j,work(imu),iwork(iidx),eps)</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        219 :             mumax = eta</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        219 :             if (force_reorth) then</span></a>
 <a name="495"><span class="lineNum">     495 </span>            :                force_reorth = .false.</a>
 <a name="496"><span class="lineNum">     496 </span>            :             else</a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineCov">        440 :                force_reorth = .true.</span></a>
@@ -572,15 +572,15 @@
 <a name="502"><span class="lineNum">     502 </span>            : c     | Check whether an invariant subspace was found |</a>
 <a name="503"><span class="lineNum">     503 </span>            : c     %-----------------------------------------------%</a>
 <a name="504"><span class="lineNum">     504 </span><span class="lineCov">        440 :          if (beta .lt. anorm*epsn .and. j.lt.k) then</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         36 :             rnorm = beta</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         36 :             beta = zero</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         35 :             rnorm = beta</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         35 :             beta = zero</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : c     %-----------------------------------------------%</a>
 <a name="508"><span class="lineNum">     508 </span>            : c     | Try to build an orthogonal subspace, starting |</a>
 <a name="509"><span class="lineNum">     509 </span>            : c     | with a random vector.                         |</a>
 <a name="510"><span class="lineNum">     510 </span>            : c     %-----------------------------------------------%</a>
 <a name="511"><span class="lineNum">     511 </span>            :             call sgetu0('n', m, n, j, 3, U(1,j+1), beta, U, ldu, aprod,</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         36 :      c           dparm, iparm, ierr,ioption(1),anormest,work(is))</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         36 :             if (beta .eq. zero) then</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         35 :      c           dparm, iparm, ierr,ioption(1),anormest,work(is))</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         35 :             if (beta .eq. zero) then</span></a>
 <a name="514"><span class="lineNum">     514 </span>            : c     %-----------------------------------------------%</a>
 <a name="515"><span class="lineNum">     515 </span>            : c     | We failed to generate a new random vector     |</a>
 <a name="516"><span class="lineNum">     516 </span>            : c     | in span(A) orthogonal to span(U(:,1:j)).      |</a>
@@ -597,21 +597,21 @@
 <a name="527"><span class="lineNum">     527 </span>            : c     | continue the LBD and &quot;deflate&quot; the subspace by |</a>
 <a name="528"><span class="lineNum">     528 </span>            : c     | setting beta_{j+1} = 0.                        |</a>
 <a name="529"><span class="lineNum">     529 </span>            : c     %------------------------------------------------%</a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         24 :                call ssafescal(m,beta,U(1,j+1))</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         24 :                beta = zero</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">         24 :                force_reorth = .true.</span></a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         24 :                if (delta .gt. zero) then</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">         24 :                   full_reorth = .false.</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         23 :                call ssafescal(m,beta,U(1,j+1))</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         23 :                beta = zero</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">         23 :                force_reorth = .true.</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         23 :                if (delta .gt. zero) then</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">         23 :                   full_reorth = .false.</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :                endif</a>
 <a name="536"><span class="lineNum">     536 </span>            :             endif</a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">        404 :          else if (.not.full_reorth .and. j.lt.k .and. </span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">        405 :          else if (.not.full_reorth .and. j.lt.k .and. </span></a>
 <a name="538"><span class="lineNum">     538 </span>            :      c           (delta*beta .lt. anorm*eps)) then</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">          9 :             ierr = j</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         10 :             ierr = j</span></a>
 <a name="540"><span class="lineNum">     540 </span>            :          endif            </a>
 <a name="541"><span class="lineNum">     541 </span>            : </a>
 <a name="542"><span class="lineNum">     542 </span><span class="lineCov">        428 :          B(j,2) = beta</span></a>
 <a name="543"><span class="lineNum">     543 </span><span class="lineCov">        428 :          if (beta.ne.zero .and. beta.ne.one) then</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        403 :             call ssafescal(m,beta,U(1,j+1))</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        404 :             call ssafescal(m,beta,U(1,j+1))</span></a>
 <a name="545"><span class="lineNum">     545 </span>            :          endif</a>
 <a name="546"><span class="lineNum">     546 </span><span class="lineCov">        432 :          rnorm = beta</span></a>
 <a name="547"><span class="lineNum">     547 </span>            :       enddo</a>
@@ -623,7 +623,7 @@
 <a name="553"><span class="lineNum">     553 </span>            : c**********************************************************************</a>
 <a name="554"><span class="lineNum">     554 </span>            : c</a>
 <a name="555"><span class="lineNum">     555 </span>            : </a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineCov">        411 :       subroutine sset_mu(k,mu,index,val)</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineCov">        428 :       subroutine sset_mu(k,mu,index,val)</span></a>
 <a name="557"><span class="lineNum">     557 </span>            : c     %-----------%</a>
 <a name="558"><span class="lineNum">     558 </span>            : c     | Arguments |</a>
 <a name="559"><span class="lineNum">     559 </span>            : c     %-----------%</a>
@@ -636,20 +636,20 @@
 <a name="566"><span class="lineNum">     566 </span>            : c     %-----------------%</a>
 <a name="567"><span class="lineNum">     567 </span>            :       integer i,j,p,q</a>
 <a name="568"><span class="lineNum">     568 </span>            : </a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">        411 :       i=1</span></a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">        822 :       do while(index(i).le.k .and. index(i).gt.0)</span></a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">        411 :          p = index(i)</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">        411 :          q = index(i+1)</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">      16756 :          do j=p,q</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      16756 :             mu(j) = val</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">        428 :       i=1</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">        856 :       do while(index(i).le.k .and. index(i).gt.0)</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">        428 :          p = index(i)</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">        428 :          q = index(i+1)</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">      16780 :          do j=p,q</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      16780 :             mu(j) = val</span></a>
 <a name="575"><span class="lineNum">     575 </span>            :          enddo</a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">        411 :          i = i+2</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">        428 :          i = i+2</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :       enddo      </a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">        411 :       end</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">        428 :       end</span></a>
 <a name="579"><span class="lineNum">     579 </span>            : c</a>
 <a name="580"><span class="lineNum">     580 </span>            : c**********************************************************************</a>
 <a name="581"><span class="lineNum">     581 </span>            : c</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        190 :       subroutine scompute_int(mu,j,delta,eta,index)</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">        200 :       subroutine scompute_int(mu,j,delta,eta,index)</span></a>
 <a name="583"><span class="lineNum">     583 </span>            : c     %-----------%</a>
 <a name="584"><span class="lineNum">     584 </span>            : c     | Arguments |</a>
 <a name="585"><span class="lineNum">     585 </span>            : c     %-----------%</a>
@@ -664,39 +664,39 @@
 <a name="594"><span class="lineNum">     594 </span>            : c     %-----------------%</a>
 <a name="595"><span class="lineNum">     595 </span>            :       integer i,k,s,ip</a>
 <a name="596"><span class="lineNum">     596 </span>            : </a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        190 :       if (delta.lt.eta) then</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">        200 :       if (delta.lt.eta) then</span></a>
 <a name="598"><span class="lineNum">     598 </span><span class="lineNoCov">          0 :          write (*,*) 'Warning delta&lt;eta in scompute_int'</span></a>
 <a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :          return</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :       endif</a>
 <a name="601"><span class="lineNum">     601 </span>            : </a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        190 :       ip = 0</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        190 :       index(1) = 0</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        190 :       i=0</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        380 :       do while(i.lt.j)</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        200 :       ip = 0</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        200 :       index(1) = 0</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        200 :       i=0</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">        400 :       do while(i.lt.j)</span></a>
 <a name="606"><span class="lineNum">     606 </span>            : c     find the next mu(k), k&gt;i where abs(mu(k)) &gt; delta</a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        924 :          do k=i+1,j</span></a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineCov">        924 :             if (abs(mu(k)).gt.delta) goto 10</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">        821 :          do k=i+1,j</span></a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineCov">        821 :             if (abs(mu(k)).gt.delta) goto 10</span></a>
 <a name="609"><span class="lineNum">     609 </span>            :          enddo         </a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineCov">        190 :          goto 40</span></a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">        200 :          goto 40</span></a>
 <a name="611"><span class="lineNum">     611 </span>            : c     find smallest i&lt;k such that for all j=i,..,k, m(j) &gt;= eta</a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">       1060 :  10      do s=k,max(i,1),-1</span></a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">       1060 :              if (abs(mu(s)).lt.eta) goto 20</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">        981 :  10      do s=k,max(i,1),-1</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">        981 :              if (abs(mu(s)).lt.eta) goto 20</span></a>
 <a name="614"><span class="lineNum">     614 </span>            :          enddo</a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineCov">        190 :  20      ip= ip+1</span></a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        190 :          index(ip) = s+1</span></a>
-<a name="617"><span class="lineNum">     617 </span><span class="lineCov">       8115 :          do i=s+1,j            </span></a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineCov">       8115 :             if (abs(mu(i)).lt.eta) goto 30</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">        200 :  20      ip= ip+1</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        200 :          index(ip) = s+1</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineCov">       8274 :          do i=s+1,j            </span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineCov">       8274 :             if (abs(mu(i)).lt.eta) goto 30</span></a>
 <a name="619"><span class="lineNum">     619 </span>            :          enddo         </a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">        190 :  30      ip= ip+1</span></a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">        190 :          index(ip) = i-1</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">        200 :  30      ip= ip+1</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">        200 :          index(ip) = i-1</span></a>
 <a name="622"><span class="lineNum">     622 </span>            :       enddo</a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        190 :  40   ip = ip+1</span></a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">        190 :       index(ip) = j+1</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        200 :  40   ip = ip+1</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">        200 :       index(ip) = j+1</span></a>
 <a name="625"><span class="lineNum">     625 </span>            :       end</a>
 <a name="626"><span class="lineNum">     626 </span>            : c</a>
 <a name="627"><span class="lineNum">     627 </span>            : c**********************************************************************</a>
 <a name="628"><span class="lineNum">     628 </span>            : c</a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">        440 :       subroutine supdate_mu(mumax,mu,nu,j,alpha,beta,anorm,eps1)</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">        439 :       subroutine supdate_mu(mumax,mu,nu,j,alpha,beta,anorm,eps1)</span></a>
 <a name="630"><span class="lineNum">     630 </span>            : c     %-----------%</a>
 <a name="631"><span class="lineNum">     631 </span>            : c     | Arguments |</a>
 <a name="632"><span class="lineNum">     632 </span>            : c     %-----------%</a>
@@ -724,30 +724,30 @@
 <a name="654"><span class="lineNum">     654 </span>            :       real slapy2</a>
 <a name="655"><span class="lineNum">     655 </span>            :       external slapy2</a>
 <a name="656"><span class="lineNum">     656 </span>            : </a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">        440 :       if (j.eq.1) then</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">        439 :       if (j.eq.1) then</span></a>
 <a name="658"><span class="lineNum">     658 </span><span class="lineCov">         16 :          d = eps1*(slapy2(alpha(j), beta(j)) + alpha(1)) + eps1*anorm</span></a>
 <a name="659"><span class="lineNum">     659 </span><span class="lineCov">         16 :          mu(1) = eps1/beta(1)</span></a>
 <a name="660"><span class="lineNum">     660 </span><span class="lineCov">         16 :          mumax = abs(mu(1))</span></a>
 <a name="661"><span class="lineNum">     661 </span>            :       else</a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineCov">        424 :          mu(1) = alpha(1)*nu(1)-alpha(j)*mu(1)</span></a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        424 :          d = eps1*(slapy2(alpha(j), beta(j)) + alpha(1)) + eps1*anorm</span></a>
-<a name="664"><span class="lineNum">     664 </span><span class="lineCov">        424 :          mu(1) = (mu(1) + sign(d,mu(1))) / beta(j)</span></a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">        424 :          mumax = abs(mu(1))</span></a>
-<a name="666"><span class="lineNum">     666 </span><span class="lineCov">      15634 :          do k=2,j-1</span></a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">      15210 :             mu(k) = alpha(k)*nu(k) +beta(k-1)*nu(k-1)-alpha(j)*mu(k)</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">        423 :          mu(1) = alpha(1)*nu(1)-alpha(j)*mu(1)</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">        423 :          d = eps1*(slapy2(alpha(j), beta(j)) + alpha(1)) + eps1*anorm</span></a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineCov">        423 :          mu(1) = (mu(1) + sign(d,mu(1))) / beta(j)</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">        423 :          mumax = abs(mu(1))</span></a>
+<a name="666"><span class="lineNum">     666 </span><span class="lineCov">      15534 :          do k=2,j-1</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">      15111 :             mu(k) = alpha(k)*nu(k) +beta(k-1)*nu(k-1)-alpha(j)*mu(k)</span></a>
 <a name="668"><span class="lineNum">     668 </span>            :             d = eps1*(slapy2(alpha(j), beta(j)) + </a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineCov">      15210 :      c           slapy2(alpha(k), beta(k-1))) + eps1*anorm</span></a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">      15210 :             mu(k) = (mu(k) + sign(d,mu(k))) / beta(j)</span></a>
-<a name="671"><span class="lineNum">     671 </span><span class="lineCov">      15634 :             mumax = max(mumax,abs(mu(k)))</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">      15111 :      c           slapy2(alpha(k), beta(k-1))) + eps1*anorm</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">      15111 :             mu(k) = (mu(k) + sign(d,mu(k))) / beta(j)</span></a>
+<a name="671"><span class="lineNum">     671 </span><span class="lineCov">      15534 :             mumax = max(mumax,abs(mu(k)))</span></a>
 <a name="672"><span class="lineNum">     672 </span>            :          enddo</a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">        424 :          mu(j) = beta(j-1)*nu(j-1)</span></a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">        423 :          mu(j) = beta(j-1)*nu(j-1)</span></a>
 <a name="674"><span class="lineNum">     674 </span>            :          d = eps1*(slapy2(alpha(j), beta(j)) + </a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">        424 :      c        slapy2(alpha(j), beta(j-1))) + eps1*anorm</span></a>
-<a name="676"><span class="lineNum">     676 </span><span class="lineCov">        424 :          mu(j) = (mu(j) + sign(d,mu(j))) / beta(j)</span></a>
-<a name="677"><span class="lineNum">     677 </span><span class="lineCov">        424 :          mumax = max(mumax,abs(mu(j)))</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">        423 :      c        slapy2(alpha(j), beta(j-1))) + eps1*anorm</span></a>
+<a name="676"><span class="lineNum">     676 </span><span class="lineCov">        423 :          mu(j) = (mu(j) + sign(d,mu(j))) / beta(j)</span></a>
+<a name="677"><span class="lineNum">     677 </span><span class="lineCov">        423 :          mumax = max(mumax,abs(mu(j)))</span></a>
 <a name="678"><span class="lineNum">     678 </span>            :       endif</a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">        440 :       mu(j+1) = one</span></a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">        440 :       end</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">        439 :       mu(j+1) = one</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">        439 :       end</span></a>
 <a name="681"><span class="lineNum">     681 </span>            : c</a>
 <a name="682"><span class="lineNum">     682 </span>            : c**********************************************************************</a>
 <a name="683"><span class="lineNum">     683 </span>            : c</a>

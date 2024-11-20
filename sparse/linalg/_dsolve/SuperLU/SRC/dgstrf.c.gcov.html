@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/dgstrf.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/dgstrf.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">127</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -267,141 +267,141 @@
 <a name="197"><span class="lineNum">     197 </span>            :  */</a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
 <a name="199"><span class="lineNum">     199 </span>            : void</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4014 : dgstrf (superlu_options_t *options, SuperMatrix *A,</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4020 : dgstrf (superlu_options_t *options, SuperMatrix *A,</span></a>
 <a name="201"><span class="lineNum">     201 </span>            :         int relax, int panel_size, int *etree, void *work, int_t lwork,</a>
 <a name="202"><span class="lineNum">     202 </span>            :         int *perm_c, int *perm_r, SuperMatrix *L, SuperMatrix *U,</a>
 <a name="203"><span class="lineNum">     203 </span>            :         GlobalLU_t *Glu, /* persistent to facilitate multiple factorizations */</a>
 <a name="204"><span class="lineNum">     204 </span>            :         SuperLUStat_t *stat, int_t *info)</a>
 <a name="205"><span class="lineNum">     205 </span>            : {</a>
 <a name="206"><span class="lineNum">     206 </span>            :     /* Local working arrays */</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4014 :     NCPformat *Astore;</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4014 :     int       *iperm_r = NULL; /* inverse of perm_r; used when </span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4020 :     NCPformat *Astore;</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       4020 :     int       *iperm_r = NULL; /* inverse of perm_r; used when </span></a>
 <a name="209"><span class="lineNum">     209 </span>            :                                   options-&gt;Fact == SamePattern_SameRowPerm */</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       4014 :     int       *iperm_c; /* inverse of perm_c */</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4014 :     int       *iwork;</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       4014 :     double    *dwork;</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       4014 :     int       *segrep, *repfnz, *parent;</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       4014 :     int       *panel_lsub; /* dense[]/panel_lsub[] pair forms a w-wide SPA */</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       4014 :     int_t     *xprune, *xplore;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       4014 :     int       *marker;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       4014 :     double    *dense, *tempv;</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       4014 :     int       *relax_end;</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       4014 :     double    *a;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       4014 :     int_t     *asub, *xa_begin, *xa_end;</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4014 :     int_t     *xlsub, *xlusup, *xusub;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4014 :     int       *xsup, *supno;</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4014 :     int_t     nzlumax;</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       4014 :     double fill_ratio = sp_ienv(6);  /* estimated fill ratio */</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       4020 :     int       *iperm_c; /* inverse of perm_c */</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4020 :     int       *iwork;</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       4020 :     double    *dwork;</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       4020 :     int       *segrep, *repfnz, *parent;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       4020 :     int       *panel_lsub; /* dense[]/panel_lsub[] pair forms a w-wide SPA */</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       4020 :     int_t     *xprune, *xplore;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       4020 :     int       *marker;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       4020 :     double    *dense, *tempv;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       4020 :     int       *relax_end;</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       4020 :     double    *a;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       4020 :     int_t     *asub, *xa_begin, *xa_end;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       4020 :     int_t     *xlsub, *xlusup, *xusub;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4020 :     int       *xsup, *supno;</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       4020 :     int_t     nzlumax;</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       4020 :     double fill_ratio = sp_ienv(6);  /* estimated fill ratio */</span></a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
 <a name="226"><span class="lineNum">     226 </span>            :     /* Local scalars */</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       4014 :     fact_t    fact = options-&gt;Fact;</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4014 :     double    diag_pivot_thresh = options-&gt;DiagPivotThresh;</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       4014 :     int       pivrow;   /* pivotal row number in the original matrix A */</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       4014 :     int       nseg1;    /* no of segments in U-column above panel row jcol */</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4014 :     int       nseg;     /* no of segments in each U-column */</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4014 :     register int jcol, jj;</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4014 :     register int kcol;  /* end column of a relaxed snode */</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       4014 :     register int icol;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4014 :     int_t     i, k, iinfo, new_next, nextlu, nextu;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4014 :     int       m, n, min_mn, jsupno, fsupc;</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4014 :     int       w_def;    /* upper bound on panel width */</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4014 :     int       usepr, iperm_r_allocated = 0;</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       4014 :     int_t     nnzL, nnzU;</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       4014 :     int       *panel_histo = stat-&gt;panel_histo;</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4014 :     flops_t   *ops = stat-&gt;ops;</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       4020 :     fact_t    fact = options-&gt;Fact;</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4020 :     double    diag_pivot_thresh = options-&gt;DiagPivotThresh;</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       4020 :     int       pivrow;   /* pivotal row number in the original matrix A */</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       4020 :     int       nseg1;    /* no of segments in U-column above panel row jcol */</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       4020 :     int       nseg;     /* no of segments in each U-column */</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4020 :     register int jcol, jj;</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4020 :     register int kcol;  /* end column of a relaxed snode */</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       4020 :     register int icol;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4020 :     int_t     i, k, iinfo, new_next, nextlu, nextu;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4020 :     int       m, n, min_mn, jsupno, fsupc;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4020 :     int       w_def;    /* upper bound on panel width */</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4020 :     int       usepr, iperm_r_allocated = 0;</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       4020 :     int_t     nnzL, nnzU;</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">       4020 :     int       *panel_histo = stat-&gt;panel_histo;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4020 :     flops_t   *ops = stat-&gt;ops;</span></a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       4014 :     iinfo    = 0;</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4014 :     m        = A-&gt;nrow;</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4014 :     n        = A-&gt;ncol;</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">       4014 :     min_mn   = SUPERLU_MIN(m, n);</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4014 :     Astore   = A-&gt;Store;</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">       4014 :     a        = Astore-&gt;nzval;</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4014 :     asub     = Astore-&gt;rowind;</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">       4014 :     xa_begin = Astore-&gt;colbeg;</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4014 :     xa_end   = Astore-&gt;colend;</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       4020 :     iinfo    = 0;</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       4020 :     m        = A-&gt;nrow;</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">       4020 :     n        = A-&gt;ncol;</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">       4020 :     min_mn   = SUPERLU_MIN(m, n);</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4020 :     Astore   = A-&gt;Store;</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">       4020 :     a        = Astore-&gt;nzval;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4020 :     asub     = Astore-&gt;rowind;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">       4020 :     xa_begin = Astore-&gt;colbeg;</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4020 :     xa_end   = Astore-&gt;colend;</span></a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
 <a name="253"><span class="lineNum">     253 </span>            :     /* Allocate storage common to the factor routines */</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       4014 :     *info = dLUMemInit(fact, work, lwork, m, n, Astore-&gt;nnz,</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">       4020 :     *info = dLUMemInit(fact, work, lwork, m, n, Astore-&gt;nnz,</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :                        panel_size, fill_ratio, L, U, Glu, &amp;iwork, &amp;dwork);</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4014 :     if ( *info ) return;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">       4020 :     if ( *info ) return;</span></a>
 <a name="257"><span class="lineNum">     257 </span>            :     </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4014 :     xsup    = Glu-&gt;xsup;</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       4014 :     supno   = Glu-&gt;supno;</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       4014 :     xlsub   = Glu-&gt;xlsub;</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       4014 :     xlusup  = Glu-&gt;xlusup;</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">       4014 :     xusub   = Glu-&gt;xusub;</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">       4020 :     xsup    = Glu-&gt;xsup;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">       4020 :     supno   = Glu-&gt;supno;</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">       4020 :     xlsub   = Glu-&gt;xlsub;</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">       4020 :     xlusup  = Glu-&gt;xlusup;</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">       4020 :     xusub   = Glu-&gt;xusub;</span></a>
 <a name="263"><span class="lineNum">     263 </span>            :     </a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       4014 :     SetIWork(m, n, panel_size, iwork, &amp;segrep, &amp;parent, &amp;xplore,</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       4020 :     SetIWork(m, n, panel_size, iwork, &amp;segrep, &amp;parent, &amp;xplore,</span></a>
 <a name="265"><span class="lineNum">     265 </span>            :              &amp;repfnz, &amp;panel_lsub, &amp;xprune, &amp;marker);</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       4014 :     dSetRWork(m, panel_size, dwork, &amp;dense, &amp;tempv);</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       4020 :     dSetRWork(m, panel_size, dwork, &amp;dense, &amp;tempv);</span></a>
 <a name="267"><span class="lineNum">     267 </span>            :     </a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       4014 :     usepr = (fact == SamePattern_SameRowPerm);</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">       4014 :     if ( usepr ) {</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       4020 :     usepr = (fact == SamePattern_SameRowPerm);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">       4020 :     if ( usepr ) {</span></a>
 <a name="270"><span class="lineNum">     270 </span>            :         /* Compute the inverse of perm_r */</a>
 <a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :         iperm_r = (int *) int32Malloc(m);</span></a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :         for (k = 0; k &lt; m; ++k) iperm_r[perm_r[k]] = k;</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         iperm_r_allocated = 1;</a>
 <a name="274"><span class="lineNum">     274 </span>            :     }</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       4014 :     iperm_c = (int *) int32Malloc(n);</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     179077 :     for (k = 0; k &lt; n; ++k) iperm_c[perm_c[k]] = k;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       4020 :     iperm_c = (int *) int32Malloc(n);</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     179587 :     for (k = 0; k &lt; n; ++k) iperm_c[perm_c[k]] = k;</span></a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
 <a name="278"><span class="lineNum">     278 </span>            :     /* Identify relaxed snodes */</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       4014 :     relax_end = (int *) intMalloc(n);</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       4014 :     if ( options-&gt;SymmetricMode == YES ) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       4020 :     relax_end = (int *) intMalloc(n);</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       4020 :     if ( options-&gt;SymmetricMode == YES ) {</span></a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineCov">          8 :         heap_relax_snode(n, etree, relax, marker, relax_end); </span></a>
 <a name="282"><span class="lineNum">     282 </span>            :     } else {</a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       4006 :         relax_snode(n, etree, relax, marker, relax_end); </span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       4012 :         relax_snode(n, etree, relax, marker, relax_end); </span></a>
 <a name="284"><span class="lineNum">     284 </span>            :     }</a>
 <a name="285"><span class="lineNum">     285 </span>            :     </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       4014 :     ifill (perm_r, m, EMPTY);</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       4014 :     ifill (marker, m * NO_MARKER, EMPTY);</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       4014 :     supno[0] = -1;</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       4014 :     xsup[0]  = xlsub[0] = xusub[0] = xlusup[0] = 0;</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       4014 :     w_def    = panel_size;</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       4020 :     ifill (perm_r, m, EMPTY);</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       4020 :     ifill (marker, m * NO_MARKER, EMPTY);</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       4020 :     supno[0] = -1;</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">       4020 :     xsup[0]  = xlsub[0] = xusub[0] = xlusup[0] = 0;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       4020 :     w_def    = panel_size;</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            :     /* </a>
 <a name="293"><span class="lineNum">     293 </span>            :      * Work on one &quot;panel&quot; at a time. A panel is one of the following: </a>
 <a name="294"><span class="lineNum">     294 </span>            :      *     (a) a relaxed supernode at the bottom of the etree, or</a>
 <a name="295"><span class="lineNum">     295 </span>            :      *     (b) panel_size contiguous columns, defined by the user</a>
 <a name="296"><span class="lineNum">     296 </span>            :      */</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      45497 :     for (jcol = 0; jcol &lt; min_mn; ) {</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      45714 :     for (jcol = 0; jcol &lt; min_mn; ) {</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      41485 :         if ( relax_end[jcol] != EMPTY ) { /* start of a relaxed snode */</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      35292 :             kcol = relax_end[jcol];       /* end of the relaxed snode */</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      35292 :             panel_histo[kcol-jcol+1]++;</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      41696 :         if ( relax_end[jcol] != EMPTY ) { /* start of a relaxed snode */</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">      35473 :             kcol = relax_end[jcol];       /* end of the relaxed snode */</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">      35473 :             panel_histo[kcol-jcol+1]++;</span></a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
 <a name="303"><span class="lineNum">     303 </span>            :             /* --------------------------------------</a>
 <a name="304"><span class="lineNum">     304 </span>            :              * Factorize the relaxed supernode(jcol:kcol) </a>
 <a name="305"><span class="lineNum">     305 </span>            :              * -------------------------------------- */</a>
 <a name="306"><span class="lineNum">     306 </span>            :             /* Determine the union of the row structure of the snode */</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">      35292 :             if ( (*info = dsnode_dfs(jcol, kcol, asub, xa_begin, xa_end,</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">      35473 :             if ( (*info = dsnode_dfs(jcol, kcol, asub, xa_begin, xa_end,</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :                                     xprune, marker, Glu)) != 0 )</a>
 <a name="309"><span class="lineNum">     309 </span>            :                 return;</a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      35292 :             nextu    = xusub[jcol];</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      35292 :             nextlu   = xlusup[jcol];</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      35292 :             jsupno   = supno[jcol];</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">      35292 :             fsupc    = xsup[jsupno];</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      35292 :             new_next = nextlu + (xlsub[fsupc+1]-xlsub[fsupc])*(kcol-jcol+1);</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">      35292 :             nzlumax = Glu-&gt;nzlumax;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      35292 :             while ( new_next &gt; nzlumax ) {</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      35473 :             nextu    = xusub[jcol];</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      35473 :             nextlu   = xlusup[jcol];</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      35473 :             jsupno   = supno[jcol];</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">      35473 :             fsupc    = xsup[jsupno];</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      35473 :             new_next = nextlu + (xlsub[fsupc+1]-xlsub[fsupc])*(kcol-jcol+1);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">      35473 :             nzlumax = Glu-&gt;nzlumax;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">      35473 :             while ( new_next &gt; nzlumax ) {</span></a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :                 if ( (*info = dLUMemXpand(jcol, nextlu, LUSUP, &amp;nzlumax, Glu)) )</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :                     return;</a>
 <a name="320"><span class="lineNum">     320 </span>            :             }</a>
 <a name="321"><span class="lineNum">     321 </span>            :     </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">      94030 :             for (icol = jcol; icol&lt;= kcol; icol++) {</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      58739 :                 xusub[icol+1] = nextu;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">      94636 :             for (icol = jcol; icol&lt;= kcol; icol++) {</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      59164 :                 xusub[icol+1] = nextu;</span></a>
 <a name="324"><span class="lineNum">     324 </span>            :                 </a>
 <a name="325"><span class="lineNum">     325 </span>            :                 /* Scatter into SPA dense[*] */</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">     247904 :                 for (k = xa_begin[icol]; k &lt; xa_end[icol]; k++)</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">     189165 :                     dense[asub[k]] = a[k];</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">     254125 :                 for (k = xa_begin[icol]; k &lt; xa_end[icol]; k++)</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">     194961 :                     dense[asub[k]] = a[k];</span></a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
 <a name="329"><span class="lineNum">     329 </span>            :                 /* Numeric update within the snode */</a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">      58739 :                 dsnode_bmod(icol, jsupno, fsupc, dense, tempv, Glu, stat);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">      59164 :                 dsnode_bmod(icol, jsupno, fsupc, dense, tempv, Glu, stat);</span></a>
 <a name="331"><span class="lineNum">     331 </span>            : </a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">      58738 :                 if ( (*info = dpivotL(icol, diag_pivot_thresh, &amp;usepr, perm_r,</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">      59163 :                 if ( (*info = dpivotL(icol, diag_pivot_thresh, &amp;usepr, perm_r,</span></a>
 <a name="333"><span class="lineNum">     333 </span>            :                                       iperm_r, iperm_c, &amp;pivrow, Glu, stat)) )</a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">      58751 :                     if ( iinfo == 0 ) iinfo = *info;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">      59176 :                     if ( iinfo == 0 ) iinfo = *info;</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :                 </a>
 <a name="336"><span class="lineNum">     336 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
 <a name="337"><span class="lineNum">     337 </span>            :                 dprint_lu_col(&quot;[1]: &quot;, icol, pivrow, xprune, Glu);</a>
@@ -416,54 +416,54 @@
 <a name="346"><span class="lineNum">     346 </span>            :             /* Adjust panel_size so that a panel won't overlap with the next </a>
 <a name="347"><span class="lineNum">     347 </span>            :              * relaxed snode.</a>
 <a name="348"><span class="lineNum">     348 </span>            :              */</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       6193 :             panel_size = w_def;</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">     112287 :             for (k = jcol + 1; k &lt; SUPERLU_MIN(jcol+panel_size, min_mn); k++) </span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">     106227 :                 if ( relax_end[k] != EMPTY ) {</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        133 :                     panel_size = k - jcol;</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        133 :                     break;</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       6223 :             panel_size = w_def;</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">     112360 :             for (k = jcol + 1; k &lt; SUPERLU_MIN(jcol+panel_size, min_mn); k++) </span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">     106294 :                 if ( relax_end[k] != EMPTY ) {</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        157 :                     panel_size = k - jcol;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        157 :                     break;</span></a>
 <a name="354"><span class="lineNum">     354 </span>            :                 }</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       6193 :             if ( k == min_mn ) panel_size = min_mn - jcol;</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       6193 :             panel_histo[panel_size]++;</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       6223 :             if ( k == min_mn ) panel_size = min_mn - jcol;</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">       6223 :             panel_histo[panel_size]++;</span></a>
 <a name="357"><span class="lineNum">     357 </span>            : </a>
 <a name="358"><span class="lineNum">     358 </span>            :             /* symbolic factor on a panel of columns */</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       6193 :             dpanel_dfs(m, panel_size, jcol, A, perm_r, &amp;nseg1,</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       6223 :             dpanel_dfs(m, panel_size, jcol, A, perm_r, &amp;nseg1,</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :                       dense, panel_lsub, segrep, repfnz, xprune,</a>
 <a name="361"><span class="lineNum">     361 </span>            :                       marker, parent, xplore, Glu);</a>
 <a name="362"><span class="lineNum">     362 </span>            :             </a>
 <a name="363"><span class="lineNum">     363 </span>            :             /* numeric sup-panel updates in topological order */</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       6193 :             dpanel_bmod(m, panel_size, jcol, nseg1, dense,</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       6223 :             dpanel_bmod(m, panel_size, jcol, nseg1, dense,</span></a>
 <a name="365"><span class="lineNum">     365 </span>            :                         tempv, segrep, repfnz, Glu, stat);</a>
 <a name="366"><span class="lineNum">     366 </span>            :             </a>
 <a name="367"><span class="lineNum">     367 </span>            :             /* Sparse LU within the panel, and below panel diagonal */</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">     124668 :             for ( jj = jcol; jj &lt; jcol + panel_size; jj++) {</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">     112283 :                 k = (jj - jcol) * m; /* column index for w-wide arrays */</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">     124801 :             for ( jj = jcol; jj &lt; jcol + panel_size; jj++) {</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">     112356 :                 k = (jj - jcol) * m; /* column index for w-wide arrays */</span></a>
 <a name="370"><span class="lineNum">     370 </span>            : </a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">     112283 :                 nseg = nseg1;   /* Begin after all the panel segments */</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">     112356 :                 nseg = nseg1;   /* Begin after all the panel segments */</span></a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">     112283 :                 if ((*info = dcolumn_dfs(m, jj, perm_r, &amp;nseg, &amp;panel_lsub[k],</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">     112283 :                                         segrep, &amp;repfnz[k], xprune, marker,</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">     112356 :                 if ((*info = dcolumn_dfs(m, jj, perm_r, &amp;nseg, &amp;panel_lsub[k],</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">     112356 :                                         segrep, &amp;repfnz[k], xprune, marker,</span></a>
 <a name="375"><span class="lineNum">     375 </span>            :                                         parent, xplore, Glu)) != 0) return;</a>
 <a name="376"><span class="lineNum">     376 </span>            : </a>
 <a name="377"><span class="lineNum">     377 </span>            :                 /* Numeric updates */</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">     112283 :                 if ((*info = dcolumn_bmod(jj, (nseg - nseg1), &amp;dense[k],</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">     112283 :                                          tempv, &amp;segrep[nseg1], &amp;repfnz[k],</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">     112356 :                 if ((*info = dcolumn_bmod(jj, (nseg - nseg1), &amp;dense[k],</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">     112356 :                                          tempv, &amp;segrep[nseg1], &amp;repfnz[k],</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :                                          jcol, Glu, stat)) != 0) return;</a>
 <a name="381"><span class="lineNum">     381 </span>            :                 </a>
 <a name="382"><span class="lineNum">     382 </span>            :                 /* Copy the U-segments to ucol[*] */</a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">     112283 :                 if ((*info = dcopy_to_ucol(jj, nseg, segrep, &amp;repfnz[k],</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">     112356 :                 if ((*info = dcopy_to_ucol(jj, nseg, segrep, &amp;repfnz[k],</span></a>
 <a name="384"><span class="lineNum">     384 </span>            :                                           perm_r, &amp;dense[k], Glu)) != 0)</a>
 <a name="385"><span class="lineNum">     385 </span>            :                     return;</a>
 <a name="386"><span class="lineNum">     386 </span>            : </a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">     112283 :                 if ( (*info = dpivotL(jj, diag_pivot_thresh, &amp;usepr, perm_r,</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">     112356 :                 if ( (*info = dpivotL(jj, diag_pivot_thresh, &amp;usepr, perm_r,</span></a>
 <a name="388"><span class="lineNum">     388 </span>            :                                       iperm_r, iperm_c, &amp;pivrow, Glu, stat)) )</a>
 <a name="389"><span class="lineNum">     389 </span><span class="lineCov">          1 :                     if ( iinfo == 0 ) iinfo = *info;</span></a>
 <a name="390"><span class="lineNum">     390 </span>            : </a>
 <a name="391"><span class="lineNum">     391 </span>            :                 /* Prune columns (0:jj-1) using column jj */</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">     112283 :                 dpruneL(jj, perm_r, pivrow, nseg, segrep,</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">     112283 :                         &amp;repfnz[k], xprune, Glu);</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">     112356 :                 dpruneL(jj, perm_r, pivrow, nseg, segrep,</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">     112356 :                         &amp;repfnz[k], xprune, Glu);</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : </a>
 <a name="395"><span class="lineNum">     395 </span>            :                 /* Reset repfnz[] for this column */</a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">     112283 :                 resetrep_col (nseg, segrep, &amp;repfnz[k]);</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">     112356 :                 resetrep_col (nseg, segrep, &amp;repfnz[k]);</span></a>
 <a name="397"><span class="lineNum">     397 </span>            :                 </a>
 <a name="398"><span class="lineNum">     398 </span>            : #if ( DEBUGlevel&gt;=2 )</a>
 <a name="399"><span class="lineNum">     399 </span>            :                 dprint_lu_col(&quot;[2]: &quot;, jj, pivrow, xprune, Glu);</a>
@@ -477,14 +477,14 @@
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            :     } /* for */</a>
 <a name="409"><span class="lineNum">     409 </span>            : </a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       4012 :     *info = iinfo;</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       4018 :     *info = iinfo;</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : </a>
 <a name="412"><span class="lineNum">     412 </span>            :     /* Complete perm_r[] for rank-deficient or tall-skinny matrices */</a>
 <a name="413"><span class="lineNum">     413 </span>            :     /* k is the rank of U</a>
 <a name="414"><span class="lineNum">     414 </span>            :        pivots have been completed for rows &lt; k</a>
 <a name="415"><span class="lineNum">     415 </span>            :        Now fill in the pivots for rows k to m */</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       4012 :     k = iinfo == 0 ? n : (int)iinfo - 1;</span></a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       4012 :     if (m &gt; k) {</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       4018 :     k = iinfo == 0 ? n : (int)iinfo - 1;</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       4018 :     if (m &gt; k) {</span></a>
 <a name="418"><span class="lineNum">     418 </span>            :         /* if k == m, then all the row permutations are complete and</a>
 <a name="419"><span class="lineNum">     419 </span>            :            we can short circuit looking through the rest of the vector */</a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineCov">        156 :         for (i = 0; i &lt; m &amp;&amp; k &lt; m; ++i) {</span></a>
@@ -496,14 +496,14 @@
 <a name="426"><span class="lineNum">     426 </span>            :         }</a>
 <a name="427"><span class="lineNum">     427 </span>            :     }</a>
 <a name="428"><span class="lineNum">     428 </span>            :     </a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       4012 :     countnz(min_mn, xprune, &amp;nnzL, &amp;nnzU, Glu);</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       4012 :     fixupL(min_mn, perm_r, Glu);</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       4018 :     countnz(min_mn, xprune, &amp;nnzL, &amp;nnzU, Glu);</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">       4018 :     fixupL(min_mn, perm_r, Glu);</span></a>
 <a name="431"><span class="lineNum">     431 </span>            : </a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       4012 :     dLUWorkFree(iwork, dwork, Glu); /* Free work space and compress storage */</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       4012 :     SUPERLU_FREE(xplore);</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       4012 :     SUPERLU_FREE(xprune);</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       4018 :     dLUWorkFree(iwork, dwork, Glu); /* Free work space and compress storage */</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       4018 :     SUPERLU_FREE(xplore);</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       4018 :     SUPERLU_FREE(xprune);</span></a>
 <a name="435"><span class="lineNum">     435 </span>            : </a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       4012 :     if ( fact == SamePattern_SameRowPerm ) {</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">       4018 :     if ( fact == SamePattern_SameRowPerm ) {</span></a>
 <a name="437"><span class="lineNum">     437 </span>            :         /* L and U structures may have changed due to possibly different</a>
 <a name="438"><span class="lineNum">     438 </span>            :            pivoting, even though the storage is available.</a>
 <a name="439"><span class="lineNum">     439 </span>            :            There could also be memory expansions, so the array locations</a>
@@ -519,21 +519,21 @@
 <a name="449"><span class="lineNum">     449 </span><span class="lineNoCov">          0 :         ((NCformat *)U-&gt;Store)-&gt;rowind = Glu-&gt;usub;</span></a>
 <a name="450"><span class="lineNum">     450 </span><span class="lineNoCov">          0 :         ((NCformat *)U-&gt;Store)-&gt;colptr = Glu-&gt;xusub;</span></a>
 <a name="451"><span class="lineNum">     451 </span>            :     } else {</a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">       4012 :         dCreate_SuperNode_Matrix(L, A-&gt;nrow, min_mn, nnzL, </span></a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">       4012 :               (double *) Glu-&gt;lusup, Glu-&gt;xlusup, </span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">       4018 :         dCreate_SuperNode_Matrix(L, A-&gt;nrow, min_mn, nnzL, </span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">       4018 :               (double *) Glu-&gt;lusup, Glu-&gt;xlusup, </span></a>
 <a name="454"><span class="lineNum">     454 </span>            :               Glu-&gt;lsub, Glu-&gt;xlsub, Glu-&gt;supno, Glu-&gt;xsup,</a>
 <a name="455"><span class="lineNum">     455 </span>            :               SLU_SC, SLU_D, SLU_TRLU);</a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       4012 :         dCreate_CompCol_Matrix(U, min_mn, min_mn, nnzU, </span></a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">       4012 :               (double *) Glu-&gt;ucol, Glu-&gt;usub, Glu-&gt;xusub,</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       4018 :         dCreate_CompCol_Matrix(U, min_mn, min_mn, nnzU, </span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">       4018 :               (double *) Glu-&gt;ucol, Glu-&gt;usub, Glu-&gt;xusub,</span></a>
 <a name="458"><span class="lineNum">     458 </span>            :               SLU_NC, SLU_D, SLU_TRU);</a>
 <a name="459"><span class="lineNum">     459 </span>            :     }</a>
 <a name="460"><span class="lineNum">     460 </span>            :     </a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       4012 :     ops[FACT] += ops[TRSV] + ops[GEMV]; </span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       4012 :     stat-&gt;expansions = --(Glu-&gt;num_expansions);</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       4018 :     ops[FACT] += ops[TRSV] + ops[GEMV]; </span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       4018 :     stat-&gt;expansions = --(Glu-&gt;num_expansions);</span></a>
 <a name="463"><span class="lineNum">     463 </span>            :     </a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       4012 :     if ( iperm_r_allocated ) SUPERLU_FREE (iperm_r);</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       4012 :     SUPERLU_FREE (iperm_c);</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       4012 :     SUPERLU_FREE (relax_end);</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       4018 :     if ( iperm_r_allocated ) SUPERLU_FREE (iperm_r);</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       4018 :     SUPERLU_FREE (iperm_c);</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       4018 :     SUPERLU_FREE (relax_end);</span></a>
 <a name="467"><span class="lineNum">     467 </span>            : </a>
 <a name="468"><span class="lineNum">     468 </span>            : }</a>
 </pre>

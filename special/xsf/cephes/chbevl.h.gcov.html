@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/chbevl.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/chbevl.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">14</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -133,23 +133,23 @@
 <a name="63"><span class="lineNum">      63 </span>            : namespace xsf {</a>
 <a name="64"><span class="lineNum">      64 </span>            : namespace cephes {</a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">    1447706 :     XSF_HOST_DEVICE double chbevl(double x, const double array[], int n) {</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">    1447706 :         double b0, b1, b2;</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">    1447706 :         const double *p;</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">    1447706 :         int i;</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">    1764336 :     XSF_HOST_DEVICE double chbevl(double x, const double array[], int n) {</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">    1764336 :         double b0, b1, b2;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">    1764336 :         const double *p;</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">    1764336 :         int i;</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">    1447706 :         p = array;</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">    1447706 :         b0 = *p++;</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">    1447706 :         b1 = 0.0;</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">    1447706 :         i = n - 1;</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">    1764336 :         p = array;</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">    1764336 :         b0 = *p++;</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">    1764336 :         b1 = 0.0;</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">    1764336 :         i = n - 1;</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">   38043527 :         do {</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">   38043527 :             b2 = b1;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">   38043527 :             b1 = b0;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">   38043527 :             b0 = x * b1 - b2 + *p++;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">   38043527 :         } while (--i);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">   42916005 :         do {</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">   42916005 :             b2 = b1;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">   42916005 :             b1 = b0;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">   42916005 :             b0 = x * b1 - b2 + *p++;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">   42916005 :         } while (--i);</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">    1447706 :         return (0.5 * (b0 - b2));</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">    1764336 :         return (0.5 * (b0 - b2));</span></a>
 <a name="83"><span class="lineNum">      83 </span>            :     }</a>
 <a name="84"><span class="lineNum">      84 </span>            : } // namespace cephes</a>
 <a name="85"><span class="lineNum">      85 </span>            : } // namespace xsf</a>

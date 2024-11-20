@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_pair.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/stl_pair.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">25</td>
@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">50.0 %</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">60.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -254,7 +254,7 @@
 <a name="184"><span class="lineNum">     184 </span>            :    * @headerfile utility</a>
 <a name="185"><span class="lineNum">     185 </span>            :    */</a>
 <a name="186"><span class="lineNum">     186 </span>            :   template&lt;typename _T1, typename _T2&gt;</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     307031 :     struct pair</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">    5519254 :     struct pair</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :     : public __pair_base&lt;_T1, _T2&gt;</a>
 <a name="189"><span class="lineNum">     189 </span>            :     {</a>
 <a name="190"><span class="lineNum">     190 </span>            :       typedef _T1 first_type;    ///&lt; The type of the `first` member</a>
@@ -264,7 +264,7 @@
 <a name="194"><span class="lineNum">     194 </span>            :       _T2 second;                ///&lt; The second member</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
 <a name="196"><span class="lineNum">     196 </span>            : #if __cplusplus &gt;= 201103L</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       7210 :       constexpr pair(const pair&amp;) = default;        ///&lt; Copy constructor</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       7252 :       constexpr pair(const pair&amp;) = default;        ///&lt; Copy constructor</span></a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :       constexpr pair(pair&amp;&amp;) = default;         ///&lt; Move constructor</span></a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
 <a name="200"><span class="lineNum">     200 </span>            :       template&lt;typename... _Args1, typename... _Args2&gt;</a>
@@ -273,12 +273,12 @@
 <a name="203"><span class="lineNum">     203 </span>            : </a>
 <a name="204"><span class="lineNum">     204 </span>            :       /// Swap the first members and then the second members.</a>
 <a name="205"><span class="lineNum">     205 </span>            :       _GLIBCXX20_CONSTEXPR void</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">    3191755 :       swap(pair&amp; __p)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">    4322919 :       swap(pair&amp; __p)</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :       noexcept(__and_&lt;__is_nothrow_swappable&lt;_T1&gt;,</a>
 <a name="208"><span class="lineNum">     208 </span>            :                       __is_nothrow_swappable&lt;_T2&gt;&gt;::value)</a>
 <a name="209"><span class="lineNum">     209 </span>            :       {</a>
 <a name="210"><span class="lineNum">     210 </span>            :         using std::swap;</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    3191755 :         swap(first, __p.first);</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">    4322919 :         swap(first, __p.first);</span></a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :         swap(second, __p.second);</span></a>
 <a name="213"><span class="lineNum">     213 </span>            :       }</a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
@@ -598,8 +598,8 @@
 <a name="528"><span class="lineNum">     528 </span>            :                                      __is_implicitly_default_constructible&lt;_U1&gt;,</a>
 <a name="529"><span class="lineNum">     529 </span>            :                                      __is_implicitly_default_constructible&lt;_U2&gt;&gt;</a>
 <a name="530"><span class="lineNum">     530 </span>            :                                    ::value, bool&gt;::type = true&gt;</a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">     301957 :       constexpr pair()</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">     301957 :       : first(), second() { }</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">     378690 :       constexpr pair()</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">     378690 :       : first(), second() { }</span></a>
 <a name="533"><span class="lineNum">     533 </span>            : </a>
 <a name="534"><span class="lineNum">     534 </span>            :       template &lt;typename _U1 = _T1,</a>
 <a name="535"><span class="lineNum">     535 </span>            :                 typename _U2 = _T2,</a>
@@ -625,7 +625,7 @@
 <a name="555"><span class="lineNum">     555 </span>            :                          &amp;&amp; _PCCP::template</a>
 <a name="556"><span class="lineNum">     556 </span>            :                            _ImplicitlyConvertiblePair&lt;_U1, _U2&gt;(),</a>
 <a name="557"><span class="lineNum">     557 </span>            :                          bool&gt;::type=true&gt;</a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">     148643 :       constexpr pair(const _T1&amp; __a, const _T2&amp; __b)</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">    1169624 :       constexpr pair(const _T1&amp; __a, const _T2&amp; __b)</span></a>
 <a name="559"><span class="lineNum">     559 </span><span class="lineCov">     297088 :       : first(__a), second(__b) { }</span></a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
 <a name="561"><span class="lineNum">     561 </span>            :       /// Construct from two const lvalues, disallowing implicit conversions.</a>
@@ -754,9 +754,9 @@
 <a name="684"><span class="lineNum">     684 </span>            :                           &amp;&amp; _PCCP::template</a>
 <a name="685"><span class="lineNum">     685 </span>            :                            _ImplicitlyMoveConvertiblePair&lt;_U1, _U2&gt;(),</a>
 <a name="686"><span class="lineNum">     686 </span>            :                          bool&gt;::type=true&gt;</a>
-<a name="687"><span class="lineNum">     687 </span><span class="lineCov">      38769 :         constexpr pair(_U1&amp;&amp; __x, _U2&amp;&amp; __y)</span></a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">     297403 :         : first(std::forward&lt;_U1&gt;(__x)), second(std::forward&lt;_U2&gt;(__y))</span></a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">       3298 :         { __glibcxx_no_dangling_refs(_U1&amp;&amp;, _U2&amp;&amp;); }</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">   10990814 :         constexpr pair(_U1&amp;&amp; __x, _U2&amp;&amp; __y)</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">     998653 :         : first(std::forward&lt;_U1&gt;(__x)), second(std::forward&lt;_U2&gt;(__y))</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">     704574 :         { __glibcxx_no_dangling_refs(_U1&amp;&amp;, _U2&amp;&amp;); }</span></a>
 <a name="690"><span class="lineNum">     690 </span>            : </a>
 <a name="691"><span class="lineNum">     691 </span>            :       template&lt;typename _U1, typename _U2, typename</a>
 <a name="692"><span class="lineNum">     692 </span>            :                enable_if&lt;_PCCP::template</a>
@@ -775,7 +775,7 @@
 <a name="705"><span class="lineNum">     705 </span>            :                           &amp;&amp; _PCCFP&lt;_U1, _U2&gt;::template</a>
 <a name="706"><span class="lineNum">     706 </span>            :                            _ImplicitlyMoveConvertiblePair&lt;_U1, _U2&gt;(),</a>
 <a name="707"><span class="lineNum">     707 </span>            :                          bool&gt;::type=true&gt;</a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          2 :         constexpr pair(pair&lt;_U1, _U2&gt;&amp;&amp; __p)</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          3 :         constexpr pair(pair&lt;_U1, _U2&gt;&amp;&amp; __p)</span></a>
 <a name="709"><span class="lineNum">     709 </span>            :         : first(std::forward&lt;_U1&gt;(__p.first)),</a>
 <a name="710"><span class="lineNum">     710 </span>            :           second(std::forward&lt;_U2&gt;(__p.second))</a>
 <a name="711"><span class="lineNum">     711 </span>            :         { __glibcxx_no_dangling_refs(_U1&amp;&amp;, _U2&amp;&amp;); }</a>
@@ -804,14 +804,14 @@
 <a name="734"><span class="lineNum">     734 </span>            :       }</a>
 <a name="735"><span class="lineNum">     735 </span>            : </a>
 <a name="736"><span class="lineNum">     736 </span>            :       pair&amp;</a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">   16705523 :       operator=(__conditional_t&lt;__and_&lt;is_move_assignable&lt;_T1&gt;,</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">   22881873 :       operator=(__conditional_t&lt;__and_&lt;is_move_assignable&lt;_T1&gt;,</span></a>
 <a name="738"><span class="lineNum">     738 </span>            :                                        is_move_assignable&lt;_T2&gt;&gt;::value,</a>
 <a name="739"><span class="lineNum">     739 </span>            :                                 pair&amp;&amp;, __nonesuch&amp;&amp;&gt; __p)</a>
 <a name="740"><span class="lineNum">     740 </span>            :       noexcept(__and_&lt;is_nothrow_move_assignable&lt;_T1&gt;,</a>
 <a name="741"><span class="lineNum">     741 </span>            :                       is_nothrow_move_assignable&lt;_T2&gt;&gt;::value)</a>
 <a name="742"><span class="lineNum">     742 </span>            :       {</a>
-<a name="743"><span class="lineNum">     743 </span><span class="lineCov">   16706603 :         first = std::forward&lt;first_type&gt;(__p.first);</span></a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">   12698641 :         second = std::forward&lt;second_type&gt;(__p.second);</span></a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">   22882985 :         first = std::forward&lt;first_type&gt;(__p.first);</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">   17444379 :         second = std::forward&lt;second_type&gt;(__p.second);</span></a>
 <a name="745"><span class="lineNum">     745 </span>            :         return *this;</a>
 <a name="746"><span class="lineNum">     746 </span>            :       }</a>
 <a name="747"><span class="lineNum">     747 </span>            : </a>
@@ -946,9 +946,9 @@
 <a name="876"><span class="lineNum">     876 </span>            : #else</a>
 <a name="877"><span class="lineNum">     877 </span>            :     void</a>
 <a name="878"><span class="lineNum">     878 </span>            : #endif</a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">     323483 :     swap(pair&lt;_T1, _T2&gt;&amp; __x, pair&lt;_T1, _T2&gt;&amp; __y)</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">     459092 :     swap(pair&lt;_T1, _T2&gt;&amp; __x, pair&lt;_T1, _T2&gt;&amp; __y)</span></a>
 <a name="880"><span class="lineNum">     880 </span>            :     noexcept(noexcept(__x.swap(__y)))</a>
-<a name="881"><span class="lineNum">     881 </span><span class="lineCov">     323483 :     { __x.swap(__y); }</span></a>
+<a name="881"><span class="lineNum">     881 </span><span class="lineCov">     459092 :     { __x.swap(__y); }</span></a>
 <a name="882"><span class="lineNum">     882 </span>            : </a>
 <a name="883"><span class="lineNum">     883 </span>            : #if __cplusplus &gt; 202002L</a>
 <a name="884"><span class="lineNum">     884 </span>            :   template&lt;typename _T1, typename _T2&gt;</a>
@@ -989,12 +989,12 @@
 <a name="919"><span class="lineNum">     919 </span>            :   template&lt;typename _T1, typename _T2&gt;</a>
 <a name="920"><span class="lineNum">     920 </span>            :     constexpr pair&lt;typename __decay_and_strip&lt;_T1&gt;::__type,</a>
 <a name="921"><span class="lineNum">     921 </span>            :                    typename __decay_and_strip&lt;_T2&gt;::__type&gt;</a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">    4390667 :     make_pair(_T1&amp;&amp; __x, _T2&amp;&amp; __y)</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">    5613116 :     make_pair(_T1&amp;&amp; __x, _T2&amp;&amp; __y)</span></a>
 <a name="923"><span class="lineNum">     923 </span>            :     {</a>
 <a name="924"><span class="lineNum">     924 </span>            :       typedef typename __decay_and_strip&lt;_T1&gt;::__type __ds_type1;</a>
 <a name="925"><span class="lineNum">     925 </span>            :       typedef typename __decay_and_strip&lt;_T2&gt;::__type __ds_type2;</a>
 <a name="926"><span class="lineNum">     926 </span>            :       typedef pair&lt;__ds_type1, __ds_type2&gt;              __pair_type;</a>
-<a name="927"><span class="lineNum">     927 </span><span class="lineCov">       5552 :       return __pair_type(std::forward&lt;_T1&gt;(__x), std::forward&lt;_T2&gt;(__y));</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">       6518 :       return __pair_type(std::forward&lt;_T1&gt;(__x), std::forward&lt;_T2&gt;(__y));</span></a>
 <a name="928"><span class="lineNum">     928 </span>            :     }</a>
 <a name="929"><span class="lineNum">     929 </span>            : #else</a>
 <a name="930"><span class="lineNum">     930 </span>            :   template&lt;typename _T1, typename _T2&gt;</a>
@@ -1063,7 +1063,7 @@
 <a name="993"><span class="lineNum">     993 </span>            :       template&lt;typename _Tp1, typename _Tp2&gt;</a>
 <a name="994"><span class="lineNum">     994 </span>            :         static constexpr const _Tp1&amp;</a>
 <a name="995"><span class="lineNum">     995 </span>            :         __const_get(const pair&lt;_Tp1, _Tp2&gt;&amp; __pair) noexcept</a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       3043 :         { return __pair.first; }</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       3065 :         { return __pair.first; }</span></a>
 <a name="997"><span class="lineNum">     997 </span>            : </a>
 <a name="998"><span class="lineNum">     998 </span>            :       template&lt;typename _Tp1, typename _Tp2&gt;</a>
 <a name="999"><span class="lineNum">     999 </span>            :         static constexpr const _Tp1&amp;&amp;</a>
@@ -1086,8 +1086,8 @@
 <a name="1016"><span class="lineNum">    1016 </span>            : </a>
 <a name="1017"><span class="lineNum">    1017 </span>            :       template&lt;typename _Tp1, typename _Tp2&gt;</a>
 <a name="1018"><span class="lineNum">    1018 </span>            :         static constexpr const _Tp2&amp;</a>
-<a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">       3043 :         __const_get(const pair&lt;_Tp1, _Tp2&gt;&amp; __pair) noexcept</span></a>
-<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       3043 :         { return __pair.second; }</span></a>
+<a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">       3065 :         __const_get(const pair&lt;_Tp1, _Tp2&gt;&amp; __pair) noexcept</span></a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       3065 :         { return __pair.second; }</span></a>
 <a name="1021"><span class="lineNum">    1021 </span>            : </a>
 <a name="1022"><span class="lineNum">    1022 </span>            :       template&lt;typename _Tp1, typename _Tp2&gt;</a>
 <a name="1023"><span class="lineNum">    1023 </span>            :         static constexpr const _Tp2&amp;&amp;</a>
@@ -1108,12 +1108,12 @@
 <a name="1038"><span class="lineNum">    1038 </span>            :   template&lt;size_t _Int, class _Tp1, class _Tp2&gt;</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :     constexpr typename tuple_element&lt;_Int, pair&lt;_Tp1, _Tp2&gt;&gt;::type&amp;&amp;</a>
 <a name="1040"><span class="lineNum">    1040 </span><span class="lineNoCov">          0 :     get(pair&lt;_Tp1, _Tp2&gt;&amp;&amp; __in) noexcept</span></a>
-<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">       1259 :     { return __pair_get&lt;_Int&gt;::__move_get(std::move(__in)); }</span></a>
+<a name="1041"><span class="lineNum">    1041 </span><span class="lineCov">     696901 :     { return __pair_get&lt;_Int&gt;::__move_get(std::move(__in)); }</span></a>
 <a name="1042"><span class="lineNum">    1042 </span>            : </a>
 <a name="1043"><span class="lineNum">    1043 </span>            :   template&lt;size_t _Int, class _Tp1, class _Tp2&gt;</a>
 <a name="1044"><span class="lineNum">    1044 </span>            :     constexpr const typename tuple_element&lt;_Int, pair&lt;_Tp1, _Tp2&gt;&gt;::type&amp;</a>
-<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">       3043 :     get(const pair&lt;_Tp1, _Tp2&gt;&amp; __in) noexcept</span></a>
-<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">       3043 :     { return __pair_get&lt;_Int&gt;::__const_get(__in); }</span></a>
+<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">       3065 :     get(const pair&lt;_Tp1, _Tp2&gt;&amp; __in) noexcept</span></a>
+<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">       3065 :     { return __pair_get&lt;_Int&gt;::__const_get(__in); }</span></a>
 <a name="1047"><span class="lineNum">    1047 </span>            : </a>
 <a name="1048"><span class="lineNum">    1048 </span>            :   template&lt;size_t _Int, class _Tp1, class _Tp2&gt;</a>
 <a name="1049"><span class="lineNum">    1049 </span>            :     constexpr const typename tuple_element&lt;_Int, pair&lt;_Tp1, _Tp2&gt;&gt;::type&amp;&amp;</a>

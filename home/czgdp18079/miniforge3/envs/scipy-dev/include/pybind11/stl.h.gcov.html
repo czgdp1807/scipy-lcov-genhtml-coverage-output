@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/stl.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/stl.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
 </head>
 
@@ -28,21 +28,21 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntryHi">93.8 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntryLo">36.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">33.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -205,26 +205,26 @@
 <a name="135"><span class="lineNum">     135 </span>            :     }</a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            :     template &lt;typename T&gt;</a>
-<a name="138"><span class="lineNum">     138 </span>            :     static handle cast(T &amp;&amp;src, return_value_policy policy, handle parent) {</a>
-<a name="139"><span class="lineNum">     139 </span>            :         dict d;</a>
-<a name="140"><span class="lineNum">     140 </span>            :         return_value_policy policy_key = policy;</a>
-<a name="141"><span class="lineNum">     141 </span>            :         return_value_policy policy_value = policy;</a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :     static handle cast(T &amp;&amp;src, return_value_policy policy, handle parent) {</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :         dict d;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :         return_value_policy policy_key = policy;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :         return_value_policy policy_value = policy;</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :         if (!std::is_lvalue_reference&lt;T&gt;::value) {</a>
 <a name="143"><span class="lineNum">     143 </span>            :             policy_key = return_value_policy_override&lt;Key&gt;::policy(policy_key);</a>
 <a name="144"><span class="lineNum">     144 </span>            :             policy_value = return_value_policy_override&lt;Value&gt;::policy(policy_value);</a>
 <a name="145"><span class="lineNum">     145 </span>            :         }</a>
-<a name="146"><span class="lineNum">     146 </span>            :         for (auto &amp;&amp;kv : src) {</a>
-<a name="147"><span class="lineNum">     147 </span>            :             auto key = reinterpret_steal&lt;object&gt;(</a>
-<a name="148"><span class="lineNum">     148 </span>            :                 key_conv::cast(detail::forward_like&lt;T&gt;(kv.first), policy_key, parent));</a>
-<a name="149"><span class="lineNum">     149 </span>            :             auto value = reinterpret_steal&lt;object&gt;(</a>
-<a name="150"><span class="lineNum">     150 </span>            :                 value_conv::cast(detail::forward_like&lt;T&gt;(kv.second), policy_value, parent));</a>
-<a name="151"><span class="lineNum">     151 </span>            :             if (!key || !value) {</a>
-<a name="152"><span class="lineNum">     152 </span>            :                 return handle();</a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :         for (auto &amp;&amp;kv : src) {</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :             auto key = reinterpret_steal&lt;object&gt;(</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :                 key_conv::cast(detail::forward_like&lt;T&gt;(kv.first), policy_key, parent));</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :             auto value = reinterpret_steal&lt;object&gt;(</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :                 value_conv::cast(detail::forward_like&lt;T&gt;(kv.second), policy_value, parent));</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :             if (!key || !value) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :                 return handle();</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :             }</a>
-<a name="154"><span class="lineNum">     154 </span>            :             d[std::move(key)] = std::move(value);</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :             d[std::move(key)] = std::move(value);</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :         }</a>
-<a name="156"><span class="lineNum">     156 </span>            :         return d.release();</a>
-<a name="157"><span class="lineNum">     157 </span>            :     }</a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :         return d.release();</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            :     PYBIND11_TYPE_CASTER(Type,</a>
 <a name="160"><span class="lineNum">     160 </span>            :                          const_name(&quot;dict[&quot;) + key_conv::name + const_name(&quot;, &quot;) + value_conv::name</a>
@@ -232,57 +232,57 @@
 <a name="162"><span class="lineNum">     162 </span>            : };</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
 <a name="164"><span class="lineNum">     164 </span>            : template &lt;typename Type, typename Value&gt;</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">     238240 : struct list_caster {</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">     238416 : struct list_caster {</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :     using value_conv = make_caster&lt;Value&gt;;</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     119120 :     bool load(handle src, bool convert) {</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">     476480 :         if (!isinstance&lt;sequence&gt;(src) || isinstance&lt;bytes&gt;(src) || isinstance&lt;str&gt;(src)) {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     119208 :     bool load(handle src, bool convert) {</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">     476832 :         if (!isinstance&lt;sequence&gt;(src) || isinstance&lt;bytes&gt;(src) || isinstance&lt;str&gt;(src)) {</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :             return false;</a>
 <a name="171"><span class="lineNum">     171 </span>            :         }</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">     119120 :         auto s = reinterpret_borrow&lt;sequence&gt;(src);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">     119120 :         value.clear();</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">     238240 :         reserve_maybe(s, &amp;value);</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">     280965 :         for (const auto &amp;it : s) {</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">     119208 :         auto s = reinterpret_borrow&lt;sequence&gt;(src);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">     119208 :         value.clear();</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">     238416 :         reserve_maybe(s, &amp;value);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">     281141 :         for (const auto &amp;it : s) {</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :             value_conv conv;</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">     161845 :             if (!conv.load(it, convert)) {</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">     161933 :             if (!conv.load(it, convert)) {</span></a>
 <a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="179"><span class="lineNum">     179 </span>            :             }</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">     161845 :             value.push_back(cast_op&lt;Value &amp;&amp;&gt;(std::move(conv)));</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">     161933 :             value.push_back(cast_op&lt;Value &amp;&amp;&gt;(std::move(conv)));</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :         }</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">     119120 :         return true;</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">     119120 :     }</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">     119208 :         return true;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">     119208 :     }</span></a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
 <a name="185"><span class="lineNum">     185 </span>            : private:</a>
 <a name="186"><span class="lineNum">     186 </span>            :     template &lt;typename T = Type, enable_if_t&lt;has_reserve_method&lt;T&gt;::value, int&gt; = 0&gt;</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     119120 :     void reserve_maybe(const sequence &amp;s, Type *) {</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     119120 :         value.reserve(s.size());</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     119120 :     }</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     119208 :     void reserve_maybe(const sequence &amp;s, Type *) {</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     119208 :         value.reserve(s.size());</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     119208 :     }</span></a>
 <a name="190"><span class="lineNum">     190 </span>            :     void reserve_maybe(const sequence &amp;, void *) {}</a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            : public:</a>
 <a name="193"><span class="lineNum">     193 </span>            :     template &lt;typename T&gt;</a>
-<a name="194"><span class="lineNum">     194 </span>            :     static handle cast(T &amp;&amp;src, return_value_policy policy, handle parent) {</a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :     static handle cast(T &amp;&amp;src, return_value_policy policy, handle parent) {</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :         if (!std::is_lvalue_reference&lt;T&gt;::value) {</a>
-<a name="196"><span class="lineNum">     196 </span>            :             policy = return_value_policy_override&lt;Value&gt;::policy(policy);</a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :             policy = return_value_policy_override&lt;Value&gt;::policy(policy);</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :         }</a>
-<a name="198"><span class="lineNum">     198 </span>            :         list l(src.size());</a>
-<a name="199"><span class="lineNum">     199 </span>            :         ssize_t index = 0;</a>
-<a name="200"><span class="lineNum">     200 </span>            :         for (auto &amp;&amp;value : src) {</a>
-<a name="201"><span class="lineNum">     201 </span>            :             auto value_ = reinterpret_steal&lt;object&gt;(</a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :         list l(src.size());</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :         ssize_t index = 0;</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :         for (auto &amp;&amp;value : src) {</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :             auto value_ = reinterpret_steal&lt;object&gt;(</span></a>
 <a name="202"><span class="lineNum">     202 </span>            :                 value_conv::cast(detail::forward_like&lt;T&gt;(value), policy, parent));</a>
-<a name="203"><span class="lineNum">     203 </span>            :             if (!value_) {</a>
-<a name="204"><span class="lineNum">     204 </span>            :                 return handle();</a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :             if (!value_) {</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                 return handle();</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :             }</a>
-<a name="206"><span class="lineNum">     206 </span>            :             PyList_SET_ITEM(l.ptr(), index++, value_.release().ptr()); // steals a reference</a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :             PyList_SET_ITEM(l.ptr(), index++, value_.release().ptr()); // steals a reference</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :         }</a>
-<a name="208"><span class="lineNum">     208 </span>            :         return l.release();</a>
-<a name="209"><span class="lineNum">     209 </span>            :     }</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :         return l.release();</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
 <a name="211"><span class="lineNum">     211 </span>            :     PYBIND11_TYPE_CASTER(Type, const_name(&quot;list[&quot;) + value_conv::name + const_name(&quot;]&quot;));</a>
 <a name="212"><span class="lineNum">     212 </span>            : };</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span>            : template &lt;typename Type, typename Alloc&gt;</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     238240 : struct type_caster&lt;std::vector&lt;Type, Alloc&gt;&gt; : list_caster&lt;std::vector&lt;Type, Alloc&gt;, Type&gt; {};</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     238416 : struct type_caster&lt;std::vector&lt;Type, Alloc&gt;&gt; : list_caster&lt;std::vector&lt;Type, Alloc&gt;, Type&gt; {};</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            : template &lt;typename Type, typename Alloc&gt;</a>
 <a name="218"><span class="lineNum">     218 </span>            : struct type_caster&lt;std::deque&lt;Type, Alloc&gt;&gt; : list_caster&lt;std::deque&lt;Type, Alloc&gt;, Type&gt; {};</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/scipy_iv.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/scipy_iv.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">208</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -528,69 +528,69 @@
 <a name="458"><span class="lineNum">     458 </span>            :          * Calculate K(v, x) and K(v+1, x) by method analogous to</a>
 <a name="459"><span class="lineNum">     459 </span>            :          * Temme, Journal of Computational Physics, vol 21, 343 (1976)</a>
 <a name="460"><span class="lineNum">     460 </span>            :          */</a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       1954 :         XSF_HOST_DEVICE inline int temme_ik_series(double v, double x, double *K, double *K1) {</span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       1954 :             double f, h, p, q, coef, sum, sum1, tolerance;</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       1954 :             double a, b, c, d, sigma, gamma1, gamma2;</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       1954 :             std::uint64_t k;</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       1954 :             double gp;</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       1954 :             double gm;</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       2011 :         XSF_HOST_DEVICE inline int temme_ik_series(double v, double x, double *K, double *K1) {</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">       2011 :             double f, h, p, q, coef, sum, sum1, tolerance;</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       2011 :             double a, b, c, d, sigma, gamma1, gamma2;</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       2011 :             std::uint64_t k;</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       2011 :             double gp;</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       2011 :             double gm;</span></a>
 <a name="467"><span class="lineNum">     467 </span>            : </a>
 <a name="468"><span class="lineNum">     468 </span>            :             /*</a>
 <a name="469"><span class="lineNum">     469 </span>            :              * |x| &lt;= 2, Temme series converge rapidly</a>
 <a name="470"><span class="lineNum">     470 </span>            :              * |x| &gt; 2, the larger the |x|, the slower the convergence</a>
 <a name="471"><span class="lineNum">     471 </span>            :              */</a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       1954 :             XSF_ASSERT(std::abs(x) &lt;= 2);</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       1954 :             XSF_ASSERT(std::abs(v) &lt;= 0.5f);</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       2011 :             XSF_ASSERT(std::abs(x) &lt;= 2);</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       2011 :             XSF_ASSERT(std::abs(v) &lt;= 0.5f);</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : </a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       1954 :             gp = xsf::cephes::Gamma(v + 1) - 1;</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       1954 :             gm = xsf::cephes::Gamma(-v + 1) - 1;</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       2011 :             gp = xsf::cephes::Gamma(v + 1) - 1;</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       2011 :             gm = xsf::cephes::Gamma(-v + 1) - 1;</span></a>
 <a name="477"><span class="lineNum">     477 </span>            : </a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       1954 :             a = std::log(x / 2);</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       1954 :             b = std::exp(v * a);</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       1954 :             sigma = -a * v;</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       1954 :             c = std::abs(v) &lt; MACHEP ? 1 : xsf::cephes::sinpi(v) / (v * M_PI);</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">       1954 :             d = std::abs(sigma) &lt; MACHEP ? 1 : std::sinh(sigma) / sigma;</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       1954 :             gamma1 = std::abs(v) &lt; MACHEP ? -SCIPY_EULER : (0.5 / v) * (gp - gm) * c;</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">       1954 :             gamma2 = (2 + gp + gm) * c / 2;</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       2011 :             a = std::log(x / 2);</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       2011 :             b = std::exp(v * a);</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       2011 :             sigma = -a * v;</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       2011 :             c = std::abs(v) &lt; MACHEP ? 1 : xsf::cephes::sinpi(v) / (v * M_PI);</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">       2011 :             d = std::abs(sigma) &lt; MACHEP ? 1 : std::sinh(sigma) / sigma;</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       2011 :             gamma1 = std::abs(v) &lt; MACHEP ? -SCIPY_EULER : (0.5 / v) * (gp - gm) * c;</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">       2011 :             gamma2 = (2 + gp + gm) * c / 2;</span></a>
 <a name="485"><span class="lineNum">     485 </span>            : </a>
 <a name="486"><span class="lineNum">     486 </span>            :             /* initial values */</a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">       1954 :             p = (gp + 1) / (2 * b);</span></a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       1954 :             q = (1 + gm) * b / 2;</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       1954 :             f = (std::cosh(sigma) * gamma1 + d * (-a) * gamma2) / c;</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">       1954 :             h = p;</span></a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       1954 :             coef = 1;</span></a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1954 :             sum = coef * f;</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       1954 :             sum1 = coef * h;</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">       2011 :             p = (gp + 1) / (2 * b);</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">       2011 :             q = (1 + gm) * b / 2;</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       2011 :             f = (std::cosh(sigma) * gamma1 + d * (-a) * gamma2) / c;</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">       2011 :             h = p;</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">       2011 :             coef = 1;</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       2011 :             sum = coef * f;</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       2011 :             sum1 = coef * h;</span></a>
 <a name="494"><span class="lineNum">     494 </span>            : </a>
 <a name="495"><span class="lineNum">     495 </span>            :             /* series summation */</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       1954 :             tolerance = MACHEP;</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">      10823 :             for (k = 1; k &lt; MAXITER; k++) {</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">      10823 :                 f = (k * f + p + q) / (k * k - v * v);</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">      10823 :                 p /= k - v;</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">      10823 :                 q /= k + v;</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      10823 :                 h = p - k * f;</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      10823 :                 coef *= x * x / (4 * k);</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      10823 :                 sum += coef * f;</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      10823 :                 sum1 += coef * h;</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      10823 :                 if (std::abs(coef * f) &lt; std::abs(sum) * tolerance) {</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">       2011 :             tolerance = MACHEP;</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">      11215 :             for (k = 1; k &lt; MAXITER; k++) {</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">      11215 :                 f = (k * f + p + q) / (k * k - v * v);</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">      11215 :                 p /= k - v;</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">      11215 :                 q /= k + v;</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      11215 :                 h = p - k * f;</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      11215 :                 coef *= x * x / (4 * k);</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      11215 :                 sum += coef * f;</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      11215 :                 sum1 += coef * h;</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      11215 :                 if (std::abs(coef * f) &lt; std::abs(sum) * tolerance) {</span></a>
 <a name="506"><span class="lineNum">     506 </span>            :                     break;</a>
 <a name="507"><span class="lineNum">     507 </span>            :                 }</a>
 <a name="508"><span class="lineNum">     508 </span>            :             }</a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">       1954 :             if (k == MAXITER) {</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">       2011 :             if (k == MAXITER) {</span></a>
 <a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :                 set_error(&quot;ikv_temme(temme_ik_series)&quot;, SF_ERROR_NO_RESULT, NULL);</span></a>
 <a name="511"><span class="lineNum">     511 </span>            :             }</a>
 <a name="512"><span class="lineNum">     512 </span>            : </a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">       1954 :             *K = sum;</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">       1954 :             *K1 = 2 * sum1 / x;</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">       2011 :             *K = sum;</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">       2011 :             *K1 = 2 * sum1 / x;</span></a>
 <a name="515"><span class="lineNum">     515 </span>            : </a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">       1954 :             return 0;</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">       2011 :             return 0;</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :         }</a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
 <a name="519"><span class="lineNum">     519 </span>            :         /* Evaluate continued fraction fv = I_(v+1) / I_v, derived from</a>
 <a name="520"><span class="lineNum">     520 </span>            :          * Abramowitz and Stegun, Handbook of Mathematical Functions, 1972, 9.1.73 */</a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">       3170 :         XSF_HOST_DEVICE inline int CF1_ik(double v, double x, double *fv) {</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">       3170 :             double C, D, f, a, b, delta, tiny, tolerance;</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       3170 :             std::uint64_t k;</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">       3211 :         XSF_HOST_DEVICE inline int CF1_ik(double v, double x, double *fv) {</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">       3211 :             double C, D, f, a, b, delta, tiny, tolerance;</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">       3211 :             std::uint64_t k;</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
 <a name="525"><span class="lineNum">     525 </span>            :             /*</a>
 <a name="526"><span class="lineNum">     526 </span>            :              * |x| &lt;= |v|, CF1_ik converges rapidly</a>
@@ -601,35 +601,35 @@
 <a name="531"><span class="lineNum">     531 </span>            :              * modified Lentz's method, see</a>
 <a name="532"><span class="lineNum">     532 </span>            :              * Lentz, Applied Optics, vol 15, 668 (1976)</a>
 <a name="533"><span class="lineNum">     533 </span>            :              */</a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       3170 :             tolerance = 2 * MACHEP;</span></a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">       3170 :             tiny = 1 / std::sqrt(std::numeric_limits&lt;double&gt;::max());</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">       3170 :             C = f = tiny; /* b0 = 0, replace with tiny */</span></a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">       3170 :             D = 0;</span></a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      42979 :             for (k = 1; k &lt; MAXITER; k++) {</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">      42973 :                 a = 1;</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      42973 :                 b = 2 * (v + k) / x;</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">      42973 :                 C = b + a / C;</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      42973 :                 D = b + a * D;</span></a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">      42973 :                 if (C == 0) {</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       3211 :             tolerance = 2 * MACHEP;</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">       3211 :             tiny = 1 / std::sqrt(std::numeric_limits&lt;double&gt;::max());</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">       3211 :             C = f = tiny; /* b0 = 0, replace with tiny */</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">       3211 :             D = 0;</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">      43036 :             for (k = 1; k &lt; MAXITER; k++) {</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">      43030 :                 a = 1;</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      43030 :                 b = 2 * (v + k) / x;</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">      43030 :                 C = b + a / C;</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      43030 :                 D = b + a * D;</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">      43030 :                 if (C == 0) {</span></a>
 <a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :                     C = tiny;</span></a>
 <a name="545"><span class="lineNum">     545 </span>            :                 }</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      42973 :                 if (D == 0) {</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      43030 :                 if (D == 0) {</span></a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :                     D = tiny;</span></a>
 <a name="548"><span class="lineNum">     548 </span>            :                 }</a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">      42973 :                 D = 1 / D;</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">      42973 :                 delta = C * D;</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">      42973 :                 f *= delta;</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">      42973 :                 if (std::abs(delta - 1) &lt;= tolerance) {</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">      43030 :                 D = 1 / D;</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">      43030 :                 delta = C * D;</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">      43030 :                 f *= delta;</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">      43030 :                 if (std::abs(delta - 1) &lt;= tolerance) {</span></a>
 <a name="553"><span class="lineNum">     553 </span>            :                     break;</a>
 <a name="554"><span class="lineNum">     554 </span>            :                 }</a>
 <a name="555"><span class="lineNum">     555 </span>            :             }</a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineCov">       3170 :             if (k == MAXITER) {</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineCov">       3211 :             if (k == MAXITER) {</span></a>
 <a name="557"><span class="lineNum">     557 </span><span class="lineCov">          6 :                 set_error(&quot;ikv_temme(CF1_ik)&quot;, SF_ERROR_NO_RESULT, NULL);</span></a>
 <a name="558"><span class="lineNum">     558 </span>            :             }</a>
 <a name="559"><span class="lineNum">     559 </span>            : </a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       3170 :             *fv = f;</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">       3211 :             *fv = f;</span></a>
 <a name="561"><span class="lineNum">     561 </span>            : </a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">       3170 :             return 0;</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">       3211 :             return 0;</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :         }</a>
 <a name="564"><span class="lineNum">     564 </span>            : </a>
 <a name="565"><span class="lineNum">     565 </span>            :         /*</a>
@@ -637,60 +637,60 @@
 <a name="567"><span class="lineNum">     567 </span>            :          * z1 / z0 = U(v+1.5, 2v+1, 2x) / U(v+0.5, 2v+1, 2x), see</a>
 <a name="568"><span class="lineNum">     568 </span>            :          * Thompson and Barnett, Computer Physics Communications, vol 47, 245 (1987)</a>
 <a name="569"><span class="lineNum">     569 </span>            :          */</a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       1224 :         XSF_HOST_DEVICE inline int CF2_ik(double v, double x, double *Kv, double *Kv1) {</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       1208 :         XSF_HOST_DEVICE inline int CF2_ik(double v, double x, double *Kv, double *Kv1) {</span></a>
 <a name="571"><span class="lineNum">     571 </span>            : </a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       1224 :             double S, C, Q, D, f, a, b, q, delta, tolerance, current, prev;</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       1224 :             std::uint64_t k;</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">       1208 :             double S, C, Q, D, f, a, b, q, delta, tolerance, current, prev;</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       1208 :             std::uint64_t k;</span></a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
 <a name="575"><span class="lineNum">     575 </span>            :             /*</a>
 <a name="576"><span class="lineNum">     576 </span>            :              * |x| &gt;= |v|, CF2_ik converges rapidly</a>
 <a name="577"><span class="lineNum">     577 </span>            :              * |x| -&gt; 0, CF2_ik fails to converge</a>
 <a name="578"><span class="lineNum">     578 </span>            :              */</a>
 <a name="579"><span class="lineNum">     579 </span>            : </a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       1224 :             XSF_ASSERT(std::abs(x) &gt; 1);</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       1208 :             XSF_ASSERT(std::abs(x) &gt; 1);</span></a>
 <a name="581"><span class="lineNum">     581 </span>            : </a>
 <a name="582"><span class="lineNum">     582 </span>            :             /*</a>
 <a name="583"><span class="lineNum">     583 </span>            :              * Steed's algorithm, see Thompson and Barnett,</a>
 <a name="584"><span class="lineNum">     584 </span>            :              * Journal of Computational Physics, vol 64, 490 (1986)</a>
 <a name="585"><span class="lineNum">     585 </span>            :              */</a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">       1224 :             tolerance = MACHEP;</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       1224 :             a = v * v - 0.25;</span></a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">       1224 :             b = 2 * (x + 1);                /* b1 */</span></a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">       1224 :             D = 1 / b;                      /* D1 = 1 / b1 */</span></a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">       1224 :             f = delta = D;                  /* f1 = delta1 = D1, coincidence */</span></a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">       1224 :             prev = 0;                       /* q0 */</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">       1224 :             current = 1;                    /* q1 */</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       1224 :             Q = C = -a;                     /* Q1 = C1 because q1 = 1 */</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       1224 :             S = 1 + Q * delta;              /* S1 */</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">      30354 :             for (k = 2; k &lt; MAXITER; k++) { /* starting from 2 */</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">       1208 :             tolerance = MACHEP;</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">       1208 :             a = v * v - 0.25;</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">       1208 :             b = 2 * (x + 1);                /* b1 */</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">       1208 :             D = 1 / b;                      /* D1 = 1 / b1 */</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">       1208 :             f = delta = D;                  /* f1 = delta1 = D1, coincidence */</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">       1208 :             prev = 0;                       /* q0 */</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">       1208 :             current = 1;                    /* q1 */</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">       1208 :             Q = C = -a;                     /* Q1 = C1 because q1 = 1 */</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">       1208 :             S = 1 + Q * delta;              /* S1 */</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">      30338 :             for (k = 2; k &lt; MAXITER; k++) { /* starting from 2 */</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :                 /* continued fraction f = z1 / z0 */</a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">      30354 :                 a -= 2 * (k - 1);</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">      30354 :                 b += 2;</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">      30354 :                 D = 1 / (b + a * D);</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">      30354 :                 delta *= b * D - 1;</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">      30354 :                 f += delta;</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">      30338 :                 a -= 2 * (k - 1);</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">      30338 :                 b += 2;</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">      30338 :                 D = 1 / (b + a * D);</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">      30338 :                 delta *= b * D - 1;</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">      30338 :                 f += delta;</span></a>
 <a name="602"><span class="lineNum">     602 </span>            : </a>
 <a name="603"><span class="lineNum">     603 </span>            :                 /* series summation S = 1 + \sum_{n=1}^{\infty} C_n * z_n / z_0 */</a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">      30354 :                 q = (prev - (b - 2) * current) / a;</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">      30354 :                 prev = current;</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">      30354 :                 current = q; /* forward recurrence for q */</span></a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineCov">      30354 :                 C *= -a / k;</span></a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineCov">      30354 :                 Q += C * q;</span></a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">      30354 :                 S += Q * delta;</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">      30338 :                 q = (prev - (b - 2) * current) / a;</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">      30338 :                 prev = current;</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">      30338 :                 current = q; /* forward recurrence for q */</span></a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineCov">      30338 :                 C *= -a / k;</span></a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineCov">      30338 :                 Q += C * q;</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">      30338 :                 S += Q * delta;</span></a>
 <a name="610"><span class="lineNum">     610 </span>            : </a>
 <a name="611"><span class="lineNum">     611 </span>            :                 /* S converges slower than f */</a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">      30354 :                 if (std::abs(Q * delta) &lt; std::abs(S) * tolerance) {</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">      30338 :                 if (std::abs(Q * delta) &lt; std::abs(S) * tolerance) {</span></a>
 <a name="613"><span class="lineNum">     613 </span>            :                     break;</a>
 <a name="614"><span class="lineNum">     614 </span>            :                 }</a>
 <a name="615"><span class="lineNum">     615 </span>            :             }</a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">       1224 :             if (k == MAXITER) {</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">       1208 :             if (k == MAXITER) {</span></a>
 <a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 :                 set_error(&quot;ikv_temme(CF2_ik)&quot;, SF_ERROR_NO_RESULT, NULL);</span></a>
 <a name="618"><span class="lineNum">     618 </span>            :             }</a>
 <a name="619"><span class="lineNum">     619 </span>            : </a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">       1224 :             *Kv = std::sqrt(M_PI / (2 * x)) * std::exp(-x) / S;</span></a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">       1224 :             *Kv1 = *Kv * (0.5 + v + x + (v * v - 0.25) * f) / x;</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">       1208 :             *Kv = std::sqrt(M_PI / (2 * x)) * std::exp(-x) / S;</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">       1208 :             *Kv1 = *Kv * (0.5 + v + x + (v * v - 0.25) * f) / x;</span></a>
 <a name="622"><span class="lineNum">     622 </span>            : </a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">       1224 :             return 0;</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">       1208 :             return 0;</span></a>
 <a name="624"><span class="lineNum">     624 </span>            :         }</a>
 <a name="625"><span class="lineNum">     625 </span>            : </a>
 <a name="626"><span class="lineNum">     626 </span>            :         /* Flags for what to compute */</a>
@@ -700,32 +700,32 @@
 <a name="630"><span class="lineNum">     630 </span>            :          * Compute I(v, x) and K(v, x) simultaneously by Temme's method, see</a>
 <a name="631"><span class="lineNum">     631 </span>            :          * Temme, Journal of Computational Physics, vol 19, 324 (1975)</a>
 <a name="632"><span class="lineNum">     632 </span>            :          */</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       3178 :         XSF_HOST_DEVICE inline void ikv_temme(double v, double x, double *Iv_p, double *Kv_p) {</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       3219 :         XSF_HOST_DEVICE inline void ikv_temme(double v, double x, double *Iv_p, double *Kv_p) {</span></a>
 <a name="634"><span class="lineNum">     634 </span>            :             /* Kv1 = K_(v+1), fv = I_(v+1) / I_v */</a>
 <a name="635"><span class="lineNum">     635 </span>            :             /* Ku1 = K_(u+1), fu = I_(u+1) / I_u */</a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">       3178 :             double u, Iv, Kv, Kv1, Ku, Ku1, fv;</span></a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       3178 :             double W, current, prev, next;</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">       3178 :             int reflect = 0;</span></a>
-<a name="639"><span class="lineNum">     639 </span><span class="lineCov">       3178 :             unsigned n, k;</span></a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       3178 :             int kind;</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">       3219 :             double u, Iv, Kv, Kv1, Ku, Ku1, fv;</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       3219 :             double W, current, prev, next;</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">       3219 :             int reflect = 0;</span></a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineCov">       3219 :             unsigned n, k;</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       3219 :             int kind;</span></a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">       3178 :             kind = 0;</span></a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">       3178 :             if (Iv_p != NULL) {</span></a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineCov">       3178 :                 kind |= ikv_temme_need_i;</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">       3219 :             kind = 0;</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">       3219 :             if (Iv_p != NULL) {</span></a>
+<a name="644"><span class="lineNum">     644 </span><span class="lineCov">       3219 :                 kind |= ikv_temme_need_i;</span></a>
 <a name="645"><span class="lineNum">     645 </span>            :             }</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       3178 :             if (Kv_p != NULL) {</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       3219 :             if (Kv_p != NULL) {</span></a>
 <a name="647"><span class="lineNum">     647 </span><span class="lineNoCov">          0 :                 kind |= ikv_temme_need_k;</span></a>
 <a name="648"><span class="lineNum">     648 </span>            :             }</a>
 <a name="649"><span class="lineNum">     649 </span>            : </a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       3178 :             if (v &lt; 0) {</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       3219 :             if (v &lt; 0) {</span></a>
 <a name="651"><span class="lineNum">     651 </span><span class="lineCov">         79 :                 reflect = 1;</span></a>
 <a name="652"><span class="lineNum">     652 </span><span class="lineCov">         79 :                 v = -v; /* v is non-negative from here */</span></a>
 <a name="653"><span class="lineNum">     653 </span><span class="lineCov">         79 :                 kind |= ikv_temme_need_k;</span></a>
 <a name="654"><span class="lineNum">     654 </span>            :             }</a>
-<a name="655"><span class="lineNum">     655 </span><span class="lineCov">       3178 :             n = std::round(v);</span></a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineCov">       3178 :             u = v - n; /* -1/2 &lt;= u &lt; 1/2 */</span></a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineCov">       3219 :             n = std::round(v);</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">       3219 :             u = v - n; /* -1/2 &lt;= u &lt; 1/2 */</span></a>
 <a name="657"><span class="lineNum">     657 </span>            : </a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">       3178 :             if (x &lt; 0) {</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">       3219 :             if (x &lt; 0) {</span></a>
 <a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 :                 if (Iv_p != NULL)</span></a>
 <a name="660"><span class="lineNum">     660 </span><span class="lineNoCov">          0 :                     *Iv_p = std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
 <a name="661"><span class="lineNum">     661 </span><span class="lineNoCov">          0 :                 if (Kv_p != NULL)</span></a>
@@ -733,7 +733,7 @@
 <a name="663"><span class="lineNum">     663 </span><span class="lineNoCov">          0 :                 set_error(&quot;ikv_temme&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="664"><span class="lineNum">     664 </span><span class="lineNoCov">          0 :                 return;</span></a>
 <a name="665"><span class="lineNum">     665 </span>            :             }</a>
-<a name="666"><span class="lineNum">     666 </span><span class="lineCov">       3178 :             if (x == 0) {</span></a>
+<a name="666"><span class="lineNum">     666 </span><span class="lineCov">       3219 :             if (x == 0) {</span></a>
 <a name="667"><span class="lineNum">     667 </span><span class="lineNoCov">          0 :                 Iv = (v == 0) ? 1 : 0;</span></a>
 <a name="668"><span class="lineNum">     668 </span><span class="lineNoCov">          0 :                 if (kind &amp; ikv_temme_need_k) {</span></a>
 <a name="669"><span class="lineNum">     669 </span><span class="lineNoCov">          0 :                     set_error(&quot;ikv_temme&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
@@ -760,28 +760,28 @@
 <a name="690"><span class="lineNum">     690 </span><span class="lineNoCov">          0 :                 return;</span></a>
 <a name="691"><span class="lineNum">     691 </span>            :             }</a>
 <a name="692"><span class="lineNum">     692 </span>            :             /* x is positive until reflection */</a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       3178 :             W = 1 / x;                            /* Wronskian */</span></a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">       3178 :             if (x &lt;= 2) {                         /* x in (0, 2] */</span></a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       1954 :                 temme_ik_series(u, x, &amp;Ku, &amp;Ku1); /* Temme series */</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">       3219 :             W = 1 / x;                            /* Wronskian */</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">       3219 :             if (x &lt;= 2) {                         /* x in (0, 2] */</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">       2011 :                 temme_ik_series(u, x, &amp;Ku, &amp;Ku1); /* Temme series */</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :             } else {                              /* x in (2, \infty) */</a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       1224 :                 CF2_ik(u, x, &amp;Ku, &amp;Ku1);          /* continued fraction CF2_ik */</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       1208 :                 CF2_ik(u, x, &amp;Ku, &amp;Ku1);          /* continued fraction CF2_ik */</span></a>
 <a name="698"><span class="lineNum">     698 </span>            :             }</a>
-<a name="699"><span class="lineNum">     699 </span><span class="lineCov">       3178 :             prev = Ku;</span></a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       3178 :             current = Ku1;</span></a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineCov">      72393 :             for (k = 1; k &lt;= n; k++) { /* forward recurrence for K */</span></a>
-<a name="702"><span class="lineNum">     702 </span><span class="lineCov">      69215 :                 next = 2 * (u + k) * current / x + prev;</span></a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">      69215 :                 prev = current;</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">      69215 :                 current = next;</span></a>
+<a name="699"><span class="lineNum">     699 </span><span class="lineCov">       3219 :             prev = Ku;</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">       3219 :             current = Ku1;</span></a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineCov">      72640 :             for (k = 1; k &lt;= n; k++) { /* forward recurrence for K */</span></a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineCov">      69421 :                 next = 2 * (u + k) * current / x + prev;</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">      69421 :                 prev = current;</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">      69421 :                 current = next;</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :             }</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       3178 :             Kv = prev;</span></a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">       3178 :             Kv1 = current;</span></a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">       3178 :             if (kind &amp; ikv_temme_need_i) {</span></a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3178 :                 double lim = (4 * v * v + 10) / (8 * x);</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       3219 :             Kv = prev;</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">       3219 :             Kv1 = current;</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">       3219 :             if (kind &amp; ikv_temme_need_i) {</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3219 :                 double lim = (4 * v * v + 10) / (8 * x);</span></a>
 <a name="710"><span class="lineNum">     710 </span>            : </a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       3178 :                 lim *= lim;</span></a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">       3178 :                 lim *= lim;</span></a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       3178 :                 lim /= 24;</span></a>
-<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       3178 :                 if ((lim &lt; MACHEP * 10) &amp;&amp; (x &gt; 100)) {</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       3219 :                 lim *= lim;</span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineCov">       3219 :                 lim *= lim;</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       3219 :                 lim /= 24;</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">       3219 :                 if ((lim &lt; MACHEP * 10) &amp;&amp; (x &gt; 100)) {</span></a>
 <a name="715"><span class="lineNum">     715 </span>            :                     /*</a>
 <a name="716"><span class="lineNum">     716 </span>            :                      * x is huge compared to v, CF1 may be very slow</a>
 <a name="717"><span class="lineNum">     717 </span>            :                      * to converge so use asymptotic expansion for large</a>
@@ -791,14 +791,14 @@
 <a name="721"><span class="lineNum">     721 </span>            :                      */</a>
 <a name="722"><span class="lineNum">     722 </span><span class="lineCov">          8 :                     Iv = iv_asymptotic(v, x);</span></a>
 <a name="723"><span class="lineNum">     723 </span>            :                 } else {</a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineCov">       3170 :                     CF1_ik(v, x, &amp;fv);        /* continued fraction CF1_ik */</span></a>
-<a name="725"><span class="lineNum">     725 </span><span class="lineCov">       3170 :                     Iv = W / (Kv * fv + Kv1); /* Wronskian relation */</span></a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">       3211 :                     CF1_ik(v, x, &amp;fv);        /* continued fraction CF1_ik */</span></a>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">       3211 :                     Iv = W / (Kv * fv + Kv1); /* Wronskian relation */</span></a>
 <a name="726"><span class="lineNum">     726 </span>            :                 }</a>
 <a name="727"><span class="lineNum">     727 </span>            :             } else {</a>
 <a name="728"><span class="lineNum">     728 </span>            :                 Iv = std::numeric_limits&lt;double&gt;::quiet_NaN(); /* any value will do */</a>
 <a name="729"><span class="lineNum">     729 </span>            :             }</a>
 <a name="730"><span class="lineNum">     730 </span>            : </a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">       3178 :             if (reflect) {</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">       3219 :             if (reflect) {</span></a>
 <a name="732"><span class="lineNum">     732 </span><span class="lineCov">         79 :                 double z = (u + n % 2);</span></a>
 <a name="733"><span class="lineNum">     733 </span>            : </a>
 <a name="734"><span class="lineNum">     734 </span><span class="lineCov">         79 :                 if (Iv_p != NULL) {</span></a>
@@ -808,10 +808,10 @@
 <a name="738"><span class="lineNum">     738 </span><span class="lineNoCov">          0 :                     *Kv_p = Kv;</span></a>
 <a name="739"><span class="lineNum">     739 </span>            :                 }</a>
 <a name="740"><span class="lineNum">     740 </span>            :             } else {</a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       3099 :                 if (Iv_p != NULL) {</span></a>
-<a name="742"><span class="lineNum">     742 </span><span class="lineCov">       3099 :                     *Iv_p = Iv;</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">       3140 :                 if (Iv_p != NULL) {</span></a>
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">       3140 :                     *Iv_p = Iv;</span></a>
 <a name="743"><span class="lineNum">     743 </span>            :                 }</a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">       3099 :                 if (Kv_p != NULL) {</span></a>
+<a name="744"><span class="lineNum">     744 </span><span class="lineCov">       3140 :                 if (Kv_p != NULL) {</span></a>
 <a name="745"><span class="lineNum">     745 </span><span class="lineNoCov">          0 :                     *Kv_p = Kv;</span></a>
 <a name="746"><span class="lineNum">     746 </span>            :                 }</a>
 <a name="747"><span class="lineNum">     747 </span>            :             }</a>
@@ -820,36 +820,36 @@
 <a name="750"><span class="lineNum">     750 </span>            : </a>
 <a name="751"><span class="lineNum">     751 </span>            :     } // namespace detail</a>
 <a name="752"><span class="lineNum">     752 </span>            : </a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       5413 :     XSF_HOST_DEVICE inline double iv(double v, double x) {</span></a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       5413 :         int sign;</span></a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">       5413 :         double t, ax, res;</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       5422 :     XSF_HOST_DEVICE inline double iv(double v, double x) {</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">       5422 :         int sign;</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">       5422 :         double t, ax, res;</span></a>
 <a name="756"><span class="lineNum">     756 </span>            : </a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">       5413 :         if (std::isnan(v) || std::isnan(x)) {</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">       5422 :         if (std::isnan(v) || std::isnan(x)) {</span></a>
 <a name="758"><span class="lineNum">     758 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
 <a name="759"><span class="lineNum">     759 </span>            :         }</a>
 <a name="760"><span class="lineNum">     760 </span>            : </a>
 <a name="761"><span class="lineNum">     761 </span>            :         /* If v is a negative integer, invoke symmetry */</a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       5412 :         t = std::floor(v);</span></a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">       5412 :         if (v &lt; 0.0) {</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       5421 :         t = std::floor(v);</span></a>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">       5421 :         if (v &lt; 0.0) {</span></a>
 <a name="764"><span class="lineNum">     764 </span><span class="lineCov">       2267 :             if (t == v) {</span></a>
 <a name="765"><span class="lineNum">     765 </span><span class="lineCov">       2152 :                 v = -v; /* symmetry */</span></a>
 <a name="766"><span class="lineNum">     766 </span><span class="lineCov">       2152 :                 t = -t;</span></a>
 <a name="767"><span class="lineNum">     767 </span>            :             }</a>
 <a name="768"><span class="lineNum">     768 </span>            :         }</a>
 <a name="769"><span class="lineNum">     769 </span>            :         /* If x is negative, require v to be an integer */</a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">       5412 :         sign = 1;</span></a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       5412 :         if (x &lt; 0.0) {</span></a>
-<a name="772"><span class="lineNum">     772 </span><span class="lineCov">       2117 :             if (t != v) {</span></a>
-<a name="773"><span class="lineNum">     773 </span><span class="lineCov">         45 :                 set_error(&quot;iv&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">       5421 :         sign = 1;</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       5421 :         if (x &lt; 0.0) {</span></a>
+<a name="772"><span class="lineNum">     772 </span><span class="lineCov">       2085 :             if (t != v) {</span></a>
+<a name="773"><span class="lineNum">     773 </span><span class="lineCov">         13 :                 set_error(&quot;iv&quot;, SF_ERROR_DOMAIN, NULL);</span></a>
 <a name="774"><span class="lineNum">     774 </span>            :                 return (std::numeric_limits&lt;double&gt;::quiet_NaN());</a>
 <a name="775"><span class="lineNum">     775 </span>            :             }</a>
 <a name="776"><span class="lineNum">     776 </span><span class="lineCov">       2072 :             if (v != 2.0 * std::floor(v / 2.0)) {</span></a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       5367 :                 sign = -1;</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       5408 :                 sign = -1;</span></a>
 <a name="778"><span class="lineNum">     778 </span>            :             }</a>
 <a name="779"><span class="lineNum">     779 </span>            :         }</a>
 <a name="780"><span class="lineNum">     780 </span>            : </a>
 <a name="781"><span class="lineNum">     781 </span>            :         /* Avoid logarithm singularity */</a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       5367 :         if (x == 0.0) {</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       5408 :         if (x == 0.0) {</span></a>
 <a name="783"><span class="lineNum">     783 </span><span class="lineCov">          1 :             if (v == 0.0) {</span></a>
 <a name="784"><span class="lineNum">     784 </span>            :                 return 1.0;</a>
 <a name="785"><span class="lineNum">     785 </span>            :             }</a>
@@ -860,8 +860,8 @@
 <a name="790"><span class="lineNum">     790 </span>            :                 return 0.0;</a>
 <a name="791"><span class="lineNum">     791 </span>            :         }</a>
 <a name="792"><span class="lineNum">     792 </span>            : </a>
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       5366 :         ax = std::abs(x);</span></a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">       5366 :         if (std::abs(v) &gt; 50) {</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       5407 :         ax = std::abs(x);</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">       5407 :         if (std::abs(v) &gt; 50) {</span></a>
 <a name="795"><span class="lineNum">     795 </span>            :             /*</a>
 <a name="796"><span class="lineNum">     796 </span>            :              * Uniform asymptotic expansion for large orders.</a>
 <a name="797"><span class="lineNum">     797 </span>            :              *</a>
@@ -871,10 +871,10 @@
 <a name="801"><span class="lineNum">     801 </span><span class="lineCov">       2188 :             detail::ikv_asymptotic_uniform(v, ax, &amp;res, NULL);</span></a>
 <a name="802"><span class="lineNum">     802 </span>            :         } else {</a>
 <a name="803"><span class="lineNum">     803 </span>            :             /* Otherwise: Temme's method */</a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       3178 :             detail::ikv_temme(v, ax, &amp;res, NULL);</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">       3219 :             detail::ikv_temme(v, ax, &amp;res, NULL);</span></a>
 <a name="805"><span class="lineNum">     805 </span>            :         }</a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       5366 :         res *= sign;</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       5366 :         return res;</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">       5407 :         res *= sign;</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       5407 :         return res;</span></a>
 <a name="808"><span class="lineNum">     808 </span>            :     }</a>
 <a name="809"><span class="lineNum">     809 </span>            : </a>
 <a name="810"><span class="lineNum">     810 </span>            : } // namespace cephes</a>

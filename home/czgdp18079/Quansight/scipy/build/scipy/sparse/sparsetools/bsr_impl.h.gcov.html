@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/Quansight/scipy/build/scipy/sparse/sparsetools/bsr_impl.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/Quansight/scipy/build/scipy/sparse/sparsetools/bsr_impl.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">1058</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">39</td>
@@ -72,11 +72,11 @@
 <a name="2"><span class="lineNum">       2 </span>            :  * Do not edit manually or check into VCS.</a>
 <a name="3"><span class="lineNum">       3 </span>            :  */</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">      53077 : static int get_thunk_case(int I_typenum, int T_typenum)</span></a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">      53081 : static int get_thunk_case(int I_typenum, int T_typenum)</span></a>
 <a name="6"><span class="lineNum">       6 </span>            : {</a>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">      53077 :         if (0) {}</span></a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">      53077 :         else if (I_typenum == NPY_INT32) {</span></a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">      42927 :             if (T_typenum == -1) { return 0; }</span></a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">      53081 :         if (0) {}</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">      53081 :         else if (I_typenum == NPY_INT32) {</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">      42931 :             if (T_typenum == -1) { return 0; }</span></a>
 <a name="10"><span class="lineNum">      10 </span>            :             else if (T_typenum == NPY_BOOL) { return 1; }</a>
 <a name="11"><span class="lineNum">      11 </span>            :             else if (T_typenum == NPY_BYTE) { return 2; }</a>
 <a name="12"><span class="lineNum">      12 </span>            :             else if (T_typenum == NPY_UBYTE) { return 3; }</a>
@@ -229,10 +229,10 @@
 <a name="159"><span class="lineNum">     159 </span>            :     }</a>
 <a name="160"><span class="lineNum">     160 </span>            : }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      12359 : static PY_LONG_LONG bsr_tocsr_thunk(int I_typenum, int T_typenum, void **a)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      12363 : static PY_LONG_LONG bsr_tocsr_thunk(int I_typenum, int T_typenum, void **a)</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      12359 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      12359 :     switch (j) {</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      12363 :     int j = get_thunk_case(I_typenum, T_typenum);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      12363 :     switch (j) {</span></a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">        437 :         case 1:</span></a>
 <a name="167"><span class="lineNum">     167 </span><span class="lineCov">        437 :             (void)bsr_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], *(const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5], (const npy_bool_wrapper*)a[6], (npy_int32*)a[7], (npy_int32*)a[8], (npy_bool_wrapper*)a[9]);</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">        437 :             return 0;</span></a>
@@ -254,9 +254,9 @@
 <a name="184"><span class="lineNum">     184 </span><span class="lineCov">        453 :         case 7:</span></a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineCov">        453 :             (void)bsr_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], *(const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5], (const npy_uint*)a[6], (npy_int32*)a[7], (npy_int32*)a[8], (npy_uint*)a[9]);</span></a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineCov">        453 :             return 0;</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       1967 :         case 8:</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       1967 :             (void)bsr_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], *(const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5], (const npy_long*)a[6], (npy_int32*)a[7], (npy_int32*)a[8], (npy_long*)a[9]);</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       1967 :             return 0;</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       1971 :         case 8:</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       1971 :             (void)bsr_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], *(const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5], (const npy_long*)a[6], (npy_int32*)a[7], (npy_int32*)a[8], (npy_long*)a[9]);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       1971 :             return 0;</span></a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">        903 :         case 9:</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">        903 :             (void)bsr_tocsr(*(const npy_int32*)a[0], *(const npy_int32*)a[1], *(const npy_int32*)a[2], *(const npy_int32*)a[3], (const npy_int32*)a[4], (const npy_int32*)a[5], (const npy_ulong*)a[6], (npy_int32*)a[7], (npy_int32*)a[8], (npy_ulong*)a[9]);</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">        903 :             return 0;</span></a>
@@ -2345,9 +2345,9 @@
 <a name="2275"><span class="lineNum">    2275 </span>            : }</a>
 <a name="2276"><span class="lineNum">    2276 </span>            : </a>
 <a name="2277"><span class="lineNum">    2277 </span>            : PyObject *</a>
-<a name="2278"><span class="lineNum">    2278 </span><span class="lineCov">      12359 : bsr_tocsr_method(PyObject *self, PyObject *args)</span></a>
+<a name="2278"><span class="lineNum">    2278 </span><span class="lineCov">      12363 : bsr_tocsr_method(PyObject *self, PyObject *args)</span></a>
 <a name="2279"><span class="lineNum">    2279 </span>            : {</a>
-<a name="2280"><span class="lineNum">    2280 </span><span class="lineCov">      12359 :     return call_thunk('v', &quot;iiiiIIT*I*I*T&quot;, bsr_tocsr_thunk, args);</span></a>
+<a name="2280"><span class="lineNum">    2280 </span><span class="lineCov">      12363 :     return call_thunk('v', &quot;iiiiIIT*I*I*T&quot;, bsr_tocsr_thunk, args);</span></a>
 <a name="2281"><span class="lineNum">    2281 </span>            : }</a>
 <a name="2282"><span class="lineNum">    2282 </span>            : </a>
 <a name="2283"><span class="lineNum">    2283 </span>            : PyObject *</a>

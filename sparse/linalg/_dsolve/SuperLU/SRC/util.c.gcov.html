@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/util.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/util.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">136</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -118,19 +118,19 @@
 <a name="48"><span class="lineNum">      48 </span>            :  *</a>
 <a name="49"><span class="lineNum">      49 </span>            :  * \param[in,out] options Options struct that is filled with default values.</a>
 <a name="50"><span class="lineNum">      50 </span>            :  */</a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       4395 : void set_default_options(superlu_options_t *options)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">       4401 : void set_default_options(superlu_options_t *options)</span></a>
 <a name="52"><span class="lineNum">      52 </span>            : {</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       4395 :     options-&gt;Fact = DOFACT;</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       4395 :     options-&gt;Equil = YES;</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       4395 :     options-&gt;ColPerm = COLAMD;</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       4395 :     options-&gt;Trans = NOTRANS;</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4395 :     options-&gt;IterRefine = NOREFINE;</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       4395 :     options-&gt;DiagPivotThresh = 1.0;</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       4395 :     options-&gt;SymmetricMode = NO;</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       4395 :     options-&gt;PivotGrowth = NO;</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       4395 :     options-&gt;ConditionNumber = NO;</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">       4395 :     options-&gt;PrintStat = YES;</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       4378 : }</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">       4401 :     options-&gt;Fact = DOFACT;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       4401 :     options-&gt;Equil = YES;</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       4401 :     options-&gt;ColPerm = COLAMD;</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">       4401 :     options-&gt;Trans = NOTRANS;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4401 :     options-&gt;IterRefine = NOREFINE;</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       4401 :     options-&gt;DiagPivotThresh = 1.0;</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       4401 :     options-&gt;SymmetricMode = NO;</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       4401 :     options-&gt;PivotGrowth = NO;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       4401 :     options-&gt;ConditionNumber = NO;</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">       4401 :     options-&gt;PrintStat = YES;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       4384 : }</span></a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
 <a name="65"><span class="lineNum">      65 </span>            : /*! \brief Set the default values for the options argument for ILU.</a>
 <a name="66"><span class="lineNum">      66 </span>            :  *</a>
@@ -195,10 +195,10 @@
 <a name="125"><span class="lineNum">     125 </span>            :  * \param[in,out] A Deallocate all memory of this SuperMatrix.</a>
 <a name="126"><span class="lineNum">     126 </span>            :  */</a>
 <a name="127"><span class="lineNum">     127 </span>            : void</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      37421 : Destroy_SuperMatrix_Store(SuperMatrix *A)</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">      37485 : Destroy_SuperMatrix_Store(SuperMatrix *A)</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : {</a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      37421 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      37421 : }</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">      37485 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      37485 : }</span></a>
 <a name="132"><span class="lineNum">     132 </span>            : </a>
 <a name="133"><span class="lineNum">     133 </span>            : /*! \brief Deallocate SuperMatrix of type NC</a>
 <a name="134"><span class="lineNum">     134 </span>            :  *</a>
@@ -207,13 +207,13 @@
 <a name="137"><span class="lineNum">     137 </span>            :  * \param[in,out] A Deallocate all memory of this SuperMatrix of type NC.</a>
 <a name="138"><span class="lineNum">     138 </span>            :  */</a>
 <a name="139"><span class="lineNum">     139 </span>            : void</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       4392 : Destroy_CompCol_Matrix(SuperMatrix *A)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       4398 : Destroy_CompCol_Matrix(SuperMatrix *A)</span></a>
 <a name="141"><span class="lineNum">     141 </span>            : {</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       4392 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;rowind );</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       4392 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;colptr );</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       4392 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;nzval );</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4392 :     SUPERLU_FREE( A-&gt;Store );</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       4392 : }</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       4398 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;rowind );</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       4398 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;colptr );</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       4398 :     SUPERLU_FREE( ((NCformat *)A-&gt;Store)-&gt;nzval );</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       4398 :     SUPERLU_FREE( A-&gt;Store );</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       4398 : }</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            : /*! \brief Deallocate SuperMatrix of type NR</a>
 <a name="149"><span class="lineNum">     149 </span>            :  *</a>
@@ -237,16 +237,16 @@
 <a name="167"><span class="lineNum">     167 </span>            :  * \param[in,out] A Deallocate all memory of this SuperMatrix of type SC.</a>
 <a name="168"><span class="lineNum">     168 </span>            :  */</a>
 <a name="169"><span class="lineNum">     169 </span>            : void</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       4392 : Destroy_SuperNode_Matrix(SuperMatrix *A)</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       4398 : Destroy_SuperNode_Matrix(SuperMatrix *A)</span></a>
 <a name="171"><span class="lineNum">     171 </span>            : {</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;rowind );</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;rowind_colptr );</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;nzval );</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;nzval_colptr );</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;col_to_sup );</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;sup_to_col );</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       4392 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       4392 : }</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;rowind );</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;rowind_colptr );</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;nzval );</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;nzval_colptr );</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;col_to_sup );</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( ((SCformat *)A-&gt;Store)-&gt;sup_to_col );</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">       4398 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       4398 : }</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : /*! \brief Deallocate SuperMatrix of type NCP</a>
 <a name="182"><span class="lineNum">     182 </span>            :  *</a>
@@ -255,12 +255,12 @@
 <a name="185"><span class="lineNum">     185 </span>            :  * \param[in,out] A Deallocate all memory of this SuperMatrix of type NCP.</a>
 <a name="186"><span class="lineNum">     186 </span>            :  */</a>
 <a name="187"><span class="lineNum">     187 </span>            : void</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4394 : Destroy_CompCol_Permuted(SuperMatrix *A)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4400 : Destroy_CompCol_Permuted(SuperMatrix *A)</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : {</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       4394 :     SUPERLU_FREE ( ((NCPformat *)A-&gt;Store)-&gt;colbeg );</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       4394 :     SUPERLU_FREE ( ((NCPformat *)A-&gt;Store)-&gt;colend );</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       4394 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">       4394 : }</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       4400 :     SUPERLU_FREE ( ((NCPformat *)A-&gt;Store)-&gt;colbeg );</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       4400 :     SUPERLU_FREE ( ((NCPformat *)A-&gt;Store)-&gt;colend );</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       4400 :     SUPERLU_FREE ( A-&gt;Store );</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">       4400 : }</span></a>
 <a name="194"><span class="lineNum">     194 </span>            : </a>
 <a name="195"><span class="lineNum">     195 </span>            : /*! \brief Deallocate SuperMatrix of type DN</a>
 <a name="196"><span class="lineNum">     196 </span>            :  *</a>
@@ -279,48 +279,48 @@
 <a name="209"><span class="lineNum">     209 </span>            : /*! \brief Reset repfnz[] for the current column</a>
 <a name="210"><span class="lineNum">     210 </span>            :  */</a>
 <a name="211"><span class="lineNum">     211 </span>            : void</a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">     153886 : resetrep_col (const int nseg, const int *segrep, int *repfnz)</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">     153959 : resetrep_col (const int nseg, const int *segrep, int *repfnz)</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : {</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     153886 :     int_t i, irep;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">     153959 :     int_t i, irep;</span></a>
 <a name="215"><span class="lineNum">     215 </span>            :     </a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">    1950157 :     for (i = 0; i &lt; nseg; i++) {</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">    1796271 :         irep = segrep[i];</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    1796271 :         repfnz[irep] = EMPTY;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">    1951107 :     for (i = 0; i &lt; nseg; i++) {</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">    1797148 :         irep = segrep[i];</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    1797148 :         repfnz[irep] = EMPTY;</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :     }</a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">     153886 : }</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">     153959 : }</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
 <a name="222"><span class="lineNum">     222 </span>            : /*! \brief Count the total number of nonzeros in factors L and U, and in the symmetrically reduced L.</a>
 <a name="223"><span class="lineNum">     223 </span>            :  */</a>
 <a name="224"><span class="lineNum">     224 </span>            : void</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       4376 : countnz(const int n, int_t *xprune, int_t *nnzL, int_t *nnzU, GlobalLU_t *Glu)</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       4382 : countnz(const int n, int_t *xprune, int_t *nnzL, int_t *nnzU, GlobalLU_t *Glu)</span></a>
 <a name="226"><span class="lineNum">     226 </span>            : {</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       4376 :     int          nsuper, fsupc, i, j;</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4376 :     int_t        jlen;</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       4382 :     int          nsuper, fsupc, i, j;</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       4382 :     int_t        jlen;</span></a>
 <a name="229"><span class="lineNum">     229 </span>            : #if ( DEBUGlevel&gt;=1 )</a>
 <a name="230"><span class="lineNum">     230 </span>            :     int_t        irep = 0, nnzL0 = 0;</a>
 <a name="231"><span class="lineNum">     231 </span>            : #endif</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4376 :     int          *xsup;</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4376 :     int_t        *xlsub;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4382 :     int          *xsup;</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4382 :     int_t        *xlsub;</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4376 :     xsup   = Glu-&gt;xsup;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4376 :     xlsub  = Glu-&gt;xlsub;</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4376 :     *nnzL  = 0;</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4376 :     *nnzU  = (Glu-&gt;xusub)[n];</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       4376 :     nsuper = (Glu-&gt;supno)[n];</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4382 :     xsup   = Glu-&gt;xsup;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4382 :     xlsub  = Glu-&gt;xlsub;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4382 :     *nnzL  = 0;</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">       4382 :     *nnzU  = (Glu-&gt;xusub)[n];</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">       4382 :     nsuper = (Glu-&gt;supno)[n];</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4376 :     if ( n &lt;= 0 ) return;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">       4382 :     if ( n &lt;= 0 ) return;</span></a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
 <a name="243"><span class="lineNum">     243 </span>            :     /* </a>
 <a name="244"><span class="lineNum">     244 </span>            :      * For each supernode</a>
 <a name="245"><span class="lineNum">     245 </span>            :      */</a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">     165571 :     for (i = 0; i &lt;= nsuper; i++) {</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">     161195 :         fsupc = xsup[i];</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     161195 :         jlen = xlsub[fsupc+1] - xlsub[fsupc];</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">     165779 :     for (i = 0; i &lt;= nsuper; i++) {</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">     161397 :         fsupc = xsup[i];</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     161397 :         jlen = xlsub[fsupc+1] - xlsub[fsupc];</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     379573 :         for (j = fsupc; j &lt; xsup[i+1]; j++) {</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">     218378 :             *nnzL += jlen;</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">     218378 :             *nnzU += j - fsupc + 1;</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">     218378 :             jlen--;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     380273 :         for (j = fsupc; j &lt; xsup[i+1]; j++) {</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">     218876 :             *nnzL += jlen;</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">     218876 :             *nnzU += j - fsupc + 1;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">     218876 :             jlen--;</span></a>
 <a name="254"><span class="lineNum">     254 </span>            :         }</a>
 <a name="255"><span class="lineNum">     255 </span>            : #if ( DEBUGlevel&gt;=1 )</a>
 <a name="256"><span class="lineNum">     256 </span>            :         irep = xsup[i+1] - 1;</a>
@@ -373,38 +373,38 @@
 <a name="303"><span class="lineNum">     303 </span>            :  * and applies permutation to the remaining subscripts.</a>
 <a name="304"><span class="lineNum">     304 </span>            :  */</a>
 <a name="305"><span class="lineNum">     305 </span>            : void</a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">       4392 : fixupL(const int n, const int *perm_r, GlobalLU_t *Glu)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">       4398 : fixupL(const int n, const int *perm_r, GlobalLU_t *Glu)</span></a>
 <a name="307"><span class="lineNum">     307 </span>            : {</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       4392 :     int nsuper, fsupc, i, k;</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       4392 :     int_t nextl, j, jstrt;</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       4392 :     int   *xsup;</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       4392 :     int_t *lsub, *xlsub;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       4398 :     int nsuper, fsupc, i, k;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       4398 :     int_t nextl, j, jstrt;</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       4398 :     int   *xsup;</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       4398 :     int_t *lsub, *xlsub;</span></a>
 <a name="312"><span class="lineNum">     312 </span>            : </a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">       4392 :     if ( n &lt;= 1 ) return;</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">       4398 :     if ( n &lt;= 1 ) return;</span></a>
 <a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4342 :     xsup   = Glu-&gt;xsup;</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       4342 :     lsub   = Glu-&gt;lsub;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       4342 :     xlsub  = Glu-&gt;xlsub;</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       4342 :     nextl  = 0;</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       4342 :     nsuper = (Glu-&gt;supno)[n];</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4348 :     xsup   = Glu-&gt;xsup;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       4348 :     lsub   = Glu-&gt;lsub;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       4348 :     xlsub  = Glu-&gt;xlsub;</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       4348 :     nextl  = 0;</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       4348 :     nsuper = (Glu-&gt;supno)[n];</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :     </a>
 <a name="321"><span class="lineNum">     321 </span>            :     /* </a>
 <a name="322"><span class="lineNum">     322 </span>            :      * For each supernode ...</a>
 <a name="323"><span class="lineNum">     323 </span>            :      */</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">     166489 :     for (i = 0; i &lt;= nsuper; i++) {</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">     162147 :         fsupc = xsup[i];</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">     162147 :         jstrt = xlsub[fsupc];</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">     162147 :         xlsub[fsupc] = nextl;</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">     872510 :         for (j = jstrt; j &lt; xlsub[fsupc+1]; j++) {</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">     710363 :             lsub[nextl] = perm_r[lsub[j]]; /* Now indexed into P*A */</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">     710363 :             nextl++;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">     166697 :     for (i = 0; i &lt;= nsuper; i++) {</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">     162349 :         fsupc = xsup[i];</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">     162349 :         jstrt = xlsub[fsupc];</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">     162349 :         xlsub[fsupc] = nextl;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">     871095 :         for (j = jstrt; j &lt; xlsub[fsupc+1]; j++) {</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">     708746 :             lsub[nextl] = perm_r[lsub[j]]; /* Now indexed into P*A */</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">     708746 :             nextl++;</span></a>
 <a name="331"><span class="lineNum">     331 </span>            :         }</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">     219706 :         for (k = fsupc+1; k &lt; xsup[i+1]; k++) </span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      57559 :                 xlsub[k] = nextl;       /* Other columns in supernode i */</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">     220204 :         for (k = fsupc+1; k &lt; xsup[i+1]; k++) </span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      57855 :                 xlsub[k] = nextl;       /* Other columns in supernode i */</span></a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
 <a name="335"><span class="lineNum">     335 </span>            :     }</a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       4342 :     xlsub[n] = nextl;</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       4348 :     xlsub[n] = nextl;</span></a>
 <a name="338"><span class="lineNum">     338 </span>            : }</a>
 <a name="339"><span class="lineNum">     339 </span>            : </a>
 <a name="340"><span class="lineNum">     340 </span>            : /*! \brief Diagnostic print of segment info after panel_dfs().</a>
@@ -428,25 +428,25 @@
 <a name="358"><span class="lineNum">     358 </span>            :  * \param[in,out] stat SuperLU stat that is initialized.</a>
 <a name="359"><span class="lineNum">     359 </span>            :  */</a>
 <a name="360"><span class="lineNum">     360 </span>            : void</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      36010 : StatInit(SuperLUStat_t *stat)</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      36074 : StatInit(SuperLUStat_t *stat)</span></a>
 <a name="362"><span class="lineNum">     362 </span>            : {</a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      36010 :     register int i, w, panel_size, relax;</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      36074 :     register int i, w, panel_size, relax;</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      36010 :     panel_size = sp_ienv(1);</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      36010 :     relax = sp_ienv(2);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">      36010 :     w = SUPERLU_MAX(panel_size, relax);</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">      36010 :     stat-&gt;panel_histo = int32Calloc(w+1);</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">      36010 :     stat-&gt;utime = (double *) SUPERLU_MALLOC(NPHASES * sizeof(double));</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">      36010 :     if (!stat-&gt;utime) ABORT(&quot;SUPERLU_MALLOC fails for stat-&gt;utime&quot;);</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">      36010 :     stat-&gt;ops = (flops_t *) SUPERLU_MALLOC(NPHASES * sizeof(flops_t));</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">      36010 :     if (!stat-&gt;ops) ABORT(&quot;SUPERLU_MALLOC fails for stat-&gt;ops&quot;);</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">     828230 :     for (i = 0; i &lt; NPHASES; ++i) {</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">     792220 :         stat-&gt;utime[i] = 0.;</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">     792220 :         stat-&gt;ops[i] = 0.;</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      36074 :     panel_size = sp_ienv(1);</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      36074 :     relax = sp_ienv(2);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">      36074 :     w = SUPERLU_MAX(panel_size, relax);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">      36074 :     stat-&gt;panel_histo = int32Calloc(w+1);</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">      36074 :     stat-&gt;utime = (double *) SUPERLU_MALLOC(NPHASES * sizeof(double));</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">      36074 :     if (!stat-&gt;utime) ABORT(&quot;SUPERLU_MALLOC fails for stat-&gt;utime&quot;);</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">      36074 :     stat-&gt;ops = (flops_t *) SUPERLU_MALLOC(NPHASES * sizeof(flops_t));</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">      36074 :     if (!stat-&gt;ops) ABORT(&quot;SUPERLU_MALLOC fails for stat-&gt;ops&quot;);</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">     829702 :     for (i = 0; i &lt; NPHASES; ++i) {</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">     793628 :         stat-&gt;utime[i] = 0.;</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">     793628 :         stat-&gt;ops[i] = 0.;</span></a>
 <a name="376"><span class="lineNum">     376 </span>            :     }</a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">      36010 :     stat-&gt;TinyPivots = 0;</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">      36010 :     stat-&gt;RefineSteps = 0;</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">      36010 :     stat-&gt;expansions = 0;</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">      36074 :     stat-&gt;TinyPivots = 0;</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">      36074 :     stat-&gt;RefineSteps = 0;</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">      36074 :     stat-&gt;expansions = 0;</span></a>
 <a name="380"><span class="lineNum">     380 </span>            : #if ( PRNTlevel &gt;= 1 )</a>
 <a name="381"><span class="lineNum">     381 </span>            :     printf(&quot;.. parameters in sp_ienv():\n&quot;);</a>
 <a name="382"><span class="lineNum">     382 </span>            :     printf(&quot;\t 1: panel size \t %4d \n&quot;</a>
@@ -458,7 +458,7 @@
 <a name="388"><span class="lineNum">     388 </span>            :            sp_ienv(1), sp_ienv(2), sp_ienv(3), </a>
 <a name="389"><span class="lineNum">     389 </span>            :            sp_ienv(4), sp_ienv(5), sp_ienv(6));</a>
 <a name="390"><span class="lineNum">     390 </span>            : #endif</a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      36010 : }</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      36074 : }</span></a>
 <a name="392"><span class="lineNum">     392 </span>            : </a>
 <a name="393"><span class="lineNum">     393 </span>            : /*! \brief Display SuperLU stat</a>
 <a name="394"><span class="lineNum">     394 </span>            :  *</a>
@@ -495,12 +495,12 @@
 <a name="425"><span class="lineNum">     425 </span>            :  * \param[in,out] stat Deallocate all memory of this SuperLU stat</a>
 <a name="426"><span class="lineNum">     426 </span>            :  */</a>
 <a name="427"><span class="lineNum">     427 </span>            : void</a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">      36010 : StatFree(SuperLUStat_t *stat)</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">      36074 : StatFree(SuperLUStat_t *stat)</span></a>
 <a name="429"><span class="lineNum">     429 </span>            : {</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">      36010 :     SUPERLU_FREE(stat-&gt;panel_histo);</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">      36010 :     SUPERLU_FREE(stat-&gt;utime);</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">      36010 :     SUPERLU_FREE(stat-&gt;ops);</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">      36010 : }</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">      36074 :     SUPERLU_FREE(stat-&gt;panel_histo);</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">      36074 :     SUPERLU_FREE(stat-&gt;utime);</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">      36074 :     SUPERLU_FREE(stat-&gt;ops);</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">      36074 : }</span></a>
 <a name="434"><span class="lineNum">     434 </span>            : </a>
 <a name="435"><span class="lineNum">     435 </span>            : /*! \brief Get operations for LU factorization</a>
 <a name="436"><span class="lineNum">     436 </span>            :  *</a>
@@ -536,11 +536,11 @@
 <a name="466"><span class="lineNum">     466 </span>            :  * \param[in]     alen Length of integer array \a a.</a>
 <a name="467"><span class="lineNum">     467 </span>            :  * \param[in]     ival Value to be filled in every element of \a a.</a>
 <a name="468"><span class="lineNum">     468 </span>            :  */</a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">      22009 : void ifill(int *a, int alen, int ival)</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">      22039 : void ifill(int *a, int alen, int ival)</span></a>
 <a name="470"><span class="lineNum">     470 </span>            : {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">      22009 :     register int i;</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">    9916270 :     for (i = 0; i &lt; alen; i++) a[i] = ival;</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">      22009 : }</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">      22039 :     register int i;</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">    9938710 :     for (i = 0; i &lt; alen; i++) a[i] = ival;</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">      22039 : }</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : </a>
 <a name="475"><span class="lineNum">     475 </span>            : /*! \brief Get the statistics of the supernodes </a>
 <a name="476"><span class="lineNum">     476 </span>            :  */</a>

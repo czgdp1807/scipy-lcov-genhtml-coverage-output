@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/struve.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/struve.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">92</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -158,297 +158,298 @@
 <a name="88"><span class="lineNum">      88 </span>            : </a>
 <a name="89"><span class="lineNum">      89 </span>            : #include &quot;dd_real.h&quot;</a>
 <a name="90"><span class="lineNum">      90 </span>            : #include &quot;gamma.h&quot;</a>
-<a name="91"><span class="lineNum">      91 </span>            : #include &quot;scipy_iv.h&quot;</a>
-<a name="92"><span class="lineNum">      92 </span>            : </a>
-<a name="93"><span class="lineNum">      93 </span>            : namespace xsf {</a>
-<a name="94"><span class="lineNum">      94 </span>            : namespace cephes {</a>
-<a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span>            :     namespace detail {</a>
-<a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span>            :         constexpr int STRUVE_MAXITER = 10000;</a>
-<a name="99"><span class="lineNum">      99 </span>            :         constexpr double STRUVE_SUM_EPS = 1e-16; /* be sure we are in the tail of the sum */</a>
-<a name="100"><span class="lineNum">     100 </span>            :         constexpr double STRUVE_SUM_TINY = 1e-100;</a>
-<a name="101"><span class="lineNum">     101 </span>            :         constexpr double STRUVE_GOOD_EPS = 1e-12;</a>
-<a name="102"><span class="lineNum">     102 </span>            :         constexpr double STRUVE_ACCEPTABLE_EPS = 1e-7;</a>
-<a name="103"><span class="lineNum">     103 </span>            :         constexpr double STRUVE_ACCEPTABLE_ATOL = 1e-300;</a>
-<a name="104"><span class="lineNum">     104 </span>            : </a>
-<a name="105"><span class="lineNum">     105 </span>            :         /*</a>
-<a name="106"><span class="lineNum">     106 </span>            :          * Large-z expansion for Struve H and L</a>
-<a name="107"><span class="lineNum">     107 </span>            :          * https://dlmf.nist.gov/11.6.1</a>
-<a name="108"><span class="lineNum">     108 </span>            :          */</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         58 :         XSF_HOST_DEVICE inline double struve_asymp_large_z(double v, double z, int is_h, double *err) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">         58 :             int n, sgn, maxiter;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         58 :             double term, sum, maxterm;</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         58 :             double m;</span></a>
-<a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         58 :             if (is_h) {</span></a>
-<a name="115"><span class="lineNum">     115 </span>            :                 sgn = -1;</a>
-<a name="116"><span class="lineNum">     116 </span>            :             } else {</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          4 :                 sgn = 1;</span></a>
-<a name="118"><span class="lineNum">     118 </span>            :             }</a>
-<a name="119"><span class="lineNum">     119 </span>            : </a>
-<a name="120"><span class="lineNum">     120 </span>            :             /* Asymptotic expansion divergenge point */</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         58 :             m = z / 2;</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         58 :             if (m &lt;= 0) {</span></a>
-<a name="123"><span class="lineNum">     123 </span>            :                 maxiter = 0;</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         58 :             } else if (m &gt; STRUVE_MAXITER) {</span></a>
-<a name="125"><span class="lineNum">     125 </span>            :                 maxiter = STRUVE_MAXITER;</a>
-<a name="126"><span class="lineNum">     126 </span>            :             } else {</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         58 :                 maxiter = (int) m;</span></a>
-<a name="128"><span class="lineNum">     128 </span>            :             }</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         58 :             if (maxiter == 0) {</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          1 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="132"><span class="lineNum">     132 </span>            :             }</a>
-<a name="133"><span class="lineNum">     133 </span>            : </a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         57 :             if (z &lt; v) {</span></a>
-<a name="135"><span class="lineNum">     135 </span>            :                 /* Exclude regions where our error estimation fails */</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="138"><span class="lineNum">     138 </span>            :             }</a>
-<a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span>            :             /* Evaluate sum */</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         57 :             term = -sgn / std::sqrt(M_PI) * std::exp(-xsf::cephes::lgam(v + 0.5) + (v - 1) * std::log(z / 2)) *</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         57 :                    xsf::cephes::gammasgn(v + 0.5);</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         57 :             sum = term;</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         57 :             maxterm = 0;</span></a>
-<a name="145"><span class="lineNum">     145 </span>            : </a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        652 :             for (n = 0; n &lt; maxiter; ++n) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        602 :                 term *= sgn * (1 + 2 * n) * (1 + 2 * n - 2 * v) / (z * z);</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        602 :                 sum += term;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        602 :                 if (std::abs(term) &gt; maxterm) {</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         83 :                     maxterm = std::abs(term);</span></a>
-<a name="151"><span class="lineNum">     151 </span>            :                 }</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        602 :                 if (std::abs(term) &lt; STRUVE_SUM_EPS * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
-<a name="153"><span class="lineNum">     153 </span>            :                     break;</a>
-<a name="154"><span class="lineNum">     154 </span>            :                 }</a>
-<a name="155"><span class="lineNum">     155 </span>            :             }</a>
-<a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         57 :             if (is_h) {</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         53 :                 sum += xsf::cyl_bessel_y(v, z);</span></a>
-<a name="159"><span class="lineNum">     159 </span>            :             } else {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          4 :                 sum += xsf::cephes::iv(v, z);</span></a>
-<a name="161"><span class="lineNum">     161 </span>            :             }</a>
-<a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span>            :             /*</a>
-<a name="164"><span class="lineNum">     164 </span>            :              * This error estimate is strictly speaking valid only for</a>
-<a name="165"><span class="lineNum">     165 </span>            :              * n &gt; v - 0.5, but numerical results indicate that it works</a>
-<a name="166"><span class="lineNum">     166 </span>            :              * reasonably.</a>
-<a name="167"><span class="lineNum">     167 </span>            :              */</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         57 :             *err = std::abs(term) + std::abs(maxterm) * STRUVE_SUM_EPS;</span></a>
-<a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         57 :             return sum;</span></a>
-<a name="171"><span class="lineNum">     171 </span>            :         }</a>
-<a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span>            :         /*</a>
-<a name="174"><span class="lineNum">     174 </span>            :          * Power series for Struve H and L</a>
-<a name="175"><span class="lineNum">     175 </span>            :          * https://dlmf.nist.gov/11.2.1</a>
-<a name="176"><span class="lineNum">     176 </span>            :          *</a>
-<a name="177"><span class="lineNum">     177 </span>            :          * Starts to converge roughly at |n| &gt; |z|</a>
-<a name="178"><span class="lineNum">     178 </span>            :          */</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        116 :         XSF_HOST_DEVICE inline double struve_power_series(double v, double z, int is_h, double *err) {</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        116 :             int n, sgn;</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        116 :             double term, sum, maxterm, scaleexp, tmp;</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        116 :             double_double cterm, csum, cdiv, z2, c2v, ctmp;</span></a>
-<a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        116 :             if (is_h) {</span></a>
-<a name="185"><span class="lineNum">     185 </span>            :                 sgn = -1;</a>
-<a name="186"><span class="lineNum">     186 </span>            :             } else {</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         33 :                 sgn = 1;</span></a>
-<a name="188"><span class="lineNum">     188 </span>            :             }</a>
-<a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        116 :             tmp = -xsf::cephes::lgam(v + 1.5) + (v + 1) * std::log(z / 2);</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        116 :             if (tmp &lt; -600 || tmp &gt; 600) {</span></a>
-<a name="192"><span class="lineNum">     192 </span>            :                 /* Scale exponent to postpone underflow/overflow */</a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :                 scaleexp = tmp / 2;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                 tmp -= scaleexp;</span></a>
-<a name="195"><span class="lineNum">     195 </span>            :             } else {</a>
-<a name="196"><span class="lineNum">     196 </span>            :                 scaleexp = 0;</a>
-<a name="197"><span class="lineNum">     197 </span>            :             }</a>
-<a name="198"><span class="lineNum">     198 </span>            : </a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        116 :             term = 2 / std::sqrt(M_PI) * std::exp(tmp) * xsf::cephes::gammasgn(v + 1.5);</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        116 :             sum = term;</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        116 :             maxterm = 0;</span></a>
-<a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        116 :             cterm = double_double(term);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">        116 :             csum = double_double(sum);</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        116 :             z2 = double_double(sgn * z * z);</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        116 :             c2v = double_double(2 * v);</span></a>
-<a name="207"><span class="lineNum">     207 </span>            : </a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       7177 :             for (n = 0; n &lt; STRUVE_MAXITER; ++n) {</span></a>
-<a name="209"><span class="lineNum">     209 </span>            :                 /* cdiv = (3 + 2*n) * (3 + 2*n + 2*v)) */</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       7177 :                 cdiv = double_double(3 + 2 * n);</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       7177 :                 ctmp = double_double(3 + 2 * n);</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       7177 :                 ctmp = ctmp + c2v;</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       7177 :                 cdiv = cdiv * ctmp;</span></a>
-<a name="214"><span class="lineNum">     214 </span>            : </a>
-<a name="215"><span class="lineNum">     215 </span>            :                 /* cterm *= z2 / cdiv */</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       7177 :                 cterm = cterm * z2;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       7177 :                 cterm = cterm / cdiv;</span></a>
-<a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       7177 :                 csum = csum + cterm;</span></a>
-<a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       7177 :                 term = static_cast&lt;double&gt;(cterm);</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       7177 :                 sum = static_cast&lt;double&gt;(csum);</span></a>
-<a name="223"><span class="lineNum">     223 </span>            : </a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       7177 :                 if (std::abs(term) &gt; maxterm) {</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        580 :                     maxterm = std::abs(term);</span></a>
-<a name="226"><span class="lineNum">     226 </span>            :                 }</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       7177 :                 if (std::abs(term) &lt; STRUVE_SUM_TINY * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
-<a name="228"><span class="lineNum">     228 </span>            :                     break;</a>
-<a name="229"><span class="lineNum">     229 </span>            :                 }</a>
-<a name="230"><span class="lineNum">     230 </span>            :             }</a>
-<a name="231"><span class="lineNum">     231 </span>            : </a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        116 :             *err = std::abs(term) + std::abs(maxterm) * 1e-22;</span></a>
-<a name="233"><span class="lineNum">     233 </span>            : </a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        116 :             if (scaleexp != 0) {</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :                 sum *= std::exp(scaleexp);</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :                 *err *= std::exp(scaleexp);</span></a>
-<a name="237"><span class="lineNum">     237 </span>            :             }</a>
-<a name="238"><span class="lineNum">     238 </span>            : </a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        116 :             if (sum == 0 &amp;&amp; term == 0 &amp;&amp; v &lt; 0 &amp;&amp; !is_h) {</span></a>
-<a name="240"><span class="lineNum">     240 </span>            :                 /* Spurious underflow */</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="243"><span class="lineNum">     243 </span>            :                 ;</a>
-<a name="244"><span class="lineNum">     244 </span>            :             }</a>
-<a name="245"><span class="lineNum">     245 </span>            : </a>
-<a name="246"><span class="lineNum">     246 </span>            :             return sum;</a>
-<a name="247"><span class="lineNum">     247 </span>            :         }</a>
-<a name="248"><span class="lineNum">     248 </span>            : </a>
-<a name="249"><span class="lineNum">     249 </span>            :         /*</a>
-<a name="250"><span class="lineNum">     250 </span>            :          * Bessel series</a>
-<a name="251"><span class="lineNum">     251 </span>            :          * https://dlmf.nist.gov/11.4.19</a>
-<a name="252"><span class="lineNum">     252 </span>            :          */</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :         XSF_HOST_DEVICE inline double struve_bessel_series(double v, double z, int is_h, double *err) {</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :             int n;</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :             double term, cterm, sum, maxterm;</span></a>
-<a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :             if (is_h &amp;&amp; v &lt; 0) {</span></a>
-<a name="258"><span class="lineNum">     258 </span>            :                 /* Works less reliably in this region */</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
-<a name="261"><span class="lineNum">     261 </span>            :             }</a>
-<a name="262"><span class="lineNum">     262 </span>            : </a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :             sum = 0;</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :             maxterm = 0;</span></a>
-<a name="265"><span class="lineNum">     265 </span>            : </a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :             cterm = std::sqrt(z / (2 * M_PI));</span></a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :             for (n = 0; n &lt; STRUVE_MAXITER; ++n) {</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :                 if (is_h) {</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :                     term = cterm * xsf::cyl_bessel_j(n + v + 0.5, z) / (n + 0.5);</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :                     cterm *= z / 2 / (n + 1);</span></a>
-<a name="272"><span class="lineNum">     272 </span>            :                 } else {</a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :                     term = cterm * xsf::cephes::iv(n + v + 0.5, z) / (n + 0.5);</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                     cterm *= -z / 2 / (n + 1);</span></a>
-<a name="275"><span class="lineNum">     275 </span>            :                 }</a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :                 sum += term;</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 if (std::abs(term) &gt; maxterm) {</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :                     maxterm = std::abs(term);</span></a>
-<a name="279"><span class="lineNum">     279 </span>            :                 }</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :                 if (std::abs(term) &lt; STRUVE_SUM_EPS * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
-<a name="281"><span class="lineNum">     281 </span>            :                     break;</a>
-<a name="282"><span class="lineNum">     282 </span>            :                 }</a>
-<a name="283"><span class="lineNum">     283 </span>            :             }</a>
-<a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :             *err = std::abs(term) + std::abs(maxterm) * 1e-16;</span></a>
-<a name="286"><span class="lineNum">     286 </span>            : </a>
-<a name="287"><span class="lineNum">     287 </span>            :             /* Account for potential underflow of the Bessel functions */</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :             *err += 1e-300 * std::abs(cterm);</span></a>
-<a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :             return sum;</span></a>
-<a name="291"><span class="lineNum">     291 </span>            :         }</a>
-<a name="292"><span class="lineNum">     292 </span>            : </a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">        175 :         XSF_HOST_DEVICE inline double struve_hl(double v, double z, int is_h) {</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        175 :             double value[4], err[4], tmp;</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        175 :             int n;</span></a>
-<a name="296"><span class="lineNum">     296 </span>            : </a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        175 :             if (z &lt; 0) {</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         39 :                 n = v;</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         39 :                 if (v == n) {</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">         37 :                     tmp = (n % 2 == 0) ? -1 : 1;</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         37 :                     return tmp * struve_hl(v, -z, is_h);</span></a>
-<a name="302"><span class="lineNum">     302 </span>            :                 } else {</a>
-<a name="303"><span class="lineNum">     303 </span>            :                     return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
-<a name="304"><span class="lineNum">     304 </span>            :                 }</a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        136 :             } else if (z == 0) {</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          2 :                 if (v &lt; -1) {</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :                     return xsf::cephes::gammasgn(v + 1.5) * std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          2 :                 } else if (v == -1) {</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                     return 2 / std::sqrt(M_PI) / xsf::cephes::Gamma(0.5);</span></a>
-<a name="310"><span class="lineNum">     310 </span>            :                 } else {</a>
-<a name="311"><span class="lineNum">     311 </span>            :                     return 0;</a>
-<a name="312"><span class="lineNum">     312 </span>            :                 }</a>
-<a name="313"><span class="lineNum">     313 </span>            :             }</a>
-<a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">        134 :             n = -v - 0.5;</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        134 :             if (n == -v - 0.5 &amp;&amp; n &gt; 0) {</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :                 if (is_h) {</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :                     return (n % 2 == 0 ? 1 : -1) * xsf::cyl_bessel_j(n + 0.5, z);</span></a>
-<a name="319"><span class="lineNum">     319 </span>            :                 } else {</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :                     return xsf::cephes::iv(n + 0.5, z);</span></a>
-<a name="321"><span class="lineNum">     321 </span>            :                 }</a>
-<a name="322"><span class="lineNum">     322 </span>            :             }</a>
-<a name="323"><span class="lineNum">     323 </span>            : </a>
-<a name="324"><span class="lineNum">     324 </span>            :             /* Try the asymptotic expansion */</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">        134 :             if (z &gt;= 0.7 * v + 12) {</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         58 :                 value[0] = struve_asymp_large_z(v, z, is_h, &amp;err[0]);</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         58 :                 if (err[0] &lt; STRUVE_GOOD_EPS * std::abs(value[0])) {</span></a>
-<a name="328"><span class="lineNum">     328 </span>            :                     return value[0];</a>
-<a name="329"><span class="lineNum">     329 </span>            :                 }</a>
-<a name="330"><span class="lineNum">     330 </span>            :             } else {</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">         76 :                 err[0] = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="332"><span class="lineNum">     332 </span>            :             }</a>
-<a name="333"><span class="lineNum">     333 </span>            : </a>
-<a name="334"><span class="lineNum">     334 </span>            :             /* Try power series */</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        116 :             value[1] = struve_power_series(v, z, is_h, &amp;err[1]);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        116 :             if (err[1] &lt; STRUVE_GOOD_EPS * std::abs(value[1])) {</span></a>
-<a name="337"><span class="lineNum">     337 </span>            :                 return value[1];</a>
-<a name="338"><span class="lineNum">     338 </span>            :             }</a>
-<a name="339"><span class="lineNum">     339 </span>            : </a>
-<a name="340"><span class="lineNum">     340 </span>            :             /* Try bessel series */</a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          2 :             if (std::abs(z) &lt; std::abs(v) + 20) {</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :                 value[2] = struve_bessel_series(v, z, is_h, &amp;err[2]);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :                 if (err[2] &lt; STRUVE_GOOD_EPS * std::abs(value[2])) {</span></a>
-<a name="344"><span class="lineNum">     344 </span>            :                     return value[2];</a>
-<a name="345"><span class="lineNum">     345 </span>            :                 }</a>
-<a name="346"><span class="lineNum">     346 </span>            :             } else {</a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          2 :                 err[2] = std::numeric_limits&lt;double&gt;::infinity();</span></a>
-<a name="348"><span class="lineNum">     348 </span>            :             }</a>
-<a name="349"><span class="lineNum">     349 </span>            : </a>
-<a name="350"><span class="lineNum">     350 </span>            :             /* Return the best of the three, if it is acceptable */</a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          2 :             n = 0;</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          2 :             if (err[1] &lt; err[n])</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :                 n = 1;</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          2 :             if (err[2] &lt; err[n])</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :                 n = 2;</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          2 :             if (err[n] &lt; STRUVE_ACCEPTABLE_EPS * std::abs(value[n]) || err[n] &lt; STRUVE_ACCEPTABLE_ATOL) {</span></a>
-<a name="357"><span class="lineNum">     357 </span>            :                 return value[n];</a>
-<a name="358"><span class="lineNum">     358 </span>            :             }</a>
-<a name="359"><span class="lineNum">     359 </span>            : </a>
-<a name="360"><span class="lineNum">     360 </span>            :             /* Maybe it really is an overflow? */</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          2 :             tmp = -xsf::cephes::lgam(v + 1.5) + (v + 1) * std::log(z / 2);</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          2 :             if (!is_h) {</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          1 :                 tmp = std::abs(tmp);</span></a>
-<a name="364"><span class="lineNum">     364 </span>            :             }</a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          2 :             if (tmp &gt; 700) {</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :                 set_error(&quot;struve&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::infinity() * xsf::cephes::gammasgn(v + 1.5);</span></a>
-<a name="368"><span class="lineNum">     368 </span>            :             }</a>
-<a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span>            :             /* Failure */</a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          2 :             set_error(&quot;struve&quot;, SF_ERROR_NO_RESULT, NULL);</span></a>
-<a name="372"><span class="lineNum">     372 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
-<a name="373"><span class="lineNum">     373 </span>            :         }</a>
-<a name="374"><span class="lineNum">     374 </span>            :     } // namespace detail</a>
-<a name="375"><span class="lineNum">     375 </span>            : </a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        104 :     XSF_HOST_DEVICE inline double struve_h(double v, double z) { return detail::struve_hl(v, z, 1); }</span></a>
-<a name="377"><span class="lineNum">     377 </span>            : </a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         34 :     XSF_HOST_DEVICE inline double struve_l(double v, double z) { return detail::struve_hl(v, z, 0); }</span></a>
-<a name="379"><span class="lineNum">     379 </span>            : </a>
-<a name="380"><span class="lineNum">     380 </span>            : } // namespace cephes</a>
-<a name="381"><span class="lineNum">     381 </span>            : } // namespace xsf</a>
+<a name="91"><span class="lineNum">      91 </span>            : #include &quot;rgamma.h&quot;</a>
+<a name="92"><span class="lineNum">      92 </span>            : #include &quot;scipy_iv.h&quot;</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span>            : namespace xsf {</a>
+<a name="95"><span class="lineNum">      95 </span>            : namespace cephes {</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            :     namespace detail {</a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<a name="99"><span class="lineNum">      99 </span>            :         constexpr int STRUVE_MAXITER = 10000;</a>
+<a name="100"><span class="lineNum">     100 </span>            :         constexpr double STRUVE_SUM_EPS = 1e-16; /* be sure we are in the tail of the sum */</a>
+<a name="101"><span class="lineNum">     101 </span>            :         constexpr double STRUVE_SUM_TINY = 1e-100;</a>
+<a name="102"><span class="lineNum">     102 </span>            :         constexpr double STRUVE_GOOD_EPS = 1e-12;</a>
+<a name="103"><span class="lineNum">     103 </span>            :         constexpr double STRUVE_ACCEPTABLE_EPS = 1e-7;</a>
+<a name="104"><span class="lineNum">     104 </span>            :         constexpr double STRUVE_ACCEPTABLE_ATOL = 1e-300;</a>
+<a name="105"><span class="lineNum">     105 </span>            : </a>
+<a name="106"><span class="lineNum">     106 </span>            :         /*</a>
+<a name="107"><span class="lineNum">     107 </span>            :          * Large-z expansion for Struve H and L</a>
+<a name="108"><span class="lineNum">     108 </span>            :          * https://dlmf.nist.gov/11.6.1</a>
+<a name="109"><span class="lineNum">     109 </span>            :          */</a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">         58 :         XSF_HOST_DEVICE inline double struve_asymp_large_z(double v, double z, int is_h, double *err) {</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         58 :             int n, sgn, maxiter;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         58 :             double term, sum, maxterm;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         58 :             double m;</span></a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         58 :             if (is_h) {</span></a>
+<a name="116"><span class="lineNum">     116 </span>            :                 sgn = -1;</a>
+<a name="117"><span class="lineNum">     117 </span>            :             } else {</a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          4 :                 sgn = 1;</span></a>
+<a name="119"><span class="lineNum">     119 </span>            :             }</a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span>            :             /* Asymptotic expansion divergenge point */</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         58 :             m = z / 2;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         58 :             if (m &lt;= 0) {</span></a>
+<a name="124"><span class="lineNum">     124 </span>            :                 maxiter = 0;</a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">         58 :             } else if (m &gt; STRUVE_MAXITER) {</span></a>
+<a name="126"><span class="lineNum">     126 </span>            :                 maxiter = STRUVE_MAXITER;</a>
+<a name="127"><span class="lineNum">     127 </span>            :             } else {</a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         58 :                 maxiter = (int) m;</span></a>
+<a name="129"><span class="lineNum">     129 </span>            :             }</a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         58 :             if (maxiter == 0) {</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="133"><span class="lineNum">     133 </span>            :             }</a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">         57 :             if (z &lt; v) {</span></a>
+<a name="136"><span class="lineNum">     136 </span>            :                 /* Exclude regions where our error estimation fails */</a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="139"><span class="lineNum">     139 </span>            :             }</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :             /* Evaluate sum */</a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         57 :             term = -sgn / std::sqrt(M_PI) * std::exp(-xsf::cephes::lgam(v + 0.5) + (v - 1) * std::log(z / 2)) *</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         57 :                    xsf::cephes::gammasgn(v + 0.5);</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         57 :             sum = term;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         57 :             maxterm = 0;</span></a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        652 :             for (n = 0; n &lt; maxiter; ++n) {</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        602 :                 term *= sgn * (1 + 2 * n) * (1 + 2 * n - 2 * v) / (z * z);</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        602 :                 sum += term;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        602 :                 if (std::abs(term) &gt; maxterm) {</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         83 :                     maxterm = std::abs(term);</span></a>
+<a name="152"><span class="lineNum">     152 </span>            :                 }</a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        602 :                 if (std::abs(term) &lt; STRUVE_SUM_EPS * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
+<a name="154"><span class="lineNum">     154 </span>            :                     break;</a>
+<a name="155"><span class="lineNum">     155 </span>            :                 }</a>
+<a name="156"><span class="lineNum">     156 </span>            :             }</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         57 :             if (is_h) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         53 :                 sum += xsf::cyl_bessel_y(v, z);</span></a>
+<a name="160"><span class="lineNum">     160 </span>            :             } else {</a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          4 :                 sum += xsf::cephes::iv(v, z);</span></a>
+<a name="162"><span class="lineNum">     162 </span>            :             }</a>
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<a name="164"><span class="lineNum">     164 </span>            :             /*</a>
+<a name="165"><span class="lineNum">     165 </span>            :              * This error estimate is strictly speaking valid only for</a>
+<a name="166"><span class="lineNum">     166 </span>            :              * n &gt; v - 0.5, but numerical results indicate that it works</a>
+<a name="167"><span class="lineNum">     167 </span>            :              * reasonably.</a>
+<a name="168"><span class="lineNum">     168 </span>            :              */</a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">         57 :             *err = std::abs(term) + std::abs(maxterm) * STRUVE_SUM_EPS;</span></a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         57 :             return sum;</span></a>
+<a name="172"><span class="lineNum">     172 </span>            :         }</a>
+<a name="173"><span class="lineNum">     173 </span>            : </a>
+<a name="174"><span class="lineNum">     174 </span>            :         /*</a>
+<a name="175"><span class="lineNum">     175 </span>            :          * Power series for Struve H and L</a>
+<a name="176"><span class="lineNum">     176 </span>            :          * https://dlmf.nist.gov/11.2.1</a>
+<a name="177"><span class="lineNum">     177 </span>            :          *</a>
+<a name="178"><span class="lineNum">     178 </span>            :          * Starts to converge roughly at |n| &gt; |z|</a>
+<a name="179"><span class="lineNum">     179 </span>            :          */</a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        116 :         XSF_HOST_DEVICE inline double struve_power_series(double v, double z, int is_h, double *err) {</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        116 :             int n, sgn;</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        116 :             double term, sum, maxterm, scaleexp, tmp;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        116 :             double_double cterm, csum, cdiv, z2, c2v, ctmp;</span></a>
+<a name="184"><span class="lineNum">     184 </span>            : </a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">        116 :             if (is_h) {</span></a>
+<a name="186"><span class="lineNum">     186 </span>            :                 sgn = -1;</a>
+<a name="187"><span class="lineNum">     187 </span>            :             } else {</a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         33 :                 sgn = 1;</span></a>
+<a name="189"><span class="lineNum">     189 </span>            :             }</a>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        116 :             tmp = -xsf::cephes::lgam(v + 1.5) + (v + 1) * std::log(z / 2);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        116 :             if (tmp &lt; -600 || tmp &gt; 600) {</span></a>
+<a name="193"><span class="lineNum">     193 </span>            :                 /* Scale exponent to postpone underflow/overflow */</a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                 scaleexp = tmp / 2;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :                 tmp -= scaleexp;</span></a>
+<a name="196"><span class="lineNum">     196 </span>            :             } else {</a>
+<a name="197"><span class="lineNum">     197 </span>            :                 scaleexp = 0;</a>
+<a name="198"><span class="lineNum">     198 </span>            :             }</a>
+<a name="199"><span class="lineNum">     199 </span>            : </a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        116 :             term = 2 / std::sqrt(M_PI) * std::exp(tmp) * xsf::cephes::gammasgn(v + 1.5);</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        116 :             sum = term;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        116 :             maxterm = 0;</span></a>
+<a name="203"><span class="lineNum">     203 </span>            : </a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">        116 :             cterm = double_double(term);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        116 :             csum = double_double(sum);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        116 :             z2 = double_double(sgn * z * z);</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        116 :             c2v = double_double(2 * v);</span></a>
+<a name="208"><span class="lineNum">     208 </span>            : </a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       7177 :             for (n = 0; n &lt; STRUVE_MAXITER; ++n) {</span></a>
+<a name="210"><span class="lineNum">     210 </span>            :                 /* cdiv = (3 + 2*n) * (3 + 2*n + 2*v)) */</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       7177 :                 cdiv = double_double(3 + 2 * n);</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       7177 :                 ctmp = double_double(3 + 2 * n);</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       7177 :                 ctmp = ctmp + c2v;</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       7177 :                 cdiv = cdiv * ctmp;</span></a>
+<a name="215"><span class="lineNum">     215 </span>            : </a>
+<a name="216"><span class="lineNum">     216 </span>            :                 /* cterm *= z2 / cdiv */</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       7177 :                 cterm = cterm * z2;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       7177 :                 cterm = cterm / cdiv;</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       7177 :                 csum = csum + cterm;</span></a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       7177 :                 term = static_cast&lt;double&gt;(cterm);</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       7177 :                 sum = static_cast&lt;double&gt;(csum);</span></a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       7177 :                 if (std::abs(term) &gt; maxterm) {</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        580 :                     maxterm = std::abs(term);</span></a>
+<a name="227"><span class="lineNum">     227 </span>            :                 }</a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">       7177 :                 if (std::abs(term) &lt; STRUVE_SUM_TINY * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
+<a name="229"><span class="lineNum">     229 </span>            :                     break;</a>
+<a name="230"><span class="lineNum">     230 </span>            :                 }</a>
+<a name="231"><span class="lineNum">     231 </span>            :             }</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        116 :             *err = std::abs(term) + std::abs(maxterm) * 1e-22;</span></a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">        116 :             if (scaleexp != 0) {</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :                 sum *= std::exp(scaleexp);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :                 *err *= std::exp(scaleexp);</span></a>
+<a name="238"><span class="lineNum">     238 </span>            :             }</a>
+<a name="239"><span class="lineNum">     239 </span>            : </a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        116 :             if (sum == 0 &amp;&amp; term == 0 &amp;&amp; v &lt; 0 &amp;&amp; !is_h) {</span></a>
+<a name="241"><span class="lineNum">     241 </span>            :                 /* Spurious underflow */</a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="244"><span class="lineNum">     244 </span>            :                 ;</a>
+<a name="245"><span class="lineNum">     245 </span>            :             }</a>
+<a name="246"><span class="lineNum">     246 </span>            : </a>
+<a name="247"><span class="lineNum">     247 </span>            :             return sum;</a>
+<a name="248"><span class="lineNum">     248 </span>            :         }</a>
+<a name="249"><span class="lineNum">     249 </span>            : </a>
+<a name="250"><span class="lineNum">     250 </span>            :         /*</a>
+<a name="251"><span class="lineNum">     251 </span>            :          * Bessel series</a>
+<a name="252"><span class="lineNum">     252 </span>            :          * https://dlmf.nist.gov/11.4.19</a>
+<a name="253"><span class="lineNum">     253 </span>            :          */</a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :         XSF_HOST_DEVICE inline double struve_bessel_series(double v, double z, int is_h, double *err) {</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :             int n;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :             double term, cterm, sum, maxterm;</span></a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :             if (is_h &amp;&amp; v &lt; 0) {</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :                 /* Works less reliably in this region */</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :                 *err = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::quiet_NaN();</span></a>
+<a name="262"><span class="lineNum">     262 </span>            :             }</a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :             sum = 0;</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :             maxterm = 0;</span></a>
+<a name="266"><span class="lineNum">     266 </span>            : </a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :             cterm = std::sqrt(z / (2 * M_PI));</span></a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :             for (n = 0; n &lt; STRUVE_MAXITER; ++n) {</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :                 if (is_h) {</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :                     term = cterm * xsf::cyl_bessel_j(n + v + 0.5, z) / (n + 0.5);</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :                     cterm *= z / 2 / (n + 1);</span></a>
+<a name="273"><span class="lineNum">     273 </span>            :                 } else {</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                     term = cterm * xsf::cephes::iv(n + v + 0.5, z) / (n + 0.5);</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :                     cterm *= -z / 2 / (n + 1);</span></a>
+<a name="276"><span class="lineNum">     276 </span>            :                 }</a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 sum += term;</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :                 if (std::abs(term) &gt; maxterm) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :                     maxterm = std::abs(term);</span></a>
+<a name="280"><span class="lineNum">     280 </span>            :                 }</a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :                 if (std::abs(term) &lt; STRUVE_SUM_EPS * std::abs(sum) || term == 0 || !std::isfinite(sum)) {</span></a>
+<a name="282"><span class="lineNum">     282 </span>            :                     break;</a>
+<a name="283"><span class="lineNum">     283 </span>            :                 }</a>
+<a name="284"><span class="lineNum">     284 </span>            :             }</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :             *err = std::abs(term) + std::abs(maxterm) * 1e-16;</span></a>
+<a name="287"><span class="lineNum">     287 </span>            : </a>
+<a name="288"><span class="lineNum">     288 </span>            :             /* Account for potential underflow of the Bessel functions */</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :             *err += 1e-300 * std::abs(cterm);</span></a>
+<a name="290"><span class="lineNum">     290 </span>            : </a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :             return sum;</span></a>
+<a name="292"><span class="lineNum">     292 </span>            :         }</a>
+<a name="293"><span class="lineNum">     293 </span>            : </a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        175 :         XSF_HOST_DEVICE inline double struve_hl(double v, double z, int is_h) {</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        175 :             double value[4], err[4], tmp;</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        175 :             int n;</span></a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        175 :             if (z &lt; 0) {</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         39 :                 n = v;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">         39 :                 if (v == n) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         37 :                     tmp = (n % 2 == 0) ? -1 : 1;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         37 :                     return tmp * struve_hl(v, -z, is_h);</span></a>
+<a name="303"><span class="lineNum">     303 </span>            :                 } else {</a>
+<a name="304"><span class="lineNum">     304 </span>            :                     return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="305"><span class="lineNum">     305 </span>            :                 }</a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">        136 :             } else if (z == 0) {</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :                 if (v &lt; -1) {</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :                     return xsf::cephes::gammasgn(v + 1.5) * std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          2 :                 } else if (v == -1) {</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :                     return 2 / std::sqrt(M_PI) * xsf::cephes::rgamma(0.5);</span></a>
+<a name="311"><span class="lineNum">     311 </span>            :                 } else {</a>
+<a name="312"><span class="lineNum">     312 </span>            :                     return 0;</a>
+<a name="313"><span class="lineNum">     313 </span>            :                 }</a>
+<a name="314"><span class="lineNum">     314 </span>            :             }</a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        134 :             n = -v - 0.5;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">        134 :             if (n == -v - 0.5 &amp;&amp; n &gt; 0) {</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :                 if (is_h) {</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :                     return (n % 2 == 0 ? 1 : -1) * xsf::cyl_bessel_j(n + 0.5, z);</span></a>
+<a name="320"><span class="lineNum">     320 </span>            :                 } else {</a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :                     return xsf::cephes::iv(n + 0.5, z);</span></a>
+<a name="322"><span class="lineNum">     322 </span>            :                 }</a>
+<a name="323"><span class="lineNum">     323 </span>            :             }</a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span>            :             /* Try the asymptotic expansion */</a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">        134 :             if (z &gt;= 0.7 * v + 12) {</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         58 :                 value[0] = struve_asymp_large_z(v, z, is_h, &amp;err[0]);</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         58 :                 if (err[0] &lt; STRUVE_GOOD_EPS * std::abs(value[0])) {</span></a>
+<a name="329"><span class="lineNum">     329 </span>            :                     return value[0];</a>
+<a name="330"><span class="lineNum">     330 </span>            :                 }</a>
+<a name="331"><span class="lineNum">     331 </span>            :             } else {</a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         76 :                 err[0] = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="333"><span class="lineNum">     333 </span>            :             }</a>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<a name="335"><span class="lineNum">     335 </span>            :             /* Try power series */</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        116 :             value[1] = struve_power_series(v, z, is_h, &amp;err[1]);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">        116 :             if (err[1] &lt; STRUVE_GOOD_EPS * std::abs(value[1])) {</span></a>
+<a name="338"><span class="lineNum">     338 </span>            :                 return value[1];</a>
+<a name="339"><span class="lineNum">     339 </span>            :             }</a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span>            :             /* Try bessel series */</a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          2 :             if (std::abs(z) &lt; std::abs(v) + 20) {</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :                 value[2] = struve_bessel_series(v, z, is_h, &amp;err[2]);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :                 if (err[2] &lt; STRUVE_GOOD_EPS * std::abs(value[2])) {</span></a>
+<a name="345"><span class="lineNum">     345 </span>            :                     return value[2];</a>
+<a name="346"><span class="lineNum">     346 </span>            :                 }</a>
+<a name="347"><span class="lineNum">     347 </span>            :             } else {</a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          2 :                 err[2] = std::numeric_limits&lt;double&gt;::infinity();</span></a>
+<a name="349"><span class="lineNum">     349 </span>            :             }</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span>            :             /* Return the best of the three, if it is acceptable */</a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          2 :             n = 0;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          2 :             if (err[1] &lt; err[n])</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :                 n = 1;</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          2 :             if (err[2] &lt; err[n])</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :                 n = 2;</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          2 :             if (err[n] &lt; STRUVE_ACCEPTABLE_EPS * std::abs(value[n]) || err[n] &lt; STRUVE_ACCEPTABLE_ATOL) {</span></a>
+<a name="358"><span class="lineNum">     358 </span>            :                 return value[n];</a>
+<a name="359"><span class="lineNum">     359 </span>            :             }</a>
+<a name="360"><span class="lineNum">     360 </span>            : </a>
+<a name="361"><span class="lineNum">     361 </span>            :             /* Maybe it really is an overflow? */</a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          2 :             tmp = -xsf::cephes::lgam(v + 1.5) + (v + 1) * std::log(z / 2);</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          2 :             if (!is_h) {</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          1 :                 tmp = std::abs(tmp);</span></a>
+<a name="365"><span class="lineNum">     365 </span>            :             }</a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          2 :             if (tmp &gt; 700) {</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :                 set_error(&quot;struve&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :                 return std::numeric_limits&lt;double&gt;::infinity() * xsf::cephes::gammasgn(v + 1.5);</span></a>
+<a name="369"><span class="lineNum">     369 </span>            :             }</a>
+<a name="370"><span class="lineNum">     370 </span>            : </a>
+<a name="371"><span class="lineNum">     371 </span>            :             /* Failure */</a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          2 :             set_error(&quot;struve&quot;, SF_ERROR_NO_RESULT, NULL);</span></a>
+<a name="373"><span class="lineNum">     373 </span>            :             return std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="374"><span class="lineNum">     374 </span>            :         }</a>
+<a name="375"><span class="lineNum">     375 </span>            :     } // namespace detail</a>
+<a name="376"><span class="lineNum">     376 </span>            : </a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        104 :     XSF_HOST_DEVICE inline double struve_h(double v, double z) { return detail::struve_hl(v, z, 1); }</span></a>
+<a name="378"><span class="lineNum">     378 </span>            : </a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         34 :     XSF_HOST_DEVICE inline double struve_l(double v, double z) { return detail::struve_hl(v, z, 0); }</span></a>
+<a name="380"><span class="lineNum">     380 </span>            : </a>
+<a name="381"><span class="lineNum">     381 </span>            : } // namespace cephes</a>
+<a name="382"><span class="lineNum">     382 </span>            : } // namespace xsf</a>
 </pre>
       </td>
     </tr>

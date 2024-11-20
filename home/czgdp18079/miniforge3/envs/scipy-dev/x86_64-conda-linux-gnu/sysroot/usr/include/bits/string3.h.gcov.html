@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/x86_64-conda-linux-gnu/sysroot/usr/include/bits/string3.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/x86_64-conda-linux-gnu/sysroot/usr/include/bits/string3.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">15</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -116,10 +116,10 @@
 <a name="46"><span class="lineNum">      46 </span>            : </a>
 <a name="47"><span class="lineNum">      47 </span>            : </a>
 <a name="48"><span class="lineNum">      48 </span>            : __extern_always_inline void *</a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">   39225683 : __NTH (memcpy (void *__restrict __dest, __const void *__restrict __src,</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">   39228787 : __NTH (memcpy (void *__restrict __dest, __const void *__restrict __src,</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :                size_t __len))</a>
 <a name="51"><span class="lineNum">      51 </span>            : {</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">   39150472 :   return __builtin___memcpy_chk (__dest, __src, __len, __bos0 (__dest));</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">   39153572 :   return __builtin___memcpy_chk (__dest, __src, __len, __bos0 (__dest));</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : }</a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>
 <a name="55"><span class="lineNum">      55 </span>            : __extern_always_inline void *</a>
@@ -144,15 +144,15 @@
 <a name="74"><span class="lineNum">      74 </span>            :    case no work is done at all.  We detect these problems by referring</a>
 <a name="75"><span class="lineNum">      75 </span>            :    non-existing functions.  */</a>
 <a name="76"><span class="lineNum">      76 </span>            : __extern_always_inline void *</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">    2226730 : __NTH (memset (void *__dest, int __ch, size_t __len))</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">    2308364 : __NTH (memset (void *__dest, int __ch, size_t __len))</span></a>
 <a name="78"><span class="lineNum">      78 </span>            : {</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">    2226730 :   if (__builtin_constant_p (__len) &amp;&amp; __len == 0</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">    2308364 :   if (__builtin_constant_p (__len) &amp;&amp; __len == 0</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :       &amp;&amp; (!__builtin_constant_p (__ch) || __ch != 0))</a>
 <a name="81"><span class="lineNum">      81 </span>            :     {</a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :       __warn_memset_zero_len ();</span></a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :       return __dest;</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     }</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">    2225133 :   return __builtin___memset_chk (__dest, __ch, __len, __bos0 (__dest));</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">    2306767 :   return __builtin___memset_chk (__dest, __ch, __len, __bos0 (__dest));</span></a>
 <a name="86"><span class="lineNum">      86 </span>            : }</a>
 <a name="87"><span class="lineNum">      87 </span>            : </a>
 <a name="88"><span class="lineNum">      88 </span>            : #ifdef __USE_BSD</a>
@@ -170,9 +170,9 @@
 <a name="100"><span class="lineNum">     100 </span>            : #endif</a>
 <a name="101"><span class="lineNum">     101 </span>            : </a>
 <a name="102"><span class="lineNum">     102 </span>            : __extern_always_inline char *</a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        312 : __NTH (strcpy (char *__restrict __dest, __const char *__restrict __src))</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        508 : __NTH (strcpy (char *__restrict __dest, __const char *__restrict __src))</span></a>
 <a name="104"><span class="lineNum">     104 </span>            : {</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        312 :   return __builtin___strcpy_chk (__dest, __src, __bos (__dest));</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        508 :   return __builtin___strcpy_chk (__dest, __src, __bos (__dest));</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : }</a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
 <a name="108"><span class="lineNum">     108 </span>            : #ifdef __USE_GNU</a>
@@ -185,10 +185,10 @@
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            : __extern_always_inline char *</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">     154405 : __NTH (strncpy (char *__restrict __dest, __const char *__restrict __src,</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">     145652 : __NTH (strncpy (char *__restrict __dest, __const char *__restrict __src,</span></a>
 <a name="119"><span class="lineNum">     119 </span>            :                 size_t __len))</a>
 <a name="120"><span class="lineNum">     120 </span>            : {</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">     154405 :   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">     145652 :   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : }</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span>            : // XXX We have no corresponding builtin yet.</a>
@@ -209,17 +209,17 @@
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span>            : __extern_always_inline char *</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        748 : __NTH (strcat (char *__restrict __dest, __const char *__restrict __src))</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        752 : __NTH (strcat (char *__restrict __dest, __const char *__restrict __src))</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : {</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        748 :   return __builtin___strcat_chk (__dest, __src, __bos (__dest));</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        752 :   return __builtin___strcat_chk (__dest, __src, __bos (__dest));</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : }</a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            : __extern_always_inline char *</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">      14758 : __NTH (strncat (char *__restrict __dest, __const char *__restrict __src,</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">      14776 : __NTH (strncat (char *__restrict __dest, __const char *__restrict __src,</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :                 size_t __len))</a>
 <a name="151"><span class="lineNum">     151 </span>            : {</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       3336 :   return __builtin___strncat_chk (__dest, __src, __len, __bos (__dest));</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       3354 :   return __builtin___strncat_chk (__dest, __src, __len, __bos (__dest));</span></a>
 <a name="153"><span class="lineNum">     153 </span>            : }</a>
 </pre>
       </td>

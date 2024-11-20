@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - optimize/cobyla/trstlp.f</title>
+  <title>LCOV - lcov.info - optimize/cobyla/trstlp.f</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">276</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -69,7 +69,7 @@
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : C------------------------------------------------------------------------------</a>
-<a name="2"><span class="lineNum">       2 </span><span class="lineCov">      37028 :       SUBROUTINE TRSTLP (N,M,A,B,RHO,DX,IFULL,IACT,Z,ZDOTA,VMULTC,</span></a>
+<a name="2"><span class="lineNum">       2 </span><span class="lineCov">      34942 :       SUBROUTINE TRSTLP (N,M,A,B,RHO,DX,IFULL,IACT,Z,ZDOTA,VMULTC,</span></a>
 <a name="3"><span class="lineNum">       3 </span>            :      1  SDIRN,DXNEW,VMULTD,IPRINT)</a>
 <a name="4"><span class="lineNum">       4 </span>            :       IMPLICIT DOUBLE PRECISION (A-H,O-Z)</a>
 <a name="5"><span class="lineNum">       5 </span>            :       DOUBLE PRECISION TEMP</a>
@@ -114,7 +114,7 @@
 <a name="44"><span class="lineNum">      44 </span>            : C     constraint violations by one simultaneously.</a>
 <a name="45"><span class="lineNum">      45 </span>            : C</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">      34942 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :          print *, ' '</span></a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :          print *, 'BEFORE trstlp:'</span></a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :          PRINT *, '  **DX = ', (DX(I),I=1,N)</span></a>
@@ -131,20 +131,20 @@
 <a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :          PRINT *, ' '</span></a>
 <a name="62"><span class="lineNum">      62 </span>            :       END IF</a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">      37028 :       ICON=0</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">      37028 :       NACTX=0</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">      37028 :       RESOLD=0</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">      34942 :       ICON=0</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">      34942 :       NACTX=0</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">      34942 :       RESOLD=0</span></a>
 <a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">      37028 :       IFULL=1</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">      37028 :       MCON=M</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">      37028 :       NACT=0</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      37028 :       RESMAX=0.0d0</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">     113145 :       DO 20 I=1,N</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">     244296 :       DO 10 J=1,N</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">     244296 :    10 Z(I,J)=0.0d0</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">      76117 :       Z(I,I)=1.0d0</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">     113145 :    20 DX(I)=0.0d0</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      37028 :       IF (M .GE. 1) THEN</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">      34942 :       IFULL=1</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">      34942 :       MCON=M</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">      34942 :       NACT=0</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">      34942 :       RESMAX=0.0d0</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">     106887 :       DO 20 I=1,N</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">     231780 :       DO 10 J=1,N</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">     231780 :    10 Z(I,J)=0.0d0</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">      71945 :       Z(I,I)=1.0d0</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">     106887 :    20 DX(I)=0.0d0</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">      34942 :       IF (M .GE. 1) THEN</span></a>
 <a name="78"><span class="lineNum">      78 </span><span class="lineCov">       3652 :           DO 30 K=1,M</span></a>
 <a name="79"><span class="lineNum">      79 </span><span class="lineCov">       2637 :           IF (B(K) .GT. RESMAX) THEN</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">        810 :               RESMAX=B(K)</span></a>
@@ -155,10 +155,10 @@
 <a name="85"><span class="lineNum">      85 </span><span class="lineCov">       2637 :           IACT(K)=K</span></a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineCov">       3652 :    40     VMULTC(K)=RESMAX-B(K)</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :       END IF</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      34942 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :          PRINT *, '  1. VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
 <a name="90"><span class="lineNum">      90 </span>            :       END IF</a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      37028 :       IF (RESMAX .EQ. 0.0d0) GOTO 480</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      34942 :       IF (RESMAX .EQ. 0.0d0) GOTO 480</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineCov">       3574 :       DO 50 I=1,N</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">       3574 :    50 SDIRN(I)=0.0d0</span></a>
 <a name="94"><span class="lineNum">      94 </span>            : C</a>
@@ -168,22 +168,22 @@
 <a name="98"><span class="lineNum">      98 </span>            : C     value was calculated. This strategy prevents cycling, but there is a</a>
 <a name="99"><span class="lineNum">      99 </span>            : C     remote possibility that it will cause premature termination.</a>
 <a name="100"><span class="lineNum">     100 </span>            : C</a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">      37475 :    60 OPTOLD=0.0d0</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">      37475 :       ICOUNT=0</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">      38336 :    70 IF (MCON .EQ. M) THEN</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">      35389 :    60 OPTOLD=0.0d0</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">      35389 :       ICOUNT=0</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">      36250 :    70 IF (MCON .EQ. M) THEN</span></a>
 <a name="104"><span class="lineNum">     104 </span><span class="lineCov">        803 :           OPTNEW=RESMAX</span></a>
 <a name="105"><span class="lineNum">     105 </span>            :       ELSE</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">      37533 :           OPTNEW=0.0d0</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">     114509 :           DO 80 I=1,N</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     114509 :    80     OPTNEW=OPTNEW-DX(I)*A(I,MCON)</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">      35447 :           OPTNEW=0.0d0</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">     108251 :           DO 80 I=1,N</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     108251 :    80     OPTNEW=OPTNEW-DX(I)*A(I,MCON)</span></a>
 <a name="109"><span class="lineNum">     109 </span>            :       END IF</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      38336 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      36250 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :          PRINT *, ' ICOUNT, OPTNEW, OPTOLD = ', ICOUNT, OPTNEW, OPTOLD</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :       END IF</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      38336 :       IF (ICOUNT .EQ. 0 .OR. OPTNEW .LT. OPTOLD) THEN</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      37899 :           OPTOLD=OPTNEW</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      37899 :           NACTX=NACT</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      37899 :           ICOUNT=3</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      36250 :       IF (ICOUNT .EQ. 0 .OR. OPTNEW .LT. OPTOLD) THEN</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      35813 :           OPTOLD=OPTNEW</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      35813 :           NACTX=NACT</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      35813 :           ICOUNT=3</span></a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">        437 :       ELSE IF (NACT .GT. NACTX) THEN</span></a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">        383 :           NACTX=NACT</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineCov">        383 :           ICOUNT=3</span></a>
@@ -198,51 +198,51 @@
 <a name="128"><span class="lineNum">     128 </span>            : C     product being set to zero if its nonzero value could be due to computer</a>
 <a name="129"><span class="lineNum">     129 </span>            : C     rounding errors. The array DXNEW is used for working space.</a>
 <a name="130"><span class="lineNum">     130 </span>            : C</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      38336 :       IF (ICON .LE. NACT) GOTO 260</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">      38286 :       KK=IACT(ICON)</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     119185 :       DO 90 I=1,N</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     119185 :    90 DXNEW(I)=A(I,KK)</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      38286 :       TOT=0.0D0</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      38286 :       K=N</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     117475 :   100 IF (K .GT. NACT) THEN</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">      36250 :       IF (ICON .LE. NACT) GOTO 260</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">      36200 :       KK=IACT(ICON)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">     112927 :       DO 90 I=1,N</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     112927 :    90 DXNEW(I)=A(I,KK)</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      36200 :       TOT=0.0D0</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">      36200 :       K=N</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     111217 :   100 IF (K .GT. NACT) THEN</span></a>
 <a name="138"><span class="lineNum">     138 </span>            :           SP=0.0d0</a>
 <a name="139"><span class="lineNum">     139 </span>            :           SPABS=0.0d0</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     265177 :           DO 110 I=1,N</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">     185988 :           TEMP=Z(I,K)*DXNEW(I)</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     185988 :           SP=SP+TEMP</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     265177 :   110     SPABS=SPABS+DABS(TEMP)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">      79189 :           ACCA=SPABS+0.1d0*DABS(SP)</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      79189 :           ACCB=SPABS+0.2d0*DABS(SP)</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      79189 :           IF ((SPABS .GE. ACCA) .OR. (ACCA .GE. ACCB)) SP=0.0D0</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      79189 :           IF (TOT .EQ. 0.0D0) THEN</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      38375 :               TOT=SP</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     252661 :           DO 110 I=1,N</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">     177644 :           TEMP=Z(I,K)*DXNEW(I)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     177644 :           SP=SP+TEMP</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     252661 :   110     SPABS=SPABS+DABS(TEMP)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">      75017 :           ACCA=SPABS+0.1d0*DABS(SP)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">      75017 :           ACCB=SPABS+0.2d0*DABS(SP)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">      75017 :           IF ((SPABS .GE. ACCA) .OR. (ACCA .GE. ACCB)) SP=0.0D0</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      75017 :           IF (TOT .EQ. 0.0D0) THEN</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      36289 :               TOT=SP</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :           ELSE</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      40814 :               KP=K+1</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      40814 :               TEMP=DSQRT(SP*SP+TOT*TOT)</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">      40814 :               ALPHA=SP/TEMP</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">      40814 :               BETA=TOT/TEMP</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">      40814 :               TOT=TEMP</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     145609 :               DO 120 I=1,N</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     104795 :               TEMP=ALPHA*Z(I,K)+BETA*Z(I,KP)</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     104795 :               Z(I,KP)=ALPHA*Z(I,KP)-BETA*Z(I,K)</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     145609 :   120         Z(I,K)=TEMP</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      38728 :               KP=K+1</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      38728 :               TEMP=DSQRT(SP*SP+TOT*TOT)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">      38728 :               ALPHA=SP/TEMP</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">      38728 :               BETA=TOT/TEMP</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">      38728 :               TOT=TEMP</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">     139351 :               DO 120 I=1,N</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">     100623 :               TEMP=ALPHA*Z(I,K)+BETA*Z(I,KP)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     100623 :               Z(I,KP)=ALPHA*Z(I,KP)-BETA*Z(I,K)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">     139351 :   120         Z(I,K)=TEMP</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :           END IF</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      79189 :           K=K-1</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      79189 :           GOTO 100</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      75017 :           K=K-1</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      75017 :           GOTO 100</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :       END IF</a>
 <a name="163"><span class="lineNum">     163 </span>            : C</a>
 <a name="164"><span class="lineNum">     164 </span>            : C     Add the new constraint if this can be done without a deletion from the</a>
 <a name="165"><span class="lineNum">     165 </span>            : C     active set.</a>
 <a name="166"><span class="lineNum">     166 </span>            : C</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      38286 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      36200 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :          PRINT *, '*TOT, NACT, ICON = ', TOT, NACT, ICON</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :       END IF</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      38286 :       IF (TOT .NE. 0.0d0) THEN</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      38210 :           NACT=NACT+1</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      38210 :           ZDOTA(NACT)=TOT</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      38210 :           VMULTC(ICON)=VMULTC(NACT)</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">      38210 :           VMULTC(NACT)=0.0d0</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      38210 :           GOTO 210</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      36200 :       IF (TOT .NE. 0.0d0) THEN</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">      36124 :           NACT=NACT+1</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">      36124 :           ZDOTA(NACT)=TOT</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      36124 :           VMULTC(ICON)=VMULTC(NACT)</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">      36124 :           VMULTC(NACT)=0.0d0</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      36124 :           GOTO 210</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :       END IF</a>
 <a name="177"><span class="lineNum">     177 </span>            : C</a>
 <a name="178"><span class="lineNum">     178 </span>            : C     The next instruction is reached if a deletion has to be made from the</a>
@@ -332,9 +332,9 @@
 <a name="262"><span class="lineNum">     262 </span>            : C     Update IACT and ensure that the objective function continues to be</a>
 <a name="263"><span class="lineNum">     263 </span>            : C     treated as the last active constraint when MCON&gt;M.</a>
 <a name="264"><span class="lineNum">     264 </span>            : C</a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">      38211 :   210 IACT(ICON)=IACT(NACT)</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      38211 :       IACT(NACT)=KK</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">      38211 :       IF (MCON .GT. M .AND. KK .NE. MCON) THEN</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">      36125 :   210 IACT(ICON)=IACT(NACT)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      36125 :       IACT(NACT)=KK</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">      36125 :       IF (MCON .GT. M .AND. KK .NE. MCON) THEN</span></a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineCov">        620 :           K=NACT-1</span></a>
 <a name="269"><span class="lineNum">     269 </span><span class="lineCov">        620 :           SP=0.0d0</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineCov">       2738 :           DO 220 I=1,N</span></a>
@@ -358,7 +358,7 @@
 <a name="288"><span class="lineNum">     288 </span>            : C     If stage one is in progress, then set SDIRN to the direction of the next</a>
 <a name="289"><span class="lineNum">     289 </span>            : C     change to the current vector of variables.</a>
 <a name="290"><span class="lineNum">     290 </span>            : C</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      38211 :       IF (MCON .GT. M) GOTO 320</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      36125 :       IF (MCON .GT. M) GOTO 320</span></a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">        803 :       KK=IACT(NACT)</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineCov">        803 :       TEMP=0.0d0</span></a>
 <a name="294"><span class="lineNum">     294 </span><span class="lineCov">       4884 :       DO 240 I=1,N</span></a>
@@ -407,13 +407,13 @@
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :   300 TEMP=TEMP+SDIRN(I)*Z(I,NACT+1)</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :       DO 310 I=1,N</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :   310 SDIRN(I)=SDIRN(I)-TEMP*Z(I,NACT+1)</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">      37458 :       GO TO 340</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">      35372 :       GO TO 340</span></a>
 <a name="341"><span class="lineNum">     341 </span>            : C</a>
 <a name="342"><span class="lineNum">     342 </span>            : C     Pick the next search direction of stage two.</a>
 <a name="343"><span class="lineNum">     343 </span>            : C</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">      37458 :   320 TEMP=1.0d0/ZDOTA(NACT)</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">     114284 :       DO 330 I=1,N</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">     114284 :   330 SDIRN(I)=TEMP*Z(I,NACT)</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">      35372 :   320 TEMP=1.0d0/ZDOTA(NACT)</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">     108026 :       DO 330 I=1,N</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">     108026 :   330 SDIRN(I)=TEMP*Z(I,NACT)</span></a>
 <a name="347"><span class="lineNum">     347 </span>            : C</a>
 <a name="348"><span class="lineNum">     348 </span>            : C     Calculate the step to the boundary of the trust region or take the step</a>
 <a name="349"><span class="lineNum">     349 </span>            : C     that reduces RESMAX to zero. The two statements below that include the</a>
@@ -421,19 +421,19 @@
 <a name="351"><span class="lineNum">     351 </span>            : C     calculation. Further, we skip the step if it could be zero within a</a>
 <a name="352"><span class="lineNum">     352 </span>            : C     reasonable tolerance for computer rounding errors.</a>
 <a name="353"><span class="lineNum">     353 </span>            : C</a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">      38261 :   340 DD=RHO*RHO</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">      38261 :       SD=0.0d0</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">      38261 :       SS=0.0d0</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     119168 :       DO 350 I=1,N</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">      80907 :       IF (ABS(DX(I)) .GE. 1.0E-6*RHO) DD=DD-DX(I)**2</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">      80907 :       SD=SD+DX(I)*SDIRN(I)</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     119168 :   350 SS=SS+SDIRN(I)**2</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      38261 :       IF (DD .LE. 0.0d0) GOTO 490</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      38261 :       TEMP=SQRT(SS*DD)</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      38261 :       IF (ABS(SD) .GE. 1.0E-6*TEMP) TEMP=SQRT(SS*DD+SD*SD)</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">      38261 :       STPFUL=DD/(TEMP+SD)</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      38261 :       STEP=STPFUL</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      38261 :       IF (MCON .EQ. M) THEN</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">      36175 :   340 DD=RHO*RHO</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">      36175 :       SD=0.0d0</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">      36175 :       SS=0.0d0</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     112910 :       DO 350 I=1,N</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">      76735 :       IF (ABS(DX(I)) .GE. 1.0E-6*RHO) DD=DD-DX(I)**2</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">      76735 :       SD=SD+DX(I)*SDIRN(I)</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     112910 :   350 SS=SS+SDIRN(I)**2</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      36175 :       IF (DD .LE. 0.0d0) GOTO 490</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      36175 :       TEMP=SQRT(SS*DD)</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      36175 :       IF (ABS(SD) .GE. 1.0E-6*TEMP) TEMP=SQRT(SS*DD+SD*SD)</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">      36175 :       STPFUL=DD/(TEMP+SD)</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      36175 :       STEP=STPFUL</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      36175 :       IF (MCON .EQ. M) THEN</span></a>
 <a name="367"><span class="lineNum">     367 </span><span class="lineCov">        803 :           ACCA=STEP+0.1d0*RESMAX</span></a>
 <a name="368"><span class="lineNum">     368 </span><span class="lineCov">        803 :           ACCB=STEP+0.2d0*RESMAX</span></a>
 <a name="369"><span class="lineNum">     369 </span><span class="lineCov">        803 :           IF (STEP .GE. ACCA .OR. ACCA .GE. ACCB) GOTO 480</span></a>
@@ -445,7 +445,7 @@
 <a name="375"><span class="lineNum">     375 </span>            : C     Because DXNEW will be changed during the calculation of some Lagrange</a>
 <a name="376"><span class="lineNum">     376 </span>            : C     multipliers, it will be restored to the following value later.</a>
 <a name="377"><span class="lineNum">     377 </span>            :       call s360_380(DXNEW,DX,STEP,SDIRN,N,M,MCON,RESMAX,</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">      38227 :      1 NACT,IACT,B,A,RESOLD)</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">      36141 :      1 NACT,IACT,B,A,RESOLD)</span></a>
 <a name="379"><span class="lineNum">     379 </span>            : </a>
 <a name="380"><span class="lineNum">     380 </span>            : C</a>
 <a name="381"><span class="lineNum">     381 </span>            : C     Set VMULTD to the VMULTC vector that would occur if DX became DXNEW. A</a>
@@ -453,34 +453,34 @@
 <a name="383"><span class="lineNum">     383 </span>            : C     can be attributed to computer rounding errors. First calculate the new</a>
 <a name="384"><span class="lineNum">     384 </span>            : C     Lagrange multipliers.</a>
 <a name="385"><span class="lineNum">     385 </span>            : C</a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      38227 :       K=NACT</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      39906 :   390 ZDOTW=0.0d0</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">      39906 :       ZDWABS=0.0d0</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">     127515 :       DO 400 I=1,N</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      87609 :       TEMP=Z(I,K)*DXNEW(I)</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      87609 :       ZDOTW=ZDOTW+TEMP</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">     127515 :   400 ZDWABS=ZDWABS+ABS(TEMP)</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">      39906 :       ACCA=ZDWABS+0.1d0*ABS(ZDOTW)</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">      39906 :       ACCB=ZDWABS+0.2d0*ABS(ZDOTW)</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      39906 :       IF (ZDWABS .GE. ACCA .OR. ACCA .GE. ACCB) ZDOTW=0.0d0</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">      39906 :       VMULTD(K)=ZDOTW/ZDOTA(K)</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      39906 :       IF (K .GE. 2) THEN</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      36141 :       K=NACT</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">      37820 :   390 ZDOTW=0.0d0</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">      37820 :       ZDWABS=0.0d0</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">     121257 :       DO 400 I=1,N</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">      83437 :       TEMP=Z(I,K)*DXNEW(I)</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">      83437 :       ZDOTW=ZDOTW+TEMP</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">     121257 :   400 ZDWABS=ZDWABS+ABS(TEMP)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">      37820 :       ACCA=ZDWABS+0.1d0*ABS(ZDOTW)</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">      37820 :       ACCB=ZDWABS+0.2d0*ABS(ZDOTW)</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">      37820 :       IF (ZDWABS .GE. ACCA .OR. ACCA .GE. ACCB) ZDOTW=0.0d0</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">      37820 :       VMULTD(K)=ZDOTW/ZDOTA(K)</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      37820 :       IF (K .GE. 2) THEN</span></a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineCov">       1679 :           KK=IACT(K)</span></a>
 <a name="399"><span class="lineNum">     399 </span><span class="lineCov">       8567 :           DO 410 I=1,N</span></a>
 <a name="400"><span class="lineNum">     400 </span><span class="lineCov">       8567 :   410     DXNEW(I)=DXNEW(I)-VMULTD(K)*A(I,KK)</span></a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineCov">       1679 :           K=K-1</span></a>
 <a name="402"><span class="lineNum">     402 </span><span class="lineCov">       1679 :           GOTO 390</span></a>
 <a name="403"><span class="lineNum">     403 </span>            :       END IF</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">      38227 :       IF (MCON .GT. M) VMULTD(NACT)=DMAX1(0.0d0,VMULTD(NACT))</span></a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN     </span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">      36141 :       IF (MCON .GT. M) VMULTD(NACT)=DMAX1(0.0d0,VMULTD(NACT))</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">      36141 :       IF (IPRINT .EQ. 3) THEN     </span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :          PRINT *, '  2. VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
 <a name="407"><span class="lineNum">     407 </span>            :       END IF</a>
 <a name="408"><span class="lineNum">     408 </span>            : C</a>
 <a name="409"><span class="lineNum">     409 </span>            : C     Complete VMULTC by finding the new constraint residuals.</a>
 <a name="410"><span class="lineNum">     410 </span>            : C</a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">     118948 :       DO 420 I=1,N</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     118948 :   420 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      38227 :       IF (MCON .GT. NACT) THEN</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">     112690 :       DO 420 I=1,N</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">     112690 :   420 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">      36141 :       IF (MCON .GT. NACT) THEN</span></a>
 <a name="414"><span class="lineNum">     414 </span><span class="lineCov">       1885 :           KL=NACT+1</span></a>
 <a name="415"><span class="lineNum">     415 </span><span class="lineCov">       6028 :           DO 440 K=KL,MCON</span></a>
 <a name="416"><span class="lineNum">     416 </span><span class="lineCov">       4143 :           KK=IACT(K)</span></a>
@@ -495,39 +495,39 @@
 <a name="425"><span class="lineNum">     425 </span><span class="lineCov">       4143 :           IF (SUMABS .GE. ACCA .OR. ACCA .GE. ACCB) SUM=0.0</span></a>
 <a name="426"><span class="lineNum">     426 </span><span class="lineCov">       6028 :   440     VMULTD(K)=SUM</span></a>
 <a name="427"><span class="lineNum">     427 </span>            :       END IF</a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">      36141 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 :          PRINT *, '  3. VMULTD = ', (VMULTD(I),I=1,M+1)</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :       END IF</a>
 <a name="431"><span class="lineNum">     431 </span>            : C</a>
 <a name="432"><span class="lineNum">     432 </span>            : C     Calculate the fraction of the step from DX to DXNEW that will be taken.</a>
 <a name="433"><span class="lineNum">     433 </span>            : C</a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">      38227 :       RATIO=1.0d0</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">      38227 :       ICON=0</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">      36141 :       RATIO=1.0d0</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">      36141 :       ICON=0</span></a>
 <a name="436"><span class="lineNum">     436 </span>            : C     </a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      38227 :       EPS = 2.2E-16</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      82276 :       DO 450 K=1,MCON</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      44049 :       IF (VMULTD(K) .GT. -EPS .AND. VMULTD(K) .LT. EPS) VMULTD(K)=0.0D0</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      44049 :       IF (VMULTD(K) .LT. 0.0D0) THEN</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">      36141 :       EPS = 2.2E-16</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      78104 :       DO 450 K=1,MCON</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">      41963 :       IF (VMULTD(K) .GT. -EPS .AND. VMULTD(K) .LT. EPS) VMULTD(K)=0.0D0</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      41963 :       IF (VMULTD(K) .LT. 0.0D0) THEN</span></a>
 <a name="441"><span class="lineNum">     441 </span><span class="lineCov">       1059 :           TEMP=VMULTC(K)/(VMULTC(K)-VMULTD(K))</span></a>
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">       1059 :           IF (TEMP .LT. RATIO) THEN</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineCov">        899 :               RATIO=TEMP</span></a>
 <a name="444"><span class="lineNum">     444 </span><span class="lineCov">        899 :               ICON=K</span></a>
 <a name="445"><span class="lineNum">     445 </span>            :           END IF</a>
 <a name="446"><span class="lineNum">     446 </span>            :       END IF</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      38227 :   450 CONTINUE</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      36141 :   450 CONTINUE</span></a>
 <a name="448"><span class="lineNum">     448 </span>            : C</a>
 <a name="449"><span class="lineNum">     449 </span>            : C     Update DX, VMULTC and RESMAX.</a>
 <a name="450"><span class="lineNum">     450 </span>            : C</a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">      38227 :       TEMP=1.0d0-RATIO</span></a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">     118948 :       DO 460 I=1,N</span></a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">     118948 :   460 DX(I)=TEMP*DX(I)+RATIO*DXNEW(I)</span></a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">      82276 :       DO 470 K=1,MCON</span></a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      82276 :   470 VMULTC(K)=DMAX1(0.0d0,TEMP*VMULTC(K)+RATIO*VMULTD(K))</span></a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">      36141 :       TEMP=1.0d0-RATIO</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">     112690 :       DO 460 I=1,N</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">     112690 :   460 DX(I)=TEMP*DX(I)+RATIO*DXNEW(I)</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">      78104 :       DO 470 K=1,MCON</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">      78104 :   470 VMULTC(K)=DMAX1(0.0d0,TEMP*VMULTC(K)+RATIO*VMULTD(K))</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">      36141 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :          PRINT *, '  3. VMULTC = ', (VMULTC(I),I=1,M+1)</span></a>
 <a name="458"><span class="lineNum">     458 </span>            :       END IF</a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">      38227 :       IF (MCON .EQ. M) RESMAX=RESOLD+RATIO*(RESMAX-RESOLD)</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">      38227 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">      36141 :       IF (MCON .EQ. M) RESMAX=RESOLD+RATIO*(RESMAX-RESOLD)</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">      36141 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :          PRINT *, ' RESMAX, MCON, M, ICON = ', </span></a>
 <a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :      1        RESMAX, MCON, M, ICON</span></a>
 <a name="463"><span class="lineNum">     463 </span>            :       END IF</a>
@@ -535,27 +535,27 @@
 <a name="465"><span class="lineNum">     465 </span>            : C     If the full step is not acceptable then begin another iteration.</a>
 <a name="466"><span class="lineNum">     466 </span>            : C     Otherwise switch to stage two or end the calculation.</a>
 <a name="467"><span class="lineNum">     467 </span>            : C</a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">      38227 :       IF (ICON .GT. 0) GOTO 70</span></a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">      37366 :       IF (STEP .EQ. STPFUL) GOTO 500</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">      36141 :       IF (ICON .GT. 0) GOTO 70</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">      35280 :       IF (STEP .EQ. STPFUL) GOTO 500</span></a>
 <a name="470"><span class="lineNum">     470 </span><span class="lineCov">        421 :       IF (STEP .NE. STEP) THEN</span></a>
 <a name="471"><span class="lineNum">     471 </span>            : C        Nan encountered, propagate it (avoid infinite loop)</a>
 <a name="472"><span class="lineNum">     472 </span><span class="lineCov">         16 :          DO 475 I=1,N</span></a>
 <a name="473"><span class="lineNum">     473 </span><span class="lineCov">         16 :   475       DX(I)=STEP</span></a>
 <a name="474"><span class="lineNum">     474 </span>            :          GOTO 500</a>
 <a name="475"><span class="lineNum">     475 </span>            :       END IF</a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">      36832 :   480 MCON=M+1</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">      36832 :       ICON=MCON</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">      36832 :       IACT(MCON)=MCON</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">      36832 :       VMULTC(MCON)=0.0d0</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">      36907 :       GOTO 60</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">      34746 :   480 MCON=M+1</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">      34746 :       ICON=MCON</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">      34746 :       IACT(MCON)=MCON</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">      34746 :       VMULTC(MCON)=0.0d0</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">      34821 :       GOTO 60</span></a>
 <a name="481"><span class="lineNum">     481 </span>            : C</a>
 <a name="482"><span class="lineNum">     482 </span>            : C     We employ any freedom that may be available to reduce the objective</a>
 <a name="483"><span class="lineNum">     483 </span>            : C     function before returning a DX whose length is less than RHO.</a>
 <a name="484"><span class="lineNum">     484 </span>            : C</a>
 <a name="485"><span class="lineNum">     485 </span><span class="lineCov">         75 :   490 IF (MCON .EQ. M) GOTO 480</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">      37020 :       IFULL=0</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">      34934 :       IFULL=0</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :   500 CONTINUE</a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">      37028 :       IF (IPRINT .EQ. 3) THEN</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">      34942 :       IF (IPRINT .EQ. 3) THEN</span></a>
 <a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :          print *, ' '</span></a>
 <a name="490"><span class="lineNum">     490 </span><span class="lineNoCov">          0 :          print *, 'AFTER trstlp:'</span></a>
 <a name="491"><span class="lineNum">     491 </span><span class="lineNoCov">          0 :          PRINT *, '  **DX = ', (DX(I),I=1,N)</span></a>
@@ -572,15 +572,15 @@
 <a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :          PRINT *, ' '</span></a>
 <a name="503"><span class="lineNum">     503 </span>            :       END IF</a>
 <a name="504"><span class="lineNum">     504 </span>            : C  500 RETURN</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      37028 :       END</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      34942 :       END</span></a>
 <a name="506"><span class="lineNum">     506 </span>            : </a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">      38227 :       subroutine s360_380(DXNEW,DX,STEP,SDIRN,N,M,MCON,RESMAX,</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">      38227 :      1 NACT,IACT,B,A,RESOLD)</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">      36141 :       subroutine s360_380(DXNEW,DX,STEP,SDIRN,N,M,MCON,RESMAX,</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">      36141 :      1 NACT,IACT,B,A,RESOLD)</span></a>
 <a name="509"><span class="lineNum">     509 </span>            :       IMPLICIT DOUBLE PRECISION (A-H,O-Z)</a>
 <a name="510"><span class="lineNum">     510 </span>            :       DIMENSION A(N,*),B(*),DX(*),IACT(*), SDIRN(*),DXNEW(*)</a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">     118948 :       DO 360 I=1,N</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">     118948 :   360 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      38227 :       IF (MCON .EQ. M) THEN</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">     112690 :       DO 360 I=1,N</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">     112690 :   360 DXNEW(I)=DX(I)+STEP*SDIRN(I)</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      36141 :       IF (MCON .EQ. M) THEN</span></a>
 <a name="514"><span class="lineNum">     514 </span><span class="lineCov">        769 :           RESOLD=RESMAX</span></a>
 <a name="515"><span class="lineNum">     515 </span><span class="lineCov">        769 :           RESMAX=0.0d0</span></a>
 <a name="516"><span class="lineNum">     516 </span><span class="lineCov">       1710 :           DO 380 K=1,NACT</span></a>
@@ -591,7 +591,7 @@
 <a name="521"><span class="lineNum">     521 </span><span class="lineCov">        941 :           RESMAX=DMAX1(RESMAX,TEMP)</span></a>
 <a name="522"><span class="lineNum">     522 </span><span class="lineCov">        769 :   380     CONTINUE</span></a>
 <a name="523"><span class="lineNum">     523 </span>            :       END IF</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">      38227 :       end</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">      36141 :       end</span></a>
 </pre>
       </td>
     </tr>

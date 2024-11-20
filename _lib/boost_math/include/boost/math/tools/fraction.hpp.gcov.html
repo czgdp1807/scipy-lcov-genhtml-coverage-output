@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - _lib/boost_math/include/boost/math/tools/fraction.hpp</title>
+  <title>LCOV - lcov.info - _lib/boost_math/include/boost/math/tools/fraction.hpp</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">51</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -82,12 +82,12 @@
 <a name="12"><span class="lineNum">      12 </span>            : #endif</a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
 <a name="14"><span class="lineNum">      14 </span>            : #include &lt;boost/math/tools/config.hpp&gt;</a>
-<a name="15"><span class="lineNum">      15 </span>            : #include &lt;boost/math/tools/tuple.hpp&gt;</a>
-<a name="16"><span class="lineNum">      16 </span>            : #include &lt;boost/math/tools/precision.hpp&gt;</a>
-<a name="17"><span class="lineNum">      17 </span>            : #include &lt;boost/math/tools/complex.hpp&gt;</a>
-<a name="18"><span class="lineNum">      18 </span>            : #include &lt;type_traits&gt;</a>
-<a name="19"><span class="lineNum">      19 </span>            : #include &lt;cstdint&gt;</a>
-<a name="20"><span class="lineNum">      20 </span>            : #include &lt;cmath&gt;</a>
+<a name="15"><span class="lineNum">      15 </span>            : #include &lt;boost/math/tools/type_traits.hpp&gt;</a>
+<a name="16"><span class="lineNum">      16 </span>            : #include &lt;boost/math/tools/numeric_limits.hpp&gt;</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &lt;boost/math/tools/tuple.hpp&gt;</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &lt;boost/math/tools/precision.hpp&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &lt;boost/math/tools/complex.hpp&gt;</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &lt;boost/math/tools/cstdint.hpp&gt;</a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
 <a name="22"><span class="lineNum">      22 </span>            : namespace boost{ namespace math{ namespace tools{</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
@@ -95,10 +95,10 @@
 <a name="25"><span class="lineNum">      25 </span>            : {</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span>            :    template &lt;typename T&gt;</a>
-<a name="28"><span class="lineNum">      28 </span>            :    struct is_pair : public std::false_type{};</a>
+<a name="28"><span class="lineNum">      28 </span>            :    struct is_pair : public boost::math::false_type{};</a>
 <a name="29"><span class="lineNum">      29 </span>            : </a>
 <a name="30"><span class="lineNum">      30 </span>            :    template &lt;typename T, typename U&gt;</a>
-<a name="31"><span class="lineNum">      31 </span>            :    struct is_pair&lt;boost::math::pair&lt;T,U&gt;&gt; : public std::true_type{};</a>
+<a name="31"><span class="lineNum">      31 </span>            :    struct is_pair&lt;boost::math::pair&lt;T,U&gt;&gt; : public boost::math::true_type{};</a>
 <a name="32"><span class="lineNum">      32 </span>            : </a>
 <a name="33"><span class="lineNum">      33 </span>            :    template &lt;typename Gen&gt;</a>
 <a name="34"><span class="lineNum">      34 </span>            :    struct fraction_traits_simple</a>
@@ -134,7 +134,7 @@
 <a name="64"><span class="lineNum">      64 </span>            : </a>
 <a name="65"><span class="lineNum">      65 </span>            :    template &lt;typename Gen&gt;</a>
 <a name="66"><span class="lineNum">      66 </span>            :    struct fraction_traits</a>
-<a name="67"><span class="lineNum">      67 </span>            :        : public std::conditional&lt;</a>
+<a name="67"><span class="lineNum">      67 </span>            :        : public boost::math::conditional&lt;</a>
 <a name="68"><span class="lineNum">      68 </span>            :          is_pair&lt;typename Gen::result_type&gt;::value,</a>
 <a name="69"><span class="lineNum">      69 </span>            :          fraction_traits_pair&lt;Gen&gt;,</a>
 <a name="70"><span class="lineNum">      70 </span>            :          fraction_traits_simple&lt;Gen&gt;&gt;::type</a>
@@ -180,9 +180,9 @@
 <a name="110"><span class="lineNum">     110 </span>            : //</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <a name="112"><span class="lineNum">     112 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">     168298 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b_impl(Gen&amp; g, const U&amp; factor, std::uintmax_t&amp; max_terms)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">     230174 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b_impl(Gen&amp; g, const U&amp; factor, boost::math::uintmax_t&amp; max_terms)</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :       noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="115"><span class="lineNum">     115 </span>            :       #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="115"><span class="lineNum">     115 </span>            :       #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="116"><span class="lineNum">     116 </span>            :       // SYCL can not handle this condition so we only check float on that platform</a>
 <a name="117"><span class="lineNum">     117 </span>            :       &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="118"><span class="lineNum">     118 </span>            :       #endif</a>
@@ -196,45 +196,45 @@
 <a name="126"><span class="lineNum">     126 </span>            :    using integer_type = typename integer_scalar_type&lt;result_type&gt;::type;</a>
 <a name="127"><span class="lineNum">     127 </span>            :    using scalar_type = typename scalar_type&lt;result_type&gt;::type;</a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">     168298 :    integer_type const zero(0), one(1);</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">     230174 :    integer_type const zero(0), one(1);</span></a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">     168298 :    result_type tiny = detail::tiny_value&lt;result_type&gt;::get();</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     168298 :    scalar_type terminator = abs(factor);</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">     230174 :    result_type tiny = detail::tiny_value&lt;result_type&gt;::get();</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">     230174 :    scalar_type terminator = abs(factor);</span></a>
 <a name="133"><span class="lineNum">     133 </span>            : </a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     168298 :    value_type v = g();</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">     230174 :    value_type v = g();</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
 <a name="136"><span class="lineNum">     136 </span>            :    result_type f, C, D, delta;</a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     168298 :    f = traits::b(v);</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">     168298 :    if(f == zero)</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">     230174 :    f = traits::b(v);</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">     230174 :    if(f == zero)</span></a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :       f = tiny;</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     168298 :    C = f;</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">     168298 :    D = 0;</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     230174 :    C = f;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">     230174 :    D = 0;</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     168298 :    std::uintmax_t counter(max_terms);</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">     230174 :    boost::math::uintmax_t counter(max_terms);</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :    do{</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">    4216817 :       v = g();</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    4216817 :       D = traits::b(v) + traits::a(v) * D;</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    4216817 :       if(D == result_type(0))</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">    5376424 :       v = g();</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">    5376424 :       D = traits::b(v) + traits::a(v) * D;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">    5376424 :       if(D == result_type(0))</span></a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :          D = tiny;</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    4216817 :       C = traits::b(v) + traits::a(v) / C;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    4216817 :       if(C == zero)</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">    5376424 :       C = traits::b(v) + traits::a(v) / C;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">    5376424 :       if(C == zero)</span></a>
 <a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :          C = tiny;</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    4216817 :       D = one/D;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    4216817 :       delta = C*D;</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    4216817 :       f = f * delta;</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    4216817 :    }while((abs(delta - one) &gt; terminator) &amp;&amp; --counter);</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">    5376424 :       D = one/D;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">    5376424 :       delta = C*D;</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">    5376424 :       f = f * delta;</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">    5376424 :    }while((abs(delta - one) &gt; terminator) &amp;&amp; --counter);</span></a>
 <a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     168298 :    max_terms = max_terms - counter;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     230174 :    max_terms = max_terms - counter;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     168298 :    return f;</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     230174 :    return f;</span></a>
 <a name="160"><span class="lineNum">     160 </span>            : }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            : } // namespace detail</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
 <a name="164"><span class="lineNum">     164 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="165"><span class="lineNum">     165 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, const U&amp; factor, std::uintmax_t&amp; max_terms)</a>
+<a name="165"><span class="lineNum">     165 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, const U&amp; factor, boost::math::uintmax_t&amp; max_terms)</a>
 <a name="166"><span class="lineNum">     166 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="167"><span class="lineNum">     167 </span>            :          #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="167"><span class="lineNum">     167 </span>            :          #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="168"><span class="lineNum">     168 </span>            :          &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="169"><span class="lineNum">     169 </span>            :          #endif</a>
 <a name="170"><span class="lineNum">     170 </span>            :          )</a>
@@ -243,21 +243,21 @@
 <a name="173"><span class="lineNum">     173 </span>            : }</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     168298 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, const U&amp; factor)</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     230174 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, const U&amp; factor)</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="178"><span class="lineNum">     178 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="178"><span class="lineNum">     178 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="179"><span class="lineNum">     179 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="180"><span class="lineNum">     180 </span>            :    #endif</a>
 <a name="181"><span class="lineNum">     181 </span>            :    )</a>
 <a name="182"><span class="lineNum">     182 </span>            : {</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">     168298 :    std::uintmax_t max_terms = (std::numeric_limits&lt;std::uintmax_t&gt;::max)();</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">     168298 :    return detail::continued_fraction_b_impl(g, factor, max_terms);</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">     230174 :    boost::math::uintmax_t max_terms = (boost::math::numeric_limits&lt;boost::math::uintmax_t&gt;::max)();</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">     230174 :    return detail::continued_fraction_b_impl(g, factor, max_terms);</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : }</a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            : template &lt;typename Gen&gt;</a>
 <a name="188"><span class="lineNum">     188 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, int bits)</a>
 <a name="189"><span class="lineNum">     189 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="190"><span class="lineNum">     190 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="190"><span class="lineNum">     190 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="191"><span class="lineNum">     191 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="192"><span class="lineNum">     192 </span>            :    #endif</a>
 <a name="193"><span class="lineNum">     193 </span>            :    )</a>
@@ -268,14 +268,14 @@
 <a name="198"><span class="lineNum">     198 </span>            :    using result_type = typename traits::result_type;</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
 <a name="200"><span class="lineNum">     200 </span>            :    result_type factor = ldexp(1.0f, 1 - bits); // 1 / pow(result_type(2), bits);</a>
-<a name="201"><span class="lineNum">     201 </span>            :    std::uintmax_t max_terms = (std::numeric_limits&lt;std::uintmax_t&gt;::max)();</a>
+<a name="201"><span class="lineNum">     201 </span>            :    boost::math::uintmax_t max_terms = (boost::math::numeric_limits&lt;boost::math::uintmax_t&gt;::max)();</a>
 <a name="202"><span class="lineNum">     202 </span>            :    return detail::continued_fraction_b_impl(g, factor, max_terms);</a>
 <a name="203"><span class="lineNum">     203 </span>            : }</a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
 <a name="205"><span class="lineNum">     205 </span>            : template &lt;typename Gen&gt;</a>
-<a name="206"><span class="lineNum">     206 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, int bits, std::uintmax_t&amp; max_terms)</a>
+<a name="206"><span class="lineNum">     206 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_b(Gen&amp; g, int bits, boost::math::uintmax_t&amp; max_terms)</a>
 <a name="207"><span class="lineNum">     207 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="208"><span class="lineNum">     208 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="208"><span class="lineNum">     208 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="209"><span class="lineNum">     209 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="210"><span class="lineNum">     210 </span>            :    #endif</a>
 <a name="211"><span class="lineNum">     211 </span>            :    )</a>
@@ -306,9 +306,9 @@
 <a name="236"><span class="lineNum">     236 </span>            : // Note that the first a1 and b1 returned by generator Gen are both used.</a>
 <a name="237"><span class="lineNum">     237 </span>            : //</a>
 <a name="238"><span class="lineNum">     238 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">      12297 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a_impl(Gen&amp; g, const U&amp; factor, std::uintmax_t&amp; max_terms)</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">      12505 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a_impl(Gen&amp; g, const U&amp; factor, boost::math::uintmax_t&amp; max_terms)</span></a>
 <a name="240"><span class="lineNum">     240 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="241"><span class="lineNum">     241 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="241"><span class="lineNum">     241 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="242"><span class="lineNum">     242 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="243"><span class="lineNum">     243 </span>            :    #endif</a>
 <a name="244"><span class="lineNum">     244 </span>            :    )</a>
@@ -321,47 +321,47 @@
 <a name="251"><span class="lineNum">     251 </span>            :    using integer_type = typename integer_scalar_type&lt;result_type&gt;::type;</a>
 <a name="252"><span class="lineNum">     252 </span>            :    using scalar_type = typename scalar_type&lt;result_type&gt;::type;</a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">      12297 :    integer_type const zero(0), one(1);</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">      12505 :    integer_type const zero(0), one(1);</span></a>
 <a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">      12297 :    result_type tiny = detail::tiny_value&lt;result_type&gt;::get();</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">      12297 :    scalar_type terminator = abs(factor);</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">      12505 :    result_type tiny = detail::tiny_value&lt;result_type&gt;::get();</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">      12505 :    scalar_type terminator = abs(factor);</span></a>
 <a name="258"><span class="lineNum">     258 </span>            : </a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">      12297 :    value_type v = g();</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">      12505 :    value_type v = g();</span></a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
 <a name="261"><span class="lineNum">     261 </span>            :    result_type f, C, D, delta, a0;</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      12297 :    f = traits::b(v);</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">      12297 :    a0 = traits::a(v);</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">      12297 :    if(f == zero)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">      12505 :    f = traits::b(v);</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">      12505 :    a0 = traits::a(v);</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">      12505 :    if(f == zero)</span></a>
 <a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :       f = tiny;</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      12297 :    C = f;</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">      12297 :    D = 0;</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">      12505 :    C = f;</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">      12505 :    D = 0;</span></a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">      12297 :    std::uintmax_t counter(max_terms);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">      12505 :    boost::math::uintmax_t counter(max_terms);</span></a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            :    do{</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     220259 :       v = g();</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     220259 :       D = traits::b(v) + traits::a(v) * D;</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">     220259 :       if(D == zero)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     246432 :       v = g();</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     246432 :       D = traits::b(v) + traits::a(v) * D;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">     246432 :       if(D == zero)</span></a>
 <a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :          D = tiny;</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     220259 :       C = traits::b(v) + traits::a(v) / C;</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">     220259 :       if(C == zero)</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     246432 :       C = traits::b(v) + traits::a(v) / C;</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">     246432 :       if(C == zero)</span></a>
 <a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :          C = tiny;</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     220259 :       D = one/D;</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     220259 :       delta = C*D;</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     220259 :       f = f * delta;</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     220259 :    }while((abs(delta - one) &gt; terminator) &amp;&amp; --counter);</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     246432 :       D = one/D;</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     246432 :       delta = C*D;</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     246432 :       f = f * delta;</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     246432 :    }while((abs(delta - one) &gt; terminator) &amp;&amp; --counter);</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      12297 :    max_terms = max_terms - counter;</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">      12505 :    max_terms = max_terms - counter;</span></a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      12297 :    return a0/f;</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      12505 :    return a0/f;</span></a>
 <a name="287"><span class="lineNum">     287 </span>            : }</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
 <a name="289"><span class="lineNum">     289 </span>            : } // namespace detail</a>
 <a name="290"><span class="lineNum">     290 </span>            : </a>
 <a name="291"><span class="lineNum">     291 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         45 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, const U&amp; factor, std::uintmax_t&amp; max_terms)</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         45 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, const U&amp; factor, boost::math::uintmax_t&amp; max_terms)</span></a>
 <a name="293"><span class="lineNum">     293 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="294"><span class="lineNum">     294 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="294"><span class="lineNum">     294 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="295"><span class="lineNum">     295 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="296"><span class="lineNum">     296 </span>            :    #endif</a>
 <a name="297"><span class="lineNum">     297 </span>            :    )</a>
@@ -370,21 +370,21 @@
 <a name="300"><span class="lineNum">     300 </span>            : }</a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            : template &lt;typename Gen, typename U&gt;</a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">      12252 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, const U&amp; factor)</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">      12460 : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, const U&amp; factor)</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type)</a>
-<a name="305"><span class="lineNum">     305 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="305"><span class="lineNum">     305 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="306"><span class="lineNum">     306 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="307"><span class="lineNum">     307 </span>            :    #endif</a>
 <a name="308"><span class="lineNum">     308 </span>            :    )</a>
 <a name="309"><span class="lineNum">     309 </span>            : {</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">      12252 :    std::uintmax_t max_iter = (std::numeric_limits&lt;std::uintmax_t&gt;::max)();</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      12252 :    return detail::continued_fraction_a_impl(g, factor, max_iter);</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">      12460 :    boost::math::uintmax_t max_iter = (boost::math::numeric_limits&lt;boost::math::uintmax_t&gt;::max)();</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      12460 :    return detail::continued_fraction_a_impl(g, factor, max_iter);</span></a>
 <a name="312"><span class="lineNum">     312 </span>            : }</a>
 <a name="313"><span class="lineNum">     313 </span>            : </a>
 <a name="314"><span class="lineNum">     314 </span>            : template &lt;typename Gen&gt;</a>
 <a name="315"><span class="lineNum">     315 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, int bits)</a>
 <a name="316"><span class="lineNum">     316 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="317"><span class="lineNum">     317 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="317"><span class="lineNum">     317 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="318"><span class="lineNum">     318 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="319"><span class="lineNum">     319 </span>            :    #endif</a>
 <a name="320"><span class="lineNum">     320 </span>            :    )</a>
@@ -395,15 +395,15 @@
 <a name="325"><span class="lineNum">     325 </span>            :    typedef typename traits::result_type result_type;</a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :    result_type factor = ldexp(1.0f, 1-bits); // 1 / pow(result_type(2), bits);</a>
-<a name="328"><span class="lineNum">     328 </span>            :    std::uintmax_t max_iter = (std::numeric_limits&lt;std::uintmax_t&gt;::max)();</a>
+<a name="328"><span class="lineNum">     328 </span>            :    boost::math::uintmax_t max_iter = (boost::math::numeric_limits&lt;boost::math::uintmax_t&gt;::max)();</a>
 <a name="329"><span class="lineNum">     329 </span>            : </a>
 <a name="330"><span class="lineNum">     330 </span>            :    return detail::continued_fraction_a_impl(g, factor, max_iter);</a>
 <a name="331"><span class="lineNum">     331 </span>            : }</a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
 <a name="333"><span class="lineNum">     333 </span>            : template &lt;typename Gen&gt;</a>
-<a name="334"><span class="lineNum">     334 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, int bits, std::uintmax_t&amp; max_terms)</a>
+<a name="334"><span class="lineNum">     334 </span>            : BOOST_MATH_GPU_ENABLED inline typename detail::fraction_traits&lt;Gen&gt;::result_type continued_fraction_a(Gen&amp; g, int bits, boost::math::uintmax_t&amp; max_terms)</a>
 <a name="335"><span class="lineNum">     335 </span>            :    noexcept(BOOST_MATH_IS_FLOAT(typename detail::fraction_traits&lt;Gen&gt;::result_type) </a>
-<a name="336"><span class="lineNum">     336 </span>            :    #ifndef BOOST_MATH_ENABLE_SYCL</a>
+<a name="336"><span class="lineNum">     336 </span>            :    #ifndef BOOST_MATH_HAS_GPU_SUPPORT</a>
 <a name="337"><span class="lineNum">     337 </span>            :    &amp;&amp; noexcept(std::declval&lt;Gen&gt;()())</a>
 <a name="338"><span class="lineNum">     338 </span>            :    #endif</a>
 <a name="339"><span class="lineNum">     339 </span>            :    )</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - interpolate/src/__fitpack.h</title>
+  <title>LCOV - lcov.info - interpolate/src/__fitpack.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -113,11 +113,11 @@
 <a name="43"><span class="lineNum">      43 </span>            : {</a>
 <a name="44"><span class="lineNum">      44 </span>            :     T* data;</a>
 <a name="45"><span class="lineNum">      45 </span>            :     ssize_t nelem;</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">   26351071 :     T&amp; operator()(const ssize_t i) {</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">   26351071 :         _bcheck&lt;boundscheck&gt;(i, nelem, 0);</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">   26329573 :         return *(data + i);</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">   26351307 :     T&amp; operator()(const ssize_t i) {</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">   26351307 :         _bcheck&lt;boundscheck&gt;(i, nelem, 0);</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">   26329809 :         return *(data + i);</span></a>
 <a name="49"><span class="lineNum">      49 </span>            :     }</a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">    3455258 :     Array1D(T *ptr, ssize_t num_elem) : data(ptr), nelem(num_elem) {};</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">    3455296 :     Array1D(T *ptr, ssize_t num_elem) : data(ptr), nelem(num_elem) {};</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : };</a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dngets.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/dngets.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">25</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -162,7 +162,7 @@
 <a name="92"><span class="lineNum">      92 </span>            : c</a>
 <a name="93"><span class="lineNum">      93 </span>            : c-----------------------------------------------------------------------</a>
 <a name="94"><span class="lineNum">      94 </span>            : c</a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        744 :       subroutine dngets ( ishift, which, kev, np, ritzr, ritzi, bounds,</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        740 :       subroutine dngets ( ishift, which, kev, np, ritzr, ritzi, bounds,</span></a>
 <a name="96"><span class="lineNum">      96 </span>            :      &amp;                    shiftr, shifti )</a>
 <a name="97"><span class="lineNum">      97 </span>            : c</a>
 <a name="98"><span class="lineNum">      98 </span>            : c     %----------------------------------------------------%</a>
@@ -222,8 +222,8 @@
 <a name="152"><span class="lineNum">     152 </span>            : c     | &amp; message level for debugging |</a>
 <a name="153"><span class="lineNum">     153 </span>            : c     %-------------------------------%</a>
 <a name="154"><span class="lineNum">     154 </span>            : c</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        744 :       call arscnd (t0)</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        744 :       msglvl = mngets</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        740 :       call arscnd (t0)</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        740 :       msglvl = mngets</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : c</a>
 <a name="158"><span class="lineNum">     158 </span>            : c     %----------------------------------------------------%</a>
 <a name="159"><span class="lineNum">     159 </span>            : c     | LM, SM, LR, SR, LI, SI case.                       |</a>
@@ -235,8 +235,8 @@
 <a name="165"><span class="lineNum">     165 </span>            : c     | complex conjugate pairs together                   |</a>
 <a name="166"><span class="lineNum">     166 </span>            : c     %----------------------------------------------------%</a>
 <a name="167"><span class="lineNum">     167 </span>            : c</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        744 :       if (which .eq. 'LM') then</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        408 :          call dsortc ('LR', .true., kev+np, ritzr, ritzi, bounds)</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        740 :       if (which .eq. 'LM') then</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        404 :          call dsortc ('LR', .true., kev+np, ritzr, ritzi, bounds)</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">        336 :       else if (which .eq. 'SM') then</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineCov">         48 :          call dsortc ('SR', .true., kev+np, ritzr, ritzi, bounds)</span></a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineCov">        288 :       else if (which .eq. 'LR') then</span></a>
@@ -249,7 +249,7 @@
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">         48 :          call dsortc ('SM', .true., kev+np, ritzr, ritzi, bounds)</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :       end if</a>
 <a name="181"><span class="lineNum">     181 </span>            : c</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        744 :       call dsortc (which, .true., kev+np, ritzr, ritzi, bounds)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        740 :       call dsortc (which, .true., kev+np, ritzr, ritzi, bounds)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : c</a>
 <a name="184"><span class="lineNum">     184 </span>            : c     %-------------------------------------------------------%</a>
 <a name="185"><span class="lineNum">     185 </span>            : c     | Increase KEV by one if the ( ritzr(np),ritzi(np) )    |</a>
@@ -259,12 +259,12 @@
 <a name="189"><span class="lineNum">     189 </span>            : c     %-------------------------------------------------------%</a>
 <a name="190"><span class="lineNum">     190 </span>            : c</a>
 <a name="191"><span class="lineNum">     191 </span>            :       if (       ( ritzr(np+1) - ritzr(np) ) .eq. zero</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        744 :      &amp;     .and. ( ritzi(np+1) + ritzi(np) ) .eq. zero ) then</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">        134 :          np = np - 1</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        134 :          kev = kev + 1</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        740 :      &amp;     .and. ( ritzi(np+1) + ritzi(np) ) .eq. zero ) then</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          8 :          np = np - 1</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          8 :          kev = kev + 1</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :       end if</a>
 <a name="196"><span class="lineNum">     196 </span>            : c</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        744 :       if ( ishift .eq. 1 ) then</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        740 :       if ( ishift .eq. 1 ) then</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : c</a>
 <a name="199"><span class="lineNum">     199 </span>            : c        %-------------------------------------------------------%</a>
 <a name="200"><span class="lineNum">     200 </span>            : c        | Sort the unwanted Ritz values used as shifts so that  |</a>
@@ -275,13 +275,13 @@
 <a name="205"><span class="lineNum">     205 </span>            : c        | Be careful and use 'SR' since we want to sort BOUNDS! |</a>
 <a name="206"><span class="lineNum">     206 </span>            : c        %-------------------------------------------------------%</a>
 <a name="207"><span class="lineNum">     207 </span>            : c</a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">        506 :          call dsortc ( 'SR', .true., np, bounds, ritzr, ritzi )</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">        504 :          call dsortc ( 'SR', .true., np, bounds, ritzr, ritzi )</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :       end if</a>
 <a name="210"><span class="lineNum">     210 </span>            : c</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        744 :       call arscnd (t1)</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        744 :       tngets = tngets + (t1 - t0)</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        740 :       call arscnd (t1)</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">        740 :       tngets = tngets + (t1 - t0)</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : c</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        744 :       if (msglvl .gt. 0) then</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        740 :       if (msglvl .gt. 0) then</span></a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :          call ivout (logfil, 1, [kev], ndigit, '_ngets: KEV is')</span></a>
 <a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :          call ivout (logfil, 1, [np], ndigit, '_ngets: NP is')</span></a>
 <a name="217"><span class="lineNum">     217 </span>            :          call dvout (logfil, kev+np, ritzr, ndigit,</a>
@@ -292,7 +292,7 @@
 <a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :      &amp;      '_ngets: Ritz estimates of the current KEV+NP Ritz values')</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :       end if</a>
 <a name="224"><span class="lineNum">     224 </span>            : c</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        744 :       return</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        740 :       return</span></a>
 <a name="226"><span class="lineNum">     226 </span>            : c</a>
 <a name="227"><span class="lineNum">     227 </span>            : c     %---------------%</a>
 <a name="228"><span class="lineNum">     228 </span>            : c     | End of dngets |</a>

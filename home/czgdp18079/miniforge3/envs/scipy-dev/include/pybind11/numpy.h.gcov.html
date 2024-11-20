@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/numpy.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/include/pybind11/numpy.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">177</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">110</td>
@@ -242,13 +242,13 @@
 <a name="172"><span class="lineNum">     172 </span>            :     return *ptr;</a>
 <a name="173"><span class="lineNum">     173 </span>            : }</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          4 : PYBIND11_NOINLINE module_ import_numpy_core_submodule(const char *submodule_name) {</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          4 :     module_ numpy = module_::import(&quot;numpy&quot;);</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          4 :     str version_string = numpy.attr(&quot;__version__&quot;);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          5 : PYBIND11_NOINLINE module_ import_numpy_core_submodule(const char *submodule_name) {</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          5 :     module_ numpy = module_::import(&quot;numpy&quot;);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          5 :     str version_string = numpy.attr(&quot;__version__&quot;);</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          4 :     module_ numpy_lib = module_::import(&quot;numpy.lib&quot;);</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          4 :     object numpy_version = numpy_lib.attr(&quot;NumpyVersion&quot;)(version_string);</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          4 :     int major_version = numpy_version.attr(&quot;major&quot;).cast&lt;int&gt;();</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          5 :     module_ numpy_lib = module_::import(&quot;numpy.lib&quot;);</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          5 :     object numpy_version = numpy_lib.attr(&quot;NumpyVersion&quot;)(version_string);</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          5 :     int major_version = numpy_version.attr(&quot;major&quot;).cast&lt;int&gt;();</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            : #ifdef PYBIND11_NUMPY_1_ONLY</a>
 <a name="184"><span class="lineNum">     184 </span>            :     if (major_version &gt;= 2) {</a>
@@ -260,9 +260,9 @@
 <a name="190"><span class="lineNum">     190 </span>            : #endif</a>
 <a name="191"><span class="lineNum">     191 </span>            :     /* `numpy.core` was renamed to `numpy._core` in NumPy 2.0 as it officially</a>
 <a name="192"><span class="lineNum">     192 </span>            :         became a private module. */</a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          4 :     std::string numpy_core_path = major_version &gt;= 2 ? &quot;numpy._core&quot; : &quot;numpy.core&quot;;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         12 :     return module_::import((numpy_core_path + &quot;.&quot; + submodule_name).c_str());</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          4 : }</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          5 :     std::string numpy_core_path = major_version &gt;= 2 ? &quot;numpy._core&quot; : &quot;numpy.core&quot;;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         15 :     return module_::import((numpy_core_path + &quot;.&quot; + submodule_name).c_str());</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          5 : }</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span>            : template &lt;typename T&gt;</a>
 <a name="198"><span class="lineNum">     198 </span>            : struct same_size {</a>
@@ -337,13 +337,13 @@
 <a name="267"><span class="lineNum">     267 </span>            :         int len;</a>
 <a name="268"><span class="lineNum">     268 </span>            :     };</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">     717039 :     static npy_api &amp;get() {</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">     717039 :         PYBIND11_CONSTINIT static gil_safe_call_once_and_store&lt;npy_api&gt; storage;</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     409530 :         return storage.call_once_and_store_result(lookup).get_stored();</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">     717268 :     static npy_api &amp;get() {</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">     717268 :         PYBIND11_CONSTINIT static gil_safe_call_once_and_store&lt;npy_api&gt; storage;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     409813 :         return storage.call_once_and_store_result(lookup).get_stored();</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :     }</a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">     275047 :     bool PyArray_Check_(PyObject *obj) const {</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     275047 :         return PyObject_TypeCheck(obj, PyArray_Type_) != 0;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">     275274 :     bool PyArray_Check_(PyObject *obj) const {</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">     275274 :         return PyObject_TypeCheck(obj, PyArray_Type_) != 0;</span></a>
 <a name="277"><span class="lineNum">     277 </span>            :     }</a>
 <a name="278"><span class="lineNum">     278 </span>            :     bool PyArrayDescr_Check_(PyObject *obj) const {</a>
 <a name="279"><span class="lineNum">     279 </span>            :         return PyObject_TypeCheck(obj, PyArrayDescr_Type_) != 0;</a>
@@ -413,45 +413,45 @@
 <a name="343"><span class="lineNum">     343 </span>            :         API_PyArray_SetBaseObject = 282</a>
 <a name="344"><span class="lineNum">     344 </span>            :     };</a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          4 :     static npy_api lookup() {</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          4 :         module_ m = detail::import_numpy_core_submodule(&quot;multiarray&quot;);</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          4 :         auto c = m.attr(&quot;_ARRAY_API&quot;);</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          4 :         void **api_ptr = (void **) PyCapsule_GetPointer(c.ptr(), nullptr);</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          4 :         if (api_ptr == nullptr) {</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          5 :     static npy_api lookup() {</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          5 :         module_ m = detail::import_numpy_core_submodule(&quot;multiarray&quot;);</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          5 :         auto c = m.attr(&quot;_ARRAY_API&quot;);</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          5 :         void **api_ptr = (void **) PyCapsule_GetPointer(c.ptr(), nullptr);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          5 :         if (api_ptr == nullptr) {</span></a>
 <a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :             raise_from(PyExc_SystemError, &quot;FAILURE obtaining numpy _ARRAY_API pointer.&quot;);</span></a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :             throw error_already_set();</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :         }</a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          4 :         npy_api api;</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          5 :         npy_api api;</span></a>
 <a name="355"><span class="lineNum">     355 </span>            : #define DECL_NPY_API(Func) api.Func##_ = (decltype(api.Func##_)) api_ptr[API_##Func];</a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_GetNDArrayCFeatureVersion);</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          4 :         api.PyArray_RUNTIME_VERSION_ = api.PyArray_GetNDArrayCFeatureVersion_();</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          4 :         if (api.PyArray_RUNTIME_VERSION_ &lt; 0x7) {</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_GetNDArrayCFeatureVersion);</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          5 :         api.PyArray_RUNTIME_VERSION_ = api.PyArray_GetNDArrayCFeatureVersion_();</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          5 :         if (api.PyArray_RUNTIME_VERSION_ &lt; 0x7) {</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;pybind11 numpy support requires numpy &gt;= 1.7.0&quot;);</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :         }</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_Type);</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          4 :         DECL_NPY_API(PyVoidArrType_Type);</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArrayDescr_Type);</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_DescrFromType);</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_DescrFromScalar);</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_FromAny);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_Resize);</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_CopyInto);</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_NewCopy);</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_NewFromDescr);</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_DescrNewFromType);</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_Newshape);</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_Squeeze);</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_View);</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_DescrConverter);</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_EquivTypes);</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_Type);</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          5 :         DECL_NPY_API(PyVoidArrType_Type);</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArrayDescr_Type);</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_DescrFromType);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_DescrFromScalar);</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_FromAny);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_Resize);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_CopyInto);</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_NewCopy);</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_NewFromDescr);</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_DescrNewFromType);</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_Newshape);</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_Squeeze);</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_View);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_DescrConverter);</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_EquivTypes);</span></a>
 <a name="377"><span class="lineNum">     377 </span>            : #ifdef PYBIND11_NUMPY_1_ONLY</a>
 <a name="378"><span class="lineNum">     378 </span>            :         DECL_NPY_API(PyArray_GetArrayParamsFromObject);</a>
 <a name="379"><span class="lineNum">     379 </span>            : #endif</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          4 :         DECL_NPY_API(PyArray_SetBaseObject);</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          5 :         DECL_NPY_API(PyArray_SetBaseObject);</span></a>
 <a name="381"><span class="lineNum">     381 </span>            : </a>
 <a name="382"><span class="lineNum">     382 </span>            : #undef DECL_NPY_API</a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          4 :         return api;</span></a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          4 :     }</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          5 :         return api;</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          5 :     }</span></a>
 <a name="385"><span class="lineNum">     385 </span>            : };</a>
 <a name="386"><span class="lineNum">     386 </span>            : </a>
 <a name="387"><span class="lineNum">     387 </span>            : inline PyArray_Proxy *array_proxy(void *ptr) { return reinterpret_cast&lt;PyArray_Proxy *&gt;(ptr); }</a>
@@ -476,8 +476,8 @@
 <a name="406"><span class="lineNum">     406 </span>            :     return reinterpret_cast&lt;const PyArrayDescr2_Proxy *&gt;(ptr);</a>
 <a name="407"><span class="lineNum">     407 </span>            : }</a>
 <a name="408"><span class="lineNum">     408 </span>            : </a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">     145271 : inline bool check_flags(const void *ptr, int flag) {</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">     145271 :     return (flag == (array_proxy(ptr)-&gt;flags &amp; flag));</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">     145306 : inline bool check_flags(const void *ptr, int flag) {</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">     145306 :     return (flag == (array_proxy(ptr)-&gt;flags &amp; flag));</span></a>
 <a name="411"><span class="lineNum">     411 </span>            : }</a>
 <a name="412"><span class="lineNum">     412 </span>            : </a>
 <a name="413"><span class="lineNum">     413 </span>            : template &lt;typename T&gt;</a>
@@ -560,8 +560,8 @@
 <a name="490"><span class="lineNum">     490 </span>            :     return 0;</a>
 <a name="491"><span class="lineNum">     491 </span>            : }</a>
 <a name="492"><span class="lineNum">     492 </span>            : template &lt;ssize_t Dim = 0, typename Strides, typename... Ix&gt;</a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       5082 : ssize_t byte_offset_unsafe(const Strides &amp;strides, ssize_t i, Ix... index) {</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       5082 :     return i * strides[Dim] + byte_offset_unsafe&lt;Dim + 1&gt;(strides, index...);</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">       5085 : ssize_t byte_offset_unsafe(const Strides &amp;strides, ssize_t i, Ix... index) {</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       5085 :     return i * strides[Dim] + byte_offset_unsafe&lt;Dim + 1&gt;(strides, index...);</span></a>
 <a name="495"><span class="lineNum">     495 </span>            : }</a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            : /**</a>
@@ -594,12 +594,12 @@
 <a name="524"><span class="lineNum">     524 </span>            :     }</a>
 <a name="525"><span class="lineNum">     525 </span>            :     // Constructor for runtime dimensions:</a>
 <a name="526"><span class="lineNum">     526 </span>            :     template &lt;bool Dyn = Dynamic&gt;</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        935 :     unchecked_reference(const void *data,</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        942 :     unchecked_reference(const void *data,</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :                         const ssize_t *shape,</a>
 <a name="529"><span class="lineNum">     529 </span>            :                         const ssize_t *strides,</a>
 <a name="530"><span class="lineNum">     530 </span>            :                         enable_if_t&lt;Dyn, ssize_t&gt; dims)</a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        935 :         : data_{reinterpret_cast&lt;const unsigned char *&gt;(data)}, shape_{shape}, strides_{strides},</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        935 :           dims_{dims} {}</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        942 :         : data_{reinterpret_cast&lt;const unsigned char *&gt;(data)}, shape_{shape}, strides_{strides},</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        942 :           dims_{dims} {}</span></a>
 <a name="533"><span class="lineNum">     533 </span>            : </a>
 <a name="534"><span class="lineNum">     534 </span>            : public:</a>
 <a name="535"><span class="lineNum">     535 </span>            :     /**</a>
@@ -608,11 +608,11 @@
 <a name="538"><span class="lineNum">     538 </span>            :      * dimensionality, this is not checked (and so is up to the caller to use safely).</a>
 <a name="539"><span class="lineNum">     539 </span>            :      */</a>
 <a name="540"><span class="lineNum">     540 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       5124 :     const T &amp;operator()(Ix... index) const {</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">       5127 :     const T &amp;operator()(Ix... index) const {</span></a>
 <a name="542"><span class="lineNum">     542 </span>            :         static_assert(ssize_t{sizeof...(Ix)} == Dims || Dynamic,</a>
 <a name="543"><span class="lineNum">     543 </span>            :                       &quot;Invalid number of indices for unchecked array reference&quot;);</a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">       3315 :         return *reinterpret_cast&lt;const T *&gt;(data_</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">       5124 :                                             + byte_offset_unsafe(strides_, ssize_t(index)...));</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">       3318 :         return *reinterpret_cast&lt;const T *&gt;(data_</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">       5127 :                                             + byte_offset_unsafe(strides_, ssize_t(index)...));</span></a>
 <a name="546"><span class="lineNum">     546 </span>            :     }</a>
 <a name="547"><span class="lineNum">     547 </span>            :     /**</a>
 <a name="548"><span class="lineNum">     548 </span>            :      * Unchecked const reference access to data; this operator only participates if the reference</a>
@@ -646,8 +646,8 @@
 <a name="576"><span class="lineNum">     576 </span>            :             shape_.begin(), shape_.end(), (ssize_t) 1, std::multiplies&lt;ssize_t&gt;());</a>
 <a name="577"><span class="lineNum">     577 </span>            :     }</a>
 <a name="578"><span class="lineNum">     578 </span>            :     template &lt;bool Dyn = Dynamic&gt;</a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">        274 :     enable_if_t&lt;Dyn, ssize_t&gt; size() const {</span></a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">        548 :         return std::accumulate(shape_, shape_ + ndim(), (ssize_t) 1, std::multiplies&lt;ssize_t&gt;());</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">        276 :     enable_if_t&lt;Dyn, ssize_t&gt; size() const {</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">        552 :         return std::accumulate(shape_, shape_ + ndim(), (ssize_t) 1, std::multiplies&lt;ssize_t&gt;());</span></a>
 <a name="581"><span class="lineNum">     581 </span>            :     }</a>
 <a name="582"><span class="lineNum">     582 </span>            : </a>
 <a name="583"><span class="lineNum">     583 </span>            :     /// Returns the total number of bytes used by the referenced data.  Note that the actual span</a>
@@ -660,7 +660,7 @@
 <a name="590"><span class="lineNum">     590 </span>            : class unchecked_mutable_reference : public unchecked_reference&lt;T, Dims&gt; {</a>
 <a name="591"><span class="lineNum">     591 </span>            :     friend class pybind11::array;</a>
 <a name="592"><span class="lineNum">     592 </span>            :     using ConstBase = unchecked_reference&lt;T, Dims&gt;;</a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        900 :     using ConstBase::ConstBase;</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">        906 :     using ConstBase::ConstBase;</span></a>
 <a name="594"><span class="lineNum">     594 </span>            :     using ConstBase::Dynamic;</a>
 <a name="595"><span class="lineNum">     595 </span>            : </a>
 <a name="596"><span class="lineNum">     596 </span>            : public:</a>
@@ -670,10 +670,10 @@
 <a name="600"><span class="lineNum">     600 </span>            : </a>
 <a name="601"><span class="lineNum">     601 </span>            :     /// Mutable, unchecked access to data at the given indices.</a>
 <a name="602"><span class="lineNum">     602 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       3559 :     T &amp;operator()(Ix... index) {</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       3561 :     T &amp;operator()(Ix... index) {</span></a>
 <a name="604"><span class="lineNum">     604 </span>            :         static_assert(ssize_t{sizeof...(Ix)} == Dims || Dynamic,</a>
 <a name="605"><span class="lineNum">     605 </span>            :                       &quot;Invalid number of indices for unchecked array reference&quot;);</a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">       3559 :         return const_cast&lt;T &amp;&gt;(ConstBase::operator()(index...));</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">       3561 :         return const_cast&lt;T &amp;&gt;(ConstBase::operator()(index...));</span></a>
 <a name="607"><span class="lineNum">     607 </span>            :     }</a>
 <a name="608"><span class="lineNum">     608 </span>            :     /**</a>
 <a name="609"><span class="lineNum">     609 </span>            :      * Mutable, unchecked access data at the given index; this operator only participates if the</a>
@@ -703,9 +703,9 @@
 <a name="633"><span class="lineNum">     633 </span>            : </a>
 <a name="634"><span class="lineNum">     634 </span>            : PYBIND11_NAMESPACE_END(detail)</a>
 <a name="635"><span class="lineNum">     635 </span>            : </a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">     331954 : class dtype : public object {</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">     332002 : class dtype : public object {</span></a>
 <a name="637"><span class="lineNum">     637 </span>            : public:</a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">     146926 :     PYBIND11_OBJECT_DEFAULT(dtype, object, detail::npy_api::get().PyArrayDescr_Check_)</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">     146470 :     PYBIND11_OBJECT_DEFAULT(dtype, object, detail::npy_api::get().PyArrayDescr_Check_)</span></a>
 <a name="639"><span class="lineNum">     639 </span>            : </a>
 <a name="640"><span class="lineNum">     640 </span>            :     explicit dtype(const buffer_info &amp;info) {</a>
 <a name="641"><span class="lineNum">     641 </span>            :         dtype descr(_dtype_from_pep3118()(pybind11::str(info.format)));</a>
@@ -732,12 +732,12 @@
 <a name="662"><span class="lineNum">     662 </span>            : </a>
 <a name="663"><span class="lineNum">     663 </span>            :     /// Return dtype for the given typenum (one of the NPY_TYPES).</a>
 <a name="664"><span class="lineNum">     664 </span>            :     /// https://numpy.org/devdocs/reference/c-api/array.html#c.PyArray_DescrFromType</a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">     293000 :     explicit dtype(int typenum)</span></a>
-<a name="666"><span class="lineNum">     666 </span><span class="lineCov">     293000 :         : object(detail::npy_api::get().PyArray_DescrFromType_(typenum), stolen_t{}) {</span></a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">     293000 :         if (m_ptr == nullptr) {</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">     293105 :     explicit dtype(int typenum)</span></a>
+<a name="666"><span class="lineNum">     666 </span><span class="lineCov">     293105 :         : object(detail::npy_api::get().PyArray_DescrFromType_(typenum), stolen_t{}) {</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">     293105 :         if (m_ptr == nullptr) {</span></a>
 <a name="668"><span class="lineNum">     668 </span><span class="lineNoCov">          0 :             throw error_already_set();</span></a>
 <a name="669"><span class="lineNum">     669 </span>            :         }</a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">     293000 :     }</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">     293105 :     }</span></a>
 <a name="671"><span class="lineNum">     671 </span>            : </a>
 <a name="672"><span class="lineNum">     672 </span>            :     /// This is essentially the same as calling numpy.dtype(args) in Python.</a>
 <a name="673"><span class="lineNum">     673 </span>            :     static dtype from_args(const object &amp;args) {</a>
@@ -750,19 +750,19 @@
 <a name="680"><span class="lineNum">     680 </span>            : </a>
 <a name="681"><span class="lineNum">     681 </span>            :     /// Return dtype associated with a C++ type.</a>
 <a name="682"><span class="lineNum">     682 </span>            :     template &lt;typename T&gt;</a>
-<a name="683"><span class="lineNum">     683 </span><span class="lineCov">     293000 :     static dtype of() {</span></a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">     107365 :         return detail::npy_format_descriptor&lt;typename std::remove_cv&lt;T&gt;::type&gt;::dtype();</span></a>
+<a name="683"><span class="lineNum">     683 </span><span class="lineCov">     293105 :     static dtype of() {</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">     107442 :         return detail::npy_format_descriptor&lt;typename std::remove_cv&lt;T&gt;::type&gt;::dtype();</span></a>
 <a name="685"><span class="lineNum">     685 </span>            :     }</a>
 <a name="686"><span class="lineNum">     686 </span>            : </a>
 <a name="687"><span class="lineNum">     687 </span>            :     /// Size of the data type in bytes.</a>
 <a name="688"><span class="lineNum">     688 </span>            : #ifdef PYBIND11_NUMPY_1_ONLY</a>
 <a name="689"><span class="lineNum">     689 </span>            :     ssize_t itemsize() const { return detail::array_descriptor_proxy(m_ptr)-&gt;elsize; }</a>
 <a name="690"><span class="lineNum">     690 </span>            : #else</a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">      14509 :     ssize_t itemsize() const {</span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">      14509 :         if (detail::npy_api::get().PyArray_RUNTIME_VERSION_ &lt; 0x12) {</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">      14350 :     ssize_t itemsize() const {</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">      14350 :         if (detail::npy_api::get().PyArray_RUNTIME_VERSION_ &lt; 0x12) {</span></a>
 <a name="693"><span class="lineNum">     693 </span><span class="lineNoCov">          0 :             return detail::array_descriptor1_proxy(m_ptr)-&gt;elsize;</span></a>
 <a name="694"><span class="lineNum">     694 </span>            :         }</a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      14509 :         return detail::array_descriptor2_proxy(m_ptr)-&gt;elsize;</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      14350 :         return detail::array_descriptor2_proxy(m_ptr)-&gt;elsize;</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :     }</a>
 <a name="697"><span class="lineNum">     697 </span>            : #endif</a>
 <a name="698"><span class="lineNum">     698 </span>            : </a>
@@ -784,7 +784,7 @@
 <a name="714"><span class="lineNum">     714 </span>            : </a>
 <a name="715"><span class="lineNum">     715 </span>            :     /// Single-character code for dtype's kind.</a>
 <a name="716"><span class="lineNum">     716 </span>            :     /// For example, floating point types are 'f' and integral types are 'i'.</a>
-<a name="717"><span class="lineNum">     717 </span><span class="lineCov">      64239 :     char kind() const { return detail::array_descriptor_proxy(m_ptr)-&gt;kind; }</span></a>
+<a name="717"><span class="lineNum">     717 </span><span class="lineCov">      64191 :     char kind() const { return detail::array_descriptor_proxy(m_ptr)-&gt;kind; }</span></a>
 <a name="718"><span class="lineNum">     718 </span>            : </a>
 <a name="719"><span class="lineNum">     719 </span>            :     /// Single-character for dtype's type.</a>
 <a name="720"><span class="lineNum">     720 </span>            :     /// For example, ``float`` is 'f', ``double`` 'd', ``int`` 'i', and ``long`` 'l'.</a>
@@ -888,9 +888,9 @@
 <a name="818"><span class="lineNum">     818 </span>            :     }</a>
 <a name="819"><span class="lineNum">     819 </span>            : };</a>
 <a name="820"><span class="lineNum">     820 </span>            : </a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">     387127 : class array : public buffer {</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">     387202 : class array : public buffer {</span></a>
 <a name="822"><span class="lineNum">     822 </span>            : public:</a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">     633788 :     PYBIND11_OBJECT_CVT(array, buffer, detail::npy_api::get().PyArray_Check_, raw_array)</span></a>
+<a name="823"><span class="lineNum">     823 </span><span class="lineCov">     634080 :     PYBIND11_OBJECT_CVT(array, buffer, detail::npy_api::get().PyArray_Check_, raw_array)</span></a>
 <a name="824"><span class="lineNum">     824 </span>            : </a>
 <a name="825"><span class="lineNum">     825 </span>            :     enum {</a>
 <a name="826"><span class="lineNum">     826 </span>            :         c_style = detail::npy_api::NPY_ARRAY_C_CONTIGUOUS_,</a>
@@ -904,24 +904,24 @@
 <a name="834"><span class="lineNum">     834 </span>            :     using StridesContainer = detail::any_container&lt;ssize_t&gt;;</a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
 <a name="836"><span class="lineNum">     836 </span>            :     // Constructs an array taking shape/strides from arbitrary container types</a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">     107221 :     array(const pybind11::dtype &amp;dt,</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">     107298 :     array(const pybind11::dtype &amp;dt,</span></a>
 <a name="838"><span class="lineNum">     838 </span>            :           ShapeContainer shape,</a>
 <a name="839"><span class="lineNum">     839 </span>            :           StridesContainer strides,</a>
 <a name="840"><span class="lineNum">     840 </span>            :           const void *ptr = nullptr,</a>
-<a name="841"><span class="lineNum">     841 </span><span class="lineCov">     107221 :           handle base = handle()) {</span></a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">     107298 :           handle base = handle()) {</span></a>
 <a name="842"><span class="lineNum">     842 </span>            : </a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineCov">     107221 :         if (strides-&gt;empty()) {</span></a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       7374 :             *strides = detail::c_strides(*shape, dt.itemsize());</span></a>
+<a name="843"><span class="lineNum">     843 </span><span class="lineCov">     107298 :         if (strides-&gt;empty()) {</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       7365 :             *strides = detail::c_strides(*shape, dt.itemsize());</span></a>
 <a name="845"><span class="lineNum">     845 </span>            :         }</a>
 <a name="846"><span class="lineNum">     846 </span>            : </a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">     107221 :         auto ndim = shape-&gt;size();</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">     107221 :         if (ndim != strides-&gt;size()) {</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">     107298 :         auto ndim = shape-&gt;size();</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">     107298 :         if (ndim != strides-&gt;size()) {</span></a>
 <a name="849"><span class="lineNum">     849 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;NumPy: shape ndim doesn't match strides ndim&quot;);</span></a>
 <a name="850"><span class="lineNum">     850 </span>            :         }</a>
-<a name="851"><span class="lineNum">     851 </span><span class="lineCov">     107221 :         auto descr = dt;</span></a>
+<a name="851"><span class="lineNum">     851 </span><span class="lineCov">     107298 :         auto descr = dt;</span></a>
 <a name="852"><span class="lineNum">     852 </span>            : </a>
-<a name="853"><span class="lineNum">     853 </span><span class="lineCov">     107221 :         int flags = 0;</span></a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineCov">     107221 :         if (base &amp;&amp; ptr) {</span></a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">     107298 :         int flags = 0;</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">     107298 :         if (base &amp;&amp; ptr) {</span></a>
 <a name="855"><span class="lineNum">     855 </span><span class="lineNoCov">          0 :             if (isinstance&lt;array&gt;(base)) {</span></a>
 <a name="856"><span class="lineNum">     856 </span>            :                 /* Copy flags from base (except ownership bit) */</a>
 <a name="857"><span class="lineNum">     857 </span><span class="lineNoCov">          0 :                 flags = reinterpret_borrow&lt;array&gt;(base).flags()</span></a>
@@ -932,21 +932,21 @@
 <a name="862"><span class="lineNum">     862 </span>            :             }</a>
 <a name="863"><span class="lineNum">     863 </span>            :         }</a>
 <a name="864"><span class="lineNum">     864 </span>            : </a>
-<a name="865"><span class="lineNum">     865 </span><span class="lineCov">     107221 :         auto &amp;api = detail::npy_api::get();</span></a>
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">     107221 :         auto tmp = reinterpret_steal&lt;object&gt;(api.PyArray_NewFromDescr_(</span></a>
+<a name="865"><span class="lineNum">     865 </span><span class="lineCov">     107298 :         auto &amp;api = detail::npy_api::get();</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">     107298 :         auto tmp = reinterpret_steal&lt;object&gt;(api.PyArray_NewFromDescr_(</span></a>
 <a name="867"><span class="lineNum">     867 </span>            :             api.PyArray_Type_,</a>
-<a name="868"><span class="lineNum">     868 </span><span class="lineCov">     107221 :             descr.release().ptr(),</span></a>
+<a name="868"><span class="lineNum">     868 </span><span class="lineCov">     107298 :             descr.release().ptr(),</span></a>
 <a name="869"><span class="lineNum">     869 </span>            :             (int) ndim,</a>
 <a name="870"><span class="lineNum">     870 </span>            :             // Use reinterpret_cast for PyPy on Windows (remove if fixed, checked on 7.3.1)</a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">     107221 :             reinterpret_cast&lt;Py_intptr_t *&gt;(shape-&gt;data()),</span></a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">     107221 :             reinterpret_cast&lt;Py_intptr_t *&gt;(strides-&gt;data()),</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">     107298 :             reinterpret_cast&lt;Py_intptr_t *&gt;(shape-&gt;data()),</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">     107298 :             reinterpret_cast&lt;Py_intptr_t *&gt;(strides-&gt;data()),</span></a>
 <a name="873"><span class="lineNum">     873 </span>            :             const_cast&lt;void *&gt;(ptr),</a>
 <a name="874"><span class="lineNum">     874 </span>            :             flags,</a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">     107221 :             nullptr));</span></a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">     107221 :         if (!tmp) {</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">     107298 :             nullptr));</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">     107298 :         if (!tmp) {</span></a>
 <a name="877"><span class="lineNum">     877 </span><span class="lineNoCov">          0 :             throw error_already_set();</span></a>
 <a name="878"><span class="lineNum">     878 </span>            :         }</a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">     107221 :         if (ptr) {</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">     107298 :         if (ptr) {</span></a>
 <a name="880"><span class="lineNum">     880 </span><span class="lineNoCov">          0 :             if (base) {</span></a>
 <a name="881"><span class="lineNum">     881 </span><span class="lineNoCov">          0 :                 api.PyArray_SetBaseObject_(tmp.ptr(), base.inc_ref().ptr());</span></a>
 <a name="882"><span class="lineNum">     882 </span>            :             } else {</a>
@@ -954,14 +954,14 @@
 <a name="884"><span class="lineNum">     884 </span><span class="lineNoCov">          0 :                     api.PyArray_NewCopy_(tmp.ptr(), -1 /* any order */));</span></a>
 <a name="885"><span class="lineNum">     885 </span>            :             }</a>
 <a name="886"><span class="lineNum">     886 </span>            :         }</a>
-<a name="887"><span class="lineNum">     887 </span><span class="lineCov">     107221 :         m_ptr = tmp.release().ptr();</span></a>
-<a name="888"><span class="lineNum">     888 </span><span class="lineCov">     107221 :     }</span></a>
+<a name="887"><span class="lineNum">     887 </span><span class="lineCov">     107298 :         m_ptr = tmp.release().ptr();</span></a>
+<a name="888"><span class="lineNum">     888 </span><span class="lineCov">     107298 :     }</span></a>
 <a name="889"><span class="lineNum">     889 </span>            : </a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">       2555 :     array(const pybind11::dtype &amp;dt,</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">       2495 :     array(const pybind11::dtype &amp;dt,</span></a>
 <a name="891"><span class="lineNum">     891 </span>            :           ShapeContainer shape,</a>
 <a name="892"><span class="lineNum">     892 </span>            :           const void *ptr = nullptr,</a>
 <a name="893"><span class="lineNum">     893 </span>            :           handle base = handle())</a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineCov">       5110 :         : array(dt, std::move(shape), {}, ptr, base) {}</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">       4990 :         : array(dt, std::move(shape), {}, ptr, base) {}</span></a>
 <a name="895"><span class="lineNum">     895 </span>            : </a>
 <a name="896"><span class="lineNum">     896 </span>            :     template &lt;typename T,</a>
 <a name="897"><span class="lineNum">     897 </span>            :               typename</a>
@@ -970,74 +970,74 @@
 <a name="900"><span class="lineNum">     900 </span>            :         : array(dt, {{count}}, ptr, base) {}</a>
 <a name="901"><span class="lineNum">     901 </span>            : </a>
 <a name="902"><span class="lineNum">     902 </span>            :     template &lt;typename T&gt;</a>
-<a name="903"><span class="lineNum">     903 </span><span class="lineCov">     104666 :     array(ShapeContainer shape, StridesContainer strides, const T *ptr, handle base = handle())</span></a>
+<a name="903"><span class="lineNum">     903 </span><span class="lineCov">     104803 :     array(ShapeContainer shape, StridesContainer strides, const T *ptr, handle base = handle())</span></a>
 <a name="904"><span class="lineNum">     904 </span>            :         : array(pybind11::dtype::of&lt;T&gt;(),</a>
 <a name="905"><span class="lineNum">     905 </span>            :                 std::move(shape),</a>
 <a name="906"><span class="lineNum">     906 </span>            :                 std::move(strides),</a>
 <a name="907"><span class="lineNum">     907 </span>            :                 reinterpret_cast&lt;const void *&gt;(ptr),</a>
-<a name="908"><span class="lineNum">     908 </span><span class="lineCov">     209332 :                 base) {}</span></a>
+<a name="908"><span class="lineNum">     908 </span><span class="lineCov">     209606 :                 base) {}</span></a>
 <a name="909"><span class="lineNum">     909 </span>            : </a>
 <a name="910"><span class="lineNum">     910 </span>            :     template &lt;typename T&gt;</a>
 <a name="911"><span class="lineNum">     911 </span>            :     array(ShapeContainer shape, const T *ptr, handle base = handle())</a>
 <a name="912"><span class="lineNum">     912 </span>            :         : array(std::move(shape), {}, ptr, base) {}</a>
 <a name="913"><span class="lineNum">     913 </span>            : </a>
 <a name="914"><span class="lineNum">     914 </span>            :     template &lt;typename T&gt;</a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineCov">       4819 :     explicit array(ssize_t count, const T *ptr, handle base = handle())</span></a>
-<a name="916"><span class="lineNum">     916 </span><span class="lineCov">       9638 :         : array({count}, {}, ptr, base) {}</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">       4870 :     explicit array(ssize_t count, const T *ptr, handle base = handle())</span></a>
+<a name="916"><span class="lineNum">     916 </span><span class="lineCov">       9740 :         : array({count}, {}, ptr, base) {}</span></a>
 <a name="917"><span class="lineNum">     917 </span>            : </a>
 <a name="918"><span class="lineNum">     918 </span>            :     explicit array(const buffer_info &amp;info, handle base = handle())</a>
 <a name="919"><span class="lineNum">     919 </span>            :         : array(pybind11::dtype(info), info.shape, info.strides, info.ptr, base) {}</a>
 <a name="920"><span class="lineNum">     920 </span>            : </a>
 <a name="921"><span class="lineNum">     921 </span>            :     /// Array descriptor (dtype)</a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">      63565 :     pybind11::dtype dtype() const {</span></a>
-<a name="923"><span class="lineNum">     923 </span><span class="lineCov">     130631 :         return reinterpret_borrow&lt;pybind11::dtype&gt;(detail::array_proxy(m_ptr)-&gt;descr);</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">      63547 :     pybind11::dtype dtype() const {</span></a>
+<a name="923"><span class="lineNum">     923 </span><span class="lineCov">     130505 :         return reinterpret_borrow&lt;pybind11::dtype&gt;(detail::array_proxy(m_ptr)-&gt;descr);</span></a>
 <a name="924"><span class="lineNum">     924 </span>            :     }</a>
 <a name="925"><span class="lineNum">     925 </span>            : </a>
 <a name="926"><span class="lineNum">     926 </span>            :     /// Total number of elements</a>
-<a name="927"><span class="lineNum">     927 </span><span class="lineCov">       1432 :     ssize_t size() const {</span></a>
-<a name="928"><span class="lineNum">     928 </span><span class="lineCov">       2864 :         return std::accumulate(shape(), shape() + ndim(), (ssize_t) 1, std::multiplies&lt;ssize_t&gt;());</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">       1443 :     ssize_t size() const {</span></a>
+<a name="928"><span class="lineNum">     928 </span><span class="lineCov">       2886 :         return std::accumulate(shape(), shape() + ndim(), (ssize_t) 1, std::multiplies&lt;ssize_t&gt;());</span></a>
 <a name="929"><span class="lineNum">     929 </span>            :     }</a>
 <a name="930"><span class="lineNum">     930 </span>            : </a>
 <a name="931"><span class="lineNum">     931 </span>            :     /// Byte size of a single element</a>
-<a name="932"><span class="lineNum">     932 </span><span class="lineCov">      14270 :     ssize_t itemsize() const { return dtype().itemsize(); }</span></a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">      13970 :     ssize_t itemsize() const { return dtype().itemsize(); }</span></a>
 <a name="933"><span class="lineNum">     933 </span>            : </a>
 <a name="934"><span class="lineNum">     934 </span>            :     /// Total number of bytes</a>
 <a name="935"><span class="lineNum">     935 </span>            :     ssize_t nbytes() const { return size() * itemsize(); }</a>
 <a name="936"><span class="lineNum">     936 </span>            : </a>
 <a name="937"><span class="lineNum">     937 </span>            :     /// Number of dimensions</a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineCov">     496516 :     ssize_t ndim() const { return detail::array_proxy(m_ptr)-&gt;nd; }</span></a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">     496676 :     ssize_t ndim() const { return detail::array_proxy(m_ptr)-&gt;nd; }</span></a>
 <a name="939"><span class="lineNum">     939 </span>            : </a>
 <a name="940"><span class="lineNum">     940 </span>            :     /// Base object</a>
 <a name="941"><span class="lineNum">     941 </span>            :     object base() const { return reinterpret_borrow&lt;object&gt;(detail::array_proxy(m_ptr)-&gt;base); }</a>
 <a name="942"><span class="lineNum">     942 </span>            : </a>
 <a name="943"><span class="lineNum">     943 </span>            :     /// Dimensions of the array</a>
-<a name="944"><span class="lineNum">     944 </span><span class="lineCov">     226236 :     const ssize_t *shape() const { return detail::array_proxy(m_ptr)-&gt;dimensions; }</span></a>
+<a name="944"><span class="lineNum">     944 </span><span class="lineCov">     226256 :     const ssize_t *shape() const { return detail::array_proxy(m_ptr)-&gt;dimensions; }</span></a>
 <a name="945"><span class="lineNum">     945 </span>            : </a>
 <a name="946"><span class="lineNum">     946 </span>            :     /// Dimension along a given axis</a>
-<a name="947"><span class="lineNum">     947 </span><span class="lineCov">     226489 :     ssize_t shape(ssize_t dim) const {</span></a>
-<a name="948"><span class="lineNum">     948 </span><span class="lineCov">     226489 :         if (dim &gt;= ndim()) {</span></a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineCov">     226468 :     ssize_t shape(ssize_t dim) const {</span></a>
+<a name="948"><span class="lineNum">     948 </span><span class="lineCov">     226468 :         if (dim &gt;= ndim()) {</span></a>
 <a name="949"><span class="lineNum">     949 </span><span class="lineNoCov">          0 :             fail_dim_check(dim, &quot;invalid axis&quot;);</span></a>
 <a name="950"><span class="lineNum">     950 </span>            :         }</a>
-<a name="951"><span class="lineNum">     951 </span><span class="lineCov">     226489 :         return shape()[dim];</span></a>
+<a name="951"><span class="lineNum">     951 </span><span class="lineCov">     226468 :         return shape()[dim];</span></a>
 <a name="952"><span class="lineNum">     952 </span>            :     }</a>
 <a name="953"><span class="lineNum">     953 </span>            : </a>
 <a name="954"><span class="lineNum">     954 </span>            :     /// Strides of the array</a>
-<a name="955"><span class="lineNum">     955 </span><span class="lineCov">     442796 :     const ssize_t *strides() const { return detail::array_proxy(m_ptr)-&gt;strides; }</span></a>
+<a name="955"><span class="lineNum">     955 </span><span class="lineCov">     442971 :     const ssize_t *strides() const { return detail::array_proxy(m_ptr)-&gt;strides; }</span></a>
 <a name="956"><span class="lineNum">     956 </span>            : </a>
 <a name="957"><span class="lineNum">     957 </span>            :     /// Stride along a given axis</a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">     434600 :     ssize_t strides(ssize_t dim) const {</span></a>
-<a name="959"><span class="lineNum">     959 </span><span class="lineCov">     434600 :         if (dim &gt;= ndim()) {</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">     434918 :     ssize_t strides(ssize_t dim) const {</span></a>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">     434918 :         if (dim &gt;= ndim()) {</span></a>
 <a name="960"><span class="lineNum">     960 </span><span class="lineNoCov">          0 :             fail_dim_check(dim, &quot;invalid axis&quot;);</span></a>
 <a name="961"><span class="lineNum">     961 </span>            :         }</a>
-<a name="962"><span class="lineNum">     962 </span><span class="lineCov">     434600 :         return strides()[dim];</span></a>
+<a name="962"><span class="lineNum">     962 </span><span class="lineCov">     434918 :         return strides()[dim];</span></a>
 <a name="963"><span class="lineNum">     963 </span>            :     }</a>
 <a name="964"><span class="lineNum">     964 </span>            : </a>
 <a name="965"><span class="lineNum">     965 </span>            :     /// Return the NumPy array flags</a>
 <a name="966"><span class="lineNum">     966 </span><span class="lineNoCov">          0 :     int flags() const { return detail::array_proxy(m_ptr)-&gt;flags; }</span></a>
 <a name="967"><span class="lineNum">     967 </span>            : </a>
 <a name="968"><span class="lineNum">     968 </span>            :     /// If set, the array is writeable (otherwise the buffer is read-only)</a>
-<a name="969"><span class="lineNum">     969 </span><span class="lineCov">     145271 :     bool writeable() const {</span></a>
-<a name="970"><span class="lineNum">     970 </span><span class="lineCov">     145271 :         return detail::check_flags(m_ptr, detail::npy_api::NPY_ARRAY_WRITEABLE_);</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">     145306 :     bool writeable() const {</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">     145306 :         return detail::check_flags(m_ptr, detail::npy_api::NPY_ARRAY_WRITEABLE_);</span></a>
 <a name="971"><span class="lineNum">     971 </span>            :     }</a>
 <a name="972"><span class="lineNum">     972 </span>            : </a>
 <a name="973"><span class="lineNum">     973 </span>            :     /// If set, the array owns the data (will be freed when the array is deleted)</a>
@@ -1048,17 +1048,17 @@
 <a name="978"><span class="lineNum">     978 </span>            :     /// Pointer to the contained data. If index is not provided, points to the</a>
 <a name="979"><span class="lineNum">     979 </span>            :     /// beginning of the buffer. May throw if the index would lead to out of bounds access.</a>
 <a name="980"><span class="lineNum">     980 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineCov">     125643 :     const void *data(Ix... index) const {</span></a>
-<a name="982"><span class="lineNum">     982 </span><span class="lineCov">     125643 :         return static_cast&lt;const void *&gt;(detail::array_proxy(m_ptr)-&gt;data + offset_at(index...));</span></a>
+<a name="981"><span class="lineNum">     981 </span><span class="lineCov">     125642 :     const void *data(Ix... index) const {</span></a>
+<a name="982"><span class="lineNum">     982 </span><span class="lineCov">     125642 :         return static_cast&lt;const void *&gt;(detail::array_proxy(m_ptr)-&gt;data + offset_at(index...));</span></a>
 <a name="983"><span class="lineNum">     983 </span>            :     }</a>
 <a name="984"><span class="lineNum">     984 </span>            : </a>
 <a name="985"><span class="lineNum">     985 </span>            :     /// Mutable pointer to the contained data. If index is not provided, points to the</a>
 <a name="986"><span class="lineNum">     986 </span>            :     /// beginning of the buffer. May throw if the index would lead to out of bounds access.</a>
 <a name="987"><span class="lineNum">     987 </span>            :     /// May throw if the array is not writeable.</a>
 <a name="988"><span class="lineNum">     988 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="989"><span class="lineNum">     989 </span><span class="lineCov">     145271 :     void *mutable_data(Ix... index) {</span></a>
-<a name="990"><span class="lineNum">     990 </span><span class="lineCov">      62881 :         check_writeable();</span></a>
-<a name="991"><span class="lineNum">     991 </span><span class="lineCov">      62881 :         return static_cast&lt;void *&gt;(detail::array_proxy(m_ptr)-&gt;data + offset_at(index...));</span></a>
+<a name="989"><span class="lineNum">     989 </span><span class="lineCov">     145306 :     void *mutable_data(Ix... index) {</span></a>
+<a name="990"><span class="lineNum">     990 </span><span class="lineCov">      62903 :         check_writeable();</span></a>
+<a name="991"><span class="lineNum">     991 </span><span class="lineCov">      62903 :         return static_cast&lt;void *&gt;(detail::array_proxy(m_ptr)-&gt;data + offset_at(index...));</span></a>
 <a name="992"><span class="lineNum">     992 </span>            :     }</a>
 <a name="993"><span class="lineNum">     993 </span>            : </a>
 <a name="994"><span class="lineNum">     994 </span>            :     /// Byte offset from beginning of the array to a given index (full or partial).</a>
@@ -1087,14 +1087,14 @@
 <a name="1017"><span class="lineNum">    1017 </span>            :      * and the caller must take care not to access invalid dimensions or dimension indices.</a>
 <a name="1018"><span class="lineNum">    1018 </span>            :      */</a>
 <a name="1019"><span class="lineNum">    1019 </span>            :     template &lt;typename T, ssize_t Dims = -1&gt;</a>
-<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">        901 :     detail::unchecked_mutable_reference&lt;T, Dims&gt; mutable_unchecked() &amp; {</span></a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">        907 :     detail::unchecked_mutable_reference&lt;T, Dims&gt; mutable_unchecked() &amp; {</span></a>
 <a name="1021"><span class="lineNum">    1021 </span><span class="lineCov">        127 :         if (Dims &gt;= 0 &amp;&amp; ndim() != Dims) {</span></a>
 <a name="1022"><span class="lineNum">    1022 </span><span class="lineCov">          3 :             throw std::domain_error(&quot;array has incorrect number of dimensions: &quot;</span></a>
 <a name="1023"><span class="lineNum">    1023 </span>            :                                     + std::to_string(ndim()) + &quot;; expected &quot;</a>
 <a name="1024"><span class="lineNum">    1024 </span>            :                                     + std::to_string(Dims));</a>
 <a name="1025"><span class="lineNum">    1025 </span>            :         }</a>
 <a name="1026"><span class="lineNum">    1026 </span>            :         return detail::unchecked_mutable_reference&lt;T, Dims&gt;(</a>
-<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        900 :             mutable_data(), shape(), strides(), ndim());</span></a>
+<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        906 :             mutable_data(), shape(), strides(), ndim());</span></a>
 <a name="1028"><span class="lineNum">    1028 </span>            :     }</a>
 <a name="1029"><span class="lineNum">    1029 </span>            : </a>
 <a name="1030"><span class="lineNum">    1030 </span>            :     /**</a>
@@ -1105,13 +1105,13 @@
 <a name="1035"><span class="lineNum">    1035 </span>            :      * access invalid dimensions or dimension indices.</a>
 <a name="1036"><span class="lineNum">    1036 </span>            :      */</a>
 <a name="1037"><span class="lineNum">    1037 </span>            :     template &lt;typename T, ssize_t Dims = -1&gt;</a>
-<a name="1038"><span class="lineNum">    1038 </span><span class="lineCov">        161 :     detail::unchecked_reference&lt;T, Dims&gt; unchecked() const &amp; {</span></a>
+<a name="1038"><span class="lineNum">    1038 </span><span class="lineCov">        162 :     detail::unchecked_reference&lt;T, Dims&gt; unchecked() const &amp; {</span></a>
 <a name="1039"><span class="lineNum">    1039 </span>            :         if (Dims &gt;= 0 &amp;&amp; ndim() != Dims) {</a>
 <a name="1040"><span class="lineNum">    1040 </span>            :             throw std::domain_error(&quot;array has incorrect number of dimensions: &quot;</a>
 <a name="1041"><span class="lineNum">    1041 </span>            :                                     + std::to_string(ndim()) + &quot;; expected &quot;</a>
 <a name="1042"><span class="lineNum">    1042 </span>            :                                     + std::to_string(Dims));</a>
 <a name="1043"><span class="lineNum">    1043 </span>            :         }</a>
-<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">        161 :         return detail::unchecked_reference&lt;T, Dims&gt;(data(), shape(), strides(), ndim());</span></a>
+<a name="1044"><span class="lineNum">    1044 </span><span class="lineCov">        162 :         return detail::unchecked_reference&lt;T, Dims&gt;(data(), shape(), strides(), ndim());</span></a>
 <a name="1045"><span class="lineNum">    1045 </span>            :     }</a>
 <a name="1046"><span class="lineNum">    1046 </span>            : </a>
 <a name="1047"><span class="lineNum">    1047 </span>            :     /// Return a new view with all of the dimensions of length 1 removed</a>
@@ -1191,11 +1191,11 @@
 <a name="1121"><span class="lineNum">    1121 </span>            :         return detail::byte_offset_unsafe(strides(), ssize_t(index)...);</a>
 <a name="1122"><span class="lineNum">    1122 </span>            :     }</a>
 <a name="1123"><span class="lineNum">    1123 </span>            : </a>
-<a name="1124"><span class="lineNum">    1124 </span><span class="lineCov">     145271 :     void check_writeable() const {</span></a>
-<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">     145271 :         if (!writeable()) {</span></a>
+<a name="1124"><span class="lineNum">    1124 </span><span class="lineCov">     145306 :     void check_writeable() const {</span></a>
+<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">     145306 :         if (!writeable()) {</span></a>
 <a name="1126"><span class="lineNum">    1126 </span><span class="lineNoCov">          0 :             throw std::domain_error(&quot;array is not writeable&quot;);</span></a>
 <a name="1127"><span class="lineNum">    1127 </span>            :         }</a>
-<a name="1128"><span class="lineNum">    1128 </span><span class="lineCov">     145271 :     }</span></a>
+<a name="1128"><span class="lineNum">    1128 </span><span class="lineCov">     145306 :     }</span></a>
 <a name="1129"><span class="lineNum">    1129 </span>            : </a>
 <a name="1130"><span class="lineNum">    1130 </span>            :     template &lt;typename... Ix&gt;</a>
 <a name="1131"><span class="lineNum">    1131 </span>            :     void check_dimensions(Ix... index) const {</a>
@@ -1226,25 +1226,25 @@
 <a name="1156"><span class="lineNum">    1156 </span>            : };</a>
 <a name="1157"><span class="lineNum">    1157 </span>            : </a>
 <a name="1158"><span class="lineNum">    1158 </span>            : template &lt;typename T, int ExtraFlags = array::forcecast&gt;</a>
-<a name="1159"><span class="lineNum">    1159 </span><span class="lineCov">     144777 : class array_t : public array {</span></a>
+<a name="1159"><span class="lineNum">    1159 </span><span class="lineCov">     144807 : class array_t : public array {</span></a>
 <a name="1160"><span class="lineNum">    1160 </span>            : private:</a>
 <a name="1161"><span class="lineNum">    1161 </span>            :     struct private_ctor {};</a>
 <a name="1162"><span class="lineNum">    1162 </span>            :     // Delegating constructor needed when both moving and accessing in the same constructor</a>
-<a name="1163"><span class="lineNum">    1163 </span><span class="lineCov">      99847 :     array_t(private_ctor,</span></a>
+<a name="1163"><span class="lineNum">    1163 </span><span class="lineCov">      99933 :     array_t(private_ctor,</span></a>
 <a name="1164"><span class="lineNum">    1164 </span>            :             ShapeContainer &amp;&amp;shape,</a>
 <a name="1165"><span class="lineNum">    1165 </span>            :             StridesContainer &amp;&amp;strides,</a>
 <a name="1166"><span class="lineNum">    1166 </span>            :             const T *ptr,</a>
 <a name="1167"><span class="lineNum">    1167 </span>            :             handle base)</a>
-<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">     199694 :         : array(std::move(shape), std::move(strides), ptr, base) {}</span></a>
+<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">     199866 :         : array(std::move(shape), std::move(strides), ptr, base) {}</span></a>
 <a name="1169"><span class="lineNum">    1169 </span>            : </a>
 <a name="1170"><span class="lineNum">    1170 </span>            : public:</a>
 <a name="1171"><span class="lineNum">    1171 </span>            :     static_assert(!detail::array_info&lt;T&gt;::is_array, &quot;Array types cannot be used with array_t&quot;);</a>
 <a name="1172"><span class="lineNum">    1172 </span>            : </a>
 <a name="1173"><span class="lineNum">    1173 </span>            :     using value_type = T;</a>
 <a name="1174"><span class="lineNum">    1174 </span>            : </a>
-<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">       4819 :     array_t() : array(0, static_cast&lt;const T *&gt;(nullptr)) {}</span></a>
+<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">       4870 :     array_t() : array(0, static_cast&lt;const T *&gt;(nullptr)) {}</span></a>
 <a name="1176"><span class="lineNum">    1176 </span>            :     array_t(handle h, borrowed_t) : array(h, borrowed_t{}) {}</a>
-<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       8136 :     array_t(handle h, stolen_t) : array(h, stolen_t{}) {}</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       8083 :     array_t(handle h, stolen_t) : array(h, stolen_t{}) {}</span></a>
 <a name="1178"><span class="lineNum">    1178 </span>            : </a>
 <a name="1179"><span class="lineNum">    1179 </span>            :     PYBIND11_DEPRECATED(&quot;Use array_t&lt;T&gt;::ensure() instead&quot;)</a>
 <a name="1180"><span class="lineNum">    1180 </span>            :     array_t(handle h, bool is_borrowed) : array(raw_array_t(h.ptr()), stolen_t{}) {</a>
@@ -1257,11 +1257,11 @@
 <a name="1187"><span class="lineNum">    1187 </span>            :     }</a>
 <a name="1188"><span class="lineNum">    1188 </span>            : </a>
 <a name="1189"><span class="lineNum">    1189 </span>            :     // NOLINTNEXTLINE(google-explicit-constructor)</a>
-<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">      23674 :     array_t(const object &amp;o) : array(raw_array_t(o.ptr()), stolen_t{}) {</span></a>
-<a name="1191"><span class="lineNum">    1191 </span><span class="lineCov">      23674 :         if (!m_ptr) {</span></a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">      23616 :     array_t(const object &amp;o) : array(raw_array_t(o.ptr()), stolen_t{}) {</span></a>
+<a name="1191"><span class="lineNum">    1191 </span><span class="lineCov">      23616 :         if (!m_ptr) {</span></a>
 <a name="1192"><span class="lineNum">    1192 </span><span class="lineNoCov">          0 :             throw error_already_set();</span></a>
 <a name="1193"><span class="lineNum">    1193 </span>            :         }</a>
-<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">      23674 :     }</span></a>
+<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">      23616 :     }</span></a>
 <a name="1195"><span class="lineNum">    1195 </span>            : </a>
 <a name="1196"><span class="lineNum">    1196 </span>            :     explicit array_t(const buffer_info &amp;info, handle base = handle()) : array(info, base) {}</a>
 <a name="1197"><span class="lineNum">    1197 </span>            : </a>
@@ -1271,18 +1271,18 @@
 <a name="1201"><span class="lineNum">    1201 </span>            :             handle base = handle())</a>
 <a name="1202"><span class="lineNum">    1202 </span>            :         : array(std::move(shape), std::move(strides), ptr, base) {}</a>
 <a name="1203"><span class="lineNum">    1203 </span>            : </a>
-<a name="1204"><span class="lineNum">    1204 </span><span class="lineCov">      99847 :     explicit array_t(ShapeContainer shape, const T *ptr = nullptr, handle base = handle())</span></a>
+<a name="1204"><span class="lineNum">    1204 </span><span class="lineCov">      99933 :     explicit array_t(ShapeContainer shape, const T *ptr = nullptr, handle base = handle())</span></a>
 <a name="1205"><span class="lineNum">    1205 </span>            :         : array_t(private_ctor{},</a>
 <a name="1206"><span class="lineNum">    1206 </span>            :                   std::move(shape),</a>
 <a name="1207"><span class="lineNum">    1207 </span><span class="lineNoCov">          0 :                   (ExtraFlags &amp; f_style) != 0 ? detail::f_strides(*shape, itemsize())</span></a>
-<a name="1208"><span class="lineNum">    1208 </span><span class="lineCov">      99847 :                                               : detail::c_strides(*shape, itemsize()),</span></a>
+<a name="1208"><span class="lineNum">    1208 </span><span class="lineCov">      99933 :                                               : detail::c_strides(*shape, itemsize()),</span></a>
 <a name="1209"><span class="lineNum">    1209 </span>            :                   ptr,</a>
-<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">     199694 :                   base) {}</span></a>
+<a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">     199866 :                   base) {}</span></a>
 <a name="1211"><span class="lineNum">    1211 </span>            : </a>
 <a name="1212"><span class="lineNum">    1212 </span>            :     explicit array_t(ssize_t count, const T *ptr = nullptr, handle base = handle())</a>
 <a name="1213"><span class="lineNum">    1213 </span>            :         : array({count}, {}, ptr, base) {}</a>
 <a name="1214"><span class="lineNum">    1214 </span>            : </a>
-<a name="1215"><span class="lineNum">    1215 </span><span class="lineCov">      99847 :     constexpr ssize_t itemsize() const { return sizeof(T); }</span></a>
+<a name="1215"><span class="lineNum">    1215 </span><span class="lineCov">      99933 :     constexpr ssize_t itemsize() const { return sizeof(T); }</span></a>
 <a name="1216"><span class="lineNum">    1216 </span>            : </a>
 <a name="1217"><span class="lineNum">    1217 </span>            :     template &lt;typename... Ix&gt;</a>
 <a name="1218"><span class="lineNum">    1218 </span>            :     ssize_t index_at(Ix... index) const {</a>
@@ -1290,13 +1290,13 @@
 <a name="1220"><span class="lineNum">    1220 </span>            :     }</a>
 <a name="1221"><span class="lineNum">    1221 </span>            : </a>
 <a name="1222"><span class="lineNum">    1222 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="1223"><span class="lineNum">    1223 </span><span class="lineCov">       4548 :     const T *data(Ix... index) const {</span></a>
-<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">       2587 :         return static_cast&lt;const T *&gt;(array::data(index...));</span></a>
+<a name="1223"><span class="lineNum">    1223 </span><span class="lineCov">       4458 :     const T *data(Ix... index) const {</span></a>
+<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">       2527 :         return static_cast&lt;const T *&gt;(array::data(index...));</span></a>
 <a name="1225"><span class="lineNum">    1225 </span>            :     }</a>
 <a name="1226"><span class="lineNum">    1226 </span>            : </a>
 <a name="1227"><span class="lineNum">    1227 </span>            :     template &lt;typename... Ix&gt;</a>
-<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">      84977 :     T *mutable_data(Ix... index) {</span></a>
-<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">      84977 :         return static_cast&lt;T *&gt;(array::mutable_data(index...));</span></a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">      84930 :     T *mutable_data(Ix... index) {</span></a>
+<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">      84930 :         return static_cast&lt;T *&gt;(array::mutable_data(index...));</span></a>
 <a name="1230"><span class="lineNum">    1230 </span>            :     }</a>
 <a name="1231"><span class="lineNum">    1231 </span>            : </a>
 <a name="1232"><span class="lineNum">    1232 </span>            :     // Reference to element at a given index</a>
@@ -1326,8 +1326,8 @@
 <a name="1256"><span class="lineNum">    1256 </span>            :      * and the caller must take care not to access invalid dimensions or dimension indices.</a>
 <a name="1257"><span class="lineNum">    1257 </span>            :      */</a>
 <a name="1258"><span class="lineNum">    1258 </span>            :     template &lt;ssize_t Dims = -1&gt;</a>
-<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">        816 :     detail::unchecked_mutable_reference&lt;T, Dims&gt; mutable_unchecked() &amp; {</span></a>
-<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">        319 :         return array::mutable_unchecked&lt;T, Dims&gt;();</span></a>
+<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">        822 :     detail::unchecked_mutable_reference&lt;T, Dims&gt; mutable_unchecked() &amp; {</span></a>
+<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">        321 :         return array::mutable_unchecked&lt;T, Dims&gt;();</span></a>
 <a name="1261"><span class="lineNum">    1261 </span>            :     }</a>
 <a name="1262"><span class="lineNum">    1262 </span>            : </a>
 <a name="1263"><span class="lineNum">    1263 </span>            :     /**</a>
@@ -1338,37 +1338,37 @@
 <a name="1268"><span class="lineNum">    1268 </span>            :      * access invalid dimensions or dimension indices.</a>
 <a name="1269"><span class="lineNum">    1269 </span>            :      */</a>
 <a name="1270"><span class="lineNum">    1270 </span>            :     template &lt;ssize_t Dims = -1&gt;</a>
-<a name="1271"><span class="lineNum">    1271 </span><span class="lineCov">        161 :     detail::unchecked_reference&lt;T, Dims&gt; unchecked() const &amp; {</span></a>
-<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">        161 :         return array::unchecked&lt;T, Dims&gt;();</span></a>
+<a name="1271"><span class="lineNum">    1271 </span><span class="lineCov">        162 :     detail::unchecked_reference&lt;T, Dims&gt; unchecked() const &amp; {</span></a>
+<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">        162 :         return array::unchecked&lt;T, Dims&gt;();</span></a>
 <a name="1273"><span class="lineNum">    1273 </span>            :     }</a>
 <a name="1274"><span class="lineNum">    1274 </span>            : </a>
 <a name="1275"><span class="lineNum">    1275 </span>            :     /// Ensure that the argument is a NumPy array of the correct dtype (and if not, try to convert</a>
 <a name="1276"><span class="lineNum">    1276 </span>            :     /// it).  In case of an error, nullptr is returned and the Python error is cleared.</a>
-<a name="1277"><span class="lineNum">    1277 </span><span class="lineCov">       3588 :     static array_t ensure(handle h) {</span></a>
-<a name="1278"><span class="lineNum">    1278 </span><span class="lineCov">       3588 :         auto result = reinterpret_steal&lt;array_t&gt;(raw_array_t(h.ptr()));</span></a>
-<a name="1279"><span class="lineNum">    1279 </span><span class="lineCov">       3588 :         if (!result) {</span></a>
+<a name="1277"><span class="lineNum">    1277 </span><span class="lineCov">       3625 :     static array_t ensure(handle h) {</span></a>
+<a name="1278"><span class="lineNum">    1278 </span><span class="lineCov">       3625 :         auto result = reinterpret_steal&lt;array_t&gt;(raw_array_t(h.ptr()));</span></a>
+<a name="1279"><span class="lineNum">    1279 </span><span class="lineCov">       3625 :         if (!result) {</span></a>
 <a name="1280"><span class="lineNum">    1280 </span><span class="lineNoCov">          0 :             PyErr_Clear();</span></a>
 <a name="1281"><span class="lineNum">    1281 </span>            :         }</a>
-<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">       3588 :         return result;</span></a>
+<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">       3625 :         return result;</span></a>
 <a name="1283"><span class="lineNum">    1283 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="1284"><span class="lineNum">    1284 </span>            : </a>
-<a name="1285"><span class="lineNum">    1285 </span><span class="lineCov">     153825 :     static bool check_(handle h) {</span></a>
-<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">     153825 :         const auto &amp;api = detail::npy_api::get();</span></a>
-<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">     307650 :         return api.PyArray_Check_(h.ptr())</span></a>
-<a name="1288"><span class="lineNum">    1288 </span><span class="lineCov">     307650 :                &amp;&amp; api.PyArray_EquivTypes_(detail::array_proxy(h.ptr())-&gt;descr,</span></a>
-<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">     307650 :                                           dtype::of&lt;T&gt;().ptr())</span></a>
-<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">     307650 :                &amp;&amp; detail::check_flags(h.ptr(), ExtraFlags &amp; (array::c_style | array::f_style));</span></a>
+<a name="1285"><span class="lineNum">    1285 </span><span class="lineCov">     153964 :     static bool check_(handle h) {</span></a>
+<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">     153964 :         const auto &amp;api = detail::npy_api::get();</span></a>
+<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">     307928 :         return api.PyArray_Check_(h.ptr())</span></a>
+<a name="1288"><span class="lineNum">    1288 </span><span class="lineCov">     307928 :                &amp;&amp; api.PyArray_EquivTypes_(detail::array_proxy(h.ptr())-&gt;descr,</span></a>
+<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">     307928 :                                           dtype::of&lt;T&gt;().ptr())</span></a>
+<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">     307928 :                &amp;&amp; detail::check_flags(h.ptr(), ExtraFlags &amp; (array::c_style | array::f_style));</span></a>
 <a name="1291"><span class="lineNum">    1291 </span>            :     }</a>
 <a name="1292"><span class="lineNum">    1292 </span>            : </a>
 <a name="1293"><span class="lineNum">    1293 </span>            : protected:</a>
 <a name="1294"><span class="lineNum">    1294 </span>            :     /// Create array from any object -- always returns a new reference</a>
-<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">      27262 :     static PyObject *raw_array_t(PyObject *ptr) {</span></a>
-<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">      27262 :         if (ptr == nullptr) {</span></a>
+<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">      27241 :     static PyObject *raw_array_t(PyObject *ptr) {</span></a>
+<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">      27241 :         if (ptr == nullptr) {</span></a>
 <a name="1297"><span class="lineNum">    1297 </span><span class="lineNoCov">          0 :             set_error(PyExc_ValueError, &quot;cannot create a pybind11::array_t from a nullptr&quot;);</span></a>
 <a name="1298"><span class="lineNum">    1298 </span><span class="lineNoCov">          0 :             return nullptr;</span></a>
 <a name="1299"><span class="lineNum">    1299 </span>            :         }</a>
-<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">      27262 :         return detail::npy_api::get().PyArray_FromAny_(ptr,</span></a>
-<a name="1301"><span class="lineNum">    1301 </span><span class="lineCov">      54524 :                                                        dtype::of&lt;T&gt;().release().ptr(),</span></a>
+<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">      27241 :         return detail::npy_api::get().PyArray_FromAny_(ptr,</span></a>
+<a name="1301"><span class="lineNum">    1301 </span><span class="lineCov">      54482 :                                                        dtype::of&lt;T&gt;().release().ptr(),</span></a>
 <a name="1302"><span class="lineNum">    1302 </span>            :                                                        0,</a>
 <a name="1303"><span class="lineNum">    1303 </span>            :                                                        0,</a>
 <a name="1304"><span class="lineNum">    1304 </span>            :                                                        detail::npy_api::NPY_ARRAY_ENSUREARRAY_</a>
@@ -1412,21 +1412,21 @@
 <a name="1342"><span class="lineNum">    1342 </span>            : </a>
 <a name="1343"><span class="lineNum">    1343 </span>            : PYBIND11_NAMESPACE_BEGIN(detail)</a>
 <a name="1344"><span class="lineNum">    1344 </span>            : template &lt;typename T, int ExtraFlags&gt;</a>
-<a name="1345"><span class="lineNum">    1345 </span><span class="lineCov">       3422 : struct pyobject_caster&lt;array_t&lt;T, ExtraFlags&gt;&gt; {</span></a>
+<a name="1345"><span class="lineNum">    1345 </span><span class="lineCov">       3456 : struct pyobject_caster&lt;array_t&lt;T, ExtraFlags&gt;&gt; {</span></a>
 <a name="1346"><span class="lineNum">    1346 </span>            :     using type = array_t&lt;T, ExtraFlags&gt;;</a>
 <a name="1347"><span class="lineNum">    1347 </span>            : </a>
-<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">       4819 :     bool load(handle src, bool convert) {</span></a>
-<a name="1349"><span class="lineNum">    1349 </span><span class="lineCov">       4819 :         if (!convert &amp;&amp; !type::check_(src)) {</span></a>
+<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">       4870 :     bool load(handle src, bool convert) {</span></a>
+<a name="1349"><span class="lineNum">    1349 </span><span class="lineCov">       4870 :         if (!convert &amp;&amp; !type::check_(src)) {</span></a>
 <a name="1350"><span class="lineNum">    1350 </span>            :             return false;</a>
 <a name="1351"><span class="lineNum">    1351 </span>            :         }</a>
-<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">       3588 :         value = type::ensure(src);</span></a>
-<a name="1353"><span class="lineNum">    1353 </span><span class="lineCov">       3588 :         return static_cast&lt;bool&gt;(value);</span></a>
+<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">       3625 :         value = type::ensure(src);</span></a>
+<a name="1353"><span class="lineNum">    1353 </span><span class="lineCov">       3625 :         return static_cast&lt;bool&gt;(value);</span></a>
 <a name="1354"><span class="lineNum">    1354 </span>            :     }</a>
 <a name="1355"><span class="lineNum">    1355 </span>            : </a>
 <a name="1356"><span class="lineNum">    1356 </span><span class="lineCov">        126 :     static handle cast(const handle &amp;src, return_value_policy /* policy */, handle /* parent */) {</span></a>
 <a name="1357"><span class="lineNum">    1357 </span><span class="lineCov">        126 :         return src.inc_ref();</span></a>
 <a name="1358"><span class="lineNum">    1358 </span>            :     }</a>
-<a name="1359"><span class="lineNum">    1359 </span><span class="lineCov">        480 :     PYBIND11_TYPE_CASTER(type, handle_type_name&lt;type&gt;::name);</span></a>
+<a name="1359"><span class="lineNum">    1359 </span><span class="lineCov">        483 :     PYBIND11_TYPE_CASTER(type, handle_type_name&lt;type&gt;::name);</span></a>
 <a name="1360"><span class="lineNum">    1360 </span>            : };</a>
 <a name="1361"><span class="lineNum">    1361 </span>            : </a>
 <a name="1362"><span class="lineNum">    1362 </span>            : template &lt;typename T&gt;</a>
@@ -1494,7 +1494,7 @@
 <a name="1424"><span class="lineNum">    1424 </span>            : public:</a>
 <a name="1425"><span class="lineNum">    1425 </span>            :     static constexpr int value = values[detail::is_fmt_numeric&lt;T&gt;::index];</a>
 <a name="1426"><span class="lineNum">    1426 </span>            : </a>
-<a name="1427"><span class="lineNum">    1427 </span><span class="lineCov">     293000 :     static pybind11::dtype dtype() { return pybind11::dtype(/*typenum*/ value); }</span></a>
+<a name="1427"><span class="lineNum">    1427 </span><span class="lineCov">     293105 :     static pybind11::dtype dtype() { return pybind11::dtype(/*typenum*/ value); }</span></a>
 <a name="1428"><span class="lineNum">    1428 </span>            : };</a>
 <a name="1429"><span class="lineNum">    1429 </span>            : </a>
 <a name="1430"><span class="lineNum">    1430 </span>            : template &lt;typename T&gt;</a>

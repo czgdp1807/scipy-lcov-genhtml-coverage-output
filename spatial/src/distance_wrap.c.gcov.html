@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - spatial/src/distance_wrap.c</title>
+  <title>LCOV - lcov.info - spatial/src/distance_wrap.c</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">155</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -103,7 +103,7 @@
 <a name="33"><span class="lineNum">      33 </span>            :  */</a>
 <a name="34"><span class="lineNum">      34 </span>            : </a>
 <a name="35"><span class="lineNum">      35 </span>            : #if !defined(__clang__) &amp;&amp; defined(__GNUC__) &amp;&amp; defined(__GNUC_MINOR__)</a>
-<a name="36"><span class="lineNum">      36 </span>            : #if __GNUC__ &gt;= 5 || (__GNUC__ == 4 &amp;&amp; __GNUC_MINOR__ &gt;= 4)</a>
+<a name="36"><span class="lineNum">      36 </span>            : #if !defined(__APPLE__) &amp;&amp; (__GNUC__ &gt;= 5 || (__GNUC__ == 4 &amp;&amp; __GNUC_MINOR__ &gt;= 4))</a>
 <a name="37"><span class="lineNum">      37 </span>            : /* enable auto-vectorizer */</a>
 <a name="38"><span class="lineNum">      38 </span>            : #pragma GCC optimize(&quot;tree-vectorize&quot;)</a>
 <a name="39"><span class="lineNum">      39 </span>            : /* float associativity required to vectorize reductions */</a>
@@ -912,13 +912,13 @@
 <a name="842"><span class="lineNum">     842 </span>            : };</a>
 <a name="843"><span class="lineNum">     843 </span>            : </a>
 <a name="844"><span class="lineNum">     844 </span>            : PyMODINIT_FUNC</a>
-<a name="845"><span class="lineNum">     845 </span><span class="lineCov">          1 : PyInit__distance_wrap(void)</span></a>
+<a name="845"><span class="lineNum">     845 </span><span class="lineCov">          3 : PyInit__distance_wrap(void)</span></a>
 <a name="846"><span class="lineNum">     846 </span>            : {</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          1 :     PyObject *module;</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          3 :     PyObject *module;</span></a>
 <a name="848"><span class="lineNum">     848 </span>            : </a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">          1 :     import_array();</span></a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">          1 :     module = PyModule_Create(&amp;moduledef);</span></a>
-<a name="851"><span class="lineNum">     851 </span><span class="lineCov">          1 :     if (module == NULL) {</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">          3 :     import_array();</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">          3 :     module = PyModule_Create(&amp;moduledef);</span></a>
+<a name="851"><span class="lineNum">     851 </span><span class="lineCov">          3 :     if (module == NULL) {</span></a>
 <a name="852"><span class="lineNum">     852 </span>            :         return module;</a>
 <a name="853"><span class="lineNum">     853 </span>            :     }</a>
 <a name="854"><span class="lineNum">     854 </span>            : </a>

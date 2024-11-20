@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/ryu/d2s.c</title>
+  <title>LCOV - lcov.info - io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/ryu/d2s.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">175</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -125,25 +125,25 @@
 <a name="55"><span class="lineNum">      55 </span>            : #define DOUBLE_EXPONENT_BITS 11</a>
 <a name="56"><span class="lineNum">      56 </span>            : #define DOUBLE_BIAS 1023</a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1170 : static inline uint32_t decimalLength17(const uint64_t v) {</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       1171 : static inline uint32_t decimalLength17(const uint64_t v) {</span></a>
 <a name="59"><span class="lineNum">      59 </span>            :   // This is slightly faster than a loop.</a>
 <a name="60"><span class="lineNum">      60 </span>            :   // The average output length is 16.38 digits, so we check high-to-low.</a>
 <a name="61"><span class="lineNum">      61 </span>            :   // Function precondition: v is not an 18, 19, or 20-digit number.</a>
 <a name="62"><span class="lineNum">      62 </span>            :   // (17 digits are sufficient for round-tripping.)</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       1170 :   assert(v &lt; 100000000000000000L);</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1170 :   if (v &gt;= 10000000000000000L) { return 17; }</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        825 :   if (v &gt;= 1000000000000000L) { return 16; }</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        219 :   if (v &gt;= 100000000000000L) { return 15; }</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        154 :   if (v &gt;= 10000000000000L) { return 14; }</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        151 :   if (v &gt;= 1000000000000L) { return 13; }</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        150 :   if (v &gt;= 100000000000L) { return 12; }</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        150 :   if (v &gt;= 10000000000L) { return 11; }</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        150 :   if (v &gt;= 1000000000L) { return 10; }</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        150 :   if (v &gt;= 100000000L) { return 9; }</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        150 :   if (v &gt;= 10000000L) { return 8; }</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        150 :   if (v &gt;= 1000000L) { return 7; }</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        150 :   if (v &gt;= 100000L) { return 6; }</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        150 :   if (v &gt;= 10000L) { return 5; }</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       1171 :   assert(v &lt; 100000000000000000L);</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1171 :   if (v &gt;= 10000000000000000L) { return 17; }</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        826 :   if (v &gt;= 1000000000000000L) { return 16; }</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">        220 :   if (v &gt;= 100000000000000L) { return 15; }</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        155 :   if (v &gt;= 10000000000000L) { return 14; }</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        152 :   if (v &gt;= 1000000000000L) { return 13; }</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        151 :   if (v &gt;= 100000000000L) { return 12; }</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        151 :   if (v &gt;= 10000000000L) { return 11; }</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        151 :   if (v &gt;= 1000000000L) { return 10; }</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        151 :   if (v &gt;= 100000000L) { return 9; }</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        151 :   if (v &gt;= 10000000L) { return 8; }</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        151 :   if (v &gt;= 1000000L) { return 7; }</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        151 :   if (v &gt;= 100000L) { return 6; }</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        151 :   if (v &gt;= 10000L) { return 5; }</span></a>
 <a name="77"><span class="lineNum">      77 </span><span class="lineCov">        150 :   if (v &gt;= 1000L) { return 4; }</span></a>
 <a name="78"><span class="lineNum">      78 </span><span class="lineCov">        130 :   if (v &gt;= 100L) { return 3; }</span></a>
 <a name="79"><span class="lineNum">      79 </span><span class="lineCov">        120 :   if (v &gt;= 10L) { return 2; }</span></a>
@@ -158,38 +158,38 @@
 <a name="88"><span class="lineNum">      88 </span>            :   int32_t exponent;</a>
 <a name="89"><span class="lineNum">      89 </span>            : } floating_decimal_64;</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1078 : static inline floating_decimal_64 d2d(const uint64_t ieeeMantissa, const uint32_t ieeeExponent) {</span></a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       1078 :   int32_t e2;</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       1078 :   uint64_t m2;</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       1078 :   if (ieeeExponent == 0) {</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1079 : static inline floating_decimal_64 d2d(const uint64_t ieeeMantissa, const uint32_t ieeeExponent) {</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       1079 :   int32_t e2;</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       1079 :   uint64_t m2;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       1079 :   if (ieeeExponent == 0) {</span></a>
 <a name="95"><span class="lineNum">      95 </span>            :     // We subtract 2 so that the bounds computation has 2 additional bits.</a>
 <a name="96"><span class="lineNum">      96 </span>            :     e2 = 1 - DOUBLE_BIAS - DOUBLE_MANTISSA_BITS - 2;</a>
 <a name="97"><span class="lineNum">      97 </span>            :     m2 = ieeeMantissa;</a>
 <a name="98"><span class="lineNum">      98 </span>            :   } else {</a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       1078 :     e2 = (int32_t) ieeeExponent - DOUBLE_BIAS - DOUBLE_MANTISSA_BITS - 2;</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       1078 :     m2 = (1ull &lt;&lt; DOUBLE_MANTISSA_BITS) | ieeeMantissa;</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       1079 :     e2 = (int32_t) ieeeExponent - DOUBLE_BIAS - DOUBLE_MANTISSA_BITS - 2;</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       1079 :     m2 = (1ull &lt;&lt; DOUBLE_MANTISSA_BITS) | ieeeMantissa;</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :   }</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       1078 :   const bool even = (m2 &amp; 1) == 0;</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1078 :   const bool acceptBounds = even;</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       1079 :   const bool even = (m2 &amp; 1) == 0;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1079 :   const bool acceptBounds = even;</span></a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
 <a name="105"><span class="lineNum">     105 </span>            : #ifdef RYU_DEBUG</a>
 <a name="106"><span class="lineNum">     106 </span>            :   printf(&quot;-&gt; %&quot; PRIu64 &quot; * 2^%d\n&quot;, m2, e2 + 2);</a>
 <a name="107"><span class="lineNum">     107 </span>            : #endif</a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
 <a name="109"><span class="lineNum">     109 </span>            :   // Step 2: Determine the interval of valid decimal representations.</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       1078 :   const uint64_t mv = 4 * m2;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       1079 :   const uint64_t mv = 4 * m2;</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :   // Implicit bool -&gt; int conversion. True is 1, false is 0.</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">       1078 :   const uint32_t mmShift = ieeeMantissa != 0 || ieeeExponent &lt;= 1;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">       1079 :   const uint32_t mmShift = ieeeMantissa != 0 || ieeeExponent &lt;= 1;</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :   // We would compute mp and mm like this:</a>
 <a name="114"><span class="lineNum">     114 </span>            :   // uint64_t mp = 4 * m2 + 2;</a>
 <a name="115"><span class="lineNum">     115 </span>            :   // uint64_t mm = mv - 1 - mmShift;</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            :   // Step 3: Convert to a decimal power base using 128-bit arithmetic.</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1078 :   uint64_t vr, vp, vm;</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       1078 :   int32_t e10;</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       1078 :   bool vmIsTrailingZeros = false;</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1078 :   bool vrIsTrailingZeros = false;</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1078 :   if (e2 &gt;= 0) {</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1079 :   uint64_t vr, vp, vm;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       1079 :   int32_t e10;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       1079 :   bool vmIsTrailingZeros = false;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       1079 :   bool vrIsTrailingZeros = false;</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1079 :   if (e2 &gt;= 0) {</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :     // I tried special-casing q == 0, but there was no effect on performance.</a>
 <a name="124"><span class="lineNum">     124 </span>            :     // This expression is slightly faster than max(0, log10Pow2(e2) - 1).</a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :     const uint32_t q = log10Pow2(e2) - (e2 &gt; 3);</span></a>
@@ -226,24 +226,24 @@
 <a name="156"><span class="lineNum">     156 </span>            :     }</a>
 <a name="157"><span class="lineNum">     157 </span>            :   } else {</a>
 <a name="158"><span class="lineNum">     158 </span>            :     // This expression is slightly faster than max(0, log10Pow5(-e2) - 1).</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1078 :     const uint32_t q = log10Pow5(-e2) - (-e2 &gt; 1);</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1078 :     e10 = (int32_t) q + e2;</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1078 :     const int32_t i = -e2 - (int32_t) q;</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       1078 :     const int32_t k = pow5bits(i) - DOUBLE_POW5_BITCOUNT;</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1078 :     const int32_t j = (int32_t) q - k;</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1079 :     const uint32_t q = log10Pow5(-e2) - (-e2 &gt; 1);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       1079 :     e10 = (int32_t) q + e2;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1079 :     const int32_t i = -e2 - (int32_t) q;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       1079 :     const int32_t k = pow5bits(i) - DOUBLE_POW5_BITCOUNT;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       1079 :     const int32_t j = (int32_t) q - k;</span></a>
 <a name="164"><span class="lineNum">     164 </span>            : #if defined(RYU_OPTIMIZE_SIZE)</a>
 <a name="165"><span class="lineNum">     165 </span>            :     uint64_t pow5[2];</a>
 <a name="166"><span class="lineNum">     166 </span>            :     double_computePow5(i, pow5);</a>
 <a name="167"><span class="lineNum">     167 </span>            :     vr = mulShiftAll64(m2, pow5, j, &amp;vp, &amp;vm, mmShift);</a>
 <a name="168"><span class="lineNum">     168 </span>            : #else</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1078 :     vr = mulShiftAll64(m2, DOUBLE_POW5_SPLIT[i], j, &amp;vp, &amp;vm, mmShift);</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1079 :     vr = mulShiftAll64(m2, DOUBLE_POW5_SPLIT[i], j, &amp;vp, &amp;vm, mmShift);</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : #endif</a>
 <a name="171"><span class="lineNum">     171 </span>            : #ifdef RYU_DEBUG</a>
 <a name="172"><span class="lineNum">     172 </span>            :     printf(&quot;%&quot; PRIu64 &quot; * 5^%d / 10^%u\n&quot;, mv, -e2, q);</a>
 <a name="173"><span class="lineNum">     173 </span>            :     printf(&quot;%u %d %d %d\n&quot;, q, i, k, j);</a>
 <a name="174"><span class="lineNum">     174 </span>            :     printf(&quot;V+=%&quot; PRIu64 &quot;\nV =%&quot; PRIu64 &quot;\nV-=%&quot; PRIu64 &quot;\n&quot;, vp, vr, vm);</a>
 <a name="175"><span class="lineNum">     175 </span>            : #endif</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1078 :     if (q &lt;= 1) {</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">       1079 :     if (q &lt;= 1) {</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :       // {vr,vp,vm} is trailing zeros if {mv,mp,mm} has at least q trailing 0 bits.</a>
 <a name="178"><span class="lineNum">     178 </span>            :       // mv = 4 * m2, so it always has at least two trailing 0 bits.</a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :       vrIsTrailingZeros = true;</span></a>
@@ -254,12 +254,12 @@
 <a name="184"><span class="lineNum">     184 </span>            :         // mp = mv + 2, so it always has at least one trailing 0 bit.</a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :         --vp;</span></a>
 <a name="186"><span class="lineNum">     186 </span>            :       }</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       1078 :     } else if (q &lt; 63) { // TODO(ulfjack): Use a tighter bound here.</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       1079 :     } else if (q &lt; 63) { // TODO(ulfjack): Use a tighter bound here.</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :       // We want to know if the full product has at least q trailing zeros.</a>
 <a name="189"><span class="lineNum">     189 </span>            :       // We need to compute min(p2(mv), p5(mv) - e2) &gt;= q</a>
 <a name="190"><span class="lineNum">     190 </span>            :       // &lt;=&gt; p2(mv) &gt;= q &amp;&amp; p5(mv) - e2 &gt;= q</a>
 <a name="191"><span class="lineNum">     191 </span>            :       // &lt;=&gt; p2(mv) &gt;= q (because -e2 &gt;= q)</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       1078 :       vrIsTrailingZeros = multipleOfPowerOf2(mv, q);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       1079 :       vrIsTrailingZeros = multipleOfPowerOf2(mv, q);</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : #ifdef RYU_DEBUG</a>
 <a name="194"><span class="lineNum">     194 </span>            :       printf(&quot;vr is trailing zeros=%s\n&quot;, vrIsTrailingZeros ? &quot;true&quot; : &quot;false&quot;);</a>
 <a name="195"><span class="lineNum">     195 </span>            : #endif</a>
@@ -273,11 +273,11 @@
 <a name="203"><span class="lineNum">     203 </span>            : #endif</a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
 <a name="205"><span class="lineNum">     205 </span>            :   // Step 4: Find the shortest decimal representation in the interval of valid representations.</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">       1078 :   int32_t removed = 0;</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       1078 :   uint8_t lastRemovedDigit = 0;</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       1078 :   uint64_t output;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">       1079 :   int32_t removed = 0;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       1079 :   uint8_t lastRemovedDigit = 0;</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">       1079 :   uint64_t output;</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :   // On average, we remove ~2 digits.</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       1078 :   if (vmIsTrailingZeros || vrIsTrailingZeros) {</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">       1079 :   if (vmIsTrailingZeros || vrIsTrailingZeros) {</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :     // General case, which happens rarely (~0.7%).</a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineCov">        706 :     for (;;) {</span></a>
 <a name="213"><span class="lineNum">     213 </span><span class="lineCov">        364 :       const uint64_t vpDiv10 = div10(vp);</span></a>
@@ -330,44 +330,44 @@
 <a name="260"><span class="lineNum">     260 </span><span class="lineCov">         22 :     output = vr + ((vr == vm &amp;&amp; (!acceptBounds || !vmIsTrailingZeros)) || lastRemovedDigit &gt;= 5);</span></a>
 <a name="261"><span class="lineNum">     261 </span>            :   } else {</a>
 <a name="262"><span class="lineNum">     262 </span>            :     // Specialized for the common case (~99.3%). Percentages below are relative to this.</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">       1056 :     bool roundUp = false;</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       1056 :     const uint64_t vpDiv100 = div100(vp);</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       1056 :     const uint64_t vmDiv100 = div100(vm);</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       1056 :     if (vpDiv100 &gt; vmDiv100) { // Optimization: remove two digits at a time (~86.2%).</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        981 :       const uint64_t vrDiv100 = div100(vr);</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        981 :       const uint32_t vrMod100 = ((uint32_t) vr) - 100 * ((uint32_t) vrDiv100);</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        981 :       roundUp = vrMod100 &gt;= 50;</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        981 :       vr = vrDiv100;</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        981 :       vp = vpDiv100;</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        981 :       vm = vmDiv100;</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        981 :       removed += 2;</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">       1057 :     bool roundUp = false;</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       1057 :     const uint64_t vpDiv100 = div100(vp);</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       1057 :     const uint64_t vmDiv100 = div100(vm);</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       1057 :     if (vpDiv100 &gt; vmDiv100) { // Optimization: remove two digits at a time (~86.2%).</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        982 :       const uint64_t vrDiv100 = div100(vr);</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        982 :       const uint32_t vrMod100 = ((uint32_t) vr) - 100 * ((uint32_t) vrDiv100);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        982 :       roundUp = vrMod100 &gt;= 50;</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        982 :       vr = vrDiv100;</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        982 :       vp = vpDiv100;</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        982 :       vm = vmDiv100;</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        982 :       removed += 2;</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :     }</a>
 <a name="275"><span class="lineNum">     275 </span>            :     // Loop iterations below (approximately), without optimization above:</a>
 <a name="276"><span class="lineNum">     276 </span>            :     // 0: 0.03%, 1: 13.8%, 2: 70.6%, 3: 14.0%, 4: 1.40%, 5: 0.14%, 6+: 0.02%</a>
 <a name="277"><span class="lineNum">     277 </span>            :     // Loop iterations below (approximately), with optimization above:</a>
 <a name="278"><span class="lineNum">     278 </span>            :     // 0: 70.6%, 1: 27.8%, 2: 1.40%, 3: 0.14%, 4+: 0.02%</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       2504 :     for (;;) {</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       1780 :       const uint64_t vpDiv10 = div10(vp);</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">       1780 :       const uint64_t vmDiv10 = div10(vm);</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       1780 :       if (vpDiv10 &lt;= vmDiv10) {</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       2529 :     for (;;) {</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       1793 :       const uint64_t vpDiv10 = div10(vp);</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">       1793 :       const uint64_t vmDiv10 = div10(vm);</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">       1793 :       if (vpDiv10 &lt;= vmDiv10) {</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :         break;</a>
 <a name="284"><span class="lineNum">     284 </span>            :       }</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        724 :       const uint64_t vrDiv10 = div10(vr);</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        724 :       const uint32_t vrMod10 = ((uint32_t) vr) - 10 * ((uint32_t) vrDiv10);</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">        724 :       roundUp = vrMod10 &gt;= 5;</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        724 :       vr = vrDiv10;</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        724 :       vp = vpDiv10;</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        724 :       vm = vmDiv10;</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">        724 :       ++removed;</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        736 :       const uint64_t vrDiv10 = div10(vr);</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        736 :       const uint32_t vrMod10 = ((uint32_t) vr) - 10 * ((uint32_t) vrDiv10);</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">        736 :       roundUp = vrMod10 &gt;= 5;</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        736 :       vr = vrDiv10;</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        736 :       vp = vpDiv10;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        736 :       vm = vmDiv10;</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">        736 :       ++removed;</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :     }</a>
 <a name="293"><span class="lineNum">     293 </span>            : #ifdef RYU_DEBUG</a>
 <a name="294"><span class="lineNum">     294 </span>            :     printf(&quot;%&quot; PRIu64 &quot; roundUp=%s\n&quot;, vr, roundUp ? &quot;true&quot; : &quot;false&quot;);</a>
 <a name="295"><span class="lineNum">     295 </span>            :     printf(&quot;vr is trailing zeros=%s\n&quot;, vrIsTrailingZeros ? &quot;true&quot; : &quot;false&quot;);</a>
 <a name="296"><span class="lineNum">     296 </span>            : #endif</a>
 <a name="297"><span class="lineNum">     297 </span>            :     // We need to take vr + 1 if vr is outside bounds or we need to round up.</a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       1595 :     output = vr + (vr == vm || roundUp);</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       1596 :     output = vr + (vr == vm || roundUp);</span></a>
 <a name="299"><span class="lineNum">     299 </span>            :   }</a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       1078 :   const int32_t exp = e10 + removed;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       1079 :   const int32_t exp = e10 + removed;</span></a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            : #ifdef RYU_DEBUG</a>
 <a name="303"><span class="lineNum">     303 </span>            :   printf(&quot;V+=%&quot; PRIu64 &quot;\nV =%&quot; PRIu64 &quot;\nV-=%&quot; PRIu64 &quot;\n&quot;, vp, vr, vm);</a>
@@ -375,21 +375,21 @@
 <a name="305"><span class="lineNum">     305 </span>            :   printf(&quot;EXP=%d\n&quot;, exp);</a>
 <a name="306"><span class="lineNum">     306 </span>            : #endif</a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       1078 :   floating_decimal_64 fd;</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       1078 :   fd.exponent = exp;</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1078 :   fd.mantissa = output;</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       1078 :   return fd;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       1079 :   floating_decimal_64 fd;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">       1079 :   fd.exponent = exp;</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1079 :   fd.mantissa = output;</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       1079 :   return fd;</span></a>
 <a name="312"><span class="lineNum">     312 </span>            : }</a>
 <a name="313"><span class="lineNum">     313 </span>            : </a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       1170 : static inline int to_chars(const floating_decimal_64 v, const bool sign, char* const result) {</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       1171 : static inline int to_chars(const floating_decimal_64 v, const bool sign, char* const result) {</span></a>
 <a name="315"><span class="lineNum">     315 </span>            :   // Step 5: Print the decimal representation.</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       1170 :   int index = 0;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1170 :   if (sign) {</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         16 :     result[index++] = '-';</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       1171 :   int index = 0;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1171 :   if (sign) {</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         17 :     result[index++] = '-';</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :   }</a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       1170 :   uint64_t output = v.mantissa;</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       1170 :   const uint32_t olength = decimalLength17(output);</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       1171 :   uint64_t output = v.mantissa;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       1171 :   const uint32_t olength = decimalLength17(output);</span></a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
 <a name="324"><span class="lineNum">     324 </span>            : #ifdef RYU_DEBUG</a>
 <a name="325"><span class="lineNum">     325 </span>            :   printf(&quot;DIGITS=%&quot; PRIu64 &quot;\n&quot;, v.mantissa);</a>
@@ -405,12 +405,12 @@
 <a name="335"><span class="lineNum">     335 </span>            :   // }</a>
 <a name="336"><span class="lineNum">     336 </span>            :   // result[index] = '0' + output % 10;</a>
 <a name="337"><span class="lineNum">     337 </span>            : </a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       1170 :   uint32_t i = 0;</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">       1171 :   uint32_t i = 0;</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :   // We prefer 32-bit operations, even on 64-bit platforms.</a>
 <a name="340"><span class="lineNum">     340 </span>            :   // We have at most 17 digits, and uint32_t can store 9 digits.</a>
 <a name="341"><span class="lineNum">     341 </span>            :   // If output doesn't fit into uint32_t, we cut off 8 digits,</a>
 <a name="342"><span class="lineNum">     342 </span>            :   // so the rest will fit into uint32_t.</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       1170 :   if ((output &gt;&gt; 32) != 0) {</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       1171 :   if ((output &gt;&gt; 32) != 0) {</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :     // Expensive 64-bit division.</a>
 <a name="345"><span class="lineNum">     345 </span><span class="lineCov">       1020 :     const uint64_t q = div1e8(output);</span></a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">       1020 :     uint32_t output2 = ((uint32_t) output) - 100000000 * ((uint32_t) q);</span></a>
@@ -429,87 +429,87 @@
 <a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1020 :     memcpy(result + index + olength - i - 7, DIGIT_TABLE + d1, 2);</span></a>
 <a name="360"><span class="lineNum">     360 </span><span class="lineCov">       1020 :     i += 8;</span></a>
 <a name="361"><span class="lineNum">     361 </span>            :   }</a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1170 :   uint32_t output2 = (uint32_t) output;</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       2535 :   while (output2 &gt;= 10000) {</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">       1171 :   uint32_t output2 = (uint32_t) output;</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       2537 :   while (output2 &gt;= 10000) {</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : #ifdef __clang__ // https://bugs.llvm.org/show_bug.cgi?id=38217</a>
 <a name="365"><span class="lineNum">     365 </span>            :     const uint32_t c = output2 - 10000 * (output2 / 10000);</a>
 <a name="366"><span class="lineNum">     366 </span>            : #else</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       1365 :     const uint32_t c = output2 % 10000;</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">       1366 :     const uint32_t c = output2 % 10000;</span></a>
 <a name="368"><span class="lineNum">     368 </span>            : #endif</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       1365 :     output2 /= 10000;</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       1365 :     const uint32_t c0 = (c % 100) &lt;&lt; 1;</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">       1365 :     const uint32_t c1 = (c / 100) &lt;&lt; 1;</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1365 :     memcpy(result + index + olength - i - 1, DIGIT_TABLE + c0, 2);</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       1365 :     memcpy(result + index + olength - i - 3, DIGIT_TABLE + c1, 2);</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       1365 :     i += 4;</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       1366 :     output2 /= 10000;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">       1366 :     const uint32_t c0 = (c % 100) &lt;&lt; 1;</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">       1366 :     const uint32_t c1 = (c / 100) &lt;&lt; 1;</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1366 :     memcpy(result + index + olength - i - 1, DIGIT_TABLE + c0, 2);</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       1366 :     memcpy(result + index + olength - i - 3, DIGIT_TABLE + c1, 2);</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       1366 :     i += 4;</span></a>
 <a name="375"><span class="lineNum">     375 </span>            :   }</a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       1170 :   if (output2 &gt;= 100) {</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       1171 :   if (output2 &gt;= 100) {</span></a>
 <a name="377"><span class="lineNum">     377 </span><span class="lineCov">        701 :     const uint32_t c = (output2 % 100) &lt;&lt; 1;</span></a>
 <a name="378"><span class="lineNum">     378 </span><span class="lineCov">        701 :     output2 /= 100;</span></a>
 <a name="379"><span class="lineNum">     379 </span><span class="lineCov">        701 :     memcpy(result + index + olength - i - 1, DIGIT_TABLE + c, 2);</span></a>
 <a name="380"><span class="lineNum">     380 </span><span class="lineCov">        701 :     i += 2;</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :   }</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">       1170 :   if (output2 &gt;= 10) {</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">       1171 :   if (output2 &gt;= 10) {</span></a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineCov">        669 :     const uint32_t c = output2 &lt;&lt; 1;</span></a>
 <a name="384"><span class="lineNum">     384 </span>            :     // We can't use memcpy here: the decimal dot goes between these two digits.</a>
 <a name="385"><span class="lineNum">     385 </span><span class="lineCov">        669 :     result[index + olength - i] = DIGIT_TABLE[c + 1];</span></a>
 <a name="386"><span class="lineNum">     386 </span><span class="lineCov">        669 :     result[index] = DIGIT_TABLE[c];</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :   } else {</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">        501 :     result[index] = (char) ('0' + output2);</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">        502 :     result[index] = (char) ('0' + output2);</span></a>
 <a name="389"><span class="lineNum">     389 </span>            :   }</a>
 <a name="390"><span class="lineNum">     390 </span>            : </a>
 <a name="391"><span class="lineNum">     391 </span>            :   // Print decimal point if needed.</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       1170 :   if (olength &gt; 1) {</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       1090 :     result[index + 1] = '.';</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       1090 :     index += olength + 1;</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       1171 :   if (olength &gt; 1) {</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       1091 :     result[index + 1] = '.';</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       1091 :     index += olength + 1;</span></a>
 <a name="395"><span class="lineNum">     395 </span>            :   } else {</a>
 <a name="396"><span class="lineNum">     396 </span><span class="lineCov">         80 :     ++index;</span></a>
 <a name="397"><span class="lineNum">     397 </span>            :   }</a>
 <a name="398"><span class="lineNum">     398 </span>            : </a>
 <a name="399"><span class="lineNum">     399 </span>            :   // Print the exponent.</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       1170 :   result[index++] = 'E';</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       1170 :   int32_t exp = v.exponent + (int32_t) olength - 1;</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       1170 :   if (exp &lt; 0) {</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       1171 :   result[index++] = 'E';</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       1171 :   int32_t exp = v.exponent + (int32_t) olength - 1;</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       1171 :   if (exp &lt; 0) {</span></a>
 <a name="403"><span class="lineNum">     403 </span><span class="lineCov">        824 :     result[index++] = '-';</span></a>
 <a name="404"><span class="lineNum">     404 </span><span class="lineCov">        824 :     exp = -exp;</span></a>
 <a name="405"><span class="lineNum">     405 </span>            :   }</a>
 <a name="406"><span class="lineNum">     406 </span>            : </a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">       1170 :   if (exp &gt;= 100) {</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">       1171 :   if (exp &gt;= 100) {</span></a>
 <a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :     const int32_t c = exp % 10;</span></a>
 <a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :     memcpy(result + index, DIGIT_TABLE + 2 * (exp / 10), 2);</span></a>
 <a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :     result[index + 2] = (char) ('0' + c);</span></a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :     index += 3;</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       1170 :   } else if (exp &gt;= 10) {</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       1171 :   } else if (exp &gt;= 10) {</span></a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :     memcpy(result + index, DIGIT_TABLE + 2 * exp, 2);</span></a>
 <a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :     index += 2;</span></a>
 <a name="415"><span class="lineNum">     415 </span>            :   } else {</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       1170 :     result[index++] = (char) ('0' + exp);</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">       1171 :     result[index++] = (char) ('0' + exp);</span></a>
 <a name="417"><span class="lineNum">     417 </span>            :   }</a>
 <a name="418"><span class="lineNum">     418 </span>            : </a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       1170 :   return index;</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       1171 :   return index;</span></a>
 <a name="420"><span class="lineNum">     420 </span>            : }</a>
 <a name="421"><span class="lineNum">     421 </span>            : </a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       1170 : static inline bool d2d_small_int(const uint64_t ieeeMantissa, const uint32_t ieeeExponent,</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       1171 : static inline bool d2d_small_int(const uint64_t ieeeMantissa, const uint32_t ieeeExponent,</span></a>
 <a name="423"><span class="lineNum">     423 </span>            :   floating_decimal_64* const v) {</a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1170 :   const uint64_t m2 = (1ull &lt;&lt; DOUBLE_MANTISSA_BITS) | ieeeMantissa;</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1170 :   const int32_t e2 = (int32_t) ieeeExponent - DOUBLE_BIAS - DOUBLE_MANTISSA_BITS;</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1171 :   const uint64_t m2 = (1ull &lt;&lt; DOUBLE_MANTISSA_BITS) | ieeeMantissa;</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1171 :   const int32_t e2 = (int32_t) ieeeExponent - DOUBLE_BIAS - DOUBLE_MANTISSA_BITS;</span></a>
 <a name="426"><span class="lineNum">     426 </span>            : </a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       1170 :   if (e2 &gt; 0) {</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       1171 :   if (e2 &gt; 0) {</span></a>
 <a name="428"><span class="lineNum">     428 </span>            :     // f = m2 * 2^e2 &gt;= 2^53 is an integer.</a>
 <a name="429"><span class="lineNum">     429 </span>            :     // Ignore this case for now.</a>
 <a name="430"><span class="lineNum">     430 </span>            :     return false;</a>
 <a name="431"><span class="lineNum">     431 </span>            :   }</a>
 <a name="432"><span class="lineNum">     432 </span>            : </a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       1170 :   if (e2 &lt; -52) {</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       1171 :   if (e2 &lt; -52) {</span></a>
 <a name="434"><span class="lineNum">     434 </span>            :     // f &lt; 1.</a>
 <a name="435"><span class="lineNum">     435 </span>            :     return false;</a>
 <a name="436"><span class="lineNum">     436 </span>            :   }</a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>
 <a name="438"><span class="lineNum">     438 </span>            :   // Since 2^52 &lt;= m2 &lt; 2^53 and 0 &lt;= -e2 &lt;= 52: 1 &lt;= f = m2 / 2^-e2 &lt; 2^53.</a>
 <a name="439"><span class="lineNum">     439 </span>            :   // Test if the lower -e2 bits of the significand are 0, i.e. whether the fraction is 0.</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        346 :   const uint64_t mask = (1ull &lt;&lt; -e2) - 1;</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        346 :   const uint64_t fraction = m2 &amp; mask;</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        346 :   if (fraction != 0) {</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        347 :   const uint64_t mask = (1ull &lt;&lt; -e2) - 1;</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">        347 :   const uint64_t fraction = m2 &amp; mask;</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        347 :   if (fraction != 0) {</span></a>
 <a name="443"><span class="lineNum">     443 </span>            :     return false;</a>
 <a name="444"><span class="lineNum">     444 </span>            :   }</a>
 <a name="445"><span class="lineNum">     445 </span>            : </a>
@@ -521,9 +521,9 @@
 <a name="451"><span class="lineNum">     451 </span><span class="lineCov">         92 :   return true;</span></a>
 <a name="452"><span class="lineNum">     452 </span>            : }</a>
 <a name="453"><span class="lineNum">     453 </span>            : </a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">       1186 : int d2s_buffered_n(double f, char* result) {</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">       1188 : int d2s_buffered_n(double f, char* result) {</span></a>
 <a name="455"><span class="lineNum">     455 </span>            :   // Step 1: Decode the floating-point number, and unify normalized and subnormal cases.</a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       1186 :   const uint64_t bits = double_to_bits(f);</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">       1188 :   const uint64_t bits = double_to_bits(f);</span></a>
 <a name="457"><span class="lineNum">     457 </span>            : </a>
 <a name="458"><span class="lineNum">     458 </span>            : #ifdef RYU_DEBUG</a>
 <a name="459"><span class="lineNum">     459 </span>            :   printf(&quot;IN=&quot;);</a>
@@ -534,17 +534,17 @@
 <a name="464"><span class="lineNum">     464 </span>            : #endif</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span>            :   // Decode bits into sign, mantissa, and exponent.</a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       1186 :   const bool ieeeSign = ((bits &gt;&gt; (DOUBLE_MANTISSA_BITS + DOUBLE_EXPONENT_BITS)) &amp; 1) != 0;</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       1186 :   const uint64_t ieeeMantissa = bits &amp; ((1ull &lt;&lt; DOUBLE_MANTISSA_BITS) - 1);</span></a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       1186 :   const uint32_t ieeeExponent = (uint32_t) ((bits &gt;&gt; DOUBLE_MANTISSA_BITS) &amp; ((1u &lt;&lt; DOUBLE_EXPONENT_BITS) - 1));</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">       1188 :   const bool ieeeSign = ((bits &gt;&gt; (DOUBLE_MANTISSA_BITS + DOUBLE_EXPONENT_BITS)) &amp; 1) != 0;</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">       1188 :   const uint64_t ieeeMantissa = bits &amp; ((1ull &lt;&lt; DOUBLE_MANTISSA_BITS) - 1);</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       1188 :   const uint32_t ieeeExponent = (uint32_t) ((bits &gt;&gt; DOUBLE_MANTISSA_BITS) &amp; ((1u &lt;&lt; DOUBLE_EXPONENT_BITS) - 1));</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :   // Case distinction; exit early for the easy cases.</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">       1186 :   if (ieeeExponent == ((1u &lt;&lt; DOUBLE_EXPONENT_BITS) - 1u) || (ieeeExponent == 0 &amp;&amp; ieeeMantissa == 0)) {</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         16 :     return copy_special_str(result, ieeeSign, ieeeExponent, ieeeMantissa);</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">       1188 :   if (ieeeExponent == ((1u &lt;&lt; DOUBLE_EXPONENT_BITS) - 1u) || (ieeeExponent == 0 &amp;&amp; ieeeMantissa == 0)) {</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         17 :     return copy_special_str(result, ieeeSign, ieeeExponent, ieeeMantissa);</span></a>
 <a name="473"><span class="lineNum">     473 </span>            :   }</a>
 <a name="474"><span class="lineNum">     474 </span>            : </a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       1170 :   floating_decimal_64 v;</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       1170 :   const bool isSmallInt = d2d_small_int(ieeeMantissa, ieeeExponent, &amp;v);</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       1170 :   if (isSmallInt) {</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       1171 :   floating_decimal_64 v;</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">       1171 :   const bool isSmallInt = d2d_small_int(ieeeMantissa, ieeeExponent, &amp;v);</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       1171 :   if (isSmallInt) {</span></a>
 <a name="478"><span class="lineNum">     478 </span>            :     // For small integers in the range [1, 2^53), v.mantissa might contain trailing (decimal) zeros.</a>
 <a name="479"><span class="lineNum">     479 </span>            :     // For scientific notation we need to move these zeros into the exponent.</a>
 <a name="480"><span class="lineNum">     480 </span>            :     // (This is not needed for fixed-point notation, so it might be beneficial to trim</a>
@@ -559,10 +559,10 @@
 <a name="489"><span class="lineNum">     489 </span><span class="lineCov">         10 :       ++v.exponent;</span></a>
 <a name="490"><span class="lineNum">     490 </span>            :     }</a>
 <a name="491"><span class="lineNum">     491 </span>            :   } else {</a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1078 :     v = d2d(ieeeMantissa, ieeeExponent);</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       1079 :     v = d2d(ieeeMantissa, ieeeExponent);</span></a>
 <a name="493"><span class="lineNum">     493 </span>            :   }</a>
 <a name="494"><span class="lineNum">     494 </span>            : </a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1170 :   return to_chars(v, ieeeSign, result);</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       1171 :   return to_chars(v, ieeeSign, result);</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : }</a>
 <a name="497"><span class="lineNum">     497 </span>            : </a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 : void d2s_buffered(double f, char* result) {</span></a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/include/fast_float/fast_float.h</title>
+  <title>LCOV - lcov.info - io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/include/fast_float/fast_float.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">152</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -226,9 +226,9 @@
 <a name="156"><span class="lineNum">     156 </span>            : </a>
 <a name="157"><span class="lineNum">     157 </span>            : template &lt;typename UC&gt;</a>
 <a name="158"><span class="lineNum">     158 </span>            : struct parse_options_t {</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1462 :   constexpr explicit parse_options_t(chars_format fmt = chars_format::general,</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1466 :   constexpr explicit parse_options_t(chars_format fmt = chars_format::general,</span></a>
 <a name="160"><span class="lineNum">     160 </span>            :     UC dot = UC('.'))</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1462 :     : format(fmt), decimal_point(dot) {}</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1466 :     : format(fmt), decimal_point(dot) {}</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
 <a name="163"><span class="lineNum">     163 </span>            :   /** Which number formats are accepted */</a>
 <a name="164"><span class="lineNum">     164 </span>            :   chars_format format;</a>
@@ -357,7 +357,7 @@
 <a name="287"><span class="lineNum">     287 </span>            : struct span {</a>
 <a name="288"><span class="lineNum">     288 </span>            :   const T* ptr;</a>
 <a name="289"><span class="lineNum">     289 </span>            :   size_t length;</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       2792 :   constexpr span(const T* _ptr, size_t _length) : ptr(_ptr), length(_length) {}</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       2799 :   constexpr span(const T* _ptr, size_t _length) : ptr(_ptr), length(_length) {}</span></a>
 <a name="291"><span class="lineNum">     291 </span>            :   constexpr span() : ptr(nullptr), length(0) {}</a>
 <a name="292"><span class="lineNum">     292 </span>            : </a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :   constexpr size_t len() const noexcept {</span></a>
@@ -666,9 +666,9 @@
 <a name="596"><span class="lineNum">     596 </span>            : }</a>
 <a name="597"><span class="lineNum">     597 </span>            : </a>
 <a name="598"><span class="lineNum">     598 </span>            : template &lt;&gt;</a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       1035 : inline constexpr double binary_format&lt;double&gt;::exact_power_of_ten(int64_t power) {</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">       1039 : inline constexpr double binary_format&lt;double&gt;::exact_power_of_ten(int64_t power) {</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :   // Work around clang bug https://godbolt.org/z/zedh7rrhc</a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">       1035 :   return (void)powers_of_ten[0], powers_of_ten[power];</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">       1039 :   return (void)powers_of_ten[0], powers_of_ten[power];</span></a>
 <a name="602"><span class="lineNum">     602 </span>            : }</a>
 <a name="603"><span class="lineNum">     603 </span>            : template &lt;&gt;</a>
 <a name="604"><span class="lineNum">     604 </span>            : inline constexpr float binary_format&lt;float&gt;::exact_power_of_ten(int64_t power) {</a>
@@ -886,8 +886,8 @@
 <a name="816"><span class="lineNum">     816 </span>            : // Next function can be micro-optimized, but compilers are entirely</a>
 <a name="817"><span class="lineNum">     817 </span>            : // able to optimize it well.</a>
 <a name="818"><span class="lineNum">     818 </span>            : template &lt;typename UC&gt;</a>
-<a name="819"><span class="lineNum">     819 </span><span class="lineCov">      13476 : fastfloat_really_inline constexpr bool is_integer(UC c) noexcept {</span></a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">      13476 :   return !(c &gt; UC('9') || c &lt; UC('0'));</span></a>
+<a name="819"><span class="lineNum">     819 </span><span class="lineCov">      13513 : fastfloat_really_inline constexpr bool is_integer(UC c) noexcept {</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">      13513 :   return !(c &gt; UC('9') || c &lt; UC('0'));</span></a>
 <a name="821"><span class="lineNum">     821 </span>            : }</a>
 <a name="822"><span class="lineNum">     822 </span>            : </a>
 <a name="823"><span class="lineNum">     823 </span>            : fastfloat_really_inline constexpr uint64_t byteswap(uint64_t val) {</a>
@@ -902,8 +902,8 @@
 <a name="832"><span class="lineNum">     832 </span>            : }</a>
 <a name="833"><span class="lineNum">     833 </span>            : </a>
 <a name="834"><span class="lineNum">     834 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR20</a>
-<a name="835"><span class="lineNum">     835 </span><span class="lineCov">       2662 : uint64_t read_u64(const char *chars) {</span></a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       2662 :   if (cpp20_and_in_constexpr()) {</span></a>
+<a name="835"><span class="lineNum">     835 </span><span class="lineCov">       2667 : uint64_t read_u64(const char *chars) {</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       2667 :   if (cpp20_and_in_constexpr()) {</span></a>
 <a name="837"><span class="lineNum">     837 </span>            :     uint64_t val = 0;</a>
 <a name="838"><span class="lineNum">     838 </span>            :     for(int i = 0; i &lt; 8; ++i) {</a>
 <a name="839"><span class="lineNum">     839 </span>            :       val |= uint64_t(*chars) &lt;&lt; (i*8);</a>
@@ -911,13 +911,13 @@
 <a name="841"><span class="lineNum">     841 </span>            :     }</a>
 <a name="842"><span class="lineNum">     842 </span>            :     return val;</a>
 <a name="843"><span class="lineNum">     843 </span>            :   }</a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       2662 :   uint64_t val;</span></a>
-<a name="845"><span class="lineNum">     845 </span><span class="lineCov">       2662 :   ::memcpy(&amp;val, chars, sizeof(uint64_t));</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       2667 :   uint64_t val;</span></a>
+<a name="845"><span class="lineNum">     845 </span><span class="lineCov">       2667 :   ::memcpy(&amp;val, chars, sizeof(uint64_t));</span></a>
 <a name="846"><span class="lineNum">     846 </span>            : #if FASTFLOAT_IS_BIG_ENDIAN == 1</a>
 <a name="847"><span class="lineNum">     847 </span>            :   // Need to read as-if the number was in little-endian order.</a>
 <a name="848"><span class="lineNum">     848 </span>            :   val = byteswap(val);</a>
 <a name="849"><span class="lineNum">     849 </span>            : #endif</a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">       2662 :   return val;</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">       2667 :   return val;</span></a>
 <a name="851"><span class="lineNum">     851 </span>            : }</a>
 <a name="852"><span class="lineNum">     852 </span>            : </a>
 <a name="853"><span class="lineNum">     853 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR20</a>
@@ -939,14 +939,14 @@
 <a name="869"><span class="lineNum">     869 </span>            : </a>
 <a name="870"><span class="lineNum">     870 </span>            : // credit  @aqrit</a>
 <a name="871"><span class="lineNum">     871 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR14</a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">       1411 : uint32_t parse_eight_digits_unrolled(uint64_t val) {</span></a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">       1411 :   const uint64_t mask = 0x000000FF000000FF;</span></a>
-<a name="874"><span class="lineNum">     874 </span><span class="lineCov">       1411 :   const uint64_t mul1 = 0x000F424000000064; // 100 + (1000000ULL &lt;&lt; 32)</span></a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">       1411 :   const uint64_t mul2 = 0x0000271000000001; // 1 + (10000ULL &lt;&lt; 32)</span></a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">       1411 :   val -= 0x3030303030303030;</span></a>
-<a name="877"><span class="lineNum">     877 </span><span class="lineCov">       1411 :   val = (val * 10) + (val &gt;&gt; 8); // val = (val * 2561) &gt;&gt; 8;</span></a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineCov">       1411 :   val = (((val &amp; mask) * mul1) + (((val &gt;&gt; 16) &amp; mask) * mul2)) &gt;&gt; 32;</span></a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">       1411 :   return uint32_t(val);</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">       1413 : uint32_t parse_eight_digits_unrolled(uint64_t val) {</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">       1413 :   const uint64_t mask = 0x000000FF000000FF;</span></a>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">       1413 :   const uint64_t mul1 = 0x000F424000000064; // 100 + (1000000ULL &lt;&lt; 32)</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">       1413 :   const uint64_t mul2 = 0x0000271000000001; // 1 + (10000ULL &lt;&lt; 32)</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">       1413 :   val -= 0x3030303030303030;</span></a>
+<a name="877"><span class="lineNum">     877 </span><span class="lineCov">       1413 :   val = (val * 10) + (val &gt;&gt; 8); // val = (val * 2561) &gt;&gt; 8;</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">       1413 :   val = (((val &amp; mask) * mul1) + (((val &gt;&gt; 16) &amp; mask) * mul2)) &gt;&gt; 32;</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">       1413 :   return uint32_t(val);</span></a>
 <a name="880"><span class="lineNum">     880 </span>            : }</a>
 <a name="881"><span class="lineNum">     881 </span>            : </a>
 <a name="882"><span class="lineNum">     882 </span>            : fastfloat_really_inline constexpr</a>
@@ -960,13 +960,13 @@
 <a name="890"><span class="lineNum">     890 </span>            : }</a>
 <a name="891"><span class="lineNum">     891 </span>            : </a>
 <a name="892"><span class="lineNum">     892 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR20</a>
-<a name="893"><span class="lineNum">     893 </span><span class="lineCov">       1411 : uint32_t parse_eight_digits_unrolled(const char *chars)  noexcept  {</span></a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineCov">       1411 :   return parse_eight_digits_unrolled(read_u64(chars));</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">       1413 : uint32_t parse_eight_digits_unrolled(const char *chars)  noexcept  {</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">       1413 :   return parse_eight_digits_unrolled(read_u64(chars));</span></a>
 <a name="895"><span class="lineNum">     895 </span>            : }</a>
 <a name="896"><span class="lineNum">     896 </span>            : </a>
 <a name="897"><span class="lineNum">     897 </span>            : // credit @aqrit</a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineCov">       2662 : fastfloat_really_inline constexpr bool is_made_of_eight_digits_fast(uint64_t val)  noexcept  {</span></a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       2662 :   return !((((val + 0x4646464646464646) | (val - 0x3030303030303030)) &amp;</span></a>
+<a name="898"><span class="lineNum">     898 </span><span class="lineCov">       2667 : fastfloat_really_inline constexpr bool is_made_of_eight_digits_fast(uint64_t val)  noexcept  {</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       2667 :   return !((((val + 0x4646464646464646) | (val - 0x3030303030303030)) &amp;</span></a>
 <a name="900"><span class="lineNum">     900 </span>            :      0x8080808080808080));</a>
 <a name="901"><span class="lineNum">     901 </span>            : }</a>
 <a name="902"><span class="lineNum">     902 </span>            : </a>
@@ -981,8 +981,8 @@
 <a name="911"><span class="lineNum">     911 </span>            : }</a>
 <a name="912"><span class="lineNum">     912 </span>            : </a>
 <a name="913"><span class="lineNum">     913 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR20</a>
-<a name="914"><span class="lineNum">     914 </span><span class="lineCov">       2662 : bool is_made_of_eight_digits_fast(const char *chars)  noexcept  {</span></a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineCov">       2662 :   return is_made_of_eight_digits_fast(read_u64(chars));</span></a>
+<a name="914"><span class="lineNum">     914 </span><span class="lineCov">       2667 : bool is_made_of_eight_digits_fast(const char *chars)  noexcept  {</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">       2667 :   return is_made_of_eight_digits_fast(read_u64(chars));</span></a>
 <a name="916"><span class="lineNum">     916 </span>            : }</a>
 <a name="917"><span class="lineNum">     917 </span>            : </a>
 <a name="918"><span class="lineNum">     918 </span>            : template &lt;typename UC&gt;</a>
@@ -1003,78 +1003,78 @@
 <a name="933"><span class="lineNum">     933 </span>            : // parse an ASCII string.</a>
 <a name="934"><span class="lineNum">     934 </span>            : template &lt;typename UC&gt;</a>
 <a name="935"><span class="lineNum">     935 </span>            : fastfloat_really_inline FASTFLOAT_CONSTEXPR20</a>
-<a name="936"><span class="lineNum">     936 </span><span class="lineCov">       1462 : parsed_number_string_t&lt;UC&gt; parse_number_string(UC const *p, UC const * pend, parse_options_t&lt;UC&gt; options) noexcept {</span></a>
-<a name="937"><span class="lineNum">     937 </span><span class="lineCov">       1462 :   chars_format const fmt = options.format;</span></a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineCov">       1462 :   UC const decimal_point = options.decimal_point;</span></a>
+<a name="936"><span class="lineNum">     936 </span><span class="lineCov">       1466 : parsed_number_string_t&lt;UC&gt; parse_number_string(UC const *p, UC const * pend, parse_options_t&lt;UC&gt; options) noexcept {</span></a>
+<a name="937"><span class="lineNum">     937 </span><span class="lineCov">       1466 :   chars_format const fmt = options.format;</span></a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">       1466 :   UC const decimal_point = options.decimal_point;</span></a>
 <a name="939"><span class="lineNum">     939 </span>            : </a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineCov">       1462 :   parsed_number_string_t&lt;UC&gt; answer;</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">       1466 :   parsed_number_string_t&lt;UC&gt; answer;</span></a>
 <a name="941"><span class="lineNum">     941 </span>            :   answer.valid = false;</a>
 <a name="942"><span class="lineNum">     942 </span>            :   answer.too_many_digits = false;</a>
-<a name="943"><span class="lineNum">     943 </span><span class="lineCov">       1462 :   answer.negative = (*p == UC('-'));</span></a>
+<a name="943"><span class="lineNum">     943 </span><span class="lineCov">       1466 :   answer.negative = (*p == UC('-'));</span></a>
 <a name="944"><span class="lineNum">     944 </span>            : #ifdef FASTFLOAT_ALLOWS_LEADING_PLUS // disabled by default</a>
 <a name="945"><span class="lineNum">     945 </span>            :   if ((*p == UC('-')) || (*p == UC('+'))) {</a>
 <a name="946"><span class="lineNum">     946 </span>            : #else</a>
-<a name="947"><span class="lineNum">     947 </span><span class="lineCov">       1462 :   if (*p == UC('-')) { // C++17 20.19.3.(7.1) explicitly forbids '+' sign here</span></a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineCov">       1466 :   if (*p == UC('-')) { // C++17 20.19.3.(7.1) explicitly forbids '+' sign here</span></a>
 <a name="948"><span class="lineNum">     948 </span>            : #endif</a>
-<a name="949"><span class="lineNum">     949 </span><span class="lineCov">         26 :     ++p;</span></a>
-<a name="950"><span class="lineNum">     950 </span><span class="lineCov">         26 :     if (p == pend) {</span></a>
+<a name="949"><span class="lineNum">     949 </span><span class="lineCov">         28 :     ++p;</span></a>
+<a name="950"><span class="lineNum">     950 </span><span class="lineCov">         28 :     if (p == pend) {</span></a>
 <a name="951"><span class="lineNum">     951 </span>            :       return answer;</a>
 <a name="952"><span class="lineNum">     952 </span>            :     }</a>
-<a name="953"><span class="lineNum">     953 </span><span class="lineCov">         26 :     if (!is_integer(*p) &amp;&amp; (*p != decimal_point)) { // a sign must be followed by an integer or the dot</span></a>
+<a name="953"><span class="lineNum">     953 </span><span class="lineCov">         28 :     if (!is_integer(*p) &amp;&amp; (*p != decimal_point)) { // a sign must be followed by an integer or the dot</span></a>
 <a name="954"><span class="lineNum">     954 </span>            :       return answer;</a>
 <a name="955"><span class="lineNum">     955 </span>            :     }</a>
 <a name="956"><span class="lineNum">     956 </span>            :   }</a>
-<a name="957"><span class="lineNum">     957 </span><span class="lineCov">       1462 :   UC const * const start_digits = p;</span></a>
+<a name="957"><span class="lineNum">     957 </span><span class="lineCov">       1466 :   UC const * const start_digits = p;</span></a>
 <a name="958"><span class="lineNum">     958 </span>            : </a>
-<a name="959"><span class="lineNum">     959 </span><span class="lineCov">       1462 :   uint64_t i = 0; // an unsigned int avoids signed overflows (which are bad)</span></a>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">       1466 :   uint64_t i = 0; // an unsigned int avoids signed overflows (which are bad)</span></a>
 <a name="960"><span class="lineNum">     960 </span>            : </a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineCov">       2943 :   while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
+<a name="961"><span class="lineNum">     961 </span><span class="lineCov">       2951 :   while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
 <a name="962"><span class="lineNum">     962 </span>            :     // a multiplication by 10 is cheaper than an arbitrary integer</a>
 <a name="963"><span class="lineNum">     963 </span>            :     // multiplication</a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       1481 :     i = 10 * i +</span></a>
-<a name="965"><span class="lineNum">     965 </span><span class="lineCov">       1481 :         uint64_t(*p - UC('0')); // might overflow, we will handle the overflow later</span></a>
-<a name="966"><span class="lineNum">     966 </span><span class="lineCov">       1481 :     ++p;</span></a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       1485 :     i = 10 * i +</span></a>
+<a name="965"><span class="lineNum">     965 </span><span class="lineCov">       1485 :         uint64_t(*p - UC('0')); // might overflow, we will handle the overflow later</span></a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">       1485 :     ++p;</span></a>
 <a name="967"><span class="lineNum">     967 </span>            :   }</a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">       1462 :   UC const * const end_of_integer_part = p;</span></a>
-<a name="969"><span class="lineNum">     969 </span><span class="lineCov">       1462 :   int64_t digit_count = int64_t(end_of_integer_part - start_digits);</span></a>
-<a name="970"><span class="lineNum">     970 </span><span class="lineCov">       1462 :   answer.integer = span&lt;const UC&gt;(start_digits, size_t(digit_count));</span></a>
-<a name="971"><span class="lineNum">     971 </span><span class="lineCov">       1462 :   int64_t exponent = 0;</span></a>
-<a name="972"><span class="lineNum">     972 </span><span class="lineCov">       1462 :   if ((p != pend) &amp;&amp; (*p == decimal_point)) {</span></a>
-<a name="973"><span class="lineNum">     973 </span><span class="lineCov">       1330 :     ++p;</span></a>
-<a name="974"><span class="lineNum">     974 </span><span class="lineCov">       1330 :     UC const * before = p;</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">       1466 :   UC const * const end_of_integer_part = p;</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">       1466 :   int64_t digit_count = int64_t(end_of_integer_part - start_digits);</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">       1466 :   answer.integer = span&lt;const UC&gt;(start_digits, size_t(digit_count));</span></a>
+<a name="971"><span class="lineNum">     971 </span><span class="lineCov">       1466 :   int64_t exponent = 0;</span></a>
+<a name="972"><span class="lineNum">     972 </span><span class="lineCov">       1466 :   if ((p != pend) &amp;&amp; (*p == decimal_point)) {</span></a>
+<a name="973"><span class="lineNum">     973 </span><span class="lineCov">       1333 :     ++p;</span></a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">       1333 :     UC const * before = p;</span></a>
 <a name="975"><span class="lineNum">     975 </span>            :     // can occur at most twice without overflowing, but let it occur more, since</a>
 <a name="976"><span class="lineNum">     976 </span>            :     // for integers with many digits, digit parsing is the primary bottleneck.</a>
 <a name="977"><span class="lineNum">     977 </span>            :     if (std::is_same&lt;UC,char&gt;::value) {</a>
-<a name="978"><span class="lineNum">     978 </span><span class="lineCov">       2741 :       while ((std::distance(p, pend) &gt;= 8) &amp;&amp; is_made_of_eight_digits_fast(p)) {</span></a>
-<a name="979"><span class="lineNum">     979 </span><span class="lineCov">       1411 :         i = i * 100000000 + parse_eight_digits_unrolled(p); // in rare cases, this will overflow, but that's ok</span></a>
-<a name="980"><span class="lineNum">     980 </span><span class="lineCov">       1411 :         p += 8;</span></a>
+<a name="978"><span class="lineNum">     978 </span><span class="lineCov">       2746 :       while ((std::distance(p, pend) &gt;= 8) &amp;&amp; is_made_of_eight_digits_fast(p)) {</span></a>
+<a name="979"><span class="lineNum">     979 </span><span class="lineCov">       1413 :         i = i * 100000000 + parse_eight_digits_unrolled(p); // in rare cases, this will overflow, but that's ok</span></a>
+<a name="980"><span class="lineNum">     980 </span><span class="lineCov">       1413 :         p += 8;</span></a>
 <a name="981"><span class="lineNum">     981 </span>            :       }</a>
 <a name="982"><span class="lineNum">     982 </span>            :     }</a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineCov">       6936 :     while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
-<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       5606 :       uint8_t digit = uint8_t(*p - UC('0'));</span></a>
-<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       5606 :       ++p;</span></a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       5606 :       i = i * 10 + digit; // in rare cases, this will overflow, but that's ok</span></a>
+<a name="983"><span class="lineNum">     983 </span><span class="lineCov">       6953 :     while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       5620 :       uint8_t digit = uint8_t(*p - UC('0'));</span></a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       5620 :       ++p;</span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       5620 :       i = i * 10 + digit; // in rare cases, this will overflow, but that's ok</span></a>
 <a name="987"><span class="lineNum">     987 </span>            :     }</a>
-<a name="988"><span class="lineNum">     988 </span><span class="lineCov">       1330 :     exponent = before - p;</span></a>
-<a name="989"><span class="lineNum">     989 </span><span class="lineCov">       1330 :     answer.fraction = span&lt;const UC&gt;(before, size_t(p - before));</span></a>
-<a name="990"><span class="lineNum">     990 </span><span class="lineCov">       1330 :     digit_count -= exponent;</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">       1333 :     exponent = before - p;</span></a>
+<a name="989"><span class="lineNum">     989 </span><span class="lineCov">       1333 :     answer.fraction = span&lt;const UC&gt;(before, size_t(p - before));</span></a>
+<a name="990"><span class="lineNum">     990 </span><span class="lineCov">       1333 :     digit_count -= exponent;</span></a>
 <a name="991"><span class="lineNum">     991 </span>            :   }</a>
 <a name="992"><span class="lineNum">     992 </span>            :   // we must have encountered at least one integer!</a>
-<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1462 :   if (digit_count == 0) {</span></a>
+<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1466 :   if (digit_count == 0) {</span></a>
 <a name="994"><span class="lineNum">     994 </span>            :     return answer;</a>
 <a name="995"><span class="lineNum">     995 </span>            :   }</a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1462 :   int64_t exp_number = 0;            // explicit exponential part</span></a>
-<a name="997"><span class="lineNum">     997 </span><span class="lineCov">       1462 :   if ((fmt &amp; chars_format::scientific) &amp;&amp; (p != pend) &amp;&amp; ((UC('e') == *p) || (UC('E') == *p))) {</span></a>
-<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1114 :     UC const * location_of_e = p;</span></a>
-<a name="999"><span class="lineNum">     999 </span><span class="lineCov">       1114 :     ++p;</span></a>
-<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">       1114 :     bool neg_exp = false;</span></a>
-<a name="1001"><span class="lineNum">    1001 </span><span class="lineCov">       1114 :     if ((p != pend) &amp;&amp; (UC('-') == *p)) {</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineCov">       1466 :   int64_t exp_number = 0;            // explicit exponential part</span></a>
+<a name="997"><span class="lineNum">     997 </span><span class="lineCov">       1466 :   if ((fmt &amp; chars_format::scientific) &amp;&amp; (p != pend) &amp;&amp; ((UC('e') == *p) || (UC('E') == *p))) {</span></a>
+<a name="998"><span class="lineNum">     998 </span><span class="lineCov">       1117 :     UC const * location_of_e = p;</span></a>
+<a name="999"><span class="lineNum">     999 </span><span class="lineCov">       1117 :     ++p;</span></a>
+<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">       1117 :     bool neg_exp = false;</span></a>
+<a name="1001"><span class="lineNum">    1001 </span><span class="lineCov">       1117 :     if ((p != pend) &amp;&amp; (UC('-') == *p)) {</span></a>
 <a name="1002"><span class="lineNum">    1002 </span><span class="lineCov">        996 :       neg_exp = true;</span></a>
 <a name="1003"><span class="lineNum">    1003 </span><span class="lineCov">        996 :       ++p;</span></a>
-<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">        118 :     } else if ((p != pend) &amp;&amp; (UC('+') == *p)) { // '+' on exponent is allowed by C++17 20.19.3.(7.1)</span></a>
-<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">         62 :       ++p;</span></a>
+<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">        121 :     } else if ((p != pend) &amp;&amp; (UC('+') == *p)) { // '+' on exponent is allowed by C++17 20.19.3.(7.1)</span></a>
+<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">         64 :       ++p;</span></a>
 <a name="1006"><span class="lineNum">    1006 </span>            :     }</a>
-<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">       1114 :     if ((p == pend) || !is_integer(*p)) {</span></a>
+<a name="1007"><span class="lineNum">    1007 </span><span class="lineCov">       1117 :     if ((p == pend) || !is_integer(*p)) {</span></a>
 <a name="1008"><span class="lineNum">    1008 </span><span class="lineNoCov">          0 :       if(!(fmt &amp; chars_format::fixed)) {</span></a>
 <a name="1009"><span class="lineNum">    1009 </span>            :         // We are in error.</a>
 <a name="1010"><span class="lineNum">    1010 </span>            :         return answer;</a>
@@ -1082,29 +1082,29 @@
 <a name="1012"><span class="lineNum">    1012 </span>            :       // Otherwise, we will be ignoring the 'e'.</a>
 <a name="1013"><span class="lineNum">    1013 </span>            :       p = location_of_e;</a>
 <a name="1014"><span class="lineNum">    1014 </span>            :     } else {</a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">       2458 :       while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
-<a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">       1344 :         uint8_t digit = uint8_t(*p - UC('0'));</span></a>
-<a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">       1344 :         if (exp_number &lt; 0x10000000) {</span></a>
-<a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">       1344 :           exp_number = 10 * exp_number + digit;</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">       2466 :       while ((p != pend) &amp;&amp; is_integer(*p)) {</span></a>
+<a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">       1349 :         uint8_t digit = uint8_t(*p - UC('0'));</span></a>
+<a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">       1349 :         if (exp_number &lt; 0x10000000) {</span></a>
+<a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">       1349 :           exp_number = 10 * exp_number + digit;</span></a>
 <a name="1019"><span class="lineNum">    1019 </span>            :         }</a>
-<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       1344 :         ++p;</span></a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">       1349 :         ++p;</span></a>
 <a name="1021"><span class="lineNum">    1021 </span>            :       }</a>
-<a name="1022"><span class="lineNum">    1022 </span><span class="lineCov">       1114 :       if(neg_exp) { exp_number = - exp_number; }</span></a>
-<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">       1114 :       exponent += exp_number;</span></a>
+<a name="1022"><span class="lineNum">    1022 </span><span class="lineCov">       1117 :       if(neg_exp) { exp_number = - exp_number; }</span></a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">       1117 :       exponent += exp_number;</span></a>
 <a name="1024"><span class="lineNum">    1024 </span>            :     }</a>
 <a name="1025"><span class="lineNum">    1025 </span>            :   } else {</a>
 <a name="1026"><span class="lineNum">    1026 </span>            :     // If it scientific and not fixed, we have to bail out.</a>
-<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        348 :     if((fmt &amp; chars_format::scientific) &amp;&amp; !(fmt &amp; chars_format::fixed)) { return answer; }</span></a>
+<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        349 :     if((fmt &amp; chars_format::scientific) &amp;&amp; !(fmt &amp; chars_format::fixed)) { return answer; }</span></a>
 <a name="1028"><span class="lineNum">    1028 </span>            :   }</a>
-<a name="1029"><span class="lineNum">    1029 </span><span class="lineCov">       1462 :   answer.lastmatch = p;</span></a>
-<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">       1462 :   answer.valid = true;</span></a>
+<a name="1029"><span class="lineNum">    1029 </span><span class="lineCov">       1466 :   answer.lastmatch = p;</span></a>
+<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">       1466 :   answer.valid = true;</span></a>
 <a name="1031"><span class="lineNum">    1031 </span>            : </a>
 <a name="1032"><span class="lineNum">    1032 </span>            :   // If we frequently had to deal with long strings of digits,</a>
 <a name="1033"><span class="lineNum">    1033 </span>            :   // we could extend our code by using a 128-bit integer instead</a>
 <a name="1034"><span class="lineNum">    1034 </span>            :   // of a 64-bit integer. However, this is uncommon.</a>
 <a name="1035"><span class="lineNum">    1035 </span>            :   //</a>
 <a name="1036"><span class="lineNum">    1036 </span>            :   // We can deal with up to 19 digits.</a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">       1462 :   if (digit_count &gt; 19) { // this is uncommon</span></a>
+<a name="1037"><span class="lineNum">    1037 </span><span class="lineCov">       1466 :   if (digit_count &gt; 19) { // this is uncommon</span></a>
 <a name="1038"><span class="lineNum">    1038 </span>            :     // It is possible that the integer had an overflow.</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :     // We have to handle the case where we have 0.0000somenumber.</a>
 <a name="1040"><span class="lineNum">    1040 </span>            :     // We need to be mindful of the case where we only have zeroes...</a>
@@ -1141,9 +1141,9 @@
 <a name="1071"><span class="lineNum">    1071 </span>            :       // We have now corrected both exponent and i, to a truncated value</a>
 <a name="1072"><span class="lineNum">    1072 </span>            :     }</a>
 <a name="1073"><span class="lineNum">    1073 </span>            :   }</a>
-<a name="1074"><span class="lineNum">    1074 </span><span class="lineCov">       1462 :   answer.exponent = exponent;</span></a>
-<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">       1462 :   answer.mantissa = i;</span></a>
-<a name="1076"><span class="lineNum">    1076 </span><span class="lineCov">       1462 :   return answer;</span></a>
+<a name="1074"><span class="lineNum">    1074 </span><span class="lineCov">       1466 :   answer.exponent = exponent;</span></a>
+<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">       1466 :   answer.mantissa = i;</span></a>
+<a name="1076"><span class="lineNum">    1076 </span><span class="lineCov">       1466 :   return answer;</span></a>
 <a name="1077"><span class="lineNum">    1077 </span>            : }</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
 <a name="1079"><span class="lineNum">    1079 </span>            : } // namespace fast_float</a>
@@ -3162,7 +3162,7 @@
 <a name="3092"><span class="lineNum">    3092 </span>            :  * It is the default on most system. This function is meant to be inexpensive.</a>
 <a name="3093"><span class="lineNum">    3093 </span>            :  * Credit : @mwalcott3</a>
 <a name="3094"><span class="lineNum">    3094 </span>            :  */</a>
-<a name="3095"><span class="lineNum">    3095 </span><span class="lineCov">       1462 : fastfloat_really_inline bool rounds_to_nearest() noexcept {</span></a>
+<a name="3095"><span class="lineNum">    3095 </span><span class="lineCov">       1466 : fastfloat_really_inline bool rounds_to_nearest() noexcept {</span></a>
 <a name="3096"><span class="lineNum">    3096 </span>            :   // https://lemire.me/blog/2020/06/26/gcc-not-nearest/</a>
 <a name="3097"><span class="lineNum">    3097 </span>            : #if (FLT_EVAL_METHOD != 1) &amp;&amp; (FLT_EVAL_METHOD != 0)</a>
 <a name="3098"><span class="lineNum">    3098 </span>            :   return false;</a>
@@ -3183,8 +3183,8 @@
 <a name="3113"><span class="lineNum">    3113 </span>            :   // The value does not need to be std::numeric_limits&lt;float&gt;::min(), any small</a>
 <a name="3114"><span class="lineNum">    3114 </span>            :   // value so that 1 + x should round to 1 would do (after accounting for excess</a>
 <a name="3115"><span class="lineNum">    3115 </span>            :   // precision, as in 387 instructions).</a>
-<a name="3116"><span class="lineNum">    3116 </span><span class="lineCov">       1462 :   static volatile float fmin = std::numeric_limits&lt;float&gt;::min();</span></a>
-<a name="3117"><span class="lineNum">    3117 </span><span class="lineCov">       1462 :   float fmini = fmin; // we copy it so that it gets loaded at most once.</span></a>
+<a name="3116"><span class="lineNum">    3116 </span><span class="lineCov">       1466 :   static volatile float fmin = std::numeric_limits&lt;float&gt;::min();</span></a>
+<a name="3117"><span class="lineNum">    3117 </span><span class="lineCov">       1466 :   float fmini = fmin; // we copy it so that it gets loaded at most once.</span></a>
 <a name="3118"><span class="lineNum">    3118 </span>            :   //</a>
 <a name="3119"><span class="lineNum">    3119 </span>            :   // Explanation:</a>
 <a name="3120"><span class="lineNum">    3120 </span>            :   // Only when fegetround() == FE_TONEAREST do we have that</a>
@@ -3208,10 +3208,10 @@
 <a name="3138"><span class="lineNum">    3138 </span>            :   #   pragma clang diagnostic push</a>
 <a name="3139"><span class="lineNum">    3139 </span>            :   #   pragma clang diagnostic ignored &quot;-Wfloat-equal&quot;</a>
 <a name="3140"><span class="lineNum">    3140 </span>            :   #elif defined(__GNUC__)</a>
-<a name="3141"><span class="lineNum">    3141 </span><span class="lineCov">       1462 :   #   pragma GCC diagnostic push</span></a>
-<a name="3142"><span class="lineNum">    3142 </span><span class="lineCov">       1462 :   #   pragma GCC diagnostic ignored &quot;-Wfloat-equal&quot;</span></a>
+<a name="3141"><span class="lineNum">    3141 </span><span class="lineCov">       1466 :   #   pragma GCC diagnostic push</span></a>
+<a name="3142"><span class="lineNum">    3142 </span><span class="lineCov">       1466 :   #   pragma GCC diagnostic ignored &quot;-Wfloat-equal&quot;</span></a>
 <a name="3143"><span class="lineNum">    3143 </span>            :   #endif</a>
-<a name="3144"><span class="lineNum">    3144 </span><span class="lineCov">       1462 :   return (fmini + 1.0f == 1.0f - fmini);</span></a>
+<a name="3144"><span class="lineNum">    3144 </span><span class="lineCov">       1466 :   return (fmini + 1.0f == 1.0f - fmini);</span></a>
 <a name="3145"><span class="lineNum">    3145 </span>            :   #ifdef FASTFLOAT_VISUAL_STUDIO</a>
 <a name="3146"><span class="lineNum">    3146 </span>            :   #   pragma warning(pop)</a>
 <a name="3147"><span class="lineNum">    3147 </span>            :   #elif defined(__clang__)</a>
@@ -3225,14 +3225,14 @@
 <a name="3155"><span class="lineNum">    3155 </span>            : </a>
 <a name="3156"><span class="lineNum">    3156 </span>            : template&lt;typename T, typename UC&gt;</a>
 <a name="3157"><span class="lineNum">    3157 </span>            : FASTFLOAT_CONSTEXPR20</a>
-<a name="3158"><span class="lineNum">    3158 </span><span class="lineCov">       1462 : from_chars_result_t&lt;UC&gt; from_chars(UC const * first, UC const * last,</span></a>
+<a name="3158"><span class="lineNum">    3158 </span><span class="lineCov">       1466 : from_chars_result_t&lt;UC&gt; from_chars(UC const * first, UC const * last,</span></a>
 <a name="3159"><span class="lineNum">    3159 </span>            :                              T &amp;value, chars_format fmt /*= chars_format::general*/)  noexcept  {</a>
-<a name="3160"><span class="lineNum">    3160 </span><span class="lineCov">       1462 :   return from_chars_advanced(first, last, value, parse_options_t&lt;UC&gt;{fmt});</span></a>
+<a name="3160"><span class="lineNum">    3160 </span><span class="lineCov">       1466 :   return from_chars_advanced(first, last, value, parse_options_t&lt;UC&gt;{fmt});</span></a>
 <a name="3161"><span class="lineNum">    3161 </span>            : }</a>
 <a name="3162"><span class="lineNum">    3162 </span>            : </a>
 <a name="3163"><span class="lineNum">    3163 </span>            : template&lt;typename T, typename UC&gt;</a>
 <a name="3164"><span class="lineNum">    3164 </span>            : FASTFLOAT_CONSTEXPR20</a>
-<a name="3165"><span class="lineNum">    3165 </span><span class="lineCov">       1462 : from_chars_result_t&lt;UC&gt; from_chars_advanced(UC const * first, UC const * last,</span></a>
+<a name="3165"><span class="lineNum">    3165 </span><span class="lineCov">       1466 : from_chars_result_t&lt;UC&gt; from_chars_advanced(UC const * first, UC const * last,</span></a>
 <a name="3166"><span class="lineNum">    3166 </span>            :                                       T &amp;value, parse_options_t&lt;UC&gt; options)  noexcept  {</a>
 <a name="3167"><span class="lineNum">    3167 </span>            : </a>
 <a name="3168"><span class="lineNum">    3168 </span>            :   static_assert (std::is_same&lt;T, double&gt;::value || std::is_same&lt;T, float&gt;::value, &quot;only float and double are supported&quot;);</a>
@@ -3247,23 +3247,23 @@
 <a name="3177"><span class="lineNum">    3177 </span>            :     first++;</a>
 <a name="3178"><span class="lineNum">    3178 </span>            :   }</a>
 <a name="3179"><span class="lineNum">    3179 </span>            : #endif</a>
-<a name="3180"><span class="lineNum">    3180 </span><span class="lineCov">       1462 :   if (first == last) {</span></a>
+<a name="3180"><span class="lineNum">    3180 </span><span class="lineCov">       1466 :   if (first == last) {</span></a>
 <a name="3181"><span class="lineNum">    3181 </span><span class="lineNoCov">          0 :     answer.ec = std::errc::invalid_argument;</span></a>
 <a name="3182"><span class="lineNum">    3182 </span><span class="lineNoCov">          0 :     answer.ptr = first;</span></a>
 <a name="3183"><span class="lineNum">    3183 </span><span class="lineNoCov">          0 :     return answer;</span></a>
 <a name="3184"><span class="lineNum">    3184 </span>            :   }</a>
-<a name="3185"><span class="lineNum">    3185 </span><span class="lineCov">       1462 :   parsed_number_string_t&lt;UC&gt; pns = parse_number_string&lt;UC&gt;(first, last, options);</span></a>
-<a name="3186"><span class="lineNum">    3186 </span><span class="lineCov">       1462 :   if (!pns.valid) {</span></a>
+<a name="3185"><span class="lineNum">    3185 </span><span class="lineCov">       1466 :   parsed_number_string_t&lt;UC&gt; pns = parse_number_string&lt;UC&gt;(first, last, options);</span></a>
+<a name="3186"><span class="lineNum">    3186 </span><span class="lineCov">       1466 :   if (!pns.valid) {</span></a>
 <a name="3187"><span class="lineNum">    3187 </span><span class="lineNoCov">          0 :     return detail::parse_infnan(first, last, value);</span></a>
 <a name="3188"><span class="lineNum">    3188 </span>            :   }</a>
-<a name="3189"><span class="lineNum">    3189 </span><span class="lineCov">       1462 :   answer.ec = std::errc(); // be optimistic</span></a>
-<a name="3190"><span class="lineNum">    3190 </span><span class="lineCov">       1462 :   answer.ptr = pns.lastmatch;</span></a>
+<a name="3189"><span class="lineNum">    3189 </span><span class="lineCov">       1466 :   answer.ec = std::errc(); // be optimistic</span></a>
+<a name="3190"><span class="lineNum">    3190 </span><span class="lineCov">       1466 :   answer.ptr = pns.lastmatch;</span></a>
 <a name="3191"><span class="lineNum">    3191 </span>            :   // The implementation of the Clinger's fast path is convoluted because</a>
 <a name="3192"><span class="lineNum">    3192 </span>            :   // we want round-to-nearest in all cases, irrespective of the rounding mode</a>
 <a name="3193"><span class="lineNum">    3193 </span>            :   // selected on the thread.</a>
 <a name="3194"><span class="lineNum">    3194 </span>            :   // We proceed optimistically, assuming that detail::rounds_to_nearest() returns</a>
 <a name="3195"><span class="lineNum">    3195 </span>            :   // true.</a>
-<a name="3196"><span class="lineNum">    3196 </span><span class="lineCov">       1462 :   if (binary_format&lt;T&gt;::min_exponent_fast_path() &lt;= pns.exponent &amp;&amp; pns.exponent &lt;= binary_format&lt;T&gt;::max_exponent_fast_path() &amp;&amp; !pns.too_many_digits) {</span></a>
+<a name="3196"><span class="lineNum">    3196 </span><span class="lineCov">       1466 :   if (binary_format&lt;T&gt;::min_exponent_fast_path() &lt;= pns.exponent &amp;&amp; pns.exponent &lt;= binary_format&lt;T&gt;::max_exponent_fast_path() &amp;&amp; !pns.too_many_digits) {</span></a>
 <a name="3197"><span class="lineNum">    3197 </span>            :     // Unfortunately, the conventional Clinger's fast path is only possible</a>
 <a name="3198"><span class="lineNum">    3198 </span>            :     // when the system rounds to the nearest float.</a>
 <a name="3199"><span class="lineNum">    3199 </span>            :     //</a>
@@ -3271,15 +3271,15 @@
 <a name="3201"><span class="lineNum">    3201 </span>            :     // We could check it first (before the previous branch), but</a>
 <a name="3202"><span class="lineNum">    3202 </span>            :     // there might be performance advantages at having the check</a>
 <a name="3203"><span class="lineNum">    3203 </span>            :     // be last.</a>
-<a name="3204"><span class="lineNum">    3204 </span><span class="lineCov">       1462 :     if(!cpp20_and_in_constexpr() &amp;&amp; detail::rounds_to_nearest())  {</span></a>
+<a name="3204"><span class="lineNum">    3204 </span><span class="lineCov">       1466 :     if(!cpp20_and_in_constexpr() &amp;&amp; detail::rounds_to_nearest())  {</span></a>
 <a name="3205"><span class="lineNum">    3205 </span>            :       // We have that fegetround() == FE_TONEAREST.</a>
 <a name="3206"><span class="lineNum">    3206 </span>            :       // Next is Clinger's fast path.</a>
-<a name="3207"><span class="lineNum">    3207 </span><span class="lineCov">       1462 :       if (pns.mantissa &lt;=binary_format&lt;T&gt;::max_mantissa_fast_path()) {</span></a>
-<a name="3208"><span class="lineNum">    3208 </span><span class="lineCov">       1035 :         value = T(pns.mantissa);</span></a>
-<a name="3209"><span class="lineNum">    3209 </span><span class="lineCov">       1035 :         if (pns.exponent &lt; 0) { value = value / binary_format&lt;T&gt;::exact_power_of_ten(-pns.exponent); }</span></a>
-<a name="3210"><span class="lineNum">    3210 </span><span class="lineCov">        136 :         else { value = value * binary_format&lt;T&gt;::exact_power_of_ten(pns.exponent); }</span></a>
-<a name="3211"><span class="lineNum">    3211 </span><span class="lineCov">       1035 :         if (pns.negative) { value = -value; }</span></a>
-<a name="3212"><span class="lineNum">    3212 </span><span class="lineCov">       1035 :         return answer;</span></a>
+<a name="3207"><span class="lineNum">    3207 </span><span class="lineCov">       1466 :       if (pns.mantissa &lt;=binary_format&lt;T&gt;::max_mantissa_fast_path()) {</span></a>
+<a name="3208"><span class="lineNum">    3208 </span><span class="lineCov">       1039 :         value = T(pns.mantissa);</span></a>
+<a name="3209"><span class="lineNum">    3209 </span><span class="lineCov">       1039 :         if (pns.exponent &lt; 0) { value = value / binary_format&lt;T&gt;::exact_power_of_ten(-pns.exponent); }</span></a>
+<a name="3210"><span class="lineNum">    3210 </span><span class="lineCov">        137 :         else { value = value * binary_format&lt;T&gt;::exact_power_of_ten(pns.exponent); }</span></a>
+<a name="3211"><span class="lineNum">    3211 </span><span class="lineCov">       1039 :         if (pns.negative) { value = -value; }</span></a>
+<a name="3212"><span class="lineNum">    3212 </span><span class="lineCov">       1039 :         return answer;</span></a>
 <a name="3213"><span class="lineNum">    3213 </span>            :       }</a>
 <a name="3214"><span class="lineNum">    3214 </span>            :     } else {</a>
 <a name="3215"><span class="lineNum">    3215 </span>            :       // We do not have that fegetround() == FE_TONEAREST.</a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/shared_ptr.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/shared_ptr.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">23</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">87</td>
@@ -242,7 +242,7 @@
 <a name="172"><span class="lineNum">     172 </span>            :    * pointer see `std::shared_ptr::owner_before` and `std::owner_less`.</a>
 <a name="173"><span class="lineNum">     173 </span>            :   */</a>
 <a name="174"><span class="lineNum">     174 </span>            :   template&lt;typename _Tp&gt;</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">     518230 :     class shared_ptr : public __shared_ptr&lt;_Tp&gt;</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">     518607 :     class shared_ptr : public __shared_ptr&lt;_Tp&gt;</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :     {</a>
 <a name="177"><span class="lineNum">     177 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="178"><span class="lineNum">     178 </span>            :         using _Constructible = typename enable_if&lt;</a>
@@ -269,9 +269,9 @@
 <a name="199"><span class="lineNum">     199 </span>            :        *  @brief  Construct an empty %shared_ptr.</a>
 <a name="200"><span class="lineNum">     200 </span>            :        *  @post   use_count()==0 &amp;&amp; get()==0</a>
 <a name="201"><span class="lineNum">     201 </span>            :        */</a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       5556 :       constexpr shared_ptr() noexcept : __shared_ptr&lt;_Tp&gt;() { }</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       5597 :       constexpr shared_ptr() noexcept : __shared_ptr&lt;_Tp&gt;() { }</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     153196 :       shared_ptr(const shared_ptr&amp;) noexcept = default; ///&lt; Copy constructor</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">     153300 :       shared_ptr(const shared_ptr&amp;) noexcept = default; ///&lt; Copy constructor</span></a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
 <a name="206"><span class="lineNum">     206 </span>            :       /**</a>
 <a name="207"><span class="lineNum">     207 </span>            :        *  @brief  Construct a %shared_ptr that owns the pointer @a __p.</a>
@@ -281,7 +281,7 @@
 <a name="211"><span class="lineNum">     211 </span>            :        */</a>
 <a name="212"><span class="lineNum">     212 </span>            :       template&lt;typename _Yp, typename = _Constructible&lt;_Yp*&gt;&gt;</a>
 <a name="213"><span class="lineNum">     213 </span>            :         explicit</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         10 :         shared_ptr(_Yp* __p) : __shared_ptr&lt;_Tp&gt;(__p) { }</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         11 :         shared_ptr(_Yp* __p) : __shared_ptr&lt;_Tp&gt;(__p) { }</span></a>
 <a name="215"><span class="lineNum">     215 </span>            : </a>
 <a name="216"><span class="lineNum">     216 </span>            :       /**</a>
 <a name="217"><span class="lineNum">     217 </span>            :        *  @brief  Construct a %shared_ptr that owns the pointer @a __p</a>
@@ -418,16 +418,16 @@
 <a name="348"><span class="lineNum">     348 </span>            :        */</a>
 <a name="349"><span class="lineNum">     349 </span>            :       template&lt;typename _Yp,</a>
 <a name="350"><span class="lineNum">     350 </span>            :                typename = _Constructible&lt;const shared_ptr&lt;_Yp&gt;&amp;&gt;&gt;</a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        710 :         shared_ptr(const shared_ptr&lt;_Yp&gt;&amp; __r) noexcept</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       1410 :         : __shared_ptr&lt;_Tp&gt;(__r) { }</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        716 :         shared_ptr(const shared_ptr&lt;_Yp&gt;&amp; __r) noexcept</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       1421 :         : __shared_ptr&lt;_Tp&gt;(__r) { }</span></a>
 <a name="353"><span class="lineNum">     353 </span>            : </a>
 <a name="354"><span class="lineNum">     354 </span>            :       /**</a>
 <a name="355"><span class="lineNum">     355 </span>            :        *  @brief  Move-constructs a %shared_ptr instance from @a __r.</a>
 <a name="356"><span class="lineNum">     356 </span>            :        *  @param  __r  A %shared_ptr rvalue.</a>
 <a name="357"><span class="lineNum">     357 </span>            :        *  @post   *this contains the old value of @a __r, @a __r is empty.</a>
 <a name="358"><span class="lineNum">     358 </span>            :        */</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">     153952 :       shared_ptr(shared_ptr&amp;&amp; __r) noexcept</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     152712 :       : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">     154062 :       shared_ptr(shared_ptr&amp;&amp; __r) noexcept</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">     152813 :       : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
 <a name="362"><span class="lineNum">     362 </span>            :       /**</a>
 <a name="363"><span class="lineNum">     363 </span>            :        *  @brief  Move-constructs a %shared_ptr instance from @a __r.</a>
@@ -435,8 +435,8 @@
 <a name="365"><span class="lineNum">     365 </span>            :        *  @post   *this contains the old value of @a __r, @a __r is empty.</a>
 <a name="366"><span class="lineNum">     366 </span>            :        */</a>
 <a name="367"><span class="lineNum">     367 </span>            :       template&lt;typename _Yp, typename = _Constructible&lt;shared_ptr&lt;_Yp&gt;&gt;&gt;</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">       1738 :         shared_ptr(shared_ptr&lt;_Yp&gt;&amp;&amp; __r) noexcept</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       1738 :         : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">       1749 :         shared_ptr(shared_ptr&lt;_Yp&gt;&amp;&amp; __r) noexcept</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">       1749 :         : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
 <a name="370"><span class="lineNum">     370 </span>            : </a>
 <a name="371"><span class="lineNum">     371 </span>            :       /**</a>
 <a name="372"><span class="lineNum">     372 </span>            :        *  @brief  Constructs a %shared_ptr that shares ownership with @a __r</a>
@@ -462,8 +462,8 @@
 <a name="392"><span class="lineNum">     392 </span>            :       // 2399. shared_ptr's constructor from unique_ptr should be constrained</a>
 <a name="393"><span class="lineNum">     393 </span>            :       template&lt;typename _Yp, typename _Del,</a>
 <a name="394"><span class="lineNum">     394 </span>            :                typename = _Constructible&lt;unique_ptr&lt;_Yp, _Del&gt;&gt;&gt;</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">        161 :         shared_ptr(unique_ptr&lt;_Yp, _Del&gt;&amp;&amp; __r)</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">        161 :         : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">        162 :         shared_ptr(unique_ptr&lt;_Yp, _Del&gt;&amp;&amp; __r)</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">        162 :         : __shared_ptr&lt;_Tp&gt;(std::move(__r)) { }</span></a>
 <a name="397"><span class="lineNum">     397 </span>            : </a>
 <a name="398"><span class="lineNum">     398 </span>            : #if __cplusplus &lt;= 201402L &amp;&amp; _GLIBCXX_USE_DEPRECATED</a>
 <a name="399"><span class="lineNum">     399 </span>            :       // This non-standard constructor exists to support conversions that</a>
@@ -479,9 +479,9 @@
 <a name="409"><span class="lineNum">     409 </span>            :        *  @brief  Construct an empty %shared_ptr.</a>
 <a name="410"><span class="lineNum">     410 </span>            :        *  @post   use_count() == 0 &amp;&amp; get() == nullptr</a>
 <a name="411"><span class="lineNum">     411 </span>            :        */</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       4856 :       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">       4892 :       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }</span></a>
 <a name="413"><span class="lineNum">     413 </span>            : </a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">       2428 :       shared_ptr&amp; operator=(const shared_ptr&amp;) noexcept = default;</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">       2446 :       shared_ptr&amp; operator=(const shared_ptr&amp;) noexcept = default;</span></a>
 <a name="415"><span class="lineNum">     415 </span>            : </a>
 <a name="416"><span class="lineNum">     416 </span>            :       template&lt;typename _Yp&gt;</a>
 <a name="417"><span class="lineNum">     417 </span>            :         _Assignable&lt;const shared_ptr&lt;_Yp&gt;&amp;&gt;</a>
@@ -505,9 +505,9 @@
 <a name="435"><span class="lineNum">     435 </span>            : #endif</a>
 <a name="436"><span class="lineNum">     436 </span>            : </a>
 <a name="437"><span class="lineNum">     437 </span>            :       shared_ptr&amp;</a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      97576 :       operator=(shared_ptr&amp;&amp; __r) noexcept</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      97588 :       operator=(shared_ptr&amp;&amp; __r) noexcept</span></a>
 <a name="439"><span class="lineNum">     439 </span>            :       {</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      97576 :         this-&gt;__shared_ptr&lt;_Tp&gt;::operator=(std::move(__r));</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">      97588 :         this-&gt;__shared_ptr&lt;_Tp&gt;::operator=(std::move(__r));</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :         return *this;</a>
 <a name="442"><span class="lineNum">     442 </span>            :       }</a>
 <a name="443"><span class="lineNum">     443 </span>            : </a>
@@ -530,9 +530,9 @@
 <a name="460"><span class="lineNum">     460 </span>            :     private:</a>
 <a name="461"><span class="lineNum">     461 </span>            :       // This constructor is non-standard, it is used by allocate_shared.</a>
 <a name="462"><span class="lineNum">     462 </span>            :       template&lt;typename _Alloc, typename... _Args&gt;</a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       5138 :         shared_ptr(_Sp_alloc_shared_tag&lt;_Alloc&gt; __tag, _Args&amp;&amp;... __args)</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       5138 :         : __shared_ptr&lt;_Tp&gt;(__tag, std::forward&lt;_Args&gt;(__args)...)</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       5138 :         { }</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       5174 :         shared_ptr(_Sp_alloc_shared_tag&lt;_Alloc&gt; __tag, _Args&amp;&amp;... __args)</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       5174 :         : __shared_ptr&lt;_Tp&gt;(__tag, std::forward&lt;_Args&gt;(__args)...)</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       5174 :         { }</span></a>
 <a name="466"><span class="lineNum">     466 </span>            : </a>
 <a name="467"><span class="lineNum">     467 </span>            :       template&lt;typename _Yp, typename _Alloc, typename... _Args&gt;</a>
 <a name="468"><span class="lineNum">     468 </span>            :         friend shared_ptr&lt;_NonArray&lt;_Yp&gt;&gt;</a>
@@ -1057,10 +1057,10 @@
 <a name="987"><span class="lineNum">     987 </span>            :    */</a>
 <a name="988"><span class="lineNum">     988 </span>            :   template&lt;typename _Tp, typename _Alloc, typename... _Args&gt;</a>
 <a name="989"><span class="lineNum">     989 </span>            :     inline shared_ptr&lt;_NonArray&lt;_Tp&gt;&gt;</a>
-<a name="990"><span class="lineNum">     990 </span><span class="lineCov">       1400 :     allocate_shared(const _Alloc&amp; __a, _Args&amp;&amp;... __args)</span></a>
+<a name="990"><span class="lineNum">     990 </span><span class="lineCov">       1410 :     allocate_shared(const _Alloc&amp; __a, _Args&amp;&amp;... __args)</span></a>
 <a name="991"><span class="lineNum">     991 </span>            :     {</a>
 <a name="992"><span class="lineNum">     992 </span>            :       return shared_ptr&lt;_Tp&gt;(_Sp_alloc_shared_tag&lt;_Alloc&gt;{__a},</a>
-<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1400 :                              std::forward&lt;_Args&gt;(__args)...);</span></a>
+<a name="993"><span class="lineNum">     993 </span><span class="lineCov">       1410 :                              std::forward&lt;_Args&gt;(__args)...);</span></a>
 <a name="994"><span class="lineNum">     994 </span>            :     }</a>
 <a name="995"><span class="lineNum">     995 </span>            : </a>
 <a name="996"><span class="lineNum">     996 </span>            :   /**</a>
@@ -1072,12 +1072,12 @@
 <a name="1002"><span class="lineNum">    1002 </span>            :    */</a>
 <a name="1003"><span class="lineNum">    1003 </span>            :   template&lt;typename _Tp, typename... _Args&gt;</a>
 <a name="1004"><span class="lineNum">    1004 </span>            :     inline shared_ptr&lt;_NonArray&lt;_Tp&gt;&gt;</a>
-<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">       3738 :     make_shared(_Args&amp;&amp;... __args)</span></a>
+<a name="1005"><span class="lineNum">    1005 </span><span class="lineCov">       3764 :     make_shared(_Args&amp;&amp;... __args)</span></a>
 <a name="1006"><span class="lineNum">    1006 </span>            :     {</a>
 <a name="1007"><span class="lineNum">    1007 </span>            :       using _Alloc = allocator&lt;void&gt;;</a>
 <a name="1008"><span class="lineNum">    1008 </span>            :       _Alloc __a;</a>
 <a name="1009"><span class="lineNum">    1009 </span>            :       return shared_ptr&lt;_Tp&gt;(_Sp_alloc_shared_tag&lt;_Alloc&gt;{__a},</a>
-<a name="1010"><span class="lineNum">    1010 </span><span class="lineCov">       3738 :                              std::forward&lt;_Args&gt;(__args)...);</span></a>
+<a name="1010"><span class="lineNum">    1010 </span><span class="lineCov">       3764 :                              std::forward&lt;_Args&gt;(__args)...);</span></a>
 <a name="1011"><span class="lineNum">    1011 </span>            :     }</a>
 <a name="1012"><span class="lineNum">    1012 </span>            : </a>
 <a name="1013"><span class="lineNum">    1013 </span>            : #if __cpp_lib_shared_ptr_arrays &gt;= 201707L</a>

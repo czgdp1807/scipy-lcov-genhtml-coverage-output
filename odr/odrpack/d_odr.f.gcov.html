@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - odr/odrpack/d_odr.f</title>
+  <title>LCOV - lcov.info - odr/odrpack/d_odr.f</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,16 +28,16 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">1487</td>
+            <td class="headerCovTableEntry">1477</td>
             <td class="headerCovTableEntry">2832</td>
-            <td class="headerCovTableEntryLo">52.5 %</td>
+            <td class="headerCovTableEntryLo">52.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">38</td>
@@ -779,8 +779,8 @@
 <a name="709"><span class="lineNum">     709 </span><span class="lineCov">         66 :       RETURN</span></a>
 <a name="710"><span class="lineNum">     710 </span>            :       END</a>
 <a name="711"><span class="lineNum">     711 </span>            : *DESUBI</a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">      18219 :       SUBROUTINE DESUBI</span></a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">      18219 :      +   (N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,E)</span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineCov">      18227 :       SUBROUTINE DESUBI</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">      18227 :      +   (N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,E)</span></a>
 <a name="714"><span class="lineNum">     714 </span>            : C***BEGIN PROLOGUE  DESUBI</a>
 <a name="715"><span class="lineNum">     715 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="716"><span class="lineNum">     716 </span>            : C***ROUTINES CALLED  DZERO</a>
@@ -838,18 +838,18 @@
 <a name="768"><span class="lineNum">     768 </span>            : C        OF THE FIRST ELEMENT OF EACH ARRAY AND THE LEADING DIMENSIONS</a>
 <a name="769"><span class="lineNum">     769 </span>            : C        OF THE MULTIPLY SUBSCRIPTED ARRAYS.</a>
 <a name="770"><span class="lineNum">     770 </span>            : </a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">      18219 :       IF (N.EQ.0 .OR. M.EQ.0) RETURN</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">      18227 :       IF (N.EQ.0 .OR. M.EQ.0) RETURN</span></a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
-<a name="773"><span class="lineNum">     773 </span><span class="lineCov">      18219 :       IF (WD(1,1,1).GE.ZERO) THEN</span></a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">       1689 :          IF (LDWD.GE.N) THEN</span></a>
+<a name="773"><span class="lineNum">     773 </span><span class="lineCov">      18227 :       IF (WD(1,1,1).GE.ZERO) THEN</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">       1697 :          IF (LDWD.GE.N) THEN</span></a>
 <a name="775"><span class="lineNum">     775 </span>            : C  THE ELEMENTS OF WD HAVE BEEN INDIVIDUALLY SPECIFIED</a>
 <a name="776"><span class="lineNum">     776 </span>            : </a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       1689 :             IF (LD2WD.EQ.1) THEN</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       1697 :             IF (LD2WD.EQ.1) THEN</span></a>
 <a name="778"><span class="lineNum">     778 </span>            : C  THE ARRAYS STORED IN WD ARE DIAGONAL</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">       1689 :                CALL DZERO(M,M,E,M)</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">       3378 :                DO 10 J=1,M</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       1689 :                   E(J,J) = WD(I,1,J)</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       1689 :    10          CONTINUE</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">       1697 :                CALL DZERO(M,M,E,M)</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">       3394 :                DO 10 J=1,M</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       1697 :                   E(J,J) = WD(I,1,J)</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       1697 :    10          CONTINUE</span></a>
 <a name="783"><span class="lineNum">     783 </span>            :             ELSE</a>
 <a name="784"><span class="lineNum">     784 </span>            : C  THE ARRAYS STORED IN WD ARE FULL POSITIVE SEMIDEFINITE MATRICES</a>
 <a name="785"><span class="lineNum">     785 </span><span class="lineNoCov">          0 :                DO 30 J1=1,M</span></a>
@@ -859,11 +859,11 @@
 <a name="789"><span class="lineNum">     789 </span><span class="lineNoCov">          0 :    30          CONTINUE</span></a>
 <a name="790"><span class="lineNum">     790 </span>            :             END IF</a>
 <a name="791"><span class="lineNum">     791 </span>            : </a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1689 :             IF (TT(1,1).GT.ZERO) THEN</span></a>
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       1689 :                IF (LDTT.GE.N) THEN</span></a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">       3378 :                   DO 110 J=1,M</span></a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       1689 :                      E(J,J) = E(J,J) + ALPHA*TT(I,J)**2</span></a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       1689 :   110             CONTINUE</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">       1697 :             IF (TT(1,1).GT.ZERO) THEN</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">       1697 :                IF (LDTT.GE.N) THEN</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">       3394 :                   DO 110 J=1,M</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">       1697 :                      E(J,J) = E(J,J) + ALPHA*TT(I,J)**2</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       1697 :   110             CONTINUE</span></a>
 <a name="797"><span class="lineNum">     797 </span>            :                ELSE</a>
 <a name="798"><span class="lineNum">     798 </span><span class="lineNoCov">          0 :                   DO 120 J=1,M</span></a>
 <a name="799"><span class="lineNum">     799 </span><span class="lineNoCov">          0 :                      E(J,J) = E(J,J) + ALPHA*TT(1,J)**2</span></a>
@@ -1086,16 +1086,16 @@
 <a name="1016"><span class="lineNum">    1016 </span><span class="lineCov">         22 :       RETURN</span></a>
 <a name="1017"><span class="lineNum">    1017 </span>            :       END</a>
 <a name="1018"><span class="lineNum">    1018 </span>            : *DEVJAC</a>
-<a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">        211 :       SUBROUTINE DEVJAC</span></a>
+<a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">        212 :       SUBROUTINE DEVJAC</span></a>
 <a name="1020"><span class="lineNum">    1020 </span>            :      +   (FCN,</a>
 <a name="1021"><span class="lineNum">    1021 </span>            :      +    ANAJAC,CDJAC, </a>
 <a name="1022"><span class="lineNum">    1022 </span>            :      +    N,M,NP,NQ,</a>
-<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">        211 :      +    BETAC,BETA,STPB, </span></a>
-<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">        211 :      +    IFIXB,IFIXX,LDIFX,</span></a>
-<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">        211 :      +    X,LDX,DELTA,XPLUSD,STPD,LDSTPD,</span></a>
-<a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">        211 :      +    SSF,TT,LDTT,NETA,FN,</span></a>
-<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        211 :      +    STP,WRK1,WRK2,WRK3,WRK6,</span></a>
-<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">        211 :      +    FJACB,ISODR,FJACD,WE1,LDWE,LD2WE,</span></a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">        212 :      +    BETAC,BETA,STPB, </span></a>
+<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">        212 :      +    IFIXB,IFIXX,LDIFX,</span></a>
+<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">        212 :      +    X,LDX,DELTA,XPLUSD,STPD,LDSTPD,</span></a>
+<a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">        212 :      +    SSF,TT,LDTT,NETA,FN,</span></a>
+<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        212 :      +    STP,WRK1,WRK2,WRK3,WRK6,</span></a>
+<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">        212 :      +    FJACB,ISODR,FJACD,WE1,LDWE,LD2WE,</span></a>
 <a name="1029"><span class="lineNum">    1029 </span>            :      +    NJEV,NFEV,ISTOP,INFO)</a>
 <a name="1030"><span class="lineNum">    1030 </span>            : C***BEGIN PROLOGUE  DEVJAC</a>
 <a name="1031"><span class="lineNum">    1031 </span>            : C***REFER TO  DODR,DODRC</a>
@@ -1218,22 +1218,22 @@
 <a name="1148"><span class="lineNum">    1148 </span>            : </a>
 <a name="1149"><span class="lineNum">    1149 </span>            : C  INSERT CURRENT UNFIXED BETA ESTIMATES INTO BETA</a>
 <a name="1150"><span class="lineNum">    1150 </span>            : </a>
-<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">        211 :       CALL DUNPAC(NP,BETAC,BETA,IFIXB)</span></a>
+<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">        212 :       CALL DUNPAC(NP,BETAC,BETA,IFIXB)</span></a>
 <a name="1152"><span class="lineNum">    1152 </span>            : </a>
 <a name="1153"><span class="lineNum">    1153 </span>            : C  COMPUTE XPLUSD = X + DELTA</a>
 <a name="1154"><span class="lineNum">    1154 </span>            : </a>
-<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">        211 :       CALL DXPY(N,M,X,LDX,DELTA,N,XPLUSD,N)</span></a>
+<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">        212 :       CALL DXPY(N,M,X,LDX,DELTA,N,XPLUSD,N)</span></a>
 <a name="1156"><span class="lineNum">    1156 </span>            : </a>
 <a name="1157"><span class="lineNum">    1157 </span>            : C  COMPUTE THE JACOBIAN WRT THE ESTIMATED BETAS (FJACB) AND</a>
 <a name="1158"><span class="lineNum">    1158 </span>            : C          THE JACOBIAN WRT DELTA (FJACD)</a>
 <a name="1159"><span class="lineNum">    1159 </span>            : </a>
-<a name="1160"><span class="lineNum">    1160 </span><span class="lineCov">        211 :       ISTOP = 0</span></a>
-<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">        211 :       IF (ISODR) THEN</span></a>
-<a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">        211 :          IDEVAL = 110</span></a>
+<a name="1160"><span class="lineNum">    1160 </span><span class="lineCov">        212 :       ISTOP = 0</span></a>
+<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">        212 :       IF (ISODR) THEN</span></a>
+<a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">        212 :          IDEVAL = 110</span></a>
 <a name="1163"><span class="lineNum">    1163 </span>            :       ELSE</a>
 <a name="1164"><span class="lineNum">    1164 </span><span class="lineNoCov">          0 :          IDEVAL = 010</span></a>
 <a name="1165"><span class="lineNum">    1165 </span>            :       END IF</a>
-<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">        211 :       IF (ANAJAC) THEN</span></a>
+<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">        212 :       IF (ANAJAC) THEN</span></a>
 <a name="1167"><span class="lineNum">    1167 </span>            :          CALL FCN(N,M,NP,NQ,</a>
 <a name="1168"><span class="lineNum">    1168 </span>            :      +            N,M,NP,</a>
 <a name="1169"><span class="lineNum">    1169 </span>            :      +            BETA,XPLUSD,</a>
@@ -1251,7 +1251,7 @@
 <a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">         89 :                CALL DIFIX(N,M,IFIXX,LDIFX,FJACD(1,1,L),N,FJACD(1,1,L),N)</span></a>
 <a name="1182"><span class="lineNum">    1182 </span><span class="lineCov">         48 :    10       CONTINUE</span></a>
 <a name="1183"><span class="lineNum">    1183 </span>            :          END IF</a>
-<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">        163 :       ELSE IF (CDJAC) THEN</span></a>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">        164 :       ELSE IF (CDJAC) THEN</span></a>
 <a name="1185"><span class="lineNum">    1185 </span>            :          CALL DJACCD(FCN,</a>
 <a name="1186"><span class="lineNum">    1186 </span>            :      +               N,M,NP,NQ,</a>
 <a name="1187"><span class="lineNum">    1187 </span>            :      +               BETA,X,LDX,DELTA,XPLUSD,IFIXB,IFIXX,LDIFX,</a>
@@ -1264,11 +1264,11 @@
 <a name="1194"><span class="lineNum">    1194 </span>            :      +               BETA,X,LDX,DELTA,XPLUSD,IFIXB,IFIXX,LDIFX,</a>
 <a name="1195"><span class="lineNum">    1195 </span>            :      +               STPB,STPD,LDSTPD,</a>
 <a name="1196"><span class="lineNum">    1196 </span>            :      +               SSF,TT,LDTT,NETA,FN,STP,WRK1,WRK2,WRK3,WRK6,</a>
-<a name="1197"><span class="lineNum">    1197 </span><span class="lineCov">        154 :      +               FJACB,ISODR,FJACD,NFEV,ISTOP)</span></a>
+<a name="1197"><span class="lineNum">    1197 </span><span class="lineCov">        155 :      +               FJACB,ISODR,FJACD,NFEV,ISTOP)</span></a>
 <a name="1198"><span class="lineNum">    1198 </span>            :       END IF</a>
-<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">        211 :       IF (ISTOP.LT.0) THEN</span></a>
+<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">        212 :       IF (ISTOP.LT.0) THEN</span></a>
 <a name="1200"><span class="lineNum">    1200 </span>            :          RETURN</a>
-<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">        211 :       ELSE IF (.NOT.ISODR) THEN</span></a>
+<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">        212 :       ELSE IF (.NOT.ISODR) THEN</span></a>
 <a name="1202"><span class="lineNum">    1202 </span>            : C  TRY TO DETECT WHETHER THE USER HAS COMPUTED JFACD </a>
 <a name="1203"><span class="lineNum">    1203 </span>            : C  WITHIN FCN IN THE OLS CASE</a>
 <a name="1204"><span class="lineNum">    1204 </span><span class="lineNoCov">          0 :          ERROR = DDOT(N*M,DELTA,1,DELTA,1).NE.ZERO</span></a>
@@ -1280,11 +1280,11 @@
 <a name="1210"><span class="lineNum">    1210 </span>            : </a>
 <a name="1211"><span class="lineNum">    1211 </span>            : C  WEIGHT THE JACOBIAN WRT THE ESTIMATED BETAS</a>
 <a name="1212"><span class="lineNum">    1212 </span>            : </a>
-<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        211 :       IF (IFIXB(1).LT.0) THEN</span></a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        901 :          DO 20 K=1,NP</span></a>
+<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        212 :       IF (IFIXB(1).LT.0) THEN</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        904 :          DO 20 K=1,NP</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>            :             CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,</a>
-<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">        690 :      +                 FJACB(1,K,1),N*NP,FJACB(1,K,1),N*NP)</span></a>
-<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">        211 :    20    CONTINUE</span></a>
+<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">        692 :      +                 FJACB(1,K,1),N*NP,FJACB(1,K,1),N*NP)</span></a>
+<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">        212 :    20    CONTINUE</span></a>
 <a name="1218"><span class="lineNum">    1218 </span>            :       ELSE</a>
 <a name="1219"><span class="lineNum">    1219 </span><span class="lineNoCov">          0 :          K1 = 0</span></a>
 <a name="1220"><span class="lineNum">    1220 </span><span class="lineNoCov">          0 :          DO 30 K=1,NP</span></a>
@@ -1298,17 +1298,17 @@
 <a name="1228"><span class="lineNum">    1228 </span>            : </a>
 <a name="1229"><span class="lineNum">    1229 </span>            : C  WEIGHT THE JACOBIAN'S WRT DELTA AS APPROPRIATE</a>
 <a name="1230"><span class="lineNum">    1230 </span>            : </a>
-<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">        211 :       IF (ISODR) THEN</span></a>
-<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">        515 :          DO 40 J=1,M</span></a>
+<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">        212 :       IF (ISODR) THEN</span></a>
+<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">        517 :          DO 40 J=1,M</span></a>
 <a name="1233"><span class="lineNum">    1233 </span>            :             CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,</a>
-<a name="1234"><span class="lineNum">    1234 </span><span class="lineCov">        304 :      +                FJACD(1,J,1),N*M,FJACD(1,J,1),N*M)</span></a>
-<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">        211 :    40    CONTINUE</span></a>
+<a name="1234"><span class="lineNum">    1234 </span><span class="lineCov">        305 :      +                FJACD(1,J,1),N*M,FJACD(1,J,1),N*M)</span></a>
+<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">        212 :    40    CONTINUE</span></a>
 <a name="1236"><span class="lineNum">    1236 </span>            :       END IF</a>
 <a name="1237"><span class="lineNum">    1237 </span>            : </a>
 <a name="1238"><span class="lineNum">    1238 </span>            :       RETURN</a>
 <a name="1239"><span class="lineNum">    1239 </span>            :       END</a>
 <a name="1240"><span class="lineNum">    1240 </span>            : *DFCTR</a>
-<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">      27637 :       SUBROUTINE DFCTR(OKSEMI,A,LDA,N,INFO)</span></a>
+<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">      27649 :       SUBROUTINE DFCTR(OKSEMI,A,LDA,N,INFO)</span></a>
 <a name="1242"><span class="lineNum">    1242 </span>            : C***BEGIN PROLOGUE  DFCTR</a>
 <a name="1243"><span class="lineNum">    1243 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="1244"><span class="lineNum">    1244 </span>            : C***ROUTINES CALLED  DDOT</a>
@@ -1369,13 +1369,13 @@
 <a name="1299"><span class="lineNum">    1299 </span>            : </a>
 <a name="1300"><span class="lineNum">    1300 </span>            : </a>
 <a name="1301"><span class="lineNum">    1301 </span>            : C  SET RELATIVE TOLERANCE FOR DETECTING NON POSITIVE SEMIDEFINITENESS.</a>
-<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">      27637 :       XI = -TEN*DMPREC()</span></a>
+<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">      27649 :       XI = -TEN*DMPREC()</span></a>
 <a name="1303"><span class="lineNum">    1303 </span>            : </a>
 <a name="1304"><span class="lineNum">    1304 </span>            : C  COMPUTE FACTORIZATION, STORING IN UPPER TRIANGULAR PORTION OF A</a>
-<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">      68934 :       DO 20 J=1,N</span></a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">      41297 :          INFO = J</span></a>
-<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">      41297 :          S = ZERO</span></a>
-<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">      54957 :          DO 10 K=1,J-1</span></a>
+<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">      68958 :       DO 20 J=1,N</span></a>
+<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">      41309 :          INFO = J</span></a>
+<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">      41309 :          S = ZERO</span></a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">      54969 :          DO 10 K=1,J-1</span></a>
 <a name="1309"><span class="lineNum">    1309 </span><span class="lineCov">      13660 :             IF (A(K,K).EQ.ZERO) THEN</span></a>
 <a name="1310"><span class="lineNum">    1310 </span>            :                T      = ZERO</a>
 <a name="1311"><span class="lineNum">    1311 </span>            :             ELSE</a>
@@ -1384,27 +1384,27 @@
 <a name="1314"><span class="lineNum">    1314 </span>            :             END IF</a>
 <a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">      13660 :             A(K,J) = T</span></a>
 <a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">      13660 :             S      = S + T*T</span></a>
-<a name="1317"><span class="lineNum">    1317 </span><span class="lineCov">      41297 :    10    CONTINUE</span></a>
-<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">      41297 :          S = A(J,J) - S</span></a>
+<a name="1317"><span class="lineNum">    1317 </span><span class="lineCov">      41309 :    10    CONTINUE</span></a>
+<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">      41309 :          S = A(J,J) - S</span></a>
 <a name="1319"><span class="lineNum">    1319 </span>            : C     ......EXIT</a>
-<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">      41297 :          IF (A(J,J).LT.ZERO .OR. S.LT.XI*ABS(A(J,J))) THEN</span></a>
+<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">      41309 :          IF (A(J,J).LT.ZERO .OR. S.LT.XI*ABS(A(J,J))) THEN</span></a>
 <a name="1321"><span class="lineNum">    1321 </span>            :             RETURN</a>
-<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">      41297 :          ELSE IF (.NOT.OKSEMI .AND. S.LE.ZERO) THEN</span></a>
+<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">      41309 :          ELSE IF (.NOT.OKSEMI .AND. S.LE.ZERO) THEN</span></a>
 <a name="1323"><span class="lineNum">    1323 </span>            :             RETURN</a>
-<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">      41297 :          ELSE IF (S.LE.ZERO) THEN</span></a>
+<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">      41309 :          ELSE IF (S.LE.ZERO) THEN</span></a>
 <a name="1325"><span class="lineNum">    1325 </span><span class="lineCov">          4 :             A(J,J) = ZERO</span></a>
 <a name="1326"><span class="lineNum">    1326 </span>            :          ELSE</a>
-<a name="1327"><span class="lineNum">    1327 </span><span class="lineCov">      41293 :             A(J,J) = SQRT(S)</span></a>
+<a name="1327"><span class="lineNum">    1327 </span><span class="lineCov">      41305 :             A(J,J) = SQRT(S)</span></a>
 <a name="1328"><span class="lineNum">    1328 </span>            :          END IF</a>
-<a name="1329"><span class="lineNum">    1329 </span><span class="lineCov">      27637 :    20 CONTINUE</span></a>
-<a name="1330"><span class="lineNum">    1330 </span><span class="lineCov">      27637 :       INFO = 0</span></a>
+<a name="1329"><span class="lineNum">    1329 </span><span class="lineCov">      27649 :    20 CONTINUE</span></a>
+<a name="1330"><span class="lineNum">    1330 </span><span class="lineCov">      27649 :       INFO = 0</span></a>
 <a name="1331"><span class="lineNum">    1331 </span>            : </a>
 <a name="1332"><span class="lineNum">    1332 </span>            : C  ZERO OUT LOWER PORTION OF A</a>
-<a name="1333"><span class="lineNum">    1333 </span><span class="lineCov">      41297 :       DO 40 J=2,N</span></a>
+<a name="1333"><span class="lineNum">    1333 </span><span class="lineCov">      41309 :       DO 40 J=2,N</span></a>
 <a name="1334"><span class="lineNum">    1334 </span><span class="lineCov">      27320 :          DO 30 K=1,J-1</span></a>
 <a name="1335"><span class="lineNum">    1335 </span><span class="lineCov">      13660 :             A(J,K) = ZERO</span></a>
 <a name="1336"><span class="lineNum">    1336 </span><span class="lineCov">      13660 :    30    CONTINUE</span></a>
-<a name="1337"><span class="lineNum">    1337 </span><span class="lineCov">      27637 :    40 CONTINUE</span></a>
+<a name="1337"><span class="lineNum">    1337 </span><span class="lineCov">      27649 :    40 CONTINUE</span></a>
 <a name="1338"><span class="lineNum">    1338 </span>            : </a>
 <a name="1339"><span class="lineNum">    1339 </span>            :       RETURN</a>
 <a name="1340"><span class="lineNum">    1340 </span>            :       END</a>
@@ -1544,15 +1544,15 @@
 <a name="1474"><span class="lineNum">    1474 </span>            :                   NOTZRO = .FALSE.</a>
 <a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">        116 :                   DO 210 L=1,NQ</span></a>
 <a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">         58 :                      IF (WE(I,1,L).GT.ZERO) THEN</span></a>
-<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">         57 :                         NOTZRO = .TRUE.</span></a>
-<a name="1478"><span class="lineNum">    1478 </span><span class="lineCov">         57 :                         WE1(I,1,L) = SQRT(WE(I,1,L))</span></a>
-<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">          1 :                      ELSE IF (WE(I,1,L).LT.ZERO) THEN</span></a>
+<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">         58 :                         NOTZRO = .TRUE.</span></a>
+<a name="1478"><span class="lineNum">    1478 </span><span class="lineCov">         58 :                         WE1(I,1,L) = SQRT(WE(I,1,L))</span></a>
+<a name="1479"><span class="lineNum">    1479 </span><span class="lineNoCov">          0 :                      ELSE IF (WE(I,1,L).LT.ZERO) THEN</span></a>
 <a name="1480"><span class="lineNum">    1480 </span><span class="lineNoCov">          0 :                         INFO = 30010</span></a>
 <a name="1481"><span class="lineNum">    1481 </span><span class="lineNoCov">          0 :                         GO TO 300</span></a>
 <a name="1482"><span class="lineNum">    1482 </span>            :                      END IF</a>
 <a name="1483"><span class="lineNum">    1483 </span><span class="lineCov">         58 :   210             CONTINUE</span></a>
 <a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">         58 :                   IF (NOTZRO) THEN</span></a>
-<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">         57 :                      NNZW = NNZW + 1</span></a>
+<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">         58 :                      NNZW = NNZW + 1</span></a>
 <a name="1486"><span class="lineNum">    1486 </span>            :                   END IF</a>
 <a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">          8 :   220          CONTINUE</span></a>
 <a name="1488"><span class="lineNum">    1488 </span>            :             ELSE</a>
@@ -1783,8 +1783,8 @@
 <a name="1713"><span class="lineNum">    1713 </span><span class="lineCov">         88 :       RETURN</span></a>
 <a name="1714"><span class="lineNum">    1714 </span>            :       END</a>
 <a name="1715"><span class="lineNum">    1715 </span>            : *DHSTEP</a>
-<a name="1716"><span class="lineNum">    1716 </span><span class="lineCov">       3947 :       DOUBLE PRECISION FUNCTION DHSTEP</span></a>
-<a name="1717"><span class="lineNum">    1717 </span><span class="lineCov">       3947 :      +   (ITYPE,NETA,I,J,STP,LDSTP)</span></a>
+<a name="1716"><span class="lineNum">    1716 </span><span class="lineCov">       3953 :       DOUBLE PRECISION FUNCTION DHSTEP</span></a>
+<a name="1717"><span class="lineNum">    1717 </span><span class="lineCov">       3953 :      +   (ITYPE,NETA,I,J,STP,LDSTP)</span></a>
 <a name="1718"><span class="lineNum">    1718 </span>            : C***BEGIN PROLOGUE  DHSTEP</a>
 <a name="1719"><span class="lineNum">    1719 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="1720"><span class="lineNum">    1720 </span>            : C***ROUTINES CALLED  (NONE)</a>
@@ -1831,11 +1831,11 @@
 <a name="1761"><span class="lineNum">    1761 </span>            : </a>
 <a name="1762"><span class="lineNum">    1762 </span>            : C  SET DHSTEP TO RELATIVE FINITE DIFFERENCE STEP SIZE</a>
 <a name="1763"><span class="lineNum">    1763 </span>            : </a>
-<a name="1764"><span class="lineNum">    1764 </span><span class="lineCov">       3947 :       IF (STP(1,1).LE.ZERO) THEN</span></a>
+<a name="1764"><span class="lineNum">    1764 </span><span class="lineCov">       3953 :       IF (STP(1,1).LE.ZERO) THEN</span></a>
 <a name="1765"><span class="lineNum">    1765 </span>            : </a>
-<a name="1766"><span class="lineNum">    1766 </span><span class="lineCov">       3947 :          IF (ITYPE.EQ.0) THEN</span></a>
+<a name="1766"><span class="lineNum">    1766 </span><span class="lineCov">       3953 :          IF (ITYPE.EQ.0) THEN</span></a>
 <a name="1767"><span class="lineNum">    1767 </span>            : C  USE DEFAULT FORWARD FINITE DIFFERENCE STEP SIZE</a>
-<a name="1768"><span class="lineNum">    1768 </span><span class="lineCov">       3694 :             DHSTEP = TEN**(-ABS(NETA)/TWO - TWO)</span></a>
+<a name="1768"><span class="lineNum">    1768 </span><span class="lineCov">       3700 :             DHSTEP = TEN**(-ABS(NETA)/TWO - TWO)</span></a>
 <a name="1769"><span class="lineNum">    1769 </span>            : </a>
 <a name="1770"><span class="lineNum">    1770 </span>            :          ELSE</a>
 <a name="1771"><span class="lineNum">    1771 </span>            : C  USE DEFAULT CENTRAL FINITE DIFFERENCE STEP SIZE</a>
@@ -2609,13 +2609,13 @@
 <a name="2539"><span class="lineNum">    2539 </span>            :       RETURN</a>
 <a name="2540"><span class="lineNum">    2540 </span>            :       END</a>
 <a name="2541"><span class="lineNum">    2541 </span>            : *DJACFD</a>
-<a name="2542"><span class="lineNum">    2542 </span><span class="lineCov">        154 :       SUBROUTINE DJACFD</span></a>
+<a name="2542"><span class="lineNum">    2542 </span><span class="lineCov">        155 :       SUBROUTINE DJACFD</span></a>
 <a name="2543"><span class="lineNum">    2543 </span>            :      +   (FCN,</a>
 <a name="2544"><span class="lineNum">    2544 </span>            :      +    N,M,NP,NQ,</a>
-<a name="2545"><span class="lineNum">    2545 </span><span class="lineCov">        154 :      +    BETA,X,LDX,DELTA,XPLUSD,IFIXB,IFIXX,LDIFX,</span></a>
-<a name="2546"><span class="lineNum">    2546 </span><span class="lineCov">        154 :      +    STPB,STPD,LDSTPD,</span></a>
-<a name="2547"><span class="lineNum">    2547 </span><span class="lineCov">        154 :      +    SSF,TT,LDTT,NETA,FN,STP,WRK1,WRK2,WRK3,WRK6,</span></a>
-<a name="2548"><span class="lineNum">    2548 </span><span class="lineCov">        154 :      +    FJACB,ISODR,FJACD,NFEV,ISTOP)</span></a>
+<a name="2545"><span class="lineNum">    2545 </span><span class="lineCov">        155 :      +    BETA,X,LDX,DELTA,XPLUSD,IFIXB,IFIXX,LDIFX,</span></a>
+<a name="2546"><span class="lineNum">    2546 </span><span class="lineCov">        155 :      +    STPB,STPD,LDSTPD,</span></a>
+<a name="2547"><span class="lineNum">    2547 </span><span class="lineCov">        155 :      +    SSF,TT,LDTT,NETA,FN,STP,WRK1,WRK2,WRK3,WRK6,</span></a>
+<a name="2548"><span class="lineNum">    2548 </span><span class="lineCov">        155 :      +    FJACB,ISODR,FJACD,NFEV,ISTOP)</span></a>
 <a name="2549"><span class="lineNum">    2549 </span>            : C***BEGIN PROLOGUE  DJACFD</a>
 <a name="2550"><span class="lineNum">    2550 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="2551"><span class="lineNum">    2551 </span>            : C***ROUTINES CALLED  FCN,DHSTEP,DZERO</a>
@@ -2732,8 +2732,8 @@
 <a name="2662"><span class="lineNum">    2662 </span>            : </a>
 <a name="2663"><span class="lineNum">    2663 </span>            : C  COMPUTE THE JACOBIAN WRT THE ESTIMATED BETAS</a>
 <a name="2664"><span class="lineNum">    2664 </span>            : </a>
-<a name="2665"><span class="lineNum">    2665 </span><span class="lineCov">        532 :       DO 40 K=1,NP</span></a>
-<a name="2666"><span class="lineNum">    2666 </span><span class="lineCov">        378 :          IF (IFIXB(1).GE.0) THEN</span></a>
+<a name="2665"><span class="lineNum">    2665 </span><span class="lineCov">        535 :       DO 40 K=1,NP</span></a>
+<a name="2666"><span class="lineNum">    2666 </span><span class="lineCov">        380 :          IF (IFIXB(1).GE.0) THEN</span></a>
 <a name="2667"><span class="lineNum">    2667 </span><span class="lineNoCov">          0 :             IF (IFIXB(K).EQ.0) THEN</span></a>
 <a name="2668"><span class="lineNum">    2668 </span>            :                DOIT = .FALSE.</a>
 <a name="2669"><span class="lineNum">    2669 </span>            :             ELSE</a>
@@ -2747,53 +2747,53 @@
 <a name="2677"><span class="lineNum">    2677 </span><span class="lineNoCov">          0 :                CALL DZERO(N,1,FJACB(1,K,L),N)</span></a>
 <a name="2678"><span class="lineNum">    2678 </span><span class="lineNoCov">          0 :    10       CONTINUE</span></a>
 <a name="2679"><span class="lineNum">    2679 </span>            :          ELSE</a>
-<a name="2680"><span class="lineNum">    2680 </span><span class="lineCov">        378 :             BETAK = BETA(K)</span></a>
-<a name="2681"><span class="lineNum">    2681 </span><span class="lineCov">        378 :             IF (BETAK.EQ.ZERO) THEN</span></a>
+<a name="2680"><span class="lineNum">    2680 </span><span class="lineCov">        380 :             BETAK = BETA(K)</span></a>
+<a name="2681"><span class="lineNum">    2681 </span><span class="lineCov">        380 :             IF (BETAK.EQ.ZERO) THEN</span></a>
 <a name="2682"><span class="lineNum">    2682 </span><span class="lineNoCov">          0 :                IF (SSF(1).LT.ZERO) THEN</span></a>
 <a name="2683"><span class="lineNum">    2683 </span><span class="lineNoCov">          0 :                   TYPJ = ONE/ABS(SSF(1))</span></a>
 <a name="2684"><span class="lineNum">    2684 </span>            :                ELSE   </a>
 <a name="2685"><span class="lineNum">    2685 </span><span class="lineNoCov">          0 :                   TYPJ = ONE/SSF(K)</span></a>
 <a name="2686"><span class="lineNum">    2686 </span>            :                END IF </a>
 <a name="2687"><span class="lineNum">    2687 </span>            :             ELSE</a>
-<a name="2688"><span class="lineNum">    2688 </span><span class="lineCov">        378 :                TYPJ = ABS(BETAK)</span></a>
+<a name="2688"><span class="lineNum">    2688 </span><span class="lineCov">        380 :                TYPJ = ABS(BETAK)</span></a>
 <a name="2689"><span class="lineNum">    2689 </span>            :             END IF</a>
 <a name="2690"><span class="lineNum">    2690 </span>            :             WRK3(K) = BETAK </a>
-<a name="2691"><span class="lineNum">    2691 </span><span class="lineCov">        378 :      +                + SIGN(ONE,BETAK)*TYPJ*DHSTEP(0,NETA,1,K,STPB,1)</span></a>
-<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">        378 :             WRK3(K) = WRK3(K) - BETAK</span></a>
-<a name="2693"><span class="lineNum">    2693 </span><span class="lineCov">        378 :             BETA(K) = BETAK + WRK3(K)</span></a>
-<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">        378 :             ISTOP = 0</span></a>
+<a name="2691"><span class="lineNum">    2691 </span><span class="lineCov">        380 :      +                + SIGN(ONE,BETAK)*TYPJ*DHSTEP(0,NETA,1,K,STPB,1)</span></a>
+<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">        380 :             WRK3(K) = WRK3(K) - BETAK</span></a>
+<a name="2693"><span class="lineNum">    2693 </span><span class="lineCov">        380 :             BETA(K) = BETAK + WRK3(K)</span></a>
+<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">        380 :             ISTOP = 0</span></a>
 <a name="2695"><span class="lineNum">    2695 </span>            :             CALL FCN(N,M,NP,NQ,</a>
 <a name="2696"><span class="lineNum">    2696 </span>            :      +               N,M,NP,</a>
 <a name="2697"><span class="lineNum">    2697 </span>            :      +               BETA,XPLUSD,</a>
 <a name="2698"><span class="lineNum">    2698 </span>            :      +               IFIXB,IFIXX,LDIFX,</a>
 <a name="2699"><span class="lineNum">    2699 </span>            :      +               001,WRK2,WRK6,WRK1,</a>
-<a name="2700"><span class="lineNum">    2700 </span><span class="lineCov">        378 :      +               ISTOP)</span></a>
-<a name="2701"><span class="lineNum">    2701 </span><span class="lineCov">        378 :             IF (ISTOP.NE.0) THEN</span></a>
+<a name="2700"><span class="lineNum">    2700 </span><span class="lineCov">        380 :      +               ISTOP)</span></a>
+<a name="2701"><span class="lineNum">    2701 </span><span class="lineCov">        380 :             IF (ISTOP.NE.0) THEN</span></a>
 <a name="2702"><span class="lineNum">    2702 </span>            :                RETURN</a>
 <a name="2703"><span class="lineNum">    2703 </span>            :             ELSE</a>
-<a name="2704"><span class="lineNum">    2704 </span><span class="lineCov">        378 :                NFEV = NFEV + 1</span></a>
+<a name="2704"><span class="lineNum">    2704 </span><span class="lineCov">        380 :                NFEV = NFEV + 1</span></a>
 <a name="2705"><span class="lineNum">    2705 </span>            :             END IF</a>
-<a name="2706"><span class="lineNum">    2706 </span><span class="lineCov">        756 :             DO 30 L=1,NQ</span></a>
-<a name="2707"><span class="lineNum">    2707 </span><span class="lineCov">       8354 :                DO 20 I=1,N</span></a>
-<a name="2708"><span class="lineNum">    2708 </span><span class="lineCov">       7976 :                   FJACB(I,K,L) = (WRK2(I,L)-FN(I,L))/WRK3(K)</span></a>
-<a name="2709"><span class="lineNum">    2709 </span><span class="lineCov">        378 :    20          CONTINUE</span></a>
-<a name="2710"><span class="lineNum">    2710 </span><span class="lineCov">        378 :    30       CONTINUE</span></a>
-<a name="2711"><span class="lineNum">    2711 </span><span class="lineCov">        378 :             BETA(K) = BETAK</span></a>
+<a name="2706"><span class="lineNum">    2706 </span><span class="lineCov">        760 :             DO 30 L=1,NQ</span></a>
+<a name="2707"><span class="lineNum">    2707 </span><span class="lineCov">       8364 :                DO 20 I=1,N</span></a>
+<a name="2708"><span class="lineNum">    2708 </span><span class="lineCov">       7984 :                   FJACB(I,K,L) = (WRK2(I,L)-FN(I,L))/WRK3(K)</span></a>
+<a name="2709"><span class="lineNum">    2709 </span><span class="lineCov">        380 :    20          CONTINUE</span></a>
+<a name="2710"><span class="lineNum">    2710 </span><span class="lineCov">        380 :    30       CONTINUE</span></a>
+<a name="2711"><span class="lineNum">    2711 </span><span class="lineCov">        380 :             BETA(K) = BETAK</span></a>
 <a name="2712"><span class="lineNum">    2712 </span>            :          END IF</a>
-<a name="2713"><span class="lineNum">    2713 </span><span class="lineCov">        154 :    40 CONTINUE</span></a>
+<a name="2713"><span class="lineNum">    2713 </span><span class="lineCov">        155 :    40 CONTINUE</span></a>
 <a name="2714"><span class="lineNum">    2714 </span>            : </a>
 <a name="2715"><span class="lineNum">    2715 </span>            : C  COMPUTE THE JACOBIAN WRT THE X'S</a>
 <a name="2716"><span class="lineNum">    2716 </span>            : </a>
-<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">        154 :       IF (ISODR) THEN</span></a>
-<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">        360 :          DO 220 J=1,M</span></a>
-<a name="2719"><span class="lineNum">    2719 </span><span class="lineCov">        206 :             IF (IFIXX(1,1).LT.0) THEN</span></a>
+<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">        155 :       IF (ISODR) THEN</span></a>
+<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">        362 :          DO 220 J=1,M</span></a>
+<a name="2719"><span class="lineNum">    2719 </span><span class="lineCov">        207 :             IF (IFIXX(1,1).LT.0) THEN</span></a>
 <a name="2720"><span class="lineNum">    2720 </span>            :                DOIT = .TRUE.</a>
 <a name="2721"><span class="lineNum">    2721 </span>            :                SETZRO = .FALSE.</a>
 <a name="2722"><span class="lineNum">    2722 </span><span class="lineCov">         56 :             ELSE IF (LDIFX.EQ.1) THEN</span></a>
 <a name="2723"><span class="lineNum">    2723 </span><span class="lineNoCov">          0 :                IF (IFIXX(1,J).EQ.0) THEN</span></a>
 <a name="2724"><span class="lineNum">    2724 </span>            :                   DOIT = .FALSE.</a>
 <a name="2725"><span class="lineNum">    2725 </span>            :                ELSE</a>
-<a name="2726"><span class="lineNum">    2726 </span><span class="lineCov">        150 :                   DOIT = .TRUE.</span></a>
+<a name="2726"><span class="lineNum">    2726 </span><span class="lineCov">        151 :                   DOIT = .TRUE.</span></a>
 <a name="2727"><span class="lineNum">    2727 </span>            :                END IF</a>
 <a name="2728"><span class="lineNum">    2728 </span>            :                SETZRO = .FALSE.</a>
 <a name="2729"><span class="lineNum">    2729 </span>            :             ELSE</a>
@@ -2807,51 +2807,51 @@
 <a name="2737"><span class="lineNum">    2737 </span>            :                   END IF</a>
 <a name="2738"><span class="lineNum">    2738 </span><span class="lineCov">         56 :   100          CONTINUE</span></a>
 <a name="2739"><span class="lineNum">    2739 </span>            :             END IF</a>
-<a name="2740"><span class="lineNum">    2740 </span><span class="lineCov">        206 :             IF (.NOT.DOIT) THEN</span></a>
+<a name="2740"><span class="lineNum">    2740 </span><span class="lineCov">        207 :             IF (.NOT.DOIT) THEN</span></a>
 <a name="2741"><span class="lineNum">    2741 </span><span class="lineCov">         56 :                DO 110 L=1,NQ</span></a>
 <a name="2742"><span class="lineNum">    2742 </span><span class="lineCov">         28 :                   CALL DZERO(N,1,FJACD(1,J,L),N)</span></a>
 <a name="2743"><span class="lineNum">    2743 </span><span class="lineCov">         28 :   110          CONTINUE</span></a>
 <a name="2744"><span class="lineNum">    2744 </span>            :             ELSE</a>
-<a name="2745"><span class="lineNum">    2745 </span><span class="lineCov">       3490 :                DO 120 I=1,N</span></a>
-<a name="2746"><span class="lineNum">    2746 </span><span class="lineCov">       3312 :                   IF (XPLUSD(I,J).EQ.ZERO) THEN</span></a>
-<a name="2747"><span class="lineNum">    2747 </span><span class="lineCov">         20 :                      IF (TT(1,1).LT.ZERO) THEN</span></a>
+<a name="2745"><span class="lineNum">    2745 </span><span class="lineCov">       3495 :                DO 120 I=1,N</span></a>
+<a name="2746"><span class="lineNum">    2746 </span><span class="lineCov">       3316 :                   IF (XPLUSD(I,J).EQ.ZERO) THEN</span></a>
+<a name="2747"><span class="lineNum">    2747 </span><span class="lineCov">         18 :                      IF (TT(1,1).LT.ZERO) THEN</span></a>
 <a name="2748"><span class="lineNum">    2748 </span><span class="lineNoCov">          0 :                         TYPJ = ONE/ABS(TT(1,1))</span></a>
-<a name="2749"><span class="lineNum">    2749 </span><span class="lineCov">         20 :                      ELSE IF (LDTT.EQ.1) THEN</span></a>
+<a name="2749"><span class="lineNum">    2749 </span><span class="lineCov">         18 :                      ELSE IF (LDTT.EQ.1) THEN</span></a>
 <a name="2750"><span class="lineNum">    2750 </span><span class="lineNoCov">          0 :                         TYPJ = ONE/TT(1,J)</span></a>
 <a name="2751"><span class="lineNum">    2751 </span>            :                      ELSE</a>
-<a name="2752"><span class="lineNum">    2752 </span><span class="lineCov">         20 :                         TYPJ = ONE/TT(I,J)</span></a>
+<a name="2752"><span class="lineNum">    2752 </span><span class="lineCov">         18 :                         TYPJ = ONE/TT(I,J)</span></a>
 <a name="2753"><span class="lineNum">    2753 </span>            :                      END IF</a>
 <a name="2754"><span class="lineNum">    2754 </span>            :                   ELSE</a>
-<a name="2755"><span class="lineNum">    2755 </span><span class="lineCov">       3292 :                      TYPJ = ABS(XPLUSD(I,J))</span></a>
+<a name="2755"><span class="lineNum">    2755 </span><span class="lineCov">       3298 :                      TYPJ = ABS(XPLUSD(I,J))</span></a>
 <a name="2756"><span class="lineNum">    2756 </span>            :                   END IF</a>
 <a name="2757"><span class="lineNum">    2757 </span>            : </a>
 <a name="2758"><span class="lineNum">    2758 </span>            :                   STP(I) = XPLUSD(I,J)</a>
 <a name="2759"><span class="lineNum">    2759 </span>            :      +                     + SIGN(ONE,XPLUSD(I,J))</a>
-<a name="2760"><span class="lineNum">    2760 </span><span class="lineCov">       3312 :      +                       *TYPJ*DHSTEP(0,NETA,I,J,STPD,LDSTPD)</span></a>
-<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">       3312 :                   STP(I) = STP(I) - XPLUSD(I,J)</span></a>
-<a name="2762"><span class="lineNum">    2762 </span><span class="lineCov">       3312 :                   XPLUSD(I,J) = XPLUSD(I,J) + STP(I)</span></a>
-<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">        178 :   120          CONTINUE</span></a>
+<a name="2760"><span class="lineNum">    2760 </span><span class="lineCov">       3316 :      +                       *TYPJ*DHSTEP(0,NETA,I,J,STPD,LDSTPD)</span></a>
+<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">       3316 :                   STP(I) = STP(I) - XPLUSD(I,J)</span></a>
+<a name="2762"><span class="lineNum">    2762 </span><span class="lineCov">       3316 :                   XPLUSD(I,J) = XPLUSD(I,J) + STP(I)</span></a>
+<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">        179 :   120          CONTINUE</span></a>
 <a name="2764"><span class="lineNum">    2764 </span>            : </a>
-<a name="2765"><span class="lineNum">    2765 </span><span class="lineCov">        178 :                ISTOP = 0</span></a>
+<a name="2765"><span class="lineNum">    2765 </span><span class="lineCov">        179 :                ISTOP = 0</span></a>
 <a name="2766"><span class="lineNum">    2766 </span>            :                CALL FCN(N,M,NP,NQ,</a>
 <a name="2767"><span class="lineNum">    2767 </span>            :      +                  N,M,NP,</a>
 <a name="2768"><span class="lineNum">    2768 </span>            :      +                  BETA,XPLUSD,</a>
 <a name="2769"><span class="lineNum">    2769 </span>            :      +                  IFIXB,IFIXX,LDIFX,</a>
 <a name="2770"><span class="lineNum">    2770 </span>            :      +                  001,WRK2,WRK6,WRK1,</a>
-<a name="2771"><span class="lineNum">    2771 </span><span class="lineCov">        178 :      +                  ISTOP)</span></a>
-<a name="2772"><span class="lineNum">    2772 </span><span class="lineCov">        178 :                IF (ISTOP.NE.0) THEN</span></a>
+<a name="2771"><span class="lineNum">    2771 </span><span class="lineCov">        179 :      +                  ISTOP)</span></a>
+<a name="2772"><span class="lineNum">    2772 </span><span class="lineCov">        179 :                IF (ISTOP.NE.0) THEN</span></a>
 <a name="2773"><span class="lineNum">    2773 </span>            :                   RETURN</a>
 <a name="2774"><span class="lineNum">    2774 </span>            :                ELSE</a>
-<a name="2775"><span class="lineNum">    2775 </span><span class="lineCov">        178 :                   NFEV = NFEV + 1</span></a>
-<a name="2776"><span class="lineNum">    2776 </span><span class="lineCov">        356 :                   DO 140 L=1,NQ</span></a>
-<a name="2777"><span class="lineNum">    2777 </span><span class="lineCov">       3490 :                      DO 130 I=1,N</span></a>
-<a name="2778"><span class="lineNum">    2778 </span><span class="lineCov">       3312 :                         FJACD(I,J,L) = WRK2(I,L)</span></a>
-<a name="2779"><span class="lineNum">    2779 </span><span class="lineCov">        178 :   130                CONTINUE</span></a>
-<a name="2780"><span class="lineNum">    2780 </span><span class="lineCov">        178 :   140             CONTINUE</span></a>
+<a name="2775"><span class="lineNum">    2775 </span><span class="lineCov">        179 :                   NFEV = NFEV + 1</span></a>
+<a name="2776"><span class="lineNum">    2776 </span><span class="lineCov">        358 :                   DO 140 L=1,NQ</span></a>
+<a name="2777"><span class="lineNum">    2777 </span><span class="lineCov">       3495 :                      DO 130 I=1,N</span></a>
+<a name="2778"><span class="lineNum">    2778 </span><span class="lineCov">       3316 :                         FJACD(I,J,L) = WRK2(I,L)</span></a>
+<a name="2779"><span class="lineNum">    2779 </span><span class="lineCov">        179 :   130                CONTINUE</span></a>
+<a name="2780"><span class="lineNum">    2780 </span><span class="lineCov">        179 :   140             CONTINUE</span></a>
 <a name="2781"><span class="lineNum">    2781 </span>            : </a>
 <a name="2782"><span class="lineNum">    2782 </span>            :                END IF</a>
 <a name="2783"><span class="lineNum">    2783 </span>            : </a>
-<a name="2784"><span class="lineNum">    2784 </span><span class="lineCov">        178 :                IF (SETZRO) THEN</span></a>
+<a name="2784"><span class="lineNum">    2784 </span><span class="lineCov">        179 :                IF (SETZRO) THEN</span></a>
 <a name="2785"><span class="lineNum">    2785 </span><span class="lineNoCov">          0 :                   DO 180 I=1,N</span></a>
 <a name="2786"><span class="lineNum">    2786 </span><span class="lineNoCov">          0 :                      IF (IFIXX(I,J).EQ.0) THEN</span></a>
 <a name="2787"><span class="lineNum">    2787 </span><span class="lineNoCov">          0 :                         DO 160 L=1,NQ</span></a>
@@ -2864,17 +2864,17 @@
 <a name="2794"><span class="lineNum">    2794 </span>            :                      END IF</a>
 <a name="2795"><span class="lineNum">    2795 </span><span class="lineNoCov">          0 :   180             CONTINUE</span></a>
 <a name="2796"><span class="lineNum">    2796 </span>            :                ELSE</a>
-<a name="2797"><span class="lineNum">    2797 </span><span class="lineCov">        356 :                   DO 200 L=1,NQ</span></a>
-<a name="2798"><span class="lineNum">    2798 </span><span class="lineCov">       3490 :                      DO 190 I=1,N</span></a>
-<a name="2799"><span class="lineNum">    2799 </span><span class="lineCov">       3312 :                         FJACD(I,J,L) = (FJACD(I,J,L)-FN(I,L))/STP(I)</span></a>
-<a name="2800"><span class="lineNum">    2800 </span><span class="lineCov">        178 :   190                CONTINUE</span></a>
-<a name="2801"><span class="lineNum">    2801 </span><span class="lineCov">        178 :   200             CONTINUE</span></a>
+<a name="2797"><span class="lineNum">    2797 </span><span class="lineCov">        358 :                   DO 200 L=1,NQ</span></a>
+<a name="2798"><span class="lineNum">    2798 </span><span class="lineCov">       3495 :                      DO 190 I=1,N</span></a>
+<a name="2799"><span class="lineNum">    2799 </span><span class="lineCov">       3316 :                         FJACD(I,J,L) = (FJACD(I,J,L)-FN(I,L))/STP(I)</span></a>
+<a name="2800"><span class="lineNum">    2800 </span><span class="lineCov">        179 :   190                CONTINUE</span></a>
+<a name="2801"><span class="lineNum">    2801 </span><span class="lineCov">        179 :   200             CONTINUE</span></a>
 <a name="2802"><span class="lineNum">    2802 </span>            :                END IF</a>
-<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">       3490 :                DO 210 I=1,N</span></a>
-<a name="2804"><span class="lineNum">    2804 </span><span class="lineCov">       3312 :                   XPLUSD(I,J) = X(I,J) + DELTA(I,J)</span></a>
-<a name="2805"><span class="lineNum">    2805 </span><span class="lineCov">        178 :   210          CONTINUE</span></a>
+<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">       3495 :                DO 210 I=1,N</span></a>
+<a name="2804"><span class="lineNum">    2804 </span><span class="lineCov">       3316 :                   XPLUSD(I,J) = X(I,J) + DELTA(I,J)</span></a>
+<a name="2805"><span class="lineNum">    2805 </span><span class="lineCov">        179 :   210          CONTINUE</span></a>
 <a name="2806"><span class="lineNum">    2806 </span>            :             END IF</a>
-<a name="2807"><span class="lineNum">    2807 </span><span class="lineCov">        154 :   220    CONTINUE</span></a>
+<a name="2807"><span class="lineNum">    2807 </span><span class="lineCov">        155 :   220    CONTINUE</span></a>
 <a name="2808"><span class="lineNum">    2808 </span>            :       END IF</a>
 <a name="2809"><span class="lineNum">    2809 </span>            : </a>
 <a name="2810"><span class="lineNum">    2810 </span>            :       RETURN</a>
@@ -5077,14 +5077,14 @@
 <a name="5007"><span class="lineNum">    5007 </span>            : </a>
 <a name="5008"><span class="lineNum">    5008 </span>            :       END</a>
 <a name="5009"><span class="lineNum">    5009 </span>            : *DODLM</a>
-<a name="5010"><span class="lineNum">    5010 </span><span class="lineCov">        357 :       SUBROUTINE DODLM</span></a>
+<a name="5010"><span class="lineNum">    5010 </span><span class="lineCov">        358 :       SUBROUTINE DODLM</span></a>
 <a name="5011"><span class="lineNum">    5011 </span>            :      +   (N,M,NP,NQ,NPP,</a>
-<a name="5012"><span class="lineNum">    5012 </span><span class="lineCov">        357 :      +   F,FJACB,FJACD,</span></a>
-<a name="5013"><span class="lineNum">    5013 </span><span class="lineCov">        357 :      +   WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</span></a>
+<a name="5012"><span class="lineNum">    5012 </span><span class="lineCov">        358 :      +   F,FJACB,FJACD,</span></a>
+<a name="5013"><span class="lineNum">    5013 </span><span class="lineCov">        358 :      +   WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</span></a>
 <a name="5014"><span class="lineNum">    5014 </span>            :      +   ALPHA2,TAU,EPSFCN,ISODR,</a>
-<a name="5015"><span class="lineNum">    5015 </span><span class="lineCov">        357 :      +   TFJACB,OMEGA,U,QRAUX,JPVT,</span></a>
-<a name="5016"><span class="lineNum">    5016 </span><span class="lineCov">        357 :      +   S,T,NLMS,RCOND,IRANK,</span></a>
-<a name="5017"><span class="lineNum">    5017 </span><span class="lineCov">        357 :      +   WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
+<a name="5015"><span class="lineNum">    5015 </span><span class="lineCov">        358 :      +   TFJACB,OMEGA,U,QRAUX,JPVT,</span></a>
+<a name="5016"><span class="lineNum">    5016 </span><span class="lineCov">        358 :      +   S,T,NLMS,RCOND,IRANK,</span></a>
+<a name="5017"><span class="lineNum">    5017 </span><span class="lineCov">        358 :      +   WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
 <a name="5018"><span class="lineNum">    5018 </span>            : C***BEGIN PROLOGUE  DODLM</a>
 <a name="5019"><span class="lineNum">    5019 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="5020"><span class="lineNum">    5020 </span>            : C***ROUTINES CALLED  DDOT,DNRM2,DODSTP,DSCALE,DWGHT</a>
@@ -5207,35 +5207,35 @@
 <a name="5137"><span class="lineNum">    5137 </span>            : </a>
 <a name="5138"><span class="lineNum">    5138 </span>            : C***FIRST EXECUTABLE STATEMENT  DODLM</a>
 <a name="5139"><span class="lineNum">    5139 </span>            : </a>
-<a name="5140"><span class="lineNum">    5140 </span><span class="lineCov">        357 :       FORVCV = .FALSE.</span></a>
-<a name="5141"><span class="lineNum">    5141 </span><span class="lineCov">        357 :       ISTOPC = 0</span></a>
+<a name="5140"><span class="lineNum">    5140 </span><span class="lineCov">        358 :       FORVCV = .FALSE.</span></a>
+<a name="5141"><span class="lineNum">    5141 </span><span class="lineCov">        358 :       ISTOPC = 0</span></a>
 <a name="5142"><span class="lineNum">    5142 </span>            : </a>
 <a name="5143"><span class="lineNum">    5143 </span>            : C  COMPUTE FULL GAUSS-NEWTON STEP (ALPHA=0)</a>
 <a name="5144"><span class="lineNum">    5144 </span>            : </a>
-<a name="5145"><span class="lineNum">    5145 </span><span class="lineCov">        357 :       ALPHA1 = ZERO</span></a>
+<a name="5145"><span class="lineNum">    5145 </span><span class="lineCov">        358 :       ALPHA1 = ZERO</span></a>
 <a name="5146"><span class="lineNum">    5146 </span>            :       CALL DODSTP(N,M,NP,NQ,NPP,</a>
 <a name="5147"><span class="lineNum">    5147 </span>            :      +            F,FJACB,FJACD,</a>
 <a name="5148"><span class="lineNum">    5148 </span>            :      +            WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</a>
 <a name="5149"><span class="lineNum">    5149 </span>            :      +            ALPHA1,EPSFCN,ISODR,</a>
 <a name="5150"><span class="lineNum">    5150 </span>            :      +            TFJACB,OMEGA,U,QRAUX,JPVT,</a>
 <a name="5151"><span class="lineNum">    5151 </span>            :      +            S,T,PHI1,IRANK,RCOND,FORVCV,</a>
-<a name="5152"><span class="lineNum">    5152 </span><span class="lineCov">        357 :      +            WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
-<a name="5153"><span class="lineNum">    5153 </span><span class="lineCov">        357 :       IF (ISTOPC.NE.0) THEN</span></a>
+<a name="5152"><span class="lineNum">    5152 </span><span class="lineCov">        358 :      +            WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
+<a name="5153"><span class="lineNum">    5153 </span><span class="lineCov">        358 :       IF (ISTOPC.NE.0) THEN</span></a>
 <a name="5154"><span class="lineNum">    5154 </span>            :          RETURN</a>
 <a name="5155"><span class="lineNum">    5155 </span>            :       END IF</a>
 <a name="5156"><span class="lineNum">    5156 </span>            : </a>
 <a name="5157"><span class="lineNum">    5157 </span>            : C  INITIALIZE TAU IF NECESSARY</a>
 <a name="5158"><span class="lineNum">    5158 </span>            : </a>
-<a name="5159"><span class="lineNum">    5159 </span><span class="lineCov">        357 :       IF (TAU.LT.ZERO) THEN</span></a>
+<a name="5159"><span class="lineNum">    5159 </span><span class="lineCov">        358 :       IF (TAU.LT.ZERO) THEN</span></a>
 <a name="5160"><span class="lineNum">    5160 </span><span class="lineCov">         22 :          TAU = ABS(TAU)*PHI1</span></a>
 <a name="5161"><span class="lineNum">    5161 </span>            :       END IF</a>
 <a name="5162"><span class="lineNum">    5162 </span>            : </a>
 <a name="5163"><span class="lineNum">    5163 </span>            : C  CHECK IF FULL GAUSS-NEWTON STEP IS OPTIMAL</a>
 <a name="5164"><span class="lineNum">    5164 </span>            : </a>
-<a name="5165"><span class="lineNum">    5165 </span><span class="lineCov">        357 :       IF ((PHI1-TAU).LE.P1*TAU) THEN</span></a>
-<a name="5166"><span class="lineNum">    5166 </span><span class="lineCov">        144 :          NLMS = 1</span></a>
-<a name="5167"><span class="lineNum">    5167 </span><span class="lineCov">        144 :          ALPHA2 = ZERO</span></a>
-<a name="5168"><span class="lineNum">    5168 </span><span class="lineCov">        144 :          RETURN</span></a>
+<a name="5165"><span class="lineNum">    5165 </span><span class="lineCov">        358 :       IF ((PHI1-TAU).LE.P1*TAU) THEN</span></a>
+<a name="5166"><span class="lineNum">    5166 </span><span class="lineCov">        145 :          NLMS = 1</span></a>
+<a name="5167"><span class="lineNum">    5167 </span><span class="lineCov">        145 :          ALPHA2 = ZERO</span></a>
+<a name="5168"><span class="lineNum">    5168 </span><span class="lineCov">        145 :          RETURN</span></a>
 <a name="5169"><span class="lineNum">    5169 </span>            :       END IF</a>
 <a name="5170"><span class="lineNum">    5170 </span>            : </a>
 <a name="5171"><span class="lineNum">    5171 </span>            : C  FULL GAUSS-NEWTON STEP IS OUTSIDE TRUST REGION -</a>
@@ -5704,13 +5704,13 @@
 <a name="5634"><span class="lineNum">    5634 </span>            : </a>
 <a name="5635"><span class="lineNum">    5635 </span>            :   100 CONTINUE</a>
 <a name="5636"><span class="lineNum">    5636 </span>            :  </a>
-<a name="5637"><span class="lineNum">    5637 </span><span class="lineCov">        179 :       NITER = NITER + 1</span></a>
-<a name="5638"><span class="lineNum">    5638 </span><span class="lineCov">        179 :       RNORMS = RNORM</span></a>
-<a name="5639"><span class="lineNum">    5639 </span><span class="lineCov">        179 :       LOOPED = 0</span></a>
+<a name="5637"><span class="lineNum">    5637 </span><span class="lineCov">        180 :       NITER = NITER + 1</span></a>
+<a name="5638"><span class="lineNum">    5638 </span><span class="lineCov">        180 :       RNORMS = RNORM</span></a>
+<a name="5639"><span class="lineNum">    5639 </span><span class="lineCov">        180 :       LOOPED = 0</span></a>
 <a name="5640"><span class="lineNum">    5640 </span>            : </a>
 <a name="5641"><span class="lineNum">    5641 </span>            : C  EVALUATE JACOBIAN USING BEST ESTIMATE OF FUNCTION (FS)</a>
 <a name="5642"><span class="lineNum">    5642 </span>            : </a>
-<a name="5643"><span class="lineNum">    5643 </span><span class="lineCov">        179 :       IF ((NITER.EQ.1) .AND. (ANAJAC.AND.CHKJAC)) THEN</span></a>
+<a name="5643"><span class="lineNum">    5643 </span><span class="lineCov">        180 :       IF ((NITER.EQ.1) .AND. (ANAJAC.AND.CHKJAC)) THEN</span></a>
 <a name="5644"><span class="lineNum">    5644 </span><span class="lineCov">          1 :          ISTOP = 0</span></a>
 <a name="5645"><span class="lineNum">    5645 </span>            :       ELSE</a>
 <a name="5646"><span class="lineNum">    5646 </span>            :          CALL DEVJAC(FCN,</a>
@@ -5722,12 +5722,12 @@
 <a name="5652"><span class="lineNum">    5652 </span>            :      +               SSF,TT,LDTT,NETA,FS,</a>
 <a name="5653"><span class="lineNum">    5653 </span>            :      +               T,WORK(WRK1),WORK(WRK2),WORK(WRK3),WORK(WRK6),</a>
 <a name="5654"><span class="lineNum">    5654 </span>            :      +               FJACB,ISODR,FJACD,WE1,LDWE,LD2WE,</a>
-<a name="5655"><span class="lineNum">    5655 </span><span class="lineCov">        178 :      +               NJEV,NFEV,ISTOP,INFO)</span></a>
+<a name="5655"><span class="lineNum">    5655 </span><span class="lineCov">        179 :      +               NJEV,NFEV,ISTOP,INFO)</span></a>
 <a name="5656"><span class="lineNum">    5656 </span>            :       END IF</a>
-<a name="5657"><span class="lineNum">    5657 </span><span class="lineCov">        179 :       IF (ISTOP.NE.0) THEN</span></a>
+<a name="5657"><span class="lineNum">    5657 </span><span class="lineCov">        180 :       IF (ISTOP.NE.0) THEN</span></a>
 <a name="5658"><span class="lineNum">    5658 </span><span class="lineNoCov">          0 :          INFO = 51000</span></a>
 <a name="5659"><span class="lineNum">    5659 </span><span class="lineNoCov">          0 :          GO TO 200</span></a>
-<a name="5660"><span class="lineNum">    5660 </span><span class="lineCov">        179 :       ELSE IF (INFO.EQ.50300) THEN</span></a>
+<a name="5660"><span class="lineNum">    5660 </span><span class="lineCov">        180 :       ELSE IF (INFO.EQ.50300) THEN</span></a>
 <a name="5661"><span class="lineNum">    5661 </span>            :          GO TO 200</a>
 <a name="5662"><span class="lineNum">    5662 </span>            :       END IF</a>
 <a name="5663"><span class="lineNum">    5663 </span>            : </a>
@@ -5739,11 +5739,11 @@
 <a name="5669"><span class="lineNum">    5669 </span>            : </a>
 <a name="5670"><span class="lineNum">    5670 </span>            : C  COMPUTE STEPS S AND T</a>
 <a name="5671"><span class="lineNum">    5671 </span>            : </a>
-<a name="5672"><span class="lineNum">    5672 </span><span class="lineCov">        357 :       IF (LOOPED.GT.100) THEN</span></a>
+<a name="5672"><span class="lineNum">    5672 </span><span class="lineCov">        358 :       IF (LOOPED.GT.100) THEN</span></a>
 <a name="5673"><span class="lineNum">    5673 </span><span class="lineNoCov">          0 :          INFO = 60000</span></a>
 <a name="5674"><span class="lineNum">    5674 </span><span class="lineNoCov">          0 :          GO TO 200</span></a>
 <a name="5675"><span class="lineNum">    5675 </span>            :       ELSE</a>
-<a name="5676"><span class="lineNum">    5676 </span><span class="lineCov">        357 :          LOOPED = LOOPED + 1</span></a>
+<a name="5676"><span class="lineNum">    5676 </span><span class="lineCov">        358 :          LOOPED = LOOPED + 1</span></a>
 <a name="5677"><span class="lineNum">    5677 </span>            :          CALL DODLM(N,M,NP,NQ,NPP,</a>
 <a name="5678"><span class="lineNum">    5678 </span>            :      +              F,FJACB,FJACD,</a>
 <a name="5679"><span class="lineNum">    5679 </span>            :      +              WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</a>
@@ -5752,75 +5752,75 @@
 <a name="5682"><span class="lineNum">    5682 </span>            :      +              WORK(U),WORK(QRAUX),IWORK(JPVT),</a>
 <a name="5683"><span class="lineNum">    5683 </span>            :      +              S,T,NLMS,RCOND,IRANK,</a>
 <a name="5684"><span class="lineNum">    5684 </span>            :      +              WORK(WRK1),WORK(WRK2),WORK(WRK3),WORK(WRK4),</a>
-<a name="5685"><span class="lineNum">    5685 </span><span class="lineCov">        357 :      +              WORK(WRK5),WRK,LWRK,ISTOPC)</span></a>
+<a name="5685"><span class="lineNum">    5685 </span><span class="lineCov">        358 :      +              WORK(WRK5),WRK,LWRK,ISTOPC)</span></a>
 <a name="5686"><span class="lineNum">    5686 </span>            :       END IF</a>
-<a name="5687"><span class="lineNum">    5687 </span><span class="lineCov">        357 :       IF (ISTOPC.NE.0) THEN</span></a>
+<a name="5687"><span class="lineNum">    5687 </span><span class="lineCov">        358 :       IF (ISTOPC.NE.0) THEN</span></a>
 <a name="5688"><span class="lineNum">    5688 </span><span class="lineNoCov">          0 :          INFO = ISTOPC</span></a>
 <a name="5689"><span class="lineNum">    5689 </span><span class="lineNoCov">          0 :          GO TO 200</span></a>
 <a name="5690"><span class="lineNum">    5690 </span>            :       END IF</a>
-<a name="5691"><span class="lineNum">    5691 </span><span class="lineCov">        357 :       OLMAVG = OLMAVG+NLMS</span></a>
+<a name="5691"><span class="lineNum">    5691 </span><span class="lineCov">        358 :       OLMAVG = OLMAVG+NLMS</span></a>
 <a name="5692"><span class="lineNum">    5692 </span>            : </a>
 <a name="5693"><span class="lineNum">    5693 </span>            : C  COMPUTE BETAN = BETAC + S</a>
 <a name="5694"><span class="lineNum">    5694 </span>            : C          DELTAN = DELTA + T</a>
 <a name="5695"><span class="lineNum">    5695 </span>            : </a>
-<a name="5696"><span class="lineNum">    5696 </span><span class="lineCov">        357 :       CALL DXPY(NPP,1,BETAC,NPP,S,NPP,BETAN,NPP)</span></a>
-<a name="5697"><span class="lineNum">    5697 </span><span class="lineCov">        357 :       IF (ISODR) CALL DXPY(N,M,DELTA,N,T,N,DELTAN,N)</span></a>
+<a name="5696"><span class="lineNum">    5696 </span><span class="lineCov">        358 :       CALL DXPY(NPP,1,BETAC,NPP,S,NPP,BETAN,NPP)</span></a>
+<a name="5697"><span class="lineNum">    5697 </span><span class="lineCov">        358 :       IF (ISODR) CALL DXPY(N,M,DELTA,N,T,N,DELTAN,N)</span></a>
 <a name="5698"><span class="lineNum">    5698 </span>            : </a>
 <a name="5699"><span class="lineNum">    5699 </span>            : C  COMPUTE NORM OF SCALED STEPS S AND T (TSNORM)</a>
 <a name="5700"><span class="lineNum">    5700 </span>            : </a>
-<a name="5701"><span class="lineNum">    5701 </span><span class="lineCov">        357 :       CALL DWGHT(NPP,1,SS,NPP,1,S,NPP,WRK,NPP)</span></a>
-<a name="5702"><span class="lineNum">    5702 </span><span class="lineCov">        357 :       IF (ISODR) THEN</span></a>
-<a name="5703"><span class="lineNum">    5703 </span><span class="lineCov">        357 :          CALL DWGHT(N,M,TT,LDTT,1,T,N,WRK(NPP+1),N)</span></a>
-<a name="5704"><span class="lineNum">    5704 </span><span class="lineCov">        357 :          TSNORM = DNRM2(NPP+N*M,WRK,1)</span></a>
+<a name="5701"><span class="lineNum">    5701 </span><span class="lineCov">        358 :       CALL DWGHT(NPP,1,SS,NPP,1,S,NPP,WRK,NPP)</span></a>
+<a name="5702"><span class="lineNum">    5702 </span><span class="lineCov">        358 :       IF (ISODR) THEN</span></a>
+<a name="5703"><span class="lineNum">    5703 </span><span class="lineCov">        358 :          CALL DWGHT(N,M,TT,LDTT,1,T,N,WRK(NPP+1),N)</span></a>
+<a name="5704"><span class="lineNum">    5704 </span><span class="lineCov">        358 :          TSNORM = DNRM2(NPP+N*M,WRK,1)</span></a>
 <a name="5705"><span class="lineNum">    5705 </span>            :       ELSE </a>
 <a name="5706"><span class="lineNum">    5706 </span><span class="lineNoCov">          0 :          TSNORM = DNRM2(NPP,WRK,1)</span></a>
 <a name="5707"><span class="lineNum">    5707 </span>            :       END IF</a>
 <a name="5708"><span class="lineNum">    5708 </span>            : </a>
 <a name="5709"><span class="lineNum">    5709 </span>            : C  COMPUTE SCALED PREDICTED REDUCTION</a>
 <a name="5710"><span class="lineNum">    5710 </span>            : </a>
-<a name="5711"><span class="lineNum">    5711 </span><span class="lineCov">        357 :       IWRK = 0</span></a>
-<a name="5712"><span class="lineNum">    5712 </span><span class="lineCov">        790 :       DO 130 L=1,NQ</span></a>
-<a name="5713"><span class="lineNum">    5713 </span><span class="lineCov">       5851 :          DO 120 I=1,N</span></a>
-<a name="5714"><span class="lineNum">    5714 </span><span class="lineCov">       5418 :            IWRK = IWRK + 1</span></a>
-<a name="5715"><span class="lineNum">    5715 </span><span class="lineCov">       5418 :            WRK(IWRK) = DDOT(NPP,FJACB(I,1,L),N,S,1)</span></a>
-<a name="5716"><span class="lineNum">    5716 </span><span class="lineCov">       5418 :            IF (ISODR) WRK(IWRK) = WRK(IWRK) + </span></a>
-<a name="5717"><span class="lineNum">    5717 </span><span class="lineCov">       5418 :      +                            DDOT(M,FJACD(I,1,L),N,T(I,1),N)</span></a>
-<a name="5718"><span class="lineNum">    5718 </span><span class="lineCov">        433 :   120    CONTINUE</span></a>
-<a name="5719"><span class="lineNum">    5719 </span><span class="lineCov">        357 :   130 CONTINUE</span></a>
-<a name="5720"><span class="lineNum">    5720 </span><span class="lineCov">        357 :       IF (ISODR) THEN</span></a>
-<a name="5721"><span class="lineNum">    5721 </span><span class="lineCov">        357 :          CALL DWGHT(N,M,WD,LDWD,LD2WD,T,N,WRK(N*NQ+1),N)</span></a>
-<a name="5722"><span class="lineNum">    5722 </span><span class="lineCov">        357 :          TEMP1 = DDOT(N*NQ,WRK,1,WRK,1) + DDOT(N*M,T,1,WRK(N*NQ+1),1)</span></a>
-<a name="5723"><span class="lineNum">    5723 </span><span class="lineCov">        357 :          TEMP1 = SQRT(TEMP1)/RNORM</span></a>
+<a name="5711"><span class="lineNum">    5711 </span><span class="lineCov">        358 :       IWRK = 0</span></a>
+<a name="5712"><span class="lineNum">    5712 </span><span class="lineCov">        792 :       DO 130 L=1,NQ</span></a>
+<a name="5713"><span class="lineNum">    5713 </span><span class="lineCov">       5856 :          DO 120 I=1,N</span></a>
+<a name="5714"><span class="lineNum">    5714 </span><span class="lineCov">       5422 :            IWRK = IWRK + 1</span></a>
+<a name="5715"><span class="lineNum">    5715 </span><span class="lineCov">       5422 :            WRK(IWRK) = DDOT(NPP,FJACB(I,1,L),N,S,1)</span></a>
+<a name="5716"><span class="lineNum">    5716 </span><span class="lineCov">       5422 :            IF (ISODR) WRK(IWRK) = WRK(IWRK) + </span></a>
+<a name="5717"><span class="lineNum">    5717 </span><span class="lineCov">       5422 :      +                            DDOT(M,FJACD(I,1,L),N,T(I,1),N)</span></a>
+<a name="5718"><span class="lineNum">    5718 </span><span class="lineCov">        434 :   120    CONTINUE</span></a>
+<a name="5719"><span class="lineNum">    5719 </span><span class="lineCov">        358 :   130 CONTINUE</span></a>
+<a name="5720"><span class="lineNum">    5720 </span><span class="lineCov">        358 :       IF (ISODR) THEN</span></a>
+<a name="5721"><span class="lineNum">    5721 </span><span class="lineCov">        358 :          CALL DWGHT(N,M,WD,LDWD,LD2WD,T,N,WRK(N*NQ+1),N)</span></a>
+<a name="5722"><span class="lineNum">    5722 </span><span class="lineCov">        358 :          TEMP1 = DDOT(N*NQ,WRK,1,WRK,1) + DDOT(N*M,T,1,WRK(N*NQ+1),1)</span></a>
+<a name="5723"><span class="lineNum">    5723 </span><span class="lineCov">        358 :          TEMP1 = SQRT(TEMP1)/RNORM</span></a>
 <a name="5724"><span class="lineNum">    5724 </span>            :       ELSE</a>
 <a name="5725"><span class="lineNum">    5725 </span><span class="lineNoCov">          0 :          TEMP1 = DNRM2(N*NQ,WRK,1)/RNORM</span></a>
 <a name="5726"><span class="lineNum">    5726 </span>            :       END IF</a>
-<a name="5727"><span class="lineNum">    5727 </span><span class="lineCov">        357 :       TEMP2 = SQRT(ALPHA)*TSNORM/RNORM</span></a>
-<a name="5728"><span class="lineNum">    5728 </span><span class="lineCov">        357 :       PRERED = TEMP1**2+TEMP2**2/P5</span></a>
+<a name="5727"><span class="lineNum">    5727 </span><span class="lineCov">        358 :       TEMP2 = SQRT(ALPHA)*TSNORM/RNORM</span></a>
+<a name="5728"><span class="lineNum">    5728 </span><span class="lineCov">        358 :       PRERED = TEMP1**2+TEMP2**2/P5</span></a>
 <a name="5729"><span class="lineNum">    5729 </span>            : </a>
-<a name="5730"><span class="lineNum">    5730 </span><span class="lineCov">        357 :       DIRDER = -(TEMP1**2+TEMP2**2)</span></a>
+<a name="5730"><span class="lineNum">    5730 </span><span class="lineCov">        358 :       DIRDER = -(TEMP1**2+TEMP2**2)</span></a>
 <a name="5731"><span class="lineNum">    5731 </span>            : </a>
 <a name="5732"><span class="lineNum">    5732 </span>            : C  EVALUATE PREDICTED VALUES AT NEW POINT</a>
 <a name="5733"><span class="lineNum">    5733 </span>            : </a>
-<a name="5734"><span class="lineNum">    5734 </span><span class="lineCov">        357 :       CALL DUNPAC(NP,BETAN,BETA,IFIXB)</span></a>
-<a name="5735"><span class="lineNum">    5735 </span><span class="lineCov">        357 :       CALL DXPY(N,M,X,LDX,DELTAN,N,XPLUSD,N)</span></a>
-<a name="5736"><span class="lineNum">    5736 </span><span class="lineCov">        357 :       ISTOP = 0</span></a>
+<a name="5734"><span class="lineNum">    5734 </span><span class="lineCov">        358 :       CALL DUNPAC(NP,BETAN,BETA,IFIXB)</span></a>
+<a name="5735"><span class="lineNum">    5735 </span><span class="lineCov">        358 :       CALL DXPY(N,M,X,LDX,DELTAN,N,XPLUSD,N)</span></a>
+<a name="5736"><span class="lineNum">    5736 </span><span class="lineCov">        358 :       ISTOP = 0</span></a>
 <a name="5737"><span class="lineNum">    5737 </span>            :       CALL FCN(N,M,NP,NQ,</a>
 <a name="5738"><span class="lineNum">    5738 </span>            :      +         N,M,NP,</a>
 <a name="5739"><span class="lineNum">    5739 </span>            :      +         BETA,XPLUSD,</a>
 <a name="5740"><span class="lineNum">    5740 </span>            :      +         IFIXB,IFIXX,LDIFX,</a>
 <a name="5741"><span class="lineNum">    5741 </span>            :      +         002,FN,WORK(WRK6),WORK(WRK1),</a>
-<a name="5742"><span class="lineNum">    5742 </span><span class="lineCov">        357 :      +         ISTOP)</span></a>
-<a name="5743"><span class="lineNum">    5743 </span><span class="lineCov">        357 :       IF (ISTOP.EQ.0) THEN</span></a>
-<a name="5744"><span class="lineNum">    5744 </span><span class="lineCov">        357 :          NFEV = NFEV + 1</span></a>
+<a name="5742"><span class="lineNum">    5742 </span><span class="lineCov">        358 :      +         ISTOP)</span></a>
+<a name="5743"><span class="lineNum">    5743 </span><span class="lineCov">        358 :       IF (ISTOP.EQ.0) THEN</span></a>
+<a name="5744"><span class="lineNum">    5744 </span><span class="lineCov">        358 :          NFEV = NFEV + 1</span></a>
 <a name="5745"><span class="lineNum">    5745 </span>            :       END IF</a>
 <a name="5746"><span class="lineNum">    5746 </span>            : </a>
-<a name="5747"><span class="lineNum">    5747 </span><span class="lineCov">        357 :       IF (ISTOP.LT.0) THEN</span></a>
+<a name="5747"><span class="lineNum">    5747 </span><span class="lineCov">        358 :       IF (ISTOP.LT.0) THEN</span></a>
 <a name="5748"><span class="lineNum">    5748 </span>            : </a>
 <a name="5749"><span class="lineNum">    5749 </span>            : C  SET INFO TO INDICATE USER HAS STOPPED THE COMPUTATIONS IN FCN</a>
 <a name="5750"><span class="lineNum">    5750 </span>            : </a>
 <a name="5751"><span class="lineNum">    5751 </span><span class="lineNoCov">          0 :          INFO = 51000</span></a>
 <a name="5752"><span class="lineNum">    5752 </span><span class="lineNoCov">          0 :          GO TO 200</span></a>
-<a name="5753"><span class="lineNum">    5753 </span><span class="lineCov">        357 :       ELSE IF (ISTOP.GT.0) THEN</span></a>
+<a name="5753"><span class="lineNum">    5753 </span><span class="lineCov">        358 :       ELSE IF (ISTOP.GT.0) THEN</span></a>
 <a name="5754"><span class="lineNum">    5754 </span>            : </a>
 <a name="5755"><span class="lineNum">    5755 </span>            : C  SET NORM TO INDICATE STEP SHOULD BE REJECTED</a>
 <a name="5756"><span class="lineNum">    5756 </span>            : </a>
@@ -5829,16 +5829,16 @@
 <a name="5759"><span class="lineNum">    5759 </span>            : </a>
 <a name="5760"><span class="lineNum">    5760 </span>            : C  COMPUTE NORM OF NEW WEIGHTED EPSILONS AND WEIGHTED DELTAS (RNORMN)</a>
 <a name="5761"><span class="lineNum">    5761 </span>            : </a>
-<a name="5762"><span class="lineNum">    5762 </span><span class="lineCov">        357 :          IF (IMPLCT) THEN</span></a>
+<a name="5762"><span class="lineNum">    5762 </span><span class="lineCov">        358 :          IF (IMPLCT) THEN</span></a>
 <a name="5763"><span class="lineNum">    5763 </span><span class="lineCov">        180 :             CALL DCOPY(N*NQ,FN,1,WRK,1)</span></a>
 <a name="5764"><span class="lineNum">    5764 </span>            :          ELSE</a>
-<a name="5765"><span class="lineNum">    5765 </span><span class="lineCov">        177 :             CALL DXMY(N,NQ,FN,N,Y,LDY,WRK,N)</span></a>
+<a name="5765"><span class="lineNum">    5765 </span><span class="lineCov">        178 :             CALL DXMY(N,NQ,FN,N,Y,LDY,WRK,N)</span></a>
 <a name="5766"><span class="lineNum">    5766 </span>            :          END IF</a>
-<a name="5767"><span class="lineNum">    5767 </span><span class="lineCov">        357 :          CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,WRK,N,WRK,N)</span></a>
-<a name="5768"><span class="lineNum">    5768 </span><span class="lineCov">        357 :          IF (ISODR) THEN</span></a>
-<a name="5769"><span class="lineNum">    5769 </span><span class="lineCov">        357 :             CALL DWGHT(N,M,WD,LDWD,LD2WD,DELTAN,N,WRK(N*NQ+1),N)</span></a>
+<a name="5767"><span class="lineNum">    5767 </span><span class="lineCov">        358 :          CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,WRK,N,WRK,N)</span></a>
+<a name="5768"><span class="lineNum">    5768 </span><span class="lineCov">        358 :          IF (ISODR) THEN</span></a>
+<a name="5769"><span class="lineNum">    5769 </span><span class="lineCov">        358 :             CALL DWGHT(N,M,WD,LDWD,LD2WD,DELTAN,N,WRK(N*NQ+1),N)</span></a>
 <a name="5770"><span class="lineNum">    5770 </span>            :             RNORMN = SQRT(DDOT(N*NQ,WRK,1,WRK,1) + </a>
-<a name="5771"><span class="lineNum">    5771 </span><span class="lineCov">        357 :      +                    DDOT(N*M,DELTAN,1,WRK(N*NQ+1),1))</span></a>
+<a name="5771"><span class="lineNum">    5771 </span><span class="lineCov">        358 :      +                    DDOT(N*M,DELTAN,1,WRK(N*NQ+1),1))</span></a>
 <a name="5772"><span class="lineNum">    5772 </span>            :          ELSE</a>
 <a name="5773"><span class="lineNum">    5773 </span><span class="lineNoCov">          0 :             RNORMN = DNRM2(N*NQ,WRK,1)</span></a>
 <a name="5774"><span class="lineNum">    5774 </span>            :          END IF</a>
@@ -5846,23 +5846,23 @@
 <a name="5776"><span class="lineNum">    5776 </span>            : </a>
 <a name="5777"><span class="lineNum">    5777 </span>            : C  COMPUTE SCALED ACTUAL REDUCTION</a>
 <a name="5778"><span class="lineNum">    5778 </span>            : </a>
-<a name="5779"><span class="lineNum">    5779 </span><span class="lineCov">        357 :       IF (P1*RNORMN.LT.RNORM) THEN</span></a>
-<a name="5780"><span class="lineNum">    5780 </span><span class="lineCov">        357 :          ACTRED = ONE - (RNORMN/RNORM)**2</span></a>
+<a name="5779"><span class="lineNum">    5779 </span><span class="lineCov">        358 :       IF (P1*RNORMN.LT.RNORM) THEN</span></a>
+<a name="5780"><span class="lineNum">    5780 </span><span class="lineCov">        358 :          ACTRED = ONE - (RNORMN/RNORM)**2</span></a>
 <a name="5781"><span class="lineNum">    5781 </span>            :       ELSE</a>
 <a name="5782"><span class="lineNum">    5782 </span><span class="lineNoCov">          0 :          ACTRED = -ONE</span></a>
 <a name="5783"><span class="lineNum">    5783 </span>            :       END IF</a>
 <a name="5784"><span class="lineNum">    5784 </span>            : </a>
 <a name="5785"><span class="lineNum">    5785 </span>            : C  COMPUTE RATIO OF ACTUAL REDUCTION TO PREDICTED REDUCTION</a>
 <a name="5786"><span class="lineNum">    5786 </span>            : </a>
-<a name="5787"><span class="lineNum">    5787 </span><span class="lineCov">        357 :       IF(PRERED .EQ. ZERO) THEN</span></a>
+<a name="5787"><span class="lineNum">    5787 </span><span class="lineCov">        358 :       IF(PRERED .EQ. ZERO) THEN</span></a>
 <a name="5788"><span class="lineNum">    5788 </span>            :          RATIO = ZERO</a>
 <a name="5789"><span class="lineNum">    5789 </span>            :       ELSE</a>
-<a name="5790"><span class="lineNum">    5790 </span><span class="lineCov">        357 :          RATIO = ACTRED/PRERED</span></a>
+<a name="5790"><span class="lineNum">    5790 </span><span class="lineCov">        358 :          RATIO = ACTRED/PRERED</span></a>
 <a name="5791"><span class="lineNum">    5791 </span>            :       END IF</a>
 <a name="5792"><span class="lineNum">    5792 </span>            : </a>
 <a name="5793"><span class="lineNum">    5793 </span>            : C  CHECK ON LACK OF REDUCTION IN INTERNAL DOUBLING CASE</a>
 <a name="5794"><span class="lineNum">    5794 </span>            : </a>
-<a name="5795"><span class="lineNum">    5795 </span><span class="lineCov">        357 :       IF (INTDBL .AND. (RATIO.LT.P0001 .OR. RNORMN.GT.RNORMS)) THEN</span></a>
+<a name="5795"><span class="lineNum">    5795 </span><span class="lineCov">        358 :       IF (INTDBL .AND. (RATIO.LT.P0001 .OR. RNORMN.GT.RNORMS)) THEN</span></a>
 <a name="5796"><span class="lineNum">    5796 </span><span class="lineCov">         24 :          ISTOP = 0</span></a>
 <a name="5797"><span class="lineNum">    5797 </span><span class="lineCov">         24 :          TAU = TAU*P5</span></a>
 <a name="5798"><span class="lineNum">    5798 </span><span class="lineCov">         24 :          ALPHA = ALPHA/P5</span></a>
@@ -5877,8 +5877,8 @@
 <a name="5807"><span class="lineNum">    5807 </span>            : </a>
 <a name="5808"><span class="lineNum">    5808 </span>            : C  UPDATE STEP BOUND</a>
 <a name="5809"><span class="lineNum">    5809 </span>            : </a>
-<a name="5810"><span class="lineNum">    5810 </span><span class="lineCov">        357 :       INTDBL = .FALSE.</span></a>
-<a name="5811"><span class="lineNum">    5811 </span><span class="lineCov">        357 :       IF (RATIO.LT.P25) THEN</span></a>
+<a name="5810"><span class="lineNum">    5810 </span><span class="lineCov">        358 :       INTDBL = .FALSE.</span></a>
+<a name="5811"><span class="lineNum">    5811 </span><span class="lineCov">        358 :       IF (RATIO.LT.P25) THEN</span></a>
 <a name="5812"><span class="lineNum">    5812 </span><span class="lineCov">         12 :          IF (ACTRED.GE.ZERO) THEN</span></a>
 <a name="5813"><span class="lineNum">    5813 </span><span class="lineCov">          1 :             TEMP = P5</span></a>
 <a name="5814"><span class="lineNum">    5814 </span>            :          ELSE</a>
@@ -5890,8 +5890,8 @@
 <a name="5820"><span class="lineNum">    5820 </span><span class="lineCov">         12 :          TAU = TEMP*MIN(TAU,TSNORM/P1)</span></a>
 <a name="5821"><span class="lineNum">    5821 </span><span class="lineCov">         12 :          ALPHA = ALPHA/TEMP</span></a>
 <a name="5822"><span class="lineNum">    5822 </span>            : </a>
-<a name="5823"><span class="lineNum">    5823 </span><span class="lineCov">        345 :       ELSE IF (ALPHA.EQ.ZERO) THEN</span></a>
-<a name="5824"><span class="lineNum">    5824 </span><span class="lineCov">        134 :          TAU = TSNORM/P5</span></a>
+<a name="5823"><span class="lineNum">    5823 </span><span class="lineCov">        346 :       ELSE IF (ALPHA.EQ.ZERO) THEN</span></a>
+<a name="5824"><span class="lineNum">    5824 </span><span class="lineCov">        135 :          TAU = TSNORM/P5</span></a>
 <a name="5825"><span class="lineNum">    5825 </span>            : </a>
 <a name="5826"><span class="lineNum">    5826 </span><span class="lineCov">        211 :       ELSE IF (RATIO.GE.P75 .AND. NLMS.LE.11) THEN</span></a>
 <a name="5827"><span class="lineNum">    5827 </span>            : </a>
@@ -5921,21 +5921,21 @@
 <a name="5851"><span class="lineNum">    5851 </span>            : </a>
 <a name="5852"><span class="lineNum">    5852 </span>            : C  CHECK ACCEPTANCE</a>
 <a name="5853"><span class="lineNum">    5853 </span>            : </a>
-<a name="5854"><span class="lineNum">    5854 </span><span class="lineCov">        183 :       IF (RATIO.GE.P0001) THEN</span></a>
-<a name="5855"><span class="lineNum">    5855 </span><span class="lineCov">        172 :          CALL DCOPY(N*NQ,FN,1,FS,1)</span></a>
-<a name="5856"><span class="lineNum">    5856 </span><span class="lineCov">        172 :          IF (IMPLCT) THEN</span></a>
+<a name="5854"><span class="lineNum">    5854 </span><span class="lineCov">        184 :       IF (RATIO.GE.P0001) THEN</span></a>
+<a name="5855"><span class="lineNum">    5855 </span><span class="lineCov">        173 :          CALL DCOPY(N*NQ,FN,1,FS,1)</span></a>
+<a name="5856"><span class="lineNum">    5856 </span><span class="lineCov">        173 :          IF (IMPLCT) THEN</span></a>
 <a name="5857"><span class="lineNum">    5857 </span><span class="lineCov">         32 :             CALL DCOPY(N*NQ,FS,1,F,1)</span></a>
 <a name="5858"><span class="lineNum">    5858 </span>            :          ELSE</a>
-<a name="5859"><span class="lineNum">    5859 </span><span class="lineCov">        140 :             CALL DXMY(N,NQ,FS,N,Y,LDY,F,N)</span></a>
+<a name="5859"><span class="lineNum">    5859 </span><span class="lineCov">        141 :             CALL DXMY(N,NQ,FS,N,Y,LDY,F,N)</span></a>
 <a name="5860"><span class="lineNum">    5860 </span>            :          END IF</a>
-<a name="5861"><span class="lineNum">    5861 </span><span class="lineCov">        172 :          CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,F,N,F,N)</span></a>
-<a name="5862"><span class="lineNum">    5862 </span><span class="lineCov">        172 :          CALL DCOPY(NPP,BETAN,1,BETAC,1)</span></a>
-<a name="5863"><span class="lineNum">    5863 </span><span class="lineCov">        172 :          CALL DCOPY(N*M,DELTAN,1,DELTA,1)</span></a>
-<a name="5864"><span class="lineNum">    5864 </span><span class="lineCov">        172 :          RNORM = RNORMN</span></a>
-<a name="5865"><span class="lineNum">    5865 </span><span class="lineCov">        172 :          CALL DWGHT(NPP,1,SS,NPP,1,BETAC,NPP,WRK,NPP)</span></a>
-<a name="5866"><span class="lineNum">    5866 </span><span class="lineCov">        172 :          IF (ISODR) THEN</span></a>
-<a name="5867"><span class="lineNum">    5867 </span><span class="lineCov">        172 :             CALL DWGHT(N,M,TT,LDTT,1,DELTA,N,WRK(NPP+1),N)</span></a>
-<a name="5868"><span class="lineNum">    5868 </span><span class="lineCov">        172 :             PNORM = DNRM2(NPP+N*M,WRK,1)</span></a>
+<a name="5861"><span class="lineNum">    5861 </span><span class="lineCov">        173 :          CALL DWGHT(N,NQ,WE1,LDWE,LD2WE,F,N,F,N)</span></a>
+<a name="5862"><span class="lineNum">    5862 </span><span class="lineCov">        173 :          CALL DCOPY(NPP,BETAN,1,BETAC,1)</span></a>
+<a name="5863"><span class="lineNum">    5863 </span><span class="lineCov">        173 :          CALL DCOPY(N*M,DELTAN,1,DELTA,1)</span></a>
+<a name="5864"><span class="lineNum">    5864 </span><span class="lineCov">        173 :          RNORM = RNORMN</span></a>
+<a name="5865"><span class="lineNum">    5865 </span><span class="lineCov">        173 :          CALL DWGHT(NPP,1,SS,NPP,1,BETAC,NPP,WRK,NPP)</span></a>
+<a name="5866"><span class="lineNum">    5866 </span><span class="lineCov">        173 :          IF (ISODR) THEN</span></a>
+<a name="5867"><span class="lineNum">    5867 </span><span class="lineCov">        173 :             CALL DWGHT(N,M,TT,LDTT,1,DELTA,N,WRK(NPP+1),N)</span></a>
+<a name="5868"><span class="lineNum">    5868 </span><span class="lineCov">        173 :             PNORM = DNRM2(NPP+N*M,WRK,1)</span></a>
 <a name="5869"><span class="lineNum">    5869 </span>            :          ELSE</a>
 <a name="5870"><span class="lineNum">    5870 </span><span class="lineNoCov">          0 :             PNORM = DNRM2(NPP,WRK,1)</span></a>
 <a name="5871"><span class="lineNum">    5871 </span>            :          END IF</a>
@@ -5946,21 +5946,21 @@
 <a name="5876"><span class="lineNum">    5876 </span>            : </a>
 <a name="5877"><span class="lineNum">    5877 </span>            : C  TEST CONVERGENCE</a>
 <a name="5878"><span class="lineNum">    5878 </span>            : </a>
-<a name="5879"><span class="lineNum">    5879 </span><span class="lineCov">        183 :       INFO = 0</span></a>
+<a name="5879"><span class="lineNum">    5879 </span><span class="lineCov">        184 :       INFO = 0</span></a>
 <a name="5880"><span class="lineNum">    5880 </span>            :       CNVSS = RNORM.EQ.ZERO</a>
 <a name="5881"><span class="lineNum">    5881 </span>            :      +        .OR.</a>
 <a name="5882"><span class="lineNum">    5882 </span>            :      +        (ABS(ACTRED).LE.SSTOL .AND.</a>
 <a name="5883"><span class="lineNum">    5883 </span>            :      +         PRERED.LE.SSTOL      .AND.</a>
-<a name="5884"><span class="lineNum">    5884 </span><span class="lineCov">        183 :      +         P5*RATIO.LE.ONE)</span></a>
-<a name="5885"><span class="lineNum">    5885 </span><span class="lineCov">        183 :       CNVPAR = (TAU.LE.PARTOL*PNORM) .AND. (.NOT.IMPLCT)</span></a>
-<a name="5886"><span class="lineNum">    5886 </span><span class="lineCov">        183 :       IF (CNVSS)                            INFO = 1</span></a>
-<a name="5887"><span class="lineNum">    5887 </span><span class="lineCov">        183 :       IF (CNVPAR)                           INFO = 2</span></a>
+<a name="5884"><span class="lineNum">    5884 </span><span class="lineCov">        184 :      +         P5*RATIO.LE.ONE)</span></a>
+<a name="5885"><span class="lineNum">    5885 </span><span class="lineCov">        184 :       CNVPAR = (TAU.LE.PARTOL*PNORM) .AND. (.NOT.IMPLCT)</span></a>
+<a name="5886"><span class="lineNum">    5886 </span><span class="lineCov">        184 :       IF (CNVSS)                            INFO = 1</span></a>
+<a name="5887"><span class="lineNum">    5887 </span><span class="lineCov">        184 :       IF (CNVPAR)                           INFO = 2</span></a>
 <a name="5888"><span class="lineNum">    5888 </span><span class="lineCov">          7 :       IF (CNVSS .AND. CNVPAR)               INFO = 3</span></a>
 <a name="5889"><span class="lineNum">    5889 </span>            : </a>
 <a name="5890"><span class="lineNum">    5890 </span>            : C  PRINT ITERATION REPORT</a>
 <a name="5891"><span class="lineNum">    5891 </span>            : </a>
-<a name="5892"><span class="lineNum">    5892 </span><span class="lineCov">        183 :       IF (INFO.NE.0 .OR. LSTEP) THEN</span></a>
-<a name="5893"><span class="lineNum">    5893 </span><span class="lineCov">        179 :          IF (IPR2.NE.0 .AND. IPR2F.NE.0 .AND. LUNRPT.NE.0) THEN</span></a>
+<a name="5892"><span class="lineNum">    5892 </span><span class="lineCov">        184 :       IF (INFO.NE.0 .OR. LSTEP) THEN</span></a>
+<a name="5893"><span class="lineNum">    5893 </span><span class="lineCov">        180 :          IF (IPR2.NE.0 .AND. IPR2F.NE.0 .AND. LUNRPT.NE.0) THEN</span></a>
 <a name="5894"><span class="lineNum">    5894 </span><span class="lineNoCov">          0 :             IF (IPR2F.EQ.1 .OR. MOD(NITER,IPR2F).EQ.1) THEN</span></a>
 <a name="5895"><span class="lineNum">    5895 </span><span class="lineNoCov">          0 :                IFLAG = 2</span></a>
 <a name="5896"><span class="lineNum">    5896 </span><span class="lineNoCov">          0 :                CALL DUNPAC(NP,BETAC,BETA,IFIXB)</span></a>
@@ -6003,12 +6003,12 @@
 <a name="5933"><span class="lineNum">    5933 </span>            : </a>
 <a name="5934"><span class="lineNum">    5934 </span>            : C  CHECK IF FINISHED</a>
 <a name="5935"><span class="lineNum">    5935 </span>            : </a>
-<a name="5936"><span class="lineNum">    5936 </span><span class="lineCov">        183 :       IF (INFO.EQ.0) THEN</span></a>
-<a name="5937"><span class="lineNum">    5937 </span><span class="lineCov">        153 :          IF (LSTEP) THEN</span></a>
+<a name="5936"><span class="lineNum">    5936 </span><span class="lineCov">        184 :       IF (INFO.EQ.0) THEN</span></a>
+<a name="5937"><span class="lineNum">    5937 </span><span class="lineCov">        154 :          IF (LSTEP) THEN</span></a>
 <a name="5938"><span class="lineNum">    5938 </span>            : </a>
 <a name="5939"><span class="lineNum">    5939 </span>            : C  BEGIN NEXT INTERATION UNLESS A STOPPING CRITERIA HAS BEEN MET</a>
 <a name="5940"><span class="lineNum">    5940 </span>            : </a>
-<a name="5941"><span class="lineNum">    5941 </span><span class="lineCov">        149 :             IF (NITER.GE.MAXIT) THEN</span></a>
+<a name="5941"><span class="lineNum">    5941 </span><span class="lineCov">        150 :             IF (NITER.GE.MAXIT) THEN</span></a>
 <a name="5942"><span class="lineNum">    5942 </span><span class="lineNoCov">          0 :                INFO = 4</span></a>
 <a name="5943"><span class="lineNum">    5943 </span>            :             ELSE</a>
 <a name="5944"><span class="lineNum">    5944 </span>            :                GO TO 100</a>
@@ -6101,9 +6101,9 @@
 <a name="6031"><span class="lineNum">    6031 </span><span class="lineCov">        121 :          DO 220 I=0,NPP-1</span></a>
 <a name="6032"><span class="lineNum">    6032 </span><span class="lineCov">         88 :             J = WORK(WRK3+I) - 1</span></a>
 <a name="6033"><span class="lineNum">    6033 </span><span class="lineCov">         88 :             IF (I.LE.NPP-IRANK-1) THEN</span></a>
-<a name="6034"><span class="lineNum">    6034 </span><span class="lineCov">         87 :                IWORK(JPVT+J) = 1</span></a>
+<a name="6034"><span class="lineNum">    6034 </span><span class="lineCov">         88 :                IWORK(JPVT+J) = 1</span></a>
 <a name="6035"><span class="lineNum">    6035 </span>            :             ELSE </a>
-<a name="6036"><span class="lineNum">    6036 </span><span class="lineCov">          1 :                IWORK(JPVT+J) = -1</span></a>
+<a name="6036"><span class="lineNum">    6036 </span><span class="lineNoCov">          0 :                IWORK(JPVT+J) = -1</span></a>
 <a name="6037"><span class="lineNum">    6037 </span>            :             END IF</a>
 <a name="6038"><span class="lineNum">    6038 </span><span class="lineCov">         33 :   220    CONTINUE</span></a>
 <a name="6039"><span class="lineNum">    6039 </span><span class="lineCov">         33 :          IF (NPP.LT.NP) THEN</span></a>
@@ -6162,8 +6162,8 @@
 <a name="6092"><span class="lineNum">    6092 </span><span class="lineNoCov">          0 :             INFO = INFO + 100</span></a>
 <a name="6093"><span class="lineNum">    6093 </span>            :          END IF</a>
 <a name="6094"><span class="lineNum">    6094 </span><span class="lineCov">         33 :          IF (IRANK.GE.1) THEN</span></a>
-<a name="6095"><span class="lineNum">    6095 </span><span class="lineCov">          1 :             IF (NPP.GT.IRANK) THEN</span></a>
-<a name="6096"><span class="lineNum">    6096 </span><span class="lineCov">          1 :                INFO = INFO + 10</span></a>
+<a name="6095"><span class="lineNum">    6095 </span><span class="lineNoCov">          0 :             IF (NPP.GT.IRANK) THEN</span></a>
+<a name="6096"><span class="lineNum">    6096 </span><span class="lineNoCov">          0 :                INFO = INFO + 10</span></a>
 <a name="6097"><span class="lineNum">    6097 </span>            :             ELSE</a>
 <a name="6098"><span class="lineNum">    6098 </span><span class="lineNoCov">          0 :                INFO = INFO + 20</span></a>
 <a name="6099"><span class="lineNum">    6099 </span>            :             END IF</a>
@@ -8695,14 +8695,14 @@
 <a name="8625"><span class="lineNum">    8625 </span>            :      +   ' ******************************************************* '/)</a>
 <a name="8626"><span class="lineNum">    8626 </span>            :       END</a>
 <a name="8627"><span class="lineNum">    8627 </span>            : *DODSTP</a>
-<a name="8628"><span class="lineNum">    8628 </span><span class="lineCov">        791 :       SUBROUTINE DODSTP</span></a>
+<a name="8628"><span class="lineNum">    8628 </span><span class="lineCov">        792 :       SUBROUTINE DODSTP</span></a>
 <a name="8629"><span class="lineNum">    8629 </span>            :      +   (N,M,NP,NQ,NPP,</a>
-<a name="8630"><span class="lineNum">    8630 </span><span class="lineCov">        791 :      +   F,FJACB,FJACD,</span></a>
-<a name="8631"><span class="lineNum">    8631 </span><span class="lineCov">        791 :      +   WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</span></a>
+<a name="8630"><span class="lineNum">    8630 </span><span class="lineCov">        792 :      +   F,FJACB,FJACD,</span></a>
+<a name="8631"><span class="lineNum">    8631 </span><span class="lineCov">        792 :      +   WD,LDWD,LD2WD,SS,TT,LDTT,DELTA,</span></a>
 <a name="8632"><span class="lineNum">    8632 </span>            :      +   ALPHA,EPSFCN,ISODR,</a>
-<a name="8633"><span class="lineNum">    8633 </span><span class="lineCov">        791 :      +   TFJACB,OMEGA,U,QRAUX,KPVT,</span></a>
-<a name="8634"><span class="lineNum">    8634 </span><span class="lineCov">        791 :      +   S,T,PHI,IRANK,RCOND,FORVCV,</span></a>
-<a name="8635"><span class="lineNum">    8635 </span><span class="lineCov">        791 :      +   WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
+<a name="8633"><span class="lineNum">    8633 </span><span class="lineCov">        792 :      +   TFJACB,OMEGA,U,QRAUX,KPVT,</span></a>
+<a name="8634"><span class="lineNum">    8634 </span><span class="lineCov">        792 :      +   S,T,PHI,IRANK,RCOND,FORVCV,</span></a>
+<a name="8635"><span class="lineNum">    8635 </span><span class="lineCov">        792 :      +   WRK1,WRK2,WRK3,WRK4,WRK5,WRK,LWRK,ISTOPC)</span></a>
 <a name="8636"><span class="lineNum">    8636 </span>            : C***BEGIN PROLOGUE  DODSTP</a>
 <a name="8637"><span class="lineNum">    8637 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="8638"><span class="lineNum">    8638 </span>            : C***ROUTINES CALLED  IDAMAX,DCHEX,DESUBI,DFCTR,DNRM2,DQRDC,DQRSL,DROT,</a>
@@ -8840,11 +8840,11 @@
 <a name="8770"><span class="lineNum">    8770 </span>            : </a>
 <a name="8771"><span class="lineNum">    8771 </span>            : C  SET UP KPVT IF ALPHA = 0</a>
 <a name="8772"><span class="lineNum">    8772 </span>            : </a>
-<a name="8773"><span class="lineNum">    8773 </span><span class="lineCov">        791 :       IF (ALPHA.EQ.ZERO) THEN</span></a>
-<a name="8774"><span class="lineNum">    8774 </span><span class="lineCov">        390 :          KP = NPP</span></a>
-<a name="8775"><span class="lineNum">    8775 </span><span class="lineCov">       1513 :          DO 10 K=1,NP</span></a>
-<a name="8776"><span class="lineNum">    8776 </span><span class="lineCov">       1123 :             KPVT(K) = K</span></a>
-<a name="8777"><span class="lineNum">    8777 </span><span class="lineCov">        390 :    10    CONTINUE</span></a>
+<a name="8773"><span class="lineNum">    8773 </span><span class="lineCov">        792 :       IF (ALPHA.EQ.ZERO) THEN</span></a>
+<a name="8774"><span class="lineNum">    8774 </span><span class="lineCov">        391 :          KP = NPP</span></a>
+<a name="8775"><span class="lineNum">    8775 </span><span class="lineCov">       1516 :          DO 10 K=1,NP</span></a>
+<a name="8776"><span class="lineNum">    8776 </span><span class="lineCov">       1125 :             KPVT(K) = K</span></a>
+<a name="8777"><span class="lineNum">    8777 </span><span class="lineCov">        391 :    10    CONTINUE</span></a>
 <a name="8778"><span class="lineNum">    8778 </span>            :       ELSE</a>
 <a name="8779"><span class="lineNum">    8779 </span><span class="lineCov">        401 :          IF (NPP.GE.1) THEN</span></a>
 <a name="8780"><span class="lineNum">    8780 </span><span class="lineCov">        401 :             KP = NPP-IRANK</span></a>
@@ -8853,18 +8853,18 @@
 <a name="8783"><span class="lineNum">    8783 </span>            :          END IF</a>
 <a name="8784"><span class="lineNum">    8784 </span>            :       END IF</a>
 <a name="8785"><span class="lineNum">    8785 </span>            : </a>
-<a name="8786"><span class="lineNum">    8786 </span><span class="lineCov">        791 :       IF (ISODR) THEN</span></a>
+<a name="8786"><span class="lineNum">    8786 </span><span class="lineCov">        792 :       IF (ISODR) THEN</span></a>
 <a name="8787"><span class="lineNum">    8787 </span>            : </a>
 <a name="8788"><span class="lineNum">    8788 </span>            : C  T = WD * DELTA = D*G2</a>
-<a name="8789"><span class="lineNum">    8789 </span><span class="lineCov">        791 :          CALL DWGHT(N,M,WD,LDWD,LD2WD,DELTA,N,T,N)</span></a>
+<a name="8789"><span class="lineNum">    8789 </span><span class="lineCov">        792 :          CALL DWGHT(N,M,WD,LDWD,LD2WD,DELTA,N,T,N)</span></a>
 <a name="8790"><span class="lineNum">    8790 </span>            : </a>
-<a name="8791"><span class="lineNum">    8791 </span><span class="lineCov">      10186 :          DO 300 I=1,N</span></a>
+<a name="8791"><span class="lineNum">    8791 </span><span class="lineCov">      10191 :          DO 300 I=1,N</span></a>
 <a name="8792"><span class="lineNum">    8792 </span>            : </a>
 <a name="8793"><span class="lineNum">    8793 </span>            : C  COMPUTE WRK4, SUCH THAT</a>
 <a name="8794"><span class="lineNum">    8794 </span>            : C                TRANS(WRK4)*WRK4 = E = (D**2 + ALPHA*TT**2)</a>
-<a name="8795"><span class="lineNum">    8795 </span><span class="lineCov">       9395 :             CALL DESUBI(N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,WRK4)</span></a>
-<a name="8796"><span class="lineNum">    8796 </span><span class="lineCov">       9395 :             CALL DFCTR(.FALSE.,WRK4,M,M,INF)</span></a>
-<a name="8797"><span class="lineNum">    8797 </span><span class="lineCov">       9395 :             IF (INF.NE.0) THEN</span></a>
+<a name="8795"><span class="lineNum">    8795 </span><span class="lineCov">       9399 :             CALL DESUBI(N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,WRK4)</span></a>
+<a name="8796"><span class="lineNum">    8796 </span><span class="lineCov">       9399 :             CALL DFCTR(.FALSE.,WRK4,M,M,INF)</span></a>
+<a name="8797"><span class="lineNum">    8797 </span><span class="lineCov">       9399 :             IF (INF.NE.0) THEN</span></a>
 <a name="8798"><span class="lineNum">    8798 </span><span class="lineNoCov">          0 :                ISTOPC = 60000</span></a>
 <a name="8799"><span class="lineNum">    8799 </span><span class="lineNoCov">          0 :                RETURN</span></a>
 <a name="8800"><span class="lineNum">    8800 </span>            :             END IF</a>
@@ -8873,60 +8873,60 @@
 <a name="8803"><span class="lineNum">    8803 </span>            : C                 TRANS(OMEGA)*OMEGA = I+FJACD*INV(E)*TRANS(FJACD)</a>
 <a name="8804"><span class="lineNum">    8804 </span>            : C                 INV(TRANS(OMEGA)*OMEGA) = I-FJACD*INV(P)*TRANS(FJACD)</a>
 <a name="8805"><span class="lineNum">    8805 </span>            :             CALL DVEVTR(M,NQ,I,</a>
-<a name="8806"><span class="lineNum">    8806 </span><span class="lineCov">       9395 :      +                   FJACD,N,M, WRK4,M, WRK1,N,NQ, OMEGA,NQ, WRK5)</span></a>
-<a name="8807"><span class="lineNum">    8807 </span><span class="lineCov">      20677 :             DO 110 L=1,NQ</span></a>
-<a name="8808"><span class="lineNum">    8808 </span><span class="lineCov">      11282 :                OMEGA(L,L) = ONE + OMEGA(L,L) </span></a>
-<a name="8809"><span class="lineNum">    8809 </span><span class="lineCov">       9395 :   110       CONTINUE</span></a>
-<a name="8810"><span class="lineNum">    8810 </span><span class="lineCov">       9395 :             CALL DFCTR(.FALSE.,OMEGA,NQ,NQ,INF)</span></a>
-<a name="8811"><span class="lineNum">    8811 </span><span class="lineCov">       9395 :             IF (INF.NE.0) THEN</span></a>
+<a name="8806"><span class="lineNum">    8806 </span><span class="lineCov">       9399 :      +                   FJACD,N,M, WRK4,M, WRK1,N,NQ, OMEGA,NQ, WRK5)</span></a>
+<a name="8807"><span class="lineNum">    8807 </span><span class="lineCov">      20685 :             DO 110 L=1,NQ</span></a>
+<a name="8808"><span class="lineNum">    8808 </span><span class="lineCov">      11286 :                OMEGA(L,L) = ONE + OMEGA(L,L) </span></a>
+<a name="8809"><span class="lineNum">    8809 </span><span class="lineCov">       9399 :   110       CONTINUE</span></a>
+<a name="8810"><span class="lineNum">    8810 </span><span class="lineCov">       9399 :             CALL DFCTR(.FALSE.,OMEGA,NQ,NQ,INF)</span></a>
+<a name="8811"><span class="lineNum">    8811 </span><span class="lineCov">       9399 :             IF (INF.NE.0) THEN</span></a>
 <a name="8812"><span class="lineNum">    8812 </span><span class="lineNoCov">          0 :                ISTOPC = 60000</span></a>
 <a name="8813"><span class="lineNum">    8813 </span><span class="lineNoCov">          0 :                RETURN</span></a>
 <a name="8814"><span class="lineNum">    8814 </span>            :             END IF</a>
 <a name="8815"><span class="lineNum">    8815 </span>            : </a>
 <a name="8816"><span class="lineNum">    8816 </span>            : C  COMPUTE WRK1 = TRANS(FJACD)*(I-FJACD*INV(P)*TRANS(JFACD))</a>
 <a name="8817"><span class="lineNum">    8817 </span>            : C               = TRANS(FJACD)*INV(TRANS(OMEGA)*OMEGA)</a>
-<a name="8818"><span class="lineNum">    8818 </span><span class="lineCov">      24750 :             DO 130 J=1,M</span></a>
-<a name="8819"><span class="lineNum">    8819 </span><span class="lineCov">      34277 :                DO 120 L=1,NQ</span></a>
-<a name="8820"><span class="lineNum">    8820 </span><span class="lineCov">      18922 :                   WRK1(I,L,J) = FJACD(I,J,L)</span></a>
-<a name="8821"><span class="lineNum">    8821 </span><span class="lineCov">      15355 :   120          CONTINUE</span></a>
-<a name="8822"><span class="lineNum">    8822 </span><span class="lineCov">      15355 :                CALL DSOLVE(NQ,OMEGA,NQ,WRK1(I,1,J),N,4)</span></a>
-<a name="8823"><span class="lineNum">    8823 </span><span class="lineCov">      15355 :                CALL DSOLVE(NQ,OMEGA,NQ,WRK1(I,1,J),N,2)</span></a>
-<a name="8824"><span class="lineNum">    8824 </span><span class="lineCov">       9395 :   130       CONTINUE</span></a>
+<a name="8818"><span class="lineNum">    8818 </span><span class="lineCov">      24758 :             DO 130 J=1,M</span></a>
+<a name="8819"><span class="lineNum">    8819 </span><span class="lineCov">      34285 :                DO 120 L=1,NQ</span></a>
+<a name="8820"><span class="lineNum">    8820 </span><span class="lineCov">      18926 :                   WRK1(I,L,J) = FJACD(I,J,L)</span></a>
+<a name="8821"><span class="lineNum">    8821 </span><span class="lineCov">      15359 :   120          CONTINUE</span></a>
+<a name="8822"><span class="lineNum">    8822 </span><span class="lineCov">      15359 :                CALL DSOLVE(NQ,OMEGA,NQ,WRK1(I,1,J),N,4)</span></a>
+<a name="8823"><span class="lineNum">    8823 </span><span class="lineCov">      15359 :                CALL DSOLVE(NQ,OMEGA,NQ,WRK1(I,1,J),N,2)</span></a>
+<a name="8824"><span class="lineNum">    8824 </span><span class="lineCov">       9399 :   130       CONTINUE</span></a>
 <a name="8825"><span class="lineNum">    8825 </span>            : </a>
 <a name="8826"><span class="lineNum">    8826 </span>            : C  COMPUTE WRK5 = INV(E)*D*G2</a>
-<a name="8827"><span class="lineNum">    8827 </span><span class="lineCov">      24750 :             DO 140 J=1,M</span></a>
-<a name="8828"><span class="lineNum">    8828 </span><span class="lineCov">      15355 :                WRK5(J) = T(I,J)</span></a>
-<a name="8829"><span class="lineNum">    8829 </span><span class="lineCov">       9395 :   140       CONTINUE</span></a>
-<a name="8830"><span class="lineNum">    8830 </span><span class="lineCov">       9395 :             CALL DSOLVE(M,WRK4,M,WRK5,1,4)</span></a>
-<a name="8831"><span class="lineNum">    8831 </span><span class="lineCov">       9395 :             CALL DSOLVE(M,WRK4,M,WRK5,1,2)</span></a>
+<a name="8827"><span class="lineNum">    8827 </span><span class="lineCov">      24758 :             DO 140 J=1,M</span></a>
+<a name="8828"><span class="lineNum">    8828 </span><span class="lineCov">      15359 :                WRK5(J) = T(I,J)</span></a>
+<a name="8829"><span class="lineNum">    8829 </span><span class="lineCov">       9399 :   140       CONTINUE</span></a>
+<a name="8830"><span class="lineNum">    8830 </span><span class="lineCov">       9399 :             CALL DSOLVE(M,WRK4,M,WRK5,1,4)</span></a>
+<a name="8831"><span class="lineNum">    8831 </span><span class="lineCov">       9399 :             CALL DSOLVE(M,WRK4,M,WRK5,1,2)</span></a>
 <a name="8832"><span class="lineNum">    8832 </span>            : </a>
 <a name="8833"><span class="lineNum">    8833 </span>            : C  COMPUTE TFJACB = INV(TRANS(OMEGA))*FJACB</a>
-<a name="8834"><span class="lineNum">    8834 </span><span class="lineCov">      42594 :             DO 170 K=1,KP</span></a>
-<a name="8835"><span class="lineNum">    8835 </span><span class="lineCov">      77513 :                DO 150 L=1,NQ</span></a>
-<a name="8836"><span class="lineNum">    8836 </span><span class="lineCov">      44314 :                   TFJACB(I,L,K) = FJACB(I,KPVT(K),L)</span></a>
-<a name="8837"><span class="lineNum">    8837 </span><span class="lineCov">      33199 :   150          CONTINUE</span></a>
-<a name="8838"><span class="lineNum">    8838 </span><span class="lineCov">      33199 :                CALL DSOLVE(NQ,OMEGA,NQ,TFJACB(I,1,K),N,4)</span></a>
-<a name="8839"><span class="lineNum">    8839 </span><span class="lineCov">      77513 :                DO 160 L=1,NQ</span></a>
-<a name="8840"><span class="lineNum">    8840 </span><span class="lineCov">      44314 :                   IF (SS(1).GT.ZERO) THEN</span></a>
-<a name="8841"><span class="lineNum">    8841 </span><span class="lineCov">      44314 :                      TFJACB(I,L,K) = TFJACB(I,L,K)/SS(KPVT(K))</span></a>
+<a name="8834"><span class="lineNum">    8834 </span><span class="lineCov">      42606 :             DO 170 K=1,KP</span></a>
+<a name="8835"><span class="lineNum">    8835 </span><span class="lineCov">      77529 :                DO 150 L=1,NQ</span></a>
+<a name="8836"><span class="lineNum">    8836 </span><span class="lineCov">      44322 :                   TFJACB(I,L,K) = FJACB(I,KPVT(K),L)</span></a>
+<a name="8837"><span class="lineNum">    8837 </span><span class="lineCov">      33207 :   150          CONTINUE</span></a>
+<a name="8838"><span class="lineNum">    8838 </span><span class="lineCov">      33207 :                CALL DSOLVE(NQ,OMEGA,NQ,TFJACB(I,1,K),N,4)</span></a>
+<a name="8839"><span class="lineNum">    8839 </span><span class="lineCov">      77529 :                DO 160 L=1,NQ</span></a>
+<a name="8840"><span class="lineNum">    8840 </span><span class="lineCov">      44322 :                   IF (SS(1).GT.ZERO) THEN</span></a>
+<a name="8841"><span class="lineNum">    8841 </span><span class="lineCov">      44322 :                      TFJACB(I,L,K) = TFJACB(I,L,K)/SS(KPVT(K))</span></a>
 <a name="8842"><span class="lineNum">    8842 </span>            :                   ELSE</a>
 <a name="8843"><span class="lineNum">    8843 </span><span class="lineNoCov">          0 :                      TFJACB(I,L,K) = TFJACB(I,L,K)/ABS(SS(1))</span></a>
 <a name="8844"><span class="lineNum">    8844 </span>            :                   END IF</a>
-<a name="8845"><span class="lineNum">    8845 </span><span class="lineCov">      33199 :   160          CONTINUE</span></a>
-<a name="8846"><span class="lineNum">    8846 </span><span class="lineCov">       9395 :   170       CONTINUE</span></a>
+<a name="8845"><span class="lineNum">    8845 </span><span class="lineCov">      33207 :   160          CONTINUE</span></a>
+<a name="8846"><span class="lineNum">    8846 </span><span class="lineCov">       9399 :   170       CONTINUE</span></a>
 <a name="8847"><span class="lineNum">    8847 </span>            : </a>
 <a name="8848"><span class="lineNum">    8848 </span>            : C  COMPUTE WRK2 = (V*INV(E)*D**2*G2 - G1)</a>
-<a name="8849"><span class="lineNum">    8849 </span><span class="lineCov">      20677 :             DO 190 L=1,NQ</span></a>
-<a name="8850"><span class="lineNum">    8850 </span><span class="lineCov">      11282 :                WRK2(I,L) = ZERO</span></a>
-<a name="8851"><span class="lineNum">    8851 </span><span class="lineCov">      30204 :                DO 180 J=1,M</span></a>
-<a name="8852"><span class="lineNum">    8852 </span><span class="lineCov">      18922 :                   WRK2(I,L) = WRK2(I,L) + FJACD(I,J,L)*WRK5(J)</span></a>
-<a name="8853"><span class="lineNum">    8853 </span><span class="lineCov">      11282 :   180          CONTINUE</span></a>
-<a name="8854"><span class="lineNum">    8854 </span><span class="lineCov">      11282 :                WRK2(I,L) = WRK2(I,L) - F(I,L)</span></a>
-<a name="8855"><span class="lineNum">    8855 </span><span class="lineCov">       9395 :   190       CONTINUE</span></a>
+<a name="8849"><span class="lineNum">    8849 </span><span class="lineCov">      20685 :             DO 190 L=1,NQ</span></a>
+<a name="8850"><span class="lineNum">    8850 </span><span class="lineCov">      11286 :                WRK2(I,L) = ZERO</span></a>
+<a name="8851"><span class="lineNum">    8851 </span><span class="lineCov">      30212 :                DO 180 J=1,M</span></a>
+<a name="8852"><span class="lineNum">    8852 </span><span class="lineCov">      18926 :                   WRK2(I,L) = WRK2(I,L) + FJACD(I,J,L)*WRK5(J)</span></a>
+<a name="8853"><span class="lineNum">    8853 </span><span class="lineCov">      11286 :   180          CONTINUE</span></a>
+<a name="8854"><span class="lineNum">    8854 </span><span class="lineCov">      11286 :                WRK2(I,L) = WRK2(I,L) - F(I,L)</span></a>
+<a name="8855"><span class="lineNum">    8855 </span><span class="lineCov">       9399 :   190       CONTINUE</span></a>
 <a name="8856"><span class="lineNum">    8856 </span>            : </a>
 <a name="8857"><span class="lineNum">    8857 </span>            : C  COMPUTE WRK2 = INV(TRANS(OMEGA))*(V*INV(E)*D**2*G2 - G1)</a>
-<a name="8858"><span class="lineNum">    8858 </span><span class="lineCov">       9395 :             CALL DSOLVE(NQ,OMEGA,NQ,WRK2(I,1),N,4)</span></a>
-<a name="8859"><span class="lineNum">    8859 </span><span class="lineCov">        791 :   300    CONTINUE</span></a>
+<a name="8858"><span class="lineNum">    8858 </span><span class="lineCov">       9399 :             CALL DSOLVE(NQ,OMEGA,NQ,WRK2(I,1),N,4)</span></a>
+<a name="8859"><span class="lineNum">    8859 </span><span class="lineCov">        792 :   300    CONTINUE</span></a>
 <a name="8860"><span class="lineNum">    8860 </span>            : </a>
 <a name="8861"><span class="lineNum">    8861 </span>            :       ELSE</a>
 <a name="8862"><span class="lineNum">    8862 </span><span class="lineNoCov">          0 :          DO 360 I=1,N</span></a>
@@ -8948,26 +8948,26 @@
 <a name="8878"><span class="lineNum">    8878 </span>            : </a>
 <a name="8879"><span class="lineNum">    8879 </span>            : C  DO QR FACTORIZATION (WITH COLUMN PIVOTING OF TRJACB IF ALPHA = 0)</a>
 <a name="8880"><span class="lineNum">    8880 </span>            : </a>
-<a name="8881"><span class="lineNum">    8881 </span><span class="lineCov">        791 :       IF (ALPHA.EQ.ZERO) THEN</span></a>
-<a name="8882"><span class="lineNum">    8882 </span><span class="lineCov">        390 :          IPVT = 1</span></a>
-<a name="8883"><span class="lineNum">    8883 </span><span class="lineCov">       1513 :          DO 410 K=1,NP</span></a>
-<a name="8884"><span class="lineNum">    8884 </span><span class="lineCov">       1123 :             KPVT(K) = 0</span></a>
-<a name="8885"><span class="lineNum">    8885 </span><span class="lineCov">        390 :   410    CONTINUE</span></a>
+<a name="8881"><span class="lineNum">    8881 </span><span class="lineCov">        792 :       IF (ALPHA.EQ.ZERO) THEN</span></a>
+<a name="8882"><span class="lineNum">    8882 </span><span class="lineCov">        391 :          IPVT = 1</span></a>
+<a name="8883"><span class="lineNum">    8883 </span><span class="lineCov">       1516 :          DO 410 K=1,NP</span></a>
+<a name="8884"><span class="lineNum">    8884 </span><span class="lineCov">       1125 :             KPVT(K) = 0</span></a>
+<a name="8885"><span class="lineNum">    8885 </span><span class="lineCov">        391 :   410    CONTINUE</span></a>
 <a name="8886"><span class="lineNum">    8886 </span>            :       ELSE</a>
 <a name="8887"><span class="lineNum">    8887 </span><span class="lineCov">        401 :          IPVT = 0</span></a>
 <a name="8888"><span class="lineNum">    8888 </span>            :       END IF</a>
 <a name="8889"><span class="lineNum">    8889 </span>            : </a>
-<a name="8890"><span class="lineNum">    8890 </span><span class="lineCov">        791 :       CALL DQRDC(TFJACB,N*NQ,N*NQ,KP,QRAUX,KPVT,WRK3,IPVT)</span></a>
+<a name="8890"><span class="lineNum">    8890 </span><span class="lineCov">        792 :       CALL DQRDC(TFJACB,N*NQ,N*NQ,KP,QRAUX,KPVT,WRK3,IPVT)</span></a>
 <a name="8891"><span class="lineNum">    8891 </span>            :       CALL DQRSL(TFJACB,N*NQ,N*NQ,KP,</a>
-<a name="8892"><span class="lineNum">    8892 </span><span class="lineCov">        791 :      +           QRAUX,WRK2,DUM,WRK2,DUM,DUM,DUM,1000,INF)</span></a>
-<a name="8893"><span class="lineNum">    8893 </span><span class="lineCov">        791 :       IF (INF.NE.0) THEN</span></a>
+<a name="8892"><span class="lineNum">    8892 </span><span class="lineCov">        792 :      +           QRAUX,WRK2,DUM,WRK2,DUM,DUM,DUM,1000,INF)</span></a>
+<a name="8893"><span class="lineNum">    8893 </span><span class="lineCov">        792 :       IF (INF.NE.0) THEN</span></a>
 <a name="8894"><span class="lineNum">    8894 </span><span class="lineNoCov">          0 :          ISTOPC = 60000</span></a>
 <a name="8895"><span class="lineNum">    8895 </span><span class="lineNoCov">          0 :          RETURN</span></a>
 <a name="8896"><span class="lineNum">    8896 </span>            :       END IF</a>
 <a name="8897"><span class="lineNum">    8897 </span>            : </a>
 <a name="8898"><span class="lineNum">    8898 </span>            : C  ELIMINATE ALPHA PART USING GIVENS ROTATIONS</a>
 <a name="8899"><span class="lineNum">    8899 </span>            : </a>
-<a name="8900"><span class="lineNum">    8900 </span><span class="lineCov">        791 :       IF (ALPHA.NE.ZERO) THEN</span></a>
+<a name="8900"><span class="lineNum">    8900 </span><span class="lineCov">        792 :       IF (ALPHA.NE.ZERO) THEN</span></a>
 <a name="8901"><span class="lineNum">    8901 </span><span class="lineCov">        401 :          CALL DZERO(NPP,1,S,NPP)</span></a>
 <a name="8902"><span class="lineNum">    8902 </span><span class="lineCov">       1633 :          DO 430 K1=1,KP</span></a>
 <a name="8903"><span class="lineNum">    8903 </span><span class="lineCov">       1232 :             CALL DZERO(KP,1,WRK3,KP)</span></a>
@@ -8987,20 +8987,20 @@
 <a name="8917"><span class="lineNum">    8917 </span>            : </a>
 <a name="8918"><span class="lineNum">    8918 </span>            : C  COMPUTE SOLUTION - ELIMINATE VARIABLES IF NECESSARY</a>
 <a name="8919"><span class="lineNum">    8919 </span>            : </a>
-<a name="8920"><span class="lineNum">    8920 </span><span class="lineCov">        791 :       IF (NPP.GE.1) THEN</span></a>
-<a name="8921"><span class="lineNum">    8921 </span><span class="lineCov">        791 :          IF (ALPHA.EQ.ZERO) THEN</span></a>
-<a name="8922"><span class="lineNum">    8922 </span><span class="lineCov">        390 :             KP = NPP</span></a>
+<a name="8920"><span class="lineNum">    8920 </span><span class="lineCov">        792 :       IF (NPP.GE.1) THEN</span></a>
+<a name="8921"><span class="lineNum">    8921 </span><span class="lineCov">        792 :          IF (ALPHA.EQ.ZERO) THEN</span></a>
+<a name="8922"><span class="lineNum">    8922 </span><span class="lineCov">        391 :             KP = NPP</span></a>
 <a name="8923"><span class="lineNum">    8923 </span>            : </a>
 <a name="8924"><span class="lineNum">    8924 </span>            : C  ESTIMATE RCOND - U WILL CONTAIN APPROX NULL VECTOR</a>
 <a name="8925"><span class="lineNum">    8925 </span>            : </a>
-<a name="8926"><span class="lineNum">    8926 </span><span class="lineCov">        394 :   440       CALL DTRCO(TFJACB,N*NQ,KP,RCOND,U,1)</span></a>
-<a name="8927"><span class="lineNum">    8927 </span><span class="lineCov">        394 :             IF (RCOND.LE.EPSFCN) THEN</span></a>
-<a name="8928"><span class="lineNum">    8928 </span><span class="lineCov">          4 :                ELIM = .TRUE.</span></a>
-<a name="8929"><span class="lineNum">    8929 </span><span class="lineCov">          4 :                IMAX = IDAMAX(KP,U,1)</span></a>
+<a name="8926"><span class="lineNum">    8926 </span><span class="lineCov">        391 :   440       CALL DTRCO(TFJACB,N*NQ,KP,RCOND,U,1)</span></a>
+<a name="8927"><span class="lineNum">    8927 </span><span class="lineCov">        391 :             IF (RCOND.LE.EPSFCN) THEN</span></a>
+<a name="8928"><span class="lineNum">    8928 </span><span class="lineNoCov">          0 :                ELIM = .TRUE.</span></a>
+<a name="8929"><span class="lineNum">    8929 </span><span class="lineNoCov">          0 :                IMAX = IDAMAX(KP,U,1)</span></a>
 <a name="8930"><span class="lineNum">    8930 </span>            : </a>
 <a name="8931"><span class="lineNum">    8931 </span>            : C IMAX IS THE COLUMN TO REMOVE - USE DCHEX AND FIX KPVT</a>
 <a name="8932"><span class="lineNum">    8932 </span>            : </a>
-<a name="8933"><span class="lineNum">    8933 </span><span class="lineCov">          4 :                IF (IMAX.NE.KP) THEN</span></a>
+<a name="8933"><span class="lineNum">    8933 </span><span class="lineNoCov">          0 :                IF (IMAX.NE.KP) THEN</span></a>
 <a name="8934"><span class="lineNum">    8934 </span>            :                   CALL DCHEX(TFJACB,N*NQ,KP,IMAX,KP,WRK2,N*NQ,1,</a>
 <a name="8935"><span class="lineNum">    8935 </span><span class="lineNoCov">          0 :      +                       QRAUX,WRK3,2)</span></a>
 <a name="8936"><span class="lineNum">    8936 </span><span class="lineNoCov">          0 :                   K = KPVT(IMAX)</span></a>
@@ -9009,95 +9009,95 @@
 <a name="8939"><span class="lineNum">    8939 </span><span class="lineNoCov">          0 :   450             CONTINUE</span></a>
 <a name="8940"><span class="lineNum">    8940 </span><span class="lineNoCov">          0 :                   KPVT(KP) = K</span></a>
 <a name="8941"><span class="lineNum">    8941 </span>            :                END IF</a>
-<a name="8942"><span class="lineNum">    8942 </span><span class="lineCov">          4 :                KP = KP-1</span></a>
+<a name="8942"><span class="lineNum">    8942 </span><span class="lineNoCov">          0 :                KP = KP-1</span></a>
 <a name="8943"><span class="lineNum">    8943 </span>            :             ELSE</a>
 <a name="8944"><span class="lineNum">    8944 </span>            :                ELIM = .FALSE.</a>
 <a name="8945"><span class="lineNum">    8945 </span>            :             END IF</a>
-<a name="8946"><span class="lineNum">    8946 </span><span class="lineCov">          4 :             IF (ELIM .AND. KP.GE.1) THEN</span></a>
+<a name="8946"><span class="lineNum">    8946 </span><span class="lineNoCov">          0 :             IF (ELIM .AND. KP.GE.1) THEN</span></a>
 <a name="8947"><span class="lineNum">    8947 </span>            :                GO TO 440</a>
 <a name="8948"><span class="lineNum">    8948 </span>            :             ELSE</a>
-<a name="8949"><span class="lineNum">    8949 </span><span class="lineCov">        390 :                IRANK = NPP-KP</span></a>
+<a name="8949"><span class="lineNum">    8949 </span><span class="lineCov">        391 :                IRANK = NPP-KP</span></a>
 <a name="8950"><span class="lineNum">    8950 </span>            :             END IF</a>
 <a name="8951"><span class="lineNum">    8951 </span>            :          END IF</a>
 <a name="8952"><span class="lineNum">    8952 </span>            :       END IF</a>
 <a name="8953"><span class="lineNum">    8953 </span>            : </a>
-<a name="8954"><span class="lineNum">    8954 </span><span class="lineCov">        791 :       IF (FORVCV) RETURN</span></a>
+<a name="8954"><span class="lineNum">    8954 </span><span class="lineCov">        792 :       IF (FORVCV) RETURN</span></a>
 <a name="8955"><span class="lineNum">    8955 </span>            : </a>
 <a name="8956"><span class="lineNum">    8956 </span>            : C  BACKSOLVE AND UNSCRAMBLE</a>
 <a name="8957"><span class="lineNum">    8957 </span>            : </a>
-<a name="8958"><span class="lineNum">    8958 </span><span class="lineCov">        758 :       IF (NPP.GE.1) THEN</span></a>
-<a name="8959"><span class="lineNum">    8959 </span><span class="lineCov">        761 :          DO 510 I=KP+1,NPP</span></a>
-<a name="8960"><span class="lineNum">    8960 </span><span class="lineCov">          3 :             WRK2(I,1) = ZERO</span></a>
-<a name="8961"><span class="lineNum">    8961 </span><span class="lineCov">        758 :   510    CONTINUE</span></a>
-<a name="8962"><span class="lineNum">    8962 </span><span class="lineCov">        758 :          IF (KP.GE.1) THEN</span></a>
-<a name="8963"><span class="lineNum">    8963 </span><span class="lineCov">        758 :             CALL DTRSL(TFJACB,N*NQ,KP,WRK2,01,INF)</span></a>
-<a name="8964"><span class="lineNum">    8964 </span><span class="lineCov">        758 :             IF (INF.NE.0) THEN</span></a>
+<a name="8958"><span class="lineNum">    8958 </span><span class="lineCov">        759 :       IF (NPP.GE.1) THEN</span></a>
+<a name="8959"><span class="lineNum">    8959 </span><span class="lineCov">        759 :          DO 510 I=KP+1,NPP</span></a>
+<a name="8960"><span class="lineNum">    8960 </span><span class="lineNoCov">          0 :             WRK2(I,1) = ZERO</span></a>
+<a name="8961"><span class="lineNum">    8961 </span><span class="lineCov">        759 :   510    CONTINUE</span></a>
+<a name="8962"><span class="lineNum">    8962 </span><span class="lineCov">        759 :          IF (KP.GE.1) THEN</span></a>
+<a name="8963"><span class="lineNum">    8963 </span><span class="lineCov">        759 :             CALL DTRSL(TFJACB,N*NQ,KP,WRK2,01,INF)</span></a>
+<a name="8964"><span class="lineNum">    8964 </span><span class="lineCov">        759 :             IF (INF.NE.0) THEN</span></a>
 <a name="8965"><span class="lineNum">    8965 </span><span class="lineNoCov">          0 :                ISTOPC = 60000</span></a>
 <a name="8966"><span class="lineNum">    8966 </span><span class="lineNoCov">          0 :                RETURN</span></a>
 <a name="8967"><span class="lineNum">    8967 </span>            :             END IF</a>
 <a name="8968"><span class="lineNum">    8968 </span>            :          END IF</a>
-<a name="8969"><span class="lineNum">    8969 </span><span class="lineCov">       3025 :          DO 520 I=1,NPP</span></a>
-<a name="8970"><span class="lineNum">    8970 </span><span class="lineCov">       2267 :             IF (SS(1).GT.ZERO) THEN</span></a>
-<a name="8971"><span class="lineNum">    8971 </span><span class="lineCov">       2267 :                S(KPVT(I)) = WRK2(I,1)/SS(KPVT(I))</span></a>
+<a name="8969"><span class="lineNum">    8969 </span><span class="lineCov">       3028 :          DO 520 I=1,NPP</span></a>
+<a name="8970"><span class="lineNum">    8970 </span><span class="lineCov">       2269 :             IF (SS(1).GT.ZERO) THEN</span></a>
+<a name="8971"><span class="lineNum">    8971 </span><span class="lineCov">       2269 :                S(KPVT(I)) = WRK2(I,1)/SS(KPVT(I))</span></a>
 <a name="8972"><span class="lineNum">    8972 </span>            :             ELSE</a>
 <a name="8973"><span class="lineNum">    8973 </span><span class="lineNoCov">          0 :                S(KPVT(I)) = WRK2(I,1)/ABS(SS(1))</span></a>
 <a name="8974"><span class="lineNum">    8974 </span>            :             END IF</a>
-<a name="8975"><span class="lineNum">    8975 </span><span class="lineCov">        758 :   520    CONTINUE</span></a>
+<a name="8975"><span class="lineNum">    8975 </span><span class="lineCov">        759 :   520    CONTINUE</span></a>
 <a name="8976"><span class="lineNum">    8976 </span>            :       END IF</a>
 <a name="8977"><span class="lineNum">    8977 </span>            : </a>
-<a name="8978"><span class="lineNum">    8978 </span><span class="lineCov">        758 :       IF (ISODR) THEN</span></a>
+<a name="8978"><span class="lineNum">    8978 </span><span class="lineCov">        759 :       IF (ISODR) THEN</span></a>
 <a name="8979"><span class="lineNum">    8979 </span>            : </a>
 <a name="8980"><span class="lineNum">    8980 </span>            : C  NOTE: T AND WRK1 HAVE BEEN INITIALIZED ABOVE,</a>
 <a name="8981"><span class="lineNum">    8981 </span>            : C        WHERE T    = WD * DELTA = D*G2</a>
 <a name="8982"><span class="lineNum">    8982 </span>            : C              WRK1 = TRANS(FJACD)*(I-FJACD*INV(P)*TRANS(JFACD))</a>
 <a name="8983"><span class="lineNum">    8983 </span>            : </a>
-<a name="8984"><span class="lineNum">    8984 </span><span class="lineCov">       9582 :          DO 670 I=1,N</span></a>
+<a name="8984"><span class="lineNum">    8984 </span><span class="lineCov">       9587 :          DO 670 I=1,N</span></a>
 <a name="8985"><span class="lineNum">    8985 </span>            : </a>
 <a name="8986"><span class="lineNum">    8986 </span>            : C  COMPUTE WRK4, SUCH THAT</a>
 <a name="8987"><span class="lineNum">    8987 </span>            : C                TRANS(WRK4)*WRK4 = E = (D**2 + ALPHA*TT**2)</a>
-<a name="8988"><span class="lineNum">    8988 </span><span class="lineCov">       8824 :             CALL DESUBI(N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,WRK4)</span></a>
-<a name="8989"><span class="lineNum">    8989 </span><span class="lineCov">       8824 :             CALL DFCTR(.FALSE.,WRK4,M,M,INF)</span></a>
-<a name="8990"><span class="lineNum">    8990 </span><span class="lineCov">       8824 :             IF (INF.NE.0) THEN</span></a>
+<a name="8988"><span class="lineNum">    8988 </span><span class="lineCov">       8828 :             CALL DESUBI(N,M,WD,LDWD,LD2WD,ALPHA,TT,LDTT,I,WRK4)</span></a>
+<a name="8989"><span class="lineNum">    8989 </span><span class="lineCov">       8828 :             CALL DFCTR(.FALSE.,WRK4,M,M,INF)</span></a>
+<a name="8990"><span class="lineNum">    8990 </span><span class="lineCov">       8828 :             IF (INF.NE.0) THEN</span></a>
 <a name="8991"><span class="lineNum">    8991 </span><span class="lineNoCov">          0 :                ISTOPC = 60000</span></a>
 <a name="8992"><span class="lineNum">    8992 </span><span class="lineNoCov">          0 :                RETURN</span></a>
 <a name="8993"><span class="lineNum">    8993 </span>            :             END IF</a>
 <a name="8994"><span class="lineNum">    8994 </span>            : </a>
 <a name="8995"><span class="lineNum">    8995 </span>            : C  COMPUTE WRK5 = INV(E)*D*G2</a>
-<a name="8996"><span class="lineNum">    8996 </span><span class="lineCov">      23438 :             DO 610 J=1,M</span></a>
-<a name="8997"><span class="lineNum">    8997 </span><span class="lineCov">      14614 :                WRK5(J) = T(I,J)</span></a>
-<a name="8998"><span class="lineNum">    8998 </span><span class="lineCov">       8824 :   610       CONTINUE</span></a>
-<a name="8999"><span class="lineNum">    8999 </span><span class="lineCov">       8824 :             CALL DSOLVE(M,WRK4,M,WRK5,1,4)</span></a>
-<a name="9000"><span class="lineNum">    9000 </span><span class="lineCov">       8824 :             CALL DSOLVE(M,WRK4,M,WRK5,1,2)</span></a>
+<a name="8996"><span class="lineNum">    8996 </span><span class="lineCov">      23446 :             DO 610 J=1,M</span></a>
+<a name="8997"><span class="lineNum">    8997 </span><span class="lineCov">      14618 :                WRK5(J) = T(I,J)</span></a>
+<a name="8998"><span class="lineNum">    8998 </span><span class="lineCov">       8828 :   610       CONTINUE</span></a>
+<a name="8999"><span class="lineNum">    8999 </span><span class="lineCov">       8828 :             CALL DSOLVE(M,WRK4,M,WRK5,1,4)</span></a>
+<a name="9000"><span class="lineNum">    9000 </span><span class="lineCov">       8828 :             CALL DSOLVE(M,WRK4,M,WRK5,1,2)</span></a>
 <a name="9001"><span class="lineNum">    9001 </span>            : </a>
-<a name="9002"><span class="lineNum">    9002 </span><span class="lineCov">      19502 :             DO 640 L=1,NQ</span></a>
-<a name="9003"><span class="lineNum">    9003 </span><span class="lineCov">      10678 :                WRK2(I,L) = F(I,L) </span></a>
-<a name="9004"><span class="lineNum">    9004 </span><span class="lineCov">      53066 :                DO 620 K=1,NPP</span></a>
-<a name="9005"><span class="lineNum">    9005 </span><span class="lineCov">      42388 :                   WRK2(I,L) = WRK2(I,L) + FJACB(I,K,L)*S(K)</span></a>
-<a name="9006"><span class="lineNum">    9006 </span><span class="lineCov">      10678 :   620          CONTINUE</span></a>
-<a name="9007"><span class="lineNum">    9007 </span><span class="lineCov">      28816 :                DO 630 J=1,M</span></a>
-<a name="9008"><span class="lineNum">    9008 </span><span class="lineCov">      18138 :                   WRK2(I,L) = WRK2(I,L) - FJACD(I,J,L)*WRK5(J)</span></a>
-<a name="9009"><span class="lineNum">    9009 </span><span class="lineCov">      10678 :   630          CONTINUE</span></a>
-<a name="9010"><span class="lineNum">    9010 </span><span class="lineCov">       8824 :   640       CONTINUE</span></a>
+<a name="9002"><span class="lineNum">    9002 </span><span class="lineCov">      19510 :             DO 640 L=1,NQ</span></a>
+<a name="9003"><span class="lineNum">    9003 </span><span class="lineCov">      10682 :                WRK2(I,L) = F(I,L) </span></a>
+<a name="9004"><span class="lineNum">    9004 </span><span class="lineCov">      53078 :                DO 620 K=1,NPP</span></a>
+<a name="9005"><span class="lineNum">    9005 </span><span class="lineCov">      42396 :                   WRK2(I,L) = WRK2(I,L) + FJACB(I,K,L)*S(K)</span></a>
+<a name="9006"><span class="lineNum">    9006 </span><span class="lineCov">      10682 :   620          CONTINUE</span></a>
+<a name="9007"><span class="lineNum">    9007 </span><span class="lineCov">      28824 :                DO 630 J=1,M</span></a>
+<a name="9008"><span class="lineNum">    9008 </span><span class="lineCov">      18142 :                   WRK2(I,L) = WRK2(I,L) - FJACD(I,J,L)*WRK5(J)</span></a>
+<a name="9009"><span class="lineNum">    9009 </span><span class="lineCov">      10682 :   630          CONTINUE</span></a>
+<a name="9010"><span class="lineNum">    9010 </span><span class="lineCov">       8828 :   640       CONTINUE</span></a>
 <a name="9011"><span class="lineNum">    9011 </span>            : </a>
-<a name="9012"><span class="lineNum">    9012 </span><span class="lineCov">      23438 :             DO 660 J=1,M</span></a>
-<a name="9013"><span class="lineNum">    9013 </span><span class="lineCov">      14614 :                WRK5(J) = ZERO</span></a>
-<a name="9014"><span class="lineNum">    9014 </span><span class="lineCov">      32752 :                DO 650 L=1,NQ</span></a>
-<a name="9015"><span class="lineNum">    9015 </span><span class="lineCov">      18138 :                   WRK5(J) = WRK5(J) + WRK1(I,L,J)*WRK2(I,L)</span></a>
-<a name="9016"><span class="lineNum">    9016 </span><span class="lineCov">      14614 :   650          CONTINUE</span></a>
-<a name="9017"><span class="lineNum">    9017 </span><span class="lineCov">      14614 :                T(I,J) = -(WRK5(J) + T(I,J))</span></a>
-<a name="9018"><span class="lineNum">    9018 </span><span class="lineCov">       8824 :   660       CONTINUE</span></a>
-<a name="9019"><span class="lineNum">    9019 </span><span class="lineCov">       8824 :             CALL DSOLVE(M,WRK4,M,T(I,1),N,4)</span></a>
-<a name="9020"><span class="lineNum">    9020 </span><span class="lineCov">       8824 :             CALL DSOLVE(M,WRK4,M,T(I,1),N,2)</span></a>
-<a name="9021"><span class="lineNum">    9021 </span><span class="lineCov">        758 :   670    CONTINUE</span></a>
+<a name="9012"><span class="lineNum">    9012 </span><span class="lineCov">      23446 :             DO 660 J=1,M</span></a>
+<a name="9013"><span class="lineNum">    9013 </span><span class="lineCov">      14618 :                WRK5(J) = ZERO</span></a>
+<a name="9014"><span class="lineNum">    9014 </span><span class="lineCov">      32760 :                DO 650 L=1,NQ</span></a>
+<a name="9015"><span class="lineNum">    9015 </span><span class="lineCov">      18142 :                   WRK5(J) = WRK5(J) + WRK1(I,L,J)*WRK2(I,L)</span></a>
+<a name="9016"><span class="lineNum">    9016 </span><span class="lineCov">      14618 :   650          CONTINUE</span></a>
+<a name="9017"><span class="lineNum">    9017 </span><span class="lineCov">      14618 :                T(I,J) = -(WRK5(J) + T(I,J))</span></a>
+<a name="9018"><span class="lineNum">    9018 </span><span class="lineCov">       8828 :   660       CONTINUE</span></a>
+<a name="9019"><span class="lineNum">    9019 </span><span class="lineCov">       8828 :             CALL DSOLVE(M,WRK4,M,T(I,1),N,4)</span></a>
+<a name="9020"><span class="lineNum">    9020 </span><span class="lineCov">       8828 :             CALL DSOLVE(M,WRK4,M,T(I,1),N,2)</span></a>
+<a name="9021"><span class="lineNum">    9021 </span><span class="lineCov">        759 :   670    CONTINUE</span></a>
 <a name="9022"><span class="lineNum">    9022 </span>            : </a>
 <a name="9023"><span class="lineNum">    9023 </span>            :       END IF</a>
 <a name="9024"><span class="lineNum">    9024 </span>            : </a>
 <a name="9025"><span class="lineNum">    9025 </span>            : C  COMPUTE PHI(ALPHA) FROM SCALED S AND T</a>
 <a name="9026"><span class="lineNum">    9026 </span>            : </a>
-<a name="9027"><span class="lineNum">    9027 </span><span class="lineCov">        758 :       CALL DWGHT(NPP,1,SS,NPP,1,S,NPP,WRK,NPP)</span></a>
-<a name="9028"><span class="lineNum">    9028 </span><span class="lineCov">        758 :       IF (ISODR) THEN</span></a>
-<a name="9029"><span class="lineNum">    9029 </span><span class="lineCov">        758 :          CALL DWGHT(N,M,TT,LDTT,1,T,N,WRK(NPP+1),N)</span></a>
-<a name="9030"><span class="lineNum">    9030 </span><span class="lineCov">        758 :          PHI = DNRM2(NPP+N*M,WRK,1)</span></a>
+<a name="9027"><span class="lineNum">    9027 </span><span class="lineCov">        759 :       CALL DWGHT(NPP,1,SS,NPP,1,S,NPP,WRK,NPP)</span></a>
+<a name="9028"><span class="lineNum">    9028 </span><span class="lineCov">        759 :       IF (ISODR) THEN</span></a>
+<a name="9029"><span class="lineNum">    9029 </span><span class="lineCov">        759 :          CALL DWGHT(N,M,TT,LDTT,1,T,N,WRK(NPP+1),N)</span></a>
+<a name="9030"><span class="lineNum">    9030 </span><span class="lineCov">        759 :          PHI = DNRM2(NPP+N*M,WRK,1)</span></a>
 <a name="9031"><span class="lineNum">    9031 </span>            :       ELSE</a>
 <a name="9032"><span class="lineNum">    9032 </span><span class="lineNoCov">          0 :          PHI = DNRM2(NPP,WRK,1)</span></a>
 <a name="9033"><span class="lineNum">    9033 </span>            :       END IF</a>
@@ -9251,23 +9251,23 @@
 <a name="9181"><span class="lineNum">    9181 </span>            : </a>
 <a name="9182"><span class="lineNum">    9182 </span><span class="lineCov">         33 :       IDF = 0</span></a>
 <a name="9183"><span class="lineNum">    9183 </span><span class="lineCov">        604 :       DO 150 I=1,N</span></a>
-<a name="9184"><span class="lineNum">    9184 </span><span class="lineCov">        586 :          DO 120 J=1,NPP</span></a>
-<a name="9185"><span class="lineNum">    9185 </span><span class="lineCov">        608 :             DO 110 L=1,NQ</span></a>
-<a name="9186"><span class="lineNum">    9186 </span><span class="lineCov">        593 :                IF (FJACB(I,J,L).NE.ZERO) THEN</span></a>
-<a name="9187"><span class="lineNum">    9187 </span><span class="lineCov">        568 :                   IDF = IDF + 1</span></a>
-<a name="9188"><span class="lineNum">    9188 </span><span class="lineCov">        568 :                   GO TO 150</span></a>
+<a name="9184"><span class="lineNum">    9184 </span><span class="lineCov">        584 :          DO 120 J=1,NPP</span></a>
+<a name="9185"><span class="lineNum">    9185 </span><span class="lineCov">        605 :             DO 110 L=1,NQ</span></a>
+<a name="9186"><span class="lineNum">    9186 </span><span class="lineCov">        592 :                IF (FJACB(I,J,L).NE.ZERO) THEN</span></a>
+<a name="9187"><span class="lineNum">    9187 </span><span class="lineCov">        569 :                   IDF = IDF + 1</span></a>
+<a name="9188"><span class="lineNum">    9188 </span><span class="lineCov">        569 :                   GO TO 150</span></a>
 <a name="9189"><span class="lineNum">    9189 </span>            :                END IF</a>
-<a name="9190"><span class="lineNum">    9190 </span><span class="lineCov">         15 :   110       CONTINUE</span></a>
-<a name="9191"><span class="lineNum">    9191 </span><span class="lineCov">          3 :   120    CONTINUE</span></a>
-<a name="9192"><span class="lineNum">    9192 </span><span class="lineCov">          3 :          IF (ISODR) THEN</span></a>
-<a name="9193"><span class="lineNum">    9193 </span><span class="lineCov">          6 :             DO 140 J=1,M</span></a>
-<a name="9194"><span class="lineNum">    9194 </span><span class="lineCov">          8 :                DO 130 L=1,NQ</span></a>
-<a name="9195"><span class="lineNum">    9195 </span><span class="lineCov">          5 :                   IF (FJACD(I,J,L).NE.ZERO) THEN</span></a>
+<a name="9190"><span class="lineNum">    9190 </span><span class="lineCov">         13 :   110       CONTINUE</span></a>
+<a name="9191"><span class="lineNum">    9191 </span><span class="lineCov">          2 :   120    CONTINUE</span></a>
+<a name="9192"><span class="lineNum">    9192 </span><span class="lineCov">          2 :          IF (ISODR) THEN</span></a>
+<a name="9193"><span class="lineNum">    9193 </span><span class="lineCov">          4 :             DO 140 J=1,M</span></a>
+<a name="9194"><span class="lineNum">    9194 </span><span class="lineCov">          6 :                DO 130 L=1,NQ</span></a>
+<a name="9195"><span class="lineNum">    9195 </span><span class="lineCov">          4 :                   IF (FJACD(I,J,L).NE.ZERO) THEN</span></a>
 <a name="9196"><span class="lineNum">    9196 </span><span class="lineNoCov">          0 :                      IDF = IDF + 1</span></a>
 <a name="9197"><span class="lineNum">    9197 </span><span class="lineNoCov">          0 :                      GO TO 150</span></a>
 <a name="9198"><span class="lineNum">    9198 </span>            :                   END IF</a>
-<a name="9199"><span class="lineNum">    9199 </span><span class="lineCov">          3 :   130          CONTINUE</span></a>
-<a name="9200"><span class="lineNum">    9200 </span><span class="lineCov">          3 :   140       CONTINUE</span></a>
+<a name="9199"><span class="lineNum">    9199 </span><span class="lineCov">          2 :   130          CONTINUE</span></a>
+<a name="9200"><span class="lineNum">    9200 </span><span class="lineCov">          2 :   140       CONTINUE</span></a>
 <a name="9201"><span class="lineNum">    9201 </span>            :          END IF</a>
 <a name="9202"><span class="lineNum">    9202 </span><span class="lineCov">         33 :   150 CONTINUE</span></a>
 <a name="9203"><span class="lineNum">    9203 </span>            : </a>
@@ -9284,8 +9284,8 @@
 <a name="9214"><span class="lineNum">    9214 </span><span class="lineCov">        121 :       DO 200 I=1,NP</span></a>
 <a name="9215"><span class="lineNum">    9215 </span><span class="lineCov">         88 :          SD(I) = ZERO</span></a>
 <a name="9216"><span class="lineNum">    9216 </span><span class="lineCov">         33 :   200 CONTINUE</span></a>
-<a name="9217"><span class="lineNum">    9217 </span><span class="lineCov">        120 :       DO 210 I=1,KP</span></a>
-<a name="9218"><span class="lineNum">    9218 </span><span class="lineCov">         87 :          SD(JPVT(I)) = WRK6(I,I)</span></a>
+<a name="9217"><span class="lineNum">    9217 </span><span class="lineCov">        121 :       DO 210 I=1,KP</span></a>
+<a name="9218"><span class="lineNum">    9218 </span><span class="lineCov">         88 :          SD(JPVT(I)) = WRK6(I,I)</span></a>
 <a name="9219"><span class="lineNum">    9219 </span><span class="lineCov">         33 :   210 CONTINUE</span></a>
 <a name="9220"><span class="lineNum">    9220 </span><span class="lineCov">         33 :       IF (NP.GT.NPP) THEN</span></a>
 <a name="9221"><span class="lineNum">    9221 </span>            :          JUNFIX = NPP</a>
@@ -9306,14 +9306,14 @@
 <a name="9236"><span class="lineNum">    9236 </span><span class="lineCov">        201 :             VCV(I,J) = ZERO</span></a>
 <a name="9237"><span class="lineNum">    9237 </span><span class="lineCov">         88 :   300    CONTINUE</span></a>
 <a name="9238"><span class="lineNum">    9238 </span><span class="lineCov">         33 :   310 CONTINUE</span></a>
-<a name="9239"><span class="lineNum">    9239 </span><span class="lineCov">        120 :       DO 330 I=1,KP</span></a>
-<a name="9240"><span class="lineNum">    9240 </span><span class="lineCov">        199 :          DO 320 J=I+1,KP</span></a>
-<a name="9241"><span class="lineNum">    9241 </span><span class="lineCov">        112 :             IF (JPVT(I).GT.JPVT(J)) THEN</span></a>
+<a name="9239"><span class="lineNum">    9239 </span><span class="lineCov">        121 :       DO 330 I=1,KP</span></a>
+<a name="9240"><span class="lineNum">    9240 </span><span class="lineCov">        201 :          DO 320 J=I+1,KP</span></a>
+<a name="9241"><span class="lineNum">    9241 </span><span class="lineCov">        113 :             IF (JPVT(I).GT.JPVT(J)) THEN</span></a>
 <a name="9242"><span class="lineNum">    9242 </span><span class="lineCov">         52 :                VCV(JPVT(I),JPVT(J))=WRK6(I,J)</span></a>
 <a name="9243"><span class="lineNum">    9243 </span>            :             ELSE</a>
-<a name="9244"><span class="lineNum">    9244 </span><span class="lineCov">         60 :                VCV(JPVT(J),JPVT(I))=WRK6(I,J)</span></a>
+<a name="9244"><span class="lineNum">    9244 </span><span class="lineCov">         61 :                VCV(JPVT(J),JPVT(I))=WRK6(I,J)</span></a>
 <a name="9245"><span class="lineNum">    9245 </span>            :             END IF</a>
-<a name="9246"><span class="lineNum">    9246 </span><span class="lineCov">         87 :   320    CONTINUE</span></a>
+<a name="9246"><span class="lineNum">    9246 </span><span class="lineCov">         88 :   320    CONTINUE</span></a>
 <a name="9247"><span class="lineNum">    9247 </span><span class="lineCov">         33 :   330 CONTINUE</span></a>
 <a name="9248"><span class="lineNum">    9248 </span><span class="lineCov">         33 :       IF (NP.GT.NPP) THEN</span></a>
 <a name="9249"><span class="lineNum">    9249 </span>            :          IUNFIX = NPP</a>
@@ -10281,7 +10281,7 @@
 <a name="10211"><span class="lineNum">   10211 </span><span class="lineNoCov">          0 :       RETURN</span></a>
 <a name="10212"><span class="lineNum">   10212 </span>            :       END</a>
 <a name="10213"><span class="lineNum">   10213 </span>            : *DSOLVE</a>
-<a name="10214"><span class="lineNum">   10214 </span><span class="lineCov">     138672 :       SUBROUTINE DSOLVE(N,T,LDT,B,LDB,JOB)</span></a>
+<a name="10214"><span class="lineNum">   10214 </span><span class="lineCov">     138720 :       SUBROUTINE DSOLVE(N,T,LDT,B,LDB,JOB)</span></a>
 <a name="10215"><span class="lineNum">   10215 </span>            : C***BEGIN PROLOGUE  DSOLVE</a>
 <a name="10216"><span class="lineNum">   10216 </span>            : C***REFER TO DODR,DODRC</a>
 <a name="10217"><span class="lineNum">   10217 </span>            : C***ROUTINES CALLED  DAXPY,DDOT</a>
@@ -10346,27 +10346,27 @@
 <a name="10276"><span class="lineNum">   10276 </span>            : </a>
 <a name="10277"><span class="lineNum">   10277 </span>            : </a>
 <a name="10278"><span class="lineNum">   10278 </span>            : C  FIND FIRST NONZERO DIAGONAL ENTRY IN T</a>
-<a name="10279"><span class="lineNum">   10279 </span><span class="lineCov">     138672 :          J1 = 0</span></a>
-<a name="10280"><span class="lineNum">   10280 </span><span class="lineCov">     340200 :          DO 10 J=1,N</span></a>
-<a name="10281"><span class="lineNum">   10281 </span><span class="lineCov">     201528 :             IF (J1.EQ.0 .AND. T(J,J).NE.ZERO) THEN</span></a>
+<a name="10279"><span class="lineNum">   10279 </span><span class="lineCov">     138720 :          J1 = 0</span></a>
+<a name="10280"><span class="lineNum">   10280 </span><span class="lineCov">     340296 :          DO 10 J=1,N</span></a>
+<a name="10281"><span class="lineNum">   10281 </span><span class="lineCov">     201576 :             IF (J1.EQ.0 .AND. T(J,J).NE.ZERO) THEN</span></a>
 <a name="10282"><span class="lineNum">   10282 </span>            :                J1 = J</a>
 <a name="10283"><span class="lineNum">   10283 </span><span class="lineCov">      62856 :             ELSE IF (T(J,J).EQ.ZERO) THEN</span></a>
 <a name="10284"><span class="lineNum">   10284 </span><span class="lineNoCov">          0 :                B(1,J) = ZERO</span></a>
 <a name="10285"><span class="lineNum">   10285 </span>            :             END IF</a>
-<a name="10286"><span class="lineNum">   10286 </span><span class="lineCov">     138672 :    10    CONTINUE</span></a>
-<a name="10287"><span class="lineNum">   10287 </span><span class="lineCov">     138672 :          IF (J1.EQ.0) RETURN</span></a>
+<a name="10286"><span class="lineNum">   10286 </span><span class="lineCov">     138720 :    10    CONTINUE</span></a>
+<a name="10287"><span class="lineNum">   10287 </span><span class="lineCov">     138720 :          IF (J1.EQ.0) RETURN</span></a>
 <a name="10288"><span class="lineNum">   10288 </span>            : </a>
 <a name="10289"><span class="lineNum">   10289 </span>            : C  FIND LAST NONZERO DIAGONAL ENTRY IN T</a>
-<a name="10290"><span class="lineNum">   10290 </span><span class="lineCov">     138672 :          JN = 0</span></a>
-<a name="10291"><span class="lineNum">   10291 </span><span class="lineCov">     340200 :          DO 20 J=N,J1,-1</span></a>
-<a name="10292"><span class="lineNum">   10292 </span><span class="lineCov">     201528 :             IF (JN.EQ.0 .AND. T(J,J).NE.ZERO) THEN</span></a>
+<a name="10290"><span class="lineNum">   10290 </span><span class="lineCov">     138720 :          JN = 0</span></a>
+<a name="10291"><span class="lineNum">   10291 </span><span class="lineCov">     340296 :          DO 20 J=N,J1,-1</span></a>
+<a name="10292"><span class="lineNum">   10292 </span><span class="lineCov">     201576 :             IF (JN.EQ.0 .AND. T(J,J).NE.ZERO) THEN</span></a>
 <a name="10293"><span class="lineNum">   10293 </span>            :                JN = J</a>
 <a name="10294"><span class="lineNum">   10294 </span><span class="lineCov">      62856 :             ELSE IF (T(J,J).EQ.ZERO) THEN</span></a>
 <a name="10295"><span class="lineNum">   10295 </span><span class="lineNoCov">          0 :                B(1,J) = ZERO</span></a>
 <a name="10296"><span class="lineNum">   10296 </span>            :             END IF</a>
-<a name="10297"><span class="lineNum">   10297 </span><span class="lineCov">     138672 :    20    CONTINUE</span></a>
+<a name="10297"><span class="lineNum">   10297 </span><span class="lineCov">     138720 :    20    CONTINUE</span></a>
 <a name="10298"><span class="lineNum">   10298 </span>            : </a>
-<a name="10299"><span class="lineNum">   10299 </span><span class="lineCov">     138672 :          IF (JOB.EQ.1) THEN</span></a>
+<a name="10299"><span class="lineNum">   10299 </span><span class="lineCov">     138720 :          IF (JOB.EQ.1) THEN</span></a>
 <a name="10300"><span class="lineNum">   10300 </span>            : </a>
 <a name="10301"><span class="lineNum">   10301 </span>            : C  SOLVE T*X=B FOR T LOWER TRIANGULAR</a>
 <a name="10302"><span class="lineNum">   10302 </span><span class="lineNoCov">          0 :             B(1,J1) = B(1,J1)/T(J1,J1)</span></a>
@@ -10380,11 +10380,11 @@
 <a name="10310"><span class="lineNum">   10310 </span>            :                END IF</a>
 <a name="10311"><span class="lineNum">   10311 </span><span class="lineNoCov">          0 :    30       CONTINUE</span></a>
 <a name="10312"><span class="lineNum">   10312 </span>            : </a>
-<a name="10313"><span class="lineNum">   10313 </span><span class="lineCov">     138672 :          ELSE IF (JOB.EQ.2) THEN</span></a>
+<a name="10313"><span class="lineNum">   10313 </span><span class="lineCov">     138720 :          ELSE IF (JOB.EQ.2) THEN</span></a>
 <a name="10314"><span class="lineNum">   10314 </span>            : </a>
 <a name="10315"><span class="lineNum">   10315 </span>            : C  SOLVE T*X=B FOR T UPPER TRIANGULAR.</a>
-<a name="10316"><span class="lineNum">   10316 </span><span class="lineCov">      42398 :             B(1,JN) = B(1,JN)/T(JN,JN)</span></a>
-<a name="10317"><span class="lineNum">   10317 </span><span class="lineCov">      63505 :             DO 40 J = JN-1,J1,-1</span></a>
+<a name="10316"><span class="lineNum">   10316 </span><span class="lineCov">      42414 :             B(1,JN) = B(1,JN)/T(JN,JN)</span></a>
+<a name="10317"><span class="lineNum">   10317 </span><span class="lineCov">      63521 :             DO 40 J = JN-1,J1,-1</span></a>
 <a name="10318"><span class="lineNum">   10318 </span><span class="lineCov">      21107 :                TEMP = -B(1,J+1)</span></a>
 <a name="10319"><span class="lineNum">   10319 </span><span class="lineCov">      21107 :                CALL DAXPY(J,TEMP,T(1,J+1),1,B(1,1),LDB)</span></a>
 <a name="10320"><span class="lineNum">   10320 </span><span class="lineCov">      21107 :                IF (T(J,J).NE.ZERO) THEN</span></a>
@@ -10392,9 +10392,9 @@
 <a name="10322"><span class="lineNum">   10322 </span>            :                ELSE</a>
 <a name="10323"><span class="lineNum">   10323 </span><span class="lineNoCov">          0 :                   B(1,J) = ZERO</span></a>
 <a name="10324"><span class="lineNum">   10324 </span>            :                END IF</a>
-<a name="10325"><span class="lineNum">   10325 </span><span class="lineCov">      42398 :    40       CONTINUE</span></a>
+<a name="10325"><span class="lineNum">   10325 </span><span class="lineCov">      42414 :    40       CONTINUE</span></a>
 <a name="10326"><span class="lineNum">   10326 </span>            : </a>
-<a name="10327"><span class="lineNum">   10327 </span><span class="lineCov">      96274 :          ELSE IF (JOB.EQ.3) THEN</span></a>
+<a name="10327"><span class="lineNum">   10327 </span><span class="lineCov">      96306 :          ELSE IF (JOB.EQ.3) THEN</span></a>
 <a name="10328"><span class="lineNum">   10328 </span>            : </a>
 <a name="10329"><span class="lineNum">   10329 </span>            : C  SOLVE TRANS(T)*X=B FOR T LOWER TRIANGULAR.</a>
 <a name="10330"><span class="lineNum">   10330 </span><span class="lineNoCov">          0 :             B(1,JN) = B(1,JN)/T(JN,JN)</span></a>
@@ -10407,25 +10407,25 @@
 <a name="10337"><span class="lineNum">   10337 </span>            :                END IF</a>
 <a name="10338"><span class="lineNum">   10338 </span><span class="lineNoCov">          0 :    50       CONTINUE</span></a>
 <a name="10339"><span class="lineNum">   10339 </span>            : </a>
-<a name="10340"><span class="lineNum">   10340 </span><span class="lineCov">      96274 :          ELSE IF (JOB.EQ.4) THEN</span></a>
+<a name="10340"><span class="lineNum">   10340 </span><span class="lineCov">      96306 :          ELSE IF (JOB.EQ.4) THEN</span></a>
 <a name="10341"><span class="lineNum">   10341 </span>            : </a>
 <a name="10342"><span class="lineNum">   10342 </span>            : C  SOLVE TRANS(T)*X=B FOR T UPPER TRIANGULAR.</a>
-<a name="10343"><span class="lineNum">   10343 </span><span class="lineCov">      96274 :             B(1,J1) = B(1,J1)/T(J1,J1)</span></a>
-<a name="10344"><span class="lineNum">   10344 </span><span class="lineCov">     138023 :             DO 60 J = J1+1,JN</span></a>
+<a name="10343"><span class="lineNum">   10343 </span><span class="lineCov">      96306 :             B(1,J1) = B(1,J1)/T(J1,J1)</span></a>
+<a name="10344"><span class="lineNum">   10344 </span><span class="lineCov">     138055 :             DO 60 J = J1+1,JN</span></a>
 <a name="10345"><span class="lineNum">   10345 </span><span class="lineCov">      41749 :                B(1,J) = B(1,J) - DDOT(J-1,T(1,J),1,B(1,1),LDB)</span></a>
 <a name="10346"><span class="lineNum">   10346 </span><span class="lineCov">      41749 :                IF (T(J,J).NE.ZERO) THEN</span></a>
 <a name="10347"><span class="lineNum">   10347 </span><span class="lineCov">      41749 :                   B(1,J) = B(1,J)/T(J,J)</span></a>
 <a name="10348"><span class="lineNum">   10348 </span>            :                ELSE</a>
 <a name="10349"><span class="lineNum">   10349 </span><span class="lineNoCov">          0 :                   B(1,J) = ZERO</span></a>
 <a name="10350"><span class="lineNum">   10350 </span>            :                END IF</a>
-<a name="10351"><span class="lineNum">   10351 </span><span class="lineCov">      96274 :    60       CONTINUE</span></a>
+<a name="10351"><span class="lineNum">   10351 </span><span class="lineCov">      96306 :    60       CONTINUE</span></a>
 <a name="10352"><span class="lineNum">   10352 </span>            :          END IF</a>
 <a name="10353"><span class="lineNum">   10353 </span>            : </a>
 <a name="10354"><span class="lineNum">   10354 </span>            :       RETURN</a>
 <a name="10355"><span class="lineNum">   10355 </span>            :       END</a>
 <a name="10356"><span class="lineNum">   10356 </span>            : *DUNPAC</a>
-<a name="10357"><span class="lineNum">   10357 </span><span class="lineCov">        623 :       SUBROUTINE DUNPAC</span></a>
-<a name="10358"><span class="lineNum">   10358 </span><span class="lineCov">        623 :      +   (N2,V1,V2,IFIX)</span></a>
+<a name="10357"><span class="lineNum">   10357 </span><span class="lineCov">        625 :       SUBROUTINE DUNPAC</span></a>
+<a name="10358"><span class="lineNum">   10358 </span><span class="lineCov">        625 :      +   (N2,V1,V2,IFIX)</span></a>
 <a name="10359"><span class="lineNum">   10359 </span>            : C***BEGIN PROLOGUE  DUNPAC</a>
 <a name="10360"><span class="lineNum">   10360 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10361"><span class="lineNum">   10361 </span>            : C***ROUTINES CALLED  DCOPY</a>
@@ -10468,8 +10468,8 @@
 <a name="10398"><span class="lineNum">   10398 </span>            : C***FIRST EXECUTABLE STATEMENT  DUNPAC</a>
 <a name="10399"><span class="lineNum">   10399 </span>            : </a>
 <a name="10400"><span class="lineNum">   10400 </span>            : </a>
-<a name="10401"><span class="lineNum">   10401 </span><span class="lineCov">        623 :       N1 = 0</span></a>
-<a name="10402"><span class="lineNum">   10402 </span><span class="lineCov">        623 :       IF (IFIX(1).GE.0) THEN</span></a>
+<a name="10401"><span class="lineNum">   10401 </span><span class="lineCov">        625 :       N1 = 0</span></a>
+<a name="10402"><span class="lineNum">   10402 </span><span class="lineCov">        625 :       IF (IFIX(1).GE.0) THEN</span></a>
 <a name="10403"><span class="lineNum">   10403 </span><span class="lineNoCov">          0 :          DO 10 I = 1,N2</span></a>
 <a name="10404"><span class="lineNum">   10404 </span><span class="lineNoCov">          0 :             IF (IFIX(I).NE.0) THEN</span></a>
 <a name="10405"><span class="lineNum">   10405 </span><span class="lineNoCov">          0 :                N1 = N1 + 1</span></a>
@@ -10477,17 +10477,17 @@
 <a name="10407"><span class="lineNum">   10407 </span>            :             END IF</a>
 <a name="10408"><span class="lineNum">   10408 </span><span class="lineNoCov">          0 :    10    CONTINUE</span></a>
 <a name="10409"><span class="lineNum">   10409 </span>            :       ELSE</a>
-<a name="10410"><span class="lineNum">   10410 </span><span class="lineCov">        623 :          N1 = N2</span></a>
-<a name="10411"><span class="lineNum">   10411 </span><span class="lineCov">        623 :          CALL DCOPY(N2,V1,1,V2,1)</span></a>
+<a name="10410"><span class="lineNum">   10410 </span><span class="lineCov">        625 :          N1 = N2</span></a>
+<a name="10411"><span class="lineNum">   10411 </span><span class="lineCov">        625 :          CALL DCOPY(N2,V1,1,V2,1)</span></a>
 <a name="10412"><span class="lineNum">   10412 </span>            :       END IF</a>
 <a name="10413"><span class="lineNum">   10413 </span>            : </a>
-<a name="10414"><span class="lineNum">   10414 </span><span class="lineCov">        623 :       RETURN</span></a>
+<a name="10414"><span class="lineNum">   10414 </span><span class="lineCov">        625 :       RETURN</span></a>
 <a name="10415"><span class="lineNum">   10415 </span>            :       END</a>
 <a name="10416"><span class="lineNum">   10416 </span>            : *DVEVTR</a>
-<a name="10417"><span class="lineNum">   10417 </span><span class="lineCov">       9395 :       SUBROUTINE DVEVTR</span></a>
+<a name="10417"><span class="lineNum">   10417 </span><span class="lineCov">       9399 :       SUBROUTINE DVEVTR</span></a>
 <a name="10418"><span class="lineNum">   10418 </span>            :      +   (M,NQ,INDX, </a>
-<a name="10419"><span class="lineNum">   10419 </span><span class="lineCov">       9395 :      +    V,LDV,LD2V, E,LDE, VE,LDVE,LD2VE, VEV,LDVEV,</span></a>
-<a name="10420"><span class="lineNum">   10420 </span><span class="lineCov">       9395 :      +    WRK5)</span></a>
+<a name="10419"><span class="lineNum">   10419 </span><span class="lineCov">       9399 :      +    V,LDV,LD2V, E,LDE, VE,LDVE,LD2VE, VEV,LDVEV,</span></a>
+<a name="10420"><span class="lineNum">   10420 </span><span class="lineCov">       9399 :      +    WRK5)</span></a>
 <a name="10421"><span class="lineNum">   10421 </span>            : C***BEGIN PROLOGUE  DVEVTR</a>
 <a name="10422"><span class="lineNum">   10422 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10423"><span class="lineNum">   10423 </span>            : C***ROUTINES CALLED  DSOLVE</a>
@@ -10542,33 +10542,33 @@
 <a name="10472"><span class="lineNum">   10472 </span>            : C***FIRST EXECUTABLE STATEMENT  DVEVTR</a>
 <a name="10473"><span class="lineNum">   10473 </span>            : </a>
 <a name="10474"><span class="lineNum">   10474 </span>            : </a>
-<a name="10475"><span class="lineNum">   10475 </span><span class="lineCov">       9395 :       IF (NQ.EQ.0 .OR. M.EQ.0) RETURN</span></a>
+<a name="10475"><span class="lineNum">   10475 </span><span class="lineCov">       9399 :       IF (NQ.EQ.0 .OR. M.EQ.0) RETURN</span></a>
 <a name="10476"><span class="lineNum">   10476 </span>            : </a>
-<a name="10477"><span class="lineNum">   10477 </span><span class="lineCov">      20677 :       DO 140 L1 = 1,NQ</span></a>
-<a name="10478"><span class="lineNum">   10478 </span><span class="lineCov">      30204 :          DO 110 J = 1,M</span></a>
-<a name="10479"><span class="lineNum">   10479 </span><span class="lineCov">      18922 :             WRK5(J) = V(INDX,J,L1)</span></a>
-<a name="10480"><span class="lineNum">   10480 </span><span class="lineCov">      11282 :   110    CONTINUE</span></a>
-<a name="10481"><span class="lineNum">   10481 </span><span class="lineCov">      11282 :          CALL DSOLVE(M,E,LDE,WRK5,1,4)</span></a>
-<a name="10482"><span class="lineNum">   10482 </span><span class="lineCov">      30204 :          DO 120 J = 1,M</span></a>
-<a name="10483"><span class="lineNum">   10483 </span><span class="lineCov">      18922 :             VE(INDX,L1,J) = WRK5(J)</span></a>
-<a name="10484"><span class="lineNum">   10484 </span><span class="lineCov">      11282 :   120    CONTINUE</span></a>
-<a name="10485"><span class="lineNum">   10485 </span><span class="lineCov">       9395 :   140 CONTINUE</span></a>
+<a name="10477"><span class="lineNum">   10477 </span><span class="lineCov">      20685 :       DO 140 L1 = 1,NQ</span></a>
+<a name="10478"><span class="lineNum">   10478 </span><span class="lineCov">      30212 :          DO 110 J = 1,M</span></a>
+<a name="10479"><span class="lineNum">   10479 </span><span class="lineCov">      18926 :             WRK5(J) = V(INDX,J,L1)</span></a>
+<a name="10480"><span class="lineNum">   10480 </span><span class="lineCov">      11286 :   110    CONTINUE</span></a>
+<a name="10481"><span class="lineNum">   10481 </span><span class="lineCov">      11286 :          CALL DSOLVE(M,E,LDE,WRK5,1,4)</span></a>
+<a name="10482"><span class="lineNum">   10482 </span><span class="lineCov">      30212 :          DO 120 J = 1,M</span></a>
+<a name="10483"><span class="lineNum">   10483 </span><span class="lineCov">      18926 :             VE(INDX,L1,J) = WRK5(J)</span></a>
+<a name="10484"><span class="lineNum">   10484 </span><span class="lineCov">      11286 :   120    CONTINUE</span></a>
+<a name="10485"><span class="lineNum">   10485 </span><span class="lineCov">       9399 :   140 CONTINUE</span></a>
 <a name="10486"><span class="lineNum">   10486 </span>            : </a>
-<a name="10487"><span class="lineNum">   10487 </span><span class="lineCov">      20677 :       DO 230 L1 = 1,NQ</span></a>
-<a name="10488"><span class="lineNum">   10488 </span><span class="lineCov">      24451 :          DO 220 L2 = 1,L1</span></a>
-<a name="10489"><span class="lineNum">   10489 </span><span class="lineCov">      13169 :             VEV(L1,L2) = ZERO</span></a>
-<a name="10490"><span class="lineNum">   10490 </span><span class="lineCov">      35658 :             DO 210 J = 1,M</span></a>
-<a name="10491"><span class="lineNum">   10491 </span><span class="lineCov">      22489 :                VEV(L1,L2) = VEV(L1,L2) + VE(INDX,L1,J)*VE(INDX,L2,J)</span></a>
-<a name="10492"><span class="lineNum">   10492 </span><span class="lineCov">      13169 :   210       CONTINUE</span></a>
-<a name="10493"><span class="lineNum">   10493 </span><span class="lineCov">      13169 :             VEV(L2,L1) = VEV(L1,L2)</span></a>
-<a name="10494"><span class="lineNum">   10494 </span><span class="lineCov">      11282 :   220    CONTINUE</span></a>
-<a name="10495"><span class="lineNum">   10495 </span><span class="lineCov">       9395 :   230 CONTINUE</span></a>
+<a name="10487"><span class="lineNum">   10487 </span><span class="lineCov">      20685 :       DO 230 L1 = 1,NQ</span></a>
+<a name="10488"><span class="lineNum">   10488 </span><span class="lineCov">      24459 :          DO 220 L2 = 1,L1</span></a>
+<a name="10489"><span class="lineNum">   10489 </span><span class="lineCov">      13173 :             VEV(L1,L2) = ZERO</span></a>
+<a name="10490"><span class="lineNum">   10490 </span><span class="lineCov">      35666 :             DO 210 J = 1,M</span></a>
+<a name="10491"><span class="lineNum">   10491 </span><span class="lineCov">      22493 :                VEV(L1,L2) = VEV(L1,L2) + VE(INDX,L1,J)*VE(INDX,L2,J)</span></a>
+<a name="10492"><span class="lineNum">   10492 </span><span class="lineCov">      13173 :   210       CONTINUE</span></a>
+<a name="10493"><span class="lineNum">   10493 </span><span class="lineCov">      13173 :             VEV(L2,L1) = VEV(L1,L2)</span></a>
+<a name="10494"><span class="lineNum">   10494 </span><span class="lineCov">      11286 :   220    CONTINUE</span></a>
+<a name="10495"><span class="lineNum">   10495 </span><span class="lineCov">       9399 :   230 CONTINUE</span></a>
 <a name="10496"><span class="lineNum">   10496 </span>            : </a>
 <a name="10497"><span class="lineNum">   10497 </span>            :       RETURN</a>
 <a name="10498"><span class="lineNum">   10498 </span>            :       END</a>
 <a name="10499"><span class="lineNum">   10499 </span>            : *DWGHT</a>
-<a name="10500"><span class="lineNum">   10500 </span><span class="lineCov">       5994 :       SUBROUTINE DWGHT</span></a>
-<a name="10501"><span class="lineNum">   10501 </span><span class="lineCov">       5994 :      +   (N,M,WT,LDWT,LD2WT,T,LDT,WTT,LDWTT)</span></a>
+<a name="10500"><span class="lineNum">   10500 </span><span class="lineCov">       6008 :       SUBROUTINE DWGHT</span></a>
+<a name="10501"><span class="lineNum">   10501 </span><span class="lineCov">       6008 :      +   (N,M,WT,LDWT,LD2WT,T,LDT,WTT,LDWTT)</span></a>
 <a name="10502"><span class="lineNum">   10502 </span>            : C***BEGIN PROLOGUE  DWGHT</a>
 <a name="10503"><span class="lineNum">   10503 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10504"><span class="lineNum">   10504 </span>            : C***ROUTINES CALLED  (NONE)</a>
@@ -10622,21 +10622,21 @@
 <a name="10552"><span class="lineNum">   10552 </span>            : C***FIRST EXECUTABLE STATEMENT  DWGHT</a>
 <a name="10553"><span class="lineNum">   10553 </span>            : </a>
 <a name="10554"><span class="lineNum">   10554 </span>            : </a>
-<a name="10555"><span class="lineNum">   10555 </span><span class="lineCov">       5994 :       IF (N.EQ.0 .OR. M.EQ.0) RETURN</span></a>
+<a name="10555"><span class="lineNum">   10555 </span><span class="lineCov">       6008 :       IF (N.EQ.0 .OR. M.EQ.0) RETURN</span></a>
 <a name="10556"><span class="lineNum">   10556 </span>            : </a>
-<a name="10557"><span class="lineNum">   10557 </span><span class="lineCov">       5994 :       IF (WT(1,1,1).GE.ZERO) THEN</span></a>
-<a name="10558"><span class="lineNum">   10558 </span><span class="lineCov">       3279 :          IF (LDWT.GE.N) THEN</span></a>
-<a name="10559"><span class="lineNum">   10559 </span><span class="lineCov">       3249 :             IF (LD2WT.GE.M) THEN</span></a>
+<a name="10557"><span class="lineNum">   10557 </span><span class="lineCov">       6008 :       IF (WT(1,1,1).GE.ZERO) THEN</span></a>
+<a name="10558"><span class="lineNum">   10558 </span><span class="lineCov">       3293 :          IF (LDWT.GE.N) THEN</span></a>
+<a name="10559"><span class="lineNum">   10559 </span><span class="lineCov">       3263 :             IF (LD2WT.GE.M) THEN</span></a>
 <a name="10560"><span class="lineNum">   10560 </span>            : C  WT IS AN N-ARRAY OF M BY M MATRICES</a>
-<a name="10561"><span class="lineNum">   10561 </span><span class="lineCov">      20754 :                DO 130 I=1,N</span></a>
-<a name="10562"><span class="lineNum">   10562 </span><span class="lineCov">      38564 :                   DO 120 J=1,M</span></a>
+<a name="10561"><span class="lineNum">   10561 </span><span class="lineCov">      20818 :                DO 130 I=1,N</span></a>
+<a name="10562"><span class="lineNum">   10562 </span><span class="lineCov">      38664 :                   DO 120 J=1,M</span></a>
 <a name="10563"><span class="lineNum">   10563 </span>            :                      TEMP = ZERO</a>
-<a name="10564"><span class="lineNum">   10564 </span><span class="lineCov">      43532 :                      DO 110 K=1,M</span></a>
-<a name="10565"><span class="lineNum">   10565 </span><span class="lineCov">      23422 :                         TEMP = TEMP + WT(I,J,K)*T(I,K)</span></a>
-<a name="10566"><span class="lineNum">   10566 </span><span class="lineCov">      20110 :   110                CONTINUE</span></a>
-<a name="10567"><span class="lineNum">   10567 </span><span class="lineCov">      20110 :                      WTT(I,J) = TEMP</span></a>
-<a name="10568"><span class="lineNum">   10568 </span><span class="lineCov">      18454 :   120             CONTINUE</span></a>
-<a name="10569"><span class="lineNum">   10569 </span><span class="lineCov">       2300 :   130          CONTINUE</span></a>
+<a name="10564"><span class="lineNum">   10564 </span><span class="lineCov">      43632 :                      DO 110 K=1,M</span></a>
+<a name="10565"><span class="lineNum">   10565 </span><span class="lineCov">      23472 :                         TEMP = TEMP + WT(I,J,K)*T(I,K)</span></a>
+<a name="10566"><span class="lineNum">   10566 </span><span class="lineCov">      20160 :   110                CONTINUE</span></a>
+<a name="10567"><span class="lineNum">   10567 </span><span class="lineCov">      20160 :                      WTT(I,J) = TEMP</span></a>
+<a name="10568"><span class="lineNum">   10568 </span><span class="lineCov">      18504 :   120             CONTINUE</span></a>
+<a name="10569"><span class="lineNum">   10569 </span><span class="lineCov">       2314 :   130          CONTINUE</span></a>
 <a name="10570"><span class="lineNum">   10570 </span>            :             ELSE</a>
 <a name="10571"><span class="lineNum">   10571 </span>            : C  WT IS AN N-ARRAY OF DIAGONAL MATRICES</a>
 <a name="10572"><span class="lineNum">   10572 </span><span class="lineCov">       9849 :                DO 230 I=1,N</span></a>
@@ -10909,8 +10909,8 @@
 <a name="10839"><span class="lineNum">   10839 </span><span class="lineCov">        121 :       RETURN</span></a>
 <a name="10840"><span class="lineNum">   10840 </span>            :       END</a>
 <a name="10841"><span class="lineNum">   10841 </span>            : *DXMY</a>
-<a name="10842"><span class="lineNum">   10842 </span><span class="lineCov">        355 :       SUBROUTINE DXMY</span></a>
-<a name="10843"><span class="lineNum">   10843 </span><span class="lineCov">        355 :      +   (N,M,X,LDX,Y,LDY,XMY,LDXMY)</span></a>
+<a name="10842"><span class="lineNum">   10842 </span><span class="lineCov">        357 :       SUBROUTINE DXMY</span></a>
+<a name="10843"><span class="lineNum">   10843 </span><span class="lineCov">        357 :      +   (N,M,X,LDX,Y,LDY,XMY,LDXMY)</span></a>
 <a name="10844"><span class="lineNum">   10844 </span>            : C***BEGIN PROLOGUE  DXMY</a>
 <a name="10845"><span class="lineNum">   10845 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10846"><span class="lineNum">   10846 </span>            : C***ROUTINES CALLED  (NONE)</a>
@@ -10947,17 +10947,17 @@
 <a name="10877"><span class="lineNum">   10877 </span>            : C***FIRST EXECUTABLE STATEMENT  DXMY</a>
 <a name="10878"><span class="lineNum">   10878 </span>            : </a>
 <a name="10879"><span class="lineNum">   10879 </span>            : </a>
-<a name="10880"><span class="lineNum">   10880 </span><span class="lineCov">        838 :       DO 20 J=1,M</span></a>
-<a name="10881"><span class="lineNum">   10881 </span><span class="lineCov">       8277 :          DO 10 I=1,N</span></a>
-<a name="10882"><span class="lineNum">   10882 </span><span class="lineCov">       7794 :             XMY(I,J) = X(I,J) - Y(I,J)</span></a>
-<a name="10883"><span class="lineNum">   10883 </span><span class="lineCov">        483 :    10    CONTINUE</span></a>
-<a name="10884"><span class="lineNum">   10884 </span><span class="lineCov">        355 :    20 CONTINUE</span></a>
+<a name="10880"><span class="lineNum">   10880 </span><span class="lineCov">        842 :       DO 20 J=1,M</span></a>
+<a name="10881"><span class="lineNum">   10881 </span><span class="lineCov">       8287 :          DO 10 I=1,N</span></a>
+<a name="10882"><span class="lineNum">   10882 </span><span class="lineCov">       7802 :             XMY(I,J) = X(I,J) - Y(I,J)</span></a>
+<a name="10883"><span class="lineNum">   10883 </span><span class="lineCov">        485 :    10    CONTINUE</span></a>
+<a name="10884"><span class="lineNum">   10884 </span><span class="lineCov">        357 :    20 CONTINUE</span></a>
 <a name="10885"><span class="lineNum">   10885 </span>            : </a>
-<a name="10886"><span class="lineNum">   10886 </span><span class="lineCov">        355 :       RETURN</span></a>
+<a name="10886"><span class="lineNum">   10886 </span><span class="lineCov">        357 :       RETURN</span></a>
 <a name="10887"><span class="lineNum">   10887 </span>            :       END</a>
 <a name="10888"><span class="lineNum">   10888 </span>            : *DXPY</a>
-<a name="10889"><span class="lineNum">   10889 </span><span class="lineCov">       1337 :       SUBROUTINE DXPY</span></a>
-<a name="10890"><span class="lineNum">   10890 </span><span class="lineCov">       1337 :      +   (N,M,X,LDX,Y,LDY,XPY,LDXPY)</span></a>
+<a name="10889"><span class="lineNum">   10889 </span><span class="lineCov">       1341 :       SUBROUTINE DXPY</span></a>
+<a name="10890"><span class="lineNum">   10890 </span><span class="lineCov">       1341 :      +   (N,M,X,LDX,Y,LDY,XPY,LDXPY)</span></a>
 <a name="10891"><span class="lineNum">   10891 </span>            : C***BEGIN PROLOGUE  DXPY</a>
 <a name="10892"><span class="lineNum">   10892 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10893"><span class="lineNum">   10893 </span>            : C***ROUTINES CALLED  (NONE)</a>
@@ -10994,17 +10994,17 @@
 <a name="10924"><span class="lineNum">   10924 </span>            : C***FIRST EXECUTABLE STATEMENT  DXPY</a>
 <a name="10925"><span class="lineNum">   10925 </span>            : </a>
 <a name="10926"><span class="lineNum">   10926 </span>            : </a>
-<a name="10927"><span class="lineNum">   10927 </span><span class="lineCov">       3282 :       DO 20 J=1,M</span></a>
-<a name="10928"><span class="lineNum">   10928 </span><span class="lineCov">      22353 :          DO 10 I=1,N</span></a>
-<a name="10929"><span class="lineNum">   10929 </span><span class="lineCov">      20408 :             XPY(I,J) = X(I,J) + Y(I,J)</span></a>
-<a name="10930"><span class="lineNum">   10930 </span><span class="lineCov">       1945 :    10    CONTINUE</span></a>
-<a name="10931"><span class="lineNum">   10931 </span><span class="lineCov">       1337 :    20 CONTINUE</span></a>
+<a name="10927"><span class="lineNum">   10927 </span><span class="lineCov">       3290 :       DO 20 J=1,M</span></a>
+<a name="10928"><span class="lineNum">   10928 </span><span class="lineCov">      22371 :          DO 10 I=1,N</span></a>
+<a name="10929"><span class="lineNum">   10929 </span><span class="lineCov">      20422 :             XPY(I,J) = X(I,J) + Y(I,J)</span></a>
+<a name="10930"><span class="lineNum">   10930 </span><span class="lineCov">       1949 :    10    CONTINUE</span></a>
+<a name="10931"><span class="lineNum">   10931 </span><span class="lineCov">       1341 :    20 CONTINUE</span></a>
 <a name="10932"><span class="lineNum">   10932 </span>            : </a>
-<a name="10933"><span class="lineNum">   10933 </span><span class="lineCov">       1337 :       RETURN</span></a>
+<a name="10933"><span class="lineNum">   10933 </span><span class="lineCov">       1341 :       RETURN</span></a>
 <a name="10934"><span class="lineNum">   10934 </span>            :       END</a>
 <a name="10935"><span class="lineNum">   10935 </span>            : *DZERO</a>
-<a name="10936"><span class="lineNum">   10936 </span><span class="lineCov">      19895 :       SUBROUTINE DZERO</span></a>
-<a name="10937"><span class="lineNum">   10937 </span><span class="lineCov">      19895 :      +   (N,M,A,LDA)</span></a>
+<a name="10936"><span class="lineNum">   10936 </span><span class="lineCov">      19903 :       SUBROUTINE DZERO</span></a>
+<a name="10937"><span class="lineNum">   10937 </span><span class="lineCov">      19903 :      +   (N,M,A,LDA)</span></a>
 <a name="10938"><span class="lineNum">   10938 </span>            : C***BEGIN PROLOGUE  DZERO</a>
 <a name="10939"><span class="lineNum">   10939 </span>            : C***REFER TO  DODR,DODRC</a>
 <a name="10940"><span class="lineNum">   10940 </span>            : C***ROUTINES CALLED  (NONE)</a>
@@ -11045,13 +11045,13 @@
 <a name="10975"><span class="lineNum">   10975 </span>            : C***FIRST EXECUTABLE STATEMENT  DZERO</a>
 <a name="10976"><span class="lineNum">   10976 </span>            : </a>
 <a name="10977"><span class="lineNum">   10977 </span>            : </a>
-<a name="10978"><span class="lineNum">   10978 </span><span class="lineCov">      51544 :       DO 20 J=1,M</span></a>
-<a name="10979"><span class="lineNum">   10979 </span><span class="lineCov">      92734 :          DO 10 I=1,N</span></a>
-<a name="10980"><span class="lineNum">   10980 </span><span class="lineCov">      61085 :             A(I,J) = ZERO</span></a>
-<a name="10981"><span class="lineNum">   10981 </span><span class="lineCov">      31649 :    10    CONTINUE</span></a>
-<a name="10982"><span class="lineNum">   10982 </span><span class="lineCov">      19895 :    20 CONTINUE</span></a>
+<a name="10978"><span class="lineNum">   10978 </span><span class="lineCov">      51560 :       DO 20 J=1,M</span></a>
+<a name="10979"><span class="lineNum">   10979 </span><span class="lineCov">      92750 :          DO 10 I=1,N</span></a>
+<a name="10980"><span class="lineNum">   10980 </span><span class="lineCov">      61093 :             A(I,J) = ZERO</span></a>
+<a name="10981"><span class="lineNum">   10981 </span><span class="lineCov">      31657 :    10    CONTINUE</span></a>
+<a name="10982"><span class="lineNum">   10982 </span><span class="lineCov">      19903 :    20 CONTINUE</span></a>
 <a name="10983"><span class="lineNum">   10983 </span>            : </a>
-<a name="10984"><span class="lineNum">   10984 </span><span class="lineCov">      19895 :       RETURN</span></a>
+<a name="10984"><span class="lineNum">   10984 </span><span class="lineCov">      19903 :       RETURN</span></a>
 <a name="10985"><span class="lineNum">   10985 </span>            :       END</a>
 </pre>
       </td>

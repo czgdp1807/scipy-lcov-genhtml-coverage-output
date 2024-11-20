@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - io/_fast_matrix_market/src/_fmm_core_read_coo.cpp</title>
+  <title>LCOV - lcov.info - io/_fast_matrix_market/src/_fmm_core_read_coo.cpp</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">19</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -78,25 +78,25 @@
 <a name="8"><span class="lineNum">       8 </span>            :  * Read Matrix Market body into triplets.</a>
 <a name="9"><span class="lineNum">       9 </span>            :  */</a>
 <a name="10"><span class="lineNum">      10 </span>            : template &lt;typename IT, typename VT&gt;</a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        249 : void read_body_coo(read_cursor&amp; cursor, py::array_t&lt;IT&gt;&amp; row, py::array_t&lt;IT&gt;&amp; col, py::array_t&lt;VT&gt;&amp; data) {</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">        249 :     if (row.size() != cursor.header.nnz || col.size() != cursor.header.nnz || data.size() != cursor.header.nnz) {</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        251 : void read_body_coo(read_cursor&amp; cursor, py::array_t&lt;IT&gt;&amp; row, py::array_t&lt;IT&gt;&amp; col, py::array_t&lt;VT&gt;&amp; data) {</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">        251 :     if (row.size() != cursor.header.nnz || col.size() != cursor.header.nnz || data.size() != cursor.header.nnz) {</span></a>
 <a name="13"><span class="lineNum">      13 </span><span class="lineNoCov">          0 :         throw std::invalid_argument(&quot;NumPy Array sizes need to equal matrix nnz&quot;);</span></a>
 <a name="14"><span class="lineNum">      14 </span>            :     }</a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">        249 :     auto row_unchecked = row.mutable_unchecked();</span></a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">        249 :     auto col_unchecked = col.mutable_unchecked();</span></a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        249 :     auto data_unchecked = data.mutable_unchecked();</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        249 :     auto handler = fmm::triplet_calling_parse_handler&lt;IT, VT, decltype(row_unchecked), decltype(data_unchecked)&gt;(</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">        251 :     auto row_unchecked = row.mutable_unchecked();</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">        251 :     auto col_unchecked = col.mutable_unchecked();</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        251 :     auto data_unchecked = data.mutable_unchecked();</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        251 :     auto handler = fmm::triplet_calling_parse_handler&lt;IT, VT, decltype(row_unchecked), decltype(data_unchecked)&gt;(</span></a>
 <a name="19"><span class="lineNum">      19 </span>            :         row_unchecked, col_unchecked, data_unchecked);</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
 <a name="21"><span class="lineNum">      21 </span>            :     // The mmread() will only call this method if the matrix is a coordinate. Disable the code paths for reading</a>
 <a name="22"><span class="lineNum">      22 </span>            :     // array matrices here to reduce final library size and compilation time.</a>
 <a name="23"><span class="lineNum">      23 </span>            : #ifdef FMM_SCIPY_PRUNE</a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        249 :     fmm::read_matrix_market_body&lt;decltype(handler), fmm::compile_coordinate_only&gt;(cursor.stream(), cursor.header, handler, 1, cursor.options);</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        251 :     fmm::read_matrix_market_body&lt;decltype(handler), fmm::compile_coordinate_only&gt;(cursor.stream(), cursor.header, handler, 1, cursor.options);</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : #else</a>
 <a name="26"><span class="lineNum">      26 </span>            :     fmm::read_matrix_market_body&lt;decltype(handler), fmm::compile_all&gt;(cursor.stream(), cursor.header, handler, 1, cursor.options);</a>
 <a name="27"><span class="lineNum">      27 </span>            : #endif</a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        248 :     cursor.close();</span></a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">        248 : }</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        250 :     cursor.close();</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">        250 : }</span></a>
 <a name="30"><span class="lineNum">      30 </span>            : </a>
 <a name="31"><span class="lineNum">      31 </span>            : </a>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : void init_read_coo(py::module_ &amp;m) {</span></a>

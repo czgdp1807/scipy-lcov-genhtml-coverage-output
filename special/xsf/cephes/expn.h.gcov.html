@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/expn.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/expn.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">90</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -135,7 +135,7 @@
 <a name="65"><span class="lineNum">      65 </span>            : #include &quot;../config.h&quot;</a>
 <a name="66"><span class="lineNum">      66 </span>            : #include &quot;../error.h&quot;</a>
 <a name="67"><span class="lineNum">      67 </span>            : #include &quot;const.h&quot;</a>
-<a name="68"><span class="lineNum">      68 </span>            : #include &quot;gamma.h&quot;</a>
+<a name="68"><span class="lineNum">      68 </span>            : #include &quot;rgamma.h&quot;</a>
 <a name="69"><span class="lineNum">      69 </span>            : #include &quot;polevl.h&quot;</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : namespace xsf {</a>
@@ -322,7 +322,7 @@
 <a name="252"><span class="lineNum">     252 </span><span class="lineCov">        372 :         k = xk;</span></a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineCov">        372 :         t = n;</span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineCov">        372 :         r = n - 1;</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">        372 :         ans = (std::pow(z, r) * psi / Gamma(t)) - ans;</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">        372 :         ans = (std::pow(z, r) * psi * rgamma(t)) - ans;</span></a>
 <a name="256"><span class="lineNum">     256 </span><span class="lineCov">        372 :         return ans;</span></a>
 <a name="257"><span class="lineNum">     257 </span>            :     }</a>
 <a name="258"><span class="lineNum">     258 </span>            : </a>

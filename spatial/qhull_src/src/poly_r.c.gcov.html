@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - spatial/qhull_src/src/poly_r.c</title>
+  <title>LCOV - lcov.info - spatial/qhull_src/src/poly_r.c</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">463</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -897,14 +897,14 @@
 <a name="827"><span class="lineNum">     827 </span><span class="lineCov">    1365458 :   trace4((qh, qh-&gt;ferr, 4050, &quot;qh_matchneighbor: newfacet f%d skip %d hash %d hashcount %d\n&quot;,</span></a>
 <a name="828"><span class="lineNum">     828 </span><span class="lineCov">    1365458 :           newfacet-&gt;id, newskip, hash, *hashcount));</span></a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineCov">    1365458 :   zinc_(Zhashlookup);</span></a>
-<a name="830"><span class="lineNum">     830 </span><span class="lineCov">    1581164 :   for (scan=hash; (facet= SETelemt_(qh-&gt;hash_table, scan, facetT));</span></a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">     215706 :        scan= (++scan &gt;= hashsize ? 0 : scan)) {</span></a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineCov">     898435 :     if (facet == newfacet) {</span></a>
-<a name="833"><span class="lineNum">     833 </span><span class="lineCov">       2858 :       newfound= True;</span></a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">       2858 :       continue;</span></a>
+<a name="830"><span class="lineNum">     830 </span><span class="lineCov">    1582418 :   for (scan=hash; (facet= SETelemt_(qh-&gt;hash_table, scan, facetT));</span></a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">     216960 :        scan= (++scan &gt;= hashsize ? 0 : scan)) {</span></a>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">     899689 :     if (facet == newfacet) {</span></a>
+<a name="833"><span class="lineNum">     833 </span><span class="lineCov">       2918 :       newfound= True;</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">       2918 :       continue;</span></a>
 <a name="835"><span class="lineNum">     835 </span>            :     }</a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">     895577 :     zinc_(Zhashtests);</span></a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">     895577 :     if (qh_matchvertices(qh, 1, newfacet-&gt;vertices, newskip, facet-&gt;vertices, &amp;skip, &amp;same)) {</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">     896771 :     zinc_(Zhashtests);</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">     896771 :     if (qh_matchvertices(qh, 1, newfacet-&gt;vertices, newskip, facet-&gt;vertices, &amp;skip, &amp;same)) {</span></a>
 <a name="838"><span class="lineNum">     838 </span><span class="lineCov">     682729 :       if (SETelem_(newfacet-&gt;vertices, newskip) == SETelem_(facet-&gt;vertices, skip)) {</span></a>
 <a name="839"><span class="lineNum">     839 </span><span class="lineNoCov">          0 :         qh_joggle_restart(qh, &quot;two new facets with the same vertices&quot;);</span></a>
 <a name="840"><span class="lineNum">     840 </span>            :         /* duplicated for multiple skips, not easily avoided */</a>
@@ -956,7 +956,7 @@
 <a name="886"><span class="lineNum">     886 </span>            :     }</a>
 <a name="887"><span class="lineNum">     887 </span>            :   }</a>
 <a name="888"><span class="lineNum">     888 </span><span class="lineCov">     682729 :   if (!newfound)</span></a>
-<a name="889"><span class="lineNum">     889 </span><span class="lineCov">     679873 :     SETelem_(qh-&gt;hash_table, scan)= newfacet;  /* same as qh_addhash */</span></a>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">     679813 :     SETelem_(qh-&gt;hash_table, scan)= newfacet;  /* same as qh_addhash */</span></a>
 <a name="890"><span class="lineNum">     890 </span><span class="lineCov">     682729 :   (*hashcount)++;</span></a>
 <a name="891"><span class="lineNum">     891 </span><span class="lineCov">     682729 :   trace4((qh, qh-&gt;ferr, 4053, &quot;qh_matchneighbor: no match for f%d skip %d at hash %d\n&quot;,</span></a>
 <a name="892"><span class="lineNum">     892 </span><span class="lineCov">     682729 :            newfacet-&gt;id, newskip, hash));</span></a>
@@ -1121,20 +1121,20 @@
 <a name="1051"><span class="lineNum">    1051 </span>            :     scan both sets checking for a match</a>
 <a name="1052"><span class="lineNum">    1052 </span>            :     test orientation</a>
 <a name="1053"><span class="lineNum">    1053 </span>            : */</a>
-<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">     895577 : boolT qh_matchvertices(qhT *qh, int firstindex, setT *verticesA, int skipA,</span></a>
+<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">     896771 : boolT qh_matchvertices(qhT *qh, int firstindex, setT *verticesA, int skipA,</span></a>
 <a name="1055"><span class="lineNum">    1055 </span>            :        setT *verticesB, int *skipB, boolT *same) {</a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">     895577 :   vertexT **elemAp, **elemBp, **skipBp=NULL, **skipAp;</span></a>
+<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">     896771 :   vertexT **elemAp, **elemBp, **skipBp=NULL, **skipAp;</span></a>
 <a name="1057"><span class="lineNum">    1057 </span>            : </a>
-<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">     895577 :   elemAp= SETelemaddr_(verticesA, firstindex, vertexT);</span></a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">     895577 :   elemBp= SETelemaddr_(verticesB, firstindex, vertexT);</span></a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">     895577 :   skipAp= SETelemaddr_(verticesA, skipA, vertexT);</span></a>
-<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">    2798130 :   do if (elemAp != skipAp) {</span></a>
-<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">    2677843 :     while (*elemAp != *elemBp++) {</span></a>
-<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">     842558 :       if (skipBp)</span></a>
+<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">     896771 :   elemAp= SETelemaddr_(verticesA, firstindex, vertexT);</span></a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">     896771 :   elemBp= SETelemaddr_(verticesB, firstindex, vertexT);</span></a>
+<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">     896771 :   skipAp= SETelemaddr_(verticesA, skipA, vertexT);</span></a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">    2799623 :   do if (elemAp != skipAp) {</span></a>
+<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">    2680284 :     while (*elemAp != *elemBp++) {</span></a>
+<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">     844946 :       if (skipBp)</span></a>
 <a name="1064"><span class="lineNum">    1064 </span>            :         return False;</a>
 <a name="1065"><span class="lineNum">    1065 </span>            :       skipBp= elemBp;  /* one extra like FOREACH */</a>
 <a name="1066"><span class="lineNum">    1066 </span>            :     }</a>
-<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">    2585282 :   }while (*(++elemAp));</span></a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">    2585581 :   }while (*(++elemAp));</span></a>
 <a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">     682729 :   if (!skipBp)</span></a>
 <a name="1069"><span class="lineNum">    1069 </span><span class="lineCov">     265867 :     skipBp= ++elemBp;</span></a>
 <a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">     682729 :   *skipB= SETindex_(verticesB, skipB); /* i.e., skipBp - verticesB</span></a>
@@ -1232,7 +1232,7 @@
 <a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">     922125 :   else if (point == qh-&gt;interior_point)</span></a>
 <a name="1163"><span class="lineNum">    1163 </span>            :     return qh_IDinterior;</a>
 <a name="1164"><span class="lineNum">    1164 </span><span class="lineCov">     922125 :   else if (point &gt;= qh-&gt;first_point</span></a>
-<a name="1165"><span class="lineNum">    1165 </span><span class="lineCov">     869367 :   &amp;&amp; point &lt; qh-&gt;first_point + qh-&gt;num_points * qh-&gt;hull_dim) {</span></a>
+<a name="1165"><span class="lineNum">    1165 </span><span class="lineCov">     867043 :   &amp;&amp; point &lt; qh-&gt;first_point + qh-&gt;num_points * qh-&gt;hull_dim) {</span></a>
 <a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">     757849 :     offset= (ptr_intT)(point - qh-&gt;first_point);</span></a>
 <a name="1167"><span class="lineNum">    1167 </span><span class="lineCov">     757849 :     id= offset / qh-&gt;hull_dim;</span></a>
 <a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">     164276 :   }else if ((id= qh_setindex(qh-&gt;other_points, point)) != -1)</span></a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - special/xsf/cephes/jv.h</title>
+  <title>LCOV - lcov.info - special/xsf/cephes/jv.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">178</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -125,7 +125,7 @@
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            : #include &quot;airy.h&quot;</a>
 <a name="57"><span class="lineNum">      57 </span>            : #include &quot;cbrt.h&quot;</a>
-<a name="58"><span class="lineNum">      58 </span>            : #include &quot;gamma.h&quot;</a>
+<a name="58"><span class="lineNum">      58 </span>            : #include &quot;rgamma.h&quot;</a>
 <a name="59"><span class="lineNum">      59 </span>            : #include &quot;j0.h&quot;</a>
 <a name="60"><span class="lineNum">      60 </span>            : #include &quot;j1.h&quot;</a>
 <a name="61"><span class="lineNum">      61 </span>            : #include &quot;polevl.h&quot;</a>
@@ -311,7 +311,7 @@
 <a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :             t = std::frexp(0.5 * x, &amp;ex);</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :             ex = ex * n;</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :             if ((ex &gt; -1023) &amp;&amp; (ex &lt; 1023) &amp;&amp; (n &gt; 0.0) &amp;&amp; (n &lt; (MAXGAM - 1.0))) {</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :                 t = std::pow(0.5 * x, n) / xsf::cephes::Gamma(n + 1.0);</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :                 t = std::pow(0.5 * x, n) * xsf::cephes::rgamma(n + 1.0);</span></a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :                 y *= t;</span></a>
 <a name="246"><span class="lineNum">     246 </span>            :             } else {</a>
 <a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :                 t = n * std::log(0.5 * x) - lgam_sgn(n + 1.0, &amp;sgngam);</span></a>
@@ -662,13 +662,13 @@
 <a name="592"><span class="lineNum">     592 </span>            : </a>
 <a name="593"><span class="lineNum">     593 </span><span class="lineCov">         11 :         if (x == 0 &amp;&amp; n &lt; 0 &amp;&amp; !nint) {</span></a>
 <a name="594"><span class="lineNum">     594 </span><span class="lineNoCov">          0 :             set_error(&quot;Jv&quot;, SF_ERROR_OVERFLOW, NULL);</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             return std::numeric_limits&lt;double&gt;::infinity() / Gamma(n + 1);</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             return std::numeric_limits&lt;double&gt;::infinity() * rgamma(n + 1);</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :         }</a>
 <a name="597"><span class="lineNum">     597 </span>            : </a>
 <a name="598"><span class="lineNum">     598 </span><span class="lineCov">         11 :         y = std::abs(x);</span></a>
 <a name="599"><span class="lineNum">     599 </span>            : </a>
 <a name="600"><span class="lineNum">     600 </span><span class="lineCov">         11 :         if (y * y &lt; std::abs(n + 1) * detail::MACHEP) {</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :             return std::pow(0.5 * x, n) / Gamma(n + 1);</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :             return std::pow(0.5 * x, n) * rgamma(n + 1);</span></a>
 <a name="602"><span class="lineNum">     602 </span>            :         }</a>
 <a name="603"><span class="lineNum">     603 </span>            : </a>
 <a name="604"><span class="lineNum">     604 </span><span class="lineCov">         11 :         k = 3.6 * std::sqrt(y);</span></a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_propack/PROPACK/single/sreorth.F</title>
+  <title>LCOV - lcov.info - sparse/linalg/_propack/PROPACK/single/sreorth.F</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">13</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -72,7 +72,7 @@
 <a name="2"><span class="lineNum">       2 </span>            : c     Rasmus Munk Larsen, Stanford University, 1999, 2004.</a>
 <a name="3"><span class="lineNum">       3 </span>            : c</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        493 :       subroutine sreorth(n,k,V,ldv,vnew,normvnew,index,alpha,work,</span></a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        509 :       subroutine sreorth(n,k,V,ldv,vnew,normvnew,index,alpha,work,</span></a>
 <a name="6"><span class="lineNum">       6 </span>            :      c     iflag)</a>
 <a name="7"><span class="lineNum">       7 </span>            : c</a>
 <a name="8"><span class="lineNum">       8 </span>            : c     Orthogonalize the N-vector VNEW against a subset of the columns of</a>
@@ -150,24 +150,24 @@
 <a name="80"><span class="lineNum">      80 </span>            :       real psnrm2</a>
 <a name="81"><span class="lineNum">      81 </span>            :       external psnrm2,pszero</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        493 :       if (k.le.0 .or. n.le.0) return</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        509 :       if (k.le.0 .or. n.le.0) return</span></a>
 <a name="84"><span class="lineNum">      84 </span>            : </a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        854 :       do itry=1,NTRY</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        808 :          normvnew_0 = normvnew         </span></a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        808 :          if ( iflag.eq.1 ) then</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        869 :       do itry=1,NTRY</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        822 :          normvnew_0 = normvnew         </span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        822 :          if ( iflag.eq.1 ) then</span></a>
 <a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :             call scgs(n,k,V,ldv,vnew,index,work)</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :          else</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        808 :             call smgs(n,k,V,ldv,vnew,index)</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        822 :             call smgs(n,k,V,ldv,vnew,index)</span></a>
 <a name="91"><span class="lineNum">      91 </span>            :          endif</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        808 :          ndot = ndot + k</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        808 :          normvnew = psnrm2(n,vnew,1)</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        854 :          if (normvnew.gt.alpha*normvnew_0) goto 9999</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        822 :          ndot = ndot + k</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        822 :          normvnew = psnrm2(n,vnew,1)</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        869 :          if (normvnew.gt.alpha*normvnew_0) goto 9999</span></a>
 <a name="95"><span class="lineNum">      95 </span>            :       enddo</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         46 :       normvnew = zero</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         47 :       normvnew = zero</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : c     vnew is numerically in span(V) =&gt; return vnew = (0,0,...,0)^T</a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        493 :       call pszero(n,vnew,1)</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        493 :  9999 nreorth = nreorth + 1</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        493 :       return</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        509 :       call pszero(n,vnew,1)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        509 :  9999 nreorth = nreorth + 1</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        509 :       return</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :       end</a>
 <a name="102"><span class="lineNum">     102 </span>            : c</a>
 <a name="103"><span class="lineNum">     103 </span>            : c****************************************************************************</a>

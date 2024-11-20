@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/unique_ptr.h</title>
+  <title>LCOV - lcov.info - /home/czgdp18079/miniforge3/envs/scipy-dev/lib/gcc/x86_64-conda-linux-gnu/13.2.0/include/c++/bits/unique_ptr.h</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">79</td>
@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntry">68</td>
-            <td class="headerCovTableEntryHi">97.1 %</td>
+            <td class="headerCovTableEntry">65</td>
+            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntryHi">97.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Legend:</td>
@@ -160,14 +160,14 @@
 <a name="90"><span class="lineNum">      90 </span>            :       /// Calls `delete __ptr`</a>
 <a name="91"><span class="lineNum">      91 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="92"><span class="lineNum">      92 </span>            :       void</a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">     139003 :       operator()(_Tp* __ptr) const</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">     142847 :       operator()(_Tp* __ptr) const</span></a>
 <a name="94"><span class="lineNum">      94 </span>            :       {</a>
 <a name="95"><span class="lineNum">      95 </span>            :         static_assert(!is_void&lt;_Tp&gt;::value,</a>
 <a name="96"><span class="lineNum">      96 </span>            :                       &quot;can't delete pointer to incomplete type&quot;);</a>
 <a name="97"><span class="lineNum">      97 </span>            :         static_assert(sizeof(_Tp)&gt;0,</a>
 <a name="98"><span class="lineNum">      98 </span>            :                       &quot;can't delete pointer to incomplete type&quot;);</a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">     141468 :         delete __ptr;</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">     138842 :       }</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">     145328 :         delete __ptr;</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">     142685 :       }</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :     };</a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span>            :   // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
@@ -203,12 +203,12 @@
 <a name="133"><span class="lineNum">     133 </span>            :       template&lt;typename _Up&gt;</a>
 <a name="134"><span class="lineNum">     134 </span>            :         _GLIBCXX23_CONSTEXPR</a>
 <a name="135"><span class="lineNum">     135 </span>            :         typename enable_if&lt;is_convertible&lt;_Up(*)[], _Tp(*)[]&gt;::value&gt;::type</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1718 :         operator()(_Up* __ptr) const</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1932 :         operator()(_Up* __ptr) const</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :         {</a>
 <a name="138"><span class="lineNum">     138 </span>            :           static_assert(sizeof(_Tp)&gt;0,</a>
 <a name="139"><span class="lineNum">     139 </span>            :                         &quot;can't delete pointer to incomplete type&quot;);</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1718 :           delete [] __ptr;</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1718 :         }</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1932 :           delete [] __ptr;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1932 :         }</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :     };</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
 <a name="144"><span class="lineNum">     144 </span>            :   /// @cond undocumented</a>
@@ -241,60 +241,60 @@
 <a name="171"><span class="lineNum">     171 </span>            :                      &quot;unique_ptr's deleter type must be a function object type&quot;</a>
 <a name="172"><span class="lineNum">     172 </span>            :                      &quot; or an lvalue reference type&quot; );</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">     137711 :       __uniq_ptr_impl() = default;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">     137739 :       __uniq_ptr_impl() = default;</span></a>
 <a name="175"><span class="lineNum">     175 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     140467 :       __uniq_ptr_impl(pointer __p) : _M_t() { _M_ptr() = __p; }</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     147510 :       __uniq_ptr_impl(pointer __p) : _M_t() { _M_ptr() = __p; }</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            :       template&lt;typename _Del&gt;</a>
 <a name="179"><span class="lineNum">     179 </span>            :         _GLIBCXX23_CONSTEXPR</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       2078 :         __uniq_ptr_impl(pointer __p, _Del&amp;&amp; __d)</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       2078 :         : _M_t(__p, std::forward&lt;_Del&gt;(__d)) { }</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       2099 :         __uniq_ptr_impl(pointer __p, _Del&amp;&amp; __d)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">       2099 :         : _M_t(__p, std::forward&lt;_Del&gt;(__d)) { }</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       1837 :       __uniq_ptr_impl(__uniq_ptr_impl&amp;&amp; __u) noexcept</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       1837 :       : _M_t(std::move(__u._M_t))</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       1837 :       { __u._M_ptr() = nullptr; }</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       2721 :       __uniq_ptr_impl(__uniq_ptr_impl&amp;&amp; __u) noexcept</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       2721 :       : _M_t(std::move(__u._M_t))</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       2721 :       { __u._M_ptr() = nullptr; }</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     136311 :       __uniq_ptr_impl&amp; operator=(__uniq_ptr_impl&amp;&amp; __u) noexcept</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     136329 :       __uniq_ptr_impl&amp; operator=(__uniq_ptr_impl&amp;&amp; __u) noexcept</span></a>
 <a name="190"><span class="lineNum">     190 </span>            :       {</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     272622 :         reset(__u.release());</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     136311 :         _M_deleter() = std::forward&lt;_Dp&gt;(__u._M_deleter());</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     136311 :         return *this;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     272658 :         reset(__u.release());</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     136329 :         _M_deleter() = std::forward&lt;_Dp&gt;(__u._M_deleter());</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     136329 :         return *this;</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :       }</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
 <a name="196"><span class="lineNum">     196 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">     146244 :       pointer&amp;   _M_ptr() noexcept { return std::get&lt;0&gt;(_M_t); }</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">     149070 :       pointer&amp;   _M_ptr() noexcept { return std::get&lt;0&gt;(_M_t); }</span></a>
 <a name="198"><span class="lineNum">     198 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">    6943071 :       pointer    _M_ptr() const noexcept { return std::get&lt;0&gt;(_M_t); }</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">    6668395 :       pointer    _M_ptr() const noexcept { return std::get&lt;0&gt;(_M_t); }</span></a>
 <a name="200"><span class="lineNum">     200 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       6806 :       _Dp&amp;       _M_deleter() noexcept { return std::get&lt;1&gt;(_M_t); }</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       9782 :       _Dp&amp;       _M_deleter() noexcept { return std::get&lt;1&gt;(_M_t); }</span></a>
 <a name="202"><span class="lineNum">     202 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="203"><span class="lineNum">     203 </span>            :       const _Dp&amp; _M_deleter() const noexcept { return std::get&lt;1&gt;(_M_t); }</a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
 <a name="205"><span class="lineNum">     205 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">     136311 :       void reset(pointer __p) noexcept</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">     136329 :       void reset(pointer __p) noexcept</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :       {</a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">     136311 :         const pointer __old_p = _M_ptr();</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">     136311 :         _M_ptr() = __p;</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">     136311 :         if (__old_p)</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">     136329 :         const pointer __old_p = _M_ptr();</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">     136329 :         _M_ptr() = __p;</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">     136329 :         if (__old_p)</span></a>
 <a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :           _M_deleter()(__old_p);</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :       }</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     138653 :       pointer release() noexcept</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">     138783 :       pointer release() noexcept</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :       {</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">     138661 :         pointer __p = _M_ptr();</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">     136583 :         _M_ptr() = nullptr;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">     138807 :         pointer __p = _M_ptr();</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">     136708 :         _M_ptr() = nullptr;</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :         return __p;</a>
 <a name="220"><span class="lineNum">     220 </span>            :       }</a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
 <a name="222"><span class="lineNum">     222 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="223"><span class="lineNum">     223 </span>            :       void</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       1400 :       swap(__uniq_ptr_impl&amp; __rhs) noexcept</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       1410 :       swap(__uniq_ptr_impl&amp; __rhs) noexcept</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :       {</a>
 <a name="226"><span class="lineNum">     226 </span>            :         using std::swap;</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       1400 :         swap(this-&gt;_M_ptr(), __rhs._M_ptr());</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       1410 :         swap(this-&gt;_M_ptr(), __rhs._M_ptr());</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :         swap(this-&gt;_M_deleter(), __rhs._M_deleter());</a>
 <a name="229"><span class="lineNum">     229 </span>            :       }</a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
@@ -308,9 +308,9 @@
 <a name="238"><span class="lineNum">     238 </span>            :             bool = is_move_assignable&lt;_Dp&gt;::value&gt;</a>
 <a name="239"><span class="lineNum">     239 </span>            :     struct __uniq_ptr_data : __uniq_ptr_impl&lt;_Tp, _Dp&gt;</a>
 <a name="240"><span class="lineNum">     240 </span>            :     {</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">     276552 :       using __uniq_ptr_impl&lt;_Tp, _Dp&gt;::__uniq_ptr_impl;</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       1837 :       __uniq_ptr_data(__uniq_ptr_data&amp;&amp;) = default;</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">     136311 :       __uniq_ptr_data&amp; operator=(__uniq_ptr_data&amp;&amp;) = default;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">     283618 :       using __uniq_ptr_impl&lt;_Tp, _Dp&gt;::__uniq_ptr_impl;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       2721 :       __uniq_ptr_data(__uniq_ptr_data&amp;&amp;) = default;</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">     136329 :       __uniq_ptr_data&amp; operator=(__uniq_ptr_data&amp;&amp;) = default;</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :     };</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
 <a name="246"><span class="lineNum">     246 </span>            :   template &lt;typename _Tp, typename _Dp&gt;</a>
@@ -371,8 +371,8 @@
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            :       /// Default constructor, creates a unique_ptr that owns nothing.</a>
 <a name="303"><span class="lineNum">     303 </span>            :       template&lt;typename _Del = _Dp, typename = _DeleterConstraint&lt;_Del&gt;&gt;</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">     137711 :         constexpr unique_ptr() noexcept</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">     137711 :         : _M_t()</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">     137739 :         constexpr unique_ptr() noexcept</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">     137739 :         : _M_t()</span></a>
 <a name="306"><span class="lineNum">     306 </span>            :         { }</a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
 <a name="308"><span class="lineNum">     308 </span>            :       /** Takes ownership of a pointer.</a>
@@ -384,8 +384,8 @@
 <a name="314"><span class="lineNum">     314 </span>            :       template&lt;typename _Del = _Dp, typename = _DeleterConstraint&lt;_Del&gt;&gt;</a>
 <a name="315"><span class="lineNum">     315 </span>            :         _GLIBCXX23_CONSTEXPR</a>
 <a name="316"><span class="lineNum">     316 </span>            :         explicit</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">     139823 :         unique_ptr(pointer __p) noexcept</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">     138831 :         : _M_t(__p)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">     145578 :         unique_ptr(pointer __p) noexcept</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">     144540 :         : _M_t(__p)</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :         { }</a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
 <a name="321"><span class="lineNum">     321 </span>            :       /** Takes ownership of a pointer.</a>
@@ -433,7 +433,7 @@
 <a name="363"><span class="lineNum">     363 </span>            :       // Move constructors.</a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span>            :       /// Move constructor.</a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       1400 :       unique_ptr(unique_ptr&amp;&amp;) = default;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       1410 :       unique_ptr(unique_ptr&amp;&amp;) = default;</span></a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span>            :       /** @brief Converting constructor from another type</a>
 <a name="369"><span class="lineNum">     369 </span>            :        *</a>
@@ -447,8 +447,8 @@
 <a name="377"><span class="lineNum">     377 </span>            :                                is_same&lt;_Ep, _Dp&gt;,</a>
 <a name="378"><span class="lineNum">     378 </span>            :                                is_convertible&lt;_Ep, _Dp&gt;&gt;&gt;&gt;</a>
 <a name="379"><span class="lineNum">     379 </span>            :         _GLIBCXX23_CONSTEXPR</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">       2078 :         unique_ptr(unique_ptr&lt;_Up, _Ep&gt;&amp;&amp; __u) noexcept</span></a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">       2078 :         : _M_t(__u.release(), std::forward&lt;_Ep&gt;(__u.get_deleter()))</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">       2099 :         unique_ptr(unique_ptr&lt;_Up, _Ep&gt;&amp;&amp; __u) noexcept</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">       2099 :         : _M_t(__u.release(), std::forward&lt;_Ep&gt;(__u.get_deleter()))</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :         { }</a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
 <a name="384"><span class="lineNum">     384 </span>            : #if _GLIBCXX_USE_DEPRECATED</a>
@@ -465,15 +465,15 @@
 <a name="395"><span class="lineNum">     395 </span>            : #if __cplusplus &gt; 202002L &amp;&amp; __cpp_constexpr_dynamic_alloc</a>
 <a name="396"><span class="lineNum">     396 </span>            :       constexpr</a>
 <a name="397"><span class="lineNum">     397 </span>            : #endif</a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">     287232 :       ~unique_ptr() noexcept</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">     289272 :       ~unique_ptr() noexcept</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :       {</a>
 <a name="400"><span class="lineNum">     400 </span>            :         static_assert(__is_invocable&lt;deleter_type&amp;, pointer&gt;::value,</a>
 <a name="401"><span class="lineNum">     401 </span>            :                       &quot;unique_ptr's deleter must be invocable with a pointer&quot;);</a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">     287232 :         auto&amp; __ptr = _M_t._M_ptr();</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">     287232 :         if (__ptr != nullptr)</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">     141316 :           get_deleter()(std::move(__ptr));</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">     289272 :         auto&amp; __ptr = _M_t._M_ptr();</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">     289272 :         if (__ptr != nullptr)</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">     144095 :           get_deleter()(std::move(__ptr));</span></a>
 <a name="405"><span class="lineNum">     405 </span>            :         __ptr = pointer();</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">     286158 :       }</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">     289272 :       }</span></a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            :       // Assignment.</a>
 <a name="409"><span class="lineNum">     409 </span>            : </a>
@@ -481,7 +481,7 @@
 <a name="411"><span class="lineNum">     411 </span>            :        *</a>
 <a name="412"><span class="lineNum">     412 </span>            :        * Invokes the deleter if this object owns a pointer.</a>
 <a name="413"><span class="lineNum">     413 </span>            :        */</a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">     136311 :       unique_ptr&amp; operator=(unique_ptr&amp;&amp;) = default;</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">     136329 :       unique_ptr&amp; operator=(unique_ptr&amp;&amp;) = default;</span></a>
 <a name="415"><span class="lineNum">     415 </span>            : </a>
 <a name="416"><span class="lineNum">     416 </span>            :       /** @brief Assignment from another type.</a>
 <a name="417"><span class="lineNum">     417 </span>            :        *</a>
@@ -518,32 +518,32 @@
 <a name="448"><span class="lineNum">     448 </span>            :       /// Dereference the stored pointer.</a>
 <a name="449"><span class="lineNum">     449 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="450"><span class="lineNum">     450 </span>            :       typename add_lvalue_reference&lt;element_type&gt;::type</a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">        700 :       operator*() const noexcept(noexcept(*std::declval&lt;pointer&gt;()))</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">        705 :       operator*() const noexcept(noexcept(*std::declval&lt;pointer&gt;()))</span></a>
 <a name="452"><span class="lineNum">     452 </span>            :       {</a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">        700 :         __glibcxx_assert(get() != pointer());</span></a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">        700 :         return *get();</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">        705 :         __glibcxx_assert(get() != pointer());</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">        705 :         return *get();</span></a>
 <a name="455"><span class="lineNum">     455 </span>            :       }</a>
 <a name="456"><span class="lineNum">     456 </span>            : </a>
 <a name="457"><span class="lineNum">     457 </span>            :       /// Return the stored pointer.</a>
 <a name="458"><span class="lineNum">     458 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="459"><span class="lineNum">     459 </span>            :       pointer</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">      16611 :       operator-&gt;() const noexcept</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">      16640 :       operator-&gt;() const noexcept</span></a>
 <a name="461"><span class="lineNum">     461 </span>            :       {</a>
 <a name="462"><span class="lineNum">     462 </span>            :         _GLIBCXX_DEBUG_PEDASSERT(get() != pointer());</a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">    3259368 :         return get();</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">    3260372 :         return get();</span></a>
 <a name="464"><span class="lineNum">     464 </span>            :       }</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span>            :       /// Return the stored pointer.</a>
 <a name="467"><span class="lineNum">     467 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="468"><span class="lineNum">     468 </span>            :       pointer</a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">    3401478 :       get() const noexcept</span></a>
-<a name="470"><span class="lineNum">     470 </span><span class="lineCov">    3400141 :       { return _M_t._M_ptr(); }</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">    3402736 :       get() const noexcept</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">    3401364 :       { return _M_t._M_ptr(); }</span></a>
 <a name="471"><span class="lineNum">     471 </span>            : </a>
 <a name="472"><span class="lineNum">     472 </span>            :       /// Return a reference to the stored deleter.</a>
 <a name="473"><span class="lineNum">     473 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="474"><span class="lineNum">     474 </span>            :       deleter_type&amp;</a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">     143555 :       get_deleter() noexcept</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">     143555 :       { return _M_t._M_deleter(); }</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">     146356 :       get_deleter() noexcept</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">     146356 :       { return _M_t._M_deleter(); }</span></a>
 <a name="477"><span class="lineNum">     477 </span>            : </a>
 <a name="478"><span class="lineNum">     478 </span>            :       /// Return a reference to the stored deleter.</a>
 <a name="479"><span class="lineNum">     479 </span>            :       _GLIBCXX23_CONSTEXPR</a>
@@ -553,16 +553,16 @@
 <a name="483"><span class="lineNum">     483 </span>            : </a>
 <a name="484"><span class="lineNum">     484 </span>            :       /// Return @c true if the stored pointer is not null.</a>
 <a name="485"><span class="lineNum">     485 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">    3244094 :       explicit operator bool() const noexcept</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">    3244094 :       { return get() == pointer() ? false : true; }</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">    3245104 :       explicit operator bool() const noexcept</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">    3245104 :       { return get() == pointer() ? false : true; }</span></a>
 <a name="488"><span class="lineNum">     488 </span>            : </a>
 <a name="489"><span class="lineNum">     489 </span>            :       // Modifiers.</a>
 <a name="490"><span class="lineNum">     490 </span>            : </a>
 <a name="491"><span class="lineNum">     491 </span>            :       /// Release ownership of any stored pointer.</a>
 <a name="492"><span class="lineNum">     492 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="493"><span class="lineNum">     493 </span>            :       pointer</a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       2350 :       release() noexcept</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       2350 :       { return _M_t.release(); }</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">       2478 :       release() noexcept</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">       2478 :       { return _M_t.release(); }</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            :       /** @brief Replace the stored pointer.</a>
 <a name="498"><span class="lineNum">     498 </span>            :        *</a>
@@ -582,10 +582,10 @@
 <a name="512"><span class="lineNum">     512 </span>            :       /// Exchange the pointer and deleter with another object.</a>
 <a name="513"><span class="lineNum">     513 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="514"><span class="lineNum">     514 </span>            :       void</a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">       1400 :       swap(unique_ptr&amp; __u) noexcept</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">       1410 :       swap(unique_ptr&amp; __u) noexcept</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :       {</a>
 <a name="517"><span class="lineNum">     517 </span>            :         static_assert(__is_swappable&lt;_Dp&gt;::value, &quot;deleter must be swappable&quot;);</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">       1400 :         _M_t.swap(__u._M_t);</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">       1410 :         _M_t.swap(__u._M_t);</span></a>
 <a name="519"><span class="lineNum">     519 </span>            :       }</a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
 <a name="521"><span class="lineNum">     521 </span>            :       // Disable copy from lvalue.</a>
@@ -670,8 +670,8 @@
 <a name="600"><span class="lineNum">     600 </span>            :                  __safe_conversion_raw&lt;_Up&gt;::value, bool&gt;::type&gt;</a>
 <a name="601"><span class="lineNum">     601 </span>            :         _GLIBCXX23_CONSTEXPR</a>
 <a name="602"><span class="lineNum">     602 </span>            :         explicit</a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">        644 :         unique_ptr(_Up __p) noexcept</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        483 :         : _M_t(__p)</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">       1932 :         unique_ptr(_Up __p) noexcept</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">       1449 :         : _M_t(__p)</span></a>
 <a name="605"><span class="lineNum">     605 </span>            :         { }</a>
 <a name="606"><span class="lineNum">     606 </span>            : </a>
 <a name="607"><span class="lineNum">     607 </span>            :       /** Takes ownership of a pointer.</a>
@@ -715,7 +715,7 @@
 <a name="645"><span class="lineNum">     645 </span>            :                                  _DelUnref&amp;&amp;&gt;) = delete;</a>
 <a name="646"><span class="lineNum">     646 </span>            : </a>
 <a name="647"><span class="lineNum">     647 </span>            :       /// Move constructor.</a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineCov">        437 :       unique_ptr(unique_ptr&amp;&amp;) = default;</span></a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">       1311 :       unique_ptr(unique_ptr&amp;&amp;) = default;</span></a>
 <a name="649"><span class="lineNum">     649 </span>            : </a>
 <a name="650"><span class="lineNum">     650 </span>            :       /// Creates a unique_ptr that owns nothing.</a>
 <a name="651"><span class="lineNum">     651 </span>            :       template&lt;typename _Del = _Dp, typename = _DeleterConstraint&lt;_Del&gt;&gt;</a>
@@ -737,13 +737,13 @@
 <a name="667"><span class="lineNum">     667 </span>            : #if __cplusplus &gt; 202002L &amp;&amp; __cpp_constexpr_dynamic_alloc</a>
 <a name="668"><span class="lineNum">     668 </span>            :       constexpr</a>
 <a name="669"><span class="lineNum">     669 </span>            : #endif</a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">       3466 :       ~unique_ptr()</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">       7176 :       ~unique_ptr()</span></a>
 <a name="671"><span class="lineNum">     671 </span>            :       {</a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">       2155 :         auto&amp; __ptr = _M_t._M_ptr();</span></a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">       2155 :         if (__ptr != nullptr)</span></a>
-<a name="674"><span class="lineNum">     674 </span><span class="lineCov">       1718 :           get_deleter()(__ptr);</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">       3243 :         auto&amp; __ptr = _M_t._M_ptr();</span></a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">       3243 :         if (__ptr != nullptr)</span></a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">       1932 :           get_deleter()(__ptr);</span></a>
 <a name="675"><span class="lineNum">     675 </span>            :         __ptr = pointer();</a>
-<a name="676"><span class="lineNum">     676 </span><span class="lineCov">       1994 :       }</span></a>
+<a name="676"><span class="lineNum">     676 </span><span class="lineCov">       2760 :       }</span></a>
 <a name="677"><span class="lineNum">     677 </span>            : </a>
 <a name="678"><span class="lineNum">     678 </span>            :       // Assignment.</a>
 <a name="679"><span class="lineNum">     679 </span>            : </a>
@@ -789,23 +789,23 @@
 <a name="719"><span class="lineNum">     719 </span>            :       /// Access an element of owned array.</a>
 <a name="720"><span class="lineNum">     720 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="721"><span class="lineNum">     721 </span>            :       typename std::add_lvalue_reference&lt;element_type&gt;::type</a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">     147943 :       operator[](size_t __i) const</span></a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       8841 :       operator[](size_t __i) const</span></a>
 <a name="723"><span class="lineNum">     723 </span>            :       {</a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineCov">     147943 :         __glibcxx_assert(get() != pointer());</span></a>
-<a name="725"><span class="lineNum">     725 </span><span class="lineCov">     147943 :         return get()[__i];</span></a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">       8841 :         __glibcxx_assert(get() != pointer());</span></a>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">       8841 :         return get()[__i];</span></a>
 <a name="726"><span class="lineNum">     726 </span>            :       }</a>
 <a name="727"><span class="lineNum">     727 </span>            : </a>
 <a name="728"><span class="lineNum">     728 </span>            :       /// Return the stored pointer.</a>
 <a name="729"><span class="lineNum">     729 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="730"><span class="lineNum">     730 </span>            :       pointer</a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">     150193 :       get() const noexcept</span></a>
-<a name="732"><span class="lineNum">     732 </span><span class="lineCov">     148521 :       { return _M_t._M_ptr(); }</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">      12381 :       get() const noexcept</span></a>
+<a name="732"><span class="lineNum">     732 </span><span class="lineCov">      10587 :       { return _M_t._M_ptr(); }</span></a>
 <a name="733"><span class="lineNum">     733 </span>            : </a>
 <a name="734"><span class="lineNum">     734 </span>            :       /// Return a reference to the stored deleter.</a>
 <a name="735"><span class="lineNum">     735 </span>            :       _GLIBCXX23_CONSTEXPR</a>
 <a name="736"><span class="lineNum">     736 </span>            :       deleter_type&amp;</a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">       1718 :       get_deleter() noexcept</span></a>
-<a name="738"><span class="lineNum">     738 </span><span class="lineCov">       1718 :       { return _M_t._M_deleter(); }</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">       1932 :       get_deleter() noexcept</span></a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineCov">       1932 :       { return _M_t._M_deleter(); }</span></a>
 <a name="739"><span class="lineNum">     739 </span>            : </a>
 <a name="740"><span class="lineNum">     740 </span>            :       /// Return a reference to the stored deleter.</a>
 <a name="741"><span class="lineNum">     741 </span>            :       _GLIBCXX23_CONSTEXPR</a>
@@ -815,8 +815,8 @@
 <a name="745"><span class="lineNum">     745 </span>            : </a>
 <a name="746"><span class="lineNum">     746 </span>            :       /// Return @c true if the stored pointer is not null.</a>
 <a name="747"><span class="lineNum">     747 </span>            :       _GLIBCXX23_CONSTEXPR</a>
-<a name="748"><span class="lineNum">     748 </span><span class="lineCov">       1672 :       explicit operator bool() const noexcept</span></a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">       1672 :       { return get() == pointer() ? false : true; }</span></a>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">       1794 :       explicit operator bool() const noexcept</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">       1794 :       { return get() == pointer() ? false : true; }</span></a>
 <a name="750"><span class="lineNum">     750 </span>            : </a>
 <a name="751"><span class="lineNum">     751 </span>            :       // Modifiers.</a>
 <a name="752"><span class="lineNum">     752 </span>            : </a>
@@ -1136,8 +1136,8 @@
 <a name="1066"><span class="lineNum">    1066 </span>            :   template&lt;typename _Tp, typename... _Args&gt;</a>
 <a name="1067"><span class="lineNum">    1067 </span>            :     _GLIBCXX23_CONSTEXPR</a>
 <a name="1068"><span class="lineNum">    1068 </span>            :     inline __detail::__unique_ptr_t&lt;_Tp&gt;</a>
-<a name="1069"><span class="lineNum">    1069 </span><span class="lineCov">        161 :     make_unique(_Args&amp;&amp;... __args)</span></a>
-<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">        161 :     { return unique_ptr&lt;_Tp&gt;(new _Tp(std::forward&lt;_Args&gt;(__args)...)); }</span></a>
+<a name="1069"><span class="lineNum">    1069 </span><span class="lineCov">        162 :     make_unique(_Args&amp;&amp;... __args)</span></a>
+<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">        162 :     { return unique_ptr&lt;_Tp&gt;(new _Tp(std::forward&lt;_Args&gt;(__args)...)); }</span></a>
 <a name="1071"><span class="lineNum">    1071 </span>            : </a>
 <a name="1072"><span class="lineNum">    1072 </span>            :   /** Create an array owned by a `unique_ptr`.</a>
 <a name="1073"><span class="lineNum">    1073 </span>            :    *  @tparam _Tp An array type of unknown bound, such as `U[]`.</a>

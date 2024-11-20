@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - ndimage/src/nd_image.c</title>
+  <title>LCOV - lcov.info - ndimage/src/nd_image.c</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">582</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">33</td>
@@ -153,36 +153,36 @@
 <a name="83"><span class="lineNum">      83 </span>            : </a>
 <a name="84"><span class="lineNum">      84 </span>            : /* Converts a Python array-like object into a behaved input array. */</a>
 <a name="85"><span class="lineNum">      85 </span>            : static int</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      37810 : NI_ObjectToInputArray(PyObject *object, PyArrayObject **array)</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">      37816 : NI_ObjectToInputArray(PyObject *object, PyArrayObject **array)</span></a>
 <a name="87"><span class="lineNum">      87 </span>            : {</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      37810 :     int flags = NPY_ARRAY_ALIGNED | NPY_ARRAY_NOTSWAPPED;</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">      37810 :     *array = (PyArrayObject *)PyArray_CheckFromAny(object, NULL, 0, 0, flags,</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">      37816 :     int flags = NPY_ARRAY_ALIGNED | NPY_ARRAY_NOTSWAPPED;</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">      37816 :     *array = (PyArrayObject *)PyArray_CheckFromAny(object, NULL, 0, 0, flags,</span></a>
 <a name="90"><span class="lineNum">      90 </span>            :                                                    NULL);</a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      37810 :     return *array != NULL;</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">      37816 :     return *array != NULL;</span></a>
 <a name="92"><span class="lineNum">      92 </span>            : }</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span>            : /* Like NI_ObjectToInputArray, but with special handling for Py_None. */</a>
 <a name="95"><span class="lineNum">      95 </span>            : static int</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">      12378 : NI_ObjectToOptionalInputArray(PyObject *object, PyArrayObject **array)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">      12382 : NI_ObjectToOptionalInputArray(PyObject *object, PyArrayObject **array)</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : {</a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">      12378 :     if (object == Py_None) {</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       7423 :         *array = NULL;</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       7423 :         return 1;</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">      12382 :     if (object == Py_None) {</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       7425 :         *array = NULL;</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">       7425 :         return 1;</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :     }</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       4955 :     return NI_ObjectToInputArray(object, array);</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       4957 :     return NI_ObjectToInputArray(object, array);</span></a>
 <a name="103"><span class="lineNum">     103 </span>            : }</a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
 <a name="105"><span class="lineNum">     105 </span>            : /* Converts a Python array-like object into a behaved output array. */</a>
 <a name="106"><span class="lineNum">     106 </span>            : static int</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      22086 : NI_ObjectToOutputArray(PyObject *object, PyArrayObject **array)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      22090 : NI_ObjectToOutputArray(PyObject *object, PyArrayObject **array)</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : {</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      22086 :     int flags = NPY_ARRAY_BEHAVED_NS | NPY_ARRAY_WRITEBACKIFCOPY;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">      22090 :     int flags = NPY_ARRAY_BEHAVED_NS | NPY_ARRAY_WRITEBACKIFCOPY;</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :     /*</a>
 <a name="111"><span class="lineNum">     111 </span>            :      * This would also be caught by the PyArray_CheckFromAny call, but</a>
 <a name="112"><span class="lineNum">     112 </span>            :      * we check it explicitly here to provide a saner error message.</a>
 <a name="113"><span class="lineNum">     113 </span>            :      */</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      22086 :     if (PyArray_Check(object) &amp;&amp;</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      22086 :             !PyArray_ISWRITEABLE((PyArrayObject *)object)) {</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">      22090 :     if (PyArray_Check(object) &amp;&amp;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">      22090 :             !PyArray_ISWRITEABLE((PyArrayObject *)object)) {</span></a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :         PyErr_SetString(PyExc_ValueError, &quot;output array is read-only.&quot;);</span></a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :     return 0;</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :     }</a>
@@ -194,9 +194,9 @@
 <a name="124"><span class="lineNum">     124 </span>            :      * do NPY_ARRAY_UPDATEIFCOPY right, so we let NumPy do it for us</a>
 <a name="125"><span class="lineNum">     125 </span>            :      * and pay the performance price.</a>
 <a name="126"><span class="lineNum">     126 </span>            :      */</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      22086 :     *array = (PyArrayObject *)PyArray_CheckFromAny(object, NULL, 0, 0, flags,</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      22090 :     *array = (PyArrayObject *)PyArray_CheckFromAny(object, NULL, 0, 0, flags,</span></a>
 <a name="128"><span class="lineNum">     128 </span>            :                                                    NULL);</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      22086 :     return *array != NULL;</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">      22090 :     return *array != NULL;</span></a>
 <a name="130"><span class="lineNum">     130 </span>            : }</a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <a name="132"><span class="lineNum">     132 </span>            : /* Like NI_ObjectToOutputArray, but with special handling for Py_None. */</a>
@@ -702,23 +702,23 @@
 <a name="632"><span class="lineNum">     632 </span><span class="lineCov">          8 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
 <a name="633"><span class="lineNum">     633 </span>            : }</a>
 <a name="634"><span class="lineNum">     634 </span>            : </a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       5676 : static PyObject *Py_SplineFilter1D(PyObject *obj, PyObject *args)</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       5678 : static PyObject *Py_SplineFilter1D(PyObject *obj, PyObject *args)</span></a>
 <a name="636"><span class="lineNum">     636 </span>            : {</a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       5676 :     PyArrayObject *input = NULL, *output = NULL;</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">       5676 :     int axis, order, mode;</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">       5678 :     PyArrayObject *input = NULL, *output = NULL;</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">       5678 :     int axis, order, mode;</span></a>
 <a name="639"><span class="lineNum">     639 </span>            : </a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       5676 :     if (!PyArg_ParseTuple(args, &quot;O&amp;iiO&amp;i&quot;,</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">       5678 :     if (!PyArg_ParseTuple(args, &quot;O&amp;iiO&amp;i&quot;,</span></a>
 <a name="641"><span class="lineNum">     641 </span>            :                           NI_ObjectToInputArray, &amp;input, &amp;order, &amp;axis,</a>
 <a name="642"><span class="lineNum">     642 </span>            :                           NI_ObjectToOutputArray, &amp;output, &amp;mode))</a>
 <a name="643"><span class="lineNum">     643 </span><span class="lineNoCov">          0 :         goto exit;</span></a>
 <a name="644"><span class="lineNum">     644 </span>            : </a>
-<a name="645"><span class="lineNum">     645 </span><span class="lineCov">       5676 :     NI_SplineFilter1D(input, order, axis, mode, output);</span></a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       5676 :     PyArray_ResolveWritebackIfCopy(output);</span></a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">       5678 :     NI_SplineFilter1D(input, order, axis, mode, output);</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">       5678 :     PyArray_ResolveWritebackIfCopy(output);</span></a>
 <a name="647"><span class="lineNum">     647 </span>            : </a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineCov">       5676 : exit:</span></a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">       5676 :     Py_XDECREF(input);</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       5676 :     Py_XDECREF(output);</span></a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineCov">       5676 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">       5678 : exit:</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">       5678 :     Py_XDECREF(input);</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       5678 :     Py_XDECREF(output);</span></a>
+<a name="651"><span class="lineNum">     651 </span><span class="lineCov">       5678 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
 <a name="652"><span class="lineNum">     652 </span>            : }</a>
 <a name="653"><span class="lineNum">     653 </span>            : </a>
 <a name="654"><span class="lineNum">     654 </span><span class="lineCov">     114166 : static int Py_Map(npy_intp *ocoor, double* icoor, int orank, int irank,</span></a>
@@ -854,14 +854,14 @@
 <a name="784"><span class="lineNum">     784 </span><span class="lineCov">       3253 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
 <a name="785"><span class="lineNum">     785 </span>            : }</a>
 <a name="786"><span class="lineNum">     786 </span>            : </a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">        565 : static PyObject *Py_ZoomShift(PyObject *obj, PyObject *args)</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">        567 : static PyObject *Py_ZoomShift(PyObject *obj, PyObject *args)</span></a>
 <a name="788"><span class="lineNum">     788 </span>            : {</a>
-<a name="789"><span class="lineNum">     789 </span><span class="lineCov">        565 :     PyArrayObject *input = NULL, *output = NULL, *shift = NULL;</span></a>
-<a name="790"><span class="lineNum">     790 </span><span class="lineCov">        565 :     PyArrayObject *zoom = NULL;</span></a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">        565 :     int mode, order, nprepad, grid_mode;</span></a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">        565 :     double cval;</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">        567 :     PyArrayObject *input = NULL, *output = NULL, *shift = NULL;</span></a>
+<a name="790"><span class="lineNum">     790 </span><span class="lineCov">        567 :     PyArrayObject *zoom = NULL;</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">        567 :     int mode, order, nprepad, grid_mode;</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">        567 :     double cval;</span></a>
 <a name="793"><span class="lineNum">     793 </span>            : </a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">        565 :     if (!PyArg_ParseTuple(args, &quot;O&amp;O&amp;O&amp;O&amp;iidii&quot;,</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">        567 :     if (!PyArg_ParseTuple(args, &quot;O&amp;O&amp;O&amp;O&amp;iidii&quot;,</span></a>
 <a name="795"><span class="lineNum">     795 </span>            :                           NI_ObjectToInputArray, &amp;input,</a>
 <a name="796"><span class="lineNum">     796 </span>            :                           NI_ObjectToOptionalInputArray, &amp;zoom,</a>
 <a name="797"><span class="lineNum">     797 </span>            :                           NI_ObjectToOptionalInputArray, &amp;shift,</a>
@@ -869,16 +869,16 @@
 <a name="799"><span class="lineNum">     799 </span>            :                           &amp;order, &amp;mode, &amp;cval, &amp;nprepad, &amp;grid_mode))</a>
 <a name="800"><span class="lineNum">     800 </span><span class="lineNoCov">          0 :         goto exit;</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">        565 :     NI_ZoomShift(input, zoom, shift, output, order, (NI_ExtendMode)mode, cval,</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">        567 :     NI_ZoomShift(input, zoom, shift, output, order, (NI_ExtendMode)mode, cval,</span></a>
 <a name="803"><span class="lineNum">     803 </span>            :                  nprepad, grid_mode);</a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">        565 :     PyArray_ResolveWritebackIfCopy(output);</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">        567 :     PyArray_ResolveWritebackIfCopy(output);</span></a>
 <a name="805"><span class="lineNum">     805 </span>            : </a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">        565 : exit:</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">        565 :     Py_XDECREF(input);</span></a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineCov">        565 :     Py_XDECREF(shift);</span></a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        565 :     Py_XDECREF(zoom);</span></a>
-<a name="810"><span class="lineNum">     810 </span><span class="lineCov">        565 :     Py_XDECREF(output);</span></a>
-<a name="811"><span class="lineNum">     811 </span><span class="lineCov">        565 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">        567 : exit:</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">        567 :     Py_XDECREF(input);</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">        567 :     Py_XDECREF(shift);</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        567 :     Py_XDECREF(zoom);</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">        567 :     Py_XDECREF(output);</span></a>
+<a name="811"><span class="lineNum">     811 </span><span class="lineCov">        567 :     return PyErr_Occurred() ? NULL : Py_BuildValue(&quot;&quot;);</span></a>
 <a name="812"><span class="lineNum">     812 </span>            : }</a>
 <a name="813"><span class="lineNum">     813 </span>            : </a>
 <a name="814"><span class="lineNum">     814 </span><span class="lineCov">         11 : static PyObject *Py_FindObjects(PyObject *obj, PyObject *args)</span></a>
@@ -1452,13 +1452,13 @@
 <a name="1382"><span class="lineNum">    1382 </span>            : };</a>
 <a name="1383"><span class="lineNum">    1383 </span>            : </a>
 <a name="1384"><span class="lineNum">    1384 </span>            : PyMODINIT_FUNC</a>
-<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">          1 : PyInit__nd_image(void)</span></a>
+<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">          3 : PyInit__nd_image(void)</span></a>
 <a name="1386"><span class="lineNum">    1386 </span>            : {</a>
-<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">          1 :     PyObject *module;</span></a>
+<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">          3 :     PyObject *module;</span></a>
 <a name="1388"><span class="lineNum">    1388 </span>            : </a>
-<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">          1 :     import_array();</span></a>
-<a name="1390"><span class="lineNum">    1390 </span><span class="lineCov">          1 :     module = PyModule_Create(&amp;moduledef);</span></a>
-<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">          1 :     if (module == NULL) {</span></a>
+<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">          3 :     import_array();</span></a>
+<a name="1390"><span class="lineNum">    1390 </span><span class="lineCov">          3 :     module = PyModule_Create(&amp;moduledef);</span></a>
+<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">          3 :     if (module == NULL) {</span></a>
 <a name="1392"><span class="lineNum">    1392 </span>            :         return module;</a>
 <a name="1393"><span class="lineNum">    1393 </span>            :     }</a>
 <a name="1394"><span class="lineNum">    1394 </span>            : </a>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_dsolve/SuperLU/SRC/dmemory.c</title>
+  <title>LCOV - lcov.info - sparse/linalg/_dsolve/SuperLU/SRC/dmemory.c</title>
   <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">113</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -121,10 +121,10 @@
 <a name="51"><span class="lineNum">      51 </span>            :  *    lwork = 0: use system malloc;</a>
 <a name="52"><span class="lineNum">      52 </span>            :  *    lwork &gt; 0: use user-supplied work[] space.</a>
 <a name="53"><span class="lineNum">      53 </span>            :  */</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       4024 : void dSetupSpace(void *work, int_t lwork, GlobalLU_t *Glu)</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">       4030 : void dSetupSpace(void *work, int_t lwork, GlobalLU_t *Glu)</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : {</a>
 <a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :     if ( lwork == 0 ) {</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4024 :         Glu-&gt;MemModel = SYSTEM; /* malloc/free */</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">       4030 :         Glu-&gt;MemModel = SYSTEM; /* malloc/free */</span></a>
 <a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :     } else if ( lwork &gt; 0 ) {</span></a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :         Glu-&gt;MemModel = USER;   /* user provided space */</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :         Glu-&gt;stack.used = 0;</span></a>
@@ -256,40 +256,40 @@
 <a name="186"><span class="lineNum">     186 </span>            :  * &lt;/pre&gt; </a>
 <a name="187"><span class="lineNum">     187 </span>            :  */</a>
 <a name="188"><span class="lineNum">     188 </span>            : int_t</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       4024 : dLUMemInit(fact_t fact, void *work, int_t lwork, int m, int n, int_t annz,</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       4030 : dLUMemInit(fact_t fact, void *work, int_t lwork, int m, int n, int_t annz,</span></a>
 <a name="190"><span class="lineNum">     190 </span>            :           int panel_size, double fill_ratio, SuperMatrix *L, SuperMatrix *U,</a>
 <a name="191"><span class="lineNum">     191 </span>            :           GlobalLU_t *Glu, int **iwork, double **dwork)</a>
 <a name="192"><span class="lineNum">     192 </span>            : {</a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">       4024 :     int      info, iword, dword;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       4024 :     SCformat *Lstore;</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">       4024 :     NCformat *Ustore;</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       4024 :     int      *xsup, *supno;</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       4024 :     int_t    *lsub, *xlsub;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       4024 :     double   *lusup;</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       4024 :     int_t    *xlusup;</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4024 :     double   *ucol;</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       4024 :     int_t    *usub, *xusub;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4024 :     int_t    nzlmax, nzumax, nzlumax;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">       4030 :     int      info, iword, dword;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       4030 :     SCformat *Lstore;</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">       4030 :     NCformat *Ustore;</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       4030 :     int      *xsup, *supno;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       4030 :     int_t    *lsub, *xlsub;</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       4030 :     double   *lusup;</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       4030 :     int_t    *xlusup;</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       4030 :     double   *ucol;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">       4030 :     int_t    *usub, *xusub;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       4030 :     int_t    nzlmax, nzumax, nzlumax;</span></a>
 <a name="203"><span class="lineNum">     203 </span>            :     </a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       4024 :     iword     = sizeof(int);</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       4024 :     dword     = sizeof(double);</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">       4024 :     Glu-&gt;n    = n;</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4024 :     Glu-&gt;num_expansions = 0;</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       4030 :     iword     = sizeof(int);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       4030 :     dword     = sizeof(double);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">       4030 :     Glu-&gt;n    = n;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4030 :     Glu-&gt;num_expansions = 0;</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       4024 :     Glu-&gt;expanders = (ExpHeader *) SUPERLU_MALLOC( NO_MEMTYPE *</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">       4030 :     Glu-&gt;expanders = (ExpHeader *) SUPERLU_MALLOC( NO_MEMTYPE *</span></a>
 <a name="210"><span class="lineNum">     210 </span>            :                                                      sizeof(ExpHeader) );</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4024 :     if ( !Glu-&gt;expanders ) ABORT(&quot;SUPERLU_MALLOC fails for expanders&quot;);</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       4030 :     if ( !Glu-&gt;expanders ) ABORT(&quot;SUPERLU_MALLOC fails for expanders&quot;);</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :     </a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       4024 :     if ( fact != SamePattern_SameRowPerm ) {</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">       4030 :     if ( fact != SamePattern_SameRowPerm ) {</span></a>
 <a name="214"><span class="lineNum">     214 </span>            :         /* Guess for L\U factors */</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       4024 :         nzumax = nzlumax = nzlmax = fill_ratio * annz;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       4030 :         nzumax = nzlumax = nzlmax = fill_ratio * annz;</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :         //nzlmax = SUPERLU_MAX(1, fill_ratio/4.) * annz;</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       4024 :         if ( lwork == -1 ) {</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       4030 :         if ( lwork == -1 ) {</span></a>
 <a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :             return ( GluIntArray(n) * iword + TempSpace(m, panel_size)</span></a>
 <a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :                     + (nzlmax+nzumax)*iword + (nzlumax+nzumax)*dword + n );</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :         } else {</a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4024 :             dSetupSpace(work, lwork, Glu);</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       4030 :             dSetupSpace(work, lwork, Glu);</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :         }</a>
 <a name="224"><span class="lineNum">     224 </span>            :         </a>
 <a name="225"><span class="lineNum">     225 </span>            : #if ( PRNTlevel &gt;= 1 )</a>
@@ -299,12 +299,12 @@
 <a name="229"><span class="lineNum">     229 </span>            : #endif  </a>
 <a name="230"><span class="lineNum">     230 </span>            :         </a>
 <a name="231"><span class="lineNum">     231 </span>            :         /* Integer pointers for L\U factors */</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4024 :         if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4024 :             xsup   = int32Malloc(n+1);</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       4024 :             supno  = int32Malloc(n+1);</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4024 :             xlsub  = intMalloc(n+1);</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4024 :             xlusup = intMalloc(n+1);</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4024 :             xusub  = intMalloc(n+1);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       4030 :         if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4030 :             xsup   = int32Malloc(n+1);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       4030 :             supno  = int32Malloc(n+1);</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       4030 :             xlsub  = intMalloc(n+1);</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">       4030 :             xlusup = intMalloc(n+1);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">       4030 :             xusub  = intMalloc(n+1);</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :         } else {</a>
 <a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             xsup   = (int *)duser_malloc((n+1) * iword, HEAD, Glu);</span></a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :             supno  = (int *)duser_malloc((n+1) * iword, HEAD, Glu);</span></a>
@@ -313,12 +313,12 @@
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :             xusub  = duser_malloc((n+1) * iword, HEAD, Glu);</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :         }</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">       4024 :         lusup = (double *) dexpand( &amp;nzlumax, LUSUP, 0, 0, Glu );</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4024 :         ucol  = (double *) dexpand( &amp;nzumax, UCOL, 0, 0, Glu );</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">       4024 :         lsub  = (int_t *) dexpand( &amp;nzlmax, LSUB, 0, 0, Glu );</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4024 :         usub  = (int_t *) dexpand( &amp;nzumax, USUB, 0, 1, Glu );</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">       4030 :         lusup = (double *) dexpand( &amp;nzlumax, LUSUP, 0, 0, Glu );</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">       4030 :         ucol  = (double *) dexpand( &amp;nzumax, UCOL, 0, 0, Glu );</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">       4030 :         lsub  = (int_t *) dexpand( &amp;nzlmax, LSUB, 0, 0, Glu );</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       4030 :         usub  = (int_t *) dexpand( &amp;nzumax, USUB, 0, 1, Glu );</span></a>
 <a name="250"><span class="lineNum">     250 </span>            : </a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4024 :         while ( !lusup || !ucol || !lsub || !usub ) {</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       4030 :         while ( !lusup || !ucol || !lsub || !usub ) {</span></a>
 <a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :             if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :                 SUPERLU_FREE(lusup); </span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :                 SUPERLU_FREE(ucol); </span></a>
@@ -380,25 +380,25 @@
 <a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         Glu-&gt;expanders[UCOL].size         = nzumax;  </span></a>
 <a name="311"><span class="lineNum">     311 </span>            :     }</a>
 <a name="312"><span class="lineNum">     312 </span>            : </a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">       4024 :     Glu-&gt;xsup    = xsup;</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       4024 :     Glu-&gt;supno   = supno;</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4024 :     Glu-&gt;lsub    = lsub;</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       4024 :     Glu-&gt;xlsub   = xlsub;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       4024 :     Glu-&gt;lusup   = (void *) lusup;</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       4024 :     Glu-&gt;xlusup  = xlusup;</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       4024 :     Glu-&gt;ucol    = (void *) ucol;</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       4024 :     Glu-&gt;usub    = usub;</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       4024 :     Glu-&gt;xusub   = xusub;</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       4024 :     Glu-&gt;nzlmax  = nzlmax;</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       4024 :     Glu-&gt;nzumax  = nzumax;</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">       4024 :     Glu-&gt;nzlumax = nzlumax;</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">       4030 :     Glu-&gt;xsup    = xsup;</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       4030 :     Glu-&gt;supno   = supno;</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4030 :     Glu-&gt;lsub    = lsub;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       4030 :     Glu-&gt;xlsub   = xlsub;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       4030 :     Glu-&gt;lusup   = (void *) lusup;</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       4030 :     Glu-&gt;xlusup  = xlusup;</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       4030 :     Glu-&gt;ucol    = (void *) ucol;</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       4030 :     Glu-&gt;usub    = usub;</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">       4030 :     Glu-&gt;xusub   = xusub;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       4030 :     Glu-&gt;nzlmax  = nzlmax;</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       4030 :     Glu-&gt;nzumax  = nzumax;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">       4030 :     Glu-&gt;nzlumax = nzlumax;</span></a>
 <a name="325"><span class="lineNum">     325 </span>            :     </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       4024 :     info = dLUWorkInit(m, n, panel_size, iwork, dwork, Glu);</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       4024 :     if ( info )</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       4030 :     info = dLUWorkInit(m, n, panel_size, iwork, dwork, Glu);</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       4030 :     if ( info )</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :         return ( info + dmemory_usage(nzlmax, nzumax, nzlumax, n) + n);</span></a>
 <a name="329"><span class="lineNum">     329 </span>            :     </a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">       4024 :     ++Glu-&gt;num_expansions;</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       4024 :     return 0;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">       4030 :     ++Glu-&gt;num_expansions;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       4030 :     return 0;</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :     </a>
 <a name="333"><span class="lineNum">     333 </span>            : } /* dLUMemInit */</a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
@@ -407,31 +407,31 @@
 <a name="337"><span class="lineNum">     337 </span>            :  * returns the number of bytes allocated so far when failure occurred.</a>
 <a name="338"><span class="lineNum">     338 </span>            :  */</a>
 <a name="339"><span class="lineNum">     339 </span>            : int</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       4024 : dLUWorkInit(int m, int n, int panel_size, int **iworkptr, </span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       4030 : dLUWorkInit(int m, int n, int panel_size, int **iworkptr, </span></a>
 <a name="341"><span class="lineNum">     341 </span>            :             double **dworkptr, GlobalLU_t *Glu)</a>
 <a name="342"><span class="lineNum">     342 </span>            : {</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       4024 :     int    isize, dsize, extra;</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       4024 :     double *old_ptr;</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       4024 :     int    maxsuper = SUPERLU_MAX( sp_ienv(3), sp_ienv(7) ),</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">       4024 :            rowblk   = sp_ienv(4);</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       4030 :     int    isize, dsize, extra;</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       4030 :     double *old_ptr;</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       4030 :     int    maxsuper = SUPERLU_MAX( sp_ienv(3), sp_ienv(7) ),</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">       4030 :            rowblk   = sp_ienv(4);</span></a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
 <a name="348"><span class="lineNum">     348 </span>            :     /* xplore[m] and xprune[n] can be 64-bit; they are allocated separately */</a>
 <a name="349"><span class="lineNum">     349 </span>            :     //isize = ( (2 * panel_size + 3 + NO_MARKER ) * m + n ) * sizeof(int);</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">       4024 :     isize = ( (2 * panel_size + 2 + NO_MARKER ) * m ) * sizeof(int);</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       4024 :     dsize = (m * panel_size +</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       4024 :              NUM_TEMPV(m,panel_size,maxsuper,rowblk)) * sizeof(double);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">       4030 :     isize = ( (2 * panel_size + 2 + NO_MARKER ) * m ) * sizeof(int);</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       4030 :     dsize = (m * panel_size +</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       4030 :              NUM_TEMPV(m,panel_size,maxsuper,rowblk)) * sizeof(double);</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :     </a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">       4024 :     if ( Glu-&gt;MemModel == SYSTEM ) </span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       4024 :         *iworkptr = (int *) int32Calloc(isize/sizeof(int));</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">       4030 :     if ( Glu-&gt;MemModel == SYSTEM ) </span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">       4030 :         *iworkptr = (int *) int32Calloc(isize/sizeof(int));</span></a>
 <a name="356"><span class="lineNum">     356 </span>            :     else</a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         *iworkptr = (int *) duser_malloc(isize, TAIL, Glu);</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       4024 :     if ( ! *iworkptr ) {</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       4030 :     if ( ! *iworkptr ) {</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :         fprintf(stderr, &quot;dLUWorkInit: malloc fails for local iworkptr[]\n&quot;);</span></a>
 <a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :         return (isize + n);</span></a>
 <a name="361"><span class="lineNum">     361 </span>            :     }</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       4024 :     if ( Glu-&gt;MemModel == SYSTEM )</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       4024 :         *dworkptr = (double *) SUPERLU_MALLOC(dsize);</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       4030 :     if ( Glu-&gt;MemModel == SYSTEM )</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">       4030 :         *dworkptr = (double *) SUPERLU_MALLOC(dsize);</span></a>
 <a name="365"><span class="lineNum">     365 </span>            :     else {</a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         *dworkptr = (double *) duser_malloc(dsize, TAIL, Glu);</span></a>
 <a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :         if ( NotDoubleAlign(*dworkptr) ) {</span></a>
@@ -446,7 +446,7 @@
 <a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :             Glu-&gt;stack.used += extra;</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :         }</a>
 <a name="378"><span class="lineNum">     378 </span>            :     }</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">       4024 :     if ( ! *dworkptr ) {</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">       4030 :     if ( ! *dworkptr ) {</span></a>
 <a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         fprintf(stderr, &quot;malloc fails for local dworkptr[].&quot;);</span></a>
 <a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :         return (isize + dsize + n);</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :     }</a>
@@ -458,35 +458,35 @@
 <a name="388"><span class="lineNum">     388 </span>            : /*! \brief Set up pointers for real working arrays.</a>
 <a name="389"><span class="lineNum">     389 </span>            :  */</a>
 <a name="390"><span class="lineNum">     390 </span>            : void</a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">       4024 : dSetRWork(int m, int panel_size, double *dworkptr,</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">       4030 : dSetRWork(int m, int panel_size, double *dworkptr,</span></a>
 <a name="392"><span class="lineNum">     392 </span>            :          double **dense, double **tempv)</a>
 <a name="393"><span class="lineNum">     393 </span>            : {</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       4024 :     double zero = 0.0;</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       4030 :     double zero = 0.0;</span></a>
 <a name="395"><span class="lineNum">     395 </span>            : </a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       4024 :     int maxsuper = SUPERLU_MAX( sp_ienv(3), sp_ienv(7) ),</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       4024 :         rowblk   = sp_ienv(4);</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       4024 :     *dense = dworkptr;</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       4024 :     *tempv = *dense + panel_size*m;</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       4024 :     dfill (*dense, m * panel_size, zero);</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       4024 :     dfill (*tempv, NUM_TEMPV(m,panel_size,maxsuper,rowblk), zero);     </span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       4024 : }</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       4030 :     int maxsuper = SUPERLU_MAX( sp_ienv(3), sp_ienv(7) ),</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       4030 :         rowblk   = sp_ienv(4);</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       4030 :     *dense = dworkptr;</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       4030 :     *tempv = *dense + panel_size*m;</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       4030 :     dfill (*dense, m * panel_size, zero);</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">       4030 :     dfill (*tempv, NUM_TEMPV(m,panel_size,maxsuper,rowblk), zero);     </span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">       4030 : }</span></a>
 <a name="403"><span class="lineNum">     403 </span>            :         </a>
 <a name="404"><span class="lineNum">     404 </span>            : /*! \brief Free the working storage used by factor routines.</a>
 <a name="405"><span class="lineNum">     405 </span>            :  */</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">       4021 : void dLUWorkFree(int *iwork, double *dwork, GlobalLU_t *Glu)</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">       4027 : void dLUWorkFree(int *iwork, double *dwork, GlobalLU_t *Glu)</span></a>
 <a name="407"><span class="lineNum">     407 </span>            : {</a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       4021 :     if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       4021 :         SUPERLU_FREE (iwork);</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       4021 :         SUPERLU_FREE (dwork);</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       4027 :     if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">       4027 :         SUPERLU_FREE (iwork);</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">       4027 :         SUPERLU_FREE (dwork);</span></a>
 <a name="411"><span class="lineNum">     411 </span>            :     } else {</a>
 <a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :         Glu-&gt;stack.used -= (Glu-&gt;stack.size - Glu-&gt;stack.top2);</span></a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :         Glu-&gt;stack.top2 = Glu-&gt;stack.size;</span></a>
 <a name="414"><span class="lineNum">     414 </span>            : /*      dStackCompress(Glu);  */</a>
 <a name="415"><span class="lineNum">     415 </span>            :     }</a>
 <a name="416"><span class="lineNum">     416 </span>            :     </a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       4021 :     SUPERLU_FREE (Glu-&gt;expanders);   </span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       4021 :     Glu-&gt;expanders = NULL;</span></a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       4021 : }</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">       4027 :     SUPERLU_FREE (Glu-&gt;expanders);   </span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">       4027 :     Glu-&gt;expanders = NULL;</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       4027 : }</span></a>
 <a name="420"><span class="lineNum">     420 </span>            : </a>
 <a name="421"><span class="lineNum">     421 </span>            : /*! \brief Expand the data structures for L and U during the factorization.</a>
 <a name="422"><span class="lineNum">     422 </span>            :  * </a>
@@ -560,7 +560,7 @@
 <a name="490"><span class="lineNum">     490 </span>            : /*! \brief Expand the existing storage to accommodate more fill-ins.</a>
 <a name="491"><span class="lineNum">     491 </span>            :  */</a>
 <a name="492"><span class="lineNum">     492 </span>            : void</a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">      16096 : *dexpand (</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">      16120 : *dexpand (</span></a>
 <a name="494"><span class="lineNum">     494 </span>            :          int_t *prev_len,   /* length used from previous call */</a>
 <a name="495"><span class="lineNum">     495 </span>            :          MemType type,    /* which part of the memory to expand */</a>
 <a name="496"><span class="lineNum">     496 </span>            :          int_t len_to_copy, /* size of the memory to be copied to new store */</a>
@@ -569,28 +569,28 @@
 <a name="499"><span class="lineNum">     499 </span>            :          GlobalLU_t *Glu  /* modified - global LU data structures */</a>
 <a name="500"><span class="lineNum">     500 </span>            :         )</a>
 <a name="501"><span class="lineNum">     501 </span>            : {</a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      16096 :     float    EXPAND = 1.5;</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      16096 :     float    alpha;</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      16096 :     void     *new_mem, *old_mem;</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      16096 :     int_t    new_len, bytes_to_copy;</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">      16096 :     int      tries, lword, extra;</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">      16096 :     ExpHeader *expanders = Glu-&gt;expanders; /* Array of 4 types of memory */</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      16120 :     float    EXPAND = 1.5;</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      16120 :     float    alpha;</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      16120 :     void     *new_mem, *old_mem;</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      16120 :     int_t    new_len, bytes_to_copy;</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">      16120 :     int      tries, lword, extra;</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">      16120 :     ExpHeader *expanders = Glu-&gt;expanders; /* Array of 4 types of memory */</span></a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">      16096 :     alpha = EXPAND;</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">      16120 :     alpha = EXPAND;</span></a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">      16096 :     if ( Glu-&gt;num_expansions == 0 || keep_prev ) {</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">      16120 :     if ( Glu-&gt;num_expansions == 0 || keep_prev ) {</span></a>
 <a name="512"><span class="lineNum">     512 </span>            :         /* First time allocate requested */</a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      16096 :         new_len = *prev_len;</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      16120 :         new_len = *prev_len;</span></a>
 <a name="514"><span class="lineNum">     514 </span>            :     } else {</a>
 <a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :         new_len = alpha * *prev_len;</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :     }</a>
 <a name="517"><span class="lineNum">     517 </span>            :     </a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">      16096 :     if ( type == LSUB || type == USUB ) lword = sizeof(int_t);</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">       8048 :     else lword = sizeof(double);</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">      16120 :     if ( type == LSUB || type == USUB ) lword = sizeof(int_t);</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">       8060 :     else lword = sizeof(double);</span></a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">      16096 :     if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">      16096 :         new_mem = (void *) SUPERLU_MALLOC((size_t)new_len * lword);</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">      16096 :         if ( Glu-&gt;num_expansions != 0 ) {</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">      16120 :     if ( Glu-&gt;MemModel == SYSTEM ) {</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">      16120 :         new_mem = (void *) SUPERLU_MALLOC((size_t)new_len * lword);</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">      16120 :         if ( Glu-&gt;num_expansions != 0 ) {</span></a>
 <a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :             tries = 0;</span></a>
 <a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :             if ( keep_prev ) {</span></a>
 <a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :                 if ( !new_mem ) return (NULL);</span></a>
@@ -609,7 +609,7 @@
 <a name="539"><span class="lineNum">     539 </span>            :             }</a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :             SUPERLU_FREE (expanders[type].mem);</span></a>
 <a name="541"><span class="lineNum">     541 </span>            :         }</a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      16096 :         expanders[type].mem = (void *) new_mem;</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">      16120 :         expanders[type].mem = (void *) new_mem;</span></a>
 <a name="543"><span class="lineNum">     543 </span>            :         </a>
 <a name="544"><span class="lineNum">     544 </span>            :     } else { /* MemModel == USER */</a>
 <a name="545"><span class="lineNum">     545 </span>            :     </a>
@@ -679,11 +679,11 @@
 <a name="609"><span class="lineNum">     609 </span>            :         } /* else ... */</a>
 <a name="610"><span class="lineNum">     610 </span>            :     }</a>
 <a name="611"><span class="lineNum">     611 </span>            : </a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">      16096 :     expanders[type].size = new_len;</span></a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      16096 :     *prev_len = new_len;</span></a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      16096 :     if ( Glu-&gt;num_expansions ) ++Glu-&gt;num_expansions;</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">      16120 :     expanders[type].size = new_len;</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      16120 :     *prev_len = new_len;</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      16120 :     if ( Glu-&gt;num_expansions ) ++Glu-&gt;num_expansions;</span></a>
 <a name="615"><span class="lineNum">     615 </span>            :     </a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">      16096 :     return (void *) expanders[type].mem;</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">      16120 :     return (void *) expanders[type].mem;</span></a>
 <a name="617"><span class="lineNum">     617 </span>            :     </a>
 <a name="618"><span class="lineNum">     618 </span>            : } /* dexpand */</a>
 <a name="619"><span class="lineNum">     619 </span>            : </a>
@@ -755,27 +755,27 @@
 <a name="685"><span class="lineNum">     685 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="686"><span class="lineNum">     686 </span>            : </a>
 <a name="687"><span class="lineNum">     687 </span>            : </a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">      30257 : double *doubleMalloc(size_t n)</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">      30315 : double *doubleMalloc(size_t n)</span></a>
 <a name="689"><span class="lineNum">     689 </span>            : {</a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">      30257 :     double *buf;</span></a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">      30257 :     buf = (double *) SUPERLU_MALLOC(n * (size_t) sizeof(double)); </span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">      30257 :     if ( !buf ) {</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">      30315 :     double *buf;</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">      30315 :     buf = (double *) SUPERLU_MALLOC(n * (size_t) sizeof(double)); </span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">      30315 :     if ( !buf ) {</span></a>
 <a name="693"><span class="lineNum">     693 </span><span class="lineNoCov">          0 :         ABORT(&quot;SUPERLU_MALLOC failed for buf in doubleMalloc()\n&quot;);</span></a>
 <a name="694"><span class="lineNum">     694 </span>            :     }</a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      30257 :     return (buf);</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      30315 :     return (buf);</span></a>
 <a name="696"><span class="lineNum">     696 </span>            : }</a>
 <a name="697"><span class="lineNum">     697 </span>            : </a>
-<a name="698"><span class="lineNum">     698 </span><span class="lineCov">      33031 : double *doubleCalloc(size_t n)</span></a>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">      33089 : double *doubleCalloc(size_t n)</span></a>
 <a name="699"><span class="lineNum">     699 </span>            : {</a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">      33031 :     double *buf;</span></a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineCov">      33031 :     register size_t i;</span></a>
-<a name="702"><span class="lineNum">     702 </span><span class="lineCov">      33031 :     double zero = 0.0;</span></a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">      33031 :     buf = (double *) SUPERLU_MALLOC(n * (size_t) sizeof(double));</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">      33031 :     if ( !buf ) {</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">      33089 :     double *buf;</span></a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineCov">      33089 :     register size_t i;</span></a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineCov">      33089 :     double zero = 0.0;</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">      33089 :     buf = (double *) SUPERLU_MALLOC(n * (size_t) sizeof(double));</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">      33089 :     if ( !buf ) {</span></a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineNoCov">          0 :         ABORT(&quot;SUPERLU_MALLOC failed for buf in doubleCalloc()\n&quot;);</span></a>
 <a name="706"><span class="lineNum">     706 </span>            :     }</a>
-<a name="707"><span class="lineNum">     707 </span><span class="lineCov">    1267779 :     for (i = 0; i &lt; n; ++i) buf[i] = zero;</span></a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">      33031 :     return (buf);</span></a>
+<a name="707"><span class="lineNum">     707 </span><span class="lineCov">    1272651 :     for (i = 0; i &lt; n; ++i) buf[i] = zero;</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">      33089 :     return (buf);</span></a>
 <a name="709"><span class="lineNum">     709 </span>            : }</a>
 <a name="710"><span class="lineNum">     710 </span>            : </a>
 <a name="711"><span class="lineNum">     711 </span>            : </a>

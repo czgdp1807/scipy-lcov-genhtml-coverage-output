@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - coverage.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zsortc.f</title>
+  <title>LCOV - lcov.info - sparse/linalg/_eigen/arpack/ARPACK/SRC/zsortc.f</title>
   <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">115</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-19 14:45:53</td>
+            <td class="headerValue">2024-11-20 10:49:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -128,7 +128,7 @@
 <a name="58"><span class="lineNum">      58 </span>            : c</a>
 <a name="59"><span class="lineNum">      59 </span>            : c-----------------------------------------------------------------------</a>
 <a name="60"><span class="lineNum">      60 </span>            : c</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       3786 :       subroutine zsortc (which, apply, n, x, y)</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       3792 :       subroutine zsortc (which, apply, n, x, y)</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : c</a>
 <a name="63"><span class="lineNum">      63 </span>            : c     %------------------%</a>
 <a name="64"><span class="lineNum">      64 </span>            : c     | Scalar Arguments |</a>
@@ -172,9 +172,9 @@
 <a name="102"><span class="lineNum">     102 </span>            : c     | Executable Statements |</a>
 <a name="103"><span class="lineNum">     103 </span>            : c     %-----------------------%</a>
 <a name="104"><span class="lineNum">     104 </span>            : c</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">       3786 :       igap = n / 2</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">       3792 :       igap = n / 2</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : c</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       3786 :       if (which .eq. 'LM') then</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       3792 :       if (which .eq. 'LM') then</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : c</a>
 <a name="109"><span class="lineNum">     109 </span>            : c        %--------------------------------------------%</a>
 <a name="110"><span class="lineNum">     110 </span>            : c        | Sort X into increasing order of magnitude. |</a>
@@ -187,66 +187,66 @@
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">       2934 :             j = i-igap</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :    20       continue</a>
 <a name="119"><span class="lineNum">     119 </span>            : c</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       5075 :             if (j.lt.0) go to 30</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       5087 :             if (j.lt.0) go to 30</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : c</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3939 :             temp1 = dlapy2(dble(x(j)),aimag(x(j)))</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3939 :             temp2 = dlapy2(dble(x(j+igap)),aimag(x(j+igap)))</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3943 :             temp1 = dlapy2(dble(x(j)),aimag(x(j)))</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3943 :             temp2 = dlapy2(dble(x(j+igap)),aimag(x(j+igap)))</span></a>
 <a name="124"><span class="lineNum">     124 </span>            : c</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3939 :             if (temp1.gt.temp2) then</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       2141 :                 temp = x(j)</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       2141 :                 x(j) = x(j+igap)</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       2141 :                 x(j+igap) = temp</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       3943 :             if (temp1.gt.temp2) then</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       2153 :                 temp = x(j)</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       2153 :                 x(j) = x(j+igap)</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       2153 :                 x(j+igap) = temp</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : c</a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       2141 :                 if (apply) then</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       2141 :                     temp = y(j)</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       2141 :                     y(j) = y(j+igap)</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       2141 :                     y(j+igap) = temp</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       2153 :                 if (apply) then</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       2153 :                     temp = y(j)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       2153 :                     y(j) = y(j+igap)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       2153 :                     y(j+igap) = temp</span></a>
 <a name="134"><span class="lineNum">     134 </span>            :                 end if</a>
 <a name="135"><span class="lineNum">     135 </span>            :             else</a>
 <a name="136"><span class="lineNum">     136 </span>            :                 go to 30</a>
 <a name="137"><span class="lineNum">     137 </span>            :             end if</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       2141 :             j = j-igap</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       5075 :             go to 20</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       2153 :             j = j-igap</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       5087 :             go to 20</span></a>
 <a name="140"><span class="lineNum">     140 </span><span class="lineCov">        670 :    30    continue</span></a>
 <a name="141"><span class="lineNum">     141 </span><span class="lineCov">        670 :          igap = igap / 2</span></a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">        670 :          go to 10</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : c</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       3336 :       else if (which .eq. 'SM') then</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       3342 :       else if (which .eq. 'SM') then</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : c</a>
 <a name="146"><span class="lineNum">     146 </span>            : c        %--------------------------------------------%</a>
 <a name="147"><span class="lineNum">     147 </span>            : c        | Sort X into decreasing order of magnitude. |</a>
 <a name="148"><span class="lineNum">     148 </span>            : c        %--------------------------------------------%</a>
 <a name="149"><span class="lineNum">     149 </span>            : c</a>
 <a name="150"><span class="lineNum">     150 </span>            :    40    continue</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      13211 :          if (igap .eq. 0) go to 9000</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">      13238 :          if (igap .eq. 0) go to 9000</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : c</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">     143389 :          do 60 i = igap, n-1</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">     133226 :             j = i-igap</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">     143638 :          do 60 i = igap, n-1</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">     133454 :             j = i-igap</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :    50       continue</a>
 <a name="156"><span class="lineNum">     156 </span>            : c</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     191222 :             if (j .lt. 0) go to 60</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">     194901 :             if (j .lt. 0) go to 60</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : c</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     172441 :             temp1 = dlapy2(dble(x(j)),aimag(x(j)))</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">     172441 :             temp2 = dlapy2(dble(x(j+igap)),aimag(x(j+igap)))</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">     172732 :             temp1 = dlapy2(dble(x(j)),aimag(x(j)))</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">     172732 :             temp2 = dlapy2(dble(x(j+igap)),aimag(x(j+igap)))</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : c</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">     172441 :             if (temp1.lt.temp2) then</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      57996 :                temp = x(j)</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      57996 :                x(j) = x(j+igap)</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      57996 :                x(j+igap) = temp</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">     172732 :             if (temp1.lt.temp2) then</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      61447 :                temp = x(j)</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      61447 :                x(j) = x(j+igap)</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      61447 :                x(j+igap) = temp</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : c</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      57996 :                if (apply) then</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      57996 :                   temp = y(j)</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">      57996 :                   y(j) = y(j+igap)</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      57996 :                   y(j+igap) = temp</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      61447 :                if (apply) then</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      61447 :                   temp = y(j)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">      61447 :                   y(j) = y(j+igap)</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">      61447 :                   y(j+igap) = temp</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :                end if</a>
 <a name="172"><span class="lineNum">     172 </span>            :             else</a>
 <a name="173"><span class="lineNum">     173 </span>            :                go to 60</a>
 <a name="174"><span class="lineNum">     174 </span>            :             endif</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      57996 :             j = j-igap</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     191222 :             go to 50</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">      10163 :    60    continue</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      10163 :          igap = igap / 2</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      10163 :          go to 40</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      61447 :             j = j-igap</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">     194901 :             go to 50</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">      10184 :    60    continue</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      10184 :          igap = igap / 2</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      10184 :          go to 40</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : c</a>
 <a name="181"><span class="lineNum">     181 </span><span class="lineCov">        288 :       else if (which .eq. 'LR') then</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : c</a>
@@ -383,7 +383,7 @@
 <a name="313"><span class="lineNum">     313 </span>            :       end if</a>
 <a name="314"><span class="lineNum">     314 </span>            : c</a>
 <a name="315"><span class="lineNum">     315 </span>            :  9000 continue</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       3786 :       return</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       3792 :       return</span></a>
 <a name="317"><span class="lineNum">     317 </span>            : c</a>
 <a name="318"><span class="lineNum">     318 </span>            : c     %---------------%</a>
 <a name="319"><span class="lineNum">     319 </span>            : c     | End of zsortc |</a>
